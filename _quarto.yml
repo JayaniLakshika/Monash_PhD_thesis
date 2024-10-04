@@ -2,8 +2,8 @@ project:
   type: book
 
 book:
-  title: "This is my thesis"
-  author: "Susan Su"
+  title: "Developing a grammar to define interactive graphics with application to complex model diagnostics"
+  author: "Piyadi Gamage Jayani Lakshika"
   chapters:
     - text: "Front matter"
       file: index.qmd
