@@ -1,4 +1,4 @@
-# Visualising how non-linear dimension reduction warps your data {#sec-project1}
+# Large-scale user study to explore perception and misperception in NLDR representations {#sec-project2}
 
 This chapter contains a summary of the context in which your research is set.
 

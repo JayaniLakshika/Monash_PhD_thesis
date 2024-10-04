@@ -1,4 +1,4 @@
-# Visualising how non-linear dimension reduction warps your data {#sec-project1}
+# Conclusion {#sec-conclusion}
 
 This chapter contains a summary of the context in which your research is set.
 

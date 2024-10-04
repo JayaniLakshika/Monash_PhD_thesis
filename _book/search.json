@@ -88,5 +88,25 @@
     "crumbs": [
       "Bibliography"
     ]
+  },
+  {
+    "objectID": "04-chap4.html",
+    "href": "04-chap4.html",
+    "title": "4  Development of an interactive and dynamic graphics system for NLDR users",
+    "section": "",
+    "text": "4.1 Exponential smoothing\nExponential smoothing methods were originally developed in the late 1950s (Brown 1959, 1963; Holt 1957; Winters 1960). Because of their computational simplicity and interpretability, they became widely used in practice.\nEmpirical studies by Makridakis and Hibon (1979) and Makridakis et al. (1982) found little difference in forecast accuracy between exponential smoothing and ARIMA models. This made the family of exponential smoothing procedures an attractive proposition (see Chatfield et al. 2001).\nThe methods were less popular in academic circles until Ord et al. (1997) introduced a state space formulation of some of the methods, which was extended in Hyndman et al. (2002) to cover the full range of exponential smoothing methods.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Development of an interactive and dynamic graphics system for NLDR users</span>"
+    ]
+  },
+  {
+    "objectID": "04-chap4.html#sec-expsmooth",
+    "href": "04-chap4.html#sec-expsmooth",
+    "title": "4  Development of an interactive and dynamic graphics system for NLDR users",
+    "section": "",
+    "text": "Brown, R. G. (1959), Statistical forecasting for inventory control, McGraw-Hill, New York.\n\n\nBrown, R. G. (1963), Smoothing, forecasting and prediction of discrete time series, Englewood Cliffs, New Jersey: Prentice Hall.\n\n\nChatfield, C., Koehler, A. B., Ord, J. K., and Snyder, R. D. (2001), “A new look at models for exponential smoothing,” The Statistician, 50, 147–159.\n\n\nHolt, C. E. (1957), Forecasting trends and seasonals by exponentially weighted averages, O.N.R. Memorandum, Carnegie Institute of Technology.\n\n\nHyndman, R. J., Koehler, A. B., Snyder, R. D., and Grose, S. (2002), “A state space framework for automatic forecasting using exponential smoothing methods,” International Journal of Forecasting, 18, 439–454.\n\n\nMakridakis, S., Anderson, A., Carbone, R., Fildes, R., Hibon, M., Newton, R. L. J., Parzen, E., and Winkler, R. (1982), “The accuracy of extrapolation (time series) methods: Results of a forecasting competition,” Journal of Forecasting, 1, 111–153.\n\n\nMakridakis, S., and Hibon, M. (1979), “Accuracy of forecasting: An empirical investigation (with discussion),” Journal of Royal Statistical Society (A), 142, 97–145.\n\n\nOrd, J. K., Koehler, A. B., and Snyder, R. D. (1997), “Estimation and prediction for a class of dynamic nonlinear statistical models,” Journal of American Statistical Association, 92, 1621–1629.\n\n\nWinters, P. R. (1960), “Forecasting sales by exponentially weighted moving averages,” Management Science, 6, 324–342.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Development of an interactive and dynamic graphics system for NLDR users</span>"
+    ]
   }
 ]
