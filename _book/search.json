@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Developing a grammar to define interactive graphics with application to complex model diagnostics",
     "section": "",
-    "text": "A thesis submitted for the degree of Doctor of Philosophy at Monash University, Department of Econometrics & Business Statistics.\nCopyright notice\nProduced on 11 March 2025.\n© Piyadi Gamage Jayani Lakshika (2025).\nAbstract\nThe abstract should outline the main approach and findings of the thesis and must not be more than 500 words.\nDeclaration\n\nUse only one of the following declarations (Standard thesis or Thesis including published works declaration) and remove the other.\n\nStandard thesis\nThis thesis is an original work of my research and contains no material which has been accepted for the award of any other degree or diploma at any university or equivalent institution and that, to the best of my knowledge and belief, this thesis contains no material previously published or written by another person, except where due reference is made in the text of the thesis.\nStudent name:\nStudent signature:\nDate:\nPublications during enrolment\n\nRemove this section if you do not have publications.\n\nThe material in 1  Introduction has been submitted to the journal Journal of Impossible Results for possible publication.\nThe contribution in ?sec-litreview of this thesis was presented in the International Symposium on Nonsense held in Dublin, Ireland, in July 2022.\nReproducibility statement\nThis thesis is written using Quarto with renv (Ushey 2022) to create a reproducible environment. All materials (including the data sets and source files) required to reproduce this document can be found at the Github repository github.com/JayaniLakshika/Monash_PhD_thesis.\nThis work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.\nThesis including published works declaration\nI hereby declare that this thesis contains no material which has been accepted for the award of any other degree or diploma at any university or equivalent institution and that, to the best of my knowledge and belief, this thesis contains no material previously published or written by another person, except where due reference is made in the text of the thesis.\nThis thesis includes ?? original papers published in peer reviewed journals and ?? submitted publications. The core theme of the thesis is ??. The ideas, development and writing up of all the papers in the thesis were the principal responsibility of myself, the student, working within the Department of Econometrics & Business Statistics under the supervision of ??\n(The inclusion of co-authors reflects the fact that the work came from active collaboration between researchers and acknowledges input into team-based research.)\nIn the case of (??insert chapter numbers) my contribution to the work involved the following:\n\n\n\n\nThesis chapter\nPublication title\nStatus\nNature and % of student contribution\nNature and % of coauthors' contribution\nCoauthors are Monash students\n\n\n2\nThe life cycle of Mongolian crickets\nSubmitted\nConcept and data analysis, writing first draft: 60%\nShu Xu, input into manuscript: 25%; Eddie Betts, input into manuscript: 15%\nShu Xu: No; Eddie Betts: Yes\n\n\n\n\nI have / have not renumbered sections of submitted or published papers in order to generate a consistent presentation within the thesis.\nStudent name:\nStudent signature:\nDate:\nI hereby certify that the above declaration correctly reflects the nature and extent of the student’s and co-authors’ contributions to this work. In instances where I am not the responsible author I have consulted with the responsible author to agree on the respective contributions of the authors.\nMain Supervisor name:\nMain Supervisor signature:\nDate:\nAcknowledgements\nI would like to thank my pet goldfish for …\n\nIn accordance with Chapter 7.1.4 of the research degrees handbook, if you have engaged the services of a professional editor, you must provide their name and a brief description of the service rendered. If the professional editor’s current or former area of academic specialisation is similar your own, this too should be stated as it may suggest to examiners that the editor’s advice to the student has extended beyond guidance on English expression to affect the substance and structure of the thesis.\n\n\nIf you have used generative artificial intelligence (AI) technologies, you must include a written acknowledgment of the use and its extent. Your acknowledgement should at a minimum specify which technology was used, include explicit description on how the information was generated, and explain how the output was used in your work. Below is a suggested format:\n\n\n“I acknowledge the use of [insert AI system(s) and link] to [specific use of generative artificial intelligence]. The output from these was used to [explain use].”\n\n\nFree text section for you to record your acknowledgment and gratitude for the more general academic input and support such as financial support from grants and scholarships and the non-academic support you have received during the course of your enrolment. If you are a recipient of the “Australian Government Research Training Program Scholarship”, you are required to include the following statement:\n\n\n\n“This research was supported by an Australian Government Research Training Program (RTP) Scholarship.”\n\n\n\nYou may also wish to acknowledge significant and substantial contribution made by others to the research, work and writing represented and/or reported in the thesis. These could include significant contributions to: the conception and design of the project; non-routine technical work; analysis and interpretation of research data; drafting significant parts of the work or critically revising it so as to contribute to the interpretation.\n\n\n\n\n\n\nUshey, K. (2022), renv: Project environments.",
+    "text": "A thesis submitted for the degree of Doctor of Philosophy at Monash University, Department of Econometrics & Business Statistics.\nCopyright notice\nProduced on 16 March 2025.\n© Piyadi Gamage Jayani Lakshika (2025).",
     "crumbs": [
       "Front matter"
     ]
@@ -106,7 +106,7 @@
     "section": "",
     "text": "4.1 Exponential smoothing\nExponential smoothing methods were originally developed in the late 1950s (Brown 1959, 1963; Holt 1957; Winters 1960). Because of their computational simplicity and interpretability, they became widely used in practice.\nEmpirical studies by Makridakis and Hibon (1979) and Makridakis et al. (1982) found little difference in forecast accuracy between exponential smoothing and ARIMA models. This made the family of exponential smoothing procedures an attractive proposition (see Chatfield et al. 2001).\nThe methods were less popular in academic circles until Ord et al. (1997) introduced a state space formulation of some of the methods, which was extended in Hyndman et al. (2002) to cover the full range of exponential smoothing methods.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Development of an interactive and dynamic graphics system for NLDR users</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Generating interesting high-dimensional data structures</span>"
     ]
   },
   {
@@ -116,17 +116,17 @@
     "section": "",
     "text": "Brown, R. G. (1959), Statistical forecasting for inventory control, McGraw-Hill, New York.\n\n\nBrown, R. G. (1963), Smoothing, forecasting and prediction of discrete time series, Englewood Cliffs, New Jersey: Prentice Hall.\n\n\nChatfield, C., Koehler, A. B., Ord, J. K., and Snyder, R. D. (2001), “A new look at models for exponential smoothing,” The Statistician, 50, 147–159.\n\n\nHolt, C. E. (1957), Forecasting trends and seasonals by exponentially weighted averages, O.N.R. Memorandum, Carnegie Institute of Technology.\n\n\nHyndman, R. J., Koehler, A. B., Snyder, R. D., and Grose, S. (2002), “A state space framework for automatic forecasting using exponential smoothing methods,” International Journal of Forecasting, 18, 439–454.\n\n\nMakridakis, S., Anderson, A., Carbone, R., Fildes, R., Hibon, M., Newton, R. L. J., Parzen, E., and Winkler, R. (1982), “The accuracy of extrapolation (time series) methods: Results of a forecasting competition,” Journal of Forecasting, 1, 111–153.\n\n\nMakridakis, S., and Hibon, M. (1979), “Accuracy of forecasting: An empirical investigation (with discussion),” Journal of Royal Statistical Society (A), 142, 97–145.\n\n\nOrd, J. K., Koehler, A. B., and Snyder, R. D. (1997), “Estimation and prediction for a class of dynamic nonlinear statistical models,” Journal of American Statistical Association, 92, 1621–1629.\n\n\nWinters, P. R. (1960), “Forecasting sales by exponentially weighted moving averages,” Management Science, 6, 324–342.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Development of an interactive and dynamic graphics system for NLDR users</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Generating interesting high-dimensional data structures</span>"
     ]
   },
   {
     "objectID": "05-chap5.html",
     "href": "05-chap5.html",
-    "title": "5  Conclusion",
+    "title": "5  Conclusion and future plans",
     "section": "",
-    "text": "5.1 Exponential smoothing\nExponential smoothing methods were originally developed in the late 1950s (Brown 1959, 1963; Holt 1957; Winters 1960). Because of their computational simplicity and interpretability, they became widely used in practice.\nEmpirical studies by Makridakis and Hibon (1979) and Makridakis et al. (1982) found little difference in forecast accuracy between exponential smoothing and ARIMA models. This made the family of exponential smoothing procedures an attractive proposition (see Chatfield et al. 2001).\nThe methods were less popular in academic circles until Ord et al. (1997) introduced a state space formulation of some of the methods, which was extended in Hyndman et al. (2002) to cover the full range of exponential smoothing methods.",
+    "text": "5.1 Contributions",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Conclusion</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
   },
   {
@@ -147,6 +147,36 @@
     "text": "Brown, R. G. (1959), Statistical forecasting for inventory\ncontrol, McGraw-Hill, New York.\n\n\nBrown, R. G. (1963), Smoothing, forecasting and prediction of\ndiscrete time series, Englewood Cliffs, New Jersey: Prentice Hall.\n\n\nChatfield, C., Koehler, A. B., Ord, J. K., and Snyder, R. D. (2001),\n“A new look at models for exponential smoothing,” The\nStatistician, 50, 147–159.\n\n\nHolt, C. E. (1957), Forecasting trends and seasonals by\nexponentially weighted averages, O.N.R. Memorandum, Carnegie\nInstitute of Technology.\n\n\nHyndman, R. J., Koehler, A. B., Snyder, R. D., and Grose, S. (2002),\n“A state space framework for automatic forecasting using\nexponential smoothing methods,” International Journal of\nForecasting, 18, 439–454.\n\n\nMakridakis, S., Anderson, A., Carbone, R., Fildes, R., Hibon, M.,\nNewton, R. L. J., Parzen, E., and Winkler, R. (1982), “The\naccuracy of extrapolation (time series) methods: Results of a\nforecasting competition,” Journal of Forecasting, 1,\n111–153.\n\n\nMakridakis, S., and Hibon, M. (1979), “Accuracy of forecasting: An\nempirical investigation (with discussion),” Journal of Royal\nStatistical Society (A), 142, 97–145.\n\n\nOrd, J. K., Koehler, A. B., and Snyder, R. D. (1997), “Estimation\nand prediction for a class of dynamic nonlinear statistical\nmodels,” Journal of American Statistical Association,\n92, 1621–1629.\n\n\nUshey, K. (2022), renv: Project environments.\n\n\nWinters, P. R. (1960), “Forecasting sales by exponentially\nweighted moving averages,” Management Science, 6,\n324–342.",
     "crumbs": [
       "Bibliography"
+    ]
+  },
+  {
+    "objectID": "05-chap5.html#future-work",
+    "href": "05-chap5.html#future-work",
+    "title": "5  Conclusion and future plans",
+    "section": "5.2 Future work",
+    "text": "5.2 Future work",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Conclusion and future plans</span>"
+    ]
+  },
+  {
+    "objectID": "abstract.html",
+    "href": "abstract.html",
+    "title": "Abstract",
+    "section": "",
+    "text": "Declaration\nI hereby declare that this thesis contains no material which has been accepted for the award of any other degree or diploma at any university or equivalent institution and that, to the best of my knowledge and belief, this thesis contains no material previously published or written by another person, except where due reference is made in the text of the thesis.\n\nThe inclusion of co-authors reflects the fact that the work came from active collaboration between researchers and acknowledges input into team-based research. In the case of Chapter 2, my contribution to the work involved the following:\n\n\n\n\nChapter\nPublication title\nStatus\nStudent contribution\nCo-authors contribution\nCoauthors are Monash students\n\n\n2\n\nPublished in the Journal of Computational and Graphical Statistics\n80% Concept, Analysis, Software, Writing\n\nNo\n\n\n\n\nChapters 3, k, and Chapter 4, **, are planned for submission to peer-reviewed journals.\nTo ensure the clarity and coherence of the written content, artificial intelligence tools were employed to assist in smoothing and refining the language throughout the thesis.\n\nI have not renumbered sections of submitted or published papers in order to generate a consistent presentation within the thesis.\nStudent name: Piyadi Gamage Jayani Lakshika\nStudent signature:\nDate: 15th January 2025\nI hereby certify that the above declaration correctly reflects the nature and extent of the student’s and co-authors’ contributions to this work. In instances where I am not the responsible author I have consulted with the responsible author to agree on the respective contributions of the authors.\nMain Supervisor name: Dianne Cook\nMain Supervisor signature:\nDate: 15th January 2025",
+    "crumbs": [
+      "Abstract"
+    ]
+  },
+  {
+    "objectID": "acknowledgements.html",
+    "href": "acknowledgements.html",
+    "title": "Acknowledgements",
+    "section": "",
+    "text": "This thesis would not be possible without the support of many people.\nLast but not least, I would like to thank my family for their support.",
+    "crumbs": [
+      "Acknowledgements"
     ]
   }
 ]
