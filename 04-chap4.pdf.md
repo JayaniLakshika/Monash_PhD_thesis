@@ -1,1 +1,1 @@
-# Large-scale user study to explore perception and misperception in NLDR representations {#sec-third-paper}
+# A user study to explore perception and misperception in NLDR representations {#sec-third-paper}

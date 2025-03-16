@@ -1,15 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Developing a grammar to define interactive graphics with application to complex model diagnostics",
-    "section": "",
-    "text": "A thesis submitted for the degree of Doctor of Philosophy at Monash University, Department of Econometrics & Business Statistics.\nCopyright notice\nProduced on 17 March 2025.\n© Piyadi Gamage Jayani Lakshika (2025).",
-    "crumbs": [
-      "Front matter"
-    ]
-  },
-  {
     "objectID": "abstract.html",
     "href": "abstract.html",
     "title": "Abstract",
@@ -57,6 +47,16 @@
     "text": "7.2 Future work",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Developing a grammar to define interactive graphics with application to complex model diagnostics",
+    "section": "",
+    "text": "A thesis submitted for the degree of Doctor of Philosophy at Monash University, Department of Econometrics & Business Statistics.\nCopyright notice\nProduced on 17 March 2025.\n© Piyadi Gamage Jayani Lakshika (2025).",
+    "crumbs": [
+      "Front matter"
     ]
   }
 ]
