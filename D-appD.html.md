@@ -1,1 +1,1 @@
-# Appendix to "cardinalR" {#sec-appendix-a}
+# Appendix to "cardinalR" {#sec-appendix-d}
