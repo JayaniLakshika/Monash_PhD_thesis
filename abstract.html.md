@@ -6,31 +6,53 @@ I hereby declare that this thesis contains no material which has been accepted f
 
 <!-- This thesis includes one original papers published in a peer reviewed journal and two unpublished papers. The core theme of the thesis is "automated reading of residual plots". The ideas, development and writing up of all the papers in the thesis were the principal responsibility of myself, the student, working within the Department of Econometrics and Business Statistics under the supervision of Professor Dianne Cook, Dr Emi Tanaka (Australian National University), Assistant Professor Susan VanderPlas (University of Nebraska–Lincoln) and Assistant Professor Klaus Ackermann. -->
 
-The inclusion of co-authors reflects the fact that the work came from active collaboration between researchers and acknowledges input into team-based research. In the case of [Chapter 2](@sec-first-paper), my contribution to the work involved the following:
+The inclusion of co-authors reflects the fact that the work came from active collaboration between researchers and acknowledges input into team-based research. In the case of [Chapter 2](#sec-first-paper), my contribution to the work involved the following:
 
-```{r}
-#| message: false
-#| echo: false
-library(tidyverse)
-library(knitr)
-library(kableExtra)
-dt <- tribble(
-  ~`Chapter`, ~`Publication title`, ~Status, ~`Student contribution`, ~`Co-authors contribution`, ~`Coauthors are Monash students`,
-  2, "", "Published in the Journal of Computational and Graphical Statistics", "80%  Concept, Analysis, Software, Writing", "", "No"
-)  
 
-dt |>
-  kable(booktabs = TRUE) |>
-  kable_styling(font_size = 10,
-                latex_options = c("hold_position", "repeat_header")) |>
-  column_spec(1, width = "1.2cm") |>
-  column_spec(2, width = "3cm") |>
-  column_spec(3, width = "3.5cm") |>
-  column_spec(4, width = "2.5cm") |>
-  column_spec(5, width = "2.4cm") |>
-  column_spec(6, width = "1.3cm") |>
-  row_spec(0, align = "l", bold = TRUE)
-```
+
+
+
+
+
+
+::: {.cell}
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;font-weight: bold;text-align: left;"> Chapter </th>
+   <th style="text-align:left;font-weight: bold;text-align: left;"> Publication title </th>
+   <th style="text-align:left;font-weight: bold;text-align: left;"> Status </th>
+   <th style="text-align:left;font-weight: bold;text-align: left;"> Student contribution </th>
+   <th style="text-align:left;font-weight: bold;text-align: left;"> Co-authors contribution </th>
+   <th style="text-align:left;font-weight: bold;text-align: left;"> Coauthors are Monash students </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;width: 1.2cm; "> 2 </td>
+   <td style="text-align:left;width: 3cm; ">  </td>
+   <td style="text-align:left;width: 3.5cm; "> Published in the Journal of Computational and Graphical Statistics </td>
+   <td style="text-align:left;width: 2.5cm; "> 80%  Concept, Analysis, Software, Writing </td>
+   <td style="text-align:left;width: 2.4cm; ">  </td>
+   <td style="text-align:left;width: 1.3cm; "> No </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+
+
+
+
+
+
 
 
 Chapters 3, *k*, and Chapter 4, *\*, are planned for submission to peer-reviewed journals.
@@ -47,7 +69,7 @@ I have not renumbered sections of submitted or published papers in order to gene
 
 **Student signature**: 
 
-**Date**: 15th January 2026 
+**Date**: 15th January 2025 
 
 I hereby certify that the above declaration correctly reflects the nature and extent of the student’s and co-authors’ contributions to this work. In instances where I am not the responsible author I have consulted with the responsible author to agree on the respective contributions of the authors.
 
@@ -55,4 +77,4 @@ I hereby certify that the above declaration correctly reflects the nature and ex
 
 **Main Supervisor signature**:
 
-**Date**: 15th January 2026
+**Date**: 15th January 2025

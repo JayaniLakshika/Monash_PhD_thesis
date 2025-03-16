@@ -1,1 +1,1 @@
-# Generating interesting high-dimensional data structures {#sec-fifth-paper}
+# cardinalR: Generating interesting high-dimensional data structures {#sec-fifth-paper}
