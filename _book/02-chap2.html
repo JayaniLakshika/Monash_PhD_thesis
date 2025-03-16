@@ -20,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -118,6 +98,10 @@ div.csl-indent {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Developing a grammar to define interactive graphics with application to complex model diagnostics</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/tree/master/Thesis/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Developing-a-grammar-to-define-interactive-graphics-with-application-to-complex-model-diagnostics.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -181,19 +165,30 @@ div.csl-indent {
  <span class="menu-text">Bibliography</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./A-appA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Appendix to “Visualising how non-linear dimension reduction warps your data”</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title"><b>Sections</b></h2>
-   
-  <ul class="collapse">
-  <li><a href="#sec-expsmooth" id="toc-sec-expsmooth" class="nav-link active" data-scroll-target="#sec-expsmooth"><span class="header-section-number">2.1</span> Exponential smoothing</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -217,48 +212,8 @@ div.csl-indent {
 </header>
 
 
-<p>This chapter contains a summary of the context in which your research is set.</p>
-<p>Imagine you are writing for your fellow PhD students. Topics that are well-known to them do not have to be included here. But things that they may not know about should be included.</p>
-<p>Resist the temptation to discuss everything you’ve read in the last few years. And you are not writing a textbook either. This chapter is meant to provide the background necessary to understand the material in subsequent chapters. Stick to that.</p>
-<p>You will need to organize the literature review around themes, and within each theme provide a story explaining the development of ideas to date. In each theme, you should get to the point where your ideas will fit in. But leave your ideas to later chapters. This way it is clear what has been done beforehand, and what new contributions you are making to the research field.</p>
-<p>All citations should be done using markdown notation as shown below. This way, your bibliography will be compiled automatically and correctly.</p>
-<section id="sec-expsmooth" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="sec-expsmooth"><span class="header-section-number">2.1</span> Exponential smoothing</h2>
-<p>Exponential smoothing methods were originally developed in the late 1950s <span class="citation" data-cites="Brown59 Brown63 Holt57 Winters60">(<a href="refs.html#ref-Brown59" role="doc-biblioref">Brown 1959</a>, <a href="refs.html#ref-Brown63" role="doc-biblioref">1963</a>; <a href="refs.html#ref-Holt57" role="doc-biblioref">Holt 1957</a>; <a href="refs.html#ref-Winters60" role="doc-biblioref">Winters 1960</a>)</span>. Because of their computational simplicity and interpretability, they became widely used in practice.</p>
-<p>Empirical studies by <span class="citation" data-cites="MH79">Makridakis and Hibon (<a href="refs.html#ref-MH79" role="doc-biblioref">1979</a>)</span> and <span class="citation" data-cites="M1comp">Makridakis et al. (<a href="refs.html#ref-M1comp" role="doc-biblioref">1982</a>)</span> found little difference in forecast accuracy between exponential smoothing and ARIMA models. This made the family of exponential smoothing procedures an attractive proposition <span class="citation" data-cites="CKOS01">(see <a href="refs.html#ref-CKOS01" role="doc-biblioref">Chatfield et al. 2001</a>)</span>.</p>
-<p>The methods were less popular in academic circles until <span class="citation" data-cites="OKS97">Ord et al. (<a href="refs.html#ref-OKS97" role="doc-biblioref">1997</a>)</span> introduced a state space formulation of some of the methods, which was extended in <span class="citation" data-cites="HKSG02">Hyndman et al. (<a href="refs.html#ref-HKSG02" role="doc-biblioref">2002</a>)</span> to cover the full range of exponential smoothing methods.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-Brown59" class="csl-entry" role="listitem">
-Brown, R. G. (1959), <em>Statistical forecasting for inventory control</em>, McGraw-Hill, New York.
-</div>
-<div id="ref-Brown63" class="csl-entry" role="listitem">
-Brown, R. G. (1963), <em>Smoothing, forecasting and prediction of discrete time series</em>, Englewood Cliffs, New Jersey: Prentice Hall.
-</div>
-<div id="ref-CKOS01" class="csl-entry" role="listitem">
-Chatfield, C., Koehler, A. B., Ord, J. K., and Snyder, R. D. (2001), <span>“A new look at models for exponential smoothing,”</span> <em>The Statistician</em>, 50, 147–159.
-</div>
-<div id="ref-Holt57" class="csl-entry" role="listitem">
-Holt, C. E. (1957), <em>Forecasting trends and seasonals by exponentially weighted averages</em>, O.N.R. Memorandum, Carnegie Institute of Technology.
-</div>
-<div id="ref-HKSG02" class="csl-entry" role="listitem">
-Hyndman, R. J., Koehler, A. B., Snyder, R. D., and Grose, S. (2002), <span>“A state space framework for automatic forecasting using exponential smoothing methods,”</span> <em>International Journal of Forecasting</em>, 18, 439–454.
-</div>
-<div id="ref-M1comp" class="csl-entry" role="listitem">
-Makridakis, S., Anderson, A., Carbone, R., Fildes, R., Hibon, M., Newton, R. L. J., Parzen, E., and Winkler, R. (1982), <span>“The accuracy of extrapolation (time series) methods: Results of a forecasting competition,”</span> <em>Journal of Forecasting</em>, 1, 111–153.
-</div>
-<div id="ref-MH79" class="csl-entry" role="listitem">
-Makridakis, S., and Hibon, M. (1979), <span>“Accuracy of forecasting: An empirical investigation (with discussion),”</span> <em>Journal of Royal Statistical Society (A)</em>, 142, 97–145.
-</div>
-<div id="ref-OKS97" class="csl-entry" role="listitem">
-Ord, J. K., Koehler, A. B., and Snyder, R. D. (1997), <span>“Estimation and prediction for a class of dynamic nonlinear statistical models,”</span> <em>Journal of American Statistical Association</em>, 92, 1621–1629.
-</div>
-<div id="ref-Winters60" class="csl-entry" role="listitem">
-Winters, P. R. (1960), <span>“Forecasting sales by exponentially weighted moving averages,”</span> <em>Management Science</em>, 6, 324–342.
-</div>
-</div>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -698,4 +653,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/02-chap2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
