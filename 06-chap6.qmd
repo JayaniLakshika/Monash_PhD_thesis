@@ -1,1 +1,1 @@
-# Development of an interactive and dynamic graphics system for NLDR users {#sec-project5}
+# Development of an interactive and dynamic graphics system for NLDR users {#sec-six-paper}

@@ -1,5 +1,1 @@
-# Conclusion and future plans {#sec-conclusion}
-
-## Contributions
-
-## Future work
+# Development of an interactive and dynamic graphics system for NLDR users {#sec-project5}
