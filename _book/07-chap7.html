@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.54">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="author" content="Piyadi Gamage Jayani Lakshika">
-<title>Developing a grammar to define interactive graphics with application to complex model diagnostics</title>
+
+
+<title>7&nbsp; Introduction – Developing a grammar to define interactive graphics with application to complex model diagnostics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -27,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./abstract.html" rel="next">
+<link href="./refs.html" rel="next">
+<link href="./06-chap6.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -36,7 +40,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -62,65 +67,35 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><link href="https://fonts.googleapis.com/css?family=Fira+Sans%7CMerriweather%7CSource%20Code%20Pro" rel="stylesheet">
-<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
+}</script>
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Merriweather|Source Code Pro" rel="stylesheet">
+
+
 </head>
+
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Front matter</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-chap7.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Developing a grammar to define interactive graphics with application to complex model diagnostics</a> 
         <div class="sidebar-tools-main">
@@ -136,9 +111,9 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Front matter</span></a>
   </div>
 </li>
@@ -169,25 +144,31 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-chap3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">quollr: An R Package for Visualizing <span class="math inline">2-D</span> Models from Non-linear Dimension Reductions in High Dimensional Space</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Large-scale user study to explore perception and misperception in NLDR representations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-chap4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Large-scale user study to explore perception and misperception in NLDR representations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Generating interesting high-dimensional data structures</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-chap5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Generating interesting high-dimensional data structures</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conclusion and future plans</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-chap6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusion and future plans</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-chap7.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -204,41 +185,35 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./A-appA.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Appendix to “Visualising how non-linear dimension reduction warps your data”</span></span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title"><b>Sections</b></h2>
-   
-  <ul class="collapse">
-<li><a href="#copyright-notice" id="toc-copyright-notice" class="nav-link active" data-scroll-target="#copyright-notice">Copyright notice</a></li>
-  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Developing a grammar to define interactive graphics with application to complex model diagnostics</h1>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-intro" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Piyadi Gamage Jayani Lakshika </p>
-          </div>
-  </div>
     
   
     
@@ -246,81 +221,14 @@ window.Quarto = {
   
 
 
-</header><p>A thesis submitted for the degree of Doctor of Philosophy at Monash University, Department of Econometrics &amp; Business Statistics.</p>
-<section id="copyright-notice" class="level1 unnumbered"><h1 class="unnumbered">Copyright notice</h1>
-<p>Produced on 16 March 2025.</p>
-<p>© Piyadi Gamage Jayani Lakshika (2025).</p>
-<!-- # Abstract {-} -->
-<!-- The abstract should outline the main approach and findings of the thesis and must not be more than 500 words. -->
-<!-- # Declaration {-} -->
-<!-- > Use only one of the following declarations (Standard thesis or Thesis including published works declaration) and remove the other. -->
-<!-- ### Standard thesis -->
-<!-- This thesis is an original work of my research and contains no material which has been accepted for the award of any other degree or diploma at any university or equivalent institution and that, to the best of my knowledge and belief, this thesis contains no material previously published or written by another person, except where due reference is made in the text of the thesis. -->
-<!-- Student name: -->
-<!-- Student signature: -->
-<!-- Date: -->
-<!-- #### Publications during enrolment {-} -->
-<!-- > Remove this section if you do not have publications. -->
-<!-- The material in @sec-intro has been submitted to the journal *Journal of Impossible Results* for possible publication. -->
-<!-- The contribution in @sec-litreview of this thesis was presented in the International Symposium on Nonsense held in Dublin, Ireland, in July 2022. -->
-<!-- #### Reproducibility statement -->
-<!-- This thesis is written using Quarto with renv [@renv] to create a reproducible environment. All materials (including the data sets and source files) required to reproduce this document can be found at the Github repository [`github.com/JayaniLakshika/Monash_PhD_thesis`](https://github.com/JayaniLakshika/Monash_PhD_thesis). -->
-<!-- This work is licensed under a [Creative Commons  Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/). -->
-<!-- ### Thesis including published works declaration -->
-<!-- I hereby declare that this thesis contains no material which has been accepted for the award of any other degree or diploma at any university or equivalent institution and that, to the best of my knowledge and belief, this thesis contains no material previously published or written by another person, except where due reference is made in the text of the thesis. -->
-<!-- This thesis includes ?? original papers published in peer reviewed journals and ?? submitted publications. The core theme of the thesis is ??. The ideas, development and writing up of all the papers in the thesis were the principal responsibility of myself, the student, working within the Department of Econometrics & Business Statistics under the supervision of ?? -->
-<!-- (The inclusion of co-authors reflects the fact that the work came from active collaboration between researchers and acknowledges input into team-based research.) -->
-<!-- In the case of (??insert chapter numbers) my contribution to the work involved the following: -->
-<!-- ```{r} -->
-<!-- #| message: false -->
-<!-- #| echo: false -->
-<!-- library(tidyverse) -->
-<!-- library(knitr) -->
-<!-- library(kableExtra) -->
-<!-- tab <- tribble( -->
-<!--   ~`Thesis chapter`, ~`Publication title`, ~Status, ~`Nature and % of student contribution`, ~`Nature and % of coauthors' contribution`, ~`Coauthors are Monash students`, -->
-<!--   2, "The life cycle of Mongolian crickets", "Submitted", "Concept and data analysis, writing first draft: 60%", "Shu Xu, input into manuscript: 25%; Eddie Betts, input into manuscript: 15%", "Shu Xu: No; Eddie Betts: Yes" -->
-<!-- ) -->
-<!-- ``` -->
-<!-- ::: {.content-visible when-format="html"} -->
-<!-- ```{r} -->
-<!-- tab |> -->
-<!--   kable() |> -->
-<!--   row_spec(0, align = "l") -->
-<!-- ``` -->
-<!-- ::: -->
-<!-- ::: {.content-visible when-format="pdf"} -->
-<!-- ```{r} -->
-<!-- tab |> -->
-<!--   kable(booktabs = TRUE, format = "latex") |> -->
-<!--   kable_styling(full_width = TRUE, font_size = 10, latex_options = "scale_down") |> -->
-<!--   column_spec(1, width = "1.2cm") |> -->
-<!--   column_spec(c(2, 4:6), width = "2.6cm") |> -->
-<!--   row_spec(0, align = "l", bold = TRUE) -->
-<!-- ``` -->
-<!-- ::: -->
-<!-- I have / have not renumbered sections of submitted or published papers in order to generate a consistent presentation within the thesis. -->
-<!-- Student name: -->
-<!-- Student signature: -->
-<!-- Date: -->
-<!-- I hereby certify that the above declaration correctly reflects the nature and extent of the student’s and co-authors’ contributions to this work. In instances where I am not the responsible author I have consulted with the responsible author to agree on the respective contributions of the authors. -->
-<!-- Main Supervisor name: -->
-<!-- Main Supervisor signature: -->
-<!-- Date: -->
-<!-- # Acknowledgements {-} -->
-<!-- I would like to thank my pet goldfish for ... -->
-<!-- > In accordance with Chapter 7.1.4 of the research degrees handbook, if you have engaged the services of a professional editor, you must provide their name and a brief description of the service rendered. If the professional editor's current or former area of academic specialisation is similar your own, this too should be stated as it may suggest to examiners that the editor's advice to the student has extended beyond guidance on English expression to affect the substance and structure of the thesis. -->
-<!-- > If you have used generative artificial intelligence (AI) technologies, you must include a written acknowledgment of the use and its extent. Your acknowledgement should at a minimum specify which technology was used, include explicit description on how the information was generated, and explain how the output was used in your work. Below is a suggested format: -->
-<!-- > “I acknowledge the use of [insert AI system(s) and link] to [specific use of generative artificial intelligence]. The output from these was used to [explain use].” -->
-<!-- > Free text section for you to record your acknowledgment and gratitude for the more general academic input and support such as financial support from grants and scholarships and the non-academic support you have received during the course of your enrolment. If you are a recipient of the “Australian Government Research Training Program Scholarship”, you are required to include the following statement: -->
-<!-- > > “This research was supported by an Australian Government Research Training Program (RTP) Scholarship.” -->
-<!-- > You may also wish to acknowledge significant and substantial contribution made by others to the research, work and writing represented and/or reported in the thesis. These could include significant contributions to: the conception and design of the project; non-routine technical work; analysis and interpretation of research data; drafting significant parts of the work or critically revising it so as to contribute to the interpretation. -->
-<!--
-The following line is required to re-set page numbering after preliminary material in the pdf output. Do not remove
--->
+</header>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -739,11 +647,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./06-chap6.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./abstract.html" class="pagination-link" aria-label="Abstract">
-        <span class="nav-page-text">Abstract</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./refs.html" class="pagination-link" aria-label="Bibliography">
+        <span class="nav-page-text">Bibliography</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -751,4 +664,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/07-chap7.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

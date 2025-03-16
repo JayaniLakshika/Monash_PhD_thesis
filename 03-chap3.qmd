@@ -1,1 +1,1 @@
-# Large-scale user study to explore perception and misperception in NLDR representations {#sec-project2}
+# quollr: An R Package for Visualizing $2-D$ Models from Non-linear Dimension Reductions in High Dimensional Space {#sec-project3}

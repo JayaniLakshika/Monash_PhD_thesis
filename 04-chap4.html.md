@@ -1,2 +1,1 @@
-# Generating interesting high-dimensional data structures {#sec-project3}
-
+# Large-scale user study to explore perception and misperception in NLDR representations {#sec-project3}

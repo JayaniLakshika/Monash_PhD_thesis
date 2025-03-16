@@ -179,5 +179,25 @@
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Additional stuff</span>"
     ]
+  },
+  {
+    "objectID": "06-chap6.html",
+    "href": "06-chap6.html",
+    "title": "6  Conclusion and future plans",
+    "section": "",
+    "text": "6.1 Contributions",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conclusion and future plans</span>"
+    ]
+  },
+  {
+    "objectID": "06-chap6.html#future-work",
+    "href": "06-chap6.html#future-work",
+    "title": "6  Conclusion and future plans",
+    "section": "6.2 Future work",
+    "text": "6.2 Future work",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conclusion and future plans</span>"
+    ]
   }
 ]

@@ -1,5 +1,1 @@
-# Conclusion and future plans {#sec-conclusion}
-
-## Contributions
-
-## Future work
+# Generating interesting high-dimensional data structures {#sec-project4}
