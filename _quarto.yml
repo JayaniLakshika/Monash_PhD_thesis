@@ -27,6 +27,10 @@ book:
     - "refs.qmd"
   appendices:
     - "A-appA.qmd"
+    - "B-appB.qmd"
+    - "C-appC.qmd"
+    - "D-appD.qmd"
+    - "E-appE.qmd"
   sidebar:
     style: "docked"
 
