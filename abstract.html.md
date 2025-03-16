@@ -4,11 +4,9 @@
 
 I hereby declare that this thesis contains no material which has been accepted for the award of any other degree or diploma at any university or equivalent institution and that, to the best of my knowledge and belief, this thesis contains no material previously published or written by another person, except where due reference is made in the text of the thesis.
 
-<!-- This thesis includes one original papers published in a peer reviewed journal and two unpublished papers. The core theme of the thesis is "automated reading of residual plots". The ideas, development and writing up of all the papers in the thesis were the principal responsibility of myself, the student, working within the Department of Econometrics and Business Statistics under the supervision of Professor Dianne Cook, Dr Emi Tanaka (Australian National University), Assistant Professor Susan VanderPlas (University of Nebraska–Lincoln) and Assistant Professor Klaus Ackermann. -->
+This thesis includes one original papers published in a peer reviewed journal and four unpublished papers. The core theme of the thesis is "interactive and dynamic graphics for studying non-linear dimension reduction models of high-dimensional data". The ideas, development and writing up of all the papers in the thesis were the principal responsibility of myself, the student, working within the Department of Econometrics and Business Statistics under the supervision of Professor Dianne Cook, Dr Paul Harrison, Dr Michael Lydeamore, and Dr Thiyanga S. Talagala (University of Sri Jayewardenepura).
 
 The inclusion of co-authors reflects the fact that the work came from active collaboration between researchers and acknowledges input into team-based research. In the case of [Chapter 2](#sec-first-paper), my contribution to the work involved the following:
-
-
 
 
 
@@ -46,8 +44,6 @@ The inclusion of co-authors reflects the fact that the work came from active col
 
 :::
 :::
-
-
 
 
 
