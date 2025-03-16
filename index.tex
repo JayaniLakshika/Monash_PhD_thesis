@@ -353,8 +353,8 @@ thesis.
 
 The inclusion of co-authors reflects the fact that the work came from
 active collaboration between researchers and acknowledges input into
-team-based research. In the case of \href{@sec-first-paper}{Chapter 2},
-my contribution to the work involved the following:
+team-based research. In the case of \hyperref[sec-first-paper]{Chapter
+2}, my contribution to the work involved the following:
 
 \begingroup\fontsize{10}{12}\selectfont
 
@@ -469,9 +469,25 @@ distances. PHATE, TriMAP and PaCMAP are examples of diffusion processes
 (\citeproc{ref-coifman2005}{\textbf{coifman2005?}}) spreading to capture
 geometric shapes, that include both global and local structure.
 
-Figure\ldots..
+\begin{figure}
 
-The various layouts created by \textbf{?@fig-NLDR-variety} demonstrate
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{01-chap1_files/figure-pdf/fig-NLDR-variety-1.pdf}
+
+}
+
+\caption{\label{fig-NLDR-variety}Eight different NLDR representations of
+the same data. Different techniques and different parameter choices are
+used. Researchers may have seen any of these in their analysis of this
+data, depending on their choice of method, or typical parameter choice.
+Would they make different decisions downstream in the analysis depending
+on which version seen? Which is the most accurate representation of the
+structure in high dimensions?}
+
+\end{figure}%
+
+The various layouts created by Figure~\ref{fig-NLDR-variety} demonstrate
 the different outcomes that can result from the choices of methods and
 parameters, as well as the random seed used to start the calculation.
 Key structures interpreted from these views suggest: (1) highly
@@ -524,7 +540,7 @@ techniques in high-dimensional data analysis.
 
 The thesis is structured as follows.
 
-Chapter~\ref{sec-f-paper}
+Chapter~\ref{sec-first-paper}
 
 Chapter~\ref{sec-second-paper}
 
@@ -540,7 +556,7 @@ the (potential) impact, and discusses some future plans.
 \bookmarksetup{startatroot}
 
 \chapter{Visualising how non-linear dimension reduction warps your
-data}\label{sec-f-paper}
+data}\label{sec-first-paper}
 
 \bookmarksetup{startatroot}
 
