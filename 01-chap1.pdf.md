@@ -19,7 +19,7 @@ NLDR is designed to escape these issues, to exaggerate structure so that it can 
 
 The thesis is structured as follows.
 
-@sec-first-paper  
+@sec-f-paper  
 
 @sec-second-paper 
 

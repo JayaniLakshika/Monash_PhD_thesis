@@ -6,31 +6,43 @@ I hereby declare that this thesis contains no material which has been accepted f
 
 <!-- This thesis includes one original papers published in a peer reviewed journal and two unpublished papers. The core theme of the thesis is "automated reading of residual plots". The ideas, development and writing up of all the papers in the thesis were the principal responsibility of myself, the student, working within the Department of Econometrics and Business Statistics under the supervision of Professor Dianne Cook, Dr Emi Tanaka (Australian National University), Assistant Professor Susan VanderPlas (University of Nebraska–Lincoln) and Assistant Professor Klaus Ackermann. -->
 
-The inclusion of co-authors reflects the fact that the work came from active collaboration between researchers and acknowledges input into team-based research. In the case of [Chapter 2](#sec-first-paper), my contribution to the work involved the following:
+The inclusion of co-authors reflects the fact that the work came from active collaboration between researchers and acknowledges input into team-based research. In the case of [Chapter 2](@sec-first-paper), my contribution to the work involved the following:
 
-```{r}
-#| message: false
-#| echo: false
-library(tidyverse)
-library(knitr)
-library(kableExtra)
-dt <- tribble(
-  ~`Chapter`, ~`Publication title`, ~Status, ~`Student contribution`, ~`Co-authors contribution`, ~`Coauthors are Monash students`,
-  2, "", "Published in the Journal of Computational and Graphical Statistics", "80%  Concept, Analysis, Software, Writing", "", "No"
-)  
 
-dt |>
-  kable(booktabs = TRUE) |>
-  kable_styling(font_size = 10,
-                latex_options = c("hold_position", "repeat_header")) |>
-  column_spec(1, width = "1.2cm") |>
-  column_spec(2, width = "3cm") |>
-  column_spec(3, width = "3.5cm") |>
-  column_spec(4, width = "2.5cm") |>
-  column_spec(5, width = "2.4cm") |>
-  column_spec(6, width = "1.3cm") |>
-  row_spec(0, align = "l", bold = TRUE)
-```
+
+
+
+
+::: {.cell}
+::: {.cell-output-display}
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{>{\raggedleft\arraybackslash}p{1.2cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}p{1.3cm}}
+\toprule
+\multicolumn{1}{>{\raggedright\arraybackslash}p{1.2cm}}{\textbf{Chapter}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{3cm}}{\textbf{Publication title}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{3.5cm}}{\textbf{Status}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{2.5cm}}{\textbf{Student contribution}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{2.4cm}}{\textbf{Co-authors contribution}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{1.3cm}}{\textbf{Coauthors are Monash students}}\\
+\midrule
+\endfirsthead
+\multicolumn{6}{@{}l}{\textit{(continued)}}\\
+\toprule
+\multicolumn{1}{>{\raggedright\arraybackslash}p{1.2cm}}{\textbf{Chapter}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{3cm}}{\textbf{Publication title}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{3.5cm}}{\textbf{Status}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{2.5cm}}{\textbf{Student contribution}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{2.4cm}}{\textbf{Co-authors contribution}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{1.3cm}}{\textbf{Coauthors are Monash students}}\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2 &  & Published in the Journal of Computational and Graphical Statistics & 80\%  Concept, Analysis, Software, Writing &  & No\\*
+\end{longtable}
+\endgroup{}
+
+
+:::
+:::
+
+
+
+
+
 
 
 Chapters 3, *k*, and Chapter 4, *\*, are planned for submission to peer-reviewed journals.

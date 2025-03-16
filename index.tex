@@ -1,0 +1,596 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{report}
+
+\usepackage{amsmath,amssymb}
+\usepackage{setspace}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{2}
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{pmboxdraw}
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Developing a grammar to define interactive graphics with application to complex model diagnostics},
+  pdfauthor={Piyadi Gamage Jayani Lakshika},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+%% CAPTIONS
+\usepackage{caption}
+\DeclareCaptionStyle{italic}[justification=centering]
+ {labelfont={bf},textfont={it},labelsep=colon}
+\captionsetup[figure]{style=italic,format=hang,singlelinecheck=true}
+\captionsetup[table]{style=italic,format=hang,singlelinecheck=true}
+
+%% FONT
+\usepackage{bera}
+\usepackage[charter]{mathdesign}
+\usepackage[scale=0.9]{sourcecodepro}
+\usepackage[lf,t]{FiraSans}
+\usepackage{fontawesome}
+
+%% HEADERS AND FOOTERS
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rfoot{\Large\sffamily\raisebox{-0.1cm}{\textbf{\thepage}}}
+\makeatletter
+\lhead{\textsf{\expandafter{\@title}}}
+\makeatother
+\rhead{}
+\cfoot{}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[C]{\sffamily\thepage} % except the center
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+
+%% MATHS
+\usepackage{bm,amsmath}
+\allowdisplaybreaks
+
+%% GRAPHICS
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.8}
+\graphicspath{{figures/}}
+
+%% SECTION TITLES
+\usepackage[compact,sf,bf]{titlesec}
+\titleformat*{\section}{\Large\sf\bfseries}
+\titleformat*{\subsection}{\large\sf\bfseries}
+\titleformat*{\subsubsection}{\sf\bfseries}
+\titlespacing{\section}{0pt}{*5}{*1}
+\titlespacing{\subsection}{0pt}{*2}{*0.2}
+\titlespacing{\subsubsection}{0pt}{*1}{*0.1}
+
+%% TABLES
+\usepackage{booktabs,tabu}
+
+%% BIBLIOGRAPHY.
+
+\makeatletter
+\@ifpackageloaded{biblatex}{
+\ExecuteBibliographyOptions{bibencoding=utf8,minnames=1,maxnames=3, maxbibnames=99,dashed=false,terseinits=true,giveninits=true,uniquename=false,uniquelist=false,doi=false, isbn=false,url=true,sortcites=false}
+\DeclareFieldFormat{url}{\texttt{\url{#1}}}
+\DeclareFieldFormat[article]{pages}{#1}
+\DeclareFieldFormat[inproceedings]{pages}{\lowercase{pp.}#1}
+\DeclareFieldFormat[incollection]{pages}{\lowercase{pp.}#1}
+\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+\DeclareFieldFormat[article]{title}{\MakeCapital{#1}}
+\DeclareFieldFormat[article]{url}{}
+\DeclareFieldFormat[inproceedings]{title}{#1}
+\DeclareFieldFormat{shorthandwidth}{#1}
+\usepackage{xpatch}
+\xpatchbibmacro{volume+number+eid}{\setunit*{\adddot}}{}{}{}
+% Remove In: for an article.
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{%
+  \printtext{\bibstring{in}\intitlepunct}}}
+\AtEveryBibitem{\clearfield{month}}
+\AtEveryCitekey{\clearfield{month}}
+\DeclareDelimFormat[cbx@textcite]{nameyeardelim}{\addspace}
+\renewcommand*{\finalnamedelim}{\addspace\&\space}
+}{}
+\makeatother
+
+
+\hypersetup{
+     pdfcreator={Quarto -> pandoc -> LaTeX -> pdf}
+}
+
+
+%% PAGE BREAKING to avoid widows and orphans
+\clubpenalty = 2000
+\widowpenalty = 2000
+\usepackage{microtype}
+\def\maketitle{
+\pagenumbering{roman}
+{\sf\thispagestyle{empty}%
+  \null\vskip-.4cm%
+  \centerline{\includegraphics[width=12cm]{monash-logo}}
+  \vspace*{4cm}
+  \begin{center}\fontsize{24}{28}\sf
+     \textbf{Developing a grammar to define interactive graphics with
+application to complex model diagnostics}\\[2cm]
+     \fontsize{18}{20}\sf Piyadi Gamage Jayani Lakshika\\[0.2cm]
+     \fontsize{13}{15}\sf B.Sc. (Hons) in Statistics, University of Sri
+Jayewardenepura (USJ), Sri Lanka
+     \vfill
+     \fontsize{13}{15}\sf A thesis submitted for the degree of\\ Doctor
+of Philosophy\\ at Monash University in \number\the\year\\
+     Department of Econometrics \& Business Statistics
+  \end{center}
+  \newpage\mbox{}\thispagestyle{empty}\newpage
+}
+}
+
+% Title and date
+
+\title{Developing a grammar to define interactive graphics with
+application to complex model diagnostics}
+\date{}
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+
+\setstretch{1.5}
+\bookmarksetup{startatroot}
+
+\chapter*{Copyright notice}\label{copyright-notice}
+\addcontentsline{toc}{chapter}{Copyright notice}
+
+\markboth{Copyright notice}{Copyright notice}
+
+Produced on 16 March 2025.
+
+© Piyadi Gamage Jayani Lakshika (2025).
+
+\clearpage\pagenumbering{arabic}\setcounter{page}{1}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Abstract}\label{abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+\markboth{Abstract}{Abstract}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Declaration}\label{declaration}
+\addcontentsline{toc}{chapter}{Declaration}
+
+\markboth{Declaration}{Declaration}
+
+I hereby declare that this thesis contains no material which has been
+accepted for the award of any other degree or diploma at any university
+or equivalent institution and that, to the best of my knowledge and
+belief, this thesis contains no material previously published or written
+by another person, except where due reference is made in the text of the
+thesis.
+
+The inclusion of co-authors reflects the fact that the work came from
+active collaboration between researchers and acknowledges input into
+team-based research. In the case of \href{@sec-first-paper}{Chapter 2},
+my contribution to the work involved the following:
+
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable*}[t]{>{\raggedleft\arraybackslash}p{1.2cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}p{1.3cm}}
+\toprule
+\multicolumn{1}{>{\raggedright\arraybackslash}p{1.2cm}}{\textbf{Chapter}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{3cm}}{\textbf{Publication title}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{3.5cm}}{\textbf{Status}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{2.5cm}}{\textbf{Student contribution}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{2.4cm}}{\textbf{Co-authors contribution}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{1.3cm}}{\textbf{Coauthors are Monash students}}\\
+\midrule
+\endfirsthead
+\multicolumn{6}{@{}l}{\textit{(continued)}}\\
+\toprule
+\multicolumn{1}{>{\raggedright\arraybackslash}p{1.2cm}}{\textbf{Chapter}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{3cm}}{\textbf{Publication title}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{3.5cm}}{\textbf{Status}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{2.5cm}}{\textbf{Student contribution}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{2.4cm}}{\textbf{Co-authors contribution}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{1.3cm}}{\textbf{Coauthors are Monash students}}\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2 &  & Published in the Journal of Computational and Graphical Statistics & 80\%  Concept, Analysis, Software, Writing &  & No\\*
+\end{longtable*}
+\endgroup{}
+
+Chapters 3, \emph{k}, and Chapter 4, **, are planned for submission to
+peer-reviewed journals.
+
+\clearpage
+
+To ensure the clarity and coherence of the written content, artificial
+intelligence tools were employed to assist in smoothing and refining the
+language throughout the thesis.
+
+I have not renumbered sections of submitted or published papers in order
+to generate a consistent presentation within the thesis.
+
+\textbf{Student name}: Piyadi Gamage Jayani Lakshika
+
+\textbf{Student signature}:
+
+\textbf{Date}: 15th January 2026
+
+I hereby certify that the above declaration correctly reflects the
+nature and extent of the student's and co-authors' contributions to this
+work. In instances where I am not the responsible author I have
+consulted with the responsible author to agree on the respective
+contributions of the authors.
+
+\textbf{Main Supervisor name}: Dianne Cook
+
+\textbf{Main Supervisor signature}:
+
+\textbf{Date}: 15th January 2026
+
+\bookmarksetup{startatroot}
+
+\chapter*{Acknowledgements}\label{acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+
+\markboth{Acknowledgements}{Acknowledgements}
+
+This thesis would have never been a success without the guidance,
+encouragement, and support of my supervisors, family, and friends. This
+note is to show my gratitude to them.
+
+Last, but by no means least, I would like to thank my family members. I
+am truly grateful to my father, P. G. K. Jagath Premalal, and my mother
+K. G. N. Chandima Dias for their unconditional selfless love, care, and
+sacrifices that they made to make my life better. Your inspiration and
+guidance always kept me motivated to perceive better achievements in my
+life. I am fortunate to be your daughter. I would also like to thank my
+sister Jayasha, my brother Janith, and my sister-in-law, Agashi for
+their unconditional love, understanding, and moral support given for
+completing my research.
+
+\clearpage\pagenumbering{arabic}\setcounter{page}{0}
+
+\bookmarksetup{startatroot}
+
+\chapter{Introduction}\label{sec-intro}
+
+Historically, 2D representations of high-dimensional data have been
+computed using multidimensional scaling (MDS)
+(\citeproc{ref-borg2005}{\textbf{borg2005?}}), which includes principal
+components analysis (PCA)
+(\citeproc{ref-jolliffe2011}{\textbf{jolliffe2011?}}) as a special case.
+The 2D representation can be viewed as a layout of points in 2D produced
+by an embedding procedure that maps the data from high dimensions. In
+MDS, the 2D layout is constructed by minimizing a stress function that
+differences distances between points in high-dimensions with potential
+distances between points in 2D. Various formulations of the stress
+function result in non-metric scaling
+(\citeproc{ref-saeed2018}{\textbf{saeed2018?}}) and isomap
+(\citeproc{ref-silva2002}{\textbf{silva2002?}}). Challenges in working
+with high-dimensional data, including visualization, are outlined in
+(\citeproc{ref-johnstone2009}{\textbf{johnstone2009?}}).
+
+Non-linear dimension reduction (NLDR) is popular for making a convenient
+low-dimensional representation of high-dimensional data by applying
+non-linear transformation and all designed to better capture specific
+structures potentially existing in high-dimensions. Here we focus on
+five currently popular techniques, t-distributed stochastic neighbor
+embedding (tSNE) (\citeproc{ref-laurens2008}{\textbf{laurens2008?}}),
+uniform manifold approximation and projection (UMAP)
+(\citeproc{ref-leland2018}{\textbf{leland2018?}}), potential of
+heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm
+(\citeproc{ref-moon2019}{\textbf{moon2019?}}), large-scale
+dimensionality reduction Using triplets (TriMAP)
+(\citeproc{ref-amid2022}{\textbf{amid2022?}}), and pairwise controlled
+manifold approximation (PaCMAP)
+(\citeproc{ref-yingfan2021}{\textbf{yingfan2021?}}). tNSE and UMAP can
+be considered to produce the 2D minimizing the divergence between two
+distributions, where the distributions are modeling the inter-point
+distances. PHATE, TriMAP and PaCMAP are examples of diffusion processes
+(\citeproc{ref-coifman2005}{\textbf{coifman2005?}}) spreading to capture
+geometric shapes, that include both global and local structure.
+
+Figure\ldots..
+
+The various layouts created by \textbf{?@fig-NLDR-variety} demonstrate
+the different outcomes that can result from the choices of methods and
+parameters, as well as the random seed used to start the calculation.
+Key structures interpreted from these views suggest: (1) highly
+\textbf{separated clusters} (a, b, e, g, h) with the number ranging from
+3-6; (2) \textbf{stringy branches} (f), and (3) \textbf{barely separated
+clusters} (c, d) which would \textbf{contradict} the other
+representations.
+
+These variations occur due to the different perspectives on the
+distances between data points provided by the methods and parameter
+choices.
+
+Another way to visualize high-dimensional data is through linear
+projections. PCA is the traditional method, resulting in a new set of
+variables that are linear combinations of the original variables. Tours,
+as defined by (\citeproc{ref-lee2021}{\textbf{lee2021?}}), expand on
+this concept by producing dynamic linear projection visualizations that
+offer views of the data from all angles.
+(\citeproc{ref-lee2021}{\textbf{lee2021?}}) provides an overview of the
+key advancements in tours. Numerous tour algorithms are available, with
+many included in the R package \texttt{tourr}
+(\citeproc{ref-wickham2011}{\textbf{wickham2011?}}), and versions that
+offer enhanced interactivity in \texttt{langevitour}
+(\citeproc{ref-harrison2024}{\textbf{harrison2024?}}) and
+\texttt{detourr} (\citeproc{ref-hart2022}{\textbf{hart2022?}}). Linear
+projections offer a reliable way to view high-dimensional data as they
+do not distort the space, making them more accurate representations of
+the data structure. However, linear projections can become cluttered,
+and global patterns can obscure local structure. The simple act of
+projecting data from high-dimensional spaces leads to piling
+(\citeproc{ref-laa2022}{\textbf{laa2022?}}), where data concentrates in
+the center of the projections.
+
+NLDR is designed to escape these issues, to exaggerate structure so that
+it can be observed. However, NLDR can hallucinate wildly, to suggest
+patterns that are not actually present in the data. The research project
+addresses this significant issue by proposing methods to understand
+better whether the NDLR representations are reliable or hallucinations.
+These methods are designed to enable a more profound understanding of
+the quality and validity of NLDR-derived low-dimensional
+representations. By incorporating rigorous evaluation techniques, the
+project seeks to identify instances where the NLDR models genuinely
+capture the essential structures present in the data and where they
+might introduce artifacts or distortions, leading to potentially
+misleading representations. This meticulous examination and validation
+process contribute to enhancing the robustness and credibility of NLDR
+techniques in high-dimensional data analysis.
+
+\section{Thesis Outline}\label{thesis-outline}
+
+The thesis is structured as follows.
+
+Chapter~\ref{sec-f-paper}
+
+Chapter~\ref{sec-second-paper}
+
+Chapter~\ref{sec-third-paper}
+
+Chapter~\ref{sec-fourth-paper}
+
+Chapter~\ref{sec-fifth-paper}
+
+Chapter~\ref{sec-conclusion} summarises the contribution of the work and
+the (potential) impact, and discusses some future plans.
+
+\bookmarksetup{startatroot}
+
+\chapter{Visualising how non-linear dimension reduction warps your
+data}\label{sec-f-paper}
+
+\bookmarksetup{startatroot}
+
+\chapter{\texorpdfstring{quollr: An R Package for Visualizing \(2-D\)
+Models from Non-linear Dimension Reductions in High Dimensional
+Space}{quollr: An R Package for Visualizing 2-D Models from Non-linear Dimension Reductions in High Dimensional Space}}\label{sec-second-paper}
+
+\bookmarksetup{startatroot}
+
+\chapter{Large-scale user study to explore perception and misperception
+in NLDR representations}\label{sec-third-paper}
+
+\bookmarksetup{startatroot}
+
+\chapter{cardinalR: Generating interesting high-dimensional data
+structures}\label{sec-fourth-paper}
+
+\bookmarksetup{startatroot}
+
+\chapter{Development of an interactive and dynamic graphics system for
+NLDR users}\label{sec-fifth-paper}
+
+\bookmarksetup{startatroot}
+
+\chapter{Conclusion and future plans}\label{sec-conclusion}
+
+\section{Contributions}\label{contributions}
+
+\section{Future work}\label{future-work}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Bibliography}\label{bibliography}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\markboth{Bibliography}{Bibliography}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{0}{1}
+\end{CSLReferences}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{part}{Appendices}
+\appendix
+
+\chapter{Appendix to ``Visualising how non-linear dimension reduction
+warps your data''}\label{sec-appendix-a}
+
+
+
+
+\end{document}

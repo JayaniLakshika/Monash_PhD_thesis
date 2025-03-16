@@ -1,1 +1,1 @@
-# Visualising how non-linear dimension reduction warps your data {#sec-project1}
+# Visualising how non-linear dimension reduction warps your data {#sec-first-paper}

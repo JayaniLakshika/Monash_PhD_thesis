@@ -199,7 +199,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-chap5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Generating interesting high-dimensional data structures</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">cardinalR: Generating interesting high-dimensional data structures</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -242,8 +242,14 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title"><b>Sections</b></h2>
+   
+  <ul class="collapse">
+  <li><a href="#thesis-outline" id="toc-thesis-outline" class="nav-link active" data-scroll-target="#thesis-outline"><span class="header-section-number">1.1</span> Thesis Outline</a></li>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/01-chap1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -267,8 +273,25 @@ window.Quarto = {
 </header>
 
 
+<p>Historically, 2D representations of high-dimensional data have been computed using multidimensional scaling (MDS) <span class="citation" data-cites="borg2005">(<a href="refs.html#ref-borg2005" role="doc-biblioref"><strong>borg2005?</strong></a>)</span>, which includes principal components analysis (PCA) <span class="citation" data-cites="jolliffe2011">(<a href="refs.html#ref-jolliffe2011" role="doc-biblioref"><strong>jolliffe2011?</strong></a>)</span> as a special case. The 2D representation can be viewed as a layout of points in 2D produced by an embedding procedure that maps the data from high dimensions. In MDS, the 2D layout is constructed by minimizing a stress function that differences distances between points in high-dimensions with potential distances between points in 2D. Various formulations of the stress function result in non-metric scaling <span class="citation" data-cites="saeed2018">(<a href="refs.html#ref-saeed2018" role="doc-biblioref"><strong>saeed2018?</strong></a>)</span> and isomap <span class="citation" data-cites="silva2002">(<a href="refs.html#ref-silva2002" role="doc-biblioref"><strong>silva2002?</strong></a>)</span>. Challenges in working with high-dimensional data, including visualization, are outlined in <span class="citation" data-cites="johnstone2009">(<a href="refs.html#ref-johnstone2009" role="doc-biblioref"><strong>johnstone2009?</strong></a>)</span>.</p>
+<p>Non-linear dimension reduction (NLDR) is popular for making a convenient low-dimensional representation of high-dimensional data by applying non-linear transformation and all designed to better capture specific structures potentially existing in high-dimensions. Here we focus on five currently popular techniques, t-distributed stochastic neighbor embedding (tSNE) <span class="citation" data-cites="laurens2008">(<a href="refs.html#ref-laurens2008" role="doc-biblioref"><strong>laurens2008?</strong></a>)</span>, uniform manifold approximation and projection (UMAP) <span class="citation" data-cites="leland2018">(<a href="refs.html#ref-leland2018" role="doc-biblioref"><strong>leland2018?</strong></a>)</span>, potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm <span class="citation" data-cites="moon2019">(<a href="refs.html#ref-moon2019" role="doc-biblioref"><strong>moon2019?</strong></a>)</span>, large-scale dimensionality reduction Using triplets (TriMAP) <span class="citation" data-cites="amid2022">(<a href="refs.html#ref-amid2022" role="doc-biblioref"><strong>amid2022?</strong></a>)</span>, and pairwise controlled manifold approximation (PaCMAP) <span class="citation" data-cites="yingfan2021">(<a href="refs.html#ref-yingfan2021" role="doc-biblioref"><strong>yingfan2021?</strong></a>)</span>. tNSE and UMAP can be considered to produce the 2D minimizing the divergence between two distributions, where the distributions are modeling the inter-point distances. PHATE, TriMAP and PaCMAP are examples of diffusion processes <span class="citation" data-cites="coifman2005">(<a href="refs.html#ref-coifman2005" role="doc-biblioref"><strong>coifman2005?</strong></a>)</span> spreading to capture geometric shapes, that include both global and local structure.</p>
+<p>Figure…..</p>
+<p>The various layouts created by <span class="quarto-unresolved-ref">?fig-NLDR-variety</span> demonstrate the different outcomes that can result from the choices of methods and parameters, as well as the random seed used to start the calculation. Key structures interpreted from these views suggest: (1) highly <strong>separated clusters</strong> (a, b, e, g, h) with the number ranging from 3-6; (2) <strong>stringy branches</strong> (f), and (3) <strong>barely separated clusters</strong> (c, d) which would <strong>contradict</strong> the other representations.</p>
+<p>These variations occur due to the different perspectives on the distances between data points provided by the methods and parameter choices.</p>
+<p>Another way to visualize high-dimensional data is through linear projections. PCA is the traditional method, resulting in a new set of variables that are linear combinations of the original variables. Tours, as defined by <span class="citation" data-cites="lee2021">(<a href="refs.html#ref-lee2021" role="doc-biblioref"><strong>lee2021?</strong></a>)</span>, expand on this concept by producing dynamic linear projection visualizations that offer views of the data from all angles. <span class="citation" data-cites="lee2021">(<a href="refs.html#ref-lee2021" role="doc-biblioref"><strong>lee2021?</strong></a>)</span> provides an overview of the key advancements in tours. Numerous tour algorithms are available, with many included in the R package <code>tourr</code> <span class="citation" data-cites="wickham2011">(<a href="refs.html#ref-wickham2011" role="doc-biblioref"><strong>wickham2011?</strong></a>)</span>, and versions that offer enhanced interactivity in <code>langevitour</code> <span class="citation" data-cites="harrison2024">(<a href="refs.html#ref-harrison2024" role="doc-biblioref"><strong>harrison2024?</strong></a>)</span> and <code>detourr</code> <span class="citation" data-cites="hart2022">(<a href="refs.html#ref-hart2022" role="doc-biblioref"><strong>hart2022?</strong></a>)</span>. Linear projections offer a reliable way to view high-dimensional data as they do not distort the space, making them more accurate representations of the data structure. However, linear projections can become cluttered, and global patterns can obscure local structure. The simple act of projecting data from high-dimensional spaces leads to piling <span class="citation" data-cites="laa2022">(<a href="refs.html#ref-laa2022" role="doc-biblioref"><strong>laa2022?</strong></a>)</span>, where data concentrates in the center of the projections.</p>
+<p>NLDR is designed to escape these issues, to exaggerate structure so that it can be observed. However, NLDR can hallucinate wildly, to suggest patterns that are not actually present in the data. The research project addresses this significant issue by proposing methods to understand better whether the NDLR representations are reliable or hallucinations. These methods are designed to enable a more profound understanding of the quality and validity of NLDR-derived low-dimensional representations. By incorporating rigorous evaluation techniques, the project seeks to identify instances where the NLDR models genuinely capture the essential structures present in the data and where they might introduce artifacts or distortions, leading to potentially misleading representations. This meticulous examination and validation process contribute to enhancing the robustness and credibility of NLDR techniques in high-dimensional data analysis.</p>
+<section id="thesis-outline" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="thesis-outline"><span class="header-section-number">1.1</span> Thesis Outline</h2>
+<p>The thesis is structured as follows.</p>
+<p><a href="02-chap2.html" class="quarto-xref"><span>Chapter 2</span></a></p>
+<p><a href="03-chap3.html" class="quarto-xref"><span>Chapter 3</span></a></p>
+<p><a href="04-chap4.html" class="quarto-xref"><span>Chapter 4</span></a></p>
+<p><a href="05-chap5.html" class="quarto-xref"><span>Chapter 5</span></a></p>
+<p><a href="06-chap6.html" class="quarto-xref"><span>Chapter 6</span></a></p>
+<p><a href="07-chap7.html" class="quarto-xref"><span>Chapter 7</span></a> summarises the contribution of the work and the (potential) impact, and discusses some future plans.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -708,4 +731,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/01-chap1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/01-chap1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
