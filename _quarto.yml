@@ -1,9 +1,17 @@
 project:
   type: book
 
+execute:
+  keep-md: true
+
 book:
   title: "Developing a grammar to define interactive graphics with application to complex model diagnostics"
   author: "Piyadi Gamage Jayani Lakshika"
+  repo-url: https://github.com/JayaniLakshika/Monash_PhD_thesis
+  repo-subdir: Thesis
+  repo-actions: [edit]
+  repo-branch: master
+  downloads: [pdf]
   chapters:
     - text: "Front matter"
       file: index.qmd
@@ -15,16 +23,23 @@ book:
     - "04-chap4.qmd"
     - "05-chap5.qmd"
     - "refs.qmd"
+  appendices:
+    - "A-appA.qmd"
   sidebar:
     style: "docked"
 
 bibliography: thesisrefs.bib
 csl: american-statistical-association.csl
 degreetype: Doctor of Philosophy
-submitted: 2024
+submitted: 2026
 affiliation: Department of Econometrics & Business Statistics
 degrees: 'B.Sc. (Hons) in Statistics, University of Sri Jayewardenepura (USJ), Sri Lanka'
 
 format:
   monashthesis-html: default
-  monashthesis-pdf: default
+  monashthesis-pdf:
+    shorttitle: "Developing a grammar to define interactive graphics"
+    link-citations: true
+    include-in-header:
+      - text: |
+          \usepackage{pmboxdraw}
