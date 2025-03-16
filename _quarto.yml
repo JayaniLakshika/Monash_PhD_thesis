@@ -23,6 +23,7 @@ book:
     - "04-chap4.qmd"
     - "05-chap5.qmd"
     - "06-chap6.qmd"
+    - "07-chap7.qmd"
     - "refs.qmd"
   appendices:
     - "A-appA.qmd"
