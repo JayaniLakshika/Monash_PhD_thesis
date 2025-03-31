@@ -24,7 +24,7 @@
     "href": "acknowledgements.html",
     "title": "Acknowledgements",
     "section": "",
-    "text": "This thesis would have never been a success without the guidance, encouragement, and support of my supervisors, family, and friends. This note is to show my gratitude to them.\nFirst, I would like to express my deepest gratitude to my supervisors,…\nThis research was financially supported by Monash University and the Dean’s Excellence Award of Monash Business School. I am grateful for the financial support that I received. Further, I would like to thank Professor Rob Hyndman, Head of the Department of Econometrics and Business Statistics, for arranging financial support that helped me to comfortably focus on my research at the end of my candidature. I take this opportunity to express my sincere gratitude to all other academic and administrative staff members of the Department of Econometric and Business Statistics at Monash University.\nI am also grateful to my PhD cohort, including, but not limited to…\nLast, but by no means least, I would like to thank my family members. I am truly grateful to my father, P. G. K. Jagath Premalal, and my mother K. G. N. Chandima Dias for their unconditional selfless love, care, and sacrifices that they made to make my life better. Your inspiration and guidance always kept me motivated to perceive better achievements in my life. I am fortunate to be your daughter. I would also like to thank my sister Jayasha, my brother Janith, and my sister-in-law, Agashi for their unconditional love, understanding, and moral support given for completing my research.",
+    "text": "This thesis would have never been a success without the guidance, encouragement, and support of my supervisors, family, and friends. This note is to show my gratitude to them.\nFirst, I would like to express my deepest gratitude to my supervisors,…\nI would also like to thank my milestone evaluation panel…\nThis research was financially supported by Monash University and the Dean’s Excellence Award of Monash Business School. I am grateful for the financial support that I received. Further, I would like to thank Professor Rob Hyndman, Head of the Department of Econometrics and Business Statistics, for arranging financial support that helped me to comfortably focus on my research at the end of my candidature. I take this opportunity to express my sincere gratitude to all other academic and administrative staff members of the Department of Econometric and Business Statistics at Monash University.\nI am also grateful to my PhD cohort, including, but not limited to…\nLast, but by no means least, I would like to thank my family members. I am truly grateful to my father, P. G. K. Jagath Premalal, and my mother K. G. N. Chandima Dias for their unconditional selfless love, care, and sacrifices that they made to make my life better. Your inspiration and guidance always kept me motivated to perceive better achievements in my life. I am fortunate to be your daughter. I would also like to thank my sister Jayasha, my brother Janith, and my sister-in-law, Agashi for their unconditional love, understanding, and moral support given for completing my research.",
     "crumbs": [
       "Acknowledgements"
     ]
@@ -54,7 +54,7 @@
     "href": "07-chap7.html",
     "title": "7  Conclusion and future plans",
     "section": "",
-    "text": "7.1 Contributions",
+    "text": "7.1 Contributions\nThe aforementioned R package (and its dependency) is available on CRAN with the latest development versions in the links below:\nThe Shiny app for quollr is available at one of the mirror sites listed at https://vimror.netlify.app/ with the source code available at https://github.com/jayanilakshika/ViMRoR.\nPrinciples of transparency and reproducible research have guided the work with all materials related to the thesis at https://github.com/JayaniLakshika/Monash_PhD_thesis. The thesis is written using Quarto (Allaire_Quarto_2024?) and is available online at https://jayani-lakshika-phd-thesis.netlify.app. The R packages used throughout the thesis include tidyverse (tidyverse?), lmtest (lmtest?), kableExtra (kableextra?), patchwork (patchwork?), glue (glue?), ggpcp (ggpcp?), here (here?), and knitr (knitr?).",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -64,7 +64,7 @@
     "href": "07-chap7.html#future-work",
     "title": "7  Conclusion and future plans",
     "section": "7.2 Future work",
-    "text": "7.2 Future work",
+    "text": "7.2 Future work\nThere are several directions that this work can be developed.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -77,6 +77,26 @@
     "text": "Amid, E., and Warmuth, M. K. (2022), “TriMap: Large-scale\ndimensionality reduction using triplets.”\n\n\nBorg, I., and Groenen, P. J. F. (2005), Modern multidimensional\nscaling theory and applications, New York: Springer. https://doi.org/10.1007/0-387-28981-X.\n\n\nCoifman, R., Lafon, S., Lee, A., Maggioni, M., Nadler, B., Warner, F.,\nand Zucker, S. (2005), “Geometric diffusions as a tool for\nharmonic analysis and structure definition of data: Diffusion\nmaps,” Proceedings of the National Academy of Sciences of the\nUnited States of America, 102, 7426–31. https://doi.org/10.1073/pnas.0500334102.\n\n\nHart, C., and Wang, E. (2022), Detourr: Portable\nand performant tour animations.\n\n\nJohnstone, I. M., and Titterington, D. M. (2009), “Statistical\nchallenges of high-dimensional data,” Philosophical\nTransactions of the Royal Society A: Mathematical, Physical and\nEngineering Sciences, 367, 4237–4253. https://doi.org/10.1098/rsta.2009.0159.\n\n\nJolliffe, I. (2011), “Principal component analysis,” in\nInternational encyclopedia of statistical science, Berlin,\nHeidelberg: Springer Berlin Heidelberg, pp. 1094–1096. https://doi.org/10.1007/978-3-642-04898-2_455.\n\n\nLaa, U., Cook, D., and Lee, S. (2022), “Burning sage: Reversing\nthe curse of dimensionality in the visualization of high-dimensional\ndata,” J. Comput. Graph. Stat., 31, 40–49. https://doi.org/10.1080/10618600.2021.1963264.\n\n\nLee, S., Cook, D., Silva, N. da, Laa, U., Wang, E., Spyrison, N., and\nZhang, H. S. (2021), “A\nreview of the state-of-the-art on tours for dynamic visualization of\nhigh-dimensional data.”\n\n\nMaaten, L. van der, and Hinton, G. E. (2008), “Visualizing data\nusing t-SNE,” Journal of Machine Learning Research, 9,\n2579–2605.\n\n\nMcInnes, L., and Healy, J. (2018), “UMAP: Uniform manifold\napproximation and projection for dimension reduction,”\nArXiv, abs/1802.03426.\n\n\nMoon, K. R., Dijk, D. van, Wang, Z., Gigante, S. A., Burkhardt, D. B.,\nChen, W. S., Yim, K., Elzen, A. van den, Hirn, M. J., Coifman, R. R.,\nIvanova, N. B., Wolf, G., and Krishnaswamy, S. (2019),\n“Visualizing structure and transitions in high-dimensional\nbiological data,” Nature Biotechnology, 37, 1482–1492.\n\n\nSaeed, N., Nam, H., Haq, M. I. U., and Muhammad Saqib, D. B. (2018),\n“A survey on multidimensional scaling,” ACM Comput.\nSurv., New York, NY, USA: Association for Computing Machinery, 51.\nhttps://doi.org/10.1145/3178155.\n\n\nSilva, V., and Tenenbaum, J. (2002), “Global versus local methods\nin nonlinear dimensionality reduction,” Advances in neural\ninformation processing systems, 15.\n\n\nWang, Y., Huang, H., Rudin, C., and Shaposhnik, Y. (2021), “Understanding how\ndimension reduction tools work: An empirical approach to deciphering\nt-SNE, UMAP, TriMap, and PaCMAP for data visualization,”\nJournal of Machine Learning Research, 22, 1–73.\n\n\nWickham, H., Cook, D., Hofmann, H., and Buja, A. (2011), “Tourr: An r package for\nexploring multivariate data with projections,” Journal of\nStatistical Software, 40, 1--18.",
     "crumbs": [
       "Bibliography"
+    ]
+  },
+  {
+    "objectID": "06-chap6.html",
+    "href": "06-chap6.html",
+    "title": "6  Development of an interactive and dynamic graphics system for NLDR users",
+    "section": "",
+    "text": "6.1 Availability",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Development of an interactive and dynamic graphics system for NLDR users</span>"
+    ]
+  },
+  {
+    "objectID": "07-chap7.html#contributions",
+    "href": "07-chap7.html#contributions",
+    "title": "7  Conclusion and future plans",
+    "section": "",
+    "text": "quollr (https://github.com/jayanilakshika/quollr), and\ncardinalR (https://github.com/jayanilakshika/cardinalR).",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
   }
 ]
