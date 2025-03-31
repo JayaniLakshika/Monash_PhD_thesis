@@ -64,7 +64,7 @@
     "href": "07-chap7.html#future-work",
     "title": "7  Conclusion and future plans",
     "section": "7.2 Future work",
-    "text": "7.2 Future work\nThere are several directions that this work can be developed.\n\nMore diagnostics for NLDR (diadem app)\nVisualizations to validate experiment design/results\nInvestigate perception and misperception happening with background noise, number of clusters, noise dimensions, sample size, seed.",
+    "text": "7.2 Future work\nThere are several directions that this work can be developed.\n\nPrediction with model built\nMore diagnostics for NLDR (diadem app)\nVisualizations to validate experiment design/results\nInvestigate perception and misperception happening with background noise, number of clusters, noise dimensions, sample size, seed.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
