@@ -147,16 +147,16 @@ NLDR is designed to escape these issues, to exaggerate structure so that it can 
 
 ## Thesis Outline
 
-The thesis is structured as follows.
+The rest of the thesis is organized as follows:
 
-@sec-first-paper  
+@sec-first-paper algorithm
 
-@sec-second-paper 
+@sec-second-paper quollr
 
-@sec-third-paper 
+@sec-third-paper user study
 
-@sec-fourth-paper
+@sec-fourth-paper cardinalR
 
-@sec-fifth-paper
+@sec-fifth-paper shiny app
 
 @sec-conclusion summarises the contribution of the work, concludes the thesis, and discusses some future plans.

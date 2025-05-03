@@ -18,5 +18,85 @@
     "crumbs": [
       "Abstract"
     ]
+  },
+  {
+    "objectID": "acknowledgements.html",
+    "href": "acknowledgements.html",
+    "title": "Acknowledgements",
+    "section": "",
+    "text": "This thesis would have never been a success without the guidance, encouragement, and support of my supervisors, family, and friends. This note is to show my gratitude to them.\nFirst, I would like to express my deepest gratitude to my supervisors,…\nI would also like to thank my milestone evaluation panel…\nThis research was financially supported by Monash University and the Dean’s Excellence Award of Monash Business School. I am grateful for the financial support that I received. Further, I would like to thank Professor Rob Hyndman, Head of the Department of Econometrics and Business Statistics, for arranging financial support that helped me to comfortably focus on my research at the end of my candidature. I take this opportunity to express my sincere gratitude to all other academic and administrative staff members of the Department of Econometric and Business Statistics at Monash University.\nI am also grateful to my PhD cohort, including, but not limited to…",
+    "crumbs": [
+      "Acknowledgements"
+    ]
+  },
+  {
+    "objectID": "01-chap1.html",
+    "href": "01-chap1.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "1.1 Thesis Outline\nHistorically, 2D representations of high-dimensional data have been computed using multidimensional scaling (MDS) (Borg and Groenen 2005), which includes principal components analysis (PCA) (Jolliffe 2011) as a special case. The 2D representation can be viewed as a layout of points in 2D produced by an embedding procedure that maps the data from high dimensions. In MDS, the 2D layout is constructed by minimizing a stress function that differences distances between points in high-dimensions with potential distances between points in 2D. Various formulations of the stress function result in non-metric scaling (Saeed et al. 2018) and isomap (Silva and Tenenbaum 2002). Challenges in working with high-dimensional data, including visualization, are outlined in Johnstone and Titterington (2009).\nNon-linear dimension reduction (NLDR) is popular for making a convenient low-dimensional representation of high-dimensional data by applying non-linear transformation and all designed to better capture specific structures potentially existing in high-dimensions. Here we focus on five currently popular techniques, t-distributed stochastic neighbor embedding (tSNE) (Maaten and Hinton 2008), uniform manifold approximation and projection (UMAP) (McInnes and Healy 2018), potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm (Moon et al. 2019), large-scale dimensionality reduction Using triplets (TriMAP) (Amid and Warmuth 2022), and pairwise controlled manifold approximation (PaCMAP) (Wang et al. 2021). tNSE and UMAP can be considered to produce the 2D minimizing the divergence between two distributions, where the distributions are modeling the inter-point distances. PHATE, TriMAP and PaCMAP are examples of diffusion processes (Coifman et al. 2005) spreading to capture geometric shapes, that include both global and local structure.\nThe various layouts created by Figure 1.1 demonstrate the different outcomes that can result from the choices of methods and parameters, as well as the random seed used to start the calculation. Key structures interpreted from these views suggest: (1) highly separated clusters (a, b, e, g, h) with the number ranging from 3-6; (2) stringy branches (f), and (3) barely separated clusters (c, d) which would contradict the other representations.\nThese variations occur due to the different perspectives on the distances between data points provided by the methods and parameter choices.\nAnother way to visualize high-dimensional data is through linear projections. PCA is the traditional method, resulting in a new set of variables that are linear combinations of the original variables. Tours, as defined by Lee et al. (2021), expand on this concept by producing dynamic linear projection visualizations that offer views of the data from all angles. Lee et al. (2021) provides an overview of the key advancements in tours. Numerous tour algorithms are available, with many included in the R package tourr (Wickham et al. 2011), and versions that offer enhanced interactivity in langevitour (harrison2024?) and detourr (Hart and Wang 2022). Linear projections offer a reliable way to view high-dimensional data as they do not distort the space, making them more accurate representations of the data structure. However, linear projections can become cluttered, and global patterns can obscure local structure. The simple act of projecting data from high-dimensional spaces leads to piling (Laa et al. 2022), where data concentrates in the center of the projections.\nNLDR is designed to escape these issues, to exaggerate structure so that it can be observed. However, NLDR can hallucinate wildly, to suggest patterns that are not actually present in the data. The research project addresses this significant issue by proposing methods to understand better whether the NDLR representations are reliable or hallucinations. These methods are designed to enable a more profound understanding of the quality and validity of NLDR-derived low-dimensional representations. By incorporating rigorous evaluation techniques, the project seeks to identify instances where the NLDR models genuinely capture the essential structures present in the data and where they might introduce artifacts or distortions, leading to potentially misleading representations. This meticulous examination and validation process contribute to enhancing the robustness and credibility of NLDR techniques in high-dimensional data analysis.\nThe rest of the thesis is organized as follows:\nChapter 2 algorithm\nChapter 3 quollr\nChapter 4 user study\nChapter 5 cardinalR\nChapter 6 shiny app\nChapter 7 summarises the contribution of the work, concludes the thesis, and discusses some future plans.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "01-chap1.html#thesis-outline",
+    "href": "01-chap1.html#thesis-outline",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "Amid, E., and Warmuth, M. K. (2022), “TriMap: Large-scale dimensionality reduction using triplets.”\n\n\nBorg, I., and Groenen, P. J. F. (2005), Modern multidimensional scaling theory and applications, New York: Springer. https://doi.org/10.1007/0-387-28981-X.\n\n\nCoifman, R., Lafon, S., Lee, A., Maggioni, M., Nadler, B., Warner, F., and Zucker, S. (2005), “Geometric diffusions as a tool for harmonic analysis and structure definition of data: Diffusion maps,” Proceedings of the National Academy of Sciences of the United States of America, 102, 7426–31. https://doi.org/10.1073/pnas.0500334102.\n\n\nHart, C., and Wang, E. (2022), Detourr: Portable and performant tour animations.\n\n\nJohnstone, I. M., and Titterington, D. M. (2009), “Statistical challenges of high-dimensional data,” Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences, 367, 4237–4253. https://doi.org/10.1098/rsta.2009.0159.\n\n\nJolliffe, I. (2011), “Principal component analysis,” in International encyclopedia of statistical science, Berlin, Heidelberg: Springer Berlin Heidelberg, pp. 1094–1096. https://doi.org/10.1007/978-3-642-04898-2_455.\n\n\nLaa, U., Cook, D., and Lee, S. (2022), “Burning sage: Reversing the curse of dimensionality in the visualization of high-dimensional data,” J. Comput. Graph. Stat., 31, 40–49. https://doi.org/10.1080/10618600.2021.1963264.\n\n\nLee, S., Cook, D., Silva, N. da, Laa, U., Wang, E., Spyrison, N., and Zhang, H. S. (2021), “A review of the state-of-the-art on tours for dynamic visualization of high-dimensional data.”\n\n\nMaaten, L. van der, and Hinton, G. E. (2008), “Visualizing data using t-SNE,” Journal of Machine Learning Research, 9, 2579–2605.\n\n\nMcInnes, L., and Healy, J. (2018), “UMAP: Uniform manifold approximation and projection for dimension reduction,” ArXiv, abs/1802.03426.\n\n\nMoon, K. R., Dijk, D. van, Wang, Z., Gigante, S. A., Burkhardt, D. B., Chen, W. S., Yim, K., Elzen, A. van den, Hirn, M. J., Coifman, R. R., Ivanova, N. B., Wolf, G., and Krishnaswamy, S. (2019), “Visualizing structure and transitions in high-dimensional biological data,” Nature Biotechnology, 37, 1482–1492.\n\n\nSaeed, N., Nam, H., Haq, M. I. U., and Muhammad Saqib, D. B. (2018), “A survey on multidimensional scaling,” ACM Comput. Surv., New York, NY, USA: Association for Computing Machinery, 51. https://doi.org/10.1145/3178155.\n\n\nSilva, V., and Tenenbaum, J. (2002), “Global versus local methods in nonlinear dimensionality reduction,” Advances in neural information processing systems, 15.\n\n\nWang, Y., Huang, H., Rudin, C., and Shaposhnik, Y. (2021), “Understanding how dimension reduction tools work: An empirical approach to deciphering t-SNE, UMAP, TriMap, and PaCMAP for data visualization,” Journal of Machine Learning Research, 22, 1–73.\n\n\nWickham, H., Cook, D., Hofmann, H., and Buja, A. (2011), “Tourr: An r package for exploring multivariate data with projections,” Journal of Statistical Software, 40, 1--18.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "06-chap6.html",
+    "href": "06-chap6.html",
+    "title": "6  Development of an interactive and dynamic graphics system for NLDR users",
+    "section": "",
+    "text": "6.1 Availability",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Development of an interactive and dynamic graphics system for NLDR users</span>"
+    ]
+  },
+  {
+    "objectID": "07-chap7.html",
+    "href": "07-chap7.html",
+    "title": "7  Conclusion and future plans",
+    "section": "",
+    "text": "7.1 Contributions\nThe five pieces of work assembled in this thesis share a common theme of advancing Non-linear dimension reduction (NLDR) diagnostics, with a focus on improving the NLDR methods, visual inference, and developing innovative solutions to automate diagnostic processes.\nThe primary contributions of this research are fivefold. Firstly, we develop an algorithm. Secondly, we develop a package. Next, package for high-dimensional data structures. Then, a user study to explore perception and misperception in NLDR representations. Lastly, we share a user-focused R package and Shiny app, making the automated diagnostic tools accessible to a broad range of analysts and practitioners.\nThe aforementioned R package (and its dependency) is available on CRAN with the latest development versions in the links below:\nThe Shiny app for quollr is available at one of the mirror sites listed at https://vimror.netlify.app/ with the source code available at https://github.com/jayanilakshika/ViMRoR.\nPrinciples of transparency and reproducible research have guided the work with all materials related to the thesis at https://github.com/JayaniLakshika/Monash_PhD_thesis. The thesis is written using Quarto (Allaire_Quarto_2024?) and is available online at https://jayani-lakshika-phd-thesis.netlify.app.\nThe R packages used throughout the thesis include tidyverse (tidyverse?), lmtest (lmtest?), kableExtra (kableextra?), patchwork (patchwork?), glue (glue?), ggpcp (ggpcp?), here (here?), and knitr (knitr?). (Need to finalize at the end of writing)",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
+    ]
+  },
+  {
+    "objectID": "07-chap7.html#contributions",
+    "href": "07-chap7.html#contributions",
+    "title": "7  Conclusion and future plans",
+    "section": "",
+    "text": "quollr (https://github.com/jayanilakshika/quollr), and\ncardinalR (https://github.com/jayanilakshika/cardinalR).",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
+    ]
+  },
+  {
+    "objectID": "07-chap7.html#future-work",
+    "href": "07-chap7.html#future-work",
+    "title": "7  Conclusion and future plans",
+    "section": "7.2 Future work",
+    "text": "7.2 Future work\nThere are several directions that this work can be developed.\n\nScagnostics to evaluate NLDR\nPrediction with model built\nMore diagnostics for NLDR (diadem app)\nVisualizations to validate experiment design/results\nInvestigate perception and misperception happening with background noise, number of clusters, noise dimensions, sample size, seed.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
+    ]
+  },
+  {
+    "objectID": "refs.html",
+    "href": "refs.html",
+    "title": "Bibliography",
+    "section": "",
+    "text": "Amid, E., and Warmuth, M. K. (2022), “TriMap: Large-scale\ndimensionality reduction using triplets.”\n\n\nBorg, I., and Groenen, P. J. F. (2005), Modern multidimensional\nscaling theory and applications, New York: Springer. https://doi.org/10.1007/0-387-28981-X.\n\n\nCoifman, R., Lafon, S., Lee, A., Maggioni, M., Nadler, B., Warner, F.,\nand Zucker, S. (2005), “Geometric diffusions as a tool for\nharmonic analysis and structure definition of data: Diffusion\nmaps,” Proceedings of the National Academy of Sciences of the\nUnited States of America, 102, 7426–31. https://doi.org/10.1073/pnas.0500334102.\n\n\nHart, C., and Wang, E. (2022), Detourr: Portable\nand performant tour animations.\n\n\nJohnstone, I. M., and Titterington, D. M. (2009), “Statistical\nchallenges of high-dimensional data,” Philosophical\nTransactions of the Royal Society A: Mathematical, Physical and\nEngineering Sciences, 367, 4237–4253. https://doi.org/10.1098/rsta.2009.0159.\n\n\nJolliffe, I. (2011), “Principal component analysis,” in\nInternational encyclopedia of statistical science, Berlin,\nHeidelberg: Springer Berlin Heidelberg, pp. 1094–1096. https://doi.org/10.1007/978-3-642-04898-2_455.\n\n\nLaa, U., Cook, D., and Lee, S. (2022), “Burning sage: Reversing\nthe curse of dimensionality in the visualization of high-dimensional\ndata,” J. Comput. Graph. Stat., 31, 40–49. https://doi.org/10.1080/10618600.2021.1963264.\n\n\nLee, S., Cook, D., Silva, N. da, Laa, U., Wang, E., Spyrison, N., and\nZhang, H. S. (2021), “A\nreview of the state-of-the-art on tours for dynamic visualization of\nhigh-dimensional data.”\n\n\nMaaten, L. van der, and Hinton, G. E. (2008), “Visualizing data\nusing t-SNE,” Journal of Machine Learning Research, 9,\n2579–2605.\n\n\nMcInnes, L., and Healy, J. (2018), “UMAP: Uniform manifold\napproximation and projection for dimension reduction,”\nArXiv, abs/1802.03426.\n\n\nMoon, K. R., Dijk, D. van, Wang, Z., Gigante, S. A., Burkhardt, D. B.,\nChen, W. S., Yim, K., Elzen, A. van den, Hirn, M. J., Coifman, R. R.,\nIvanova, N. B., Wolf, G., and Krishnaswamy, S. (2019),\n“Visualizing structure and transitions in high-dimensional\nbiological data,” Nature Biotechnology, 37, 1482–1492.\n\n\nSaeed, N., Nam, H., Haq, M. I. U., and Muhammad Saqib, D. B. (2018),\n“A survey on multidimensional scaling,” ACM Comput.\nSurv., New York, NY, USA: Association for Computing Machinery, 51.\nhttps://doi.org/10.1145/3178155.\n\n\nSilva, V., and Tenenbaum, J. (2002), “Global versus local methods\nin nonlinear dimensionality reduction,” Advances in neural\ninformation processing systems, 15.\n\n\nWang, Y., Huang, H., Rudin, C., and Shaposhnik, Y. (2021), “Understanding how\ndimension reduction tools work: An empirical approach to deciphering\nt-SNE, UMAP, TriMap, and PaCMAP for data visualization,”\nJournal of Machine Learning Research, 22, 1–73.\n\n\nWickham, H., Cook, D., Hofmann, H., and Buja, A. (2011), “Tourr: An r package for\nexploring multivariate data with projections,” Journal of\nStatistical Software, 40, 1--18.",
+    "crumbs": [
+      "Bibliography"
+    ]
   }
 ]
