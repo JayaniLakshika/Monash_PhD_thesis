@@ -105,4 +105,4 @@ The thesis is structured as follows.
 
 @sec-fifth-paper
 
-@sec-conclusion summarises the contribution of the work and the (potential) impact, and discusses some future plans.
+@sec-conclusion summarises the contribution of the work, concludes the thesis, and discusses some future plans.
