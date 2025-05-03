@@ -1,5 +1,7 @@
 # Abstract {-}
 
+High-dimensional datasets consist of observations characterized by numerous features, often exhibiting complex geometric properties that can be challenging to visualize. While linear dimension reductions are a reliable method for representing high-dimensional data, they can lead to cluttered visualizations where global patterns obscure local structures and can result in concentrating the data at the center of projections. To overcome these limitations, Non-linear dimension reduction (NLDR) techniques have been developed, applying non-linear transformations to provide clearer, low-dimensional representations of high-dimensional data. However, the effectiveness of NLDR methods can vary based on the choice of techniques and (hyper)parameters, leading to diverse representations that can be either accurate or misleading. The main objective of this research is to develop innovative methods and software tools for investigating and analyzing NLDR techniques, thereby enhancing our ability to understand high-dimensional data structures and improve visualization.
+
 # Declaration {-}
 
 I hereby declare that this thesis contains no material which has been accepted for the award of any other degree or diploma at any university or equivalent institution and that, to the best of my knowledge and belief, this thesis contains no material previously published or written by another person, except where due reference is made in the text of the thesis.
