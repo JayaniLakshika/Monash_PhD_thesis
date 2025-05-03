@@ -63,14 +63,14 @@ NLDR is designed to escape these issues, to exaggerate structure so that it can 
 
 The rest of the thesis is organized as follows:
 
-@sec-first-paper algorithm
+@sec-first-paper introduces an algorithm to assess the NLDR and decide on which, if any, is the most reasonable representation of the structure(s) present in high-dimensional data. We create a model starting with NLDR layout that is then used to display as a wireframe in high dimensions.
 
-@sec-second-paper quollr
+@sec-second-paper presents the implementation of the work is available as an R package, named `quollr`, an acronym to "**qu**estioning how a high-dimensional **o**bject **l**ooks in **l**ow-dimensions using **r**" [@jayani2024a]. This package also contains a function for performing hexagonal binning using a new approach, for saving langevitour results with a specific projection, and link plots to understand the quirks that occur with different NLDR techniques.
 
-@sec-third-paper user study
+@sec-third-paper A user study
 
-@sec-fourth-paper cardinalR
+@sec-fourth-paper proposes the R package, `cardinalR` [@jayani2024b], which includes functions to generate a large variety of structures in high dimensions along with some already generated examples.
 
-@sec-fifth-paper shiny app
+@sec-fifth-paper introduces `ViMRoR` (Visualize Most Reasonable Representations), a Shiny web application designed to support automated selection and diagnostic evaluation of NLDR methods.
 
-@sec-conclusion summarises the contribution of the work, concludes the thesis, and discusses some future plans.
+@sec-conclusion concludes the thesis, summarises the contribution of the work, and discusses some future plans.
