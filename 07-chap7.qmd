@@ -17,11 +17,14 @@ Principles of transparency and reproducible research have guided the work with a
 
 The R packages used throughout the thesis include `tidyverse` [@tidyverse], `lmtest` [@lmtest], `kableExtra` [@kableextra], `patchwork` [@patchwork], `glue` [@glue], `ggpcp` [@ggpcp], `here` [@here], and `knitr` [@knitr]. (Need to finalize at the end of writing)
 
+<!--add about Match-a-roo as well-->
+
 ## Future work
 
 There are several directions that this work can be developed.
 
 - Scagnostics to evaluate NLDR
+- 3D NLDR investigation
 - Prediction with model built
 - More diagnostics for NLDR (diadem app)
 - Visualizations to validate experiment design/results
