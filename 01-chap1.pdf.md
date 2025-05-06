@@ -16,9 +16,12 @@
 
 - Research gap
 
-  - 
+  - There is no visually interpretable way to diagnose NLDR techniques 
+  - Lack of benchmark data structures to capture the various geometric properties
+  - Users don't know when to trust NLDR representations
+  - There is no platform to evaluate NLDR representations
 
-Take on of the cardinalR dataset and generate 6/8 different layouts and explain why it is important to understand what's happning with NLDR methods. 
+Take on of the cardinalR dataset and generate 6/8 different layouts and explain why it is important to understand what's happening with NLDR methods. 
 
 
 
