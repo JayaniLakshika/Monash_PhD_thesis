@@ -18,7 +18,7 @@
 
   - 
 
-Take on of the cardinalR dataset and generate 6/8 different layouts. 
+Take on of the cardinalR dataset and generate 6/8 different layouts and explain why it is important to understand what's happning with NLDR methods. 
 
 
 
