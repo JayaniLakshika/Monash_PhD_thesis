@@ -1,0 +1,102 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Developing a grammar to define interactive graphics with application to complex model diagnostics",
+    "section": "",
+    "text": "A thesis submitted for the degree of Doctor of Philosophy at Monash University, Department of Econometrics & Business Statistics.\nCopyright notice\nProduced on 6 May 2025.\n© Piyadi Gamage Jayani Lakshika (2025).\nI certify that I have made all reasonable efforts to secure copyright permissions for third-party content included in this thesis and have not knowingly added copyright content to my work without the owner’s permission.",
+    "crumbs": [
+      "Front matter"
+    ]
+  },
+  {
+    "objectID": "abstract.html",
+    "href": "abstract.html",
+    "title": "Abstract",
+    "section": "",
+    "text": "High-dimensional datasets consist of observations characterized by numerous features, often exhibiting complex geometric properties that can be challenging to visualize. While linear dimension reductions are a reliable method for representing high-dimensional data, they can lead to cluttered visualizations where global patterns obscure local structures and can result in concentrating the data at the center of projections. To overcome these limitations, Non-linear dimension reduction (NLDR) techniques have been developed, applying non-linear transformations to provide clearer, low-dimensional representations of high-dimensional data. However, the effectiveness of NLDR methods can vary based on the choice of techniques and (hyper)parameters, leading to diverse representations that can be either accurate or misleading. The main objective of this research is to develop innovative methods and software tools for investigating and analyzing NLDR techniques, thereby enhancing our ability to understand high-dimensional data structures and improve visualizations.\nThis research presents five original contributions. The first contribution (Chapter 2) introduces a new method for visualizing how NLDR warps data. This method improves the diagnostics of NLDR techniques. The second contribution (Chapter 3) involves implementing Chapter 2’s method as an R package. The fourth contribution (Chapter 4) introduces an R package designed to generate high-dimensional data structures. This package improves characteristics such as adding noise dimensions and background noise. The third contribution (Chapter 5) provides evidence in identification of clusters at various distances when observing NLDR representation and the tour view of high-dimensional data. This finding is based on a human subject experiment that explores both the perception and misperception of NLDR representations. Finally, the fifth contribution (Chapter 6) features a Shiny app that offers a user-friendly interface for analysts to obtain the most accurate NLDR representation. Overall, this work advances the field of diagnosing NLDR by enhancing the visualization of high-dimensional data.\nDeclaration\nI hereby declare that this thesis contains no material which has been accepted for the award of any other degree or diploma at any university or equivalent institution and that, to the best of my knowledge and belief, this thesis contains no material previously published or written by another person, except where due reference is made in the text of the thesis.\nThis thesis includes one original papers published in a peer reviewed journal and four unpublished papers. The core theme of the thesis is “interactive and dynamic graphics for studying non-linear dimension reduction models of high-dimensional data”. The ideas, development and writing up of all the papers in the thesis were the principal responsibility of myself, the student, working within the Department of Econometrics and Business Statistics under the supervision of Professor Dianne Cook, Dr Paul Harrison, Dr Michael Lydeamore, and Dr Thiyanga S. Talagala (University of Sri Jayewardenepura).\nThe inclusion of co-authors reflects the fact that the work came from active collaboration between researchers and acknowledges input into team-based research. In the case of Chapter 2, my contribution to the work involved the following:\n\n\n\n\nChapter\nPublication title\nStatus\nStudent contribution\nCo-authors contribution\nCoauthors are Monash students\n\n\n2\n\nPublished in the Journal of Computational and Graphical Statistics\n80% Concept, Analysis, Software, Writing\n\nNo\n\n\n\n\nChapters 3, k, and Chapter 4, **, are planned for submission to peer-reviewed journals.\nTo ensure the clarity and coherence of the written content, artificial intelligence tools were employed to assist in smoothing and refining the language throughout the thesis.\n\nI have not renumbered sections of submitted or published papers in order to generate a consistent presentation within the thesis.\nStudent name: Piyadi Gamage Jayani Lakshika\nStudent signature:\nDate: 15th January 2026\nI hereby certify that the above declaration correctly reflects the nature and extent of the student’s and co-authors’ contributions to this work. In instances where I am not the responsible author I have consulted with the responsible author to agree on the respective contributions of the authors.\nMain Supervisor name: Dianne Cook\nMain Supervisor signature:\nDate: 15th January 2026",
+    "crumbs": [
+      "Abstract"
+    ]
+  },
+  {
+    "objectID": "acknowledgements.html",
+    "href": "acknowledgements.html",
+    "title": "Acknowledgements",
+    "section": "",
+    "text": "This thesis would have never been a success without the guidance, encouragement, and support of my supervisors, family, and friends. This note is to show my gratitude to them.\nFirst, I would like to express my deepest gratitude to my supervisors,…\nI would also like to thank my milestone evaluation panel…\nThis research was financially supported by Monash University and the Dean’s Excellence Award of Monash Business School. I am grateful for the financial support that I received. Further, I would like to thank Professor Rob Hyndman, Head of the Department of Econometrics and Business Statistics, for arranging financial support that helped me to comfortably focus on my research at the end of my candidature. I take this opportunity to express my sincere gratitude to all other academic and administrative staff members of the Department of Econometric and Business Statistics at Monash University.\nI am also grateful to my PhD cohort, including, but not limited to…",
+    "crumbs": [
+      "Acknowledgements"
+    ]
+  },
+  {
+    "objectID": "01-chap1.html",
+    "href": "01-chap1.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "1.1 Thesis Outline\nTake on of the cardinalR dataset and generate 6/8 different layouts and explain why it is important to understand what’s happening with NLDR methods.\nThe rest of the thesis is organized as follows:\nChapter 2 introduces an algorithm to assess the NLDR and decide on which, if any, is the most reasonable representation of the structure(s) present in high-dimensional data. We create a model starting with NLDR layout that is then used to display as a wireframe in high dimensions.\nChapter 3 presents the implementation of the work is available as an R package, named quollr, an acronym to “questioning how a high-dimensional object looks in low-dimensions using r” (Gamage et al. n.d.a). This package also contains a function for performing hexagonal binning using a new approach, for saving langevitour results with a specific projection, and link plots to understand the quirks that occur with different NLDR techniques.\nChapter 4 proposes the R package, cardinalR (Gamage et al. n.d.b), which includes functions to generate a large variety of structures in high dimensions along with some already generated examples.\nChapter 5 provides empirical evidence on how viewers recognize structure differently when using NLDR layouts versus the tour view, particularly with varying distances between clusters. The findings will help clarify common mistakes made when selecting and reporting structures based on NLDR layouts.\nChapter 6 introduces ViMRoR (Visualize Most Reasonable Representations), a Shiny web application designed to support automated selection and diagnostic evaluation of NLDR methods.\nChapter 7 concludes the thesis, summarises the contribution of the work, and discusses some future plans.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "01-chap1.html#thesis-outline",
+    "href": "01-chap1.html#thesis-outline",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "Gamage, J. P., Cook, D., Harrison, P., Lydeamore, M., and Talagala, T. S. (n.d.a). Quollr: Visualising how nonlinear dimension reduction warps your data.\n\n\nGamage, J. P., Cook, D., Harrison, P., Lydeamore, M., and Talagala, T. S. (n.d.b). cardinalR: Collection of data structures.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "06-chap6.html",
+    "href": "06-chap6.html",
+    "title": "6  Development of an interactive and dynamic graphics system for NLDR users",
+    "section": "",
+    "text": "6.1 Availability",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Development of an interactive and dynamic graphics system for NLDR users</span>"
+    ]
+  },
+  {
+    "objectID": "07-chap7.html",
+    "href": "07-chap7.html",
+    "title": "7  Conclusion and future plans",
+    "section": "",
+    "text": "7.1 Contributions\nThe five pieces of work assembled in this thesis share a common theme of advancing Non-linear dimension reduction (NLDR) diagnostics, with a focus on improving the NLDR methods, visual inference, and developing innovative solutions to automate diagnostic processes.\nThe primary contributions of this research are fivefold. Firstly, we develop an algorithm. Secondly, we develop a package. Next, package for high-dimensional data structures. Then, a user study to explore perception and misperception in NLDR representations. Lastly, we share a user-focused R package and Shiny app, making the automated diagnostic tools accessible to a broad range of analysts and practitioners.\nThe aforementioned R package (and its dependency) is available on CRAN with the latest development versions in the links below:\nThe Shiny app for quollr is available at one of the mirror sites listed at https://vimror.netlify.app/ with the source code available at https://github.com/jayanilakshika/ViMRoR.\nPrinciples of transparency and reproducible research have guided the work with all materials related to the thesis at https://github.com/JayaniLakshika/Monash_PhD_thesis. The thesis is written using Quarto (Allaire_Quarto_2024?) and is available online at https://jayani-lakshika-phd-thesis.netlify.app.\nThe R packages used throughout the thesis include tidyverse (tidyverse?), lmtest (lmtest?), kableExtra (kableextra?), patchwork (patchwork?), glue (glue?), ggpcp (ggpcp?), here (here?), and knitr (knitr?). (Need to finalize at the end of writing)",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
+    ]
+  },
+  {
+    "objectID": "07-chap7.html#contributions",
+    "href": "07-chap7.html#contributions",
+    "title": "7  Conclusion and future plans",
+    "section": "",
+    "text": "quollr (https://github.com/jayanilakshika/quollr), and\ncardinalR (https://github.com/jayanilakshika/cardinalR).",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
+    ]
+  },
+  {
+    "objectID": "07-chap7.html#future-work",
+    "href": "07-chap7.html#future-work",
+    "title": "7  Conclusion and future plans",
+    "section": "7.2 Future work",
+    "text": "7.2 Future work\nThere are several directions that this work can be developed.\n\nScagnostics to evaluate NLDR\n3D NLDR investigation\nPrediction with model built\nMore diagnostics for NLDR (diadem app)\nVisualizations to validate experiment design/results\nInvestigate perception and misperception happening with background noise, number of clusters, noise dimensions, sample size, seed.\nlineup for NLDR\n3D NLDR\n\n\nDiagnostics\nWhen dealing with clustering problems, it is important to assess NLDR methods. Different NLDR techniques with varying parameters can lead to different representations, sometimes resulting in misclassification. Understanding the reasons for such misclassifications can be challenging. The main objective of this work is to introduce a platform called diadim that enables users to evaluate their NLDR representations for clustering problems.\nUsers are required to upload the 2D and high-dimensional Euclidean distances, as well as the NLDR embeddings along with the results of their spin-and-brush analysis (wilhelm1999?). Spin-and-brush is a useful technique for exploring clustering in numerical data containing well-separated clusters. It is effective in addressing issues that may negatively impact numerical techniques, such as nuisance variables, differences in variances or shapes between clusters, or cases. Additionally, spin-and-brush is helpful in scenarios where the data contains connected low-dimensional clusters in high dimensions. The detourr package (casper2024?) is used to implement spin-and-brush, and the results can be saved for further analysis.\nUsers have the flexibility to select a specific cluster and data point for assessment. The left side of the application presents the cluster and the selected data point, while the right side displays the distribution of distances. In the right panel, the points illustrate the distances from the selected point to all other points within the chosen cluster. Users can select points from both panels for evaluation.\n\n\n\n\n\n\nVisualising experimental designs\nThe main objective of this tool (fritillaR) is to visualise and validate results from experiments. It includes a web application that allows users to easily upload their experiment design data and results data for visualisation. Additionally, I plan to incorporate interactive features such as linked selections and filters. While the tool primarily visualises categorical data, transforming continuous data into intervals can provide a useful way to visualise continuous data as well.\nThe initial workflow includes importing the experimental design and results, data preprocessing, 2D static visualization, 2D interactive visualization, and dynamic visualization. The data preprocessing steps involve mapping the design data and finding missing responses in the results, transforming the data to a wide format to compute the number of responses for each factor level combination (missing combinations are recorded as 0), and converting the data into a long format suitable for visualization. For 2D static plots, ggplot2 (Wickham 2016) is used to provide a clear view of the distribution of counts across various factor levels. plotly (carson2020?) is used to add interactivity, and hovering over the tiles reveals additional information, enhancing the user’s ability to interact with and understand the data. The dynamic visualization will show each vertex as a factor level combination, with jittered points representing the number of responses for each factor combination and edges connected with one level change in a factor. Currently, the detourr (casper2024?) package is used for the implementation.\n\n\n\n\n\n\n\n\nWickham, H. (2016), ggplot2: Elegant graphics for data analysis, Springer-Verlag New York.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
+    ]
+  },
+  {
+    "objectID": "refs.html",
+    "href": "refs.html",
+    "title": "Bibliography",
+    "section": "",
+    "text": "Gamage, J. P., Cook, D., Harrison, P., Lydeamore, M., and Talagala, T.\nS. (n.d.a). Quollr: Visualising how\nnonlinear dimension reduction warps your data.\n\n\nGamage, J. P., Cook, D., Harrison, P., Lydeamore, M., and Talagala, T.\nS. (n.d.b). cardinalR: Collection\nof data structures.\n\n\nWickham, H. (2016), ggplot2: Elegant graphics\nfor data analysis, Springer-Verlag New York.",
+    "crumbs": [
+      "Bibliography"
+    ]
+  }
+]

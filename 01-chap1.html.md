@@ -11,17 +11,16 @@
   - Introduce high-dimensional data visualization (tour, detour, liminal, langevitour)
   - What are the advantages or why using NLDR?
   - Introduce different NLDR methods (Add references of the main papers)
+  - When the NLDR layouts can trust or not? (Any literature of inferences)
+  - Any literature of user-firendly platforms for NLDR users
 
 <!-- Non-linear dimension reduction (NLDR) is popular for making a convenient low-dimensional representation of high-dimensional data by applying non-linear transformation and all designed to better capture specific structures potentially existing in high-dimensions. Here we focus on five currently popular techniques, t-distributed stochastic neighbor embedding (tSNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. tNSE and UMAP can be considered to produce the 2D minimizing the divergence between two distributions, where the distributions are modeling the inter-point distances. PHATE, TriMAP and PaCMAP are examples of diffusion processes [@coifman2005] spreading to capture geometric shapes, that include both global and local structure. -->
 
 - Research gap
 
   - There is no visually interpretable way to diagnose NLDR techniques 
-
   - Lack of benchmark data structures to capture the various geometric properties
-  
   - Users don't know when to trust NLDR representations
-  
   - There is no platform to evaluate NLDR representations
 
 Take on of the cardinalR dataset and generate 6/8 different layouts and explain why it is important to understand what's happening with NLDR methods. 
