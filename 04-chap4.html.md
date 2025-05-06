@@ -1,1 +1,1 @@
-# A user study to explore perception and misperception in NLDR representations {#sec-third-paper}
+# cardinalR: Generating interesting high-dimensional data structures {#sec-third-paper}

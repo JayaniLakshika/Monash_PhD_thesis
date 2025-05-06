@@ -153,9 +153,9 @@ The rest of the thesis is organized as follows:
 
 @sec-second-paper presents the implementation of the work is available as an R package, named `quollr`, an acronym to "**qu**estioning how a high-dimensional **o**bject **l**ooks in **l**ow-dimensions using **r**" [@jayani2024a]. This package also contains a function for performing hexagonal binning using a new approach, for saving langevitour results with a specific projection, and link plots to understand the quirks that occur with different NLDR techniques.
 
-@sec-third-paper provides empirical evidence on how viewers recognize structure differently when using NLDR layouts versus the tour view, particularly with varying distances between clusters. The findings will help clarify common mistakes made when selecting and reporting structures based on NLDR layouts. 
+@sec-third-paper proposes the R package, `cardinalR` [@jayani2024b], which includes functions to generate a large variety of structures in high dimensions along with some already generated examples.
 
-@sec-fourth-paper proposes the R package, `cardinalR` [@jayani2024b], which includes functions to generate a large variety of structures in high dimensions along with some already generated examples.
+@sec-fourth-paper provides empirical evidence on how viewers recognize structure differently when using NLDR layouts versus the tour view, particularly with varying distances between clusters. The findings will help clarify common mistakes made when selecting and reporting structures based on NLDR layouts. 
 
 @sec-fifth-paper introduces `ViMRoR` (Visualize Most Reasonable Representations), a Shiny web application designed to support automated selection and diagnostic evaluation of NLDR methods.
 
