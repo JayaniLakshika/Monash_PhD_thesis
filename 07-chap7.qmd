@@ -30,6 +30,7 @@ There are several directions that this work can be developed.
 - Visualizations to validate experiment design/results
 - Investigate perception and misperception happening with background noise, number of clusters, noise dimensions, sample size, seed.
 - lineup for NLDR 
+- 3D NLDR
 
 ### Diagnostics
 
