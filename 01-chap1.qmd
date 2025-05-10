@@ -90,63 +90,63 @@ interior_annotation <- function(label, position = c(0.92, 0.92), cex = 1, col="g
 # Read a variety of different NLDR representations of PBMC
 # and plot them on same aspect ratio
 clr_choice <- "#0077A3"
-umap_pbmc <- read_rds("data/pbmc_umap_30_min_dist_0.3.rds")
+umap_pbmc <- read_rds("data/CITE-seq/CITE-seq_umap_n-neigbors_15_min-dist_0.1.rds")
 
 nldr1 <- umap_pbmc |>
-  ggplot(aes(x = UMAP1,
-             y = UMAP2)) +
+  ggplot(aes(x = emb1,
+             y = emb2)) +
   geom_point(alpha=0.1, size=1, colour=clr_choice) +
   interior_annotation("a")
 
-umap_pbmc <- read_rds("data/pbmc_umap_5_min_dist_0.01.rds")
+umap_pbmc <- read_rds("data/CITE-seq/CITE-seq_umap_n-neigbors_54_min-dist_0.5.rds")
 
 nldr2 <- umap_pbmc |>
-  ggplot(aes(x = UMAP1,
-             y = UMAP2))+
+  ggplot(aes(x = emb1,
+             y = emb2))+
   geom_point(alpha=0.1, size=1, colour=clr_choice) +
   interior_annotation("b")
 
-umap_pbmc <- read_rds("data/pbmc_umap_15_min_dist_0.99.rds")
-nldr3 <- umap_pbmc |>
-  ggplot(aes(x = UMAP1,
-             y = UMAP2))+
+pacmap_pbmc <- read_rds("data/CITE-seq/CITE-seq_pacmap_n-neighbors_51_init_random_MN-ratio_0.3_FP-ratio_2.rds")
+nldr3 <- pacmap_pbmc |>
+  ggplot(aes(x = emb1,
+             y = emb2))+
   geom_point(alpha=0.1, size=1, colour=clr_choice) +
   interior_annotation("c")
 
-tsne_pbmc <- read_rds("data/pbmc_tsne_5.rds")
+tsne_pbmc <- read_rds("data/CITE-seq/CITE-seq_tsne_perplexity_30.rds")
 
 nldr4 <- tsne_pbmc |>
-  ggplot(aes(x = tSNE1,
-             y = tSNE2))+
+  ggplot(aes(x = emb1,
+             y = emb2))+
   geom_point(alpha=0.1, size=1, colour=clr_choice) +
   interior_annotation("d")
 
-tsne_pbmc <- read_rds("data/pbmc_tsne_30.rds")
+tsne_pbmc <- read_rds("data/CITE-seq/CITE-seq_tsne_perplexity_84.rds")
 
 nldr5 <- tsne_pbmc |>
-  ggplot(aes(x = tSNE1,
-             y = tSNE2))+
+  ggplot(aes(x = emb1,
+             y = emb2))+
   geom_point(alpha=0.1, size=1, colour=clr_choice) +
   interior_annotation("e")
 
-phate_pbmc <- read_rds("data/pbmc_phate_5.rds")
+phate_pbmc <- read_rds("data/CITE-seq/CITE-seq_phate_knn_5.rds")
 nldr6 <- phate_pbmc |>
-  ggplot(aes(x = PHATE1,
-             y = PHATE2))+
+  ggplot(aes(x = emb1,
+             y = emb2))+
   geom_point(alpha=0.1, size=1, colour=clr_choice) +
   interior_annotation("f")
 
-trimap_pbmc <- read_rds("data/pbmc_trimap_12_4_3.rds")
+trimap_pbmc <- read_rds("data/CITE-seq/CITE-seq_trimap_n-inliers_12_n-outliers_4_n-random_3.rds")
 nldr7 <- trimap_pbmc |>
-  ggplot(aes(x = TriMAP1,
-             y = TriMAP2))+
+  ggplot(aes(x = emb1,
+             y = emb2))+
   geom_point(alpha=0.1, size=1, colour=clr_choice) +
-  interior_annotation("g")
+  interior_annotation("g", c(0.08, 0.93))
 
-pacmap_pbmc <- read_rds("data/pbmc_pacmap_30_random_0.9_5.rds")
+pacmap_pbmc <- read_rds("data/CITE-seq/CITE-seq_pacmap_n-neighbors_10_init_random_MN-ratio_0.5_FP-ratio_2.rds")
 nldr8 <- pacmap_pbmc |>
-  ggplot(aes(x = PaCMAP1,
-             y = PaCMAP2))+
+  ggplot(aes(x = emb1,
+             y = emb2))+
   geom_point(alpha=0.1, size=1, colour=clr_choice) +
   interior_annotation("h")
 ```
@@ -154,11 +154,10 @@ nldr8 <- pacmap_pbmc |>
 ```{r}
 #| label: fig-NLDR-variety
 #| echo: false
-#| fig-cap: "Eight different NLDR representations of the same data. Different techniques and different parameter choices are used. Researchers may have seen any of these in their analysis of this data, depending on their choice of method, or typical parameter choice. Would they make different decisions downstream in the analysis depending on which version seen? Which is the most accurate representation of the structure in high dimensions?"
+#| fig-cap: "Eight different NLDR representations of a human PBMC CITE-seq dataset (@yuhan2021). Different techniques and different (hyper)parameter choices are used. Researchers may have seen any of these in their analysis of this data, depending on their choice of method, or typical (hyper)parameter choice. Would they make different decisions downstream in the analysis depending on which version seen? Which is the most accurate representation of the structure in high dimensions?"
 #| fig-width: 8
 #| fig-height: 4
 #| out-width: 100%
-#| eval: false
 # (a) UMAP (n_neighbors = 30, min_dist = 0.3), (b) UMAP (n_neighbors = 5, min_dist = 0.01), (c) UMAP (n_neighbors = 15, min_dist = 0.99), (f) tSNE (perplexity = 5), (g) tSNE (perplexity = 30), (l) TriMAP (n_inliers = 12, n_outliers = 4, n_random = 3), (q) PaCMAP (n_neighbors = 30, init = random, MN_ratio = 0.9, FP_ratio = 5)
 nldr1 + nldr2 + nldr3 + nldr4 +
   nldr5 + nldr6 + nldr7 + nldr8 +

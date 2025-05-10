@@ -13,6 +13,10 @@
   - Introduce different NLDR methods (Add references of the main papers)
   - When the NLDR layouts can trust or not? (Any literature of inferences)
   - Any literature of user-firendly platforms for NLDR users
+  
+Paper: https://www.sciencedirect.com/science/article/pii/S0092867421005833?via%3Dihub#fig1 (CITE-seq data)
+
+A human PBMC CITE-seq dataset typically contains both RNA expression data and surface protein (ADT) measurements. These datasets are ideal for multimodal single-cell analysis.
 
 <!-- Non-linear dimension reduction (NLDR) is popular for making a convenient low-dimensional representation of high-dimensional data by applying non-linear transformation and all designed to better capture specific structures potentially existing in high-dimensions. Here we focus on five currently popular techniques, t-distributed stochastic neighbor embedding (tSNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. tNSE and UMAP can be considered to produce the 2D minimizing the divergence between two distributions, where the distributions are modeling the inter-point distances. PHATE, TriMAP and PaCMAP are examples of diffusion processes [@coifman2005] spreading to capture geometric shapes, that include both global and local structure. -->
 
@@ -62,7 +66,9 @@ Take on of the cardinalR dataset and generate 6/8 different layouts and explain 
 :::
 
 ::: {.cell}
-
+::: {.cell-output-display}
+![Eight different NLDR representations of a human PBMC CITE-seq dataset (@yuhan2021). Different techniques and different (hyper)parameter choices are used. Researchers may have seen any of these in their analysis of this data, depending on their choice of method, or typical (hyper)parameter choice. Would they make different decisions downstream in the analysis depending on which version seen? Which is the most accurate representation of the structure in high dimensions?](01-chap1_files/figure-pdf/fig-NLDR-variety-1.pdf){#fig-NLDR-variety width=100%}
+:::
 :::
 
 

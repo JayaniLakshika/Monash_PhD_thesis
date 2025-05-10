@@ -17,9 +17,6 @@ use_condaenv("pcamp_env")
 
 
 data <- read_rds(here::here("data/CITE-seq/cite_seq_pbmc.rds"))
-data_n <- data
-data <- data |>
-  dplyr::select(-cluster)
 
 ## tSNE (default)
 perplexity <- 30
@@ -31,10 +28,7 @@ tSNE_fit <- data |>
 
 tSNE_data <- tSNE_fit$Y |>
   tibble::as_tibble(.name_repair = "unique")
-names(tSNE_data) <- c("tSNE1", "tSNE2")
-
-tSNE_data <- tSNE_data |>
-  dplyr::mutate(cluster = data_n$cluster)
+names(tSNE_data) <- c("emb1", "emb2")
 
 write_rds(tSNE_data, file = paste0("data/CITE-seq/CITE-seq_tsne_perplexity_", perplexity, ".rds"))
 
@@ -48,10 +42,7 @@ tSNE_fit <- data |>
 
 tSNE_data <- tSNE_fit$Y |>
   tibble::as_tibble(.name_repair = "unique")
-names(tSNE_data) <- c("tSNE1", "tSNE2")
-
-tSNE_data <- tSNE_data |>
-  dplyr::mutate(cluster = data_n$cluster)
+names(tSNE_data) <- c("emb1", "emb2")
 
 write_rds(tSNE_data, file = paste0("data/CITE-seq/CITE-seq_tsne_perplexity_", perplexity, ".rds"))
 
@@ -70,13 +61,30 @@ UMAP_model <- umap(data,
 UMAP_data <- UMAP_model |>
   as_tibble(.name_repair = "unique")
 
-names(UMAP_data) <- c("UMAP1", "UMAP2")
-
-UMAP_data <- UMAP_data |>
-  dplyr::mutate(cluster = data_n$cluster)
+names(UMAP_data) <- c("emb1", "emb2")
 
 ## Run only once
 write_rds(UMAP_data, file = paste0("data/CITE-seq/CITE-seq_umap_n-neigbors_", n_neighbors, "_min-dist_", min_dist, ".rds"))
+
+## UMAP
+
+n_neighbors <- 54
+min_dist <- 0.5
+
+UMAP_model <- umap(data,
+                   n_neighbors = n_neighbors,
+                   min_dist = min_dist,
+                   n_components =  2,
+                   init ="spca")
+
+UMAP_data <- UMAP_model |>
+  as_tibble(.name_repair = "unique")
+
+names(UMAP_data) <- c("emb1", "emb2")
+
+## Run only once
+write_rds(UMAP_data, file = paste0("data/CITE-seq/CITE-seq_umap_n-neigbors_", n_neighbors, "_min-dist_", min_dist, ".rds"))
+
 
 ## PHATE
 knn <- 5
@@ -84,10 +92,7 @@ knn <- 5
 PHATE_data <- phate(data, knn = knn)
 PHATE_data <- as_tibble(PHATE_data$embedding)
 
-names(PHATE_data) <- c("PHATE1", "PHATE2")
-
-PHATE_data <- PHATE_data |>
-  dplyr::mutate(cluster = data_n$cluster)
+names(PHATE_data) <- c("emb1", "emb2")
 
 write_rds(PHATE_data, file = paste0("data/CITE-seq/CITE-seq_phate_knn_", knn, ".rds"))
 
@@ -114,10 +119,7 @@ reducer <- trimap$TRIMAP(n_dims = as.integer(2),
 TriMAP_data <- reducer$fit_transform(data_matrix) |>
   as_tibble()
 
-names(TriMAP_data) <- c("TriMAP1", "TriMAP2")
-
-TriMAP_data <- TriMAP_data |>
-  dplyr::mutate(cluster = data_n$cluster)
+names(TriMAP_data) <- c("emb1", "emb2")
 
 write_rds(TriMAP_data, file = paste0("data/CITE-seq/CITE-seq_trimap_n-inliers_", n_inliers, "_n-outliers_", n_outliers, "_n-random_", n_random, ".rds"))
 
@@ -145,9 +147,34 @@ reducer <- pacmap$PaCMAP(n_components = as.integer(2),
 PacMAP_data <- reducer$fit_transform(data_matrix, init = init) |>
   as_tibble()
 
-names(PacMAP_data) <- c("PaCMAP1", "PaCMAP2")
+names(PacMAP_data) <- c("emb1", "emb2")
 
-PacMAP_data <- PacMAP_data |>
-  dplyr::mutate(cluster = data_n$cluster)
+write_rds(PacMAP_data, file = paste0("data/CITE-seq/CITE-seq_pacmap_n-neighbors_", n_neighbors,"_init_", init, "_MN-ratio_", MN_ratio, "_FP-ratio_", FP_ratio, ".rds"))
+
+## PaCMAP
+
+pacmap <- reticulate::import("pacmap")
+
+data_vector <- unlist(data)
+# Convert the vector into a matrix
+data_matrix <- matrix(data_vector, ncol = NCOL(data))
+
+n_neighbors <- as.integer(51)
+MN_ratio <- 0.3
+FP_ratio <- as.integer(2)
+init <- "random"
+
+# Initialize PaCMAP instance
+reducer <- pacmap$PaCMAP(n_components = as.integer(2),
+                         n_neighbors = n_neighbors,
+                         MN_ratio = MN_ratio,
+                         FP_ratio = FP_ratio)
+
+
+# Perform dimensionality Reduction
+PacMAP_data <- reducer$fit_transform(data_matrix, init = init) |>
+  as_tibble()
+
+names(PacMAP_data) <- c("emb1", "emb2")
 
 write_rds(PacMAP_data, file = paste0("data/CITE-seq/CITE-seq_pacmap_n-neighbors_", n_neighbors,"_init_", init, "_MN-ratio_", MN_ratio, "_FP-ratio_", FP_ratio, ".rds"))
