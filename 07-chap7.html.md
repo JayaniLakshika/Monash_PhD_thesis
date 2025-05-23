@@ -2,6 +2,8 @@
 
 The five pieces of work assembled in this thesis share a common theme of advancing Non-linear dimension reduction (NLDR) diagnostics, with a focus on improving the NLDR methods, visual inference, and developing innovative solutions to automate diagnostic processes.
 
+Write one paragraph from each chapter later...
+
 ## Contributions
 
 The primary contributions of this research are fivefold. Firstly, we develop an algorithm. Secondly, we develop a package. Next, package for high-dimensional data structures. Then, a user study to explore perception and misperception in NLDR representations. Lastly, we share a user-focused R package and Shiny app, making the automated diagnostic tools accessible to a broad range of analysts and practitioners.
@@ -30,7 +32,6 @@ There are several directions that this work can be developed.
 - Visualizations to validate experiment design/results
 - Investigate perception and misperception happening with background noise, number of clusters, noise dimensions, sample size, seed.
 - lineup for NLDR 
-- 3D NLDR
 
 ### Diagnostics
 
