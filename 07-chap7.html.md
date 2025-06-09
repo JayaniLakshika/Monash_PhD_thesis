@@ -25,14 +25,14 @@ The R packages used throughout the thesis include `tidyverse` [@tidyverse], `lmt
 
 There are several directions that this work can be developed.
 
-- Scagnostics to evaluate NLDR
-- 3D NLDR investigation (rather than using hexbin centroids, use kmeans to investigate the model in 3D)
-- Prediction with model built (UMAP has already develped prediction function, can compare that with ours)
-- More diagnostics for NLDR (diadem app)
-- Visualizations to validate experiment design/results
-- Investigate perception and misperception happening with background noise, number of clusters, noise dimensions, sample size, seed.
-- lineup for NLDR (preservation of the data struture, sensitivity of hyperparameters)
-- With different sample sizes how scagnostics change for specific data structures
+<!-- - Scagnostics to evaluate NLDR -->
+<!-- - 3D NLDR investigation (rather than using hexbin centroids, use kmeans to investigate the model in 3D) -->
+<!-- - Prediction with model built (UMAP has already develped prediction function, can compare that with ours) -->
+<!-- - More diagnostics for NLDR (diadem app) -->
+<!-- - Visualizations to validate experiment design/results -->
+<!-- - Investigate perception and misperception happening with background noise, number of clusters, noise dimensions, sample size, seed. -->
+<!-- - lineup for NLDR (preservation of the data struture, sensitivity of hyperparameters) -->
+<!-- - With different sample sizes how scagnostics change for specific data structures -->
 
 ### Scagnostics to evaluate NLDR
 
@@ -85,4 +85,29 @@ The initial workflow includes importing the experimental design and results, dat
 
 <!-- Screenshots of the (a) 2D, and (b) dynamic visualisations of **fritillaR**. The [video](https://drive.google.com/file/d/1P1kNR_3aQEC5XXM8IWJCMlDhYz52pK3y/view?usp=sharing) shows the implementation of the `fritillaR`. -->
 <!-- ::: -->
+
+### Investigating perception and misperception in NLDR with additional factors
+
+While our current user study has focused on how the distance between clusters affects human perception of NLDR layouts, there remain several important factors that could further influence perception and misperception. A promising direction for future work is to systematically explore how variations in data characteristics impact a user's ability to correctly interpret dimensionality-reduced representations.
+
+Specifically, we propose extending the perceptual study to consider:
+
+- Background noise: Adding uniformly or normally distributed noise to the data can obscure true structure, and it is important to understand how different NLDR methods handle such interference and how users respond to it visually.
+
+- Number of clusters: As the number of clusters increases, distinguishing them in $2-\text{D}$ may become more challenging, particularly if the separation is subtle or overlaps occur.
+
+- Noise dimensions: Including additional high-dimensional features that contain no signal (i.e., noise variables) can affect NLDR outcomes. We aim to evaluate how this impacts perceived structure.
+
+- Sample size: Varying the number of observations may change both the visual density and the stability of the NLDR projection, influencing the interpretability of patterns.
+
+- Random seed: Since many NLDR methods are stochastic (e.g., tSNE, UMAP), different seeds can lead to different embeddings. It is valuable to understand whether these differences are perceptible to users and how they affect interpretability.
+
+By extending the study to incorporate these data-driven variables, we can build a more comprehensive understanding of when and why human misperception occurs in NLDR layouts, and which methods are more resilient to such distortions. This work will support the development of more robust diagnostics and improve the practical use of NLDR.
+
+### Comparative perceptual study of PCA and NLDR Methods
+
+Another valuable direction for future work is to investigate how PCA compares to NLDR methods in terms of human perception and interpretability. PCA is a linear method widely used for its simplicity and mathematical transparency, whereas NLDR methods often involve non-linear transformations and hyperparameter tuning.
+
+By comparing how users interpret and misinterpret PCA layouts versus NLDR generated layouts, we can gain insights into whether linear techniques are inherently easier to understand or whether they may lead to different types of visual distortions. This work would help clarify when PCA is sufficient for visual analysis and when the added complexity of NLDR is warranted, particularly for exploratory tasks that rely on visual intuition.
+
 
