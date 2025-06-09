@@ -52,19 +52,19 @@ Future work includes evaluating and comparing the prediction capabilities of dif
 
 Having predictions from both the built-in functions (when available) and our centroid-based method allows for direct performance comparisons. This enables a systematic evaluation of how well different approaches preserve structure when projecting new observations into an existing NLDR space.
 
-### Diagnostics
+### Interactive diagnostic tool for NLDR evaluation
 
-When dealing with clustering problems, it is important to assess NLDR methods. Different NLDR techniques with varying parameters can lead to different representations, sometimes resulting in misclassification. Understanding the reasons for such misclassifications can be challenging. The main objective of this work is to introduce a platform called [diadim](https://ebsmonash.shinyapps.io/diadim/) that enables users to evaluate their NLDR representations for clustering problems.
+A promising direction for future work is the development of an interactive tool that enables diagnostic evaluation of NLDR methods, particularly in the context of clustering. Since different NLDR techniques and parameter settings can lead to varied low-dimensional representations and possible misclassifications. It is essential to have tools that help users explore and understand the sources of these discrepancies.
 
-Users are required to upload the 2D and high-dimensional Euclidean distances, as well as the NLDR embeddings along with the results of their spin-and-brush analysis [@cook2000, @wilhelm1999]. Spin-and-brush is a useful technique for exploring clustering in numerical data containing well-separated clusters. It is effective in addressing issues that may negatively impact numerical techniques, such as nuisance variables, differences in variances or shapes between clusters, or cases. Additionally, spin-and-brush is helpful in scenarios where the data contains connected low-dimensional clusters in high dimensions. The `detourr` package [@casper2024] is used to implement spin-and-brush, and the results can be saved for further analysis.
+We propose building a Shiny-based interactive application that allows users to upload: $2-\text{D}$ and high-dimensional Euclidean distance matrices, NLDR embeddings, and results from spin-and-brush analysis (@cook2000, @wilhelm1999).
 
-Users have the flexibility to select a specific cluster and data point for assessment. The left side of the application presents the cluster and the selected data point, while the right side displays the distribution of distances. In the right panel, the points illustrate the distances from the selected point to all other points within the chosen cluster. Users can select points from both panels for evaluation.
+Spin-and-brush is a dynamic visual method used to explore clustering structures in high-dimensional numerical data. It is especially helpful in identifying the influence of nuisance variables, structural differences among clusters (e.g., shape or variance), and detecting low-dimensional manifolds embedded in higher dimensions. This functionality can be implemented using the `detourr` package (@casper2024), which supports recording and replaying brushing sequences.
 
-<!-- ::: {#fig-fritillaR_sc layout-ncol="1"} -->
-<!-- ![](Figures/diadem.png) -->
+The envisioned tool would allow users to select a specific cluster and a data point of interest and inspect how the data point relates to its cluster through interactive $2-\text{D}$ and high-dimensional distance visualizations.
 
-<!-- Screenshots of the **diadim** web application. The [video](https://drive.google.com/file/d/1SBcvBrYQtuRlcRrhfKFQXPgaP_TEpldY/view?usp=sharing) shows the implementation. -->
-<!-- ::: -->
+The user interface could be organized into two panels. The left panel would display the selected cluster and the specific point within the $2-\text{D}$ embedding. The right panel would show a distribution of distances from the selected point to all other points within the same cluster.
+
+Interactive brushing between these panels would help users explore where NLDR methods preserve or distort clustering structure. This tool would not only support more intuitive diagnosis of NLDR performance but could also serve as a foundation for building automated evaluation metrics that align with human interpretation.
 
 ### Lineup protocols to evaluate NLDR sensitivity and structure preservation
 
@@ -76,9 +76,9 @@ Lineups could also be extended to study the sensitivity of NLDR methods to hyper
 
 ### Visualising experimental designs
 
-The main objective of this tool (`fritillaR`) is to visualise and validate results from experiments. It includes a web application that allows users to easily upload their experiment design data and results data for visualisation. Additionally, I plan to incorporate interactive features such as linked selections and filters. While the tool primarily visualises categorical data, transforming continuous data into intervals can provide a useful way to visualise continuous data as well. 
+The main objective of this tool is to visualise and validate results from experiments. It includes a web application that allows users to easily upload their experiment design data and results data for visualisation. Additionally, we plan to incorporate interactive features such as linked selections and filters. While the tool primarily visualises categorical data, transforming continuous data into intervals can provide a useful way to visualise continuous data as well. 
 
-The initial workflow includes importing the experimental design and results, data preprocessing, 2D static visualization, 2D interactive visualization, and dynamic visualization. The data preprocessing steps involve mapping the design data and finding missing responses in the results, transforming the data to a wide format to compute the number of responses for each factor level combination (missing combinations are recorded as $0$), and converting the data into a long format suitable for visualization. For 2D static plots, `ggplot2` [@hadley2016] is used to provide a clear view of the distribution of counts across various factor levels. `plotly` [@carson2020] is used to add interactivity, and hovering over the tiles reveals additional information, enhancing the user's ability to interact with and understand the data. The dynamic visualization will show each vertex as a factor level combination, with jittered points representing the number of responses for each factor combination and edges connected with one level change in a factor. Currently, the `detourr` [@casper2024] package is used for the implementation.
+The initial workflow includes importing the experimental design and results, data preprocessing, $2-\text{D}$ static visualization, $2-\text{D}$ interactive visualization, and dynamic visualization. The data preprocessing steps involve mapping the design data and finding missing responses in the results, transforming the data to a wide format to compute the number of responses for each factor level combination (missing combinations are recorded as $0$), and converting the data into a long format suitable for visualization. For $2-\text{D}$ static plots, `ggplot2` [@hadley2016] is used to provide a clear view of the distribution of counts across various factor levels. `plotly` [@carson2020] is used to add interactivity, and hovering over the tiles reveals additional information, enhancing the user's ability to interact with and understand the data. The dynamic visualization will show each vertex as a factor level combination, with jittered points representing the number of responses for each factor combination and edges connected with one level change in a factor. Currently, the `detourr` [@casper2024] package is used for the implementation.
 
 <!-- ::: {#fig-fritillaR_sc layout-ncol="1"} -->
 <!-- ![](Figures/fritillaR_vis.png) -->
