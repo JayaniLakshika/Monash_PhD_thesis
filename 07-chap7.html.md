@@ -44,6 +44,12 @@ A natural extension of this work is to explore and evaluate NLDR methods in $3-\
 
 Following this, a comparative evaluation can be conducted to assess whether $2-\text{D}$ or $3-\text{D}$ representations are more appropriate for preserving the underlying structure of the high-dimensional data.
 
+### Compare prediction approaches
+
+Future work includes evaluating and comparing the prediction capabilities of different NLDR methods. Only some methods such as UMAP provide built-in functionality to project new high-dimensional observations into an existing low-dimensional embedding. Our approach introduces a general prediction framework that can be applied to any NLDR method. It works by identifying the nearest high-dimensional bin centroid for a new observation and assigning its corresponding $2-\text{D}$ centroid from the fitted model.
+
+Having predictions from both the built-in functions (when available) and our centroid-based method allows for direct performance comparisons. This enables a systematic evaluation of how well different approaches preserve structure when projecting new observations into an existing NLDR space.
+
 ### Diagnostics
 
 When dealing with clustering problems, it is important to assess NLDR methods. Different NLDR techniques with varying parameters can lead to different representations, sometimes resulting in misclassification. Understanding the reasons for such misclassifications can be challenging. The main objective of this work is to introduce a platform called [diadim](https://ebsmonash.shinyapps.io/diadim/) that enables users to evaluate their NLDR representations for clustering problems.
