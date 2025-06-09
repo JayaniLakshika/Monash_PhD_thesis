@@ -48,7 +48,7 @@ Following this, a comparative evaluation can be conducted to assess whether $2-\
 
 ### Compare prediction approaches
 
-Future work includes evaluating and comparing the prediction capabilities of different NLDR methods. Only some methods such as UMAP provide built-in functionality to project new high-dimensional observations into an existing low-dimensional embedding. Our approach introduces a general prediction framework that can be applied to any NLDR method. It works by identifying the nearest high-dimensional bin centroid for a new observation and assigning its corresponding $2-\text{D}$ centroid from the fitted model.
+Future work includes evaluating and comparing the prediction capabilities of different NLDR methods. Only some methods such as UMAP provide built-in functionality (@tomasz2023) to project new high-dimensional observations into an existing low-dimensional embedding. Our approach introduces a general prediction framework that can be applied to any NLDR method. It works by identifying the nearest high-dimensional bin centroid for a new observation and assigning its corresponding $2-\text{D}$ centroid from the fitted model.
 
 Having predictions from both the built-in functions (when available) and our centroid-based method allows for direct performance comparisons. This enables a systematic evaluation of how well different approaches preserve structure when projecting new observations into an existing NLDR space.
 
@@ -65,6 +65,14 @@ Users have the flexibility to select a specific cluster and data point for asses
 
 <!-- Screenshots of the **diadim** web application. The [video](https://drive.google.com/file/d/1SBcvBrYQtuRlcRrhfKFQXPgaP_TEpldY/view?usp=sharing) shows the implementation. -->
 <!-- ::: -->
+
+### Lineup protocols to evaluate NLDR sensitivity and structure preservation
+
+A valuable extension of this work would be to develop lineup-based evaluation protocols (@andreas2009) for NLDR methods. Lineups, originally introduced as a statistical inference tool for graphical perception, involve presenting a true data plot randomly embedded among a set of null plots generated under a null model. Observers are asked to identify the plot that appears most different, allowing for an assessment of whether a visual structure stands out beyond what might be expected by chance.
+
+Applied to NLDR, lineups could help evaluate how well a $2-\text{D}$ layout preserves the structure of the original high-dimensional data. For example, a lineup could contain one plot of the true NLDR layout and multiple null layouts generated from shuffled or noise-added versions of the data. If participants consistently identify the true layout, it suggests that the NLDR method has effectively preserved meaningful structure.
+
+Lineups could also be extended to study the sensitivity of NLDR methods to hyperparameters. Multiple layouts could be shown, each corresponding to a different hyperparameter setting (e.g., number of neighbors in UMAP or perplexity in tSNE), to evaluate whether small parameter changes lead to perceptually different results. This would allow researchers to quantify the robustness of each method and guide more stable parameter selection.
 
 ### Visualising experimental designs
 
