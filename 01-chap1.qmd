@@ -1,64 +1,3 @@
-# Introduction {#sec-intro}
-
-High-dimensional data, where each observation is described by many variables, is increasingly prevalent in modern science, from bioinformatics to computer vision and social science. For example, **CITE-seq data** [@hao2021] simultaneously records RNA expression and protein markers for individual cells, producing rich, complex datasets. To make sense of such data, analysts often rely on **dimension reduction** methods to create low-dimensional visualizations that can reveal patterns and structure.
-
-One established approach is **linear projection**, where high-dimensional points are represented as linear combinations of the original features. **Principal Component Analysis (PCA)** is the most familiar method, identifying directions of maximum variance. Extending this idea, **tours** [@lee2021] provide dynamic sequences of linear projections, giving views from multiple angles to help reveal hidden structure. Tour methods are implemented in R packages such as `tourr` [@wickham2011], `langevitour` [@harrison2023], and `detourr` [@hart2022]. A key advantage of linear projections is that they preserve the geometric relationships of the original data—they do not introduce distortion. However, linear projections can become cluttered, and global structure may obscure local detail. Furthermore, **piling** [@laa2022]—where points concentrate in the center of projections—can mask important variation.
-
-To overcome these limitations, analysts frequently turn to **nonlinear dimension reduction (NLDR)** methods such as tSNE [@laurens2008], UMAP [@leland2018], PHATE [@moon2019], TriMAP [@amid2022], and PaCMAP [@yingfan2021]. NLDR applies nonlinear transformations to generate low-dimensional embeddings that aim to preserve local or global data relationships. These methods are designed to **exaggerate structure**, making it easier for analysts to detect patterns.
-
-Yet this strength also introduces a critical risk: **NLDR can hallucinate structure**, creating patterns in the low-dimensional space that do not exist in the high-dimensional data. This issue is strikingly illustrated in Figure 1.1, where eight different NLDR representations of the same CITE-seq dataset vary dramatically due to differences in method or hyperparameter choices. Such variability raises essential questions: *Which visualization can be trusted? Which accurately reflects the high-dimensional structure?*
-
-Despite the widespread use of NLDR, there is no widely accepted or visually interpretable framework for **diagnosing the reliability of NLDR representations**. Analysts are left to rely on subjective judgment when choosing and interpreting NLDR layouts, without tools to distinguish faithful representations from artifacts. There is also a lack of benchmark datasets with known geometric structure for testing NLDR methods systematically.
-
-In addition to technical gaps, **little is known about how people perceive and misperceive structure in NLDR layouts**. It is unclear how different visualizations influence analysts’ conclusions, or how distortions introduced by NLDR affect decision making. Given the critical role of visualization in high-dimensional data analysis, understanding the human perception of NLDR representations is essential.
-
-## Research Objectives
-
-This thesis addresses these challenges through four main objectives:
-
-1. **Develop methods and software to diagnose NLDR techniques**, providing tools to assess whether low-dimensional representations accurately reflect high-dimensional structures.
-
-2. **Conduct a large-scale user study to explore perception and misperception in NLDR representations**, assessing how viewers recognize structure differently in NLDR layouts compared to tour-based views. This cognitive perception experiment will help identify common mistakes made when choosing and reporting structure from NLDR visualizations, and will inform best practices for using these methods in data analysis.
-
-3. **Create benchmark datasets with known geometric properties**, via the `cardinalR` package, to systematically evaluate and validate NLDR methods.
-
-4. **Provide a platform for NLDR evaluation**, combining linked linear projections (such as tours) and NLDR layouts to reveal where distortions arise and how structure is preserved or lost.
-
-
-
-## Contribution
-
-By addressing both computational and cognitive aspects of NLDR, this research aims to advance our understanding of when and how NLDR methods can be trusted. The work will provide practical tools, benchmark data, and empirical insights to support the responsible use of dimension reduction techniques in high-dimensional data analysis.
-
-<!-- - Topic statement -->
-<!--   - Develop methods and software to understand NLDR techniques -->
-
-<!-- - Background -->
-
-<!--   - What is high-dimensional data? -->
-<!--   - What is happening with Dimension reduction? -->
-<!--   - What is LDR and NLDR? -->
-<!--   - Introduce high-dimensional data visualization (tour, detour, liminal, langevitour) -->
-<!--   - What are the advantages or why using NLDR? -->
-<!--   - Introduce different NLDR methods (Add references of the main papers) -->
-<!--   - When the NLDR layouts can trust or not? (Any literature of inferences) -->
-<!--   - Any literature of user-firendly platforms for NLDR users -->
-
-<!-- Paper: https://www.sciencedirect.com/science/article/pii/S0092867421005833?via%3Dihub#fig1 (CITE-seq data) -->
-
-<!-- A human PBMC CITE-seq dataset typically contains both RNA expression data and surface protein (ADT) measurements. These datasets are ideal for multimodal single-cell analysis. -->
-
-<!-- Non-linear dimension reduction (NLDR) is popular for making a convenient low-dimensional representation of high-dimensional data by applying non-linear transformation and all designed to better capture specific structures potentially existing in high-dimensions. Here we focus on five currently popular techniques, t-distributed stochastic neighbor embedding (tSNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. tNSE and UMAP can be considered to produce the 2D minimizing the divergence between two distributions, where the distributions are modeling the inter-point distances. PHATE, TriMAP and PaCMAP are examples of diffusion processes [@coifman2005] spreading to capture geometric shapes, that include both global and local structure. -->
-
-<!-- - Research gap -->
-
-<!--   - There is no visually interpretable way to diagnose NLDR techniques  -->
-<!--   - Lack of benchmark data structures to capture the various geometric properties -->
-<!--   - Users don't know when to trust NLDR representations -->
-<!--   - There is no platform to evaluate NLDR representations -->
-
-<!-- Take on of the cardinalR dataset and generate 6/8 different layouts and explain why it is important to understand what's happening with NLDR methods.  -->
-
 ```{r}
 #| label: load-libraries
 #| warning: false
@@ -112,8 +51,14 @@ interior_annotation <- function(label, position = c(0.92, 0.92), cex = 1, col="g
 }
 ```
 
-<!-- Historically, 2D representations of high-dimensional data have been computed using multidimensional scaling (MDS) [@borg2005], which includes principal components analysis (PCA) [@jolliffe2011] as a special case. The 2D representation can be viewed as a layout of points in 2D produced by an embedding procedure that maps the data from high dimensions. In MDS, the 2D layout is constructed by minimizing a stress function that differences distances between points in high-dimensions with potential distances between points in 2D. Various formulations of the stress function result in non-metric scaling [@saeed2018] and isomap [@silva2002]. Challenges in working with high-dimensional data, including visualization, are outlined in @johnstone2009.  -->
 
+# Introduction {#sec-intro}
+
+High-dimensional data, where each observation is described by many variables, is increasingly prevalent in modern science, from bioinformatics to computer vision and social science. For example, **CITE-seq data** [@hao2021] simultaneously records RNA expression and protein markers for individual cells, producing rich, complex datasets. To make sense of such data, analysts often rely on **dimension reduction** methods to create low-dimensional visualizations that can reveal patterns and structure.
+
+One established approach is **linear projection**, where high-dimensional points are represented as linear combinations of the original features. **Principal Component Analysis (PCA)** is the most familiar method, identifying directions of maximum variance. Extending this idea, **tours** [@lee2021] provide dynamic sequences of linear projections, giving views from multiple angles to help reveal hidden structure. Tour methods are implemented in R packages such as `tourr` [@wickham2011], `langevitour` [@harrison2023], and `detourr` [@hart2022]. A key advantage of linear projections is that they preserve the geometric relationships of the original data—they do not introduce distortion. However, linear projections can become cluttered, and global structure may obscure local detail. Furthermore, **piling** [@laa2022]—where points concentrate in the center of projections—can mask important variation.
+
+To overcome these limitations, analysts frequently turn to **nonlinear dimension reduction (NLDR)** methods such as tSNE [@laurens2008], UMAP [@leland2018], PHATE [@moon2019], TriMAP [@amid2022], and PaCMAP [@yingfan2021]. NLDR applies nonlinear transformations to generate low-dimensional embeddings that aim to preserve local or global data relationships. These methods are designed to **exaggerate structure**, making it easier for analysts to detect patterns.
 
 ```{r}
 # label: read-pbmc-nldr
@@ -188,11 +133,67 @@ nldr8 <- pacmap_pbmc |>
 #| fig-width: 8
 #| fig-height: 4
 #| out-width: 100%
+#| fig-pos: H
 # (a) UMAP (n_neighbors = 30, min_dist = 0.3), (b) UMAP (n_neighbors = 5, min_dist = 0.01), (c) UMAP (n_neighbors = 15, min_dist = 0.99), (f) tSNE (perplexity = 5), (g) tSNE (perplexity = 30), (l) TriMAP (n_inliers = 12, n_outliers = 4, n_random = 3), (q) PaCMAP (n_neighbors = 30, init = random, MN_ratio = 0.9, FP_ratio = 5)
 nldr1 + nldr2 + nldr3 + nldr4 +
   nldr5 + nldr6 + nldr7 + nldr8 +
   plot_layout(ncol = 4)
 ```
+
+
+Yet this strength also introduces a critical risk: **NLDR can hallucinate structure**, creating patterns in the low-dimensional space that do not exist in the high-dimensional data. This issue is strikingly illustrated in @fig-NLDR-variety, where eight different NLDR representations of the same CITE-seq dataset vary dramatically due to differences in method or hyperparameter choices. Such variability raises essential questions: *Which visualization can be trusted? Which accurately reflects the high-dimensional structure?*
+
+Despite the widespread use of NLDR, there is no widely accepted or visually interpretable framework for **diagnosing the reliability of NLDR representations**. Analysts are left to rely on subjective judgment when choosing and interpreting NLDR layouts, without tools to distinguish faithful representations from artifacts. There is also a lack of benchmark datasets with known geometric structure for testing NLDR methods systematically.
+
+In addition to technical gaps, **little is known about how people perceive and misperceive structure in NLDR layouts**. It is unclear how different visualizations influence analysts’ conclusions, or how distortions introduced by NLDR affect decision making. Given the critical role of visualization in high-dimensional data analysis, understanding the human perception of NLDR representations is essential.
+
+## Research Objectives
+
+This thesis addresses these challenges through four main objectives:
+
+1. **Develop methods and software to diagnose NLDR techniques**, providing tools to assess whether low-dimensional representations accurately reflect high-dimensional structures.
+
+2. **Conduct a large-scale user study to explore perception and misperception in NLDR representations**, assessing how viewers recognize structure differently in NLDR layouts compared to tour-based views. This cognitive perception experiment will help identify common mistakes made when choosing and reporting structure from NLDR visualizations, and will inform best practices for using these methods in data analysis.
+
+3. **Create benchmark datasets with known geometric properties**, via the `cardinalR` package, to systematically evaluate and validate NLDR methods.
+
+4. **Provide a platform for NLDR evaluation**, combining linked linear projections (such as tours) and NLDR layouts to reveal where distortions arise and how structure is preserved or lost.
+
+## Contribution
+
+By addressing both computational and cognitive aspects of NLDR, this research aims to advance our understanding of when and how NLDR methods can be trusted. The work will provide practical tools, benchmark data, and empirical insights to support the responsible use of dimension reduction techniques in high-dimensional data analysis.
+
+<!-- - Topic statement -->
+<!--   - Develop methods and software to understand NLDR techniques -->
+
+<!-- - Background -->
+
+<!--   - What is high-dimensional data? -->
+<!--   - What is happening with Dimension reduction? -->
+<!--   - What is LDR and NLDR? -->
+<!--   - Introduce high-dimensional data visualization (tour, detour, liminal, langevitour) -->
+<!--   - What are the advantages or why using NLDR? -->
+<!--   - Introduce different NLDR methods (Add references of the main papers) -->
+<!--   - When the NLDR layouts can trust or not? (Any literature of inferences) -->
+<!--   - Any literature of user-firendly platforms for NLDR users -->
+
+<!-- Paper: https://www.sciencedirect.com/science/article/pii/S0092867421005833?via%3Dihub#fig1 (CITE-seq data) -->
+
+<!-- A human PBMC CITE-seq dataset typically contains both RNA expression data and surface protein (ADT) measurements. These datasets are ideal for multimodal single-cell analysis. -->
+
+<!-- Non-linear dimension reduction (NLDR) is popular for making a convenient low-dimensional representation of high-dimensional data by applying non-linear transformation and all designed to better capture specific structures potentially existing in high-dimensions. Here we focus on five currently popular techniques, t-distributed stochastic neighbor embedding (tSNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. tNSE and UMAP can be considered to produce the 2D minimizing the divergence between two distributions, where the distributions are modeling the inter-point distances. PHATE, TriMAP and PaCMAP are examples of diffusion processes [@coifman2005] spreading to capture geometric shapes, that include both global and local structure. -->
+
+<!-- - Research gap -->
+
+<!--   - There is no visually interpretable way to diagnose NLDR techniques  -->
+<!--   - Lack of benchmark data structures to capture the various geometric properties -->
+<!--   - Users don't know when to trust NLDR representations -->
+<!--   - There is no platform to evaluate NLDR representations -->
+
+<!-- Take on of the cardinalR dataset and generate 6/8 different layouts and explain why it is important to understand what's happening with NLDR methods.  -->
+
+
+<!-- Historically, 2D representations of high-dimensional data have been computed using multidimensional scaling (MDS) [@borg2005], which includes principal components analysis (PCA) [@jolliffe2011] as a special case. The 2D representation can be viewed as a layout of points in 2D produced by an embedding procedure that maps the data from high dimensions. In MDS, the 2D layout is constructed by minimizing a stress function that differences distances between points in high-dimensions with potential distances between points in 2D. Various formulations of the stress function result in non-metric scaling [@saeed2018] and isomap [@silva2002]. Challenges in working with high-dimensional data, including visualization, are outlined in @johnstone2009.  -->
 
 <!-- The various layouts created by @fig-NLDR-variety demonstrate the different outcomes that can result from the choices of methods and parameters, as well as the random seed used to start the calculation. Key structures interpreted from these views suggest: (1) highly **separated clusters** (a, b, e, g, h) with the number ranging from 3-6; (2) **stringy branches** (f), and (3) **barely separated clusters** (c, d) which would **contradict** the other representations.  -->
 

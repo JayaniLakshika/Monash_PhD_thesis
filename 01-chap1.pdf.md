@@ -1,3 +1,16 @@
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
 # Introduction {#sec-intro}
 
 High-dimensional data, where each observation is described by many variables, is increasingly prevalent in modern science, from bioinformatics to computer vision and social science. For example, **CITE-seq data** [@hao2021] simultaneously records RNA expression and protein markers for individual cells, producing rich, complex datasets. To make sense of such data, analysts often rely on **dimension reduction** methods to create low-dimensional visualizations that can reveal patterns and structure.
@@ -6,7 +19,22 @@ One established approach is **linear projection**, where high-dimensional points
 
 To overcome these limitations, analysts frequently turn to **nonlinear dimension reduction (NLDR)** methods such as tSNE [@laurens2008], UMAP [@leland2018], PHATE [@moon2019], TriMAP [@amid2022], and PaCMAP [@yingfan2021]. NLDR applies nonlinear transformations to generate low-dimensional embeddings that aim to preserve local or global data relationships. These methods are designed to **exaggerate structure**, making it easier for analysts to detect patterns.
 
-Yet this strength also introduces a critical risk: **NLDR can hallucinate structure**, creating patterns in the low-dimensional space that do not exist in the high-dimensional data. This issue is strikingly illustrated in Figure 1.1, where eight different NLDR representations of the same CITE-seq dataset vary dramatically due to differences in method or hyperparameter choices. Such variability raises essential questions: *Which visualization can be trusted? Which accurately reflects the high-dimensional structure?*
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+::: {.cell-output-display}
+![Eight different NLDR representations of a human PBMC CITE-seq dataset (@yuhan2021). Different techniques and different hyperparameter choices are used. Researchers may have seen any of these in their analysis of this data, depending on their choice of method, or typical hyperparameter choice. Would they make different decisions downstream in the analysis depending on which version seen? Which is the most accurate representation of the structure in high dimensions?](01-chap1_files/figure-pdf/fig-NLDR-variety-1.pdf){#fig-NLDR-variety fig-pos='H' width=100%}
+:::
+:::
+
+
+
+Yet this strength also introduces a critical risk: **NLDR can hallucinate structure**, creating patterns in the low-dimensional space that do not exist in the high-dimensional data. This issue is strikingly illustrated in @fig-NLDR-variety, where eight different NLDR representations of the same CITE-seq dataset vary dramatically due to differences in method or hyperparameter choices. Such variability raises essential questions: *Which visualization can be trusted? Which accurately reflects the high-dimensional structure?*
 
 Despite the widespread use of NLDR, there is no widely accepted or visually interpretable framework for **diagnosing the reliability of NLDR representations**. Analysts are left to rely on subjective judgment when choosing and interpreting NLDR layouts, without tools to distinguish faithful representations from artifacts. There is also a lack of benchmark datasets with known geometric structure for testing NLDR methods systematically.
 
@@ -23,8 +51,6 @@ This thesis addresses these challenges through four main objectives:
 3. **Create benchmark datasets with known geometric properties**, via the `cardinalR` package, to systematically evaluate and validate NLDR methods.
 
 4. **Provide a platform for NLDR evaluation**, combining linked linear projections (such as tours) and NLDR layouts to reveal where distortions arise and how structure is preserved or lost.
-
-
 
 ## Contribution
 
@@ -60,33 +86,7 @@ By addressing both computational and cognitive aspects of NLDR, this research ai
 <!-- Take on of the cardinalR dataset and generate 6/8 different layouts and explain why it is important to understand what's happening with NLDR methods.  -->
 
 
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
 <!-- Historically, 2D representations of high-dimensional data have been computed using multidimensional scaling (MDS) [@borg2005], which includes principal components analysis (PCA) [@jolliffe2011] as a special case. The 2D representation can be viewed as a layout of points in 2D produced by an embedding procedure that maps the data from high dimensions. In MDS, the 2D layout is constructed by minimizing a stress function that differences distances between points in high-dimensions with potential distances between points in 2D. Various formulations of the stress function result in non-metric scaling [@saeed2018] and isomap [@silva2002]. Challenges in working with high-dimensional data, including visualization, are outlined in @johnstone2009.  -->
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-![Eight different NLDR representations of a human PBMC CITE-seq dataset (@yuhan2021). Different techniques and different hyperparameter choices are used. Researchers may have seen any of these in their analysis of this data, depending on their choice of method, or typical hyperparameter choice. Would they make different decisions downstream in the analysis depending on which version seen? Which is the most accurate representation of the structure in high dimensions?](01-chap1_files/figure-pdf/fig-NLDR-variety-1.pdf){#fig-NLDR-variety width=100%}
-:::
-:::
-
 
 <!-- The various layouts created by @fig-NLDR-variety demonstrate the different outcomes that can result from the choices of methods and parameters, as well as the random seed used to start the calculation. Key structures interpreted from these views suggest: (1) highly **separated clusters** (a, b, e, g, h) with the number ranging from 3-6; (2) **stringy branches** (f), and (3) **barely separated clusters** (c, d) which would **contradict** the other representations.  -->
 
