@@ -1,33 +1,63 @@
 # Introduction {#sec-intro}
 
-- Topic statement
-  - Develop methods and software to understand NLDR techniques
+High-dimensional data, where each observation is described by many variables, is increasingly prevalent in modern science, from bioinformatics to computer vision and social science. For example, **CITE-seq data** [@hao2021] simultaneously records RNA expression and protein markers for individual cells, producing rich, complex datasets. To make sense of such data, analysts often rely on **dimension reduction** methods to create low-dimensional visualizations that can reveal patterns and structure.
 
-- Background
+One established approach is **linear projection**, where high-dimensional points are represented as linear combinations of the original features. **Principal Component Analysis (PCA)** is the most familiar method, identifying directions of maximum variance. Extending this idea, **tours** [@lee2021] provide dynamic sequences of linear projections, giving views from multiple angles to help reveal hidden structure. Tour methods are implemented in R packages such as `tourr` [@wickham2011], `langevitour` [@harrison2023], and `detourr` [@hart2022]. A key advantage of linear projections is that they preserve the geometric relationships of the original data—they do not introduce distortion. However, linear projections can become cluttered, and global structure may obscure local detail. Furthermore, **piling** [@laa2022]—where points concentrate in the center of projections—can mask important variation.
 
-  - What is high-dimensional data?
-  - What is happening with Dimension reduction?
-  - What is LDR and NLDR?
-  - Introduce high-dimensional data visualization (tour, detour, liminal, langevitour)
-  - What are the advantages or why using NLDR?
-  - Introduce different NLDR methods (Add references of the main papers)
-  - When the NLDR layouts can trust or not? (Any literature of inferences)
-  - Any literature of user-firendly platforms for NLDR users
-  
-Paper: https://www.sciencedirect.com/science/article/pii/S0092867421005833?via%3Dihub#fig1 (CITE-seq data)
+To overcome these limitations, analysts frequently turn to **nonlinear dimension reduction (NLDR)** methods such as tSNE [@laurens2008], UMAP [@leland2018], PHATE [@moon2019], TriMAP [@amid2022], and PaCMAP [@yingfan2021]. NLDR applies nonlinear transformations to generate low-dimensional embeddings that aim to preserve local or global data relationships. These methods are designed to **exaggerate structure**, making it easier for analysts to detect patterns.
 
-A human PBMC CITE-seq dataset typically contains both RNA expression data and surface protein (ADT) measurements. These datasets are ideal for multimodal single-cell analysis.
+Yet this strength also introduces a critical risk: **NLDR can hallucinate structure**, creating patterns in the low-dimensional space that do not exist in the high-dimensional data. This issue is strikingly illustrated in Figure 1.1, where eight different NLDR representations of the same CITE-seq dataset vary dramatically due to differences in method or hyperparameter choices. Such variability raises essential questions: *Which visualization can be trusted? Which accurately reflects the high-dimensional structure?*
+
+Despite the widespread use of NLDR, there is no widely accepted or visually interpretable framework for **diagnosing the reliability of NLDR representations**. Analysts are left to rely on subjective judgment when choosing and interpreting NLDR layouts, without tools to distinguish faithful representations from artifacts. There is also a lack of benchmark datasets with known geometric structure for testing NLDR methods systematically.
+
+In addition to technical gaps, **little is known about how people perceive and misperceive structure in NLDR layouts**. It is unclear how different visualizations influence analysts’ conclusions, or how distortions introduced by NLDR affect decision making. Given the critical role of visualization in high-dimensional data analysis, understanding the human perception of NLDR representations is essential.
+
+## Research Objectives
+
+This thesis addresses these challenges through four main objectives:
+
+1. **Develop methods and software to diagnose NLDR techniques**, providing tools to assess whether low-dimensional representations accurately reflect high-dimensional structures.
+
+2. **Conduct a large-scale user study to explore perception and misperception in NLDR representations**, assessing how viewers recognize structure differently in NLDR layouts compared to tour-based views. This cognitive perception experiment will help identify common mistakes made when choosing and reporting structure from NLDR visualizations, and will inform best practices for using these methods in data analysis.
+
+3. **Create benchmark datasets with known geometric properties**, via the `cardinalR` package, to systematically evaluate and validate NLDR methods.
+
+4. **Provide a platform for NLDR evaluation**, combining linked linear projections (such as tours) and NLDR layouts to reveal where distortions arise and how structure is preserved or lost.
+
+
+
+## Contribution
+
+By addressing both computational and cognitive aspects of NLDR, this research aims to advance our understanding of when and how NLDR methods can be trusted. The work will provide practical tools, benchmark data, and empirical insights to support the responsible use of dimension reduction techniques in high-dimensional data analysis.
+
+<!-- - Topic statement -->
+<!--   - Develop methods and software to understand NLDR techniques -->
+
+<!-- - Background -->
+
+<!--   - What is high-dimensional data? -->
+<!--   - What is happening with Dimension reduction? -->
+<!--   - What is LDR and NLDR? -->
+<!--   - Introduce high-dimensional data visualization (tour, detour, liminal, langevitour) -->
+<!--   - What are the advantages or why using NLDR? -->
+<!--   - Introduce different NLDR methods (Add references of the main papers) -->
+<!--   - When the NLDR layouts can trust or not? (Any literature of inferences) -->
+<!--   - Any literature of user-firendly platforms for NLDR users -->
+
+<!-- Paper: https://www.sciencedirect.com/science/article/pii/S0092867421005833?via%3Dihub#fig1 (CITE-seq data) -->
+
+<!-- A human PBMC CITE-seq dataset typically contains both RNA expression data and surface protein (ADT) measurements. These datasets are ideal for multimodal single-cell analysis. -->
 
 <!-- Non-linear dimension reduction (NLDR) is popular for making a convenient low-dimensional representation of high-dimensional data by applying non-linear transformation and all designed to better capture specific structures potentially existing in high-dimensions. Here we focus on five currently popular techniques, t-distributed stochastic neighbor embedding (tSNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. tNSE and UMAP can be considered to produce the 2D minimizing the divergence between two distributions, where the distributions are modeling the inter-point distances. PHATE, TriMAP and PaCMAP are examples of diffusion processes [@coifman2005] spreading to capture geometric shapes, that include both global and local structure. -->
 
-- Research gap
+<!-- - Research gap -->
 
-  - There is no visually interpretable way to diagnose NLDR techniques 
-  - Lack of benchmark data structures to capture the various geometric properties
-  - Users don't know when to trust NLDR representations
-  - There is no platform to evaluate NLDR representations
+<!--   - There is no visually interpretable way to diagnose NLDR techniques  -->
+<!--   - Lack of benchmark data structures to capture the various geometric properties -->
+<!--   - Users don't know when to trust NLDR representations -->
+<!--   - There is no platform to evaluate NLDR representations -->
 
-Take on of the cardinalR dataset and generate 6/8 different layouts and explain why it is important to understand what's happening with NLDR methods. 
+<!-- Take on of the cardinalR dataset and generate 6/8 different layouts and explain why it is important to understand what's happening with NLDR methods.  -->
 
 ```{r}
 #| label: load-libraries
@@ -154,7 +184,7 @@ nldr8 <- pacmap_pbmc |>
 ```{r}
 #| label: fig-NLDR-variety
 #| echo: false
-#| fig-cap: "Eight different NLDR representations of a human PBMC CITE-seq dataset (@yuhan2021). Different techniques and different (hyper)parameter choices are used. Researchers may have seen any of these in their analysis of this data, depending on their choice of method, or typical (hyper)parameter choice. Would they make different decisions downstream in the analysis depending on which version seen? Which is the most accurate representation of the structure in high dimensions?"
+#| fig-cap: "Eight different NLDR representations of a human PBMC CITE-seq dataset (@yuhan2021). Different techniques and different hyperparameter choices are used. Researchers may have seen any of these in their analysis of this data, depending on their choice of method, or typical hyperparameter choice. Would they make different decisions downstream in the analysis depending on which version seen? Which is the most accurate representation of the structure in high dimensions?"
 #| fig-width: 8
 #| fig-height: 4
 #| out-width: 100%
@@ -179,12 +209,14 @@ The rest of the thesis is organized as follows:
 
 @sec-first-paper introduces an algorithm to assess the NLDR and decide on which, if any, is the most reasonable representation of the structure(s) present in high-dimensional data. We create a model starting with NLDR layout that is then used to display as a wireframe in high dimensions.
 
-@sec-second-paper presents the implementation of the work is available as an R package, named `quollr`, an acronym to "**qu**estioning how a high-dimensional **o**bject **l**ooks in **l**ow-dimensions using **r**" [@jayani2024a]. This package also contains a function for performing hexagonal binning using a new approach, for saving langevitour results with a specific projection, and link plots to understand the quirks that occur with different NLDR techniques.
+@sec-second-paper provides empirical evidence on how viewers recognize structure differently when using NLDR layouts versus the tour view, particularly with varying distances between clusters. The findings will help clarify common mistakes made when selecting and reporting structures based on NLDR layouts. 
 
-@sec-third-paper proposes the R package, `cardinalR` [@jayani2024b], which includes functions to generate a large variety of structures in high dimensions along with some already generated examples.
+@sec-third-paper presents the implementation of the work is available as an R package, named `quollr`, an acronym to "**qu**estioning how a high-dimensional **o**bject **l**ooks in **l**ow-dimensions using **r**" [@jayani2024a]. This package also contains a function for performing hexagonal binning using a new approach, for saving langevitour results with a specific projection, and link plots to understand the quirks that occur with different NLDR techniques.
 
-@sec-fourth-paper provides empirical evidence on how viewers recognize structure differently when using NLDR layouts versus the tour view, particularly with varying distances between clusters. The findings will help clarify common mistakes made when selecting and reporting structures based on NLDR layouts. 
+@sec-fourth-paper proposes the R package, `cardinalR` [@jayani2024b], which includes functions to generate a large variety of structures in high dimensions along with some already generated examples.
 
 @sec-fifth-paper introduces `ViMRoR` (Visualize Most Reasonable Representations), a Shiny web application designed to support automated selection and diagnostic evaluation of NLDR methods.
 
 @sec-conclusion concludes the thesis, summarises the contribution of the work, and discusses some future plans.
+
+
