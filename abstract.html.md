@@ -21,7 +21,6 @@ The inclusion of co-authors reflects the fact that the work came from active col
 
 ::: {.cell}
 ::: {.cell-output-display}
-
 `````{=html}
 <table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
  <thead>
@@ -47,7 +46,6 @@ The inclusion of co-authors reflects the fact that the work came from active col
 </table>
 
 `````
-
 :::
 :::
 

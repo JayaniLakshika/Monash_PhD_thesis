@@ -22,15 +22,13 @@ book:
     - "03-chap3.qmd"
     - "04-chap4.qmd"
     - "05-chap5.qmd"
-    - "06-chap6.qmd"
-    - "07-chap7.qmd"
     - "refs.qmd"
   appendices:
     - "A-appA.qmd"
     - "B-appB.qmd"
-    - "C-appC.qmd"
-    - "D-appD.qmd"
-    - "E-appE.qmd"
+    - "C1-appC1.qmd"
+    - "C2-appC2.qmd"
+    - "C3-appC3.qmd"
   sidebar:
     style: "docked"
 

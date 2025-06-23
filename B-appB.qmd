@@ -1,1 +1,1 @@
-# Appendix to "quollr" {#sec-appendix-b}
+# Appendix to "A user study to explore perception and misperception in NLDR representations" {#sec-appendix-b}

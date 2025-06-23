@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.31">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>1&nbsp; Introduction – Developing a grammar to define interactive graphics with application to complex model diagnostics</title>
+
+
+<title>Appendix E — Appendix to “Development of an interactive and dynamic graphics system for NLDR users” – Developing a grammar to define interactive graphics with application to complex model diagnostics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,27 +20,8 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
+
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -46,8 +30,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./02-chap2.html" rel="next">
-<link href="./acknowledgements.html" rel="prev">
+<link href="./C2-appC2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -57,7 +40,8 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-50091110a677ef3a5141072988bf5acf.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cf69056fc042942922d3f2932dce90b9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-cf69056fc042942922d3f2932dce90b9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -83,25 +67,35 @@ div.csl-indent {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><link href="https://fonts.googleapis.com/css?family=Fira+Sans%7CMerriweather%7CSource%20Code%20Pro" rel="stylesheet">
+}</script>
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Merriweather|Source Code Pro" rel="stylesheet">
+
+
 </head>
+
 <body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-chap1.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./A-appA.html">Appendices</a></li><li class="breadcrumb-item"><a href="./C3-appC3.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Appendix to “Development of an interactive and dynamic graphics system for NLDR users”</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Developing a grammar to define interactive graphics with application to complex model diagnostics</a> 
         <div class="sidebar-tools-main">
@@ -117,7 +111,7 @@ div.csl-indent {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Front matter</span></a>
@@ -137,7 +131,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-chap1.html" class="sidebar-item-text sidebar-link active">
+  <a href="./01-chap1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -179,8 +173,8 @@ div.csl-indent {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./A-appA.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Appendix to “Visualising how non-linear dimension reduction warps your data”</span></span></a>
@@ -206,26 +200,26 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./C3-appC3.html" class="sidebar-item-text sidebar-link">
+  <a href="./C3-appC3.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Appendix to “Development of an interactive and dynamic graphics system for NLDR users”</span></span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title"><b>Sections</b></h2>
-   
-  <ul class="collapse">
-<li><a href="#thesis-outline" id="toc-thesis-outline" class="nav-link active" data-scroll-target="#thesis-outline"><span class="header-section-number">1.1</span> Thesis Outline</a></li>
-  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/01-chap1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="sec-intro" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></h1>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./A-appA.html">Appendices</a></li><li class="breadcrumb-item"><a href="./C3-appC3.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Appendix to “Development of an interactive and dynamic graphics system for NLDR users”</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-appendix-c3" class="quarto-section-identifier">Appendix E — Appendix to “Development of an interactive and dynamic graphics system for NLDR users”</span></h1>
 </div>
 
 
@@ -239,82 +233,14 @@ div.csl-indent {
   
 
 
-</header><ul>
-<li>
-<p>Topic statement</p>
-<ul>
-<li>Develop methods and software to understand NLDR techniques</li>
-</ul>
-</li>
-<li>
-<p>Background</p>
-<ul>
-<li>What is high-dimensional data?</li>
-<li>What is happening with Dimension reduction?</li>
-<li>What is LDR and NLDR?</li>
-<li>Introduce high-dimensional data visualization (tour, detour, liminal, langevitour)</li>
-<li>What are the advantages or why using NLDR?</li>
-<li>Introduce different NLDR methods (Add references of the main papers)</li>
-<li>When the NLDR layouts can trust or not? (Any literature of inferences)</li>
-<li>Any literature of user-firendly platforms for NLDR users</li>
-</ul>
-</li>
-</ul>
-<p>Paper: https://www.sciencedirect.com/science/article/pii/S0092867421005833?via%3Dihub#fig1 (CITE-seq data)</p>
-<p>A human PBMC CITE-seq dataset typically contains both RNA expression data and surface protein (ADT) measurements. These datasets are ideal for multimodal single-cell analysis.</p>
-<!-- Non-linear dimension reduction (NLDR) is popular for making a convenient low-dimensional representation of high-dimensional data by applying non-linear transformation and all designed to better capture specific structures potentially existing in high-dimensions. Here we focus on five currently popular techniques, t-distributed stochastic neighbor embedding (tSNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. tNSE and UMAP can be considered to produce the 2D minimizing the divergence between two distributions, where the distributions are modeling the inter-point distances. PHATE, TriMAP and PaCMAP are examples of diffusion processes [@coifman2005] spreading to capture geometric shapes, that include both global and local structure. -->
-<ul>
-<li>
-<p>Research gap</p>
-<ul>
-<li>There is no visually interpretable way to diagnose NLDR techniques</li>
-<li>Lack of benchmark data structures to capture the various geometric properties</li>
-<li>Users don’t know when to trust NLDR representations</li>
-<li>There is no platform to evaluate NLDR representations</li>
-</ul>
-</li>
-</ul>
-<p>Take on of the cardinalR dataset and generate 6/8 different layouts and explain why it is important to understand what’s happening with NLDR methods.</p>
-<!-- Historically, 2D representations of high-dimensional data have been computed using multidimensional scaling (MDS) [@borg2005], which includes principal components analysis (PCA) [@jolliffe2011] as a special case. The 2D representation can be viewed as a layout of points in 2D produced by an embedding procedure that maps the data from high dimensions. In MDS, the 2D layout is constructed by minimizing a stress function that differences distances between points in high-dimensions with potential distances between points in 2D. Various formulations of the stress function result in non-metric scaling [@saeed2018] and isomap [@silva2002]. Challenges in working with high-dimensional data, including visualization, are outlined in @johnstone2009.  -->
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-NLDR-variety" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-NLDR-variety-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-chap1_files/figure-html/fig-NLDR-variety-1.png" class="img-fluid figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NLDR-variety-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.1: Eight different NLDR representations of a human PBMC CITE-seq dataset (<span class="citation" data-cites="yuhan2021">Hao et al. (<a href="refs.html#ref-yuhan2021" role="doc-biblioref">2021</a>)</span>). Different techniques and different (hyper)parameter choices are used. Researchers may have seen any of these in their analysis of this data, depending on their choice of method, or typical (hyper)parameter choice. Would they make different decisions downstream in the analysis depending on which version seen? Which is the most accurate representation of the structure in high dimensions?
-</figcaption></figure>
-</div>
-</div>
-</div>
-<!-- The various layouts created by @fig-NLDR-variety demonstrate the different outcomes that can result from the choices of methods and parameters, as well as the random seed used to start the calculation. Key structures interpreted from these views suggest: (1) highly **separated clusters** (a, b, e, g, h) with the number ranging from 3-6; (2) **stringy branches** (f), and (3) **barely separated clusters** (c, d) which would **contradict** the other representations.  -->
-<!-- These variations occur due to the different perspectives on the distances between data points provided by the methods and parameter choices. -->
-<!-- Another way to visualize high-dimensional data is through linear projections. PCA is the traditional method, resulting in a new set of variables that are linear combinations of the original variables. Tours, as defined by @lee2021, expand on this concept by producing dynamic linear projection visualizations that offer views of the data from all angles. @lee2021 provides an overview of the key advancements in tours. Numerous tour algorithms are available, with many included in the R package `tourr` [@wickham2011], and versions that offer enhanced interactivity in `langevitour` [@harrison2024] and `detourr` [@hart2022]. Linear projections offer a reliable way to view high-dimensional data as they do not distort the space, making them more accurate representations of the data structure. However, linear projections can become cluttered, and global patterns can obscure local structure. The simple act of projecting data from high-dimensional spaces leads to piling [@laa2022], where data concentrates in the center of the projections. -->
-<!-- NLDR is designed to escape these issues, to exaggerate structure so that it can be observed. However, NLDR can hallucinate wildly, to suggest patterns that are not actually present in the data. The research project addresses this significant issue by proposing methods to understand better whether the NDLR representations are reliable or hallucinations. These methods are designed to enable a more profound understanding of the quality and validity of NLDR-derived low-dimensional representations. By incorporating rigorous evaluation techniques, the project seeks to identify instances where the NLDR models genuinely capture the essential structures present in the data and where they might introduce artifacts or distortions, leading to potentially misleading representations. This meticulous examination and validation process contribute to enhancing the robustness and credibility of NLDR techniques in high-dimensional data analysis. -->
-<section id="thesis-outline" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="thesis-outline">
-<span class="header-section-number">1.1</span> Thesis Outline</h2>
-<p>The rest of the thesis is organized as follows:</p>
-<p><a href="02-chap2.html" class="quarto-xref"><span>Chapter 2</span></a> introduces an algorithm to assess the NLDR and decide on which, if any, is the most reasonable representation of the structure(s) present in high-dimensional data. We create a model starting with NLDR layout that is then used to display as a wireframe in high dimensions.</p>
-<p><span class="quarto-unresolved-ref">?sec-second-paper</span> presents the implementation of the work is available as an R package, named <code>quollr</code>, an acronym to “<strong>qu</strong>estioning how a high-dimensional <strong>o</strong>bject <strong>l</strong>ooks in <strong>l</strong>ow-dimensions using <strong>r</strong>” <span class="citation" data-cites="jayani2024a">(<a href="refs.html#ref-jayani2024a" role="doc-biblioref">Gamage et al. n.d.a</a>)</span>. This package also contains a function for performing hexagonal binning using a new approach, for saving langevitour results with a specific projection, and link plots to understand the quirks that occur with different NLDR techniques.</p>
-<p><a href="04-chap4.html#sec-third-paper" class="quarto-xref"><span>Section 4.1</span></a> proposes the R package, <code>cardinalR</code> <span class="citation" data-cites="jayani2024b">(<a href="refs.html#ref-jayani2024b" role="doc-biblioref">Gamage et al. n.d.b</a>)</span>, which includes functions to generate a large variety of structures in high dimensions along with some already generated examples.</p>
-<p><a href="04-chap4.html#sec-fourth-paper" class="quarto-xref"><span>Section 4.2</span></a> provides empirical evidence on how viewers recognize structure differently when using NLDR layouts versus the tour view, particularly with varying distances between clusters. The findings will help clarify common mistakes made when selecting and reporting structures based on NLDR layouts.</p>
-<p><a href="04-chap4.html#sec-fifth-paper" class="quarto-xref"><span>Section 4.3</span></a> introduces <code>ViMRoR</code> (Visualize Most Reasonable Representations), a Shiny web application designed to support automated selection and diagnostic evaluation of NLDR methods.</p>
-<p><a href="05-chap5.html" class="quarto-xref"><span>Chapter 5</span></a> concludes the thesis, summarises the contribution of the work, and discusses some future plans.</p>
+</header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-jayani2024a" class="csl-entry" role="listitem">
-Gamage, J. P., Cook, D., Harrison, P., Lydeamore, M., and Talagala, T. S. (n.d.a). <em><a href="https://github.com/JayaniLakshika/quollr">Quollr: Visualising how nonlinear dimension reduction warps your data</a></em>.
-</div>
-<div id="ref-jayani2024b" class="csl-entry" role="listitem">
-Gamage, J. P., Cook, D., Harrison, P., Lydeamore, M., and Talagala, T. S. (n.d.b). <em><a href="https://jayanilakshika.github.io/cardinalR">cardinalR: Collection of data structures</a></em>.
-</div>
-<div id="ref-yuhan2021" class="csl-entry" role="listitem">
-Hao, Y., Hao, S., Andersen-Nissen, E., Mauck, W. M., Zheng, S., Butler, A., Lee, M. J., Wilk, A. J., Darby, C., Zager, M., Hoffman, P., Stoeckius, M., Papalexi, E., Mimitou, E. P., Jain, J., Srivastava, A., Stuart, T., Fleming, L. M., Yeung, B., Rogers, A. J., McElrath, J. M., Blish, C. A., Gottardo, R., Smibert, P., and Satija, R. (2021), <span>“Integrated analysis of multimodal single-cell data,”</span> <em>Cell</em>, 184, 3573–3587.e29. https://doi.org/<a href="https://doi.org/10.1016/j.cell.2021.04.048">https://doi.org/10.1016/j.cell.2021.04.048</a>.
-</div>
-</div>
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -712,19 +638,19 @@ Hao, Y., Hao, S., Andersen-Nissen, E., Mauck, W. M., Zheng, S., Butler, A., Lee,
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./acknowledgements.html" class="pagination-link" aria-label="Acknowledgements">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Acknowledgements</span>
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./C2-appC2.html" class="pagination-link" aria-label="Appendix to &quot;cardinalR&quot;">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Appendix to “cardinalR”</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02-chap2.html" class="pagination-link" aria-label="Visualising how non-linear dimension reduction warps your data">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Visualising how non-linear dimension reduction warps your data</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/01-chap1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/C3-appC3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
