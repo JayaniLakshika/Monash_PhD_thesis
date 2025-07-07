@@ -1,12 +1,12 @@
 # Conclusion and future plans {#sec-conclusion}
 
-The five pieces of work assembled in this thesis share a common theme of advancing Non-linear dimension reduction (NLDR) diagnostics, with a focus on improving the NLDR methods, visual inference, and developing innovative solutions to automate diagnostic processes.
+The four pieces of work assembled in this thesis share a common theme of advancing Non-linear dimension reduction (NLDR) diagnostics, with a focus on improving the NLDR methods, visual inference, and developing innovative solutions to automate diagnostic processes.
 
 Write one paragraph from each chapter later...
 
 ## Contributions
 
-The primary contributions of this research are fivefold. Firstly, we develop an algorithm. Secondly, we develop a package. Next, package for high-dimensional data structures. Then, a user study to explore perception and misperception in NLDR representations. Lastly, we share a user-focused R package and Shiny app, making the automated diagnostic tools accessible to a broad range of analysts and practitioners.
+The primary contributions of this research are fourfold. First, we develop an algorithm. Second, a user study to explore perception and misperception in NLDR representations. Next, we share a user-focused Shiny app, making the automated diagnostic tools accessible to a broad range of analysts and practitioners. Next, we develop a package. Lastly, package for high-dimensional data structures.
 
 The aforementioned R package (and its dependency) is available on CRAN with the latest development versions in the links below:
 
@@ -14,6 +14,8 @@ The aforementioned R package (and its dependency) is available on CRAN with the 
 - `cardinalR` (<https://github.com/jayanilakshika/cardinalR>).
 
 The Shiny app for `quollr` is available at one of the mirror sites listed at <https://vimror.netlify.app/> with the source code available at <https://github.com/jayanilakshika/ViMRoR>.
+
+The survey web application, [Match-a-roo](https://ebsmonash.shinyapps.io/Match-a-roo/), is designed to collect survey responses and demographics using the Shiny in R. Each subject had access to the survey via the shiny.io server.
 
 Principles of transparency and reproducible research have guided the work with all materials related to the thesis at <https://github.com/JayaniLakshika/Monash_PhD_thesis>. The thesis is written using Quarto [@Allaire_Quarto_2024] and is available online at <https://jayani-lakshika-phd-thesis.netlify.app>. 
 
