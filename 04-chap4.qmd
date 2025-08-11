@@ -1,8 +1,8 @@
 # Software {#sec-software}
 
-## quollr: An R Package for Visualizing $2-D$ Models from Non-linear Dimension Reductions in High Dimensional Space {#sec-third-paper}
+{{< include 08-chap8.qmd >}}
 
-## cardinalR: Generating interesting high-dimensional data structures {#sec-fourth-paper}
+{{< include 07-chap7.qmd >}}
 
 
 

@@ -39,7 +39,7 @@ There are several directions that this work can be developed.
 
 <!--add section on Do you have any plans/ideas to extend this to NDR results that project into more than 2D / do you think that would even be possible (say, for up to 5D projections or so)?. You’ve got one bullet point for your thesis future work section now! You could point Fabian to your paper conclusions where some ideas are suggested.-->
 
-### Extending our algorithm to NDR representations beyond $2-\text{D}$
+### Extending our algorithm to NLDR representations beyond $2-\text{D}$
 
 A potential direction for future work is extending the current algorithm to NLDR results that project into more than two dimensions. While most existing tools including those developed in this thesis focus on $2-\text{D}$ embeddings, exploring projections into higher dimensions like $3-\text{D}$ or $5-\text{D}$ spaces could provide richer structural information in some settings.
 
@@ -51,11 +51,11 @@ One promising direction for future work is the integration of scagnostics (@lela
 
 Moreover, investigating how scagnostic profiles vary with different sample sizes for specific underlying data structures would provide valuable insight into the stability and robustness of NLDR methods. This could help identify which methods are more resilient to changes in sample size and which structures are more prone to distortion under small sample sizes.
 
-### Extend our algorithm to $3-\text{D}$
+<!-- ### Extend our algorithm to $3-\text{D}$ -->
 
-A natural extension of this work is to explore and evaluate NLDR methods in $3-\text{D}$ space, as $3-\text{D}$ can also be considered a low-dimensional space. While the current framework relies on hexagonal binning to model structure in the $2-\text{D}$ space, adapting this approach to $3-\text{D}$ requires alternative strategies for spatial partitioning. One promising idea is to use k-means clustering in $3-\text{D}$ embeddings to define neighborhood structures and centroids for model fitting. This would enable diagnostic assessment of NLDR performance in $3-\text{D}$ layouts, which may better preserve complex structures in high-dimensional data.
+<!-- A natural extension of this work is to explore and evaluate NLDR methods in $3-\text{D}$ space, as $3-\text{D}$ can also be considered a low-dimensional space. While the current framework relies on hexagonal binning to model structure in the $2-\text{D}$ space, adapting this approach to $3-\text{D}$ requires alternative strategies for spatial partitioning. One promising idea is to use k-means clustering in $3-\text{D}$ embeddings to define neighborhood structures and centroids for model fitting. This would enable diagnostic assessment of NLDR performance in $3-\text{D}$ layouts, which may better preserve complex structures in high-dimensional data. -->
 
-Following this, a comparative evaluation can be conducted to assess whether $2-\text{D}$ or $3-\text{D}$ representations are more appropriate for preserving the underlying structure of the high-dimensional data.
+<!-- Following this, a comparative evaluation can be conducted to assess whether $2-\text{D}$ or $3-\text{D}$ representations are more appropriate for preserving the underlying structure of the high-dimensional data. -->
 
 ### Compare prediction approaches
 
