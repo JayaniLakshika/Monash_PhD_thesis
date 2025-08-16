@@ -54,6 +54,21 @@ interior_annotation <- function(label, position = c(0.92, 0.92), cex = 1, col="g
 
 # Introduction {#sec-intro}
 
+<!-- - Topic statement -->
+<!--   - Develop methods and software to understand NLDR techniques -->
+
+<!-- - Background -->
+
+<!--   - What is high-dimensional data? -->
+<!--   - What is happening with Dimension reduction? -->
+<!--   - What is LDR and NLDR? -->
+<!--   - Introduce high-dimensional data visualization (tour, detour, liminal, langevitour) -->
+<!--   - What are the advantages or why using NLDR? -->
+<!--   - Introduce different NLDR methods (Add references of the main papers) -->
+<!--   - When the NLDR layouts can trust or not? (Any literature of inferences) -->
+<!--   - Any literature of user-firendly platforms for NLDR users -->
+
+
 High-dimensional data, where each observation is described by many variables, is increasingly prevalent in modern science, from bioinformatics to computer vision and social science. For example, **CITE-seq data** [@hao2021] simultaneously records RNA expression and protein markers for individual cells, producing rich, complex datasets. To make sense of such data, analysts often rely on **dimension reduction** methods to create low-dimensional visualizations that can reveal patterns and structure.
 
 One established approach is **linear projection**, where high-dimensional points are represented as linear combinations of the original features. **Principal Component Analysis (PCA)** is the most familiar method, identifying directions of maximum variance. Extending this idea, **tours** [@lee2021] provide dynamic sequences of linear projections, giving views from multiple angles to help reveal hidden structure. Tour methods are implemented in R packages such as `tourr` [@wickham2011], `langevitour` [@harrison2023], and `detourr` [@hart2022]. A key advantage of linear projections is that they preserve the geometric relationships of the original data—they do not introduce distortion. However, linear projections can become cluttered, and global structure may obscure local detail. Furthermore, **piling** [@laa2022]—where points concentrate in the center of projections—can mask important variation.
@@ -162,20 +177,6 @@ This thesis addresses these challenges through four main objectives:
 ## Contribution
 
 By addressing both computational and cognitive aspects of NLDR, this research aims to advance our understanding of when and how NLDR methods can be trusted. The work will provide practical tools, benchmark data, and empirical insights to support the responsible use of dimension reduction techniques in high-dimensional data analysis.
-
-<!-- - Topic statement -->
-<!--   - Develop methods and software to understand NLDR techniques -->
-
-<!-- - Background -->
-
-<!--   - What is high-dimensional data? -->
-<!--   - What is happening with Dimension reduction? -->
-<!--   - What is LDR and NLDR? -->
-<!--   - Introduce high-dimensional data visualization (tour, detour, liminal, langevitour) -->
-<!--   - What are the advantages or why using NLDR? -->
-<!--   - Introduce different NLDR methods (Add references of the main papers) -->
-<!--   - When the NLDR layouts can trust or not? (Any literature of inferences) -->
-<!--   - Any literature of user-firendly platforms for NLDR users -->
 
 <!-- Paper: https://www.sciencedirect.com/science/article/pii/S0092867421005833?via%3Dihub#fig1 (CITE-seq data) -->
 
