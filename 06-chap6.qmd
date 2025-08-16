@@ -1,8 +1,6 @@
 # Conclusion and future plans {#sec-conclusion}
 
-The four pieces of work assembled in this thesis share a common theme of advancing Non-linear dimension reduction (NLDR) diagnostics, with a focus on improving the NLDR methods, visual inference, and developing innovative solutions to automate diagnostic processes.
-
-Write one paragraph from each chapter later...
+The four contributions in this thesis address improving NLDR diagnostics, exploring perceptual insights in high-dimensional data, constructing simulated data structures, and providing user-friendly tools for analysis.
 
 ## Contributions
 
