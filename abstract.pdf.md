@@ -1,20 +1,17 @@
 # Abstract {-}
 
-High-dimensional datasets consist of observations characterized by numerous features, often exhibiting complex geometric properties that can be challenging to visualize. While linear dimension reductions are a reliable method for representing high-dimensional data, they can lead to cluttered visualizations where global patterns obscure local structures and can result in concentrating the data at the center of projections. To overcome these limitations, Non-linear dimension reduction (NLDR) techniques have been developed, applying non-linear transformations to provide clearer, low-dimensional representations of high-dimensional data. However, the effectiveness of NLDR methods can vary based on the choice of techniques and (hyper)parameters, leading to diverse representations that can be either accurate or misleading. The main objective of this research is to develop innovative methods and software tools for investigating and analyzing NLDR techniques, thereby enhancing our ability to understand high-dimensional data structures and improve visualizations.
+High-dimensional datasets consist of observations characterized by numerous features, often exhibiting complex geometric properties that can be challenging to visualize. While linear dimension reductions are a reliable method for representing high-dimensional data, they can lead to cluttered visualizations where global patterns obscure local structures and can result in concentrating the data at the center of projections. To overcome these limitations, Non-linear dimension reduction (NLDR) techniques have been developed, applying non-linear transformations to provide clearer, low-dimensional representations of high-dimensional data. However, the effectiveness of NLDR methods can vary based on the choice of techniques and hyper-parameters, leading to diverse representations that can be either accurate or misleading. The main objective of this research is to develop innovative methods and software tools for investigating and analyzing NLDR techniques, thereby enhancing our ability to understand high-dimensional data structures and improve visualizations.
 
-This research presents five original contributions. The first contribution ([Chapter 2](#sec-first-paper)) introduces a new method for visualizing how NLDR warps data. This method improves the diagnostics of NLDR techniques. The second contribution ([Chapter 3](#sec-second-paper)) involves implementing [Chapter 2](#sec-first-paper)'s method as an R package. The fourth contribution ([Chapter 4](#sec-third-paper)) introduces an R package designed to generate high-dimensional data structures. This package improves characteristics such as adding noise dimensions and background noise. The third contribution ([Chapter 5](#sec-fourth-paper)) provides evidence in identification of clusters at various distances when observing NLDR representation and the tour view of high-dimensional data. This finding is based on a human subject experiment that explores both the perception and misperception of NLDR representations. Finally, the fifth contribution ([Chapter 6](#sec-fifth-paper)) features a Shiny app that offers a user-friendly interface for analysts to obtain the most accurate NLDR representation. Overall, this work advances the field of diagnosing NLDR by enhancing the visualization of high-dimensional data.
+This research presents four original contributions. The first contribution ([Chapter 2](#sec-first-paper)) introduces a new method for visualizing how NLDR warps data. This method improves the diagnostics of NLDR techniques. The second contribution ([Chapter 3](#sec-second-paper)) provides evidence in identification of clusters at various distances when observing NLDR representation and the tour view of high-dimensional data. This finding is based on a human subject experiment that explores both the perception and misperception of NLDR representations. The third contribution ([Chapter 4](#sec-software)) presents two R packages: `quollr` and `cardinalR`. The `quollr` implements the method introduced in [Chapter 2](#sec-first-paper) as an R package. The `cardinalR` is developed to generate high-dimensional data structures, with features such as adding noise dimensions and simulating background noise. Finally, the fourth contribution ([Chapter 5](#sec-fifth-paper)) features a Shiny app that offers a user-friendly interface for analysts to obtain the most accurate NLDR representation. Overall, this work advances the field of diagnosing NLDR by improving the visualization of high-dimensional data.
+
 
 # Declaration {-}
 
 I hereby declare that this thesis contains no material which has been accepted for the award of any other degree or diploma at any university or equivalent institution and that, to the best of my knowledge and belief, this thesis contains no material previously published or written by another person, except where due reference is made in the text of the thesis.
 
-This thesis includes one original papers published in a peer reviewed journal and four unpublished papers. The core theme of the thesis is "interactive and dynamic graphics for studying non-linear dimension reduction models of high-dimensional data". The ideas, development and writing up of all the papers in the thesis were the principal responsibility of myself, the student, working within the Department of Econometrics and Business Statistics under the supervision of Professor Dianne Cook, Dr Paul Harrison, Dr Michael Lydeamore, and Dr Thiyanga S. Talagala (University of Sri Jayewardenepura).
+This thesis includes one original papers published in a peer reviewed journal and four unpublished papers. The core theme of the thesis is to "develop methods and interactive graphics for assessing and interpreting non-linear dimension reduction of high-dimensional datasets". The ideas, development and writing up of all the papers in the thesis were the principal responsibility of myself, the student, working within the Department of Econometrics and Business Statistics under the supervision of Professor Dianne Cook, Dr Paul Harrison, Dr Michael Lydeamore, and Dr Thiyanga S. Talagala (University of Sri Jayewardenepura).
 
 The inclusion of co-authors reflects the fact that the work came from active collaboration between researchers and acknowledges input into team-based research. In the case of [Chapter 2](#sec-first-paper), my contribution to the work involved the following:
-
-
-
-
 
 
 ::: {.cell}
@@ -42,10 +39,6 @@ The inclusion of co-authors reflects the fact that the work came from active col
 
 :::
 :::
-
-
-
-
 
 
 
