@@ -6,22 +6,15 @@ Write one paragraph from each chapter later...
 
 ## Contributions
 
-The primary contributions of this research are fourfold. First, we develop an algorithm. Second, a user study to explore perception and misperception in NLDR representations. Next, we share a user-focused Shiny app, making the automated diagnostic tools accessible to a broad range of analysts and practitioners. Next, we develop a package. Lastly, package for high-dimensional data structures.
+The primary contributions of this research are fourfold. First, we introduce a novel method for visualizing how NLDR warps data, thereby improving the diagnostics of NLDR techniques. Second, we conduct a human subject experiment to investigate the perception and misperception of NLDR representations, providing evidence on how clusters at varying distances are identified in comparison to high-dimensional tours. Third, we develop two R packages: `quollr`, which implements the proposed diagnostic method, and `cardinalR`, which generates high-dimensional data structures with enhanced features such as added noise dimensions and background noise. Finally, we create a Shiny application that provides analysts with a user-friendly interface for obtaining the most accurate NLDR representation.
 
-The aforementioned R package (and its dependency) is available on CRAN with the latest development versions in the links below:
+The software outputs of this research have been made publicly available to support transparency and reproducibility. The R package `quollr` ([https://github.com/jayanilakshika/quollr](https://github.com/jayanilakshika/quollr)) and `cardinalR` ([https://github.com/jayanilakshika/cardinalR](https://github.com/jayanilakshika/cardinalR)) are available on CRAN, with the latest development versions hosted on GitHub. A Shiny application for `quollr` is accessible via one of the mirror sites at [https://menurar.netlify.app/](https://menurar.netlify.app/), with its source code available at [https://github.com/JayaniLakshika/menuraR](https://github.com/JayaniLakshika/menuraR).
 
-- `quollr` (<https://github.com/jayanilakshika/quollr>), and
-- `cardinalR` (<https://github.com/jayanilakshika/cardinalR>).
+The survey web application, **Match-a-roo** ([https://ebsmonash.shinyapps.io/Match-a-roo/](https://ebsmonash.shinyapps.io/Match-a-roo/)), was designed and implemented in Shiny to collect participant responses and demographic information. Each subject accessed the survey through the shinyapps.io server.
 
-The Shiny app for `quollr` is available at one of the mirror sites listed at <https://vimror.netlify.app/> with the source code available at <https://github.com/jayanilakshika/ViMRoR>.
+All materials associated with this thesis are openly available at [https://github.com/JayaniLakshika/Monash\_PhD\_thesis](https://github.com/JayaniLakshika/Monash_PhD_thesis), reflecting the principles of transparency and reproducible research. The thesis itself is written in Quarto [@Allaire_Quarto_2024] and published online at [https://jayani-lakshika-phd-thesis.netlify.app](https://jayani-lakshika-phd-thesis.netlify.app).
 
-The survey web application, [Match-a-roo](https://ebsmonash.shinyapps.io/Match-a-roo/), is designed to collect survey responses and demographics using the Shiny in R. Each subject had access to the survey via the shiny.io server.
-
-Principles of transparency and reproducible research have guided the work with all materials related to the thesis at <https://github.com/JayaniLakshika/Monash_PhD_thesis>. The thesis is written using Quarto [@Allaire_Quarto_2024] and is available online at <https://jayani-lakshika-phd-thesis.netlify.app>. 
-
-The R packages used throughout the thesis include `tidyverse` [@tidyverse], `lmtest` [@lmtest], `kableExtra` [@kableextra], `patchwork` [@patchwork], `glue` [@glue], `ggpcp` [@ggpcp], `here` [@here], and `knitr` [@knitr]. (Need to finalize at the end of writing)
-
-<!--add about Match-a-roo as well-->
+In addition, a number of R packages were essential in the development of this work, including **`tidyverse`** \[@tidyverse], **`lmtest`** \[@lmtest], **`kableExtra`** \[@kableextra], **`patchwork`** \[@patchwork], **`glue`** \[@glue], **`ggpcp`** \[@ggpcp], **`here`** \[@here], and **`knitr`** \[@knitr]. (Final package list to be confirmed upon completion of writing.)
 
 ## Future work
 
