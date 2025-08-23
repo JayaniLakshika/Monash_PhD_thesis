@@ -2,21 +2,13 @@
 
 This thesis would have never been a success without the guidance, encouragement, and support of my supervisors, family, and friends. This note is to show my gratitude to them.
 
-First and foremost, I express my sincere gratitude to my supervisor, Professor Rob J. Hyndman,
-for his incomparable mentorship. Throughout my PhD journey, one recurring comment I made
-to my husband was, “Rob can tell I’m struggling, but he waits until I’m nearly at the edge before
-stepping in.” It became something I would say with a smile—a genuine expression of appreciation
-for how you challenged me to grow. Your approach to mentoring pushed me to develop resilience
-and independence. While it was challenging at times, the process taught me invaluable lessons that I
-would not have learnt otherwise. Thank you for believing in my ability to navigate difficulties, even
-when I doubted myself. I am immensely grateful and honoured to have worked under your guidance.
-Your expertise, way of thinking, and leadership will continue to inspire me now and always.
+First, I would like to sincerely thank my supervisors Professor Dianne Cook, Dr Paul Harrison, Dr Michael Lydeamore, and Dr Thiyanga S. Talagala for being incredible supervisors and mentors. Their endless enthusiasm for research, productivity, and wealth of knowledge has motivated me throughout my Ph.D. at Monash university. No matter how busy they were, they always kept the doors open to welcome me, whenever I needed their help. I believe that they are the best supervisors I could ever find in my life long research journey. Thank you for believing in my ability to navigate difficulties, even when I doubted myself. I am immensely grateful and honoured to have worked under guidance of you all. Your expertise, way of thinking, and leadership will continue to inspire me now and always.
 
-I gratefully acknowledge the constructive feedback, suggestions, and encouragement I received from my PhD milestone evaluation panel members: Professor Catherine Forbes, Associate Professor Ruben Loaiza Maya, Dr Jessica Leung, Dr Shanika Wickramasuriya, and Dr Kate Saunders. Special thanks go to Professor Catherine Forbes, and Professor Xibin Zhang for being outstanding PhD directors and for their immense support throughout my candidature. I am also thankful to Professor Mervyn Silvapulle and Emeritus Professor Donald Poskitt, who taught our PhD coursework units during the first year of the programme.
+I gratefully acknowledge the constructive feedback, suggestions, and encouragement I received from my PhD milestone evaluation panel members: Professor Catherine Forbes, Professor Xibin Zhang, Associate Professor Ruben Loaiza Maya, Dr Jessica Leung, Dr Shanika Wickramasuriya, and Dr Kate Saunders. Special thanks go to Professor Catherine Forbes, and Professor Xibin Zhang for being outstanding PhD directors and for their immense support throughout my candidature. I am also thankful to Professor Mervyn Silvapulle and Emeritus Professor Donald Poskitt, who taught our PhD coursework units during the first year of the programme.
 
-Add sentence abou Emeritus Professor Gael Martin for taking me
+Add sentence about Emeritus Professor Gael Martin for taking me and Rob, Goerge
 
-I am thankful to Monash University, Australia, for this invaluable opportunity to pursue my PhD at such a prestigious institution. The exposure and experiences I gained over the years at Monash have been immense. I am particularly grateful for the financial support provided through the Co-funded Graduate Research Scholarship and the Monash Business School Co-Funded Graduate Research Scholarship, which enabled me to concentrate fully on my research. I am also thankful for the financial assistance provided to attend international conferences.
+I am thankful to Monash University, Australia, for this invaluable opportunity to pursue my PhD at such a prestigious institution. The exposure and experiences I gained over the years at Monash have been immense. I am particularly grateful for the financial support provided through the Co-funded Graduate Research Scholarship and the Monash Business School Co-Funded Graduate Research Scholarship, which enabled me to concentrate fully on my research. I am also thankful for the financial assistance provided to attend international conferences and visiting some invaluable mentors. I take this opportunity to express my sincere gratitude to all other academic and administrative staff members of the Department of Econometric and Business Statistics at Monash University.
 
 I acknowledge the use of [Grammarly](https://app.grammarly.com/) and [ChatGPT](https://chatgpt.com/) to check for grammatical and spelling errors. The output from these tools was used to improve the grammatical accuracy of my writing.
 
