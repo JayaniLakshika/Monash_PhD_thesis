@@ -14,14 +14,11 @@ I would also like to thank Professor Heike Hofmann, Associate Professor Susan Va
 
 I acknowledge the use of [Grammarly](https://app.grammarly.com/) and [ChatGPT](https://chatgpt.com/) to check for grammatical and spelling errors. The output from these tools was used to improve the grammatical accuracy of my writing.
 
+I remember with gratitude, the University of Sri Jayewardenepura, Sri Lanka, for paving the way for my academic journey. I am especially grateful to my undergraduate research supervisor, Dr Thiyanga S. Talagala, for sparking my interest in visualisation, and for broadening my academic horizons through her wisdom and mentorship. Without her guidance, I would never have thought to begin this journey, and I remain deeply grateful for that. I am also grateful to Sigithi Kindergarten, Weligama, Sri Sumangala Balika Vidyalaya, Weligama, and Sujatha Vidyalaya, Matara, Sri Lanka, where I received my early, primary, and secondary education. I extend my heartfelt thanks to all my teachers and private tutors, who continue to check on me even today. The life lessons and challenges I encountered during those years shaped me into a stronger and more resilient individual strengths that proved invaluable throughout my PhD journey.
+
 Last, but by no means least, I would like to thank my family members. I am truly grateful to my parents for their unconditional selfless love, care, and sacrifices that they made to make my life better. Your inspiration and guidance always kept me motivated to perceive better achievements in my life. I am fortunate to be your daughter. I would also like to thank my sister, my brother, and my sister-in-law for their unconditional love, understanding, and moral support both in this academic journey and in life. No matter how I stumble, you have always lifted me up and reminded me of my worth. Amma, Thaththa, Nangi, Malli and Podi nangi I am endlessly grateful for you, beyond words, beyond life, and beyond everything.
 
 This journey was never mine alone, and for that, I am eternally grateful!
-
-First, I would like to express my deepest gratitude to my supervisors,...
-
-I would also like to thank my milestone evaluation panel...
-
 
 
 I am also grateful to my PhD cohort, including, but not limited to...
