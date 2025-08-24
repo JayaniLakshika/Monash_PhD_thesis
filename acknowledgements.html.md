@@ -2,51 +2,30 @@
 
 This thesis would have never been a success without the guidance, encouragement, and support of my supervisors, family, and friends. This note is to show my gratitude to them.
 
-First and foremost, I express my sincere gratitude to my supervisor, Professor Rob J. Hyndman,
-for his incomparable mentorship. Throughout my PhD journey, one recurring comment I made
-to my husband was, “Rob can tell I’m struggling, but he waits until I’m nearly at the edge before
-stepping in.” It became something I would say with a smile—a genuine expression of appreciation
-for how you challenged me to grow. Your approach to mentoring pushed me to develop resilience
-and independence. While it was challenging at times, the process taught me invaluable lessons that I
-would not have learnt otherwise. Thank you for believing in my ability to navigate difficulties, even
-when I doubted myself. I am immensely grateful and honoured to have worked under your guidance.
-Your expertise, way of thinking, and leadership will continue to inspire me now and always.
+First, I would like to sincerely thank my supervisors Professor Dianne Cook, Dr Paul Harrison, Dr Michael Lydeamore, and Dr Thiyanga S. Talagala for being incredible supervisors and mentors. Their endless enthusiasm for research, productivity, and wealth of knowledge has motivated me throughout my Ph.D. at Monash university. No matter how busy they were, they always kept the doors open to welcome me, whenever I needed their help. I believe that they are the best supervisors I could ever find in my life long research journey. Thank you for believing in my ability to navigate difficulties, even when I doubted myself. I am immensely grateful and honoured to have worked under guidance of you all. Your expertise, way of thinking, and leadership will continue to inspire me now and always.
 
-I gratefully acknowledge the constructive feedback, suggestions, and encouragement I received from
-my PhD milestone evaluation panel members: Emeritus Professor Gael Martin, Dr Patricia Menéndez,
-Professor Dianne Cook, Professor Catherine Forbes, Dr Didier Nibbering, Professor Xibin Zhang, and
-Dr Jack Jewson. Special thanks go to Emeritus Professor Gael Martin, Professor Catherine Forbes, and
-Professor Xibin Zhang for being outstanding PhD directors and for their immense support throughout my candidature. I am also thankful to Professor Mervyn Silvapulle and Emeritus Professor Donald
-Poskitt, who taught our PhD coursework units during the first year of the programme.
+I gratefully acknowledge the constructive feedback, suggestions, and encouragement I received from my PhD milestone evaluation panel members: Professor Catherine Forbes, Professor Xibin Zhang, Associate Professor Ruben Loaiza Maya, Dr Jessica Leung, Dr Shanika Wickramasuriya, and Dr Kate Saunders. Special thanks go to Professor Catherine Forbes, and Professor Xibin Zhang for being outstanding PhD directors and for their immense support throughout my candidature. I am also thankful to Professor Mervyn Silvapulle and Emeritus Professor Donald Poskitt, who taught our PhD coursework units during the first year of the programme.
 
-I am thankful to Monash University, Australia, for this invaluable opportunity to pursue my PhD at
-such a prestigious institution. The exposure and experiences I gained over the years at Monash have
-been immense. I am particularly grateful for the financial support provided through the Co-funded
-Graduate Research Scholarship and the Monash Business School Co-Funded Graduate Research
-Scholarship, which enabled me to concentrate fully on my research. I am also thankful for the
-financial assistance provided to attend international conferences.
+I am thankful to Monash University, Australia, for this invaluable opportunity to pursue my PhD at such a prestigious institution. The exposure and experiences I gained over the years at Monash have been immense. I am particularly grateful for the financial support provided through the Co-funded Graduate Research Scholarship and the Monash Business School Co-Funded Graduate Research Scholarship, which enabled me to concentrate fully on my research. I am also thankful for the financial assistance provided to attend international conferences and visiting some invaluable mentors in the USA and Austria. I take this opportunity to express my sincere gratitude to all other academic and administrative staff members of the Department of Econometric and Business Statistics at Monash University.
 
-I acknowledge the use of Grammarly and ChatGPT to check for grammatical and spelling errors. The
-output from these tools was used to improve the grammatical accuracy of my writing.
+I would like to sincerely thank Emeritus Professor Gael Martin, who, together with Professor Rob Hyndman, welcomed me into the department at the time of my application. I also thank Professor George Athanasopoulos for his generous assistance in making it possible for me to complete my visit to the USA. My heartfelt thanks go as well to Professor Brett Inder, Associate Professor Christo Karuna, and Professor Xueyan Zhao, whose warm smiles, encouragement, and constant support have been invaluable in helping me to complete this journey.
 
-To my parents and my sister; your love and strength have been the driving force behind every step
-I have taken. Your endless support, quiet sacrifices, and unwavering belief in me have carried me
-through every challenge, both in this academic journey and in life. No matter how I stumble, you have
-always lifted me up and reminded me of my worth. Amma, Thaththa, and Nangi—I am endlessly
-grateful for you, beyond words, beyond life, and beyond everything.
+I would also like to thank Professor Heike Hofmann, Associate Professor Susan VanderPlas, Associate Professor Ursula Laa, Associate Professor Natalia da Silva, and Professor Eun-Kyung, whom I had the privilege of visiting during my PhD journey. Their generosity in providing opportunities, their guidance in improving my work, and their endless care and kindness have meant a great deal to me. I am also grateful to the University of Nebraska–Lincoln, USA and the University of Natural Resources and Life Sciences, Vienna, Austria, for warmly hosting me during these visits.
+
+I acknowledge the use of [Grammarly](https://app.grammarly.com/) and [ChatGPT](https://chatgpt.com/) to check for grammatical and spelling errors. The output from these tools was used to improve the grammatical accuracy of my writing.
+
+I remember with gratitude, the University of Sri Jayewardenepura, Sri Lanka, for paving the way for my academic journey. I am especially grateful to my undergraduate research supervisor, Dr Thiyanga S. Talagala, for sparking my interest in visualisation, and for broadening my academic horizons through her wisdom and mentorship. Without her guidance, I would never have thought to begin this journey, and I remain deeply grateful for that. I am also grateful to Sigithi Kindergarten, Weligama, Sri Sumangala Balika Vidyalaya, Weligama, and Sujatha Vidyalaya, Matara, Sri Lanka, where I received my early, primary, and secondary education. I extend my heartfelt thanks to all my teachers and private tutors, who continue to check on me even today. The life lessons and challenges I encountered during those years shaped me into a stronger and more resilient individual strengths that proved invaluable throughout my PhD journey.
+
+Chapter 2 is being revised for the **Journal of Computational and Graphical Statistics**. I take this opportunity to thank the two anonymous reviewers for their constructive comments. I presented my research work at $12^{th}$-Conference of the Asian Regional Section of the International Association for Statistical Computing (IASC-ARS 2023) (Wollongon, Australia), Australian Statistical Conference (ASC 2023) (Wollongon, Australia), Bioinformatics Seminar 2024, Victorian branch of the Australian and New Zealand Industrial and Applied Mathematics Society (VicANZIAM) 2024 (RMIT university, Melbourne, Australia), Faculty of BusEco Three Minute Thesis (3MT) competition 2024, useR! 2024 (Salzburg, Austria), Graphics Group Presentation 2024 (Nebraska, USA), UNO Data Science Club 2024 (Omaha, USA), Joint Statistical Meetings (JSM) 2025 (Nashville, USA), useR! 2025 (Durham, USA), Biometrics in the Bush Capital (BIBC2025) (Canberra, Australia), and Australian Statistical Conference (ASC 2025) (Perth, Western Australia). I would like to thank the participants of these seminars, research groups, and the conferences for their valuable comments.
+
+I am deeply grateful to my extended family here in Melbourne Nuwani and Rehan, Heshani and Kanishka, and Shanika (also became my gym partner), who not only stood by me during difficult times and but constant listeners. My heartfelt thanks also go to Chaya and Supun, Himasha and Danushka, and Hiruni, for their genuine friendship and unwavering support.
+
+I am thankful to my fellow PhD students at Monash for making this journey such a memorable experience. Special appreciation goes to my “Numbats family” Patrick, Mitch, Fin, Sherry, Cynthia, Harriet, Janith, Kris, David, and Hannah for the camaraderie and encouragement. I also treasure the many conversations with Nimni and Gayani during office hours, which brought lightness and motivation to my days. To my office mates: Shelly, Elvis, Cash, Minh, and Vis thank you for creating a supportive and welcoming environment. I am especially grateful to Dr. Xiaoqian, both an office mate and a wonderful roommate during conference trips, for sharing this journey with me.
+
+My sincere thanks go to Dovini and Vihanga for their help during my English test and the application process to Australia, and to the MIG family for their kindness and support throughout my PhD. I also extend my gratitude to Danusha, Kalani, Narmada, Malith, and all the friends I met during my visit to the University of Nebraska, USA, who made that experience so enriching. I will never forget the kindness of Dilmi and Nishadi, who welcomed me on my very first day in Melbourne, picked me up, and helped me settle into a new life. I remain truly grateful for their generosity. I am grateful to Pabasara, Vindula, Amaya, Nirmitha, and Malinda for being wonderful friends from my university days until now, and for continuing to support me through the difficult moments of this journey. I also sincerely thank Kavishka, Chathura, Sonal, Dinith, Thilina, and Tharaka for their enduring friendship and encouragement throughout this time.
+
+Last, but by no means least, I would like to thank my family members. I am truly grateful to my parents for their unconditional selfless love, care, and sacrifices that they made to make my life better. Your inspiration and guidance always kept me motivated to perceive better achievements in my life. I am fortunate to be your daughter. I would also like to thank my sister, my brother, and my sister-in-law for their unconditional love, understanding, and moral support both in this academic journey and in life. No matter how I stumble, you have always lifted me up and reminded me of my worth. Amma, Thaththa, Nangi, Malli and Podi nangi I am endlessly grateful for you, beyond words, beyond life, and beyond everything.
 
 This journey was never mine alone, and for that, I am eternally grateful!
-
-First, I would like to express my deepest gratitude to my supervisors,...
-
-I would also like to thank my milestone evaluation panel...
-
-This research was financially supported by Monash University and the Dean’s Excellence Award of Monash Business School. I am grateful for the financial support that I received. Further, I would like to thank Professor Rob Hyndman, Head of the Department of Econometrics and Business Statistics, for arranging financial support that helped me to comfortably focus on my research at the end of my candidature. I take this opportunity to express my sincere gratitude to all other academic and administrative staff members of the Department of Econometric and Business Statistics at Monash University.
-
-I am also grateful to my PhD cohort, including, but not limited to...
-
-<!-- Last, but by no means least, I would like to thank my family members. I am truly grateful to my father, P. G. K. Jagath Premalal, and my mother K. G. N. Chandima Dias for their unconditional selfless love, care, and sacrifices that they made to make my life better. Your inspiration and guidance always kept me motivated to perceive better achievements in my life. I am fortunate to be your daughter. I would also like to thank my sister Jayasha, my brother Janith, and my sister-in-law, Agashi for their unconditional love, understanding, and moral support given for completing my research. -->
-
-<!-- Last but not least, I would like to thank my family for their support. -->
 
 \clearpage\pagenumbering{arabic}\setcounter{page}{0}
