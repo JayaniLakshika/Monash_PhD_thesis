@@ -20,39 +20,12 @@ Chapter 2 is being revised for the **Journal of Computational and Graphical Stat
 
 I am deeply grateful to my extended family here in Melbourne Nuwani and Rehan, Heshani and Kanishka, and Shanika (also became my gym partner), who not only stood by me during difficult times and but constant listeners. My heartfelt thanks also go to Chaya and Supun, Himasha and Danushka, and Hiruni, for their genuine friendship and unwavering support.
 
-I am thankful to my fellow PhD students at Monash for making this journey such a memorable experience. Special appreciation goes to my “Numbats family” Patrick, Mitch, Fin, Sherry, Cynthia, Harriet, Janith, Krishtan, David, and Hannah for the camaraderie and encouragement. I also treasure the many conversations with Nimni and Gayani during office hours, which brought lightness and motivation to my days.
+I am thankful to my fellow PhD students at Monash for making this journey such a memorable experience. Special appreciation goes to my “Numbats family” Patrick, Mitch, Fin, Sherry, Cynthia, Harriet, Janith, Kris, David, and Hannah for the camaraderie and encouragement. I also treasure the many conversations with Nimni and Gayani during office hours, which brought lightness and motivation to my days. To my office mates: Shelly, Elvis, Cash, Minh, and Vis thank you for creating a supportive and welcoming environment. I am especially grateful to Dr. Xiaoqian, both an office mate and a wonderful roommate during conference trips, for sharing this journey with me.
 
-To my office mates: Shelly, Elvis, Cash, Minh, and Vis thank you for creating a supportive and welcoming environment. I am especially grateful to Dr. Xiaoqian, both an office mate and a wonderful roommate during conference trips, for sharing this journey with me.
-
-My sincere thanks go to Dovini and Vihanga for their help during my English test and the application process to Australia, and to the MIG family for their kindness and support throughout my PhD. I also extend my gratitude to Danusha, Kalani, Narmada, Malith, and all the friends I met during my visit to the University of Nebraska, USA, who made that experience so enriching.
-
-I will never forget the kindness of Dilmi and Nishadi, who welcomed me on my very first day in Melbourne, picked me up, and helped me settle into a new life. I remain truly grateful for their generosity.
-
-<!-- Thanks for being my family here, Nuwani and Rehan, Heshani and Kanishka, Shanika (being my gym partner as well), and listen to me all the time and support me during my bad times. Thank you, Chaya and Supun, and Himasha and Danushka, and Hiruni who being really good friends.    -->
-
-<!-- I am thankful to my fellow PhD students for making my time at Monash a memorable experience. Special thanks to Numbats family including Patrick, Mitch, Fin, Sherry, Cynthia, Harriet, Janith, Krishtan, David, and Hannah. Also, Thank you Nimni and Gayani for talks during office times.   -->
-
-<!-- Thank you, Shelly, Elvis, Cash, Minh, and Vis for being my office mates. -->
-
-<!-- Thank you, Dr. Xiaoqian Wang for being my office mate and my roommate during some conferences.  -->
-
-<!-- Thank you, Dovini and Vihanga for helping me during my English test and application process to Australia. -->
-
-<!-- Thank you, MIG family. -->
-
-<!-- Thank you, Danusha, Kalani, Narmada, Malith, and all of friends I met while the visit of University of Nebraska, USA.   -->
-
-<!-- Thank you, Dilmi and Nishadi who was picking me at the first day in Melbourne, and helped me to settle down here. I never forget the day and truly greateful for that. -->
-
-<!-- I am also deeply thankful to my friends Pabasara, Vindula, Amaya, Nirmitha, Kavishaka, Malinda, Chathura, Sonal, Dinith, Thilina, and Tharaka, whose unwavering emotional and moral support carried me through the times I needed it most.  -->
+My sincere thanks go to Dovini and Vihanga for their help during my English test and the application process to Australia, and to the MIG family for their kindness and support throughout my PhD. I also extend my gratitude to Danusha, Kalani, Narmada, Malith, and all the friends I met during my visit to the University of Nebraska, USA, who made that experience so enriching. I will never forget the kindness of Dilmi and Nishadi, who welcomed me on my very first day in Melbourne, picked me up, and helped me settle into a new life. I remain truly grateful for their generosity. I am grateful to Pabasara, Vindula, Amaya, Nirmitha, and Malinda for being wonderful friends from my university days until now, and for continuing to support me through the difficult moments of this journey. I also sincerely thank Kavishka, Chathura, Sonal, Dinith, Thilina, and Tharaka for their enduring friendship and encouragement throughout this time.
 
 Last, but by no means least, I would like to thank my family members. I am truly grateful to my parents for their unconditional selfless love, care, and sacrifices that they made to make my life better. Your inspiration and guidance always kept me motivated to perceive better achievements in my life. I am fortunate to be your daughter. I would also like to thank my sister, my brother, and my sister-in-law for their unconditional love, understanding, and moral support both in this academic journey and in life. No matter how I stumble, you have always lifted me up and reminded me of my worth. Amma, Thaththa, Nangi, Malli and Podi nangi I am endlessly grateful for you, beyond words, beyond life, and beyond everything.
 
 This journey was never mine alone, and for that, I am eternally grateful!
-
-
-I am also grateful to my PhD cohort, including, but not limited to...
-
-
 
 \clearpage\pagenumbering{arabic}\setcounter{page}{0}
