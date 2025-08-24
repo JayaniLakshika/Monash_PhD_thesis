@@ -10,11 +10,41 @@ I am thankful to Monash University, Australia, for this invaluable opportunity t
 
 I would like to sincerely thank Emeritus Professor Gael Martin, who, together with Professor Rob Hyndman, welcomed me into the department at the time of my application. I also thank Professor George Athanasopoulos for his generous assistance in making it possible for me to complete my visit to the USA. My heartfelt thanks go as well to Professor Brett Inder, Associate Professor Christo Karuna, and Professor Xueyan Zhao, whose warm smiles, encouragement, and constant support have been invaluable in helping me to complete this journey.
 
-I would also like to thank Professor Heike Hofmann, Associate Professor Susan VanderPlas, Associate Professor Ursula Laa, Associate Professor Natalia da Silva, and Professor Eun-Kyung, whom I had the privilege of visiting during my PhD journey. Their generosity in providing opportunities, their guidance in improving my work, and their endless care and kindness have meant a great deal to me.
+I would also like to thank Professor Heike Hofmann, Associate Professor Susan VanderPlas, Associate Professor Ursula Laa, Associate Professor Natalia da Silva, and Professor Eun-Kyung, whom I had the privilege of visiting during my PhD journey. Their generosity in providing opportunities, their guidance in improving my work, and their endless care and kindness have meant a great deal to me. I am also grateful to the University of Nebraska–Lincoln, USA and the University of Natural Resources and Life Sciences, Vienna, Austria, for warmly hosting me during these visits.
 
 I acknowledge the use of [Grammarly](https://app.grammarly.com/) and [ChatGPT](https://chatgpt.com/) to check for grammatical and spelling errors. The output from these tools was used to improve the grammatical accuracy of my writing.
 
 I remember with gratitude, the University of Sri Jayewardenepura, Sri Lanka, for paving the way for my academic journey. I am especially grateful to my undergraduate research supervisor, Dr Thiyanga S. Talagala, for sparking my interest in visualisation, and for broadening my academic horizons through her wisdom and mentorship. Without her guidance, I would never have thought to begin this journey, and I remain deeply grateful for that. I am also grateful to Sigithi Kindergarten, Weligama, Sri Sumangala Balika Vidyalaya, Weligama, and Sujatha Vidyalaya, Matara, Sri Lanka, where I received my early, primary, and secondary education. I extend my heartfelt thanks to all my teachers and private tutors, who continue to check on me even today. The life lessons and challenges I encountered during those years shaped me into a stronger and more resilient individual strengths that proved invaluable throughout my PhD journey.
+
+Chapter 2 is being revised for the **Journal of Computational and Graphical Statistics**. I take this opportunity to thank the two anonymous reviewers for their constructive comments. I presented my research work at $12^{th}$-Conference of the Asian Regional Section of the International Association for Statistical Computing (IASC-ARS 2023) (Wollongon, Australia), Australian Statistical Conference (ASC 2023) (Wollongon, Australia), Bioinformatics Seminar 2024, Victorian branch of the Australian and New Zealand Industrial and Applied Mathematics Society (VicANZIAM) 2024 (RMIT university, Melbourne, Australia), Faculty of BusEco Three Minute Thesis (3MT) competition 2024, useR! 2024 (Salzburg, Austria), Graphics Group Presentation 2024 (Nebraska, USA), UNO Data Science Club 2024 (Omaha, USA), Joint Statistical Meetings (JSM) 2025 (Nashville, USA), useR! 2025 (Durham, USA), Biometrics in the Bush Capital (BIBC2025) (Canberra, Australia), and Australian Statistical Conference (ASC 2025) (Perth, Western Australia). I would like to thank the participants of these seminars, research groups, and the conferences for their valuable comments.
+
+I am deeply grateful to my extended family here in Melbourne Nuwani and Rehan, Heshani and Kanishka, and Shanika (also became my gym partner), who not only stood by me during difficult times and but constant listeners. My heartfelt thanks also go to Chaya and Supun, Himasha and Danushka, and Hiruni, for their genuine friendship and unwavering support.
+
+I am thankful to my fellow PhD students at Monash for making this journey such a memorable experience. Special appreciation goes to my “Numbats family” Patrick, Mitch, Fin, Sherry, Cynthia, Harriet, Janith, Krishtan, David, and Hannah for the camaraderie and encouragement. I also treasure the many conversations with Nimni and Gayani during office hours, which brought lightness and motivation to my days.
+
+To my office mates: Shelly, Elvis, Cash, Minh, and Vis thank you for creating a supportive and welcoming environment. I am especially grateful to Dr. Xiaoqian, both an office mate and a wonderful roommate during conference trips, for sharing this journey with me.
+
+My sincere thanks go to Dovini and Vihanga for their help during my English test and the application process to Australia, and to the MIG family for their kindness and support throughout my PhD. I also extend my gratitude to Danusha, Kalani, Narmada, Malith, and all the friends I met during my visit to the University of Nebraska, USA, who made that experience so enriching.
+
+I will never forget the kindness of Dilmi and Nishadi, who welcomed me on my very first day in Melbourne, picked me up, and helped me settle into a new life. I remain truly grateful for their generosity.
+
+<!-- Thanks for being my family here, Nuwani and Rehan, Heshani and Kanishka, Shanika (being my gym partner as well), and listen to me all the time and support me during my bad times. Thank you, Chaya and Supun, and Himasha and Danushka, and Hiruni who being really good friends.    -->
+
+<!-- I am thankful to my fellow PhD students for making my time at Monash a memorable experience. Special thanks to Numbats family including Patrick, Mitch, Fin, Sherry, Cynthia, Harriet, Janith, Krishtan, David, and Hannah. Also, Thank you Nimni and Gayani for talks during office times.   -->
+
+<!-- Thank you, Shelly, Elvis, Cash, Minh, and Vis for being my office mates. -->
+
+<!-- Thank you, Dr. Xiaoqian Wang for being my office mate and my roommate during some conferences.  -->
+
+<!-- Thank you, Dovini and Vihanga for helping me during my English test and application process to Australia. -->
+
+<!-- Thank you, MIG family. -->
+
+<!-- Thank you, Danusha, Kalani, Narmada, Malith, and all of friends I met while the visit of University of Nebraska, USA.   -->
+
+<!-- Thank you, Dilmi and Nishadi who was picking me at the first day in Melbourne, and helped me to settle down here. I never forget the day and truly greateful for that. -->
+
+<!-- I am also deeply thankful to my friends Pabasara, Vindula, Amaya, Nirmitha, Kavishaka, Malinda, Chathura, Sonal, Dinith, Thilina, and Tharaka, whose unwavering emotional and moral support carried me through the times I needed it most.  -->
 
 Last, but by no means least, I would like to thank my family members. I am truly grateful to my parents for their unconditional selfless love, care, and sacrifices that they made to make my life better. Your inspiration and guidance always kept me motivated to perceive better achievements in my life. I am fortunate to be your daughter. I would also like to thank my sister, my brother, and my sister-in-law for their unconditional love, understanding, and moral support both in this academic journey and in life. No matter how I stumble, you have always lifted me up and reminded me of my worth. Amma, Thaththa, Nangi, Malli and Podi nangi I am endlessly grateful for you, beyond words, beyond life, and beyond everything.
 
