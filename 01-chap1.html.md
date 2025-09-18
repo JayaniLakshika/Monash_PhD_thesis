@@ -55,6 +55,14 @@ Despite the widespread use of NLDR, there is no widely accepted or visually inte
 
 In addition to technical gaps, **little is known about how people perceive and misperceive structure in NLDR layouts**. It is unclear how different visualizations influence analysts’ conclusions, or how distortions introduced by NLDR affect decision making. Given the critical role of visualization in high-dimensional data analysis, understanding the human perception of NLDR representations is essential.
 
+## High-dimensional Data Visualization
+
+## Dimension Reduction Methods
+
+## Metrics to Evaluate NLDR quantitatively
+
+## Distance Metrics
+
 ## Research Objectives
 
 This thesis addresses these challenges through four main objectives:

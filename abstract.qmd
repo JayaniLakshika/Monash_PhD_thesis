@@ -9,7 +9,7 @@ This research presents four original contributions. The first contribution ([Cha
 
 I hereby declare that this thesis contains no material which has been accepted for the award of any other degree or diploma at any university or equivalent institution and that, to the best of my knowledge and belief, this thesis contains no material previously published or written by another person, except where due reference is made in the text of the thesis.
 
-This thesis includes one original papers published in a peer reviewed journal and four unpublished papers. The core theme of the thesis is to "develop methods and interactive graphics for assessing and interpreting non-linear dimension reduction of high-dimensional datasets". The ideas, development and writing up of all the papers in the thesis were the principal responsibility of myself, the student, working within the Department of Econometrics and Business Statistics under the supervision of Professor Dianne Cook, Dr Paul Harrison, Dr Michael Lydeamore, and Dr Thiyanga S. Talagala (University of Sri Jayewardenepura).
+This thesis includes one original papers published in a peer reviewed journal and four unpublished papers. The core theme of the thesis is to "develop methods and interactive graphics for assessing and interpreting non-linear dimension reductions of high-dimensional datasets". The ideas, development and writing up of all the papers in the thesis were the principal responsibility of myself, the student, working within the Department of Econometrics and Business Statistics under the supervision of Professor Dianne Cook, Dr Paul Harrison, Dr Michael Lydeamore, and Dr Thiyanga S. Talagala (University of Sri Jayewardenepura).
 
 The inclusion of co-authors reflects the fact that the work came from active collaboration between researchers and acknowledges input into team-based research. In the case of [Chapter 2](#sec-first-paper), my contribution to the work involved the following:
 
@@ -46,13 +46,15 @@ To ensure the clarity and coherence of the written content, artificial intellige
 
 <!-- **The thesis is written in Australian spelling, except for Chapters 3 and 4, which use American spelling as specified by the publication venue.** -->
 
-I have not renumbered sections of submitted or published papers in order to generate a consistent presentation within the thesis.
+The thesis is written in Australian spelling, except for Chapters 2, which use American spelling as specified by the publication venue.
+
+I have renumbered sections of submitted papers in order to generate a consistent presentation within the thesis. 
 
 **Student name**: Piyadi Gamage Jayani Lakshika
 
 **Student signature**: 
 
-**Date**: 15th January 2026 
+**Date**: 13th January 2026 
 
 I hereby certify that the above declaration correctly reflects the nature and extent of the student’s and co-authors’ contributions to this work. In instances where I am not the responsible author I have consulted with the responsible author to agree on the respective contributions of the authors.
 
@@ -60,4 +62,4 @@ I hereby certify that the above declaration correctly reflects the nature and ex
 
 **Main Supervisor signature**:
 
-**Date**: 15th January 2026
+**Date**: 13th January 2026
