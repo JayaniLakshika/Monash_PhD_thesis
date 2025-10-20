@@ -1,6 +1,6 @@
 # Conclusion and future plans {#sec-conclusion}
 
-The four contributions in this thesis address improving NLDR diagnostics, exploring perceptual insights in high-dimensional data, constructing simulated data structures, and providing user-friendly tools for analysis.
+This thesis presents four key contributions that collectively advance the understanding and evaluation of NLDR methods. The work improves NLDR diagnostics, provides insights into human perception of high-dimensional structures, develops methods for generating clustering data structures, and implements user-friendly software tools that support exploratory analysis and visualization.
 
 ## Contributions
 
