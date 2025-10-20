@@ -21,7 +21,10 @@ library(knitr)
 library(kableExtra)
 dt <- tribble(
   ~`Chapter`, ~`Publication title`, ~Status, ~`Student contribution`, ~`Co-authors contribution`, ~`Coauthors are Monash students`,
-  2, "", "Published in the Journal of Computational and Graphical Statistics", "80%  Concept, Analysis, Software, Writing", "", "No"
+  2, "", "Revised and resubmitted in the Journal of Computational and Graphical Statistics", "80%  Concept, Analysis, Software, Writing", "", "No",
+  4, "", "Submitted in the R Journal", "80%  Concept, Analysis, Software, Writing", "", "No",
+  4, "", "Submitted in the R Journal", "80%  Concept, Analysis, Software, Writing", "", "No",
+  5, "", "Submitted in the Oxford Academic (Bioinformatics Advances)", "80%  Concept, Analysis, Software, Writing", "", "No"
 )  
 
 dt |>
@@ -38,7 +41,7 @@ dt |>
 ```
 
 
-Chapters 3, *k*, and Chapter 4, *\*, are planned for submission to peer-reviewed journals.
+Chapters 3 is planned for submission to peer-reviewed journal.
 
 \clearpage
 
@@ -46,7 +49,7 @@ To ensure the clarity and coherence of the written content, artificial intellige
 
 <!-- **The thesis is written in Australian spelling, except for Chapters 3 and 4, which use American spelling as specified by the publication venue.** -->
 
-The thesis is written in Australian spelling, except for Chapters 2, which use American spelling as specified by the publication venue.
+The thesis is written in Australian spelling, except for Chapters 2, 4, and 5, which use American spelling as specified by the publication venue.
 
 I have renumbered sections of submitted papers in order to generate a consistent presentation within the thesis. 
 

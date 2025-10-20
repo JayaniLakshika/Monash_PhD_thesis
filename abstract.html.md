@@ -32,7 +32,31 @@ The inclusion of co-authors reflects the fact that the work came from active col
   <tr>
    <td style="text-align:right;width: 1.2cm; "> 2 </td>
    <td style="text-align:left;width: 3cm; ">  </td>
-   <td style="text-align:left;width: 3.5cm; "> Published in the Journal of Computational and Graphical Statistics </td>
+   <td style="text-align:left;width: 3.5cm; "> Revised and resubmitted in the Journal of Computational and Graphical Statistics </td>
+   <td style="text-align:left;width: 2.5cm; "> 80%  Concept, Analysis, Software, Writing </td>
+   <td style="text-align:left;width: 2.4cm; ">  </td>
+   <td style="text-align:left;width: 1.3cm; "> No </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;width: 1.2cm; "> 4 </td>
+   <td style="text-align:left;width: 3cm; ">  </td>
+   <td style="text-align:left;width: 3.5cm; "> Submitted in the R Journal </td>
+   <td style="text-align:left;width: 2.5cm; "> 80%  Concept, Analysis, Software, Writing </td>
+   <td style="text-align:left;width: 2.4cm; ">  </td>
+   <td style="text-align:left;width: 1.3cm; "> No </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;width: 1.2cm; "> 4 </td>
+   <td style="text-align:left;width: 3cm; ">  </td>
+   <td style="text-align:left;width: 3.5cm; "> Submitted in the R Journal </td>
+   <td style="text-align:left;width: 2.5cm; "> 80%  Concept, Analysis, Software, Writing </td>
+   <td style="text-align:left;width: 2.4cm; ">  </td>
+   <td style="text-align:left;width: 1.3cm; "> No </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;width: 1.2cm; "> 5 </td>
+   <td style="text-align:left;width: 3cm; ">  </td>
+   <td style="text-align:left;width: 3.5cm; "> Submitted in the Oxford Academic (Bioinformatics Advances) </td>
    <td style="text-align:left;width: 2.5cm; "> 80%  Concept, Analysis, Software, Writing </td>
    <td style="text-align:left;width: 2.4cm; ">  </td>
    <td style="text-align:left;width: 1.3cm; "> No </td>
@@ -46,7 +70,7 @@ The inclusion of co-authors reflects the fact that the work came from active col
 
 
 
-Chapters 3, *k*, and Chapter 4, *\*, are planned for submission to peer-reviewed journals.
+Chapters 3 is planned for submission to peer-reviewed journal.
 
 \clearpage
 
@@ -54,7 +78,7 @@ To ensure the clarity and coherence of the written content, artificial intellige
 
 <!-- **The thesis is written in Australian spelling, except for Chapters 3 and 4, which use American spelling as specified by the publication venue.** -->
 
-The thesis is written in Australian spelling, except for Chapters 2, which use American spelling as specified by the publication venue.
+The thesis is written in Australian spelling, except for Chapters 2, 4, and 5, which use American spelling as specified by the publication venue.
 
 I have renumbered sections of submitted papers in order to generate a consistent presentation within the thesis. 
 
