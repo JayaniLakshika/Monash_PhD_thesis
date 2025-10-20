@@ -85,46 +85,6 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script><link href="https://fonts.googleapis.com/css?family=Fira+Sans%7CMerriweather%7CSource%20Code%20Pro" rel="stylesheet">
-<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 </head>
 <body class="nav-sidebar docked quarto-light">
 
@@ -269,15 +229,9 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title"><b>Sections</b></h2>
    
   <ul class="collapse">
-<li><a href="#high-dimensional-data-visualization" id="toc-high-dimensional-data-visualization" class="nav-link active" data-scroll-target="#high-dimensional-data-visualization"><span class="header-section-number">1.1</span> High-dimensional Data Visualization</a></li>
-  <li><a href="#dimension-reduction-methods" id="toc-dimension-reduction-methods" class="nav-link" data-scroll-target="#dimension-reduction-methods"><span class="header-section-number">1.2</span> Dimension Reduction Methods</a></li>
-  <li><a href="#metrics-to-evaluate-nldr-quantitatively" id="toc-metrics-to-evaluate-nldr-quantitatively" class="nav-link" data-scroll-target="#metrics-to-evaluate-nldr-quantitatively"><span class="header-section-number">1.3</span> Metrics to Evaluate NLDR quantitatively</a></li>
-  <li><a href="#knn-accuracy" id="toc-knn-accuracy" class="nav-link" data-scroll-target="#knn-accuracy"><span class="header-section-number">1.4</span> <strong>3. KNN Accuracy</strong></a></li>
-  <li><a href="#svm-accuracy-local-evaluation" id="toc-svm-accuracy-local-evaluation" class="nav-link" data-scroll-target="#svm-accuracy-local-evaluation"><span class="header-section-number">1.5</span> <strong>4. SVM Accuracy (Local Evaluation)</strong></a></li>
-  <li><a href="#distance-metrics" id="toc-distance-metrics" class="nav-link" data-scroll-target="#distance-metrics"><span class="header-section-number">1.6</span> Distance Metrics</a></li>
-  <li><a href="#research-objectives" id="toc-research-objectives" class="nav-link" data-scroll-target="#research-objectives"><span class="header-section-number">1.7</span> Research Objectives</a></li>
-  <li><a href="#contribution" id="toc-contribution" class="nav-link" data-scroll-target="#contribution"><span class="header-section-number">1.8</span> Contribution</a></li>
-  <li><a href="#thesis-outline" id="toc-thesis-outline" class="nav-link" data-scroll-target="#thesis-outline"><span class="header-section-number">1.9</span> Thesis Outline</a></li>
+<li><a href="#research-objectives" id="toc-research-objectives" class="nav-link active" data-scroll-target="#research-objectives"><span class="header-section-number">1.1</span> Research Objectives</a></li>
+  <li><a href="#contribution" id="toc-contribution" class="nav-link" data-scroll-target="#contribution"><span class="header-section-number">1.2</span> Contribution</a></li>
+  <li><a href="#thesis-outline" id="toc-thesis-outline" class="nav-link" data-scroll-target="#thesis-outline"><span class="header-section-number">1.3</span> Thesis Outline</a></li>
   </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/01-chap1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -314,271 +268,16 @@ Figure&nbsp;1.1: Eight different NLDR representations of a human PBMC CITE-seq d
 <p>Yet this strength also introduces a critical risk: <strong>NLDR can hallucinate structure</strong>, creating patterns in the low-dimensional space that do not exist in the high-dimensional data. This issue is strikingly illustrated in <a href="#fig-NLDR-variety" class="quarto-xref">Figure&nbsp;<span>1.1</span></a>, where eight different NLDR representations of the same CITE-seq dataset vary dramatically due to differences in method or hyperparameter choices. Such variability raises essential questions: <em>Which visualization can be trusted? Which accurately reflects the high-dimensional structure?</em></p>
 <p>Despite the widespread use of NLDR, there is no widely accepted or visually interpretable framework for <strong>diagnosing the reliability of NLDR representations</strong>. Analysts are left to rely on subjective judgment when choosing and interpreting NLDR layouts, without tools to distinguish faithful representations from artifacts. There is also a lack of benchmark datasets with known geometric structure for testing NLDR methods systematically.</p>
 <p>In addition to technical gaps, <strong>little is known about how people perceive and misperceive structure in NLDR layouts</strong>. It is unclear how different visualizations influence analysts’ conclusions, or how distortions introduced by NLDR affect decision making. Given the critical role of visualization in high-dimensional data analysis, understanding the human perception of NLDR representations is essential.</p>
-<section id="high-dimensional-data-visualization" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="high-dimensional-data-visualization">
-<span class="header-section-number">1.1</span> High-dimensional Data Visualization</h2>
-</section><section id="dimension-reduction-methods" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="dimension-reduction-methods">
-<span class="header-section-number">1.2</span> Dimension Reduction Methods</h2>
-</section><section id="metrics-to-evaluate-nldr-quantitatively" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="metrics-to-evaluate-nldr-quantitatively">
-<span class="header-section-number">1.3</span> Metrics to Evaluate NLDR quantitatively</h2>
-<section id="neighborhood-preservation-metric-r_nxk" class="level3"><h3 class="anchored" data-anchor-id="neighborhood-preservation-metric-r_nxk">Neighborhood preservation metric (<span class="math inline">R_{NX}(K)</span>)</h3>
-<p>Given:</p>
-<ul>
-<li>
-<span class="math inline">X = {x_1, \ldots, x_N}</span> — high-dimensional data</li>
-<li>
-<span class="math inline">Y = {y_1, \ldots, y_N}</span> — 2D (or low-dimensional) embedding</li>
-</ul>
-<section id="step-1-compute-neighborhood-ranks" class="level4"><h4 class="anchored" data-anchor-id="step-1-compute-neighborhood-ranks">Step 1: Compute neighborhood ranks</h4>
-<p>For each point <span class="math inline">i</span>:</p>
-<ul>
-<li>Compute pairwise distances in high-D: <span class="math inline">\delta_{ij} = | x_i - x_j |</span>
-</li>
-<li>Compute pairwise distances in low-D: <span class="math inline">d_{ij} = | y_i - y_j |</span>
-</li>
-</ul>
-<p>Then define the <strong>rank</strong> of ( j ) w.r.t. ( i ): <span class="math display">
-\rho_{ij} = \text{rank of } \delta_{ij} \text{ among all } j \neq i
-</span> <span class="math display">
-r_{ij} = \text{rank of } d_{ij} \text{ among all } j \neq i
-</span></p>
-</section><section id="step-2-define-k-nearest-neighborhoods" class="level4"><h4 class="anchored" data-anchor-id="step-2-define-k-nearest-neighborhoods">Step 2: Define K-nearest neighborhoods</h4>
-<p><span class="math display">
-\nu^K_i = { j : 1 \le \rho_{ij} \le K }
-</span> <span class="math display">
-n^K_i = { j : 1 \le r_{ij} \le K }
-</span></p>
-</section><section id="step-3-compute-overlap-fraction-for-each-point" class="level4"><h4 class="anchored" data-anchor-id="step-3-compute-overlap-fraction-for-each-point">Step 3: Compute overlap fraction for each point</h4>
-<p><span class="math display">
-Q_{NX}(K) = \frac{1}{N K} \sum_{i=1}^{N} | \nu^K_i \cap n^K_i |
-</span></p>
-</section><section id="step-4-rescale-for-comparability-lee-et-al.-2015" class="level4"><h4 class="anchored" data-anchor-id="step-4-rescale-for-comparability-lee-et-al.-2015">Step 4: Rescale for comparability (Lee et al., 2015)</h4>
-<p>To adjust for random embedding baseline:</p>
-<p><span class="math display">
-R_{NX}(K) = \frac{(N - 1) Q_{NX}(K) - K}{N - 1 - K}
-</span></p>
-<p>where <span class="math inline">R_{NX}(K) \in [0,1]</span>:</p>
-<ul>
-<li>
-<span class="math inline">R_{NX}(K) = 1</span> → perfect preservation</li>
-<li>
-<span class="math inline">R_{NX}(K) = 0</span> → random preservation</li>
-</ul></section><section id="step-5-compute-auc-over-log-scaled-k" class="level4"><h4 class="anchored" data-anchor-id="step-5-compute-auc-over-log-scaled-k">Step 5: Compute <strong>AUC</strong> over log-scaled ( K )</h4>
-<p><span class="math display">
-\text{AUC}*{\ln K}(R*{NX}(K)) =
-\frac{\sum_{K=1}^{N/2} R_{NX}(K)/K}{\sum_{K=1}^{N/2} 1/K}
-</span></p>
-<p>This gives a single scalar summarizing local–to–global preservation quality.</p>
-</section></section><section id="shepard-diagram" class="level3"><h3 class="anchored" data-anchor-id="shepard-diagram">Shepard diagram</h3>
-</section><section id="random-triplet-accuracy-rta" class="level3"><h3 class="anchored" data-anchor-id="random-triplet-accuracy-rta">Random Triplet Accuracy (RTA)</h3>
-<p>To measure how well relative distances between points are preserved by a NLDR method without requiring class labels.</p>
-<p>It checks how often the embedding preserves the correct ordering of pairwise distances from the high-dimensional space.</p>
-<p>A <strong>triplet</strong> is a set of three points: <span class="math display">
-(i, j, k)
-</span></p>
-<ul>
-<li>
-<span class="math inline">i</span>: anchor point</li>
-<li>
-<span class="math inline">j</span>: a point close to <span class="math inline">i</span> (in high-dimensional space)</li>
-<li>
-<span class="math inline">k</span>: a point farther away from <span class="math inline">i</span>
-</li>
-</ul>
-<p>If in the high-dimensional space: <span class="math display">
-|x_i - x_j| &lt; |x_i - x_k|
-</span></p>
-<p>then the embedding <span class="math inline">Y</span> should ideally preserve this ordering: <span class="math display">
-|y_i - y_j| &lt; |y_i - y_k|
-</span></p>
-<p>We define a <em>triplet as correctly preserved</em> if both inequalities hold. Formally, define an indicator:</p>
-<p><span class="math display">
-I_{ijk} =
-\begin{cases}
-1, &amp; \text{if } \big(|x_i - x_j| &lt; |x_i - x_k|\big) \text{ and } \big(|y_i - y_j| &lt; |y_i - y_k|\big) \\
-0, &amp; \text{otherwise}
-\end{cases}
-</span></p>
-<p>Then, the <strong>Random Triplet Accuracy (RTA)</strong> is:</p>
-<p><span class="math display">
-\text{RTA} = \frac{1}{|\mathcal{T}|} \sum_{(i,j,k) \in \mathcal{T}} I_{ijk}
-</span></p>
-<p>where <span class="math inline">\mathcal{T}</span> is the set of sampled triplets.</p>
-<p>Triplets can be sampled randomly across all points.</p>
-<ul>
-<li>For each anchor <span class="math inline">i</span>, randomly sample a few pairs <span class="math inline">(j, k) \neq i</span>.</li>
-<li>Use only distances between points to check ordering consistency.</li>
-</ul>
-<p>(In current implementation, 5 random triplets per point, computes which ones preserve the ordering)</p>
-<p>If labels are available, you can restrict <span class="math inline">j</span> to be within the same class and <span class="math inline">k</span> from a different class. This variant measures how well class structure is preserved.</p>
-</section><section id="global-score" class="level3"><h3 class="anchored" data-anchor-id="global-score">Global score</h3>
-<p>Measures <em>how well a low-dimensional embedding <span class="math inline">Y</span></em> preserves the <strong>global linear structure</strong> of the high-dimensional data <span class="math inline">X</span>.</p>
-<p>We have:</p>
-<ul>
-<li>
-<span class="math inline">X \in \mathbb{R}^{n \times p}</span>: the high-dimensional data (each row is an observation).</li>
-<li>
-<span class="math inline">Y \in \mathbb{R}^{n \times d}</span>: the low-dimensional embedding (produced by t-SNE, UMAP, PHATE, etc.).</li>
-<li>
-<span class="math inline">n</span>: number of observations, <span class="math inline">p</span>: number of features, <span class="math inline">d</span>: embedding dimension (usually 2).</li>
-</ul>
-<p>The function computes a <strong>global loss</strong> based on how well <span class="math inline">Y</span> can linearly reconstruct <span class="math inline">X</span>.</p>
-<p>We want to find a linear mapping <span class="math inline">A \in \mathbb{R}^{p \times d}</span> such that:</p>
-<p><span class="math display">
-X^\top \approx A Y^\top
-</span></p>
-<p>Equivalently:</p>
-<p><span class="math display">
-X \approx Y A^\top
-</span></p>
-<p>This means: can we <strong>linearly reconstruct</strong> the high-D data <span class="math inline">X</span> from the low-D embedding <span class="math inline">Y</span>? That’s the key idea behind “global structure preservation”: If <span class="math inline">Y</span> preserves the global geometry of <span class="math inline">X</span>, then there exists such a linear mapping <span class="math inline">A</span> with low reconstruction error.</p>
-<p>The optimal <span class="math inline">A</span> (in least squares sense) minimizes:</p>
-<p><span class="math display">
-\mathcal{L}(A) = | X^\top - A Y^\top |_F^2
-</span></p>
-<p>Setting the derivative <span class="math inline">\frac{\partial \mathcal{L}}{\partial A} = 0</span> gives:</p>
-<p><span class="math display">
-A = X^\top Y (Y^\top Y)^{-1}
-</span></p>
-<p>which matches exactly what the code computes (after transposing):</p>
-<p><span class="math display">
-A = X^\top (Y (Y^\top Y)^{-1})
-</span></p>
-<p>Now compute the <strong>mean squared reconstruction error</strong>:</p>
-<p><span class="math display">
-L_{\text{global}}(X, Y) = \frac{1}{np} | X^\top - A Y^\top |_F^2
-</span></p>
-<p>This measures how well <span class="math inline">Y</span> (through a linear transformation <span class="math inline">A</span>) can reconstruct <span class="math inline">X</span>.</p>
-<ul>
-<li>If <span class="math inline">Y</span> retains global structure well; low <span class="math inline">L_{\text{global}}</span>
-</li>
-<li>If <span class="math inline">Y</span> distorts global structure; high <span class="math inline">L_{\text{global}}</span>
-</li>
-</ul>
-<p>Then, the function compares the embedding’s global loss against that of a <strong>PCA embedding</strong>:</p>
-<p>So the final <strong>Global Score (GS)</strong> is:</p>
-<p><span class="math display">
-\text{GS} = \exp\left( - \frac{L_{\text{global}}(X, Y) - L_{\text{global}}(X, Y_{\text{PCA}})}{L_{\text{global}}(X, Y_{\text{PCA}})} \right).
-</span></p>
-<p>So, the <strong>Global Score</strong> acts as a <em>normalized measure of how well the embedding preserves global linear relationships</em>, relative to PCA.</p>
-</section></section><section id="knn-accuracy" class="level2" data-number="1.4"><h2 data-number="1.4" class="anchored" data-anchor-id="knn-accuracy">
-<span class="header-section-number">1.4</span> <strong>3. KNN Accuracy</strong>
-</h2>
-<section id="intuition" class="level3"><h3 class="anchored" data-anchor-id="intuition"><strong>Intuition:</strong></h3>
-<p>If an embedding preserves local neighborhoods well, then points close together in high-dimensional space should remain close in the low-dimensional embedding. A simple way to check this is to see how well a <strong>K-Nearest Neighbors classifier</strong> can predict labels in the embedding space.</p>
-</section><section id="mathematical-definition" class="level3"><h3 class="anchored" data-anchor-id="mathematical-definition"><strong>Mathematical Definition:</strong></h3>
-<ol type="1">
-<li>Let <span class="math inline">Y = \{y_1, \dots, y_n\}</span> be the low-dimensional embedding of high-dimensional data <span class="math inline">X = \{x_1, \dots, x_n\}</span>.</li>
-<li>Let <span class="math inline">L = \{l_1, \dots, l_n\}</span> be the true labels for each observation.</li>
-<li>For each point <span class="math inline">y_i</span>, find its <span class="math inline">k</span> nearest neighbors <span class="math inline">\text{NN}_k(y_i)</span> in the embedding space.</li>
-<li>Predict <span class="math inline">y_i</span>’s label as the <strong>majority vote</strong> among neighbors:</li>
-</ol>
-<p><span class="math display">
-\hat{l}_i = \text{mode}(\{l_j : j \in \text{NN}_k(y_i)\})
-</span></p>
-<ol start="5" type="1">
-<li>KNN accuracy is:</li>
-</ol>
-<p><span class="math display">
-\text{KNN Accuracy} = \frac{1}{n} \sum_{i=1}^{n} \mathbf{1}\{\hat{l}_i = l_i\}
-</span></p>
-<ul>
-<li>
-<span class="math inline">\mathbf{1}\{\cdot\}</span> is the indicator function.</li>
-</ul>
-<p><strong>Notes:</strong></p>
-<ul>
-<li>This is a <strong>leave-one-out cross-validation (LOO-CV)</strong>.</li>
-<li>For larger datasets, you can use <strong>k-fold CV</strong> to reduce runtime.</li>
-</ul></section></section><section id="svm-accuracy-local-evaluation" class="level2" data-number="1.5"><h2 data-number="1.5" class="anchored" data-anchor-id="svm-accuracy-local-evaluation">
-<span class="header-section-number">1.5</span> <strong>4. SVM Accuracy (Local Evaluation)</strong>
-</h2>
-<section id="intuition-1" class="level3"><h3 class="anchored" data-anchor-id="intuition-1"><strong>Intuition:</strong></h3>
-<p>SVM Accuracy measures local structure preservation in a <strong>more flexible way</strong>. It uses a kernel (e.g., RBF) to capture nonlinear separations in the embedding space. If the embedding preserves neighborhoods, an SVM trained on some points should correctly classify held-out points.</p>
-</section><section id="mathematical-definition-1" class="level3"><h3 class="anchored" data-anchor-id="mathematical-definition-1"><strong>Mathematical Definition:</strong></h3>
-<ol type="1">
-<li><p>Let <span class="math inline">Y</span> be the embedding and <span class="math inline">L</span> the labels.</p></li>
-<li><p>Partition <span class="math inline">Y</span> into <span class="math inline">K</span> folds: <span class="math inline">Y = Y_1 \cup \dots \cup Y_K</span>.</p></li>
-<li>
-<p>For each fold <span class="math inline">k</span>:</p>
-<ul>
-<li>Train an SVM on <span class="math inline">Y \setminus Y_k</span> (all other folds).</li>
-<li>Predict labels on <span class="math inline">Y_k</span>.</li>
-</ul>
-</li>
-<li><p>SVM Accuracy is the overall proportion of correct predictions:</p></li>
-</ol>
-<p><span class="math display">
-\text{SVM Accuracy} = \frac{1}{n} \sum_{i=1}^{n} \mathbf{1}\{\hat{l}_i = l_i\}
-</span></p>
-<ul>
-<li>Often an <strong>RBF kernel</strong> is used:</li>
-</ul>
-<p><span class="math display">
-K(y_i, y_j) = \exp(-\gamma \|y_i - y_j\|^2)
-</span></p>
-<ul>
-<li>To speed up large datasets, one can approximate the kernel with <strong>Nyström method</strong> (low-rank approximation).</li>
-</ul></section><section id="cta" class="level3"><h3 class="anchored" data-anchor-id="cta">CTA</h3>
-</section></section><section id="distance-metrics" class="level2" data-number="1.6"><h2 data-number="1.6" class="anchored" data-anchor-id="distance-metrics">
-<span class="header-section-number">1.6</span> Distance Metrics</h2>
-<p>Let dataset <span class="math inline">X = \{x_1, x_2, \dots, x_n\}</span> in some metric space with distance function <span class="math inline">d(\cdot, \cdot)</span>, clustering assignment <span class="math inline">C = \{C_1, C_2, \dots, C_k\}</span>, where <span class="math inline">C_i</span> is the set of indices of points in cluster <span class="math inline">i</span>, and <span class="math inline">n_i = |C_i|</span> = size of cluster <span class="math inline">i</span>.</p>
-<section id="min_avg_dist" class="level4"><h4 class="anchored" data-anchor-id="min_avg_dist">min_avg_dist</h4>
-<p><code>average.distance</code> = average pairwise distance within a cluster <span class="math inline">C_k</span>:</p>
-<p><span class="math display">
-\text{average.distance}(C_k) = \frac{2}{n_k(n_k - 1)} \sum_{i&lt;j, \, i,j \in C_k} d(x_i, x_j)
-</span></p>
-<p>with <span class="math inline">n_k</span> = number of points in cluster <span class="math inline">k</span>.</p>
-<p>Then:</p>
-<p><span class="math display">
-\text{min\_avg\_dist} = \min_k \; \text{average.distance}(C_k)
-</span></p>
-</section><section id="min_dist" class="level4"><h4 class="anchored" data-anchor-id="min_dist">min_dist</h4>
-<p>From <code>cluster_stats$min.separation</code>, the minimum <strong>between-cluster separation</strong>:</p>
-<p>For clusters <span class="math inline">C_k, C_\ell</span> with <span class="math inline">k \neq \ell</span>:</p>
-<p><span class="math display">
-\text{separation}(C_k, C_\ell) = \min_{x \in C_k, \, y \in C_\ell} d(x,y)
-</span></p>
-<p>Then:</p>
-<p><span class="math display">
-\text{min\_dist} = \min_{k \neq \ell} \text{separation}(C_k, C_\ell)
-</span></p>
-</section><section id="avg_dist" class="level4"><h4 class="anchored" data-anchor-id="avg_dist">avg_dist</h4>
-<p>From <code>cluster_stats$average.between</code>, the mean of all <strong>between-cluster distances</strong>:</p>
-<p>For clusters <span class="math inline">C_k, C_\ell</span>:</p>
-<p><span class="math display">
-\text{average.between}(C_k, C_\ell) = \frac{1}{n_k n_\ell} \sum_{x \in C_k} \sum_{y \in C_\ell} d(x,y)
-</span></p>
-<p>Then:</p>
-<p><span class="math display">
-\text{avg\_dist} = \frac{2}{K(K-1)} \sum_{k &lt; \ell} \text{average.between}(C_k, C_\ell)
-</span></p>
-<p>where <span class="math inline">K</span> is the number of clusters.</p>
-</section><section id="between-to-within-bw-ratio" class="level4"><h4 class="anchored" data-anchor-id="between-to-within-bw-ratio">Between-to-within (BW) ratio</h4>
-<p>To evaluate how well clustering structure is preserved in <span class="math inline">\mathbb{R}^p</span>, we use the BW Ratio, which compares the dispersion between clusters to the dispersion within clusters. Let <span class="math inline">\mathbf{x}_j \in \mathbb{R}^p</span> be the <span class="math inline">j</span>-th observation, and let <span class="math inline">C_1, \dots, C_k</span> denote the set of <span class="math inline">k</span> clusters. The centroid of cluster <span class="math inline">C_i</span> is denoted by <span class="math inline">\bar{\mathbf{x}}_i</span>, and the overall data centroid by <span class="math inline">\bar{\mathbf{x}}</span>. Distances are measured using the Euclidean norm: <span class="math inline">d(\mathbf{x}, \mathbf{y}) = \|\mathbf{x} - \mathbf{y}\|_2</span>.</p>
-<p>The within-cluster sum of squares (W) quantifies how tightly points are grouped within each cluster:</p>
-<p><span class="math display">
-W = \sum_{i=1}^{k} \sum_{\mathbf{x}_j \in C_i} \|\mathbf{x}_j - \bar{\mathbf{x}}_i\|^2,
-</span></p>
-<p>The between-cluster sum of squares (B) captures the extent to which clusters are separated from each other:</p>
-<p><span class="math display">
-B = \sum_{i=1}^{k} n_i \cdot \|\bar{\mathbf{x}}_i - \bar{\mathbf{x}}\|^2,
-</span></p>
-<p>where <span class="math inline">n_i</span> is the number of observations in cluster <span class="math inline">C_i</span>.</p>
-<p>The resulting BW Ratio is computed as:</p>
-<p><span class="math display">
-\text{BW Ratio} = \frac{B}{W} = \frac{ \sum_{i=1}^{k} n_i \cdot \|\bar{\mathbf{x}}_i - \bar{\mathbf{x}}\|^2 }{ \sum_{i=1}^{k} \sum_{\mathbf{x}_j \in C_i} \|\mathbf{x}_j - \bar{\mathbf{x}}_i\|^2 }.
-</span></p>
-<p>A higher BW Ratio indicates better clustering, with well-separated cluster centroids and minimal within-cluster dispersion.</p>
-</section></section><section id="research-objectives" class="level2" data-number="1.7"><h2 data-number="1.7" class="anchored" data-anchor-id="research-objectives">
-<span class="header-section-number">1.7</span> Research Objectives</h2>
+<section id="research-objectives" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="research-objectives">
+<span class="header-section-number">1.1</span> Research Objectives</h2>
 <p>This thesis addresses these challenges through four main objectives:</p>
 <ol type="1">
 <li><p><strong>Develop methods and software to diagnose NLDR techniques</strong>, providing tools to assess whether low-dimensional representations accurately reflect high-dimensional structures.</p></li>
 <li><p><strong>Conduct a large-scale user study to explore perception and misperception in NLDR representations</strong>, assessing how viewers recognize structure differently in NLDR layouts compared to tour-based views. This cognitive perception experiment will help identify common mistakes made when choosing and reporting structure from NLDR visualizations, and will inform best practices for using these methods in data analysis.</p></li>
 <li><p><strong>Create benchmark datasets with known geometric properties</strong>, via the <code>cardinalR</code> package, to systematically evaluate and validate NLDR methods.</p></li>
 <li><p><strong>Provide a platform for NLDR evaluation</strong>, combining linked linear projections (such as tours) and NLDR layouts to reveal where distortions arise and how structure is preserved or lost.</p></li>
-</ol></section><section id="contribution" class="level2" data-number="1.8"><h2 data-number="1.8" class="anchored" data-anchor-id="contribution">
-<span class="header-section-number">1.8</span> Contribution</h2>
+</ol></section><section id="contribution" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="contribution">
+<span class="header-section-number">1.2</span> Contribution</h2>
 <p>By addressing both computational and cognitive aspects of NLDR, this research aims to advance our understanding of when and how NLDR methods can be trusted. The work will provide practical tools, benchmark data, and empirical insights to support the responsible use of dimension reduction techniques in high-dimensional data analysis.</p>
 <!-- Paper: https://www.sciencedirect.com/science/article/pii/S0092867421005833?via%3Dihub#fig1 (CITE-seq data) -->
 <!-- A human PBMC CITE-seq dataset typically contains both RNA expression data and surface protein (ADT) measurements. These datasets are ideal for multimodal single-cell analysis. -->
@@ -594,14 +293,15 @@ B = \sum_{i=1}^{k} n_i \cdot \|\bar{\mathbf{x}}_i - \bar{\mathbf{x}}\|^2,
 <!-- These variations occur due to the different perspectives on the distances between data points provided by the methods and parameter choices. -->
 <!-- Another way to visualize high-dimensional data is through linear projections. PCA is the traditional method, resulting in a new set of variables that are linear combinations of the original variables. Tours, as defined by @lee2021, expand on this concept by producing dynamic linear projection visualizations that offer views of the data from all angles. @lee2021 provides an overview of the key advancements in tours. Numerous tour algorithms are available, with many included in the R package `tourr` [@wickham2011], and versions that offer enhanced interactivity in `langevitour` [@harrison2024] and `detourr` [@hart2022]. Linear projections offer a reliable way to view high-dimensional data as they do not distort the space, making them more accurate representations of the data structure. However, linear projections can become cluttered, and global patterns can obscure local structure. The simple act of projecting data from high-dimensional spaces leads to piling [@laa2022], where data concentrates in the center of the projections. -->
 <!-- NLDR is designed to escape these issues, to exaggerate structure so that it can be observed. However, NLDR can hallucinate wildly, to suggest patterns that are not actually present in the data. The research project addresses this significant issue by proposing methods to understand better whether the NDLR representations are reliable or hallucinations. These methods are designed to enable a more profound understanding of the quality and validity of NLDR-derived low-dimensional representations. By incorporating rigorous evaluation techniques, the project seeks to identify instances where the NLDR models genuinely capture the essential structures present in the data and where they might introduce artifacts or distortions, leading to potentially misleading representations. This meticulous examination and validation process contribute to enhancing the robustness and credibility of NLDR techniques in high-dimensional data analysis. -->
-</section><section id="thesis-outline" class="level2" data-number="1.9"><h2 data-number="1.9" class="anchored" data-anchor-id="thesis-outline">
-<span class="header-section-number">1.9</span> Thesis Outline</h2>
+</section><section id="thesis-outline" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="thesis-outline">
+<span class="header-section-number">1.3</span> Thesis Outline</h2>
 <p>The rest of the thesis is organized as follows:</p>
 <p><a href="02-chap2.html" class="quarto-xref"><span>Chapter 2</span></a> introduces an algorithm to assess the NLDR and decide on which, if any, is the most reasonable representation of the structure(s) present in high-dimensional data. We create a model starting with NLDR layout that is then used to display as a wireframe in high dimensions.</p>
 <p><a href="03-chap3.html" class="quarto-xref"><span>Chapter 3</span></a> provides empirical evidence on how viewers recognize structure differently when using NLDR layouts versus the tour view, particularly with varying distances between clusters. The findings will help clarify common mistakes made when selecting and reporting structures based on NLDR layouts.</p>
-<p><a href="04-chap4.html" class="quarto-xref"><span>Chapter 4</span></a> introduces two R packages developed as part of this research. <a href="04-chap4.html#sec-third-paper" class="quarto-xref"><span>Section 4.1</span></a> presents the implementation of the work is available as an R package, named <code>quollr</code>, an acronym to “<strong>qu</strong>estioning how a high-dimensional <strong>o</strong>bject <strong>l</strong>ooks in <strong>l</strong>ow-dimensions using <strong>r</strong>” <span class="citation" data-cites="jayani2024a">(<a href="refs.html#ref-jayani2024a" role="doc-biblioref"><strong>jayani2024a?</strong></a>)</span>. This package also contains a function for performing hexagonal binning using a new approach, for saving langevitour results with a specific projection, and link plots to understand the quirks that occur with different NLDR techniques. <a href="04-chap4.html#sec-fourth-paper" class="quarto-xref"><span>Section 4.2</span></a> proposes the R package, <code>cardinalR</code> <span class="citation" data-cites="jayani2024b">(<a href="refs.html#ref-jayani2024b" role="doc-biblioref"><strong>jayani2024b?</strong></a>)</span> (<strong>c</strong>ollection of v<strong>ar</strong>ious high-<strong>d</strong>imens<strong>i</strong>o<strong>nal</strong> data structures in <strong>R</strong>), which includes functions to generate a large variety of structures in high dimensions along with some already generated examples.</p>
+<p><a href="04-chap4.html" class="quarto-xref"><span>Chapter 4</span></a> introduces two R packages developed as part of this research. <a href="04-chap4.html#sec-third-paper" class="quarto-xref"><span>Section 4.1</span></a> presents the implementation of the work is available as an R package, named <code>quollr</code>, an acronym to “<strong>qu</strong>estioning how a high-dimensional <strong>o</strong>bject <strong>l</strong>ooks in <strong>l</strong>ow-dimensions using <strong>r</strong>” <span class="citation" data-cites="jayani2024a">(<a href="refs.html#ref-jayani2024a" role="doc-biblioref"><strong>jayani2024a?</strong></a>)</span>. This package also contains a function for performing hexagonal binning using a new approach, for saving langevitour results with a specific projection, and link plots to understand the quirks that occur with different NLDR techniques. <a href="04-chap4.html#sec-fourth-paper" class="quarto-xref"><span>Section 4.2</span></a> proposes the R package, <code>cardinalR</code> <span class="citation" data-cites="jayani2024b">(<a href="refs.html#ref-jayani2024b" role="doc-biblioref"><strong>jayani2024b?</strong></a>)</span> (<strong>c</strong>ollection of v<strong>ar</strong>ious high-<strong>d</strong>imens<strong>i</strong>o<strong>nal</strong> data structures in <strong>R</strong>), which includes functions to generate high-dimensional clustering data structures, with features such as adding noise dimensions and background noise along with some already generated examples.</p>
 <p><a href="05-chap5.html" class="quarto-xref"><span>Chapter 5</span></a> introduces <code>menuraR</code> (<strong>m</strong>onitoring <strong>e</strong>mbeddings of <strong>n</strong>onlinear <strong>u</strong>nfoldings for <strong>r</strong>epresentation and <strong>a</strong>nalysis in <strong>R</strong>), a Shiny web application designed to select and evaluate NLDR layouts.</p>
 <p><a href="06-chap6.html" class="quarto-xref"><span>Chapter 6</span></a> concludes the thesis, summarises the contribution of the work, and discusses some future plans.</p>
+<!-- This research presents four original contributions. The first contribution ([Chapter 2](#sec-first-paper)) introduces a new method for visualizing how NLDR warps data. This method improves the diagnostics of NLDR techniques. The second contribution ([Chapter 3](#sec-second-paper)) provides evidence in identification of clusters at various distances when observing NLDR representation and the tour view of high-dimensional data. This finding is based on a human subject experiment that explores both the perception and misperception of NLDR representations. The third contribution ([Chapter 4](#sec-software)) presents two R packages: `quollr` and `cardinalR`. The `quollr` implements the method introduced in [Chapter 2](#sec-first-paper) as an R package. The `cardinalR` is developed to generate high-dimensional clustering data structures, with features such as adding noise dimensions and background noise. Finally, the fourth contribution ([Chapter 5](#sec-fifth-paper)) features a Shiny app that offers a user-friendly interface for analysts to obtain the most accurate NLDR representation. Overall, this work advances the field of diagnosing NLDR by improving the visualization of high-dimensional data. -->
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
