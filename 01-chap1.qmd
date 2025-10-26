@@ -71,11 +71,11 @@ interior_annotation <- function(label, position = c(0.92, 0.92), cex = 1, col="g
 <!--   - Any literature of user-firendly platforms for NLDR users -->
 
 
-High-dimensional data, where each observation is described by many variables, is increasingly prevalent in modern science, from bioinformatics to computer vision and social science. For example, **CITE-seq data** [@hao2021] simultaneously records RNA expression and protein markers for individual cells, producing rich, complex datasets. To make sense of such data, analysts often rely on **dimension reduction** methods to create low-dimensional visualizations that can reveal patterns and structure.
+High-dimensional data, where each observation is described by many variables, is increasingly prevalent in modern science from bioinformatics to computer vision. For example, **CITE-seq data** [@hao2021] simultaneously records RNA expression and protein markers for individual cells, producing rich, complex datasets. To interpret such data, analysts often rely on **dimension reduction** methods to create low-dimensional visualizations that can reveal patterns and structure.
 
-One established approach is **linear projection**, where high-dimensional points are represented as linear combinations of the original features. **Principal Component Analysis (PCA)** is the most familiar method, identifying directions of maximum variance. Extending this idea, **tours** [@lee2021] provide dynamic sequences of linear projections, giving views from multiple angles to help reveal hidden structure. Tour methods are implemented in R packages such as `tourr` [@wickham2011], `langevitour` [@harrison2023], and `detourr` [@hart2022]. A key advantage of linear projections is that they preserve the geometric relationships of the original data—they do not introduce distortion. However, linear projections can become cluttered, and global structure may obscure local detail. Furthermore, **piling** [@laa2022]—where points concentrate in the center of projections—can mask important variation.
+One established approach is **linear projection**, where high-dimensional points are represented as linear combinations of the original features. **Principal Component Analysis (PCA)** (for an overview see @jolliffe2011) is the most familiar method, identifying directions of maximum variance. Extending this idea, **tours** [@lee2021] provide dynamic sequences of linear projections, giving views from multiple angles to help reveal hidden structure. Tour methods are implemented in R packages such as `tourr` [@wickham2011], `langevitour` [@harrison2023], and `detourr` [@hart2022]. A key advantage of linear projections is that they preserve the geometric relationships of the original data, they do not introduce distortion. However, linear projections can become cluttered, and global structure may obscure local detail. Furthermore, **piling** [@laa2022] where points concentrate in the center of projections can mask important variation.
 
-To overcome these limitations, analysts frequently turn to **nonlinear dimension reduction (NLDR)** methods such as tSNE [@laurens2008], UMAP [@leland2018], PHATE [@moon2019], TriMAP [@amid2022], and PaCMAP [@yingfan2021]. NLDR applies nonlinear transformations to generate low-dimensional embeddings that aim to preserve local or global data relationships. These methods are designed to **exaggerate structure**, making it easier for analysts to detect patterns.
+To overcome these limitations, analysts frequently turn to **nonlinear dimension reduction (NLDR)** methods such as tSNE [@laurens2008], UMAP [@leland2018], PHATE [@moon2019], TriMAP [@amid2022], and PaCMAP [@yingfan2021]. NLDR applies nonlinear transformations to generate low-dimensional embeddings that aim to preserve local or global data relationships. These methods are designed to **exaggerate structure**, making it easier for analysts to detect patterns that may not be apparent through linear projections.
 
 ```{r}
 # label: read-pbmc-nldr
@@ -151,16 +151,16 @@ nldr8 <- pacmap_pbmc |>
 #| fig-height: 4
 #| out-width: 100%
 #| fig-pos: H
+#| eval: false
 # (a) UMAP (n_neighbors = 30, min_dist = 0.3), (b) UMAP (n_neighbors = 5, min_dist = 0.01), (c) UMAP (n_neighbors = 15, min_dist = 0.99), (f) tSNE (perplexity = 5), (g) tSNE (perplexity = 30), (l) TriMAP (n_inliers = 12, n_outliers = 4, n_random = 3), (q) PaCMAP (n_neighbors = 30, init = random, MN_ratio = 0.9, FP_ratio = 5)
 nldr1 + nldr2 + nldr3 + nldr4 +
   nldr5 + nldr6 + nldr7 + nldr8 +
   plot_layout(ncol = 4)
 ```
 
+Yet this strength also introduces a critical risk: **NLDR can hallucinate structure**, creating patterns in the low-dimensional space that do not exist in the high-dimensional data. This issue is strikingly illustrated in @fig-NLDR-variety, where eight different NLDR representations of the same CITE-seq dataset vary dramatically due to differences in method or hyperparameter choices. Such variability raises essential questions: *Which layout can be trusted? Which accurately reflects the high-dimensional data structure?*
 
-Yet this strength also introduces a critical risk: **NLDR can hallucinate structure**, creating patterns in the low-dimensional space that do not exist in the high-dimensional data. This issue is strikingly illustrated in @fig-NLDR-variety, where eight different NLDR representations of the same CITE-seq dataset vary dramatically due to differences in method or hyperparameter choices. Such variability raises essential questions: *Which visualization can be trusted? Which accurately reflects the high-dimensional structure?*
-
-Despite the widespread use of NLDR, there is no widely accepted or visually interpretable framework for **diagnosing the reliability of NLDR representations**. Analysts are left to rely on subjective judgment when choosing and interpreting NLDR layouts, without tools to distinguish faithful representations from artifacts. There is also a lack of benchmark datasets with known geometric structure for testing NLDR methods systematically.
+Despite the widespread use of NLDR, there is no widely accepted or visually interpretable framework for **diagnosing the reliability of NLDR representations**. Analysts are left to rely on subjective judgment when choosing and interpreting NLDR layouts, without tools to distinguish faithful representations from artifacts. There is also a lack of benchmark clustering datasets with known geometric structure for testing NLDR methods systematically.
 
 In addition to technical gaps, **little is known about how people perceive and misperceive structure in NLDR layouts**. It is unclear how different visualizations influence analysts’ conclusions, or how distortions introduced by NLDR affect decision making. Given the critical role of visualization in high-dimensional data analysis, understanding the human perception of NLDR representations is essential.
 
