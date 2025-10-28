@@ -13,7 +13,7 @@ The survey web application, **Match-a-roo** ([https://ebsmonash.shinyapps.io/Mat
 
 All materials associated with this thesis are openly available at [https://github.com/JayaniLakshika/Monash\_PhD\_thesis](https://github.com/JayaniLakshika/Monash_PhD_thesis), reflecting the principles of transparency and reproducible research. The thesis itself is written in Quarto [@Allaire_Quarto_2024] and published online at [https://jayani-lakshika-phd-thesis.netlify.app](https://jayani-lakshika-phd-thesis.netlify.app).
 
-In addition, a number of R packages were essential in the development of this work, including **`tidyverse`** \[@tidyverse], **`lmtest`** \[@lmtest], **`kableExtra`** \[@kableextra], **`patchwork`** \[@patchwork], **`glue`** \[@glue], **`ggpcp`** \[@ggpcp], **`here`** \[@here], and **`knitr`** \[@knitr]. (Final package list to be confirmed upon completion of writing.)
+In addition, a number of R packages were essential in the development of this work, including `tidyverse` [@tidyverse], `lmtest` [@lmtest], `kableExtra` [@kableextra], `patchwork` [@patchwork], `glue` [@glue], `ggpcp` [@ggpcp], `here` [@here], and `knitr` [@knitr]. (Final package list to be confirmed upon completion of writing.)
 
 ## Future work
 
