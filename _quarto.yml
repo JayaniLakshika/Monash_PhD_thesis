@@ -1,5 +1,6 @@
 project:
   type: book
+  output-dir: _book
 
 execute:
   keep-md: true
@@ -15,23 +16,24 @@ book:
   chapters:
     - text: "Front matter"
       file: index.qmd
-    - "abstract.qmd"
-    - "acknowledgements.qmd"
-    - "01-chap1.qmd"
-    - "02-chap2.qmd"
-    - "03-chap3.qmd"
-    - "04-chap4.qmd"
-    - "05-chap5.qmd"
-    - "06-chap6.qmd"
+    - "preliminaries/abstract.qmd"
+    - "preliminaries/acknowledgements.qmd"
+    - "chapters/01-chap1.qmd"
+    - "chapters/02-chap2.qmd"
+    - "chapters/03-chap3.qmd"
+    - "chapters/04-chap4.qmd"
+    - "chapters/05-chap5.qmd"
+    - "chapters/06-chap6.qmd"
     - "refs.qmd"
   appendices:
-    - "A-appA.qmd"
-    - "B-appB.qmd"
-    - "C1-appC1.qmd"
-    - "C2-appC2.qmd"
-    - "C3-appC3.qmd"
+    - "appendix/A-appA.qmd"
+    - "appendix/B-appB.qmd"
+    - "appendix/C1-appC1.qmd"
+    - "appendix/C2-appC2.qmd"
+    - "appendix/C3-appC3.qmd"
   sidebar:
     style: "docked"
+  page-navigation: true
 
 bibliography: thesisrefs.bib
 csl: american-statistical-association.csl
