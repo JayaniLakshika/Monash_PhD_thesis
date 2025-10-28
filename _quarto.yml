@@ -33,7 +33,6 @@ book:
     - "appendix/C3-appC3.qmd"
   sidebar:
     style: "docked"
-  page-navigation: true
 
 bibliography: thesisrefs.bib
 csl: american-statistical-association.csl
