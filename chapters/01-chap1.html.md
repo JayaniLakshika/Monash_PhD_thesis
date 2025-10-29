@@ -32,9 +32,9 @@
 
 High-dimensional data, where each observation is described by many variables, is increasingly prevalent in modern science from bioinformatics to computer vision. For example, **CITE-seq data** [@hao2021] simultaneously records RNA expression and protein markers for individual cells, producing rich, complex datasets. To interpret such data, analysts often rely on **dimension reduction** methods to create low-dimensional visualizations that can reveal patterns and structure.
 
-One established approach is **linear projection**, where high-dimensional points are represented as linear combinations of the original features. **Principal Component Analysis (PCA)** (for an overview see @jolliffe2011) is the most familiar method, identifying directions of maximum variance. Extending this idea, **tours** [@lee2021] provide dynamic sequences of linear projections, giving views from multiple angles to help reveal hidden structure. Tour methods are implemented in R packages such as `tourr` [@wickham2011], `langevitour` [@harrison2023], and `detourr` [@hart2022]. A key advantage of linear projections is that they preserve the geometric relationships of the original data, they do not introduce distortion. However, linear projections can become cluttered, and global structure may obscure local detail. Furthermore, **piling** [@laa2022] where points concentrate in the center of projections can mask important variation.
+One established approach is **linear projection**, where high-dimensional points are represented as linear combinations of the original features. **Principal Component Analysis (PCA)** (for an overview see @jolliffe2011) is the most familiar method, identifying directions of maximum variance. Extending this idea, **tours** [@lee2021] provide dynamic sequences of linear projections, giving views from multiple angles to help reveal hidden structure. Tour methods are implemented in R packages such as `tourr` [@wickham2011], `langevitour` [@harisson2024], and `detourr` [@hart2022]. A key advantage of linear projections is that they preserve the geometric relationships of the original data, they do not introduce distortion. However, linear projections can become cluttered, and global structure may obscure local detail. Furthermore, **piling** [@laa2022] where points concentrate in the center of projections can mask important variation.
 
-To overcome these limitations, analysts frequently turn to **nonlinear dimension reduction (NLDR)** methods such as tSNE [@laurens2008], UMAP [@leland2018], PHATE [@moon2019], TriMAP [@amid2022], and PaCMAP [@yingfan2021]. NLDR applies nonlinear transformations to generate low-dimensional embeddings that aim to preserve local or global data relationships. These methods are designed to **exaggerate structure**, making it easier for analysts to detect patterns that may not be apparent through linear projections.
+To overcome these limitations, analysts frequently turn to **nonlinear dimension reduction (NLDR)** methods such as tSNE [@laurens2008], UMAP [@leland2018], PHATE [@moon2019], TriMAP [@amid2019], and PaCMAP [@yingfan2021]. NLDR applies nonlinear transformations to generate low-dimensional embeddings that aim to preserve local or global data relationships. These methods are designed to **exaggerate structure**, making it easier for analysts to detect patterns that may not be apparent through linear projections.
 
 
 ::: {.cell}
@@ -44,7 +44,9 @@ To overcome these limitations, analysts frequently turn to **nonlinear dimension
 
 
 ::: {.cell}
-
+::: {.cell-output-display}
+![Eight different NLDR representations of a human PBMC CITE-seq dataset (@yuhan2021). Different techniques and different hyperparameter choices are used. Researchers may have seen any of these in their analysis of this data, depending on their choice of method, or typical hyperparameter choice. Would they make different decisions downstream in the analysis depending on which version seen? Which is the most accurate representation of the structure in high dimensions?](01-chap1_files/figure-html/fig-NLDR-variety-1.png){#fig-NLDR-variety fig-pos='H' width=100%}
+:::
 :::
 
 
@@ -105,7 +107,9 @@ The rest of the thesis is organized as follows:
 
 @sec-second-paper provides empirical evidence on how viewers recognize structure differently when using NLDR layouts versus the tour view, particularly with varying distances between clusters. The findings will help clarify common mistakes made when selecting and reporting structures based on NLDR layouts. 
 
-@sec-software introduces two R packages developed as part of this research. @sec-third-paper presents the implementation of the work is available as an R package, named `quollr`, an acronym to "**qu**estioning how a high-dimensional **o**bject **l**ooks in **l**ow-dimensions using **r**" [@jayani2024a]. This package also contains a function for performing hexagonal binning using a new approach, for saving langevitour results with a specific projection, and link plots to understand the quirks that occur with different NLDR techniques. @sec-fourth-paper proposes the R package, `cardinalR` [@jayani2024b] (**c**ollection of v**ar**ious high-**d**imens**i**o**nal** data
+@sec-third-paper presents the implementation of the work is available as an R package, named `quollr`, an acronym to "**qu**estioning how a high-dimensional **o**bject **l**ooks in **l**ow-dimensions using **r**" [@jayani2024a]. This package also contains a function for performing hexagonal binning using a new approach, for saving langevitour results with a specific projection, and link plots to understand the quirks that occur with different NLDR techniques.
+
+@sec-fourth-paper proposes the R package, `cardinalR` [@jayani2024b] (**c**ollection of v**ar**ious high-**d**imens**i**o**nal** data
 structures in **R**), which includes functions to generate high-dimensional clustering data structures, with features such as adding noise dimensions and background noise along with some already generated examples.
 
 @sec-fifth-paper introduces `menuraR` (**m**onitoring **e**mbeddings of **n**onlinear **u**nfoldings for **r**epresentation and **a**nalysis in **R**), a Shiny web application designed to select and evaluate NLDR layouts.

@@ -50,7 +50,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./appendix/A-appA.html" rel="next">
-<link href="./chapters/06-chap6.html" rel="prev">
+<link href="./chapters/07-chap7.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -91,6 +91,49 @@ div.csl-indent {
 }</script>
 <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Merriweather|Source Code Pro" rel="stylesheet">
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -173,19 +216,25 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/04-chap4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Software</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">quollr: An R Package for Visualising <span class="math inline">2\text{-}D</span> Models from Non-linear Dimension Reductions in High Dimensional Space</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/05-chap5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Development of an interactive and dynamic graphics system for NLDR users</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">cardinalR: Generating interesting high-dimensional data structures</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/06-chap6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusion and future plans</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Development of an interactive and dynamic graphics system for NLDR users</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/07-chap7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Conclusion and future plans</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -275,6 +324,20 @@ Large-scale Dimensionality Reduction Using Triplets</span>,”</span>
 Barber, C. B., Dobkin, D. P., and Huhdanpaa, H. (1996), <span>“<a href="\url{https://doi.org/10.1145/235815.235821}."><span class="nocase">The Quickhull Algorithm for Convex
 Hulls</span></a>,”</span> <em>ACM Trans. Math. Softw.</em>, 22,
 469--483.
+</div>
+<div id="ref-hao2021" class="csl-entry" role="listitem">
+Hao, Y., Hao, S., Andersen-Nissen, E., Mauck, W. M., Zheng, S., Butler,
+A., Lee, M. J., Wilk, A. J., Darby, C., Zager, M., Hoffman, P.,
+Stoeckius, M., Papalexi, E., Mimitou, E. P., Jain, J., Srivastava, A.,
+Stuart, T., Fleming, L. M., Yeung, B., Rogers, A. J., McElrath, J. M.,
+Blish, C. A., Gottardo, R., Smibert, P., and Satija, R. (2021),
+<span>“Integrated analysis of multimodal single-cell data,”</span>
+<em>Cell</em>, 184, 3573–3587.e29. https://doi.org/<a href="https://doi.org/10.1016/j.cell.2021.04.048">https://doi.org/10.1016/j.cell.2021.04.048</a>.
+</div>
+<div id="ref-harisson2024" class="csl-entry" role="listitem">
+Harrison, P. (2023), <span>“<a href="\url{https://doi.org/10.32614/RJ-2023-046}."><span class="nocase">langevitour: Smooth Interactive Touring of High
+Dimensions, Demonstrated With scRNA-Seq Data</span></a>,”</span> <em>The
+R Journal</em>, 15, 206–219.
 </div>
 <div id="ref-hart2022" class="csl-entry" role="listitem">
 Hart, C., and Wang, E. (2022), <em><a href="\url{https://casperhart.github.io/detourr/}."><span class="nocase">detourr: Portable and Performant Tour
@@ -742,8 +805,8 @@ Software</em>, 40, 1–18.
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./chapters/06-chap6.html" class="pagination-link" aria-label="Conclusion and future plans">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusion and future plans</span></span>
+      <a href="./chapters/07-chap7.html" class="pagination-link" aria-label="Conclusion and future plans">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Conclusion and future plans</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
