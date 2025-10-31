@@ -22,8 +22,8 @@ dt <- tribble(
   ~`Chapter`, ~`Publication title`, ~Status, ~`Student contribution`, ~`Co-authors contribution`, ~`Coauthors are Monash students`,
   2, "", "Revised and resubmitted in the Journal of Computational and Graphical Statistics", "80%  Concept, Analysis, Software, Writing", "", "No",
   4, "", "Submitted in the R Journal", "80%  Concept, Analysis, Software, Writing", "", "No",
-  4, "", "Submitted in the R Journal", "80%  Concept, Analysis, Software, Writing", "", "No",
-  5, "", "Submitted in the Oxford Academic (Bioinformatics Advances)", "80%  Concept, Analysis, Software, Writing", "", "No"
+  5, "", "Submitted in the R Journal", "80%  Concept, Analysis, Software, Writing", "", "No",
+  6, "", "Submitted in the Oxford Academic (Bioinformatics Advances)", "80%  Concept, Analysis, Software, Writing", "", "No"
 )  
 
 dt |>

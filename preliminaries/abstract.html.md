@@ -45,7 +45,7 @@ The inclusion of co-authors reflects the fact that the work came from active col
    <td style="text-align:left;width: 1.3cm; "> No </td>
   </tr>
   <tr>
-   <td style="text-align:right;width: 1.2cm; "> 4 </td>
+   <td style="text-align:right;width: 1.2cm; "> 5 </td>
    <td style="text-align:left;width: 3cm; ">  </td>
    <td style="text-align:left;width: 3.5cm; "> Submitted in the R Journal </td>
    <td style="text-align:left;width: 2.5cm; "> 80%  Concept, Analysis, Software, Writing </td>
@@ -53,7 +53,7 @@ The inclusion of co-authors reflects the fact that the work came from active col
    <td style="text-align:left;width: 1.3cm; "> No </td>
   </tr>
   <tr>
-   <td style="text-align:right;width: 1.2cm; "> 5 </td>
+   <td style="text-align:right;width: 1.2cm; "> 6 </td>
    <td style="text-align:left;width: 3cm; ">  </td>
    <td style="text-align:left;width: 3.5cm; "> Submitted in the Oxford Academic (Bioinformatics Advances) </td>
    <td style="text-align:left;width: 2.5cm; "> 80%  Concept, Analysis, Software, Writing </td>

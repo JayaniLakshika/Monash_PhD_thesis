@@ -32,9 +32,9 @@ The inclusion of co-authors reflects the fact that the work came from active col
 \bottomrule
 \endlastfoot
 2 &  & Revised and resubmitted in the Journal of Computational and Graphical Statistics & 80\%  Concept, Analysis, Software, Writing &  & No\\
-4 &  & Submitted in the R Journal & 80\%  Concept, Analysis, Software, Writing &  & \vphantom{1} No\\
 4 &  & Submitted in the R Journal & 80\%  Concept, Analysis, Software, Writing &  & No\\
-5 &  & Submitted in the Oxford Academic (Bioinformatics Advances) & 80\%  Concept, Analysis, Software, Writing &  & No\\*
+5 &  & Submitted in the R Journal & 80\%  Concept, Analysis, Software, Writing &  & No\\
+6 &  & Submitted in the Oxford Academic (Bioinformatics Advances) & 80\%  Concept, Analysis, Software, Writing &  & No\\*
 \end{longtable}
 \endgroup{}
 
