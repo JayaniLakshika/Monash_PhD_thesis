@@ -1,4 +1,4 @@
-# A user study to explore perception and misperception in NLDR representations {#sec-second-paper}
+# Perception and Misperception in Nonlinear Dimension Reduction: A User Study {#sec-second-paper}
 
 ```{r include=FALSE}
 # Set up chunk for for knitr
