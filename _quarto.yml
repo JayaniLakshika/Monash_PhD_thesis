@@ -29,9 +29,7 @@ book:
   appendices:
     - "appendix/A-appA.qmd"
     - "appendix/B-appB.qmd"
-    - "appendix/C1-appC1.qmd"
-    - "appendix/C2-appC2.qmd"
-    - "appendix/C3-appC3.qmd"
+    - "appendix/C-appC.qmd"
   sidebar:
     style: "docked"
 
@@ -52,7 +50,19 @@ format:
           \usepackage{pmboxdraw}
           \newcommand{\CRANpkg}[1]{\textsf{#1}}
           \usepackage{amsmath}
-          \usepackage{array}
           \usepackage{float}
+          \usepackage{hyperref}
+          \usepackage[utf8]{inputenc}
+          \usepackage{bm}
+          \def\tightlist{}
+          \usepackage{setspace}
           \newcommand\pD{$p\text{-}D$}
+          \newcommand\kD{$k\text{-}D$}
+          \newcommand\dD{$d\text{-}D$}
           \newcommand\gD{$2\text{-}D$}
+          \newcommand{\twoD}{$2\text{-}D$}
+          \newcommand\tD{$3\text{-}D$}
+          \newcommand\fD{$4\text{-}D$}
+          \newcommand\sD{$7\text{-}D$}
+          \usepackage{bm}
+          \newcommand{\mathbfit}[1]{\bm{#1}}

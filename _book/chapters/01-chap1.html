@@ -187,7 +187,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/02-chap2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Visualising how non-linear dimension reduction warps your data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -249,20 +249,8 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../appendix/C1-appC1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Appendix to “quollr”</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../appendix/C2-appC2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Appendix to “cardinalR”</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../appendix/C3-appC3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Appendix to “Development of an interactive and dynamic graphics system for NLDR users”</span></span></a>
+  <a href="../appendix/C-appC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Appendix to “Development of an interactive and dynamic graphics system for NLDR users”</span></span></a>
   </div>
 </li>
       </ul>
@@ -298,7 +286,7 @@ window.Quarto = {
 
 </header><!-- - Topic statement --><!--   - Develop methods and software to understand NLDR techniques --><!-- - Background --><!--   - What is high-dimensional data? --><!--   - What is happening with Dimension reduction? --><!--   - What is LDR and NLDR? --><!--   - Introduce high-dimensional data visualization (tour, detour, liminal, langevitour) --><!--   - What are the advantages or why using NLDR? --><!--   - Introduce different NLDR methods (Add references of the main papers) --><!--   - When the NLDR layouts can trust or not? (Any literature of inferences) --><!--   - NLDR evaluation metrics --><!--   - How to compute distances between the clusters? --><!--   - Any literature of user-firendly platforms for NLDR users --><p>High-dimensional data, where each observation is described by many variables, is increasingly prevalent in modern science from bioinformatics to computer vision. For example, <strong>CITE-seq data</strong> <span class="citation" data-cites="hao2021">(<a href="../refs.html#ref-hao2021" role="doc-biblioref">Hao et al. 2021</a>)</span> simultaneously records RNA expression and protein markers for individual cells, producing rich, complex datasets. To interpret such data, analysts often rely on <strong>dimension reduction</strong> methods to create low-dimensional visualizations that can reveal patterns and structure.</p>
 <p>One established approach is <strong>linear projection</strong>, where high-dimensional points are represented as linear combinations of the original features. <strong>Principal Component Analysis (PCA)</strong> (for an overview see <span class="citation" data-cites="jolliffe2011">Jolliffe (<a href="../refs.html#ref-jolliffe2011" role="doc-biblioref">2011</a>)</span>) is the most familiar method, identifying directions of maximum variance. Extending this idea, <strong>tours</strong> <span class="citation" data-cites="lee2021">(<a href="../refs.html#ref-lee2021" role="doc-biblioref">Lee et al. 2021</a>)</span> provide dynamic sequences of linear projections, giving views from multiple angles to help reveal hidden structure. Tour methods are implemented in R packages such as <code>tourr</code> <span class="citation" data-cites="wickham2011">(<a href="../refs.html#ref-wickham2011" role="doc-biblioref">Wickham et al. 2011</a>)</span>, <code>langevitour</code> <span class="citation" data-cites="harisson2024">(<a href="../refs.html#ref-harisson2024" role="doc-biblioref">Harrison 2023</a>)</span>, and <code>detourr</code> <span class="citation" data-cites="hart2022">(<a href="../refs.html#ref-hart2022" role="doc-biblioref">Hart and Wang 2022</a>)</span>. A key advantage of linear projections is that they preserve the geometric relationships of the original data, they do not introduce distortion. However, linear projections can become cluttered, and global structure may obscure local detail. Furthermore, <strong>piling</strong> <span class="citation" data-cites="laa2022">(<a href="../refs.html#ref-laa2022" role="doc-biblioref">Laa et al. 2022</a>)</span> where points concentrate in the center of projections can mask important variation.</p>
-<p>To overcome these limitations, analysts frequently turn to <strong>nonlinear dimension reduction (NLDR)</strong> methods such as tSNE <span class="citation" data-cites="laurens2008">(<a href="../refs.html#ref-laurens2008" role="doc-biblioref">Maaten and Hinton 2008</a>)</span>, UMAP <span class="citation" data-cites="leland2018">(<a href="../refs.html#ref-leland2018" role="doc-biblioref">McInnes et al. 2018</a>)</span>, PHATE <span class="citation" data-cites="moon2019">(<a href="../refs.html#ref-moon2019" role="doc-biblioref">Moon et al. 2019</a>)</span>, TriMAP <span class="citation" data-cites="amid2019">(<a href="../refs.html#ref-amid2019" role="doc-biblioref">Amid and Warmuth 2019</a>)</span>, and PaCMAP <span class="citation" data-cites="yingfan2021">(<a href="../refs.html#ref-yingfan2021" role="doc-biblioref">Wang et al. 2021</a>)</span>. NLDR applies nonlinear transformations to generate low-dimensional embeddings that aim to preserve local or global data relationships. These methods are designed to <strong>exaggerate structure</strong>, making it easier for analysts to detect patterns that may not be apparent through linear projections.</p>
+<p>To overcome these limitations, analysts frequently turn to <strong>nonlinear dimension reduction (NLDR)</strong> methods such as tSNE <span class="citation" data-cites="laurens2008">(<a href="../refs.html#ref-laurens2008" role="doc-biblioref">Maaten and Hinton 2008</a>)</span>, UMAP <span class="citation" data-cites="leland2018">(<a href="../refs.html#ref-leland2018" role="doc-biblioref">McInnes et al. 2018</a>)</span>, PHATE <span class="citation" data-cites="moon2019">(<a href="../refs.html#ref-moon2019" role="doc-biblioref">Moon et al. 2019</a>)</span>, TriMAP <span class="citation" data-cites="amid2022">(<a href="../refs.html#ref-amid2022" role="doc-biblioref">Amid and Warmuth 2022</a>)</span>, and PaCMAP <span class="citation" data-cites="yingfan2021">(<a href="../refs.html#ref-yingfan2021" role="doc-biblioref">Wang et al. 2021</a>)</span>. NLDR applies nonlinear transformations to generate low-dimensional embeddings that aim to preserve local or global data relationships. These methods are designed to <strong>exaggerate structure</strong>, making it easier for analysts to detect patterns that may not be apparent through linear projections.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-NLDR-variety" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H">
@@ -311,7 +299,7 @@ Figure&nbsp;1.1: Eight different NLDR representations of a human PBMC CITE-seq d
 </div>
 </div>
 </div>
-<p>Yet this strength also introduces a critical risk: <strong>NLDR can hallucinate structure</strong>, creating patterns in the low-dimensional space that do not exist in the high-dimensional data. This issue is strikingly illustrated in <a href="#fig-NLDR-variety" class="quarto-xref">Figure&nbsp;<span>1.1</span></a>, where eight different NLDR representations of the same CITE-seq dataset vary dramatically due to differences in method or hyperparameter choices. Such variability raises essential questions: <em>Which layout can be trusted? Which accurately reflects the high-dimensional data structure?</em></p>
+<p>Yet this strength also introduces a critical risk: <strong>NLDR can hallucinate structure</strong>, creating patterns in the low-dimensional space that do not exist in the high-dimensional data. This issue is strikingly illustrated in <a href="02-chap2.html#fig-NLDR-variety" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>, where eight different NLDR representations of the same CITE-seq dataset vary dramatically due to differences in method or hyperparameter choices. Such variability raises essential questions: <em>Which layout can be trusted? Which accurately reflects the high-dimensional data structure?</em></p>
 <p>Despite the widespread use of NLDR, there is no widely accepted or visually interpretable framework for <strong>diagnosing the reliability of NLDR representations</strong>. Analysts are left to rely on subjective judgment when choosing and interpreting NLDR layouts, without tools to distinguish faithful representations from artifacts. There is also a lack of benchmark clustering datasets with known geometric structure for testing NLDR methods systematically.</p>
 <p>In addition to technical gaps, <strong>little is known about how people perceive and misperceive structure in NLDR layouts</strong>. It is unclear how different visualizations influence analysts’ conclusions, or how distortions introduced by NLDR affect decision making. Given the critical role of visualization in high-dimensional data analysis, understanding the human perception of NLDR representations is essential.</p>
 <section id="research-objectives" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="research-objectives">
@@ -351,8 +339,8 @@ Figure&nbsp;1.1: Eight different NLDR representations of a human PBMC CITE-seq d
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-amid2019" class="csl-entry" role="listitem">
-Amid, E., and Warmuth, M. K. (2019), <span>“<span class="nocase">TriMap: Large-scale Dimensionality Reduction Using Triplets</span>,”</span> <em>arXiv preprint arXiv:1910.00204</em>.
+<div id="ref-amid2022" class="csl-entry" role="listitem">
+Amid, E., and Warmuth, M. K. (2022), <span>“<a href="https://arxiv.org/abs/1910.00204">TriMap: Large-scale dimensionality reduction using triplets</a>.”</span>
 </div>
 <div id="ref-hao2021" class="csl-entry" role="listitem">
 Hao, Y., Hao, S., Andersen-Nissen, E., Mauck, W. M., Zheng, S., Butler, A., Lee, M. J., Wilk, A. J., Darby, C., Zager, M., Hoffman, P., Stoeckius, M., Papalexi, E., Mimitou, E. P., Jain, J., Srivastava, A., Stuart, T., Fleming, L. M., Yeung, B., Rogers, A. J., McElrath, J. M., Blish, C. A., Gottardo, R., Smibert, P., and Satija, R. (2021), <span>“Integrated analysis of multimodal single-cell data,”</span> <em>Cell</em>, 184, 3573–3587.e29. https://doi.org/<a href="https://doi.org/10.1016/j.cell.2021.04.048">https://doi.org/10.1016/j.cell.2021.04.048</a>.
@@ -793,8 +781,8 @@ Wickham, H., Cook, D., Hofmann, H., and Buja, A. (2011), <span>“<a href="\url{
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/02-chap2.html" class="pagination-link" aria-label="Visualising how non-linear dimension reduction warps your data">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Visualising how non-linear dimension reduction warps your data</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/02-chap2.html" class="pagination-link" aria-label="Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
