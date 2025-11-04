@@ -60,6 +60,7 @@ format:
           \newcommand\kD{$k\text{-}D$}
           \newcommand\dD{$d\text{-}D$}
           \newcommand\gD{$2\text{-}D$}
+          \newcommand\hD{$4\text{-}D$}
           \newcommand{\twoD}{$2\text{-}D$}
           \newcommand\tD{$3\text{-}D$}
           \newcommand\fD{$4\text{-}D$}
