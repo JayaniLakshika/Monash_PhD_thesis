@@ -6,3 +6,11 @@
 /.quarto/
 
 **/*.quarto_ipynb
+
+# large data files
+data/**/*.rds
+data/**/*.csv
+
+# rendered outputs
+_book/
+*.pdf
