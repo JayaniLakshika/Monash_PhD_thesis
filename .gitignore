@@ -13,4 +13,4 @@ data/**/*.csv
 
 # rendered outputs
 _book/
-*.pdf
+  *.pdf

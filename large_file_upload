@@ -1,0 +1,14 @@
+git lfs track "data/**/*.rds"
+git lfs track "data/**/*.csv"
+git lfs track "_book/*.pdf"
+
+
+git add .gitattributes
+git commit -m "Track large data files with Git LFS"
+
+git add data/**/*.rds
+git add data/**/*.csv
+git commit -m "Add large data files"
+
+
+git push origin main
