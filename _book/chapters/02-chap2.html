@@ -366,7 +366,7 @@ b_2 = \Big\lceil1 +\frac{2[r_2 + q(1 + r_2)](b_1 - 1)}{\sqrt{3}(1 + 2q)}\Big\rce
 \tag{2.1}</span></span></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-hex-param" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="H">
+<div id="fig-hex-param" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-hex-param-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="02-chap2_files/figure-html/fig-hex-param-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%" data-fig-pos="H">
 </div>
@@ -402,7 +402,7 @@ Figure&nbsp;2.3: The components of the hexagon grid illustrating notation.
 <p>where <span class="math inline">n</span> is the number of observations, <span class="math inline">m</span> is the number of non-empty bins, <span class="math inline">n_h</span> is the number of observations in <span class="math inline">h^{th}</span> bin, <span class="math inline">p</span> is the number of variables and <span class="math inline">\mathbfit{x}_{hij}</span> is the <span class="math inline">j^{th}</span> dimensional data of <span class="math inline">i^{th}</span> observation in <span class="math inline">h^{th}</span> hexagon. We can consider <span class="math inline">e_{hi} = \sqrt{\sum_{j = 1}^{p} (\mathbfit{x}_{hij} - C^{(p)}_{hj})^2}</span> to be the residual for each observation. <a href="#fig-p-d-error-in-2d-two-curvy" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> shows plots of <span class="math inline">e</span> as a density (a), coloring the points in the NLDR layout (b) and the points in a tour (c). It can be see that the biggest residuals are in one cluster, which occurs due the intentional design that one cluster is slightly and perfectly captured by a layout.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-p-d-error-in-2d-two-curvy" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="H">
+<div id="fig-p-d-error-in-2d-two-curvy" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-p-d-error-in-2d-two-curvy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="02-chap2_files/figure-html/fig-p-d-error-in-2d-two-curvy-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="H">
 </div>
@@ -435,7 +435,7 @@ Figure&nbsp;2.4: Examining the distribution of residuals in a jittered dotplot (
 <!-- The values $(s_1, \ s_2)$ define the position of the centroid of the bottom left hexagon. By default, this is at $s_1 = -q, s_2 = -qr_2$, where $q$ is the buffer bound the data. The choice of these values can have some effect on the distribution of bin counts which is seen in @fig-bins-two-curvy. The distribution of bin counts for $s_1$ varying between $\text{-}0.1\,\text{--}\,0.0$.-->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-bins-two-curvy" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="H">
+<div id="fig-bins-two-curvy" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-bins-two-curvy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="02-chap2_files/figure-html/fig-bins-two-curvy-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="H">
 </div>
@@ -463,7 +463,7 @@ The benchmark value for removing low-density hexagons ranges between $0$ and $1$
 --><!-- I'll be honest I've no idea what this section is 
 The area of a hexagon is defined as $A = 3\sqrt{3}l^2/2$ where $l$ is the side length of the hexagon. If we know $a_1$ and $a_2$, $l$ can be computed (see appendix). The density of a hexagon grid is calculated as $\sum^{h}_{i=1}n_h/A$ and the proportion is $\sum^{h}_{i=1}n_h/Ab$. The baseline proportion is the proportion density at the smallest possible value of $a_1$. The relative proportion density is the ratio of the observed proportion density to the baseline proportion density.--><!--two_nonlinear/05_gen_rm_lwd_mse.R--><div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-param-two-curvy" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="H">
+<div id="fig-param-two-curvy" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-param-two-curvy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="02-chap2_files/figure-html/fig-param-two-curvy-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="H">
 </div>
@@ -492,7 +492,7 @@ Figure&nbsp;2.6: Various plots to help tune the model fit: (a) HBE vs <span clas
 <!--two_nonlinear/07_example_evaluation_metrics.R-->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-toy-rmse" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="H">
+<div id="fig-toy-rmse" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-toy-rmse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="02-chap2_files/figure-html/fig-toy-rmse-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="H">
 </div>
@@ -535,7 +535,7 @@ Figure&nbsp;2.8: Three <span class="math inline">2\text{-}D</span> projections f
 <!--pbmc3k/08_gen_mse_for_diff_methods.R-->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-pbmc-rmse" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="H">
+<div id="fig-pbmc-rmse" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pbmc-rmse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="02-chap2_files/figure-html/fig-pbmc-rmse-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="H">
 </div>
@@ -550,7 +550,7 @@ Figure&nbsp;2.9: Assessing which of the 8 NLDR layouts on the PBMC3k data (shown
 <!--pbmc3k/14_gen_model_with_tSNE.R-->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-model-pbmc-author-proj" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="H">
+<div id="fig-model-pbmc-author-proj" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-model-pbmc-author-proj-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="02-chap2_files/figure-html/fig-model-pbmc-author-proj-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" data-fig-pos="H">
 </div>
@@ -565,7 +565,7 @@ Figure&nbsp;2.10: Compare the published layout (a) made with UMAP and the layout
 <!--mnist/03_gen_mse_for_diff_methods.R-->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-mnist-rmse" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="H">
+<div id="fig-mnist-rmse" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mnist-rmse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="02-chap2_files/figure-html/fig-mnist-rmse-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:92.0%" data-fig-pos="H">
 </div>
@@ -584,7 +584,7 @@ Figure&nbsp;2.11: Assessing which of the 6 NLDR layouts of the MNIST digit 1 dat
 <!--mnist/04_gen_model_with_tSNE.R-->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-clust-mnist" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="H">
+<div id="fig-clust-mnist" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-clust-mnist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="02-chap2_files/figure-html/fig-clust-mnist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="H">
 </div>
@@ -596,7 +596,7 @@ Figure&nbsp;2.12: Summary from exploring tSNE layout of the MNIST digit 1 data (
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-model-error-mnist" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="H">
+<div id="fig-model-error-mnist" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-model-error-mnist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="02-chap2_files/figure-html/fig-model-error-mnist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="H">
 </div>
