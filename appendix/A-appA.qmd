@@ -1,1 +1,25 @@
 # Glossary
+
+```{r}
+library(readr)
+library(kableExtra)
+```
+
+```{r}
+#| label: tbl-notation
+#| tbl-pos: H
+#| tbl-cap: "Summary of notation for describing new methodology."
+# Notation used in the paper
+
+glossary_df <- read_csv(here::here("misc/glossary.csv"))
+
+# Create the table
+kable(glossary_df, 
+      format = "latex", 
+      booktabs = TRUE, escape = FALSE, linesep = "") |>
+  kable_styling(position = "center", 
+                full_width = FALSE, 
+                font_size = 12) |>
+  row_spec(0, bold = TRUE) |>
+  column_spec(1:2, width = c("3cm", "12cm"))
+```
