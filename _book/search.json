@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Non-linear Dimension Reduction Layouts of High-dimensional Data",
     "section": "",
-    "text": "A thesis submitted for the degree of Doctor of Philosophy at Monash University, Department of Econometrics & Business Statistics.\nCopyright notice\nProduced on 10 November 2025.\n© Piyadi Gamage Jayani Lakshika (2025).\nI certify that I have made all reasonable efforts to secure copyright permissions for third-party content included in this thesis and have not knowingly added copyright content to my work without the owner’s permission.",
+    "text": "A thesis submitted for the degree of Doctor of Philosophy at Monash University, Department of Econometrics & Business Statistics.\nCopyright notice\nProduced on 12 November 2025.\n© Piyadi Gamage Jayani Lakshika (2025).\nI certify that I have made all reasonable efforts to secure copyright permissions for third-party content included in this thesis and have not knowingly added copyright content to my work without the owner’s permission.",
     "crumbs": [
       "Front matter"
     ]
@@ -460,6 +460,17 @@
     ]
   },
   {
+    "objectID": "appendix/A-appA.html",
+    "href": "appendix/A-appA.html",
+    "title": "Appendix A — Glossary",
+    "section": "",
+    "text": "Table A.1: Summary of notation for describing new methodology.\n\n\n\n\nTerm/ Notation\nDescription\n\n\nUMAP (Uniform Manifold Approximation and Projection)\nA manifold learning-based NLDR technique preserving both local and some global structures efficiently.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Glossary</span>"
+    ]
+  },
+  {
     "objectID": "appendix/B-appB.html",
     "href": "appendix/B-appB.html",
     "title": "Appendix B — Appendix to “Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space”",
@@ -688,17 +699,6 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>C</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception in Nonlinear Dimension Reduction: A User Study\"</span>"
-    ]
-  },
-  {
-    "objectID": "appendix/A-appA.html",
-    "href": "appendix/A-appA.html",
-    "title": "Appendix A — Glossary",
-    "section": "",
-    "text": "Table A.1: Summary of notation for describing new methodology.",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Glossary</span>"
     ]
   }
 ]
