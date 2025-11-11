@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Appendix C — Appendix to “Perception and Misperception in Nonlinear Dimension Reduction: A User Study” – New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Non-linear Dimension Reduction Layouts of High-dimensional Data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../appendix/D-appD.html" rel="next">
+<link href="../appendix/B-appB.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7d60fad984a4391ca7fd423b65835770.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6bfa1c4240d960a1d3852aa95d00af59.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link href="https://fonts.googleapis.com/css?family=Fira+Sans%7CMerriweather%7CSource%20Code%20Pro" rel="stylesheet">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+</head>
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../appendix/A-appA.html">Appendices</a></li><li class="breadcrumb-item"><a href="../appendix/C-appC.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Appendix to “Perception and Misperception in Nonlinear Dimension Reduction: A User Study”</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Non-linear Dimension Reduction Layouts of High-dimensional Data</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/tree/master/Thesis/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-dimensional-Data.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Front matter</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../preliminaries/abstract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Abstract</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../preliminaries/acknowledgements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/01-chap1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/02-chap2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/03-chap3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Perception and Misperception in Nonlinear Dimension Reduction: A User Study</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/04-chap4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">quollr: An R Package for Visualising <span class="math inline">2\text{-}D</span> Models from Non-linear Dimension Reductions in High Dimensional Space</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/05-chap5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">cardinalR: Generating interesting high-dimensional data structures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/06-chap6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Development of an interactive and dynamic graphics system for NLDR users</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/07-chap7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Conclusion and future plans</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../refs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/A-appA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Glossary</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/B-appB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Appendix to “Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space”</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/C-appC.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Appendix to “Perception and Misperception in Nonlinear Dimension Reduction: A User Study”</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/D-appD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Appendix to “Development of an interactive and dynamic graphics system for NLDR users”</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title"><b>Sections</b></h2>
+   
+  <ul class="collapse">
+<li><a href="#videos-links" id="toc-videos-links" class="nav-link active" data-scroll-target="#videos-links"><span class="header-section-number">C.1</span> Videos links</a></li>
+  <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts"><span class="header-section-number">C.2</span> Scripts</a></li>
+  <li><a href="#generating-non-attention-check-data-structures" id="toc-generating-non-attention-check-data-structures" class="nav-link" data-scroll-target="#generating-non-attention-check-data-structures"><span class="header-section-number">C.3</span> Generating non-attention check data structures</a></li>
+  <li><a href="#layouts" id="toc-layouts" class="nav-link" data-scroll-target="#layouts"><span class="header-section-number">C.4</span> layouts</a></li>
+  <li><a href="#distance-metrics" id="toc-distance-metrics" class="nav-link" data-scroll-target="#distance-metrics"><span class="header-section-number">C.5</span> Distance metrics</a></li>
+  <li><a href="#experimental-factors-allocation-to-participants" id="toc-experimental-factors-allocation-to-participants" class="nav-link" data-scroll-target="#experimental-factors-allocation-to-participants"><span class="header-section-number">C.6</span> Experimental factors allocation to participants</a></li>
+  <li><a href="#data-collection-process" id="toc-data-collection-process" class="nav-link" data-scroll-target="#data-collection-process"><span class="header-section-number">C.7</span> Data collection process</a></li>
+  <li><a href="#analysis-of-results-relative-to-data-collection-process" id="toc-analysis-of-results-relative-to-data-collection-process" class="nav-link" data-scroll-target="#analysis-of-results-relative-to-data-collection-process"><span class="header-section-number">C.8</span> Analysis of results relative to data collection process</a></li>
+  <li><a href="#non-attention-check-data-generation" id="toc-non-attention-check-data-generation" class="nav-link" data-scroll-target="#non-attention-check-data-generation"><span class="header-section-number">C.9</span> Non-attention check data generation</a></li>
+  <li><a href="#non-linear-dimension-reduction-data-generation" id="toc-non-linear-dimension-reduction-data-generation" class="nav-link" data-scroll-target="#non-linear-dimension-reduction-data-generation"><span class="header-section-number">C.10</span> Non-linear dimension reduction data generation</a></li>
+  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/appendix/C-appC.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../appendix/A-appA.html">Appendices</a></li><li class="breadcrumb-item"><a href="../appendix/C-appC.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Appendix to “Perception and Misperception in Nonlinear Dimension Reduction: A User Study”</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-appendix-b" class="quarto-section-identifier">Appendix C — Appendix to “Perception and Misperception in Nonlinear Dimension Reduction: A User Study”</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="videos-links" class="level2" data-number="C.1"><h2 data-number="C.1" class="anchored" data-anchor-id="videos-links">
+<span class="header-section-number">C.1</span> Videos links</h2>
+<p>Animations of the tours that used for the study are available on YouTube at the links given in <a href="#tbl-links-html" class="quarto-xref">Table&nbsp;<span>C.1</span></a>.</p>
+<div class="cell" data-layout-align="center" data-tbl-pos="H">
+<div id="tbl-links-html" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-pos="H" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-links-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.1: Videos
+</figcaption><div aria-describedby="tbl-links-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">data structure</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">small</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">medium</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">large</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">three_clust_01</td>
+<td style="text-align: left;"><a href="https://youtu.be/kZyZxujDz58">youtu.be/kZyZxujDz58</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/Jz3k4uIAiRo">youtu.be/Jz3k4uIAiRo</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/E9msE_XX0KA">youtu.be/E9msE_XX0KA</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">three_clust_02</td>
+<td style="text-align: left;"><a href="https://youtu.be/CLMlOU4Fb2w">youtu.be/CLMlOU4Fb2w</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/TFj0satlBBE">youtu.be/TFj0satlBBE</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/_f2WvtD2xog">youtu.be/f2WvtD2xog</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">three_clust_03</td>
+<td style="text-align: left;"><a href="https://youtu.be/K2oKM4mUBXM">youtu.be/K2oKM4mUBXM</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/b-43HKN30ws">youtu.be/b-43HKN30ws</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/7NwNcD4qlLc">youtu.be/7NwNcD4qlLc</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">three_clust_04</td>
+<td style="text-align: left;"><a href="https://youtu.be/7yvvpPgiWNw">youtu.be/7yvvpPgiWNw</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/1PhZO7cUEaI">youtu.be/1PhZO7cUEaI</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/XO61YVXAdr8">youtu.be/XO61YVXAdr8</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">three_clust_05</td>
+<td style="text-align: left;"><a href="https://youtu.be/pbI7UXFgc0k">youtu.be/pbI7UXFgc0k</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/G-TvOIBj-14">youtu.be/G-TvOIBj-14</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/ardE0G7zevk">youtu.be/ardE0G7zevk</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">three_clust_06</td>
+<td style="text-align: left;"><a href="https://youtu.be/Mxylk4M67iA">youtu.be/Mxylk4M67iA</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/ABrxozu8F-A">youtu.be/ABrxozu8F-A</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/soFQR9UwNsg">youtu.be/soFQR9UwNsg</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">three_clust_07</td>
+<td style="text-align: left;"><a href="https://youtu.be/2a89BQGK_iU">youtu.be/2a89BQGK_iU</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/Wt4NwZSACmo">youtu.be/Wt4NwZSACmo</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/hVwIjSxACoo">youtu.be/hVwIjSxACoo</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">three_clust_08</td>
+<td style="text-align: left;"><a href="https://youtu.be/eID-dwpgU44">youtu.be/eID-dwpgU44</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/ILwnlZUMj_U">youtu.be/ILwnlZUMj_U</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/oSBaMH9HJZ4">youtu.be/oSBaMH9HJZ4</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">three_clust_09</td>
+<td style="text-align: left;"><a href="https://youtu.be/6uGCDUSL60Q">youtu.be/6uGCDUSL60Q</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/RvlSY3drV5I">youtu.be/RvlSY3drV5I</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/mh_rG2qy2Pc">youtu.be/mh_rG2qy2Pc</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">three_clust_10</td>
+<td style="text-align: left;"><a href="https://youtu.be/CX5O4eNZW5o">youtu.be/CX5O4eNZW5o</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/fHxflXa9i-s">youtu.be/fHxflXa9i-s</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/R6vD1xJH21w">youtu.be/R6vD1xJH21w</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">three_clust_11</td>
+<td style="text-align: left;"><a href="https://youtu.be/1f8S7HiZ8dc">youtu.be/1f8S7HiZ8dc</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/Fki5vIuPupE">youtu.be/Fki5vIuPupE</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/ciVOD8_sWR0">youtu.be/ciVOD8_sWR0</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">three_clust_12</td>
+<td style="text-align: left;"><a href="https://youtu.be/AZv45NGkuC4">youtu.be/AZv45NGkuC4</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/qQ4LqHYH_c4">youtu.be/qQ4LqHYH_c4</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/Y2sfVoemVZo">youtu.be/Y2sfVoemVZo</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">three_clust_13</td>
+<td style="text-align: left;"><a href="https://youtu.be/U-bbZjzvaiE">youtu.be/U-bbZjzvaiE</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/0MznMYr5gfo">youtu.be/0MznMYr5gfo</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/E7ge3kw5Q0Q">youtu.be/E7ge3kw5Q0Q</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">three_clust_14</td>
+<td style="text-align: left;"><a href="https://youtu.be/ynu2oUxv08I">youtu.be/ynu2oUxv08I</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/gHDLMn5AG-8">youtu.be/gHDLMn5AG-8</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/HyCJEiwCVv0">youtu.be/HyCJEiwCVv0</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">three_clust_15</td>
+<td style="text-align: left;"><a href="https://youtu.be/xsdWsBek0eQ">youtu.be/xsdWsBek0eQ</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/SDY64MrcWQg">youtu.be/SDY64MrcWQg</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/CFIyW7ftF9M">youtu.be/CFIyW7ftF9M</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">three_clust_16</td>
+<td style="text-align: left;"><a href="https://youtu.be/VyYyYOqhOVs">youtu.be/VyYyYOqhOVs</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/zi-TvgVR8a4">youtu.be/zi-TvgVR8a4</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/hdQmD499yo8">youtu.be/hdQmD499yo8</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">three_clust_17</td>
+<td style="text-align: left;"><a href="https://youtu.be/yojgjcf2NQk">youtu.be/yojgjcf2NQk</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/UJPMJ5irRbQ">youtu.be/UJPMJ5irRbQ</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/zdQYQvqTyGA">youtu.be/zdQYQvqTyGA</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">three_clust_18</td>
+<td style="text-align: left;"><a href="https://youtu.be/r-Z1Yyf2c4s">youtu.be/r-Z1Yyf2c4s</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/2Rf2L8iey2w">youtu.be/2Rf2L8iey2w</a></td>
+<td style="text-align: left;"><a href="https://youtu.be/e_-IQycglVE">youtu.be/e_-IQycglVE</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section><section id="scripts" class="level2" data-number="C.2"><h2 data-number="C.2" class="anchored" data-anchor-id="scripts">
+<span class="header-section-number">C.2</span> Scripts</h2>
+</section><section id="generating-non-attention-check-data-structures" class="level2" data-number="C.3"><h2 data-number="C.3" class="anchored" data-anchor-id="generating-non-attention-check-data-structures">
+<span class="header-section-number">C.3</span> Generating non-attention check data structures</h2>
+<p>Excellent — this section can be turned into a smooth, cohesive narrative that reads like an appendix entry in a methodological paper, where each data-generating function is described mathematically <em>and</em> conceptually. Here’s a refined version written in a unified academic style with mathematical explanations integrated naturally into the prose.</p>
+<!-- ### A.1 Elliptical Cluster in 4D -->
+<!-- An **elliptical cluster** is generated as -->
+<!-- [ -->
+<!-- \mathbf{x}*i = (a_1 u*{i1}, a_2 u_{i2}, a_3 u_{i3}, a_4 u_{i4}) + \boldsymbol{\delta}, -->
+<!-- ] -->
+<!-- where (\mathbf{u}_i \in \mathbb{R}^4) lies on the unit 4D hypersphere ((|\mathbf{u}_i|_2 = 1)), the coefficients (a_j) define the semi-axis lengths, and (\boldsymbol{\delta}) is a positional offset. -->
+<!-- This model produces uniformly distributed points on the surface of a 4D ellipsoid, with anisotropic scaling across dimensions. It is used to examine how NLDR methods respond to elongated, directionally stretched clusters—structures where isotropic assumptions fail. -->
+<!-- --- -->
+<!-- ### A.2 Gaussian Cluster in 4D -->
+<!-- A **Gaussian cluster** follows -->
+<!-- [ -->
+<!-- \mathbf{x}_i \sim \mathcal{N}_4(\boldsymbol{\mu} + \boldsymbol{\delta}, \Sigma), -->
+<!-- ] -->
+<!-- with covariance (\Sigma = \sigma^2 I_4) unless otherwise specified. -->
+<!-- This yields an isotropic, compact 4D blob serving as a baseline for evaluating distortions under ideal spherical symmetry. By modifying (\Sigma), we can also study sensitivity to mild correlations or scaling differences between axes. -->
+<!-- --- -->
+<!-- ### A.3 Hemisphere in 4D -->
+<!-- The **hemisphere manifold** is parameterized as -->
+<!-- [ -->
+<!-- \begin{aligned} -->
+<!-- x_1 &= r \sin(\theta_1) \cos(\theta_2), \quad -->
+<!-- x_2 = r \sin(\theta_1) \sin(\theta_2), \ -->
+<!-- x_3 &= r \cos(\theta_1) \cos(\theta_3), \quad -->
+<!-- x_4 = r \cos(\theta_1) \sin(\theta_3), -->
+<!-- \end{aligned} -->
+<!-- ] -->
+<!-- for (\theta_3 \in [0, \pi/2)). -->
+<!-- This produces points lying on one half of a 4D hypersphere—representing a smooth, open manifold. It serves as a test for whether NLDR methods can correctly unfold partial curved surfaces without introducing artificial bridging or flattening. -->
+<!-- --- -->
+<!-- ### A.4 Cube in 4D -->
+<!-- A **hypercube cluster** is defined by -->
+<!-- [ -->
+<!-- x_j \sim U(c_j - s/2,, c_j + s/2), \quad j = 1, \dots, 4, -->
+<!-- ] -->
+<!-- where (s) is the side length and (\mathbf{c}) is the cube center. -->
+<!-- This uniformly filled 4D cube represents high-dimensional uniform noise with orthogonal boundaries, used to test whether NLDR can maintain rectangular symmetry or misrepresent it as curvature or clustering. -->
+<!-- --- -->
+<!-- ### A.5 Blunted Corn-shaped Cluster -->
+<!-- The **blunted corn cluster** and its flipped variants are defined as -->
+<!-- [ -->
+<!-- \begin{aligned} -->
+<!-- x_1 &= r(h)\cos(\theta)\sin(\phi), \quad -->
+<!-- x_2 = r(h)\sin(\theta)\sin(\phi),\ -->
+<!-- x_3 &= r(h)\cos(\theta), \quad -->
+<!-- x_4 = h, -->
+<!-- \end{aligned} -->
+<!-- ] -->
+<!-- where (h \sim \text{Exp}(\lambda)) controls vertical density and (r(h) = r_{\text{tip}} + (r_{\text{base}} - r_{\text{tip}})\frac{h}{H}) defines the taper. -->
+<!-- The resulting shape resembles a truncated cone with a rounded tip and density concentrated near the apex. These clusters introduce anisotropic density gradients that challenge local neighborhood preservation. -->
+<!-- --- -->
+<!-- ### A.6 Corn with Rectangular or Triangular Bases -->
+<!-- Tapered cones with non-circular bases are generated by -->
+<!-- [ -->
+<!-- \begin{aligned} -->
+<!-- x_1 &= r(h)(1-u-v), \quad -->
+<!-- x_2 = r(h)u, \quad -->
+<!-- x_3 = r(h)v, \quad -->
+<!-- x_4 = h, -->
+<!-- \end{aligned} -->
+<!-- ] -->
+<!-- where (u,v \sim U(0,1)), (u + v \le 1), and (r(h)) decreases linearly with height. -->
+<!-- By altering the cross-sectional base (triangular or rectangular), we simulate non-axisymmetric manifolds to evaluate whether NLDR methods preserve such global asymmetry. -->
+<!-- --- -->
+<!-- ### A.7 Filled Hexagonal Pyramid -->
+<!-- A **filled hexagonal pyramid** tapers according to -->
+<!-- [ -->
+<!-- r(h) = r_{\text{base}}\frac{H - h}{H}, -->
+<!-- ] -->
+<!-- with ((x_1, x_2)) uniformly distributed in a hexagon of radius (r(h)), -->
+<!-- [ -->
+<!-- x_3 \sim U(-\epsilon,\epsilon)\frac{H - h}{H}, \quad x_4 = h. -->
+<!-- ] -->
+<!-- This shape incorporates sharp angular boundaries that test how embedding methods handle discontinuities and abrupt tapering in multiple dimensions. -->
+<!-- --- -->
+<!-- ### A.8 Curvilinear Cluster -->
+<!-- The **curvilinear cluster** is described by -->
+<!-- [ -->
+<!-- \begin{aligned} -->
+<!-- x_1 &\sim U(0,2), \quad -->
+<!-- x_2 = -x_1^2 + \epsilon_1, \quad -->
+<!-- x_3 = -\sin(\pi x_1) + \epsilon_2, \quad -->
+<!-- x_4 = \cos(\pi x_1) + \epsilon_3. -->
+<!-- \end{aligned} -->
+<!-- ] -->
+<!-- This defines a non-linear one-dimensional curve embedded in 4D space with oscillating curvature. It provides a benchmark for evaluating how well NLDR methods can preserve curved trajectories. -->
+<!-- --- -->
+<!-- ### A.9 Crescent in 4D -->
+<!-- The **crescent cluster** follows -->
+<!-- [ -->
+<!-- \begin{aligned} -->
+<!-- x_1 &= \cos(\theta), \quad -->
+<!-- x_2 = \sin(\theta), \quad -->
+<!-- x_3 = \theta + \epsilon_1, \quad -->
+<!-- x_4 = 2\theta + \epsilon_2, -->
+<!-- \end{aligned} -->
+<!-- ] -->
+<!-- for (\theta \in [\pi/6, 2\pi]). -->
+<!-- This creates a smoothly curved arc extended into 4D, testing continuity along a semi-circular manifold. -->
+<!-- --- -->
+<!-- ### A.10 S-Curve in 4D -->
+<!-- The **S-curve**, a canonical NLDR benchmark, is parameterized as -->
+<!-- [ -->
+<!-- \begin{aligned} -->
+<!-- \theta &\sim U(-\pi, \pi), \quad -->
+<!-- x_1 = \sin(\theta), \quad -->
+<!-- x_2 \sim U(0,1), \quad -->
+<!-- x_3 = \text{sign}(\theta)(\cos(\theta) - 1), \quad -->
+<!-- x_4 = \theta. -->
+<!-- \end{aligned} -->
+<!-- ] -->
+<!-- It forms an “S”-shaped 3D manifold embedded in 4D space, with the fourth coordinate encoding progression along the curve. This is ideal for assessing how well methods unfold non-linear manifolds. -->
+<!-- --- -->
+<!-- ### A.11 Curvy Cylinder -->
+<!-- The **curvy cylinder** is constructed as -->
+<!-- [ -->
+<!-- x_1 = r\cos(\theta), \quad x_2 = r\sin(\theta), \quad x_3 \sim U(0,H), \quad x_4 = \alpha \sin(x_3). -->
+<!-- ] -->
+<!-- It represents a cylindrical surface with sinusoidal modulation along its height, probing how embeddings handle periodic variation. -->
+<!-- --- -->
+<!-- ### A.12 Non-linear Hyperbola -->
+<!-- Two **non-linear hyperbolic manifolds** are defined as -->
+<!-- [ -->
+<!-- x_2 = -\sin(\pi x_1) + \epsilon_1, \quad x_4 = \cos(\pi x_1) + \epsilon_2, -->
+<!-- ] -->
+<!-- or -->
+<!-- [ -->
+<!-- x_2 = \frac{C}{x_1} + \lambda\sin(x_1), \quad x_4 = \frac{C}{x_3} + \lambda\cos(x_3). -->
+<!-- ] -->
+<!-- These configurations introduce strong curvature and non-linear dependencies, testing robustness to rapidly changing local neighborhoods. -->
+<!-- --- -->
+<!-- ### A.13 Conic Spiral -->
+<!-- The **conic spiral** is parameterized by -->
+<!-- [ -->
+<!-- \theta \in [0, 2\pi k], \quad r = r_0 \theta, -->
+<!-- ] -->
+<!-- with -->
+<!-- [ -->
+<!-- x_1 = r\cos(\theta), \quad x_2 = r\sin(\theta), \quad x_3 = h\frac{\theta}{\max(\theta)} + \epsilon_1, \quad x_4 = r_0 \sin(2\theta) + \epsilon_2. -->
+<!-- ] -->
+<!-- This 4D helical cone combines rotation and expansion, representing a continuous twisting manifold suitable for evaluating global topology preservation. -->
+<!-- --- -->
+<!-- ### A.14 Helical Hyper-Spiral -->
+<!-- The **helical hyper-spiral** extends helical motion with nested oscillations: -->
+<!-- [ -->
+<!-- x_1 = r\cos(\theta), \quad x_2 = r\sin(\theta), \quad x_3 = a\theta + \epsilon_1, \quad x_4 = b\sin(k\theta). -->
+<!-- ] -->
+<!-- It exhibits multi-frequency periodicity, designed to test global continuity under complex curvature. -->
+<!-- --- -->
+<!-- ### A.15 Spherical Spiral -->
+<!-- Finally, the **spherical spiral** wraps a spiral path around a hypersphere: -->
+<!-- [ -->
+<!-- x_1 = r\sin(\phi)\cos(\theta), \quad -->
+<!-- x_2 = r\sin(\phi)\sin(\theta), \quad -->
+<!-- x_3 = r\cos(\phi) + \epsilon_1, \quad -->
+<!-- x_4 = \frac{\theta}{\max(\theta)}r. -->
+<!-- ] -->
+<!-- This model captures global curvature with embedded oscillatory motion, creating a challenging test case for methods aiming to preserve manifold topology. -->
+</section><section id="layouts" class="level2" data-number="C.4"><h2 data-number="C.4" class="anchored" data-anchor-id="layouts">
+<span class="header-section-number">C.4</span> layouts</h2>
+<p>All layouts used in the experiment are available in the supplementary repository: <a href="https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts">github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts</a>. These include all embeddings generated under different NLDR methods with default hyper-parameter settings for the simulated high-dimensional data structures.</p>
+</section><section id="distance-metrics" class="level2" data-number="C.5"><h2 data-number="C.5" class="anchored" data-anchor-id="distance-metrics">
+<span class="header-section-number">C.5</span> Distance metrics</h2>
+<p>To evaluate how well NLDR methods preserve the underlying structure of high-dimensional data, we considered several inter-cluster distance metrics that quantify the degree of cluster separation. These metrics provide complementary perspectives on how distinct or overlapping clusters are in the original space, allowing quantitative comparison of separability across NLDR methods.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-distance-metrics" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-distance-metrics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C-appC_files/figure-html/fig-distance-metrics-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-distance-metrics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.1: Pairwise relationships among six distance metrics used to quantify cluster separation in the high-dimensional space: between–within (BW) ratio, exponentiated scaled minimum distance, quantile-ranked average between-cluster distance, Pearson–Gamma coefficient, average silhouette distance, and square-root–transformed Dunn and Dunn2 indices. The diagonal panels show the distribution of each metric, while the lower panels depict scatterplots colored by distance scaling factor (0.1–1.1). Upper panels report Pearson correlation coefficients for all pairs, with significance indicated by asterisks (*** p &lt; 0.001). Metrics show high positive correlation, confirming that they capture consistent structural variation. The BW ratio and exponentiated minimum distance were chosen for the main analysis because they provide complementary summaries of global cluster separation and local boundary distance, which are directly interpretable in the context of NLDR evaluation.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>We examined six metrics commonly used in clustering validation studies:</p>
+<section id="betweenwithin-bw-ratio" class="level3"><h3 class="anchored" data-anchor-id="betweenwithin-bw-ratio">Between–Within (BW) Ratio</h3>
+<p>The <strong>between–within ratio</strong> compares average inter-cluster distances to average intra-cluster distances: <span class="math display">
+BW = \frac{B}{W},
+</span> where</p>
+<p><span class="math display">
+B = \frac{1}{K(K-1)} \sum_{i &lt; j} ||\mu_i - \mu_j||,
+\quad
+W = \frac{1}{K} \sum_{i=1}^{K} \frac{1}{n_i} \sum_{x \in C_i} ||x - \mu_i||,
+</span></p>
+<p><span class="math inline">K</span> is the number of clusters, <span class="math inline">n_i</span> is the size of cluster <span class="math inline">i</span>, <span class="math inline">C_i</span> denotes the set of points in cluster <span class="math inline">i</span>, and <span class="math inline">\mu_i</span> is its centroid. A higher (BW) ratio indicates greater global separation relative to within-cluster compactness.</p>
+</section><section id="minimum-distance-between-clusters" class="level3"><h3 class="anchored" data-anchor-id="minimum-distance-between-clusters">Minimum Distance Between Clusters</h3>
+<p>The <strong>minimum distance</strong> identifies the closest approach between two clusters: <span class="math display">
+d_{\min} = \min_{i \neq j} \min_{x \in C_i, , y \in C_j} ||x - y||.
+</span> This metric is sensitive to boundary overlap and captures <strong>local proximity</strong> between clusters.</p>
+</section><section id="average-distance-between-clusters" class="level3"><h3 class="anchored" data-anchor-id="average-distance-between-clusters">Average Distance Between Clusters</h3>
+<p>The <strong>average inter-cluster distance</strong> represents the overall separation across all cluster pairs: <span class="math display">
+d_{\text{avg}} = \frac{1}{K(K-1)} \sum_{i &lt; j} \frac{1}{n_i n_j}
+\sum_{x \in C_i} \sum_{y \in C_j} ||x - y||.
+</span> This provides a smooth measure of global spacing between clusters.</p>
+</section><section id="pearsongamma-coefficient" class="level3"><h3 class="anchored" data-anchor-id="pearsongamma-coefficient">Pearson–Gamma Coefficient</h3>
+<p>The <strong>Pearson–Gamma coefficient</strong> measures the correlation between pairwise distances and binary cluster membership: <span class="math display">
+\Gamma = \text{corr}(D, M),
+</span> where <span class="math inline">D</span> is the vector of pairwise Euclidean distances and <span class="math inline">M</span> is a binary indicator matrix (<span class="math inline">M_{pq} = 1</span> if points <span class="math inline">p</span> and <span class="math inline">q</span> belong to the same cluster, <span class="math inline">0</span> otherwise). A larger <span class="math inline">\Gamma</span> indicates stronger agreement between geometric and categorical separations.</p>
+</section><section id="average-silhouette-distance" class="level3"><h3 class="anchored" data-anchor-id="average-silhouette-distance">Average Silhouette Distance</h3>
+<p>The <strong>silhouette width</strong> for each observation <span class="math inline">x_i</span> is defined as <span class="math display">
+s_i = \frac{b_i - a_i}{\max(a_i, b_i)},
+</span> where <span class="math inline">a_i</span> is the average distance between <span class="math inline">x_i</span> and all other points in its own cluster, and <span class="math inline">b_i</span> is the minimum average distance from <span class="math inline">x_i</span> to all other clusters. The <strong>average silhouette</strong> is then <span class="math display">
+S = \frac{1}{n} \sum_{i=1}^{n} s_i,
+</span> indicating how well each point matches its assigned cluster compared to others.</p>
+</section><section id="dunn-and-dunn2-indices" class="level3"><h3 class="anchored" data-anchor-id="dunn-and-dunn2-indices">Dunn and Dunn2 Indices</h3>
+<p>The <strong>Dunn index</strong> evaluates compactness and separation simultaneously: <span class="math display">
+D = \frac{\min_{i \neq j} d(C_i, C_j)}{\max_{k} \delta(C_k)},
+</span> where <span class="math inline">d(C_i, C_j)</span> is the inter-cluster distance and <span class="math inline">\delta(C_k)</span> is the within-cluster diameter. The <strong>Dunn2 index</strong> is a variation that replaces Euclidean distances with average pairwise distances within and between clusters for improved robustness.</p>
+<p>Because these metrics differ in scale and sensitivity, all were standardized and, where necessary, transformed to stabilize non-linear relationships. Specifically, the minimum distance was exponentiated (<code>exp(min_dist_scaled)</code>) to linearize its association with other metrics and reduce the effect of small distance ranges. This transformation allows for clearer comparison across metrics that vary in numerical range or distribution.</p>
+<p>The pairwise correlations among all metrics (<a href="#fig-distance-metrics" class="quarto-xref">Figure&nbsp;<span>C.1</span></a>) demonstrate strong positive associations, indicating that they generally capture consistent patterns of cluster separation. However, the BW ratio and minimum distance were selected as the primary indicators for subsequent analyses. Together, they summarize both global separation (centroid-based distance normalized by cluster spread) and local proximity (the smallest inter-cluster gap). This combination provides a balanced characterization of cluster distinctness that is both geometrically interpretable and perceptually meaningful for visualization studies.</p>
+</section></section><section id="experimental-factors-allocation-to-participants" class="level2" data-number="C.6"><h2 data-number="C.6" class="anchored" data-anchor-id="experimental-factors-allocation-to-participants">
+<span class="header-section-number">C.6</span> Experimental factors allocation to participants</h2>
+<p>Allocation of participants to experimental factors is an important part of experimental design. There are a total of <span class="math inline">3 \times 5 = 15</span> combinations of factors for the study. Thirty-six replications for each combination results in <span class="math inline">10 \times 36 = 360</span> evaluations.</p>
+<p>Each factor combination must be evaluated by at least thirty-six participants. Based on the pilot studies for this experiment, we decided to record <span class="math inline">20</span> evaluations for the study, all conducted within a time frame of <span class="math inline">5</span> to <span class="math inline">10</span> minutes. One of the evaluations, featuring three Gaussian clusters, was used as an attention check to ensure data quality. Additionally, three of the evaluations were assigned different data displayed across two displays to reduce the consistency of showing the same data.</p>
+<p><a href="#fig-validate-exp-design-ds" class="quarto-xref">Figure&nbsp;<span>C.2</span></a> provides an example of how distance scale factor is allocated using data structures for the first nine participants. It can be observed that the factor combinations are assigned randomly to the data structures among the participants, ensuring a diverse set of data structures for each individual.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-validate-exp-design-ds" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-validate-exp-design-ds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C-appC_files/figure-html/fig-validate-exp-design-ds-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="H">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-validate-exp-design-ds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.2: Allocation of method and distance scale factor to the first 9 participants for the SAME attempts only. Each participant has experienced all factor combinations with randomly assigned data structures.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>XXX Add description regarding how experimental factors are allocated to the subjects</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-experiment-design-ds" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-experiment-design-ds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C-appC_files/figure-html/fig-experiment-design-ds-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" data-fig-pos="H">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-experiment-design-ds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.3: The experimental design used for the study involved six participants. Each small box contains data structure id in black text. The gray color represents two plots that display the same data, while the orange color indicates two plots that show different data. The green color signifies the attention check trial. If the two plots show different data, the data used in the tour is mentioned within the brackets. The title of each small box contains the NLDR method, and within the brackets, the distance scale factor (<code>S</code> for small, <code>M</code> for medium, and <code>L</code> for large). The red color text in the top right corner of the small box represents the attempt.
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="data-collection-process" class="level2" data-number="C.7"><h2 data-number="C.7" class="anchored" data-anchor-id="data-collection-process">
+<span class="header-section-number">C.7</span> Data collection process</h2>
+<section id="recruite-participants" class="level3"><h3 class="anchored" data-anchor-id="recruite-participants">Recruite participants</h3>
+<p>Subjects were recruited from Prolific <span class="citation" data-cites="palan2018">(<a href="../refs.html#ref-palan2018" role="doc-biblioref"><strong>palan2018?</strong></a>)</span>, an online platform, to evaluate the trials. The study expects that the participants are uninvolved judges with no prior knowledge of the data to avoid inadvertently affecting results. Potential subjects needed with fluent in English and have completed at least <span class="math inline">10</span> Prolific studies with a <span class="math inline">98\%</span> approval rate. The Prolific server only considers participants who are age <span class="math inline">18</span> and older.</p>
+<p>All subjects were trained using three example displays to orient them to the evaluation trials and provided <a href="https://drive.google.com/file/d/14o-nSjy50Qw2eoQArK5AhjowLIOe6m14/view">introductory materials</a>. All subjects who completed the task were compensated <span class="math inline">9.96</span> GBP per hour for their time via the Prolific payment system.</p>
+</section><section id="web-application-to-collect-responses" class="level3"><h3 class="anchored" data-anchor-id="web-application-to-collect-responses">Web application to collect responses</h3>
+<p>The survey web application, <a href="https://ebsmonash.shinyapps.io/web_game/">Match-a-roo</a>, is designed to collect survey responses and demographics using the <code>shiny</code> <span class="citation" data-cites="winston2024">(<a href="../refs.html#ref-winston2024" role="doc-biblioref"><strong>winston2024?</strong></a>)</span> package in R. Each subject had access to the survey via the shiny.io server. The first interface of the survey app contained an introduction, instructions for the survey (<a href="#fig-intro-page" class="quarto-xref">Figure&nbsp;<span>C.5</span></a>), a consent form (<a href="#fig-consent" class="quarto-xref">Figure&nbsp;<span>C.6</span></a>), and buttons to access, for example, actual trials. Participants can try three examples prior to the study where the answers were not recorded (<a href="#fig-example" class="quarto-xref">Figure&nbsp;<span>C.7</span></a>). The subjects were first asked for their consent to the responses being used for analysis.</p>
+<!-- A total of $4526$ evaluations from $146$ participants has been collected.  -->
+<p>After giving consent, the participant can start the trials. Two visual displays of data are shown where the data may be the same or different (<a href="#fig-act" class="quarto-xref">Figure&nbsp;<span>C.8</span></a>). One of the visual displays is a static plot, and the other is a motion plot made of many plots. The participants were asked to decide whether that data was the same in both displays and to report their confidence about their choice and any comments about the answer.</p>
+<p>When the participants completed the twenty-three evaluations, they were asked for their demographics which included preferred pronoun, the highest level of education achieved, their age category, whether they used principal component analysis in their work, and whether they applied NLDR techniques such as tSNE and UMAP (<a href="#fig-demo" class="quarto-xref">Figure&nbsp;<span>C.9</span></a>). Finally, the participants need to click on prolific URL (<a href="https://app.prolific.co/submissions/complete?cc=CLDDOZ10">https://app.prolific.co/submissions/</a>) to redirect back to the Prolific app (<a href="#fig-end" class="quarto-xref">Figure&nbsp;<span>C.10</span></a>).</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-exp-setup" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-exp-setup-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/vis-exp/experiment.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exp-setup-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.4: Diagram of online experiment setup.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-intro-page" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-intro-page-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/vis-exp/introduction.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-intro-page-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.5: The introduction page of the study app.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-consent" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-consent-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/vis-exp/consent.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-consent-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.6: The consent form provided in the study app.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-example" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/vis-exp/example.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.7: The example trial page of the study app.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-act" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-act-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/vis-exp/attempt.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-act-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.8: The actual trial page of the study app.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-demo" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-demo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/vis-exp/demographics.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-demo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.9: The demographics page of the study app.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-end" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-end-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/vis-exp/end_page.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-end-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.10: The end page of the study app.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<!-- After submitting the demographics, the survey application triggered functions, creating two data sets. One data set contains one row per evaluation involving the Prolific ID (unique ID for the participants), attempt, start and end time to compare the data plots, data type (same or different), selected answer (SAME or DIFFERENT), result (correct or wrong), category of confidence, comment, and assigned subject ID (from the experiment design). The other data set has demographics, Prolific ID, and end time, with one row for a subject. -->
+<!-- The data was transferred via secure links between the shiny web application and Google sheets. The `googledrive` [@lucy2023] and `googlesheets4` [@jennifer2023] R packages were used to connect. When participants opened the application, the Google sheets were connected and interacted again when they submitted the responses. The Google sheet with evaluation information recorded responses to the twenty-three trials as twenty-three rows of data. The demographic data for the participant was added to a separate Google sheet linked at the end of the survey. -->
+<p>Once a participant starts the study (<a href="#fig-exp-setup" class="quarto-xref">Figure&nbsp;<span>C.4</span></a>), the “eligibility_subject_IDs” Google Sheet is connected and read in the Shiny app to identify which subject IDs have not yet been assigned to anyone, as indicated by the “used” column. If the “used” column is marked as NA, it means that the subject ID has not been assigned.</p>
+<p>After identifying the eligible subject IDs, one is randomly assigned to the participant, and “1” is recorded in the “used” column corresponding to that subject ID. This subject ID will later assist in connecting the experiment design, high-dimensional data, and embedding data.</p>
+<p>Once a subject ID is allocated to a participant, the experiment design data is loaded, and the relevant attempts, data structure, and methods are presented to the participant. This process continues until the participant completes all attempts. After determining the data structure and methods, the relevant high-dimensional and embedding data is loaded from “high_d_data_three_clust_all.rds” and “embedding_data_three_clust_all.rds,” respectively, and displayed in both motion and static plots.</p>
+<p>Once the participant records their answers, a new row is added to the “result_df” Google Sheet with their responses. This continues until the participant finishes the study. Finally, after completing the evaluations, participants are asked to fill out a demographics questionnaire. Their responses are then recorded in a new row of the “demographic_details” Google Sheet.</p>
+</section></section><section id="analysis-of-results-relative-to-data-collection-process" class="level2" data-number="C.8"><h2 data-number="C.8" class="anchored" data-anchor-id="analysis-of-results-relative-to-data-collection-process">
+<span class="header-section-number">C.8</span> Analysis of results relative to data collection process</h2>
+<section id="data-cleaning" class="level3"><h3 class="anchored" data-anchor-id="data-cleaning">Data cleaning</h3>
+<p>The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty-three trials, including the demographics and the attention check trial. Participants who exceeded the average time of 5-10 minutes were excluded, as determined from the pilot study. Following this, individuals who didn’t accurately detect the attention check trial were also removed. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set is further refined by filtering out all the responses, which showed the same data structures in static and motion plots.</p>
+</section><section id="demographics" class="level3"><h3 class="anchored" data-anchor-id="demographics">Demographics</h3>
+<p>Along with the responses to the trials, we have collected a series of demographic information including preferred pronoun, age range category, education background, and previous experience in PCA and Non-linear dimension reduction techniques. <a href="#tbl-pronoun" class="quarto-xref">Table&nbsp;<span>C.2</span></a>, <a href="#tbl-age" class="quarto-xref">Table&nbsp;<span>C.3</span></a>, <a href="#tbl-education" class="quarto-xref">Table&nbsp;<span>C.4</span></a>, <a href="#tbl-pca" class="quarto-xref">Table&nbsp;<span>C.5</span></a>, and <a href="#tbl-nldr" class="quarto-xref">Table&nbsp;<span>C.6</span></a> provide summaries of the demographic data.</p>
+<p>XXX After collecting data need to add interpretations</p>
+<div class="cell" data-layout-align="center">
+<div id="tbl-pronoun" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pronoun-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.2: Summary of the pronoun distribution of participants recruited for this study.
+</figcaption><div aria-describedby="tbl-pronoun-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div id="tbl-age" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.3: Summary of the age distribution of participants recruited for this study.
+</figcaption><div aria-describedby="tbl-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div id="tbl-education" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-education-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.4: Summary of the educational distribution of participants recruited for this study.
+</figcaption><div aria-describedby="tbl-education-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div id="tbl-pca" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.5: Summary of the previous experience in PCA of participants recruited for this study.
+</figcaption><div aria-describedby="tbl-pca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div id="tbl-nldr" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nldr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.6: Summary of the previous experience in Non-linear dimension reduction techniques of participants recruited for this study.
+</figcaption><div aria-describedby="tbl-nldr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>XXX Add plot with time Vs attempt for the subjects XXX Check is there any specific pattern for each demographics with their answers (eg: Male correctly identify more, or in which region…)</p>
+</section></section><section id="non-attention-check-data-generation" class="level2" data-number="C.9"><h2 data-number="C.9" class="anchored" data-anchor-id="non-attention-check-data-generation">
+<span class="header-section-number">C.9</span> Non-attention check data generation</h2>
+<p>The process of generating non-attention check data involves several steps. First, we generate clustering data using a distance scale factor of <span class="math inline">1</span>, with sample size of <span class="math inline">7500</span>, no noise dimensions, and no background noise. Next, the data generated with a distance scale factor of <span class="math inline">1</span> and a sample size of <span class="math inline">7500</span> is used to create data with different distance scale factors (<span class="math inline">0.1</span>) (<span class="quarto-unresolved-ref">?alg-gen-diff-sf</span>).</p>
+<!-- ```pseudocode -->
+<!-- #| label: alg-gen-diff-sf -->
+<!-- #| html-line-number: false -->
+<!-- #| html-no-end: true -->
+<!-- #| pdf-line-number: false -->
+<!-- \begin{algorithm} -->
+<!-- \caption{Generate \hD{} data with different distance scale factor without any noise dimensions and background noise} -->
+<!-- \begin{algorithmic} -->
+<!-- \State \text{$A$ = list of high dimensional data with distance scale factor is $1$ and sample size is $7500$} -->
+<!-- \State \text{$f$ = list of distance scale factor ($0.1$)} -->
+<!-- \State \text{$G$ = list to store \hD{} data} -->
+<!-- \State \text{Create a tibble from all combinations of the $A$ and $f$} \gets $W$ -->
+<!-- \State $n$ = \text{number of rows in $W$} -->
+<!-- \Procedure{generate-data-different-distance-scale-factor}{$W, n$} -->
+<!--   \For{$i = 1$ \To $n$} -->
+<!--     \State $W_{A[i]}$ = \text{high dimensional data} -->
+<!--     \State $W_{f[i]}$ = \text{distance scale factor} -->
+<!--     \State \text{Compute centroids for each cluster ($c_{1}, c_{2}, c_{3}$)} -->
+<!--     \State \text{Compute distance between centroids} -->
+<!--     \Procedure{Adjust cluster centers based on target distances}{$d_{12}, d_{13}, d_{23}$} -->
+<!--     \State $c_2$ = $c_1$ + $d_{12}$ -->
+<!--     \State $c_3 = \arg\min_{\mathbf{c}_3} \left( (\| c_3 - c_1 \| - d_{13})^2 + (\| c_3 - c_2 \| - d_{23})^2 \right) -->
+<!-- $ -->
+<!--     \EndProcedure -->
+<!--     \State \text{Compute shifts to move clusters to their new centroids} -->
+<!--     \State \text{Shift all points in each cluster to achieve their new centroids} -->
+<!--     \State \text{Combine all cluster data} -->
+<!--     \State \text{Standardize cluster data} -->
+<!--     \State \text{Append generated data to $G$}  -->
+<!--   \EndFor -->
+<!-- \EndProcedure -->
+<!-- \end{algorithmic} -->
+<!-- \end{algorithm} -->
+<!-- ``` -->
+<div class="cell" data-layout-align="center">
+<div id="tbl-dist-centroid-four-clust" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-dist-centroid-four-clust-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.7: <span class="math inline">4\text{-}D</span> distances between centroid points in three clusters.
+</figcaption><div aria-describedby="tbl-dist-centroid-four-clust-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section><section id="non-linear-dimension-reduction-data-generation" class="level2" data-number="C.10"><h2 data-number="C.10" class="anchored" data-anchor-id="non-linear-dimension-reduction-data-generation">
+<span class="header-section-number">C.10</span> Non-linear dimension reduction data generation</h2>
+<p>Dimension reduction data generation is performed using various methods: tSNE (<span class="citation" data-cites="algo-gen-tsne">(<a href="../refs.html#ref-algo-gen-tsne" role="doc-biblioref"><strong>algo-gen-tsne?</strong></a>)</span>), UMAP (<span class="citation" data-cites="algo-gen-umap">(<a href="../refs.html#ref-algo-gen-umap" role="doc-biblioref"><strong>algo-gen-umap?</strong></a>)</span>), PHATE (<span class="citation" data-cites="algo-gen-phate">(<a href="../refs.html#ref-algo-gen-phate" role="doc-biblioref"><strong>algo-gen-phate?</strong></a>)</span>), PaCMAP (<span class="citation" data-cites="algo-gen-pacmap">(<a href="../refs.html#ref-algo-gen-pacmap" role="doc-biblioref"><strong>algo-gen-pacmap?</strong></a>)</span>), and TriMAP (<span class="citation" data-cites="algo-gen-trimap">(<a href="../refs.html#ref-algo-gen-trimap" role="doc-biblioref"><strong>algo-gen-trimap?</strong></a>)</span>) on each high-dimensional dataset, which are then combined at the end.</p>
+<!-- ```pseudocode -->
+<!-- #| label: algo-gen-tsne -->
+<!-- #| html-line-number: false -->
+<!-- #| html-no-end: true -->
+<!-- #| pdf-line-number: false -->
+<!-- \begin{algorithm} -->
+<!-- \caption{Generate tSNE embeddings with different number of neighbors} -->
+<!-- \begin{algorithmic} -->
+<!-- \State \text{$A$ = list of high dimensional data} -->
+<!-- \State \text{$k$ = list of number of neighbors ("default")} -->
+<!-- \State \text{$E$ = list to store embeddings} -->
+<!-- \State \text{Create a tibble from all combinations of the $A$ and $k$} \gets $W$ -->
+<!-- \State $n$ = \text{number of rows in $W$} -->
+<!-- \Procedure{generate-tSNE}{$W, n$} -->
+<!--   \For{$i = 1$ \To $n$} -->
+<!--     \State $W_{A[i]}$ = \text{high dimensional data} -->
+<!--     \State $W_{k[i]}$ = \text{number of neighbours} -->
+<!--     \If{$W_{k[i]} = $ \text{"default"}} -->
+<!--       \State \text{perplexity = $30$} -->
+<!--     \EndIf -->
+<!--     \State \text{perplexity = $W_{k[i]} \times 30$} -->
+<!--     \State \text{Generate tSNE embedding by passing only numeric columns and } -->
+<!--     \State \text{setting perplexity, and pca = FALSE, normalize = FALSE} -->
+<!--     \State \text{Append generated embeddings to $E$}  -->
+<!--   \EndFor -->
+<!-- \EndProcedure -->
+<!-- \end{algorithmic} -->
+<!-- \end{algorithm} -->
+<!-- ``` -->
+<!-- ```pseudocode -->
+<!-- #| label: algo-gen-umap -->
+<!-- #| html-line-number: false -->
+<!-- #| html-no-end: true -->
+<!-- #| pdf-line-number: false -->
+<!-- \begin{algorithm} -->
+<!-- \caption{Generate UMAP embeddings with different number of neighbors} -->
+<!-- \begin{algorithmic} -->
+<!-- \State \text{$A$ = list of high dimensional data} -->
+<!-- \State \text{$k$ = list of number of neighbors ("default")} -->
+<!-- \State \text{$E$ = list to store embeddings} -->
+<!-- \State \text{Create a tibble from all combinations of the $A$ and $k$} \gets $W$ -->
+<!-- \State $n$ = \text{number of rows in $W$} -->
+<!-- \Procedure{generate-UMAP}{$W, n$} -->
+<!--   \For{$i = 1$ \To $n$} -->
+<!--     \State $W_{A[i]}$ = \text{high dimensional data} -->
+<!--     \State $W_{k[i]}$ = \text{number of neighbours} -->
+<!--     \If{$W_{k[i]} = $ \text{"default"}} -->
+<!--       \State \text{n-neighbors = $15$} -->
+<!--     \EndIf -->
+<!--     \State \text{n-neighbors = $W_{k[i]} \times 15$} -->
+<!--     \State \text{Generate UMAP embedding by passing only numeric columns and } -->
+<!--     \State \text{setting n-neighbors, and min-dist = $0.1$, nn-method = "fnn"} -->
+<!--     \State \text{Append generated embeddings to $E$}  -->
+<!--   \EndFor -->
+<!-- \EndProcedure -->
+<!-- \end{algorithmic} -->
+<!-- \end{algorithm} -->
+<!-- ``` -->
+<!-- ```pseudocode -->
+<!-- #| label: algo-gen-phate -->
+<!-- #| html-line-number: false -->
+<!-- #| html-no-end: true -->
+<!-- #| pdf-line-number: false -->
+<!-- \begin{algorithm} -->
+<!-- \caption{Generate PHATE embeddings with different number of neighbors} -->
+<!-- \begin{algorithmic} -->
+<!-- \State \text{$A$ = list of high dimensional data} -->
+<!-- \State \text{$k$ = list of number of neighbors ("default")} -->
+<!-- \State \text{$E$ = list to store embeddings} -->
+<!-- \State \text{Create a tibble from all combinations of the $A$ and $k$} \gets $W$ -->
+<!-- \State $n$ = \text{number of rows in $W$} -->
+<!-- \Procedure{generate-PAHTE}{$W, n$} -->
+<!--   \For{$i = 1$ \To $n$} -->
+<!--     \State $W_{A[i]}$ = \text{high dimensional data} -->
+<!--     \State $W_{k[i]}$ = \text{number of neighbours} -->
+<!--     \If{$W_{k[i]} = $ \text{"default"}} -->
+<!--       \State \text{k = $5$} -->
+<!--     \EndIf -->
+<!--     \State \text{k = $W_{k[i]} \times 5$} -->
+<!--     \State \text{Generate PHATE embedding by passing only numeric columns and setting k} -->
+<!--     \State \text{Append generated embeddings to $E$}  -->
+<!--   \EndFor -->
+<!-- \EndProcedure -->
+<!-- \end{algorithmic} -->
+<!-- \end{algorithm} -->
+<!-- ``` -->
+<!-- ```pseudocode -->
+<!-- #| label: algo-gen-pacmap -->
+<!-- #| html-line-number: false -->
+<!-- #| html-no-end: true -->
+<!-- #| pdf-line-number: false -->
+<!-- \begin{algorithm} -->
+<!-- \caption{Generate PaCMAP embeddings with different number of neighbors} -->
+<!-- \begin{algorithmic} -->
+<!-- \State \text{$A$ = list of high dimensional data} -->
+<!-- \State \text{$k$ = list of number of neighbors ("default")} -->
+<!-- \State \text{$E$ = list to store embeddings} -->
+<!-- \State \text{Create a tibble from all combinations of the $A$ and $k$} \gets $W$ -->
+<!-- \State $n$ = \text{number of rows in $W$} -->
+<!-- \Procedure{generate-PaCMAP}{$W, n$} -->
+<!--   \For{$i = 1$ \To $n$} -->
+<!--     \State $W_{A[i]}$ = \text{high dimensional data} -->
+<!--     \State $W_{k[i]}$ = \text{number of neighbours} -->
+<!--     \If{$W_{k[i]} = $ \text{"default"}} -->
+<!--       \State \text{n-neighbors = $10$} -->
+<!--     \EndIf -->
+<!--     \State \text{n-neighbors = $W_{k[i]} \times 10$} -->
+<!--     \State \text{Generate PaCMAP embedding by passing only numeric columns and setting n-neighbors} -->
+<!--     \State \text{Append generated embeddings to $E$}  -->
+<!--   \EndFor -->
+<!-- \EndProcedure -->
+<!-- \end{algorithmic} -->
+<!-- \end{algorithm} -->
+<!-- ``` -->
+<!-- ```pseudocode -->
+<!-- #| label: algo-gen-trimap -->
+<!-- #| html-line-number: false -->
+<!-- #| html-no-end: true -->
+<!-- #| pdf-line-number: false -->
+<!-- \begin{algorithm} -->
+<!-- \caption{Generate TriMAP embeddings with different number of neighbors} -->
+<!-- \begin{algorithmic} -->
+<!-- \State \text{$A$ = list of high dimensional data} -->
+<!-- \State \text{$k$ = list of number of neighbors ("default")} -->
+<!-- \State \text{$E$ = list to store embeddings} -->
+<!-- \State \text{Create a tibble from all combinations of the $A$ and $k$} \gets $W$ -->
+<!-- \State $n$ = \text{number of rows in $W$} -->
+<!-- \Procedure{generate-TriMAP}{$W, n$} -->
+<!--   \For{$i = 1$ \To $n$} -->
+<!--     \State $W_{A[i]}$ = \text{high dimensional data} -->
+<!--     \State $W_{k[i]}$ = \text{number of neighbours} -->
+<!--     \If{$W_{k[i]} = $ \text{"default"}} -->
+<!--       \State \text{n-inliers = $12$} -->
+<!--     \EndIf -->
+<!--     \State \text{n-inliers = $W_{k[i]} \times 12$} -->
+<!--     \State \text{Generate TriMAP embedding by passing only numeric columns and setting n-inliers} -->
+<!--     \State \text{Append generated embeddings to $E$}  -->
+<!--   \EndFor -->
+<!-- \EndProcedure -->
+<!-- \end{algorithmic} -->
+<!-- \end{algorithm} -->
+<!-- ``` -->
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../appendix/B-appB.html" class="pagination-link" aria-label="Appendix to &quot;Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space&quot;">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Appendix to “Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space”</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../appendix/D-appD.html" class="pagination-link" aria-label="Appendix to &quot;Development of an interactive and dynamic graphics system for NLDR users&quot;">
+        <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Appendix to “Development of an interactive and dynamic graphics system for NLDR users”</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/appendix/C-appC.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
