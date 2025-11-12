@@ -1,2 +1,7 @@
 Term/ Notation ,Description
+Nonlinear dimension reduction (NLDR) techniques,
+tSNE,
 UMAP (Uniform Manifold Approximation and Projection),A manifold learning-based NLDR technique preserving both local and some global structures efficiently.
+PHATE,
+TriMAP,
+PaCMAP,
