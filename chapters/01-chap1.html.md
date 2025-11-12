@@ -105,13 +105,13 @@ The rest of the thesis is organized as follows:
 
 @sec-first-paper introduces an algorithm to assess the NLDR and decide on which, if any, is the most reasonable representation of the structure(s) present in high-dimensional data. We create a model starting with NLDR layout that is then used to display as a wireframe in high dimensions.
 
-@sec-second-paper provides empirical evidence on how viewers recognize structure differently when using NLDR layouts versus the tour view, particularly with varying distances between clusters. The findings will help clarify common mistakes made when selecting and reporting structures based on NLDR layouts. 
-
 @sec-third-paper presents the implementation of the work is available as an R package, named `quollr`, an acronym to "**qu**estioning how a high-dimensional **o**bject **l**ooks in **l**ow-dimensions using **r**" [@jayani2024a]. This package also contains a function for performing hexagonal binning using a new approach, for saving langevitour results with a specific projection, and link plots to understand the quirks that occur with different NLDR techniques.
 
 @sec-fourth-paper proposes the R package, `cardinalR` [@jayani2024b] (**c**ollection of v**ar**ious high-**d**imens**i**o**nal** data
 structures in **R**), which includes functions to generate high-dimensional clustering data structures, with features such as adding noise dimensions and background noise along with some already generated examples.
 
+@sec-second-paper provides empirical evidence on how viewers recognize structure differently when using NLDR layouts versus the tour view, particularly with varying distances between clusters. The findings will help clarify common mistakes made when selecting and reporting structures based on NLDR layouts. 
+
 @sec-fifth-paper introduces `menuraR` (**m**onitoring **e**mbeddings of **n**onlinear **u**nfoldings for **r**epresentation and **a**nalysis in **R**), a Shiny web application designed to select and evaluate NLDR layouts.
 
-@sec-conclusion concludes the thesis, summarises the contribution of the work, and discusses some future plans.
+@sec-conclusion concludes the thesis, summarizes the contribution of the work, and discusses some future plans.
