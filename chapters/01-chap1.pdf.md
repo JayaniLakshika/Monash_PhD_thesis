@@ -58,19 +58,19 @@ In addition to technical gaps, **little is known about how people perceive and m
 
 ## Research Objectives
 
-This thesis addresses these challenges through four main objectives:
+This thesis aims to achieve the key challenges in understanding and evaluating NLDR methods through four main objectives:
 
-1. **Develop methods and software to diagnose NLDR techniques**, providing tools to assess whether low-dimensional representations accurately reflect high-dimensional structures.
+1. **Develop a new approach and software to evaluate NLDR techniques**, providing tools to assess whether low-dimensional representations accurately capture the high-dimensional data structures, using visual and quantitative diagnostics.
 
-2. **Conduct a large-scale user study to explore perception and misperception in NLDR representations**, assessing how viewers recognize structure differently in NLDR layouts compared to tour-based views. This cognitive perception experiment will help identify common mistakes made when choosing and reporting structure from NLDR visualizations, and will inform best practices for using these methods in data analysis.
+2. **Conduct a large-scale user study to explore perception and misperception in NLDR representations**, assessing how participants recognize the data structure similarly in NLDR layout compared to tour views. This cognitive perception experiment provides common mistakes made when choosing and reporting structure from NLDR visualizations, and will inform best practices for using these methods in data analysis.
 
-3. **Create benchmark datasets with known geometric properties**, via the `cardinalR` package, to systematically evaluate and validate NLDR methods.
+3. **Generate benchmark clustering data structures in high dimensions with some additional properties like background noise**, using the `cardinalR` package, to evaluate the performance of the algorithms like clustering, NLDR.
 
-4. **Provide a platform for NLDR evaluation**, combining linked linear projections (such as tours) and NLDR layouts to reveal where distortions arise and how structure is preserved or lost.
+4. **Provide a platform for NLDR users**, comparing multiple NLDR representations and select the most reasonable one. 
 
 ## Contribution
 
-By addressing both computational and cognitive aspects of NLDR, this research aims to advance our understanding of when and how NLDR methods can be trusted. The work will provide practical tools, benchmark data, and empirical insights to support the responsible use of dimension reduction techniques in high-dimensional data analysis.
+This research contributes to a deeper understanding of how NLDR methods can be evaluated and trusted in practice. It provides new tools and software for assessment, benchmark datasets for testing algorithms, and insights from a large-scale user study to guide effective use of NLDR in high-dimensional data analysis.
 
 <!-- Paper: https://www.sciencedirect.com/science/article/pii/S0092867421005833?via%3Dihub#fig1 (CITE-seq data) -->
 
