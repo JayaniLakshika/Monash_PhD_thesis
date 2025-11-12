@@ -1,8 +1,8 @@
 # Abstract {-}
 
-High-dimensional data are increasingly common across many scientific fields, driven by advances in data collection technologies. However, visualising and interpreting such data pose significant challenges due to the difficulty of perceiving structures beyond two dimensions. Dimension reduction methods are widely used to create visual summaries of high-dimensional data. While linear approaches such as principal component analysis are effective for simple structures, they often fail to capture complex, non-linear relationships. Non-linear dimension reduction (NLDR) techniques address this limitation by applying non-linear transformations to produce low-dimensional representations that reveal intricate patterns within the data. However, NLDR methods vary in how they distort or preserve structure, and their results can be misleading without appropriate diagnostic tools. However, the effectiveness of NLDR methods can vary depending on the chosen method and hyper-parameters, often resulting in representations that differ widely in accuracy and can be misleading without proper diagnostic tools. The main objective of this research is to develop new methods and software tools to diagnose, evaluate, and interpret NLDR results in relation to the true high-dimensional data structure.
+High-dimensional data are increasingly common across many scientific fields, driven by advances in data collection technologies. However, visualizing and interpreting such data pose significant challenges due to the difficulty of perceiving structures beyond two dimensions. Dimension reduction methods are widely used to create visual summaries of high-dimensional data. While linear approaches such as principal component analysis are effective for simple structures, they often fail to capture complex, nonlinear relationships. Nonlinear dimension reduction (NLDR) techniques address this limitation by applying nonlinear transformations to produce low-dimensional representations that reveal intricate patterns within the data. However, NLDR methods vary in how they distort or preserve structure, and their results can be misleading without appropriate diagnostic tools. However, the effectiveness of NLDR methods can vary depending on the chosen method and hyper-parameters, often resulting in representations that differ widely in accuracy and can be misleading without proper diagnostic tools. The main objective of this research is to develop new methods and software tools to diagnose, evaluate, and interpret NLDR results in relation to the true high-dimensional data structure.
 
-This research presents five original contributions. The first contribution ([Chapter 2](#sec-first-paper)) introduces a new method for visualizing how NLDR warps data. This method improves the diagnostics of NLDR techniques. The second contribution ([Chapter 3](#sec-second-paper)) provides evidence in identification of clusters at various distances when observing NLDR representation and the tour view of high-dimensional data. This finding is based on a human subject experiment that explores both the perception and misperception of NLDR representations. The third contribution ([Chapter 4](#sec-fourth-paper)) involves implementing the method introduced in [Chapter 2](#sec-first-paper) as an R package, `quollr`. The fourth contribution ([Chapter 5](#sec-fifth-paper)) introduces an R package, `cardinalR` designed to generate high-dimensional clustering data structures, with features such as adding noise dimensions and background noise. Finally, the fifth contribution ([Chapter 6](#sec-sixth-paper)) features a Shiny app that offers a user-friendly interface for analysts to obtain the most accurate NLDR representation. Overall, this work advances the field of diagnosing NLDR by improving the visualization of high-dimensional data.
+This research presents five original contributions. The first contribution ([Chapter 2](#sec-first-paper)) introduces a new method for visualizing how NLDR warps data. This method improves the diagnostics of NLDR techniques. The second contribution ([Chapter 3](#sec-third-paper)) involves implementing the method introduced in [Chapter 2](#sec-first-paper) as an R package, `quollr`. The third contribution ([Chapter 4](#sec-fourth-paper)) introduces an R package, `cardinalR` designed to generate high-dimensional clustering data structures, with features such as adding noise dimensions and background noise. The fourth contribution ([Chapter 5](#sec-second-paper)) provides evidence in identification of clusters at various distances when observing NLDR representation and the tour view of high-dimensional data. This finding is based on a human subject experiment that explores both the perception and misperception of NLDR representations. Finally, the fifth contribution ([Chapter 6](#sec-fifth-paper)) provides a Shiny app that offers a user-friendly interface for analysts to obtain the most accurate NLDR representation. Overall, this work advances the field of diagnosing NLDR by improving the visualization of high-dimensional data.
 
 # Declaration {-}
 
@@ -10,7 +10,7 @@ I hereby declare that this thesis contains no material which has been accepted f
 
 This thesis includes one original papers published in a peer reviewed journal and four unpublished papers. The core theme of the thesis is to "develop methods and software to evaluate and understand non-linear dimension reduction methods". The ideas, development and writing up of all the papers in the thesis were the principal responsibility of myself, the student, working within the Department of Econometrics and Business Statistics under the supervision of Professor Dianne Cook, Dr Paul Harrison (MGBP, BDInstitute), Dr Michael Lydeamore, and Dr Thiyanga S. Talagala (University of Sri Jayewardenepura).
 
-The inclusion of co-authors reflects the fact that the work came from active collaboration between researchers and acknowledges input into team-based research. In the case of [Chapter 2](#sec-first-paper), [Chapter 4](#sec-fourth-paper), [Chapter 5](#sec-fifth-paper), and, [Chapter 6](#sec-sixth-paper), my contribution to the work involved the following:
+The inclusion of co-authors reflects the fact that the work came from active collaboration between researchers and acknowledges input into team-based research. In the case of [Chapter 2](#sec-first-paper), [Chapter 3](#sec-fourth-paper), [Chapter 4](#sec-fifth-paper), and, [Chapter 6](#sec-sixth-paper), my contribution to the work involved the following:
 
 
 ::: {.cell}
@@ -37,7 +37,7 @@ The inclusion of co-authors reflects the fact that the work came from active col
    <td style="text-align:left;width: 1.3cm; "> No </td>
   </tr>
   <tr>
-   <td style="text-align:right;width: 1.2cm; "> 4 </td>
+   <td style="text-align:right;width: 1.2cm; "> 3 </td>
    <td style="text-align:left;width: 3cm; ">  </td>
    <td style="text-align:left;width: 3.5cm; "> Submitted in the R Journal </td>
    <td style="text-align:left;width: 2.5cm; "> 80%  Concept, Analysis, Software, Writing </td>
@@ -45,7 +45,7 @@ The inclusion of co-authors reflects the fact that the work came from active col
    <td style="text-align:left;width: 1.3cm; "> No </td>
   </tr>
   <tr>
-   <td style="text-align:right;width: 1.2cm; "> 5 </td>
+   <td style="text-align:right;width: 1.2cm; "> 4 </td>
    <td style="text-align:left;width: 3cm; ">  </td>
    <td style="text-align:left;width: 3.5cm; "> Submitted in the R Journal </td>
    <td style="text-align:left;width: 2.5cm; "> 80%  Concept, Analysis, Software, Writing </td>
@@ -77,7 +77,9 @@ To ensure the clarity and coherence of the written content, artificial intellige
 
 <!-- **The thesis is written in Australian spelling, except for Chapters 3 and 4, which use American spelling as specified by the publication venue.** -->
 
-The thesis is written in Australian spelling, except for Chapters $2$, $4$, $5$, and $6$, which use American spelling as specified by the publication venues.
+<!-- The thesis is written in Australian spelling, except for Chapters $2$, $4$, $5$, and $6$, which use American spelling as specified by the publication venues. -->
+
+This thesis uses American spelling, as that’s the style followed by the journals where the work will be submitted or published.
 
 I have renumbered sections of submitted papers in order to generate a consistent presentation within the thesis. 
 
