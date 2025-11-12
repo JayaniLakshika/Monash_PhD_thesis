@@ -1,61 +1,267 @@
-# Perception and Misperception in Nonlinear Dimension Reduction: A User Study {#sec-second-paper}
+# quollr: An R Package for Visualizing $2\text{-}D$ Models from Non-linear Dimension Reductions in High Dimensional Space {#sec-third-paper}
 
 
 
 
-::: {.cell layout-align="center"}
-
-:::
 
 
-
-::: {.cell layout-align="center"}
+::: {.cell}
 
 :::
 
 
 
-::: {.cell layout-align="center"}
+::: {.cell}
 
 :::
 
 
 
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
+::: {.cell}
 
 :::
 
 
 ## Introduction
 
-Non-linear dimension reduction (NLDR) is popular for making a suitable \gD{} representation of high-dimensional (\pD{}) data by applying non-linear transformations. Recently developed methods include t-distributed stochastic neighbor embedding (tSNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. However, in different data structures, the \gD{} representation generated can vary dramatically from what is observed in \pD{} (@fig-nldr-layouts). 
+<!-- research gap: add about hexbin pkg, and emphasize that in our package provide regular hexagons-->
+<!-- objective: introduce a new tool to help to determine which method, which parameter choice provide the most useful representation of high-D data.--> 
+<!--intro with S-curve with 5 methods-->
 
-<!-- XXX Need to add about clustering structure that we test on -->
+Non-linear dimension reduction (NLDR) techniques, such as t-distributed stochastic neighbor embedding (tSNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2019], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021], can create hugely different representations depending on the selected method and hyper-parameter choices. It is difficult to determine whether any of these representations are accurate, which one is the best, or whether they have missed important structures. 
 
-<!-- XXX Add layouts from one experiment data structure with all methods, change the factors and add with all methods. Then discuss the layout can be similar and different according to these factors. What are the mistakes can happen? Why? -->
-
-<!-- XXX Add a vis with one data structure with one method by changing other factors like n_neighbors -->
+This paper presents the R package, `quollr`, which is useful for understanding how NLDR warps high-dimensional space and fits the data. Starting with an NLDR layout, our approach is to create a \twoD wireframe model representation, that can be lifted and displayed in the high-dimensional (\pD{}) space (Figure \@ref(fig:overview)).
 
 
-::: {.cell layout-align="center"}
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+::: {.cell-output-display}
+![Wireframe model representation of the NLDR layout, lifted and displayed in high-dimensional space. The left panel shows the NLDR layout with a triangular mesh overlay, forming the wireframe structure. This mesh can be lifted into higher dimensions and projected to examine how the geometric structure of the data is preserved. Panels (a1–a4) display different \twoD projections of the lifted wireframe, where the underlying curved sheet structure of the data is more clearly visible. The triangulated mesh highlights how local neighborhoods in the layout correspond to relationships in the high-dimensional space, enabling diagnostics of distortion and preservation across dimensions.](03-chap3_files/figure-pdf/overview-1.pdf){fig-pos='H' width=100%}
+:::
+:::
+
+
+The paper is organized as follows. The next section introduces the implementation of the `quollr` package on CRAN, including a demonstration of the package's key functions and visualization capabilities. In the application section, we illustrate the algorithm's functionality for studying a clustering data structure. Finally, we conclude the paper with a brief summary and discuss potential opportunities for using our algorithm.
+
+## Implementation
+
+The implementation of `quollr` is designed to be efficient, and easy to extend. The package is organized into a series of logical components that reflect the main stages of the workflow: data preprocessing, model fitting, low-density bin removal, prediction, visualization, and interactive exploration (Figure \@ref(fig:workflow)). This package structure makes the code easier to maintain and allows new features to be added without changing the existing functionality.
+
+
+::: {.cell}
+::: {.cell-output-display}
+![Overview of the `quollr` workflow and software architecture. The process begins with NLDR and $p\text{-}D$ data inputs, followed by data preprocessing and hexagonal binning. Centroids are computed and triangulated to form the $2\text{-}D$ mesh, which is then lifted into the $p\text{-}D$ space. Predictions and error computations are performed on new data, while interactive functions enable dynamic linking between the $p\text{-}D$ and $2\text{-}D$ representations.](../figures/quollr/quollr_workflow.png){fig-pos='H' width=100%}
+:::
+:::
+
+
+### Software architecture
+
+The package is organized into seven core modules corresponding to stages of the analysis workflow: preprocessing, \twoD model construction, lifting into \pD, prediction, error computation, visualization, and interactivity. Each module performs a distinct task and communicates through data objects.
+
+1. Data preprocessing: The function `gen_scaled_data()` standardizes the embedding data, manage variable naming, and ensure consistent identifiers across high-dimensional and embedded datasets.
+
+2. Construct \twoD model: A series of functions `hex_binning()`, `merge_hexbin_centroids()`, `tri_bin_centroids()`, `gen_edges()`, and `update_trimesh_index()` generate the hexagonal grid, compute bin centroids, and connect the triangular mesh that defines local neighborhoods in the \twoD space.
+
+3. Lift the model into \pD: The function `avg_highd_data()` computes the average of the high-dimensional variables for each bin, linking the \twoD representation back to the original data space.
+
+4. Prediction: The function `predict_emb()` estimates the embedding of new high-dimensional observations based on the fitted model.
+
+5. Error computation: The `glance()` and `augment()` function summarizes model performance by comparing the predicted and original embeddings.
+
+6. Visualization: Functions such as `geom_hexgrid()`, `geom_trimesh()`, and `show_langevitour()` provide tools for exploring the fitted models through static and dynamic visualizations.
+
+7. Interactivity: The functions `comb_all_data_model()` and `show_link_plots()` generate interactive linked visualizations that connect the \twoD NLDR layout, the corresponding tour view, and the fitted model. Similarly, `comb_all_data_model_error()` and `show_error_link_plots()` integrate the error distribution with the \twoD embedding and dynamic high-dimensional view, enabling interactivity across multiple visual components.
+
+Each module is internally independent but connected through data objects (see next section). This modular design simplifies maintenance and allows developers to extend individual components such as substituting different binning approaches, extracting centroids, or visualization tools without altering the overall workflow.
+
+### Data objects
+
+The internal data objects follow the tidy data principle: each variable is stored in a column, each observation in a row, and each type of information in its own table. This structure makes the package easy to use with the `tidyverse` and other R visualization tools.
+
+#### Input objects
+
+- `highd_data`: a tibble containing the original high-dimensional observations with a unique identifier (`ID`) and variable columns prefixed with `"x"` (e.g., `x1`, `x2`, …).
+
+- `nldr_data`: a tibble containing two-dimensional embeddings, labeled as `emb1` and `emb2`, matched to the same `ID`s.
+
+#### Generated objects
+
+- `scaled_nldr_obj`: the output of `gen_scaled_data()`, which rescales the embedding to the range $[0, 1] \times [0, y_{2,\text{max}}]$, where $y_{2,\text{max}} = r_2 / r_1$ is the ratio of the embedding ranges. It includes the scaled coordinates (`scaled_nldr`) and the original limits (`lim1`, `lim2`).
+
+- `hex_bin_obj`: the object created by `hex_binning()`, which defines the structure of the two-dimensional hexagonal grid used in modeling. It includes the grid spacing (`a1`, `a2`), the number of bins along each axis, the centroids of all hexagons, polygon coordinates for plotting, and the mapping of each data point to its assigned hexagon.
+
+- `highd_vis_model`: the main model object returned by `fit_highd_model()`. It stores all components of the fitted visualization model, including the scaled NLDR data (`nldr_scaled_obj`), the hexagonal bin structure (`hb_obj`), the averaged \pD summaries for each bin (`model_highd`), the corresponding \twoD bin centroids (`model_2d`), and the triangulated mesh connecting neighboring bins (`trimesh_data`). 
+
+### Computational efficiency and optimization
+
+Several core computations within `quollr` are optimized using compiled C++ code via the `Rcpp` and `RcppArmadillo` packages. While the user interacts with high-level R functions, performance-critical steps such as nearest-neighbor searches (`compute_highd_dist()`), error metrics (`compute_errors()`), \twoD distance calculations (`calc_2d_dist_cpp()`), and generation of hexagon coordinates (`gen_hex_coord_cpp()`) are handled internally in C++. This design provides significant speedups when analyzing large datasets while maintaining a user-friendly R interface. These C++ functions are not exported but are bundled within the package and fully accessible for inspection in the source code.
+
+## Usage
+
+The package is available on CRAN, and the development version is available at https://jayanilakshika.github.io/quollr/.
+
+Our algorithm includes the following steps: (1) scaling the NLDR data, (2) computing configurations of a hexagon grid, (3) binning the data, (4) obtaining the centroids of each bin, (5) indicating neighboring bins with line segments that connect the centroids, and (6) lifting the model into high dimensions (Figure \@ref(fig:algo-steps)). A detailed description of the algorithm can be found in @gamage2025c.
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+::: {.cell-output-display}
+![Key steps for constructing the model on the UMAP layout: (a) hexagon bins, (b) bin centroids, (c) triangulated centroids, and (d) lifting the model into high dimensions. The `Scurve` data is shown.](03-chap3_files/figure-pdf/algo-steps-1.pdf){fig-pos='H' width=100%}
+:::
+:::
+
+
+The following demonstration of the package's functionality assumes `quollr` has been loaded. To begin the workflow, users need two inputs: the high-dimensional dataset and the corresponding nonlinear dimensionality reduction (NLDR) layout. The high-dimensional data must contain a unique `ID` column, with data columns prefixed by the letter `"x"` (e.g., `x1`, `x2`, etc.). The NLDR dataset should include embedding coordinates labeled as `emb1` and `emb2`, ensuring one-to-one correspondence with the high-dimensional data through the shared `ID`. 
+
+To illustrate the workflow, we use the built-in example dataset `scurve`, a $7\text{-}D$ simulated dataset consisting of $1000$ observations. The first three variables define a $3\text{-}D$ S-shaped manifold, while the remaining four variables introduce low-magnitude uniform noise, yielding a structured yet noisy high-dimensional dataset.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+data("scurve")
+```
+:::
+
+
+For this example, we use the UMAP layout, which is produced using `n_neighbors =` $46$ and `min_dist =` $0.9$.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+library(umap)
+library(dplyr)
+
+scurve_umap <- umap(
+  scurve |> select(-ID),
+  config = modifyList(umap.defaults, list(
+    n_neighbors = 46,
+    n_components = 2,
+    min_dist = 0.9
+  ))
+)$layout |>
+  as_tibble(.name_repair = ~ paste0("emb", 1:2)) |>
+  mutate(ID = scurve$ID)
+```
+:::
+
+
+### Main function
+
+The mains steps for the algorithm can be executed by the main function `fit_highd_model()`, or can be run separately for more flexibility. 
+
+This function requires several parameters: the high-dimensional data (`highd_data`), the emdedding data (`nldr_data`), the number of bins along the x-axis (`b1`), the buffer amount as a proportion of data (`q`), and benchmark value to extract high density hexagons (`hd_thresh`). The function returns an object of class `highd_vis_model` containing the scaled NLDR object (`nldr_scaled_obj`) with three elements: the first is the scaled NLDR data (`scaled_nldr`), and the second and third are the limits of the original NLDR data (`lim1` and `lim2`); the hexagonal object (`hb_obj`), the fitted model in both \twoD (`model_2d`), and \pD (`model_highd`), and triangular mesh (`trimesh_data`).  
+
+
+::: {.cell}
+
+```{.r .cell-code}
+fit_highd_model(
+  highd_data = scurve, 
+  nldr_data = scurve_umap, 
+  b1 = 21, 
+  q = 0.1, 
+  hd_thresh = 0)
+```
+:::
+
+
+### Constructing the $2\text{-}D$ Model
+
+Constructing the \twoD model primarily involves (i) scaling the NLDR data, (ii) binning the data, (iii) obtaining bin centroids, (iv) connecting centroids with line segments to indicate neighbors, and (v) removing low-density hexagons.
+
+#### Scaling the data
+
+The algorithm starts by scaling the NLDR data to to the range $[0, 1] \times [0, y_{2,max}]$, where $y_{2,max} = r_2/r_1$ is the ratio of ranges of embedding components. The output includes the scaled NLDR data (`scaled_nldr`) along with the original limits of the embeddings (`lim1`, `lim2`).
+
+
+::: {.cell}
+
+```{.r .cell-code}
+scurve_umap_obj <- gen_scaled_data(nldr_data = scurve_umap)
+```
+:::
+
+
+#### Computing hexagon grid configuration
+
+The function `calc_bins_y()` determines the configuration of the hexagonal grid by computing the number of bins along the y-axis (`b2`), the hexagon width (`a1`), and height (`a2`). This function accepts (1) an object (`nldr_scaled_obj`) containing three elements: the first is the scaled NLDR data (`scaled_nldr`), and the second and third are the limits of the original NLDR data (`lim1` and `lim2`); (2) the number of bins along the x-axis (`b1`), and (3) the buffer amount as a proportion (`q`). The buffer ensures that the grid fully covers the data space by extending one hexagon width ($a_1$) and height ($a_2$) beyond the observed data in all directions. By default, $q = 0.1$, but it must be set to a value smaller than the minimum data value to avoid exceeding the data range.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+bin_configs <- calc_bins_y(
+  nldr_scaled_obj = scurve_umap_obj, 
+  b1 = 21, 
+  q = 0.1)
+
+bin_configs
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+> $b2
+> [1] 28
+> 
+> $a1
+> [1] 0.05869649
+> 
+> $a2
+> [1] 0.05083265
+```
+
+
+:::
+:::
+
+
+#### Binning the data
+
+Points are allocated to bins based on the nearest centroid of the hexagonal bins. The hexagonal binning algorithm can be executed using the `hex_binning()` function, or its individual components can be run separately for added flexibility. While running the process step by step would involve generating centroids, constructing hexagon coordinates, assigning points to bins, standardizing counts, and mapping the data back to hexagons, the `hex_binning()` function automates this entire workflow. The parameters used within `hex_binning()` are the object output from `gen_scaled_data` (`nldr_scaled_obj`); the number of bins along the x-axis (`b1`), and the buffer amount as a proportion of the data (`q`). The output is an object of the `hex_bin_obj` class, which contains the bin widths in each direction (`a1`, `a2`), the number of bins in each direction (`bins`), the coordinates of the hexagonal grid starting point (`start_point`), the details of bin centroids (`centroids`), the coordinates of bins (`hex_poly`), NLDR components with their corresponding hexagon IDs (`data_hb_id`), hex bins with their corresponding standardized counts (`std_cts`), the total number of bins (`b`), the number of non-empty bins (`m`), and the points within each hexagon (`pts_bins`).  
+
+
+::: {.cell}
+
+```{.r .cell-code}
+hb_obj <- hex_binning(
+  nldr_scaled_obj = scurve_umap_obj, 
+  b1 = 21, 
+  q = 0.1)
+```
+:::
+
+
+<!--add each step separately-->
+<!--add hexbin notation image-->
+
+
+::: {.cell}
 
 :::
 
@@ -66,21 +272,562 @@ Non-linear dimension reduction (NLDR) is popular for making a suitable \gD{} rep
 :::
 
 
+##### Generating all possible centroids in a hexagonal grid
 
-::: {.cell layout-align="center"}
+The `gen_centroids()` function calculates the centroids of a hexagonal grid. 
 
+The coordinate limits of the embedding (`lim1` and `lim2`) are used to compute the aspect ratio between the two axes, which informs vertical spacing. The function then calls `calc_bins_y()`, a helper function that determines the appropriate number of hexagons along y-axis (`b2`) and the width of each hexagon (`a1`) given the specified number of bins along the x-axis (`b1`) and buffer (`q`).
+
+Then, the centroids are computed iteratively. The x-coordinates for centroids in odd-numbered rows are initialized as a sequence spaced by the hexagon width. Even-numbered rows are staggered by half this width to achieve a hexagonal tiling effect. Vertical spacing (`vs`) is given by $\sqrt{3}/2 \times a_1$.
+
+The y-coordinates for each row are similarly calculated, and paired with the x-coordinates based on whether the total number of rows is even or odd. In the case of an odd number of rows, the final row uses only the odd-row x-coordinates to maintain the alternating pattern.
+
+Finally, a tibble is returned containing a unique hexagon ID (`h`) along with the corresponding x and y centroid coordinates (`c_x`, `c_y`), which define the layout of the hexagonal grid over the \twoD space.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+all_centroids_df <- gen_centroids(
+  nldr_scaled_obj = scurve_umap_obj, 
+  b1 = 21, 
+  q = 0.1
+  )
+
+head(all_centroids_df, 5)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+> # A tibble: 5 x 3
+>       h     c_x    c_y
+>   <int>   <dbl>  <dbl>
+> 1     1 -0.1    -0.116
+> 2     2 -0.0413 -0.116
+> 3     3  0.0174 -0.116
+> 4     4  0.0761 -0.116
+> 5     5  0.135  -0.116
+```
+
+
+:::
 :::
 
 
+##### Creating the coordinates of the hexagons
 
-::: {.cell layout-align="center"}
+Following the generation of hexagonal centroids, the `gen_hex_coord()` function constructs the coordinates of each hexagonal bin by defining its six polygonal vertices. These coordinates are used to visualize the hexagonal tessellation.
 
+Each hexagon is defined relative to its centroid $(C_x, C_y)$, with six vertices positioned equidistantly around the center. The function first verifies the presence of the required hexagon width parameter `a1`. This width determines the horizontal spacing (`hs`).
+
+Two derived constants are calculated to define the relative distances to the vertices. The horizontal and vertical offset is defined as $dx = a_1/2$, and $dy = a_1/\sqrt{3}$ repectively. A vertical spacing factor $vf = a_1/2\sqrt{3}$ refines vertical placement in staggered rows.
+
+With these values, the function determines fixed offsets in the x and y directions for all six vertices relative to the centroid. These offsets form two vectors corresponding to the six compass directions used to define the polygon shape: top, top-left, bottom-left, bottom, bottom-right, and top-right.
+
+For each centroid, six vertices are computed and assigned a polygon ID as the centroid. These vertices are then combined into a tibble that records the polygon ID (`h`) and the respective x (`x`) and y (`y`) coordinates for all hexagon corners.
+
+To reduce computational overhead, the geometry calculations are implemented in C++ using `gen_hex_coord_cpp()`, which returns a `tibble` of vertex coordinates.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+all_hex_coord <- gen_hex_coord(
+  centroids_data = all_centroids_df, 
+  a1 = bin_configs$a1
+  )
+
+head(all_hex_coord, 5)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+>   h           x           y
+> 1 1 -0.10000000 -0.08179171
+> 2 1 -0.12934824 -0.09873593
+> 3 1 -0.12934824 -0.13262436
+> 4 1 -0.10000000 -0.14956858
+> 5 1 -0.07065176 -0.13262436
+```
+
+
+:::
 :::
 
 
+##### Assigning data points to their respective hexagons
 
-::: {.cell layout-align="center"}
+After generating the centroids that define the hexagonal grid, the next step is to assign each point in the NLDR embedding to its nearest hexagonal bin. The `assign_data()` function performs this assignment by calculating the \twoD Euclidean distance between each point in the \twoD embedding and all hexagon centroids.
 
+First, the function extracts the first two dimensions of the scaled NLDR embedding, which represent the \twoD layout. It then selects the corresponding x and y coordinates of each hexagon’s centroid.
+
+Both the embedding coordinates and the centroid coordinates are converted to matrices to facilitate distance computations. The function uses the `proxy::dist()` method to compute a pairwise Euclidean distance matrix between all NLDR points and all centroids. For each NLDR point, the function identifies the index of the centroid with the smallest distance representing the closest hexagon—and assigns the corresponding hexagon ID (`h`) to the point.
+
+The result is a `tibble` of the scaled \twoD embedding with an additional `h` column, indicating the hexagonal bin to which each point belongs. 
+
+
+::: {.cell}
+
+```{.r .cell-code}
+umap_hex_id <- assign_data(
+  nldr_scaled_obj = scurve_umap_obj, 
+  centroids_data = all_centroids_df
+  )
+
+head(umap_hex_id, 5)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+> # A tibble: 5 x 4
+>    emb1  emb2    ID     h
+>   <dbl> <dbl> <int> <int>
+> 1 0.277 0.913     1   427
+> 2 0.697 0.538     2   287
+> 3 0.779 0.399     3   226
+> 4 0.173 0.953     4   446
+> 5 0.218 0.983     5   468
+```
+
+
+:::
+:::
+
+
+##### Computing the standardized number of points within each hexagon
+
+The `compute_std_counts()` function calculates both the raw and standardized counts of points inside each hexagon.
+
+The function begins by grouping the data by hexagon ID (`h`) and counting the number of NLDR points falling within each bin. These raw counts are stored as `n_h`. To enable comparisons across bins with varying densities, the function then standardizes these counts by dividing each bin’s count by the maximum count across all bins. This yields a standardized bin counts, `w_h`, ranging from $0$ to $1$.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+std_df <- compute_std_counts(
+  scaled_nldr_h = umap_hex_id
+  )
+
+head(std_df, 5)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+> # A tibble: 5 x 3
+>       h   n_h   w_h
+>   <int> <int> <dbl>
+> 1    58     4 0.004
+> 2    68     1 0.001
+> 3    69     5 0.005
+> 4    70     6 0.006
+> 5    71     9 0.009
+```
+
+
+:::
+:::
+
+
+##### Mapping the points to their corresponding hexagonal bins
+
+The `group_hex_pts()` function extracts the list of data point identifiers (`ID`) assigned to each hexagon in the NLDR space.
+
+The function first groups the input data by `h`, which represents the hexagon ID associated with each point in the \twoD layout. Within each group, it collects the `ID`s into a list, resulting in a summary where each row corresponds to a single hexagon. The resulting column, `pts_list`, contains all point identifiers associated with that hexagon. 
+
+
+::: {.cell}
+
+```{.r .cell-code}
+pts_df <- group_hex_pts(
+  scaled_nldr_hexid = umap_hex_id
+  )
+
+head(pts_df, 5)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+> # A tibble: 5 x 2
+>       h pts_list 
+>   <int> <list>   
+> 1    58 <int [4]>
+> 2    68 <int [1]>
+> 3    69 <int [5]>
+> 4    70 <int [6]>
+> 5    71 <int [9]>
+```
+
+
+:::
+:::
+
+
+#### Obtaining bin centroids
+
+The `merge_hexbin_centroids()` function combines hexagonal bin coordinates, raw and standardized counts within each hexagons.
+
+This function begins by arranging the `counts_data` by `h` to ensure consistent ordering. It then performs a full join with `centroids_data`, aligning hexagon IDs (`h`) between the two datasets to incorporate both hexagonal bin centroids (`h`) and count metrics. After merging, the function handles missing values in the count columns: any `NA` values in `w_h` or `n_h` are replaced with zeros. This ensures that hexagons with no assigned data points are retained in the output, with zero values for count-related fields. The resulting data contains the full set of hexagon centroids along with associated bin counts (`n_h`) and standardized counts (`w_h`).
+
+
+::: {.cell}
+
+```{.r .cell-code}
+df_bin_centroids <- merge_hexbin_centroids(
+  centroids_data = all_centroids_df, 
+  counts_data = hb_obj$std_cts
+  )
+
+head(df_bin_centroids, 5)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+>   h         c_x        c_y n_h w_h
+> 1 1 -0.10000000 -0.1156801   0   0
+> 2 2 -0.04130351 -0.1156801   0   0
+> 3 3  0.01739298 -0.1156801   0   0
+> 4 4  0.07608947 -0.1156801   0   0
+> 5 5  0.13478596 -0.1156801   0   0
+```
+
+
+:::
+:::
+
+
+#### Indicating neighbors by line segments connecting centroids
+
+To represent the neighborhood structure of hexagonal bins in a \twoD layout, we employ Delaunay triangulation [@lee1980;@albrecht2024] on the centroids of hexagons. This geometric approach is used to infer which bins are considered neighbors.
+
+The `tri_bin_centroids()` function generates a triangulation object from the x and y coordinates of hexagon centroids using the `interp::tri.mesh()` function [@albrecht2024]. This triangulation forms the structural basis for identifying adjacent bins.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+tr_object <- tri_bin_centroids(
+  centroids_data = df_bin_centroids
+  )
+```
+:::
+
+
+The `gen_edges()` function uses this triangulation object to extract line segments between neighboring bins. It constructs a unique set of bin-to-bin connections by identifying the triangle edges and filtering duplicate or reversed links. Each edge is then annotated with its start and end coordinates, and a Euclidean distance is computed using the helper function `calc_2d_dist()`. 
+
+
+::: {.cell}
+
+```{.r .cell-code}
+trimesh <- gen_edges(tri_object = tr_object, a1 = hb_obj$a1)
+
+head(trimesh, 5)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+> # A tibble: 5 x 8
+>    from    to  x_from  y_from    x_to    y_to from_count to_count
+>   <int> <int>   <dbl>   <dbl>   <dbl>   <dbl>      <dbl>    <dbl>
+> 1     1     2 -0.1    -0.116  -0.0413 -0.116           0        0
+> 2    22    23 -0.0707 -0.0648 -0.0120 -0.0648          0        0
+> 3    22    44 -0.0707 -0.0648 -0.0413 -0.0140          0        0
+> 4     3    23  0.0174 -0.116  -0.0120 -0.0648          0        0
+> 5    44    45 -0.0413 -0.0140  0.0174 -0.0140          0        0
+```
+
+
+:::
+:::
+
+
+The `update_trimesh_index()` function re-indexes the node IDs to ensure that edge identifiers are sequentially numbered and consistent with downstream analysis.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+trimesh <- update_trimesh_index(trimesh_data = trimesh)
+
+head(trimesh, 5)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+> # A tibble: 5 x 10
+>    from    to  x_from  y_from    x_to    y_to from_count to_count from_reindexed
+>   <int> <int>   <dbl>   <dbl>   <dbl>   <dbl>      <dbl>    <dbl>          <int>
+> 1     1     2 -0.1    -0.116  -0.0413 -0.116           0        0              1
+> 2    22    23 -0.0707 -0.0648 -0.0120 -0.0648          0        0             22
+> 3    22    44 -0.0707 -0.0648 -0.0413 -0.0140          0        0             22
+> 4     3    23  0.0174 -0.116  -0.0120 -0.0648          0        0              3
+> 5    44    45 -0.0413 -0.0140  0.0174 -0.0140          0        0             44
+> # i 1 more variable: to_reindexed <int>
+```
+
+
+:::
+:::
+
+
+#### Identifying and removing low-density hexagons
+
+Not all hexagons contain meaningful information. Some may have very few or no data points due to the sparsity or shape of the underlying structure. Simply removing hexagons with low counts (e.g., fewer than a fixed threshold) can lead to gaps or "holes" in the \twoD structure, potentially disrupting the continuity of the representation.
+
+To address this, we propose a more nuanced method that evaluates each hexagon not only based on its own density, but also in the context of its immediate neighbors. The `find_low_dens_hex()` function identifies hexagonal bins with insufficient local support by calculating the average standardized count across their six neighboring bins. If this mean neighborhood density is below a user-defined threshold (e.g., $0.05$), the hexagon is flagged for removal.
+
+The `find_low_dens_hex()` function relies on a helper, `compute_mean_density_hex()`, which iterates over all hexagons and computes the average density across neighbors based on their hexagon ID (`h`) and a defined number of bins along the x-axis (`b1`). The hexagonal layout assumes a fixed grid structure, so neighbor IDs are computed by positional offsets.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+low_density_hex <- find_low_dens_hex(
+  model_2d = df_bin_centroids, 
+  b1 = 21, 
+  md_thresh = 0.05
+)
+```
+:::
+
+
+For simplicity, we remove low-density hexagons using a threshold of $0$.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+df_bin_centroids <- df_bin_centroids |>
+  dplyr::filter(n_h > 0)
+
+trimesh <- trimesh |>
+  dplyr::filter(from_count > 0,
+                to_count > 0)
+
+trimesh <- update_trimesh_index(trimesh)
+```
+:::
+
+
+### Lifting the model into high dimensions
+
+The final step involves lifting the fitted \twoD model into \pD. This is done by modelling a point in \pD as the  \pD mean of data points in the \twoD centroid. This is performed using the `avg_highd_data()` function, which takes \pD data (`highd_data`) and embedding data with their corresponding hexagonal bin IDs as inputs (`scaled_nldr_hexid`).
+
+
+::: {.cell}
+
+```{.r .cell-code}
+df_bin <- avg_highd_data(
+  highd_data = scurve, 
+  scaled_nldr_hexid = hb_obj$data_hb_id
+)
+
+head(df_bin, 5)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+> # A tibble: 5 x 8
+>       h     x1     x2    x3       x4       x5       x6       x7
+>   <int>  <dbl>  <dbl> <dbl>    <dbl>    <dbl>    <dbl>    <dbl>
+> 1    58 -0.371 1.91    1.92 -0.00827 0.00189   0.0170   0.00281
+> 2    68  0.958 0.0854  1.29  0.00265 0.0171    0.0876  -0.00249
+> 3    69  0.855 0.0917  1.51  0.00512 0.000325 -0.0130  -0.00395
+> 4    70  0.731 0.129   1.68 -0.00433 0.00211  -0.0356  -0.00240
+> 5    71  0.474 0.108   1.88 -0.00260 0.000128  0.00785  0.00170
+```
+
+
+:::
+:::
+
+
+### Prediction
+
+The `predict_emb()` function is used to predict a point in a \twoD embedding for a new \pD data point using the fitted model. This function is useful to predict \twoD embedding irrespective of the NLDR technique.
+
+In the prediction process, first, the nearest \pD model point is identified for the new \pD data point by computing \pD Euclidean distance. Then, the corresponding \twoD bin centroid mapping for the identified \pD model point is determined. Finally, the coordinates of the identified \twoD bin centroid is used as the predicted NLDR embedding for the new \pD data point. 
+
+To accelerate this process, the nearest-neighbor search is implemented in C++ using `Rcpp` via the internal function `compute_highd_dist()`.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+predict_data <- predict_emb(
+  highd_data = scurve, 
+  model_2d = df_bin_centroids, 
+  model_highd = df_bin
+  )
+
+head(predict_data, 5)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+> # A tibble: 5 x 4
+>   pred_emb_1 pred_emb_2    ID pred_h
+>        <dbl>      <dbl> <int>  <int>
+> 1      0.252      0.901     1    427
+> 2      0.692      0.545     2    287
+> 3      0.780      0.393     3    226
+> 4      0.164      0.952     4    446
+> 5      0.193      1.00      5    468
+```
+
+
+:::
+:::
+
+
+It is worth noting that while `predict_emb()` provides a general approach that works across methods, some NLDR techniques have their own built-in prediction mechanisms. For example, UMAP [@tomasz2023] supports direct prediction of embeddings for new data once a model is fitted.
+
+### Compute residuals and Root Within Bin Sum of Square (RWBSS)
+
+Root Within Bin Sum of Square (RWBSS) are used as goodness of fit metrics for the model. These metrics can be computed using the  `glance()` function, which provides a tidy output for evaluation.
+
+The function requires both the fitted model object returned by `fit_highd_model()` and \pD data to begin. The \pD model output (`model_highd`) is first renamed to avoid naming conflicts during subsequent data joins. It then uses the `predict_emb()` function to assign each point in the \pD dataset to a corresponding hexagon bin in the \twoD model, producing a prediction data frame that contains both the predicted bin assignment (`pred_h`) and the original observation `ID`.
+
+The function joins this prediction output with both the \pD model and the \pD data (to retrieve true coordinates). It then calculates squared differences between the original and predicted \pD coordinates for each dimension, storing these as `error_square_x1`, `error_square_x2`, ..., up to the dimensionality of the data.
+
+From these per-dimension errors, the function computes absolute error which is the sum of absolute differences across all dimensions and observations and the RWBSS which is the average of the total squared error per point.
+
+These metrics are returned in a tibble as `Error` (absolute error) and `RWBSS` (root mean squared error). The computation of total absolute error and RWBSS is performed in C++ for efficiency using the internal `compute_errors()` function.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+glance(
+  x = scurve_model_obj,
+  highd_data = scurve
+  )
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+> # A tibble: 1 x 2
+>   Error   HBE
+>   <dbl> <dbl>
+> 1  196. 0.116
+```
+
+
+:::
+:::
+
+
+Furthermore, `augment()` requires both the fitted model object returned by `fit_highd_model()` and \pD data to begin. It extends the fitted model by adding prediction results and error diagnostics to the original \pD data.
+
+The function starts with the same process as is used in the `glance()` function to produce a predicted point in \pD for each point in the \pD dataset.
+
+Next, the function computes residuals between each original coordinate (`x1`, `x2`, ..., `xp`) and the corresponding modeled coordinate (`model_high_d_x1`, ..., `model_high_d_xp`) across all dimensions. It calculates both squared errors and absolute errors per dimension. These are used to compute two aggregate diagnostic measures per point. First, the `row_wise_total_error` which is the total squared error across all dimensions, and the `row_wise_abs_error` which is the total absolute error across all dimensions.
+
+The final output is a data frame that combines the original IDs, high-dimensional data, predicted bin IDs, modeled coordinates, residuals, row wise total error, absolute error for the fitted values, and row wise total absolute error for each observation. The augmented dataset is always returned as a `tibble::tibble` with the same number of rows as the passed dataset.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+model_error <- augment(
+  x = scurve_model_obj,
+  highd_data = scurve
+  )
+```
+:::
+
+
+### Visualizations
+
+The package offers several \twoD visualizations, including:
+
+- A full hexagonal grid,
+- A hexagonal grid that matches the data,
+- A full grid based on centroid triangulation,
+- A centroid triangulation grid that aligns with the data, 
+- A triangular mesh for any provided set of points.
+
+The generated \pD model, overlaid with the data, can also be visualized using `show_langevitour`. Additionally, it features a function for visualizing the \twoD projection of the fitted model overlaid on the data, called `plot_proj`. 
+
+Furthermore, there are two interactive plots, `show_link_plots` and `show_error_link_plots`, which are designed to help diagnose the model.
+
+Each visualization can be generated using its respective function, as described in this section.
+
+#### Hexagonal grid
+
+The `geom_hexgrid()` function introduces a custom `ggplot2` layer designed for visualizing hexagonal grid on a provided set of bin centroids.
+
+To display the complete grid, users should supply all available bin centroids. 
+
+
+::: {.cell}
+
+```{.r .cell-code}
+full_hexgrid <- ggplot() + 
+  geom_hexgrid(
+    data = hb_obj$centroids, 
+    aes(x = c_x, y = c_y)
+    ) 
+```
+:::
+
+
+If the goal is to plot only the subset of hexagons that correspond to bins containing data points, then only the centroids associated with those bins should be passed.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+data_hexgrid <- ggplot() + 
+  geom_hexgrid(
+    data = df_bin_centroids, 
+    aes(x = c_x, y = c_y)
+    ) 
+```
+:::
+
+
+#### Triangular mesh
+
+The `geom_trimesh()` function introduces a custom `ggplot2` layer designed for visualizing \twoD wireframe on a provided set of bin centroids.
+
+To display the complete wireframe, users should supply all available bin centroids. 
+
+
+::: {.cell}
+
+```{.r .cell-code}
+full_triangulation_grid <- ggplot() + 
+  geom_trimesh(
+    data = hb_obj$centroids, 
+    aes(x = c_x, y = c_y)
+    ) 
+```
+:::
+
+
+If the goal is to plot only the subset of hexagons that correspond to bins containing data points, then only the centroids associated with those bins should be passed.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+data_triangulation_grid <- ggplot() + 
+  geom_trimesh(
+    data = df_bin_centroids, 
+    aes(x = c_x, y = c_y)
+    ) 
+```
 :::
 
 
@@ -93,856 +840,460 @@ Non-linear dimension reduction (NLDR) is popular for making a suitable \gD{} rep
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![A \gD{} tSNE layout (left) and four \gD{} projections (a1–a4) of the same \hD{} data. The data consist of three main structures: a star-shaped, a curvilinear, and a Gaussian-shaped clusters. While the tour consistently show the star-shaped cluster as a single coherent group, the \gD{} tSNE layout fragments this structure into several smaller clusters. This illustrates how NLDR may distort global structure, making the same \hD{} cluster appear as multiple clusters in the \gD{} layout.](03-chap3_files/figure-pdf/fig-nldr-layouts-1.pdf){#fig-nldr-layouts fig-align='center' fig-pos='H' width=100%}
+![The outputs of `geom\_hexgrid` and `geom\_trimesh` include: (a) a complete hexagonal grid, (b) a hexagonal grid that corresponds with the data, (c) a full grid based on centroid triangulation, and (d) a centroid triangulation grid that aligns with the data.](03-chap3_files/figure-pdf/geom-outputs-pdf-1.pdf){fig-align='center' fig-pos='H' width=100%}
 :::
 :::
 
 
-<!-- XXX Expectation from the study: (1) When sample size increases, the structure are more visible, (2) When distance increases the structure can be distorted in some methods, (3) When adding noise will generate new clusters, (4) When changing the n_neighbour parameter than the default: (less) not enough to preserve the structure, (greater) more convenient to preserve the non-linear structure. -->
+#### \pD model visualization
 
-The dilemma for the analyst is then understanding **why viewers misidentify the data displayed in the \gD{} NLDR layout and high-dimensional view when the inter-cluster distance vary**. The research described here provides evidence through a cognitive perception experiment.
+To visualize how well the \pD model captures the underlying structure of the high-dimensional data, we provide a tour of the model in \pD using the `show_langevitour()` function. This function renders a dynamic projection of both the high-dimensional data and the model using the `langevitour` R package [@paul2023].
 
-<!--need to update-->
-The paper is organized as follows. @sec-background provides a summary of the literature on NLDR, high-dimensional data, and visualization methods. @sec-experiment describes the experiment designed to examine people's perception to assess how viewers recognize structure differently from the NLDR layout and the tour view. @sec-results discusses the collected data and results. Limitations are provided in @sec-limitations. A discussion of the presented work, and ideas for future directions are described in @sec-conclusion.
+Before plotting, the data needs to be organized into a combined format through the `comb_data_model()` function. This function takes three inputs: `highd_data` (the high-dimensional observations), `model_highd` (high-dimensional summaries for each bin), and `model_2d` (the hexagonal bin centroids of the model). It returns a tidy data frame combining both the data and the model.
 
-## Background {#sec-background}
+In this structure, the `type` variable distinguishes between original observations (`"data"`) and the bin-averaged model representation (`"model"`).
 
-Historically, \gD{} representations of \pD{} data have been obtained through techniques based on multidimensional scaling (MDS) [@kruskal1964], including principal component analysis (PCA) (for an overview see @jolliffe2011). These methods aim to construct a \gD{} layout that preserves pairwise distances between observations in the original space by minimizing a stress function. Variants such as non-metric scaling [@saeed2018] and isomap [@silva2002] extend this approach to capture nonlinear relationships. Challenges inherent to high-dimensional data visualization—such as distance concentration and interpretability—are well recognized [@johnstone2009].
 
-Several NLDR methods have since become popular for generating \gD{} representations that aim to preserve either local or global structures of \gD{} data. Examples include tSNE, UMAP, PHATE, TriMAP, and PaCMAP. Each method uses different underlying principles—for example, tSNE and PHATE emphasize local relationships, while TriMAP and PaCMAP are designed to better capture global structure. As a result, these methods can produce very different \gD{} layouts of the same data, potentially leading to misinterpretation of structures such as cluster separation.
+::: {.cell}
 
-An alternative to NLDR for visualizing \pD{} data is to use linear projections. PCA is the classical approach, producing new variables as linear combinations of the original dimensions. While PCA provides a single static projection that maximizes variance, tours—introduced by @As85—extend this idea by generating smooth sequences of linear projections, effectively creating a movie of the data viewed from multiple directions. Tours can reveal structure that may be hidden in any single projection by continuously changing the viewing angle through high-dimensional space. Many tour algorithms have since been developed and are implemented in the R package tourr [@wickham2011], with interactive variants available in langevitour [@harisson2024] and detourr [@hart2022]. Tours are valuable because they preserve the true linear geometry of the data—unlike NLDR methods, they do not warp distances or angles. This makes them faithful but sometimes visually cluttered representations: global structure can obscure local detail, and the phenomenon of piling [@laa2022]—where high-dimensional points project toward the center—can make clusters harder to distinguish.
+```{.r .cell-code}
+df_exe <- comb_data_model(
+  highd_data = scurve, 
+  model_highd = df_bin, 
+  model_2d = df_bin_centroids
+  )
+```
+:::
 
-To assess how well NLDR methods preserve structures such as cluster separation, it is important to quantify inter-cluster distances. A variety of distance-based metrics have been proposed in the clustering and visualization literature [@tadeusz1974; @peter1987; @david1979], including minimum, maximum, and average distances between clusters, centroid distances, and ratios that combine between- and within-cluster variation. In this study, we focus on two complementary measures: the between-to-within (BW) ratio, which captures global separability, and the minimum distance between clusters, which reflects the closest approach of any two clusters. Together, these provide interpretable summaries of both overall and local cluster separation while accounting for within-cluster variability.
 
-The objective of this research is to conduct a cognitive perception experiment that examines how participants recognize and interpret structure differently when viewing a two-dimensional NLDR layout and a tour, generated with langevitour. We investigate how perceived structure changes as true cluster separation (as measured by BW ratio and minimum distance) increases, and how this perception differs across methods. These findings will help identify common misperceptions that can arise when analysts rely solely on NLDR layouts, and will inform better practice in interpreting and reporting structures seen in such visualizations.
+The `show_langevitour()` function then renders the visualization using the `langevitour` interface, displaying both types of points in a dynamic tour. The `edge_data` input defines connections between neighboring bins (i.e., the hexagonal edges) to visualize the model’s structure.
 
-## Method {#sec-experiment}
 
-### What is a \gD{} NLDR plot?
+::: {.cell}
 
-The \gD{} representation of the high-dimensional data constructed to preserve as much information, like clustering and non-linear relationships, as possible. There are various commonly used techniques for creating this \gD{} representation, including tSNE, and UMAP. These methods aim to identify a low-dimensional structure that captures the most important patterns or relationships in the data, allowing for visualization and easier interpretation. However, it is important to note that \gD{} embeddings can lose some information from the high-dimensional data, as they necessarily involve a loss of dimensionality.
-
-### What is a tour?
-
-The tour shows a sequence of two-dimensional linear projections of the high-dimensional data. It is similar to looking at shadows of a $3\text{-}D$ object, and trying to infer the shape of the $3\text{-}D$ object. Looking at linear projections of high-dimensional data is like looking at the shadows, and one hopes to gain a sense of what shapes exist in the data. For example, if the data separates into clusters in any of the projections, it means that there are clusters in the data in the high dimensions. If the data shows a non-linear or curvilinear shape it means that there are non-linear associations between some variables. If the data collapses to roughly a line it means that it lives in a lower dimensional space than the number of high dimensions. If the points moving differently from others, there are outliers or unusual observations in the high dimensions.
-
-### What is being tested?
-
-We are generally interested in testing whether "The two plots displays the same data" ($H_0$) against the broad alternative "The two plots do not display the same data" ($H_a$).
-
-Testing this broad null hypothesis ($H_0$) is practically challenging due to the variety of data structures involved. It can be both time-consuming and computationally intensive. Therefore, we focused on one data structure that is particularly useful for investigation: three clusters where two clusters are close together, while one is more distant. Three clusters have different shapes and each cluster contain different number of points. The sample size is $7500$.
-
-Our hypothesis is as follows:
-
-$H_{0m1}$: The distance between the clusters has no effect on the probability of correctly identifying the \gD{} NLDR plot generated by NLDR method $m$ and the tour from the same data. Vs $H_{1m1}$: The distance between the clusters does have an effect on the probability of correctly identifying the \gD{} NLDR plot generated by NLDR method $m$ and the tour from the same data.
-
-This study aims to answer which NLDR methods are more accurate in identifying the same data structure in the \gD{} NLDR plot and the tour, as the distance increases, and to identify which types of data structure components are more prone to misidentification across methods.
-
-### Data generation
-
-For non-attention check attempts, $28$ data structures are generated, while only two data structures are generated for attention check attempts. Before being presented to participants, the data is *scaled*. 
-
-#### Non-attention check data
-
-For the experiment, three cluster data are generated. The three clusters contain different number of points and shapes. Let $C_1, C_2,$ and $C_3$ denote the centroids of three clusters. The pairwise distances between these centroids are calculated as: $d(C_1, C_2) = c_{12} \approx 2.17, \quad d(C_1, C_3) = c_{13} \approx 4, \quad d(C_2, C_3) \approx c_{23} = 3.6$. These results indicate that clusters $C_1$ and $C_2$ are in close proximity, whereas cluster $C_3$ is positioned further away from the other two clusters, suggesting a spatial separation within the data. The reason for using the distance between centroids is that it can be easily controlled. 
-
-In total, there are $28$ data structures used for the experiment. Out of these, $18$ data structures show the same structure in both the \gD{} NLDR plot and tour for each experiment, while the remaining $10$ data structures display different structures in the \gD{} NLDR plot and tour. This means that when data structure $19$ is displayed in the NLDR plot, data structure $20$ appears in the tour. 
-
-To systematically vary the degree of separation in the SAME trials, the original (medium large) centroid distances are scaled by four different factors: $0.1$ (small), $0.6$ (small medium), $0.9$ (medium), and $1.1$ (large). In contrast, data structures used for the DIFFERENT trials retained the original (medium-large) centroid distances.
-
-<!-- XXXX Overview data structure generation, add more details into the appendix -->
-
-#### Attention check data
-
-There are two sets of attention check data; one consisting of three Gaussian clusters and the other consisting of four Gaussian clusters. Each cluster is generated using a multivariate normal distribution where the mean vectors and variances were predefined. Specifically, for the three-cluster case, the mean vectors were set as $[1, 0, 0, 0]$, $[0, 1, 0, 0]$, and $[0, 0, 1, 1]$, with a common variance of $0.1$ for all clusters. For the four-cluster case, the mean vectors were defined as $[1, 0, 0, 1]$, $[0, 1, 1, 0]$, $[1, 0, 1, 0]$, and $[0, 1, 0, 1]$, also using a variance of $0.1$. This approach ensures that data points are normally distributed around the specified centroids, with the spread controlled by the variance parameter. Each Gaussian cluster dataset consists of \hD{} data with a sample size of $7500$, and each cluster contains an equal number of data points.
-
-### Experiment design
-
-The visual layout of the experiment for one participant is shown in @fig-exp-design. Each participant completed $20$ trials: $15$ SAME trials, in which the same data structure was shown in both the \gD{} NLDR plot and the tour; $4$ DIFFERENT trials, showing DIFFERENT data structures; and one attention check trial that could be either SAME or DIFFERENT. For the SAME, five NLDR methods (*tSNE, UMAP, PHATE, PaCMAP, and TriMAP*) were each paired with three of five distance scale factors (*small, small medium, medium, medium large, and large*), giving $15$ balanced combinations. In the DIFFERENT, four NLDR methods were randomly selected, with the remaining method assigned to the attention check trial. All DIFFERENT and attention check trials used a distance scale factor of *medium large*.
+```{.r .cell-code}
+show_langevitour(
+  point_data = df_exe, 
+  edge_data = trimesh
+  )
+```
+:::
 
 
 
-::: {.cell layout-align="center"}
+::: {.cell}
 ::: {.cell-output-display}
-![Experiment design for one participant. Shapes represent distance scale factors, and fill colors denote NLDR methods. Each participant completed 20 trials: $15$ SAME trials showing the same data structure in both the \gD{} plot and tour (purple), $4$ DIFFERENT trials showing different structures (light blue), and one attention check (SAME or DIFFERENT) (red). In SAME trials, five NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) were combined with three of five distance scale factors (small, small medium, medium, medium large, and large). For DIFFERENT trials, four NLDR methods were randomly selected, and the remaining method was used in the attention check. All DIFFERENT and attention check trials used a distance scale factor of *medium large*.](../figures/vis-exp/exp_design.png){#fig-exp-design fig-align='center' width=100%}
+![$2\text{-}D$ projections of the lifted high-dimensional wireframe model from the `Scurve` UMAP layout. Each panel (a1–a4) shows the model (black) overlaid on `Scurve` data (blue) in different projections. These views illustrate how the lifted wireframe model captures the structure of the `Scurve` data. Regions with sparse or no data in the UMAP layout are also visible in the lifted model.](03-chap3_files/figure-pdf/unnamed-chunk-29-1.pdf){fig-pos='H' width=100%}
 :::
 :::
 
 
-### Treatments
-
-Two primary treatments were considered in the experiment: the NLDR method and the distance scale factor.
-
-The first treatment consisted of five NLDR methods: *tSNE, UMAP, PHATE, PaCMAP, and TriMAP* each producing a \gD{} representation.
-
-The second treatment, the distance scale factor, controlled the degree of cluster separation in the high-dimensional space. Five categorical levels: *small, small–medium, medium, medium–large, and large* were defined to represent increasing degrees of separability. This categorical design enhances interpretability and perceptual distinctness, allowing participants to discern meaningful structural differences while maintaining robustness against minor data variations.
-
-Cluster separability was quantified using two complementary measures: the *between-to-within (BW) ratio* and the *minimum inter-cluster distance*. A higher value of either metric indicates greater separation among clusters (@fig-dist-metrics). 
-
-The BW ratio, defined as
-
-$$
-\text{BW Ratio} = \frac{B}{W} = \frac{ \sum_{i=1}^{3} n_i \cdot \|\bar{\mathbf{x}}_i - \bar{\mathbf{x}}\|^2 }{ \sum_{i=1}^{3} \sum_{\mathbf{x}_j \in C_i} \|\mathbf{x}_j - \bar{\mathbf{x}}_i\|^2 }.
-$$
-
-where (B) and (W) denote between- and within-cluster dispersion, respectively; $\bar{\mathbf{x}}_i$ is the centroid of cluster $C_i$; $\bar{\mathbf{x}}$ is the overall centroid; and $n_i$ is the number of observations in cluster $C_i$. 
-
-In addition, the minimum distance was used as a complementary measure of global separation:
-
-$$
-\text{minimum distance} = \min_{k \neq \ell} \min_{x \in C_k, , y \in C_\ell} d(x, y),
-$$
-
-which captures the closest proximity between any two clusters.
+As an alternative to `langevitour`, users can explore the fitted \pD model using the `detourr` [@casper2025]. The combined data object from `comb_data_model()` can be passed directly to the `detour()` function, where `tour_aes()` defines the projection variables and color mapping. The visualization is rendered using `show_scatter()`, which can display both data points and the model’s structural edges via the `edges` argument.
 
 
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
+::: {.cell}
 ::: {.cell-output-display}
-![Distribution of distance metric values across distance scale factors used as treatments in the experiment. (a) Between-to-within (BW) ratio and (b) minimum inter-cluster distance, each plotted against five categorical distance scale factors: small (S), small–medium (SM), medium (M), medium–large (ML), and large (L). Both metrics increase systematically with the scale factor, confirming that the distance scale treatment effectively controls cluster separability in the high-dimensional space.](03-chap3_files/figure-pdf/fig-dist-metrics-1.pdf){#fig-dist-metrics fig-align='center' width=100%}
-:::
-:::
-
-
-
-### Participant recruitment
-
-Participants were recruited from the Prolific crowd-sourcing platform [@palan2018]. The study expects that the participants are uninvolved judges with no prior knowledge of the data to avoid inadvertently affecting results. Pre-screening procedures were applied the recruitment: potential participants needed with fluent in English and have completed at least 10 Prolific studies with a 98% approval rate.
-
-### Data collection
-
-The survey web application, [Match-a-roo](https://ebsmonash.shinyapps.io/web_game/) was used for data collection. Participants provided introduction and instructions for the survey. Before start the survey, the participants can lead to the "example" page which allow them to experiment with the data collection interface and practice deciding whether the two displays shown the same data or not. The main purpose of using the "example" was merely intended to familiarize the participants with the questions which would be asked as well as the process of deciding whether the two displays shown the same data or not. The interface did not provide any numeric feedback as to participant correctness.
-
-The participants were asked to provide their Prolific ID and their consent to the responses being used for analysis. After giving consent, the participant can start the trials. Two visual displays of data were shown where the data may be the SAME or DIFFERENT. One of the visual displays is a \gD{} NLDR plot, and the other is a tour. The participants were asked to decide whether that data was the same in both displays and to report their confidence about their choice and any comments about the answer.
-
-After completing $20$ evaluations, they were asked for their demographics which included preferred pronoun, the highest level of education achieved, their age category, whether they used principal component analysis in their work, and whether they applied NLDR techniques such as tSNE and UMAP.
-
-## Results {#sec-results}
-
-The data was collected from $127$ participants, resulting in $127 \times 15 = 1905$ evaluations, excluding the attention check trials and the trials shows the different data in two displays.
-
-### Generalized Linear Mixed-Effects Models
-
-Two generalized linear mixed effects models [@mcculloch2001] were fitted to model the likelihood of detecting the data structure in both the \gD{} NLDR plot and the tour. Both models accounted for participant-level variability and the effect of distance measures under different NLDR methods. The general form of the model is given by:
-
-$$\text{logit}(P(y_{ijm} = 1)) = \mu_{m} + \beta_{m} d_{i} + \gamma_{j}$$ {#eq-equation1}
-
-where $\mu_{m}$ is the overall mean for NLDR method $m$, $d_i$ is the distance measure for the data structure $i = 1, \dots, 18$, $\beta_m$ is the fixed effect of BW ratio under NLDR method $m$, $\gamma_j$ is the random effect of the participant $j = 1, 2, \dots, 127$, where $\gamma_j \sim N(0, \sigma_\gamma^2)$. Separate models were fitted using $d_i$ as either the BW ratio or the minimum distance. The NLDR methods denoted by $m$ can include TriMAP, UMAP, PaCMAP, tSNE, and PHATE.
-
-### Correct proportions
-
-The proportion of correct identifications across the different NLDR methods and distance measures was examined to assess how effectively each method preserves cluster separation. Two generalized linear mixed-effects models were fitted using either the scaled BW ratio (@fig-glmm, @tbl-glmm) or the exp(scaled minimum distance) (@fig-glmm-min, @tbl-glmm-min) as predictors. Both models included participant-level random effects to account for within-subject variability and NLDR method as a fixed factor interacting with the distance measure.
-
-Results from the model using the scaled BW ratio (@tbl-glmm) indicate that cluster separability positively influences correct identification for most methods. As shown in @fig-glmm, *UMAP* and *PaCMAP* demonstrate increased accuracy as the scaled BW ratio increases, suggesting that these methods more effectively capture distinct cluster boundaries. *tSNE* and *PHATE* show declining accuracy with larger BW ratios, implying potential over-separation or distortion of cluster geometry at higher distances. *TriMAP* maintains stable performance across the range of separations, indicating robustness to moderate variations in between-cluster distance.
-
-
-::: {.cell layout-align="center"}
-
+![Screenshots of the lifted high-dimensional wireframe model from the `Scurve` UMAP layout using `detourr`. Regions with sparse or no data in the UMAP layout are also visible in the lifted model.](../figures/quollr/model_proj1_detourr.png){fig-pos='H' width=50%}
 :::
 
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {#tbl-glmm .cell layout-align="center" tbl-cap='Logistic regression model results for correct identification probability as a function of scaled BW ratio and NLDR method (TriMAP as baseline). The table shows estimates, standard errors, test statistics, and *p*-values for main effects and interactions. Significant positive associations with scaled BW ratio indicate improved correctness with greater cluster separation, while negative associations suggest reduced clarity. Significance codes: ($\emph{p}\leq 0.001$ \'`***`\', $\emph{p}\leq 0.01$ \'`**`\', $\emph{p}\leq 0.05$ \'`*`\', $\emph{p}\leq 0.1$ \'`.`\').'}
 ::: {.cell-output-display}
-\begin{table}
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{lrrrrl}
-\toprule
-term & estimate & std.error & statistic & p.value & p\_val\_sig\\
-\midrule
-(Intercept) & 0.65 & 0.17 & 3.83 & 0.00 & ***\\
-methodUMAP & -0.66 & 0.21 & -3.10 & 0.00 & ***\\
-methodPaCMAP & -0.64 & 0.21 & -3.00 & 0.00 & ***\\
-methodtSNE & -1.02 & 0.22 & -4.67 & 0.00 & ***\\
-methodPHATE & -1.37 & 0.22 & -6.24 & 0.00 & ***\\
-bw\_ratio\_scaled & 0.03 & 0.49 & 0.07 & 0.95 & \\
-methodUMAP:bw\_ratio\_scaled & 1.12 & 0.69 & 1.63 & 0.10 & .\\
-methodPaCMAP:bw\_ratio\_scaled & 0.48 & 0.68 & 0.70 & 0.48 & \\
-methodtSNE:bw\_ratio\_scaled & -2.65 & 0.78 & -3.37 & 0.00 & ***\\
-methodPHATE:bw\_ratio\_scaled & -0.95 & 0.72 & -1.32 & 0.19 & \\
-\bottomrule
-\end{tabular}}
-\end{table}
-
-
+![Screenshots of the lifted high-dimensional wireframe model from the `Scurve` UMAP layout using `detourr`. Regions with sparse or no data in the UMAP layout are also visible in the lifted model.](../figures/quollr/model_proj2_detourr.png){fig-pos='H' width=50%}
 :::
 :::
 
 
 
-::: {.cell layout-align="center"}
+::: {.cell}
+
+```{.r .cell-code}
+detour(
+  df_exe,
+  tour_aes(
+    projection = starts_with("x"),
+    colour = type
+  )
+) |>
+  tour_path(grand_tour(2), 
+                    max_bases=50, fps = 60) |>
+  show_scatter(axes = TRUE, size = 0.5, alpha = 0.5, 
+               edges = as.matrix(trimesh[, c("from_reindexed", "to_reindexed")]),
+               palette = c("#66B2CC", "#FF7755"),
+               width = "600px", height = "600px")
+```
+:::
+
+
+In the resulting interactive visualization, blue points represent the high-dimensional data, orange points represent the model centroids from each bin, and the lines between model points reflect the \twoD wireframe structure mapped to high-dimensional space.
+
+#### Link plots
+
+There are mainly two interactive link plots can be generated. 
+
+To support interactive evaluation of how well the \pD model captures the structure of the high-dimensional data, we introduce `show_link_plots()`. This visualization combines two complementary views: the nonlinear dimension reduction (NLDR) representation and a dynamic tour of the model ovelaid the data in the high-dimensional space. Both views are interactively linked, enabling users to explore.
+
+Before visualization, the input data must be prepared using the `comb_all_data_model()` function. This function combines the high-dimensional data (`highd_data`), the NLDR data (`nldr_data`), and the bin-averaged high-dimensional model representation (`model_highd`) aligned to the \twoD bin layout (`model_2d`):
+
+This combined dataset includes both the original observations and the bin-level model averages, labeled with a `type` variable for distinguishing between them.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+df_exe <- comb_all_data_model(
+  highd_data = scurve, 
+  nldr_data = scurve_umap, 
+  model_highd = df_bin, 
+  model_2d = df_bin_centroids
+  )
+```
+:::
+
+
+The function `show_link_plots()` generates two side-by-side, interactively linked plots; a \twoD NLDR representation, and a dynamic projection tour in the original high-dimensional space (using the `langevitour` package), displaying both the data and the model. The function takes the output from `comb_all_data_model()` (`point_data`) and `edge_data` which defines connections between neighboring bins.
+
+These two views are linked using `crosstalk`, allowing interactive selection of points in the NLDR plot to highlight corresponding structures in the `langevitour` output. 
+
+
+::: {.cell}
+
+```{.r .cell-code}
+nldrdt_link <- show_link_plots(
+  point_data = df_exe, 
+  edge_data = trimesh, 
+  point_colour = clr_choice
+  )
+
+class(nldrdt_link) <- c(class(nldrdt_link), "htmlwidget")
+
+nldrdt_link
+```
+:::
+
+
+
+::: {.cell}
 
 :::
 
 
 
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
+::: {.cell}
 ::: {.cell-output-display}
-![Estimated probability of correctly identifying the true cluster structure across different values of the scaled BW ratio for five NLDR methods: TriMAP, UMAP, PaCMAP, tSNE, and PHATE. The left panel shows the estimated probabilities and associated standard errors across scaled BW ratio values. The right panels display the observed probabilities of correct identification (black dots), along with fitted logistic regression lines for each method. The scaled BW ratio quantifies the relative separation between clusters, with higher values indicating more distinct clustering. UMAP and PaCMAP show increased accuracy with higher BW ratios, while tSNE, and PHATE decline in performance. TriMAP remains stable across the range.](03-chap3_files/figure-pdf/fig-glmm-1.pdf){#fig-glmm fig-align='center' fig-pos='H' width=100%}
+![Exploring the correspondence between UMAP layout and `Scurve` structure in $7\text{-}D$. Two sets of plots are linked: UMAP layout (a1, b1) and projection of $7\text{-}D$ model and data (a2, b2). The purple points indicate the selected subsets, which differ between rows. In (a1), the lower bridge of the `Scurve` is highlighted, which corresponds in (a2) to points spanning across both arms of the high-dimensional structure. In (b1), a different region near the upper arm of the `Scurve` is selected, and in (b2) these points map onto one side of the curved manifold in $7\text{-}D$ projection. While the UMAP layout suggests distinct local clusters, the linked tour views reveal how these selections trace continuous structures in the $7\text{-}D$ space, highlighting distortions introduced by UMAP.](03-chap3_files/figure-pdf/unnamed-chunk-34-1.pdf){fig-pos='H' width=100%}
 :::
 :::
 
 
-Similarly, the model using exp(scaled minimum distance) (@tbl-glmm-min) confirms these trends (@fig-glmm-min). Higher values of exp(scaled minimum distance), representing greater spatial separation between clusters, are associated with improved correctness for *UMAP* and *PaCMAP*. In contrast, *tSNE* and *PHATE* again show a negative association with increasing separation, while *TriMAP* exhibits consistent performance. These patterns suggest that the relative cluster separability—whether quantified by BW ratio or minimum distance—plays a crucial role in how well NLDR methods reveal the underlying structure.
+`show_error_link_plots()` helps to see investigate whether the model fits the points everywhere or fits better in some places, or simply mismatches the pattern. 
+
+Before visualization, the input data must be prepared using the `comb_all_data_model_error()` function. The function requires several arguments: points data which contain high-dimensional data (`highd_data`), NLDR data (`nldr_data`), high-dimensional model data (`model_highd`), \twoD model data (`model_2d`), and model error (`error_data`).
+
+This combined dataset includes both the original observations and the bin-level model averages, labeled with a `type` variable for distinguishing between them.
 
 
-::: {.cell layout-align="center"}
+::: {.cell}
+
+```{.r .cell-code}
+df_exe <- comb_all_data_model_error(
+  highd_data = scurve, 
+  nldr_data = scurve_umap, 
+  model_highd = df_bin, 
+  model_2d = df_bin_centroids, 
+  error_data = model_error
+  )
+```
+:::
+
+
+The function `show_error_link_plots()` generates three side-by-side, interactively linked plots; a error distribution, a \twoD NLDR representation, and a dynamic projection tour in the original high-dimensional space (using the `langevitour` package), displaying both the data and the model. The function takes the output from `comb_all_data_model_error()` (`point_data`) and `edge_data` which defines connections between neighboring bins.
+
+These two views are linked using `crosstalk`, allowing interactive selection of points in the NLDR plot to highlight corresponding structures in the high-dimensional projection. This setup facilitates the diagnosis of local distortion, structural artifacts, and model fit quality.
+
+These three views are linked using `crosstalk`, allowing interactive selection of points in error plot and the NLDR plot to highlight corresponding structures in the `langevitour` output. 
+
+
+::: {.cell}
+
+```{.r .cell-code}
+errornldrdt_link <- show_error_link_plots(
+  point_data = df_exe, 
+  edge_data = trimesh, 
+  point_colour = clr_choice
+)
+
+class(errornldrdt_link) <- c(class(errornldrdt_link), "htmlwidget")
+
+errornldrdt_link
+```
+:::
+
+
+
+::: {.cell}
 
 :::
 
 
 
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {#tbl-glmm-min .cell layout-align="center" tbl-cap='Logistic regression model results for correct identification probability as a function of exp(scaled minimum distance) and NLDR method (TriMAP as baseline). The table shows estimates, standard errors, test statistics, and *p*-values for main effects and interactions. Significant positive associations with exp(scaled minimum distance) indicate improved correctness with greater cluster separation, while negative associations suggest reduced clarity. Significance codes: ($\emph{p}\leq 0.001$ \'`***`\', $\emph{p}\leq 0.01$ \'`**`\', $\emph{p}\leq 0.05$ \'`*`\', $\emph{p}\leq 0.1$ \'`.`\').'}
+::: {.cell}
 ::: {.cell-output-display}
-\begin{table}
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{lrrrrl}
-\toprule
-term & estimate & std.error & statistic & p.value & p\_val\_sig\\
-\midrule
-(Intercept) & 0.36 & 0.34 & 1.08 & 0.28 & \\
-methodUMAP & -1.03 & 0.45 & -2.28 & 0.02 & *\\
-methodPaCMAP & -0.57 & 0.45 & -1.27 & 0.20 & \\
-methodtSNE & -0.03 & 0.47 & -0.07 & 0.95 & \\
-methodPHATE & -0.73 & 0.47 & -1.56 & 0.12 & \\
-exp\_min\_dist\_scaled & 0.20 & 0.20 & 0.97 & 0.33 & \\
-methodUMAP:exp\_min\_dist\_scaled & 0.39 & 0.28 & 1.41 & 0.16 & \\
-methodPaCMAP:exp\_min\_dist\_scaled & 0.02 & 0.28 & 0.08 & 0.94 & \\
-methodtSNE:exp\_min\_dist\_scaled & -0.97 & 0.29 & -3.32 & 0.00 & ***\\
-methodPHATE:exp\_min\_dist\_scaled & -0.55 & 0.29 & -1.90 & 0.06 & .\\
-\bottomrule
-\end{tabular}}
-\end{table}
-
-
+![Exploring residuals in relation to UMAP layouts using a $7\text{-}D$ `Scurve` model. Three views are linked: distribution of residuals (a1, b1), UMAP layout (a2, b2), and projection of the $7\text{-}D$ model with data (a3, b3). The purple points highlight selected subsets of the data, which differ across rows. In the top row (a1–a3), points with higher residuals (a1) are selected, corresponding to the sparse bridging region in the UMAP layout (a2) and the less dense end of the `Scurve` in the high-dimensional projection (a3). In the bottom row (b1–b3), points with lower residuals (b1) are highlighted, which map to one side of the dense region in the NLDR layout (b2) and to a thicker band of the `Scurve` in the projection (b3). This comparison illustrates how residuals can help diagnose distortions in UMAP, with high-residual points often concentrated in sparse or stretched regions of the structure.](03-chap3_files/figure-pdf/unnamed-chunk-38-1.pdf){fig-pos='H' width=100%}
 :::
 :::
 
 
+As an alternative to using `langevitour`, link plots can also be generated with the `detourr` package. In this setup, users can manually construct the linked visualization using the `crosstalk` [@joe2023] and `htmltools` [@joe2024] packages. The interactive layout is created by arranging the \twoD NLDR plot (`nldr_plt`), the optional error distribution plot (`error_plt`), and the tour view produced with `detourr`, side by side within a flexible grid. The NLDR and error plots are rendered with `ggplotly()` [@chapman2020] to enable interactive linking. The `bscols()` function from `crosstalk` manages synchronization across these panels, allowing for linked brushing and coordinated selection between these interactive plots.
 
-::: {.cell layout-align="center"}
+A two-panel linked plot combining the NLDR view and the tour from `detourr` can be created as follows:
+
+
+::: {.cell}
 
 :::
 
 
 
-::: {.cell layout-align="center"}
+::: {.cell}
 
+```{.r .cell-code}
+detourr_output <- detour(
+  shared_df,
+  tour_aes(
+    projection = starts_with("x"),
+    colour = type
+  )
+) |>
+  tour_path(grand_tour(2), 
+                    max_bases=50, fps = 60) |>
+  show_scatter(axes = TRUE, size = 1, alpha = 0.8, 
+               edges = as.matrix(trimesh[, c("from_reindexed", "to_reindexed")]),
+               palette = c("#66B2CC", "#FF7755"),
+                width = "600px", height = "600px")
+```
 :::
 
 
 
-::: {.cell layout-align="center"}
+::: {.cell}
+
+```{.r .cell-code}
+lndet_link <- crosstalk::bscols(
+    htmltools::div(style="display: grid; grid-template-columns: 1fr 1fr;",
+                   nldr_plt,
+                   htmltools::div(style = "margin-top: 20px;", detourr_output)
+    ),
+    device = "xs"
+  )
+
+
+class(lndet_link) <- c(class(lndet_link), "htmlwidget")
+
+lndet_link
+```
+:::
+
+
+
+::: {.cell}
 ::: {.cell-output-display}
-![Estimated probability of correctly identifying the true cluster structure across different values of the exp(scaled minimum distance) for five NLDR methods: TriMAP, UMAP, PaCMAP, tSNE, and PHATE. The left panel shows the estimated probabilities and associated standard errors across exp(scaled minimum distance) values. The right panels display the observed probabilities of correct identification (black dots), along with fitted logistic regression lines for each method. The exp(scaled minimum distance) quantifies the relative separation between clusters, with higher values indicating more distinct clustering. UMAP and PaCMAP show increased accuracy with higher minimum distances, while tSNE, and PHATE declines in performance. TriMAP remains stable across the range.](03-chap3_files/figure-pdf/fig-glmm-min-1.pdf){#fig-glmm-min fig-align='center' fig-pos='H' width=100%}
-:::
-:::
-
-
-Together, these results highlight that **UMAP and PaCMAP are more sensitive to improvements in cluster separation**, achieving higher correct proportions as inter-cluster distances increase. Conversely, *tSNE* and *PHATE* may lose fidelity in scenarios with very distinct clusters, potentially due to their optimization dynamics. *TriMAP*’s consistent accuracy across distance scales reinforces its stability and balanced preservation of local and global structure.
-
-<!-- ### Time taken for response -->
-
-<!-- To assess the cognitive effort involved in interpreting NLDR layouts, we modeled the log-transformed time taken for responses using the BW ratio and method as predictors. Figure X shows the distribution of time taken for each method across different levels of BW ratio. -->
-
-<!-- From the results (see Table X), the intercepts for all five methods are significantly negative (*p* < 0.001), indicating that overall response times are low across methods. However, the effect of the BW ratio on time taken is minimal. Only UMAP shows a marginally significant increase in time with higher BW ratio (*p* = 0.05), suggesting that greater cluster separation may require slightly more cognitive processing in that layout. For the other methods (tSNE, PHATE, TriMAP, and PaCMAP), BW ratio has no significant effect on response time. -->
-
-<!-- This suggests that while some methods lead to consistently faster or slower interpretations overall (e.g., PACMAP having a slightly lower intercept), the level of cluster separation (BW ratio) does not substantially influence the time taken to make a decision. It’s possible that participants took longer when structure was clearer in order to double-check their judgments, or conversely, struggled with ambiguous structures without measurable time differences. -->
-
-
-::: {.cell layout-align="center"}
-
+![Screenshots of the link plots showing the relationship between the NLDR layout (left) and the fitted model overlaid with the data in $7\text{-}D$ (right) using `detourr`.](../figures/quollr/model_link_proj1_detourr.png){fig-pos='H' width=100%}
 :::
 
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-### Reasons for mis-identification by method
-
-Understanding why participants misidentified certain data structures provides deeper insight into the perceptual consequences of each NLDR method’s underlying optimization principles. Each method uses a different objective function to balance local and global structure preservation, which can influence how faithfully high-dimensional relationships are represented in \gD{}. To explore these differences, we analyzed misidentifications across methods, identifying where and how each algorithm tended to distort or merge clusters. This analysis highlights systematic weaknesses linked to each method’s design, helping explain why some embeddings were more difficult for participants to interpret correctly.
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-#### TriMAP
-
-TriMAP minimizes a triplet-based loss function that seeks to preserve relative distances among triplets of points in \pD{} (@amid2022). This design emphasizes maintaining global relationships between clusters but can underrepresent local curvature and fine-scale geometry, particularly when clusters differ in density or shape.
-
-@fig-mis-trimap illustrates the two three-cluster data structures that were most frequently misidentified when visualized using TriMAP: *nonlinear_hyperbola2–hemisphere–pyramid_triangular_base* (three_clust_07) and *nonlinear_hyperbola–elliptical–pyramid_rectangular_base* (three_clust_15). In both cases, the underlying cluster separation evident in \pD{} was not well preserved in the \gD{} NLDR layout.
-
-Across these examples, TriMAP tends to merge neighboring clusters or distort curved manifolds, leading to overlaps between nonlinear and compact components such as *elliptical* or *pyramid*-shaped clusters. The algorithm’s emphasis on maintaining global relationships can inadvertently compress local structure, particularly when manifolds differ in curvature or density.
-
-This projection bias results in flattened or partially merged representations, where the curved components (e.g., *nonlinear_hyperbola*) lose their geometric integrity. Consequently, TriMAP’s performance declines when the data structure involves a combination of curvilinear and planar clusters, revealing its sensitivity to differences in shape complexity and scale.
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![TriMAP misidentifications for selected three-cluster data structures. Each column corresponds to one data structure, and each row shows the resulting \gD{} NLDR layout under different distance scale settings: (a) small (S) and (b) large (L). TriMAP often merges clusters or distorts their geometric boundaries, particularly when the data include both compact and curved components. This reflects the method’s difficulty in preserving manifold curvature and relative distances among clusters with differing density or shape.](03-chap3_files/figure-pdf/fig-mis-trimap-1.pdf){#fig-mis-trimap fig-align='center' width=100%}
+![Screenshots of the link plots showing the relationship between the NLDR layout (left) and the fitted model overlaid with the data in $7\text{-}D$ (right) using `detourr`.](../figures/quollr/model_link_proj2_detourr.png){fig-pos='H' width=100%}
 :::
 :::
 
 
+For analyses that include model error visualization, a three-panel view can be constructed by adding the error distribution plot (`error_plt`):
 
-::: {.cell layout-align="center"}
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+detourr_output <- detour(
+  shared_df,
+  tour_aes(
+    projection = starts_with("x"),
+    colour = type
+  )
+) |>
+  tour_path(grand_tour(2), 
+                    max_bases=50, fps = 60) |>
+  show_scatter(axes = TRUE, size = 1, alpha = 0.8, 
+               edges = as.matrix(trimesh[, c("from_reindexed", "to_reindexed")]),
+               palette = c("#66B2CC", "#FF7755"),
+                width = "500px", height = "500px")
+
+erlndet_link <- crosstalk::bscols(
+  htmltools::div(
+    style = "display: grid; grid-template-columns: 1fr 1fr 1fr;",
+    error_plt, 
+    nldr_plt,
+    htmltools::div(style = "margin-top: 20px;", detourr_output)
+  ),
+  device = "xs"
+)
+
+class(erlndet_link) <- c(class(erlndet_link), "htmlwidget")
+
+erlndet_link
+```
+:::
+
+
+
+::: {.cell}
 ::: {.cell-output-display}
-\begin{table}
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{lllll}
-\toprule
-data\_structure & cluster1 & cluster2 & cluster3 & distance\_sf\\
-\midrule
-three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base & large (L)\\
-three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base & small (S)\\
-\bottomrule
-\end{tabular}}
-\end{table}
-
-
-:::
+![Screenshots of the link plots showing the relationship between the distribution of residuals (left), NLDR layout (middle) and the fitted model overlaid with the data in $7\text{-}D$ (right) using `detourr`.](../figures/quollr/model_link_error_proj1_detourr.png){fig-pos='H' width=100%}
 :::
 
-
-#### UMAP
-
-UMAP optimizes a cross-entropy loss between high- and low-dimensional fuzzy simplicial sets (@leland2018). Its hyper-parameters—n_neighbors and min_dist—govern the trade-off between local and global structure.
-
-@fig-mis-umap presents the three-cluster data structures that were misidentified by UMAP. The corresponding true high-dimensional structures are *s_curve–cube–pyramid_rectangular_base* (three_clust_02), *nonlinear_hyperbola–elliptical–blunted_cone* (three_clust_05), *helical_hyper_spiral–cube–blunted_cone* (three_clust_09), and *curvy_cylinder–cube–blunted_cone* (three_clust_13).
-
-UMAP demonstrates partial success in separating clusters but exhibits notable distortions in geometric structure and merging of neighboring clusters in several cases. For instance, in three_clust_02 and three_clust_09, curved manifolds (s_curve and helical_hyper_spiral) are projected into compact or fragmented \gD{} regions, reducing the apparent curvature and continuity of the original structure. In three_clust_05 and three_clust_13, UMAP tends to merge blunted_cone and elliptical or cube clusters, suggesting difficulty in maintaining separation between clusters of different densities or similar central positions in the high-dimensional space.
-
-These results indicate that while UMAP is generally effective at maintaining local neighborhood relationships, it can fail to preserve global geometry when clusters differ in shape or scale. The observed misidentifications likely arise from its default parameterization, where a small min_dist and moderate n_neighbors emphasize local compactness at the expense of broader structural fidelity.
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![UMAP misidentifications for selected three-cluster data structures. Each column corresponds to one data structure, and each row shows the resulting \gD{} NLDR layout under different distance scale settings: (a) small (S), (b) small medium (SM), and (c) medium large (ML). UMAP often merges clusters or distorts curved manifolds, particularly when clusters differ in geometric complexity or density.](03-chap3_files/figure-pdf/fig-mis-umap-1.pdf){#fig-mis-umap fig-align='center' width=100%}
+![Screenshots of the link plots showing the relationship between the distribution of residuals (left), NLDR layout (middle) and the fitted model overlaid with the data in $7\text{-}D$ (right) using `detourr`.](../figures/quollr/model_link_error_proj2_detourr.png){fig-pos='H' width=100%}
 :::
 :::
 
 
+## Application
 
-::: {.cell layout-align="center"}
+Single-cell RNA sequencing (scRNA-seq) is a popular and powerful technology that allows you to profile the whole transcriptome of a large number of individual cells [@andrews2021]. 
+
+Clustering of single-cell data is used to identify groups of cells with similar expression profiles. NLDR often used to summarise the discovered clusters, and help to understand the results. The purpose of this example is to *illustrate how to use our method to help decide on an appropriate NLDR layout that accurately represents the data*.
+
+Limb muscle cells of mice in @tabula2018 are examined. There are $1067$ single cells, with $14997$ gene expressions. Following their pre-processing, different NLDR methods were performed using ten principal components. Figure \@ref(fig:limb-rwbss) (b) is the reproduction of the published plot. The question is whether this accurately represents the cluster structure in the data. Our method help to provide a better \twoD layout. 
+
+<!-- add function to generate 2D trimesh and the projections (PDF) and langevitour (HTML)-->
+
+<!-- https://www.nature.com/articles/s41586-018-0590-4#data-availability -->
+<!-- https://figshare.com/articles/dataset/Robject_files_for_tissues_processed_by_Seurat/5821263/1 -->
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+design <- gen_design(n_right = 6, ncol_right = 2)
+
+plot_hbe_layouts(plots = list(error_plot_limb, nldr1, 
+                               nldr2, nldr3, nldr4, 
+                               nldr5, nldr6), design = design)
+```
+
 ::: {.cell-output-display}
-\begin{table}
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{lllll}
-\toprule
-data\_structure & cluster1 & cluster2 & cluster3 & distance\_sf\\
-\midrule
-three\_clust\_02 & s\_curve & cube & pyramid\_rectangular\_base & small medium (SM)\\
-three\_clust\_05 & nonlinear\_hyperbola & elliptical & blunted\_cone & medium large (ML)\\
-three\_clust\_09 & helical\_hyper\_spiral & cube & blunted\_cone & small (S)\\
-three\_clust\_13 & curvy\_cylinder & cube & blunted\_cone & small (S)\\
-\bottomrule
-\end{tabular}}
-\end{table}
-
-
+![Assessing which of the 6 NLDR layouts on the limb muscle data is the better representation using RWBSS for varying binwidth ($a_1$). Colour  used for the lines and points in the left plot and in the scatterplots represents NLDR layout (a-f). Layout d is perform well at large binwidth (where the binwidth is not enough to capture the data struture) and poorly as bin width decreases. Layout f is the best choice.\label{fig:limb-rwbss}](03-chap3_files/figure-pdf/limb-rwbss-1.pdf){fig-pos='H' width=100%}
 :::
 :::
 
 
-#### PaCMAP
 
-PaCMAP uses a multi-term objective combining near, mid-range, and further pair constraints (@yingfan2021), designed to improve global structure compared to tSNE and UMAP.
-
-@fig-mis-pacmap displays the data structures for which PaCMAP produced notable misidentifications in the \gD{} embedding. The true high-dimensional configurations for these datasets include *s_curve–cube–pyramid_rectangular_base* (three_clust_02), *curvy_cylinder–hemisphere–pyramid_triangular_base* (three_clust_03), *crescent–cube–pyramid_rectangular_base* (three_clust_06), *nonlinear_hyperbola2–hemisphere–pyramid_triangular_base* (three_clust_07), *helical_hyper_spiral–cube–blunted_cone* (three_clust_09), *spherical_spiral–gaussian–pyramid_triangular_base* (three_clust_10), *curvy_cylinder–cube–blunted_cone* (three_clust_13), *nonlinear_hyperbola–elliptical–pyramid_rectangular_base* (three_clust_15), and *nonlinear_hyperbola2–cube–blunted_cone* (three_clust_17).
-
-Across these examples, PaCMAP tends to preserve local density structure within clusters effectively but often struggles with global positioning and relative orientation among clusters. For example, in three_clust_02, the s_curve and cube clusters remain relatively well-formed but are positioned too close to the pyramid_rectangular_base cluster, creating apparent overlaps. Similarly, in three_clust_06 and three_clust_07, the pyramid-shaped clusters are fragmented into smaller subgroups, suggesting instability in maintaining global manifold continuity.
-
-A consistent observation is that PaCMAP compresses or folds curved or elongated manifolds, such as s_curve, helical_hyper_spiral, and nonlinear_hyperbola2, into smaller regions of the \gD{} space. This distortion likely arises from the algorithm’s use of both near and mid-range neighbor preservation terms, which balance local and global structure but can underrepresent nonlinear curvature when clusters vary in geometric complexity or density.
-
-Overall, these results indicate that PaCMAP achieves visually clean separation for simpler or isotropic clusters but tends to overcompress nonlinearly extended clusters and misplace asymmetric shapes, resulting in inaccurate global relationships between clusters.
-
-
-::: {.cell layout-align="center"}
+::: {.cell}
 
 :::
 
 
 
-::: {.cell layout-align="center"}
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
 ::: {.cell-output-display}
-![PaCMAP misidentifications for selected three-cluster data structures. Each column represents a distinct high-dimensional data structure, while each row corresponds to a resulting \gD{} NLDR layout under different distance scale settings: (a) small (S), (b) small medium (SM), (c) medium large (ML), and (d) large (L). PaCMAP effectively maintains intra-cluster cohesion but often distorts the relative geometry between curved and compact clusters, leading to apparent overlaps or misplacement in \gD{} space.](03-chap3_files/figure-pdf/fig-mis-pacmap-1.pdf){#fig-mis-pacmap fig-align='center' width=100%}
+![Compare the published $2\text{-}D$ layout (Figure \ref{fig:limb-rwbss}b) and the $2\text{-}D$ layout selected (Figure \ref{fig:limb-rwbss}f) by RWBSS plot (Figure \ref{fig:limb-rwbss}) from the tSNE, UMAP, PHATE, TriMAP, and PaCMAP with different hyper-parameters. The Limb muscle data ($n =  1067$) has seven close different shaped clusters in $10\text{-}D$.](03-chap3_files/figure-pdf/model-limb-1.pdf){fig-pos='H' width=100%}
 :::
 :::
 
 
 
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-\begin{table}
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{lllll}
-\toprule
-data\_structure & cluster1 & cluster2 & cluster3 & distance\_sf\\
-\midrule
-three\_clust\_02 & s\_curve & cube & pyramid\_rectangular\_base & medium large (ML)\\
-three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base & small (S)\\
-three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base & small medium (SM)\\
-three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base & large (L)\\
-three\_clust\_06 & crescent & cube & pyramid\_rectangular\_base & large (L)\\
-three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base & small (S)\\
-three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base & small medium (SM)\\
-three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base & medium large (ML)\\
-three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base & large (L)\\
-three\_clust\_09 & helical\_hyper\_spiral & cube & blunted\_cone & small (S)\\
-three\_clust\_10 & spherical\_spiral & gaussian & pyramid\_triangular\_base & small (S)\\
-three\_clust\_10 & spherical\_spiral & gaussian & pyramid\_triangular\_base & large (L)\\
-three\_clust\_13 & curvy\_cylinder & cube & blunted\_cone & small (S)\\
-three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base & small (S)\\
-three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base & small medium (SM)\\
-three\_clust\_17 & nonlinear\_hyperbola2 & cube & blunted\_cone & small medium (SM)\\
-three\_clust\_17 & nonlinear\_hyperbola2 & cube & blunted\_cone & medium large (ML)\\
-\bottomrule
-\end{tabular}}
-\end{table}
-
-
-:::
-:::
-
-
-
-#### tSNE
-
-tSNE minimizes the Kullback–Leibler (KL) divergence between pairwise similarities in high and low dimensions (@laurens2008). This objective strongly prioritizes local neighborhood preservation while ignoring global distances.
-
-@fig-mis-tsne illustrates the data structures where tSNE produced misidentifications or distortions in the \gD{} embedding. The affected datasets include *s_curve–cube–pyramid_rectangular_base* (three_clust_02), *curvy_cylinder–hemisphere–pyramid_triangular_base* (three_clust_03), *curv2–gaussian–filled_hexagonal_pyramid* (three_clust_04), *nonlinear_hyperbola–elliptical–blunted_cone* (three_clust_05), *crescent–cube–pyramid_rectangular_base* (three_clust_06), *nonlinear_hyperbola2–hemisphere–pyramid_triangular_base* (three_clust_07), *conic_spiral–gaussian–filled_hexagonal_pyramid* (three_clust_08), *helical_hyper_spiral–cube–blunted_cone* (three_clust_09), *spherical_spiral–gaussian–pyramid_triangular_base* (three_clust_10), *s_curve–hemisphere–filled_hexagonal_pyramid* (three_clust_12), *curv2–gaussian–pyramid_triangular_base* (three_clust_14), *nonlinear_hyperbola–elliptical–pyramid_rectangular_base* (three_clust_15), *crescent–hemisphere–filled_hexagonal_pyramid* (three_clust_16), *nonlinear_hyperbola2–cube–blunted_cone* (three_clust_17), and *conic_spiral–gaussian–pyramid_triangular_base* (three_clust_18).
-
-Across these examples, tSNE successfully captures local structure within clusters—preserving compactness and density—but often fails to represent the global arrangement among multiple clusters. In several cases, tSNE artificially amplifies distances between geometrically related clusters (e.g., s_curve and cube in three_clust_02) or splits continuous manifolds such as nonlinear_hyperbola and helical_hyper_spiral into disjoint fragments. This fragmentation suggests that tSNE’s heavy emphasis on preserving local neighborhoods comes at the cost of losing the true topological continuity of non-linear shapes.
-
-A recurring issue is that tSNE tends to over-separate clusters when they differ in density or curvature. For instance, in three_clust_06 and three_clust_07, one or more clusters (particularly those with curved or open structures) are pushed disproportionately far apart, producing an embedding that exaggerates separation. Additionally, tSNE appears sensitive to cluster anisotropy—for example, pyramid_triangular_base and filled_hexagonal_pyramid clusters often appear distorted or collapsed into compact forms, suggesting that their high-dimensional shape complexity is not faithfully maintained in the low-dimensional layout.
-
-Overall, these misidentifications reveal that while tSNE produces visually distinct clusters with strong local cohesion, it frequently distorts global geometry, particularly when clusters vary in curvature, scale, or orientation.
-
-
-::: {.cell layout-align="center"}
+::: {.cell}
 
 :::
 
 
 
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![tSNE misidentifications for selected three-cluster data structures. Each column represents a distinct high-dimensional data structure, while each row corresponds to a resulting \gD{} NLDR layout under different distance scale settings: (a) small (S), (b) small medium (SM), (c) medium (M), (d) medium large (ML), and (e) large (L). tSNE effectively maintains within-cluster density and separation but tends to distort the global spatial relationships among clusters—especially when the data include non-linear or anisotropic geometries such as hyperbolas, spirals, and pyramids.](03-chap3_files/figure-pdf/fig-mis-tsne-1.pdf){#fig-mis-tsne fig-align='center' width=100%}
-:::
-:::
-
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-\begin{table}
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{lllll}
-\toprule
-data\_structure & cluster1 & cluster2 & cluster3 & distance\_sf\\
-\midrule
-three\_clust\_02 & s\_curve & cube & pyramid\_rectangular\_base & medium (M)\\
-three\_clust\_02 & s\_curve & cube & pyramid\_rectangular\_base & medium large (ML)\\
-three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base & medium (M)\\
-three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base & medium large (ML)\\
-three\_clust\_04 & curv2 & gaussian & filled\_hexagonal\_pyramid & small medium (SM)\\
-three\_clust\_05 & nonlinear\_hyperbola & elliptical & blunted\_cone & small medium (SM)\\
-three\_clust\_05 & nonlinear\_hyperbola & elliptical & blunted\_cone & medium (M)\\
-three\_clust\_05 & nonlinear\_hyperbola & elliptical & blunted\_cone & large (L)\\
-three\_clust\_06 & crescent & cube & pyramid\_rectangular\_base & large (L)\\
-three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base & medium (M)\\
-three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base & large (L)\\
-three\_clust\_08 & conic\_spiral & gaussian & filled\_hexagonal\_pyramid & small (S)\\
-three\_clust\_08 & conic\_spiral & gaussian & filled\_hexagonal\_pyramid & large (L)\\
-three\_clust\_09 & helical\_hyper\_spiral & cube & blunted\_cone & small (S)\\
-three\_clust\_09 & helical\_hyper\_spiral & cube & blunted\_cone & medium (M)\\
-three\_clust\_09 & helical\_hyper\_spiral & cube & blunted\_cone & medium large (ML)\\
-three\_clust\_10 & spherical\_spiral & gaussian & pyramid\_triangular\_base & medium large (ML)\\
-three\_clust\_10 & spherical\_spiral & gaussian & pyramid\_triangular\_base & large (L)\\
-three\_clust\_12 & s\_curve & hemisphere & filled\_hexagonal\_pyramid & medium (M)\\
-three\_clust\_12 & s\_curve & hemisphere & filled\_hexagonal\_pyramid & medium large (ML)\\
-three\_clust\_12 & s\_curve & hemisphere & filled\_hexagonal\_pyramid & large (L)\\
-three\_clust\_14 & curv2 & gaussian & pyramid\_triangular\_base & medium large (ML)\\
-three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base & medium (M)\\
-three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base & medium large (ML)\\
-three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base & large (L)\\
-three\_clust\_16 & crescent & hemisphere & filled\_hexagonal\_pyramid & medium large (ML)\\
-three\_clust\_16 & crescent & hemisphere & filled\_hexagonal\_pyramid & large (L)\\
-three\_clust\_17 & nonlinear\_hyperbola2 & cube & blunted\_cone & small (S)\\
-three\_clust\_17 & nonlinear\_hyperbola2 & cube & blunted\_cone & large (L)\\
-three\_clust\_18 & conic\_spiral & gaussian & pyramid\_triangular\_base & large (L)\\
-\bottomrule
-\end{tabular}}
-\end{table}
-
-
-:::
-:::
-
-
-
-#### PHATE
-
-PHATE constructs a diffusion-based potential distance that encodes multi-scale manifold structure (@moon2019). This approach excels at capturing continuous transitions, but tends to over-smooth boundaries between discrete clusters.
-
-@fig-mis-phate presents the high-dimensional data structures for which PHATE led to misidentification or structural distortion in the \gD{} embedding. The affected datasets include *curv–elliptical–blunted_cone* (three_clust_01), *s_curve–cube–pyramid_rectangular_base* (three_clust_02), curvy_cylinder–hemisphere–pyramid_triangular_base (three_clust_03), *curv2–gaussian–filled_hexagonal_pyramid* (three_clust_04), *nonlinear_hyperbola–elliptical–blunted_cone* (three_clust_05), *crescent–cube–pyramid_rectangular_base* (three_clust_06), *nonlinear_hyperbola2–hemisphere–pyramid_triangular_base* (three_clust_07), *conic_spiral–gaussian–filled_hexagonal_pyramid* (three_clust_08), *helical_hyper_spiral–cube–blunted_cone* (three_clust_09), *spherical_spiral–gaussian–pyramid_triangular_base* (three_clust_10), *curv–elliptical–pyramid_rectangular_base* (three_clust_11), *s_curve–hemisphere–filled_hexagonal_pyramid* (three_clust_12), *curvy_cylinder–cube–blunted_cone* (three_clust_13), *curv2–gaussian–pyramid_triangular_base* (three_clust_14), *nonlinear_hyperbola–elliptical–pyramid_rectangular_base* (three_clust_15), *crescent–hemisphere–filled_hexagonal_pyramid* (three_clust_16), and *conic_spiral–gaussian–pyramid_triangular_base* (three_clust_18).
-
-PHATE tends to preserve smooth manifold continuity across most clusters but exhibits misidentifications primarily when clusters differ in geometric curvature or density. For instance, in structures such as s_curve–cube–pyramid_rectangular_base (three_clust_02) and curvy_cylinder–hemisphere–pyramid_triangular_base (three_clust_03), PHATE partially merges distinct clusters along gradual transitions, reflecting its tendency to emphasize global manifold smoothness at the expense of discrete cluster separation. This blending effect is especially evident when clusters possess shared curvature characteristics, such as nonlinear_hyperbola and helical_hyper_spiral, or when the transition between shapes is continuous in high-dimensional space.
-
-Another recurring pattern involves shape compression, where complex structures like filled_hexagonal_pyramid and pyramid_triangular_base are collapsed into more isotropic forms. This occurs because PHATE’s diffusion-based approach tends to over-smooth distances, leading to reduced contrast between dense and sparse regions. As a result, clusters with sharp edges or hollow geometries (e.g., pyramidal or conical shapes) lose their distinct form and may appear more circular in the \gD{} embedding.
-
-Overall, PHATE performs well in maintaining global topology and gradual transitions, making it suitable for continuous manifolds such as s_curve or crescent. However, it struggles to preserve clear separation among distinct, non-linear, or sharply bounded clusters, often blending or distorting them when the high-dimensional geometry involves abrupt curvature changes or contrasting densities.
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![PHATE misidentifications for selected three-cluster data structures. Each column represents a distinct high-dimensional data structure, while each row corresponds to a resulting \gD{} NLDR layout under different distance scale settings: (a) small (S), (b) small medium (SM), (c) medium (M), (d) medium large (ML), and (e) large (L). PHATE effectively maintains global continuity but exhibits over-smoothing, leading to partial merging or distortion of geometrically distinct clusters—particularly for combinations involving hyperbolas, pyramids, and cones.](03-chap3_files/figure-pdf/fig-mis-phate-1.pdf){#fig-mis-phate fig-align='center' width=100%}
-:::
-:::
-
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-\begin{table}
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{lllll}
-\toprule
-data\_structure & cluster1 & cluster2 & cluster3 & distance\_sf\\
-\midrule
-three\_clust\_01 & curv & elliptical & blunted\_cone & large (L)\\
-three\_clust\_02 & s\_curve & cube & pyramid\_rectangular\_base & small (S)\\
-three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base & medium (M)\\
-three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base & large (L)\\
-three\_clust\_04 & curv2 & gaussian & filled\_hexagonal\_pyramid & small (S)\\
-three\_clust\_04 & curv2 & gaussian & filled\_hexagonal\_pyramid & medium (M)\\
-three\_clust\_05 & nonlinear\_hyperbola & elliptical & blunted\_cone & medium large (ML)\\
-three\_clust\_06 & crescent & cube & pyramid\_rectangular\_base & small (S)\\
-three\_clust\_06 & crescent & cube & pyramid\_rectangular\_base & medium (M)\\
-three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base & medium (M)\\
-three\_clust\_08 & conic\_spiral & gaussian & filled\_hexagonal\_pyramid & medium (M)\\
-three\_clust\_09 & helical\_hyper\_spiral & cube & blunted\_cone & medium (M)\\
-three\_clust\_10 & spherical\_spiral & gaussian & pyramid\_triangular\_base & large (L)\\
-three\_clust\_11 & curv & elliptical & pyramid\_rectangular\_base & medium large (ML)\\
-three\_clust\_11 & curv & elliptical & pyramid\_rectangular\_base & large (L)\\
-three\_clust\_12 & s\_curve & hemisphere & filled\_hexagonal\_pyramid & small medium (SM)\\
-three\_clust\_13 & curvy\_cylinder & cube & blunted\_cone & medium (M)\\
-three\_clust\_14 & curv2 & gaussian & pyramid\_triangular\_base & large (L)\\
-three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base & medium (M)\\
-three\_clust\_16 & crescent & hemisphere & filled\_hexagonal\_pyramid & small medium (SM)\\
-three\_clust\_16 & crescent & hemisphere & filled\_hexagonal\_pyramid & medium large (ML)\\
-three\_clust\_18 & conic\_spiral & gaussian & pyramid\_triangular\_base & medium (M)\\
-three\_clust\_18 & conic\_spiral & gaussian & pyramid\_triangular\_base & medium large (ML)\\
-\bottomrule
-\end{tabular}}
-\end{table}
-
-
-:::
-:::
-
-
-### Reasons for mis-identification by number of component(s)
-
-Beyond method-specific effects, the complexity of the high-dimensional data itself also influenced recognition accuracy. Some misidentifications involved confusion between a single cluster and another, while others reflected blending or merging of multiple clusters. To investigate these patterns, we categorized misidentifications based on the number of cluster components involved—one, two, or three—and visualized their intersections across NLDR methods using UpSet plots. This analysis reveals how data complexity interacts with embedding behavior, shedding light on whether misidentification arises primarily from local distortions, partial overlaps, or global structural confusion.
-
-#### One component
-
-The first UpSet plot (@fig-upset-one) shows the intersections of single-component misidentifications across methods. Each horizontal bar represents the number of times a particular data structure component was misidentified, and the vertical bars indicate combinations of NLDR methods that shared the same misidentifications.
-
-The most frequently co-misidentified structures across methods included
-*pyramid_rectangular_base, nonlinear_hyperbola, elliptical, s_curve, pyramid_triangular_base, nonlinear_hyperbola2, hemisphere, helical_hyper_spiral, curvy_cylinder, cube, blunted_cone, spherical_spiral, gaussian, and crescent*.
-
-These structures are geometrically curved, non-spherical, or multi-surface, making them prone to distortion in \gD{} embeddings. For instance, nonlinear_hyperbola and s_curve contain pronounced curvature and variable density, which local-attraction methods like tSNE and PHATE often compress unevenly. Similarly, pyramid_rectangular_base and blunted_cone exhibit mixed sharp and smooth edges, challenging methods that rely on uniform neighborhood scaling.
-
-Across methods, the greatest overlap occurred among PaCMAP, PHATE, tSNE, and UMAP, all of which misidentified at least four of these structures. TriMAP exhibited relatively fewer single-component errors, reflecting its stronger preservation of global relationships.
-
-
-::: {.cell layout-align="center"}
+::: {.cell}
 
 :::
 
 
+## Discussion
 
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![UpSet plot showing intersections of misidentified data structure components across NLDR methods. Each horizontal bar on the left represents the number of times a particular data structure component was misidentified. The vertical bars indicate intersections — combinations of NLDR methods that share the same misidentified components. The most frequently co-misidentified components across methods are pyramid_rectangular_base, nonlinear_hyperbola, elliptical, s_curve, pyramid_triangular_base, s_curve, pyramid_triangular_base, nonlinear_hyperbola2, hemisphere, helical_hyper_spiral, curvy_cylinder, cube, blunted_cone, spherical_spiral, gaussian, and crescent, suggesting these structures are more challenging for multiple NLDR techniques to preserve accurately.](03-chap3_files/figure-pdf/fig-upset-one-1.pdf){#fig-upset-one fig-align='center' width=100%}
-:::
-:::
+The `quollr` package introduces a new framework for interpreting NLDR outputs by fitting a geometric wireframe model in \twoD and lifting it into high-dimensional space. This lifted model provides a direct way to assess how well a \twoD layout, produced by methods such as tSNE, UMAP, PHATE, TriMAP, or PaCMAP, preserves the structure of the original high-dimensional data. The approach offers both numerical and visual diagnostics to support the selection of NLDR methods and tuning hyper-parameters that produce the most accurate \twoD representations.
 
+In contrast to the common practice of visually inspecting scatterplots for clusters or patterns, `quollr` provides a quantitative route for evaluation. It enables the computation of RWBSS and residuals between the original high-dimensional data and the lifted model, offering interpretable diagnostics. These diagnostics are complemented by interactive linked plots and high-dimensional dynamic visualizations using the `langevitour` package, allowing users to inspect where the model fits well and where it does not.
 
+To support efficient computation, particularly for large-scale datasets, several core functions in `quollr` are implemented in C++ using `Rcpp` and `RcppArmadillo`. These include functions for computing Euclidean distances in high-dimensional and \twoD space, identifying nearest centroids, calculating residual errors, and generating polygonal coordinates of hexagons. For instance, `compute_highd_dist()` accelerates nearest neighbor lookup in high-dimensional space, `compute_errors()` calculates RWBSS and total absolute error efficiently, and `calc_2d_dist_cpp()` speeds up distance calculations in \twoD. Additionally, `gen_hex_coord_cpp()` constructs the coordinates for hexagonal bins based on their centroids with minimal overhead. These optimizations result in substantial performance gains compared to native R implementations, making the package responsive even when used in interactive contexts or on large datasets such as single-cell transcriptomic profiles.
 
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-\begin{table}
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{llr}
-\toprule
-component & methods & num\_methods\\
-\midrule
-blunted\_cone & PaCMAP, PHATE , tSNE  , UMAP & 4\\
-crescent & PaCMAP, PHATE , tSNE  , UMAP & 4\\
-cube & PaCMAP, PHATE , tSNE  , UMAP & 4\\
-curvy\_cylinder & PaCMAP, PHATE , tSNE  , UMAP & 4\\
-elliptical & PaCMAP, PHATE , TriMAP, tSNE & 4\\
-gaussian & PaCMAP, PHATE , TriMAP, tSNE & 4\\
-helical\_hyper\_spiral & PaCMAP, PHATE , TriMAP, tSNE  , UMAP & 5\\
-hemisphere & PaCMAP, PHATE , TriMAP, tSNE & 4\\
-nonlinear\_hyperbola & PaCMAP, PHATE , tSNE  , UMAP & 4\\
-nonlinear\_hyperbola2 & PaCMAP, PHATE , tSNE & 3\\
-pyramid\_rectangular\_base & PHATE, tSNE & 2\\
-s\_curve & PHATE, tSNE & 2\\
-spherical\_spiral & PHATE, tSNE & 2\\
-\bottomrule
-\end{tabular}}
-\end{table}
+The modular structure of the package is designed to support both flexibility and reproducibility. Users can access individual functions to control each step of the pipeline such as scaling, binning, and triangulation or use the main function `fit_highd_model()` for end-to-end model construction. The diagnostics can be used not only to compare NLDR methods but also to tune binning parameters, assess layout stability, and detect local distortions in the embedding.
 
+There are several avenues for future development. While hexagonal binning provides a regular structure conducive to modeling, alternative spatial discretizations (e.g., adaptive binning or density-aware tessellations) could be explored to better capture varying data densities. Expanding support for additional distance metrics in the lifting and prediction steps may improve performance across different domains. Additionally, statistical inference tools could be introduced to assess the stability and robustness of the fitted model, which would enhance interpretability and confidence in the outcomes. 
 
-:::
-:::
+## Acknowledgements
 
-
-#### Two component
-
-The second UpSet plot (@fig-upset-two) summarizes cases where two components within a dataset were jointly misidentified. These represent situations where NLDR methods distorted the spatial relationships between two distinct geometric structures, leading to overlap or merging in \gD{} space.
-
-Commonly misidentified component pairs included
-nonlinear_hyperbola + elliptical, s_curve + pyramid_rectangular_base, s_curve + cube, nonlinear_hyperbola2 + pyramid_triangular_base, nonlinear_hyperbola2 + hemisphere, helical_hyper_spiral + cube, helical_hyper_spiral + blunted_cone, elliptical + pyramid_rectangular_base, cube + blunted_cone, spherical_spiral + pyramid_triangular_base, spherical_spiral + gaussian, and curvy_cylinder + hemisphere.
-
-The most frequent method overlaps occurred among PHATE and tSNE, which jointly misidentified 37 pairs of components. These methods emphasize local neighborhood continuity and diffusion, often at the expense of maintaining global separation—leading to merging between nearby clusters. In contrast, TriMAP and UMAP contributed to fewer pairwise misidentifications and tended to maintain more distinct boundaries between curved or irregular shapes.
-
-Overall, datasets combining both curved and polyhedral structures (e.g., nonlinear_hyperbola + pyramid_rectangular_base) were particularly challenging, as the embedding needed to balance continuity and separation simultaneously.
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![UpSet plot showing intersections of misidentified data structure components across NLDR methods. Each horizontal bar on the left represents the number of times a particular data structure component was misidentified. The vertical bars indicate intersections — combinations of NLDR methods that share the same misidentified components. The most frequently co-misidentified components across methods are nonlinear_hyperbola + elliptical, s_curve + pyramid_rectangular_base, s_curve + cube, nonlinear_hyperbola2 + pyramid_triangular_base, nonlinear_hyperbola2 + hemisphere, nonlinear_hyperbola + pyramid_rectangular_base, hemisphere + pyramid_triangular_base, helical_hyper_spiral + cube, helical_hyper_spiral + blunted_cone, elliptical + pyramid_rectangular_base, cube + pyramid_rectangular_base, cube + blunted_cone, spherical_spiral + pyramid_triangular_base, spherical_spiral + gaussian, nonlinear_hyperbola + blunted_cone, gaussian + pyramid_triangular_base, elliptical + blunted_cone, curvy_cylinder + pyramid_triangular_base, curvy_cylinder + hemisphere, and, curvy_cylinder + cube, suggesting these structures are more challenging for multiple NLDR techniques to preserve accurately.](03-chap3_files/figure-pdf/fig-upset-two-1.pdf){#fig-upset-two fig-align='center' width=100%}
-:::
-:::
-
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-\begin{table}
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{llr}
-\toprule
-component & methods & num\_methods\\
-\midrule
-conic\_spiral, filled\_hexagonal\_pyramid & PaCMAP, PHATE , tSNE & 3\\
-conic\_spiral, gaussian & PaCMAP, PHATE , tSNE & 3\\
-conic\_spiral, pyramid\_triangular\_base & PaCMAP, PHATE , tSNE  , UMAP & 4\\
-crescent, cube & PaCMAP, PHATE , tSNE  , UMAP & 4\\
-crescent, filled\_hexagonal\_pyramid & PaCMAP, PHATE , UMAP & 3\\
-crescent, hemisphere & PaCMAP, PHATE , UMAP & 3\\
-crescent, pyramid\_rectangular\_base & PaCMAP, PHATE , tSNE & 3\\
-cube, blunted\_cone & PaCMAP, PHATE , tSNE & 3\\
-cube, pyramid\_rectangular\_base & PaCMAP, PHATE , TriMAP, tSNE & 4\\
-curv, blunted\_cone & PaCMAP, PHATE , tSNE & 3\\
-curv, elliptical & PaCMAP, PHATE , tSNE  , UMAP & 4\\
-curv, pyramid\_rectangular\_base & PaCMAP, PHATE , tSNE  , UMAP & 4\\
-curv2, filled\_hexagonal\_pyramid & PaCMAP, PHATE , TriMAP, tSNE & 4\\
-curv2, gaussian & PaCMAP, PHATE , TriMAP, tSNE  , UMAP & 5\\
-curv2, pyramid\_triangular\_base & PaCMAP, PHATE , TriMAP, tSNE & 4\\
-curvy\_cylinder, blunted\_cone & PaCMAP, tSNE & 2\\
-curvy\_cylinder, cube & PaCMAP, tSNE & 2\\
-curvy\_cylinder, hemisphere & PaCMAP, PHATE , TriMAP, tSNE & 4\\
-curvy\_cylinder, pyramid\_triangular\_base & PaCMAP, PHATE , TriMAP, tSNE & 4\\
-elliptical, blunted\_cone & PaCMAP, PHATE , tSNE  , UMAP & 4\\
-elliptical, pyramid\_rectangular\_base & PaCMAP, PHATE , tSNE  , UMAP & 4\\
-gaussian, filled\_hexagonal\_pyramid & PaCMAP, PHATE , tSNE & 3\\
-gaussian, pyramid\_triangular\_base & PaCMAP, PHATE , tSNE & 3\\
-helical\_hyper\_spiral, blunted\_cone & PHATE, tSNE & 2\\
-helical\_hyper\_spiral, cube & PHATE, tSNE & 2\\
-hemisphere, filled\_hexagonal\_pyramid & PHATE, tSNE & 2\\
-hemisphere, pyramid\_triangular\_base & PHATE, tSNE & 2\\
-nonlinear\_hyperbola, blunted\_cone & PHATE, tSNE & 2\\
-nonlinear\_hyperbola2, pyramid\_triangular\_base & PHATE, tSNE & 2\\
-s\_curve, cube & PHATE, tSNE & 2\\
-s\_curve, filled\_hexagonal\_pyramid & PHATE, tSNE & 2\\
-s\_curve, hemisphere & PHATE, tSNE , UMAP & 3\\
-s\_curve, pyramid\_rectangular\_base & PHATE, tSNE & 2\\
-spherical\_spiral, gaussian & PHATE, tSNE & 2\\
-spherical\_spiral, pyramid\_triangular\_base & PHATE, tSNE , UMAP & 3\\
-nonlinear\_hyperbola2, blunted\_cone & PHATE, tSNE & 2\\
-nonlinear\_hyperbola2, cube & PHATE, tSNE & 2\\
-\bottomrule
-\end{tabular}}
-\end{table}
-
-
-:::
-:::
-
-
-
-#### Three component
-
-The third UpSet plot (@fig-upset-three) highlights cases where misidentifications occurred due to complex interactions among three components within a dataset. These represent the most difficult configurations, where multiple structural and density variations coexist.
-
-Frequent co-misidentified triplets included
-s_curve + cube + pyramid_rectangular_base, nonlinear_hyperbola2 + hemisphere + pyramid_triangular_base, nonlinear_hyperbola + elliptical + pyramid_rectangular_base, helical_hyper_spiral + cube + blunted_cone, spherical_spiral + gaussian + pyramid_triangular_base, nonlinear_hyperbola + elliptical + blunted_cone, curvy_cylinder + hemisphere + pyramid_triangular_base, curvy_cylinder + cube + blunted_cone, and crescent + cube + pyramid_rectangular_base.
-
-Most of these triplets involve at least one curved or spiral component combined with a polyhedral structure, which appears to amplify projection distortion. PHATE and tSNE were again the dominant contributors, followed by PaCMAP, while TriMAP rarely misidentified three-component mixtures. The frequent co-occurrence of such errors suggests that preserving relative scaling among non-linear surfaces and multi-faceted shapes remains a key limitation of locally focused NLDR methods.
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![UpSet plot showing intersections of misidentified data structure components across NLDR methods. Each horizontal bar on the left represents the number of times a particular data structure component was misidentified. The vertical bars indicate intersections — combinations of NLDR methods that share the same misidentified components. The most frequently co-misidentified components across methods are s_curve + cube + pyramid_rectangular_base, nonlinear_hyperbola2 + hemisphere + pyramid_triangular_base, nonlinear_hyperbola + elliptical + pyramid_rectangular_base, helical_hyper_spiral + cube + blunted_cone, spherical_spiral + gaussian + pyramid_triangular_base, nonlinear_hyperbola + elliptical + blunted_cone, curvy_cylinder + hemisphere + pyramid_triangular_base, curvy_cylinder + cube + blunted_cone, crescent + cube + pyramid_rectangular_base, suggesting these structures are more challenging for multiple NLDR techniques to preserve accurately.](03-chap3_files/figure-pdf/fig-upset-three-1.pdf){#fig-upset-three fig-align='center' width=100%}
-:::
-:::
-
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-\begin{table}
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{llr}
-\toprule
-component & methods & num\_methods\\
-\midrule
-conic\_spiral, gaussian, filled\_hexagonal\_pyramid & PaCMAP, PHATE , tSNE & 3\\
-conic\_spiral, gaussian, pyramid\_triangular\_base & PaCMAP, PHATE , UMAP & 3\\
-crescent, cube, pyramid\_rectangular\_base & PaCMAP, PHATE , tSNE & 3\\
-crescent, hemisphere, filled\_hexagonal\_pyramid & PaCMAP, PHATE , tSNE  , UMAP & 4\\
-curv, elliptical, blunted\_cone & PaCMAP, PHATE , TriMAP, tSNE & 4\\
-curv, elliptical, pyramid\_rectangular\_base & PaCMAP, tSNE & 2\\
-curv2, gaussian, filled\_hexagonal\_pyramid & PaCMAP, PHATE , TriMAP, tSNE & 4\\
-curv2, gaussian, pyramid\_triangular\_base & PaCMAP, PHATE , tSNE  , UMAP & 4\\
-curvy\_cylinder, cube, blunted\_cone & PaCMAP, PHATE , tSNE & 3\\
-curvy\_cylinder, hemisphere, pyramid\_triangular\_base & PHATE, tSNE & 2\\
-helical\_hyper\_spiral, cube, blunted\_cone & PHATE, tSNE & 2\\
-nonlinear\_hyperbola, elliptical, blunted\_cone & PHATE, tSNE & 2\\
-s\_curve, cube, pyramid\_rectangular\_base & PHATE, tSNE & 2\\
-s\_curve, hemisphere, filled\_hexagonal\_pyramid & PHATE, tSNE & 2\\
-spherical\_spiral, gaussian, pyramid\_triangular\_base & PHATE, tSNE , UMAP & 3\\
-nonlinear\_hyperbola2, cube, blunted\_cone & PHATE, tSNE & 2\\
-\bottomrule
-\end{tabular}}
-\end{table}
-
-
-:::
-:::
-
-
-## Limitations {#sec-limitations}
-
-One of the main drawbacks of visual experiments is their reliance on human judgments. In this context, the effectiveness of identifying the \gD{} NLDR plot and the tour from the same data can be dependent on the perceptual ability and visual skills of the individual. However, when the results from multiple individuals are combined, the overall quality and robustness of the outcome is considerably high.
-
-It is important to remove HTML widget elements such as controls, interactivity, and \gD{} plot elements such as axis labels and text that might introduce bias. We recommend using a crowd-sourcing service like Prolific [@palan2018] to access high-quality data, as it is a time- and cost-effective way.
-
-In this study, we used a specific data structure consisting of three distinct clusters, each with unique shapes. Two of the clusters are in close proximity to one another, while the third cluster is located farther away. Each cluster varies in the number of points it contains. We selected this data structure because it is simple.
-
-To keep the experiment fair and consistent across trials, we approximately fixed the distance between the clusters in each data structure. We also used five distance scale factors to gradually change how far apart the clusters were. While this controlled setup makes it easier to interpret the results, it does limit how well the findings apply to more complex data structures with uneven or irregular cluster arrangements.
-
-## Conclusions {#sec-conclusion}
-
-<!-- - Objective of the experiment (This article has described experimental evidence providing support for the advice of....) -->
-
-<!-- - Overall conclusion (We conducted a perceptual experiment on ...) -->
-
-<!-- - Reasons for the conclusions -->
-
-<!-- - Future work (do the experiment with different factors) -->
-
-<!-- - Disadvantaged of the human experiments (Human evaluation of residuals is expensive, time-consuming and laborious. This is possibly why residual plot analysis is often not done in practice. However, with the emergence of effective computer vision, it is hoped this work helps to lay the foundation for automated residual plot assessment) -->
-
-<!-- - Other interesting results found -->
-
-This study provides empirical evidence that NLDR methods differ substantially in how well they preserve high-dimensional structures that are perceptually meaningful for classification and clustering. By combining a controlled simulation of three clusters with varying separation, shape, and size, and a human recognition experiment, we quantified how structural separability in the original space translates into correct identification of clusters in \gD{} representations.
-
-Our results reveal consistent differences among NLDR methods. UMAP and PaCMAP produced layouts where greater high-dimensional separation—quantified by both the scaled BW ratio and the exponential of the scaled minimum inter-cluster distance—led to higher probabilities of correct identification. These methods explicitly optimize for both local and global relationships: UMAP through fuzzy topological preservation and PaCMAP through adaptive pairwise constraints that balance local and mid-range distances. This dual emphasis likely explains their superior perceptual alignment with the true \pD{} structure. TriMAP showed a similar but less pronounced trend, consistent with its triplet-based loss that prioritizes preservation of global relationships.
-
-In contrast, tSNE exhibited a negative association between separability and correct identification, consistent with prior findings that its Kullback–Leibler divergence loss exaggerates local density differences at the expense of global geometry. As clusters became more distinct in the high-dimensional space, tSNE’s optimization fragmented global relationships, yielding visually appealing but structurally misleading layouts. PHATE, which emphasizes manifold continuity rather than discrete grouping through potential distances, showed no systematic relationship between separability and accuracy, aligning with its design focus on smooth transitions rather than cluster fidelity.
-
-Visual inspection of misidentifications further supports these quantitative results. Curvilinear or non-linear manifolds—such as *s_curve*, *helical_hyper_spiral*, and *nonlinear_hyperbola*—were most often misrepresented, particularly when paired with compact clusters like *cube* or *blunted_cone*. Methods emphasizing local continuity, such as tSNE and PHATE, tended to merge or over-separate these curved structures, while PaCMAP and UMAP occasionally distorted their global positioning when cluster density or scale varied. TriMAP, though better at maintaining overall spatial relationships, frequently compressed curved manifolds against more compact forms, leading to overlap or shape loss. These systematic misidentifications underscore how each method’s underlying loss function—balancing local versus global preservation—directly shapes perceptual fidelity in the resulting embeddings.
-
-Overall, these findings emphasize that NLDR methods should be evaluated not only by visual appearance but by their alignment between quantitative structure and perceptual interpretation. Methods like UMAP and PaCMAP appear to maintain interpretable geometric fidelity across varying levels of separation, while tSNE and PHATE prioritize alternative aspects of structure. The implication for statistical graphics is that perceptually faithful embeddings are not guaranteed by standard algorithmic performance metrics alone.
-
-Future work should extend these analyses to a wider range of experimental conditions, including different noise levels, sample sizes, and dimensionalities, to test the robustness of perceptual fidelity across contexts. Comparing with linear methods such as PCA or supervised embeddings could also clarify whether the observed effects are unique to non-linear transformations or reflect broader perceptual tendencies in cluster interpretation. In addition, exploring alternative data structures—such as overlapping clusters, hierarchical manifolds, or continuous gradients—would help determine how general these perceptual biases are across more complex topologies. Integrating automated visual diagnostics, for example using computer-vision or deep-learning–based similarity metrics, could complement human judgment and provide objective measures of structure preservation. Finally, combining interactive visualization environments with eye-tracking or cognitive-load assessments could reveal how users process and trust NLDR layouts in real time. Such advances would not only improve the interpretability of dimensionality reduction methods but also support the development of human-centered evaluation frameworks that bridge statistical validity and perceptual understanding in high-dimensional data visualization.
-
-## Acknowledgments
-
-A pilot study was conducted with sample subjects from the working group of the Department of Econometrics and Business Statistics, Monash University. This pilot study allowed us to estimate the study's completion time and the effect size and fine-tune the application.
-
-These R packages were used for the work: `tidyverse` (@hadley2019), `lme4` (@douglas2015), `broom.mixed` (@ben2024), `ggbeeswarm` (@erik2023), `emmeans` (@russell2025), `patchwork` (@thomas2024), `colorspace` (@achim2020), `kableExtra` (@hao2024), `conflicted` (@hadley2023), `UpSetR` (@nils2019), `Rtsne` (@jesse2015), `umap` (@tomasz2023), `phateR`(@moon2019), `reticulate` (@kevin2024), `langevitour` (@harisson2024), `gridExtra` (@baptiste2017), `shiny` (@winston2024), `shinydashboard` (@winston2025), `shinythemes` (@winston2021), `bslib` (@carson2025), `shinyjs` (@dean2021), `DT` (@yihui2016), `googledrive` (@lucy2025), `googleAuthR` (@mark2024), `googlesheets4` (@jennifer2025), `shinyalert` (@dean2024a), `shinypop` (@fanny2024), `randomNames` (@damian2024), `shinyfullscreen` (@etienne2021), `shinyWidgets` (@victor2025), `hms` (@kirill2025), `shinythemes` (@winston2021), and `shinycssloaders` (@dean2024b). These `python` packages were used for the work: `trimap` (@amid2022) and `pacmap` (@yingfan2021). 
-
-## Supplementary Materials
-
-All the materials to reproduce the paper can be found at <https://github.com/JayaniLakshika/paper-vis-experiment>.
-
-Appendix: The appendix includes more details about the data structures and their tSNE, UMAP, PHATE, PaCMAP, and TriMAP layouts used in the study (appendix.pdf, Portable Document Format file).
-
-XXX Add Match-a-roo experiment links
+The source code for reproducing this paper can be found at: [https://github.com/JayaniLakshika/paper-quollr](https://github.com/JayaniLakshika/paper-quollr). This article is created using \CRANpkg{knitr} [@yihui2015] and \CRANpkg{rmarkdown} [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `dplyr` [@hadley2023], `ggplot2` [@hadley2016], `interp` (>= 1.1-6) [@albrecht2024], `langevitour` [@paul2023], `proxy`[@david2022], `stats` [@core2025], `tibble` [@kirill2023], `tidyselect` [@lionel2024], `crosstalk` [@joe2023], `plotly` [@chapman2020], `htmltools` [@joe2024], `kableExtra` [@hao2024], `patchwork` [@thomas2024], and `readr` [@hadley2024].

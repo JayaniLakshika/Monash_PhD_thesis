@@ -1,1004 +1,91 @@
-# cardinalR: Generating interesting high-dimensional data structures {#sec-fourth-paper}
-
-A high-dimensional dataset is one where each observation is described by many features, or dimensions, with associations between them. These datasets contain nonlinear manifolds in image and speech recognition, clusters in genomics and forensic analysis, and sparse distributions in text mining. Data with a variety of structures can be generated using mathematical functions and statistical distributions to create test datasets. High-dimensional data structures are useful for testing, validating, and improving algorithms used in dimensionality reduction, clustering, machine learning, and visualization. Their controlled complexity allows researchers to understand challenges posed in data analysis and helps to develop robust analytical methods across diverse scientific fields like bioinformatics, machine learning, and forensic science. Functions to generate a large variety of structures in high dimensions are organized into the R package `cardinalR`, along with some already generated examples, adding to the existing toolset of benchmark datasets for evaluating algorithms.
+# Perception and Misperception in Nonlinear Dimension Reduction: A User Study {#sec-second-paper}
 
 
 
 
-::: {.cell}
+::: {.cell layout-align="center"}
 
 :::
 
 
 
-
-
-::: {.cell}
+::: {.cell layout-align="center"}
 
 :::
 
 
 
-::: {.cell}
+::: {.cell layout-align="center"}
 
 :::
 
 
 
-::: {.cell}
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
 
 :::
 
 
 ## Introduction
 
-Generating synthetic datasets with clearly defined geometric properties is useful for evaluating and benchmarking algorithms in various fields, such as machine learning, data mining, and computational biology. Researchers often need to generate data with specific dimensions, noise characteristics, and complex underlying structures to test the performance and robustness of their methods. There are numerous packages available in R for generating synthetic data, each designed with unique characteristics and focus areas.The `geozoo` package (@barret2016) offers a large collection of geometric objects, allowing users to create and analyze specific shapes, primarily in lower-dimensional spaces. The package is `snedata` (@james2025), which provides tools for generating simplified datasets useful for evaluating dimensionality reduction techniques like tSNE, often focusing on understanding and evaluating low-dimensional embeddings of complex data structures. Additionally, `splatter` (@luke2017) is designed to simulate complex biological data, capturing field-specific nuances such as batch effects and differential expression. In contrast, `mlbench` (@friedrich2024) includes a collection of well-known benchmark datasets commonly associated with established classification or regression challenges. The `surreal` package (@james2024) implements the "Residual (Sur)Realism" algorithm (@leonard2007) to generate datasets that embed hidden images or text into residual plots, providing engaging visual demonstrations for teaching model diagnostics. Meanwhile, the `DHARMa` package (@florian2024) adopts a simulation-based approach to create scaled quantile residuals for generalized linear (mixed) models and related frameworks, supporting model diagnostics through intuitive residuals, plots, and tests for common misspecification issues. 
+Non-linear dimension reduction (NLDR) is popular for making a suitable \gD{} representation of high-dimensional (\pD{}) data by applying non-linear transformations. Recently developed methods include t-distributed stochastic neighbor embedding (tSNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. However, in different data structures, the \gD{} representation generated can vary dramatically from what is observed in \pD{} (@fig-nldr-layouts). 
 
-While these packages are valuable, their scope is often limited to specific applications or low-dimensional structures. To address this gap, this paper introduces the `cardinalR` R package. This package provides a collection of functions designed to generate customizable data structures in any number of dimensions, starting from basic geometric shapes. `cardinalR` offers important functionalities that extend beyond the capabilities of existing tools, allowing users to: (i) construct high-dimensional datasets based on geometric shapes, including the option to enhance dimensionality by adding controlled noise dimensions; (ii) introduce adjustable levels of background noise to these structures; and (iii) combine high-dimensional datasets into a single multi-faceted, clustered dataset in a space of arbitrary dimension. By using clearly defined geometric shapes and controllable characteristics such as number of dimensions, sample size; `cardinalR` allows researchers to generate transparent and interpretable synthetic datasets useful for evaluating the performance of nonlinear dimensionality reduction (NLDR) methods, clustering algorithms, and visualization techniques. Moreover, these datasets can serve as benchmark examples for exploring how different algorithmic choices affect the identification or representation of cluster and manifold structures in high-dimensional spaces.
+<!-- XXX Need to add about clustering structure that we test on -->
 
-The paper is organized as follows. In the next section, we introduce the implementation of the `cardinalR` package on GitHub, including a demonstration of the package's key functions. We illustrate how a clustering data structure affects the dimension reductions in the Application section. Finally, we give a brief conclusion of the paper and discuss potential opportunities for the use of our data collection.
+<!-- XXX Add layouts from one experiment data structure with all methods, change the factors and add with all methods. Then discuss the layout can be similar and different according to these factors. What are the mistakes can happen? Why? -->
 
-## Implementation
+<!-- XXX Add a vis with one data structure with one method by changing other factors like n_neighbors -->
 
-The `cardinalR` package is built on a modular framework where individual geometric generators (e.g., Gaussian, cone, sphere) create well-defined shapes. The main function, `gen_multicluster()`, combines these shapes into a single dataset by applying scaling, rotation, and translation through `gen_rotation()`. Each generated shape is assigned a unique cluster label. This design allows flexible construction of complex, high-dimensional structures for evaluating clustering and dimension reduction methods. Figure \@ref(fig:workflow) illustrates the workflow of `gen_multicluster()`.
 
+::: {.cell layout-align="center"}
 
-::: {.cell}
-::: {.cell-output-display}
-![Workflow for generating high-dimensional clustered data. The user specifies input parameters (number of points, clusters, cluster shapes, scaling, rotation, and optional background noise). Clusters are generated iteratively, transformed, optionally augmented with Gaussian noise dimensions, combined, and labeled, resulting in the final dataset.](../figures/cardinalR/cardinalR_workflow.png){fig-pos='H' width=100%}
 :::
-:::
-
-
-## Usage
-
-The `cardinalR` R package is available on GitHub at [JayaniLakshika/cardinalR](https://github.com/JayaniLakshika/cardinalR).
-
-### Main function
-
-The main function of the package is `gen_multicluster()`, which generates datasets consisting of multiple clusters with user-specified characteristics. Users can control the number of clusters (`k`), and the number of points in each cluster (`n`). Each cluster can take on a different geometric shape (e.g., Gaussian, cone, uniform cube) by specifying the corresponding generator function (`shape`), can be scaled to adjust its spread, rotated using custom rotation matrices (`rotation`), and positioned at defined centroids (`loc`). The function ensures flexibility in cluster location and orientation, allowing users to simulate complex high-dimensional structures. 
-
-To maintain consistency across generators, the function identifies the arguments required by each chosen generator function and supplies only those arguments that are valid for that specific generator. This design enables the combination of cluster types with differing parameter requirements within the same dataset. When clusters are generated with fewer dimensions than others, the function augments the lower-dimensional clusters with additional Gaussian noise variables so that all clusters are represented in the same dimensional space. These noise dimensions are drawn independently from normal distributions
-
-$$
-X \sim \mathcal{N}(m, s^2),
-$$
-
-where the mean ($m$) is set to the average of the cluster coordinates and the standard deviation ($s$) defaults to $0.2$.
-
-An optional argument, `is_bkg`, adds background noise drawn from a multivariate normal distribution centered on the dataset’s overall mean with standard deviations matching the observed spread. Extra arguments (`...`) can be passed to cluster generators, allowing further control over per-cluster characteristics like radius of the sphere. The main arguments of the `gen_multicluster()` function are shown in Table \@ref(tab:main-tb-pdf).
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-\begin{table}
-
-\caption{\label{tab:main-tb-pdf}The main arguments for gen\_multicluster().}
-\centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{8cm}}
-\toprule
-Argument & Type & Explanation\\
-\midrule
-n & numeric (vector) & Number of points in each cluster.\\
-k & numeric & Number of clusters.\\
-loc & numeric (matrix) & Locations/centroids of clusters.\\
-scale & numeric (vector) & Scaling factors of clusters.\\
-shape & character (vector) & Shapes of clusters.\\
-rotation & numeric (list) & Rotation matrices, one per cluster.\\
-is\_bkg & boolean & Background noise should exist or not.\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-
-:::
-:::
-
-
-The following example demonstrates how to use `gen_multicluster()` to create a $4\text{-}D$ dataset with three clusters of different shapes and orientations:
-
-
-::: {.cell}
-
-```{.r .cell-code}
-# Define example rotation matrices for 4D space
-rot1 <- gen_rotation(p = 4, planes_angles = list(
-  list(plane = c(1, 2), angle = 60),
-  list(plane = c(3, 4), angle = 90)
-))
-
-rot2 <- gen_rotation(p = 4, planes_angles = list(
-  list(plane = c(1, 3), angle = 30)
-))
-
-rot3 <- gen_rotation(p = 4, planes_angles = list(
-  list(plane = c(2, 4), angle = 45)
-))
-
-# Generate the clustered dataset
-clust_data <- gen_multicluster(
-  n = c(200, 300, 500),
-  k = 3,
-  loc = matrix(c(
-    0, 0, 0, 0,
-    5, 9, 0, 0,
-    3, 4, 10, 7
-  ), nrow = 3, byrow = TRUE),
-  scale = c(3, 1, 2),
-  shape = c("gaussian", "cone", "unifcube"),
-  rotation = list(rot1, rot2, rot3),
-  is_bkg = FALSE
-)
-```
-:::
-
-
-### Shape generators
-
-The shape generators form the foundation of the package, providing functions to create synthetic datasets from simple, well-defined geometric forms such as cones, pyramids, spheres, grids, and branching structures. Each generator includes the parameter `n`, which specifies the number of points to generate. Some functions, such as `gen_unifcube()`, also take the dimension `p`, while others include arguments specific to the geometry (e.g., radius for spheres (`r`), width for bands (`w`)). If higher-dimensional data are required, additional noise dimensions can be appended after data generation using any noise generator function. This flexibility allows users to construct both low- and high-dimensional datasets from the same underlying structures.
-
-#### Branching
-
-A branching structure (Figure \@ref(fig:branch-proj)) captures trajectories that diverge or bifurcate from a common origin, similar to processes such as cell differentiation in biology (@trapnell2014). We introduce a set of data generation functions specifically designed to simulate high-dimensional branching structures with various geometries, numbers of points (`n`), and number of branches (`k`). Although these functions can generate multiple branches, they do not produce a formal *multicluster* dataset: the branches form a single connected structure, with multiple visually distinct arms rather than independent clusters. Table \@ref(tab:branching-tb-pdf) outlines these functions. The main arguments of the functions described in Table \@ref(tab:arg-branching-tb-pdf).
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-\begin{table}
-
-\caption{\label{tab:branching-tb-pdf}cardinalR branching data generation functions}
-\centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{8cm}}
-\toprule
-Function & Explanation\\
-\midrule
-gen\_expbranches & Exponential shaped branches.\\
-gen\_linearbranches & Linear shaped branches.\\
-gen\_curvybranches & Curvy shaped branches.\\
-gen\_orglinearbranches & Linear shaped branches originated in one point.\\
-gen\_orgcurvybranches & Curvy shaped branches originated in one point.\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-
-:::
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-\begin{table}
-
-\caption{\label{tab:arg-branching-tb-pdf}The main arguments for branching shape generators.}
-\centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{3cm}l}
-\toprule
-Argument & Type & Explanation\\
-\midrule
-n & integer & Number of points.\\
-k & integer & Number of clusters.\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-
-:::
-:::
-
-
-The simplest structures are approximately linear branches in \gD{}, generated by the `gen_linearbranches(n, k)` function. These consist of $k$ short line segments in the first two dimensions, with added jitter to simulate variability. Mathematically, each branch $i$ is defined as
-
-$$
-X_1 \sim U(a_i, b_i), \quad X_2 = s_i (X_1 - x_{\text{start},i}) + y_{\text{start},i} + \epsilon, \quad \epsilon \sim U(0, \delta),
-$$
-
-where $(x_{\text{start},i}, y_{\text{start},i})$ is the starting point of branch $i$, $\delta$ controls local jitter, and $s_i$ is the slope, initialized as
-
-$$
-s_i =
-\begin{cases}
-0.5 & i = 1, \\
--0.5 & i = 2, \\
-\text{randomly sampled from } [s_{\min}, s_{\max}] & i = 3, \dots, k.
-\end{cases}
-$$
-
-Branches $1$ and $2$ are initialized with fixed slopes and intercepts, while later branches are iteratively added at locations chosen to avoid overlap with existing branches, producing a set of connected linear paths. 
-
-
-::: {.cell}
-
-```{.r .cell-code}
-linearbranches <- gen_linearbranches(n = 1000, k = 4)
-```
-:::
-
-
-To introduce curvature, the `gen_curvybranches(n, k)` function generates $k$ curvilinear branches in \gD{}. Branches $1$ and $2$ are simple parabolas defined as
-
-$$
-\begin{aligned}
-\text{Branch 1: } & X_1 \sim U(0,1), \quad X_2 = 0.1 X_1 + X_1^2 + \epsilon, \\
-\text{Branch 2: } & X_1 \sim U(-1,0), \quad X_2 = 0.1 X_1 - 2 X_1^2 + \epsilon, \quad \epsilon \sim U(0, \delta),
-\end{aligned}
-$$
-
-where $\delta$ controls local jitter. Additional branches are attached iteratively to existing structures. Each new branch $i$ starts at a selected point $(x_{\text{start},i}, y_{\text{start},i})$ from the current structure and extends according to
-
-$$
-X_1 \sim U(x_{\text{start},i}, x_{\text{start},i}+1), \quad X_2 = 0.1 X_1 - s_i (X_1^2 - x_{\text{start},i}) + y_{\text{start},i},
-$$
-
-where $s_i$ is a scale factor controlling the curvature of branch $i$. For the first few initial branches, $s_i$ can be fixed (e.g., $s_1 = 1, s_2 = 2$), while for subsequent branches it is sampled from a predefined set, such as $s_i \in \{-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5\}$, to create variability in curvature. 
-
-
-::: {.cell}
-
-```{.r .cell-code}
-curvybranches <- gen_curvybranches(n = 1000, k = 4)
-```
-:::
-
-
-The `gen_expbranches(n, k)` function creates $k$ exponential branches in \gD{}, radiating from a central region. Each branch $i$ is defined as
-
-$$
-X_1 \sim U(-2,2), \quad X_2 = \exp(\sigma_i \, s_i \, X_1) + \epsilon, \quad \epsilon \sim U(0, \delta), \quad s_i \sim U(0.5,2),
-$$
-
-where $\sigma_i = (-1)^{i+1}$ alternates the sign of the exponent to produce mirror-symmetric branches. The parameter $s_i$ controls the steepness of branch $i$, and $\delta$ introduces small local jitter.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-expbranches <- gen_expbranches(n = 1000, k = 4)
-```
-:::
-
-
-High-dimensional generalizations are provided by `gen_orglinearbranches(n, p, k)` (Figure \@ref(fig:branch-proj)) and `gen_orgcurvybranches(n, p, k)`. Each branch is embedded in a unique or repeated $2\text{-}D$ subspace of the $p\text{-}D$ space. When `allow_share = TRUE`, multiple branches may share the same subspace; otherwise, subspaces are sampled without replacement until all possible $\binom{p}{2}$ combinations are exhausted, after which additional branches may repeat subspaces. Linear branches follow
-
-$$
-X_{i_1} \sim U(a_i,b_i), \quad X_{i_2} = s_i X_{i_1} + \epsilon, \quad \epsilon \sim N(0, \sigma^2),
-$$
-
-while curvilinear branches include a quadratic term
-
-$$
-X_{i_1} \sim U(a_i,b_i), \quad X_{i_2} = - s_i X_{i_1}^2 + \epsilon, \quad \epsilon \sim N(0, \sigma^2),
-$$
-
-where $a_i, b_i$ define the range of the first coordinate for branch $i$, and $\epsilon$ is Gaussian noise added to introduce variability. The scale factor $s_i$ controls slope (linear branches) or curvature (curvilinear branches) and is assigned as follows: for the first $\binom{p}{2}$ branches, $s_i = 1$; for additional branches when $k > \binom{p}{2}$, $s_i$ is randomly drawn from the set $\{1, 1.5, 2, \dots, 8\}$.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-orglinearbranches <- gen_orglinearbranches(n = 1000, p = 4, k = 4)
-```
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-```{.r .cell-code}
-orgcurvybranches <- gen_orgcurvybranches(n = 1000, p = 4, k = 4)
-```
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-![Three $2\text{-}D$ projections from the $4\text{-}D$ `orglinearbranches` data. Each shows a different projection, illustrating how the linear branches appear from multiple viewing angles. These views highlight the dataset’s underlying branching structure and demonstrate how projections reveal patterns that are otherwise hidden in higher dimensions.](05-chap5_files/figure-pdf/branch-proj-1.pdf){fig-pos='H' width=100%}
-:::
-:::
-
-
-#### Cone
-
-To simulate a cone-shaped structure in arbitrary dimensions (Figure \@ref(fig:cone-proj)), we define a function `gen_cone(n, p, h, ratio)`, which creates a high-dimensional cone with options for a sharp or blunted apex, allowing for a dense concentration of points near the tip.
-
-This function generates $n$ points in $p\text{-}D$, where the last dimension, $X_p$, represents the height along the cone's axis, and the first $p-1$ dimensions define a shrinking hyperspherical cross-section toward the tip. Heights are sampled from a truncated exponential distribution, $X_p \sim \text{Exp}(\lambda = 2/h)$, capped at the cone height $h$, producing a higher density of points near the tip. At each height $X_p$, the radius of the cross-section decreases linearly from base to tip according to $r = r_{\text{min}} + (r_{\text{max}} - r_{\text{min}}) X_p / h$, where $r_{\text{min}} = \text{ratio}$ and $r_{\text{max}} = 1$.
-
-For each point, a direction in the first $p-1$ dimensions is sampled uniformly on a $(p-1)$-dimensional hypersphere using generalized spherical coordinates. The radial coordinates are scaled by the height-dependent radius $r$, producing the conical taper. In three dimensions ($p = 3$), this results in a classical $3\text{-}D$ cone, while for $p > 3$, additional dimensions provide a smooth embedding into higher-dimensional space, preserving the conical structure.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-cone <- gen_cone(n = 1000, p = 4, h = 5, ratio = 0.5)
-```
-:::
-
-
-Cone-shaped structures appear in particle dispersions, light beams, and tapering processes, where spread decreases along one axis. They are also used to benchmark clustering and dimensionality reduction methods [@hadsell2006].
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-![Three $2\text{-}D$ projections from the $3\text{-}D$ `cone` data. Points are concentrated near the tip along the height dimension, while the radius of the hyperspherical cross-section decreases linearly toward the apex. These projections show how the conical geometry is preserved.](05-chap5_files/figure-pdf/cone-proj-1.pdf){fig-pos='H' width=100%}
-:::
-:::
-
-
-#### Cube
-
-A cube structure represents uniformly or systematically distributed points within a high-dimensional hypercube, providing a useful framework for assessing how well algorithms preserve uniformity, and boundary properties in high dimensions. We provide a set of functions to generate high-dimensional cube structures with flexible configurations, including regular grids, and uniform random points. Table \@ref(tab:cube-tb-pdf) outlines these functions and their purposes.
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-\begin{table}
-
-\caption{\label{tab:cube-tb-pdf}cardinalR cube data generation functions}
-\centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{8cm}}
-\toprule
-Function & Explanation\\
-\midrule
-gen\_gridcube & Cube with specified grid points along each axes.\\
-gen\_unifcube & Cube with uniform points.\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-
-:::
-:::
-
-
-The function `gen_gridcube(n, p)` is a wrapper around `geozoo::cube.solid.grid()`. It generates a regular lattice of points in \pD{}, producing a uniform hypercube grid. Each axis contains equally spaced coordinates, resulting in a well-defined geometric structure.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-gridcube <- gen_gridcube(n = 1000, p = 4)
-```
-:::
-
-
-By contrast, `gen_unifcube(n, p)` wraps `geozoo::cube.solid.random()`, producing uniformly distributed points within a $p\text{-}D$ cube. To avoid including the cube’s vertices, these points are removed after generation. This results in a hypercube filled with random, but evenly distributed, samples rather than structured lattice points.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-unifcube <- gen_unifcube(n = 1000, p = 4)
-```
-:::
-
-
-Such cube-based structures are commonly used as benchmarks in Monte Carlo sampling, computational geometry, and density estimation, where assessing how algorithms behave under uniform or grid-like distributions is critical [@devroye1986; @niederreiter1992].
-
-#### Gaussian
-
-The `gen_gaussian(n, p, s)` function generates a multivariate Gaussian cloud in $p\text{-}D$, centered at the origin with user-defined covariance structure. Each point is independently drawn using the multivariate normal distribution with $X_i \sim N_p(\boldsymbol{0}, s)$, where $s$ is a user-defined $p \times p$ positive-definite matrix.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-gau <- gen_gaussian(n = 1000, p = 4, s = diag(4))
-```
-:::
-
-
-Gaussian clouds are common benchmark structures in statistics and machine learning, used in clustering, classification, and anomaly detection, with applications in image segmentation, speech recognition, and forensic analysis [@geoffrey2000].
-
-#### Linear
-
-The `gen_longlinear(n, p)` function generates a high-dimensional dataset representing a long linear structure with noise. Each variable is formed as $X_i = \text{scale}_i \cdot (0,1,\dots,n{-}1 + \epsilon) + \text{shift}_i$, where $\text{scale}\_i \sim U(-10, 10)$ determines the orientation of the line in each dimension, $\text{shift}\_i \sim U(-300, 300)$ offsets the line to separate dimensions, and $\epsilon \sim N(0, (0.03n)^2)$ introduces Gaussian noise. 
-
-
-::: {.cell}
-
-```{.r .cell-code}
-linear <- gen_longlinear(n = 1000, p = 4)
-```
-:::
-
-
-This structure appears in \pD{} data when variation is driven by a single factor, such as time-course or sensor measurements, providing a useful test case for trajectory and regression methods [@trapnell2014].
-
-#### Möbius
-
-The `gen_mobius()` function is a wrapper around `geozoo::mobius()`, designed to simplify the generation of a Möbius strip in three dimensions for use in high-dimensional diagnostic studies. The function returns a tibble with $n$ sampled points forming the surface of a Möbius strip.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-mobius <- gen_mobius(n = 1000)
-```
-:::
-
-
-The Möbius strip structure can model twisted or cyclic surfaces in physics and engineering, such as conveyor belts, molecular structures, or optical systems with non-orientable geometries [@optica2023].
-
-#### Polynomial
-
-A polynomial structure generates data points that follow non-linear curvilinear relationships, such as quadratic or cubic trends, in \gD{} space. To extend these patterns into high-dimensional settings, additional noise dimensions can be added. These patterns are useful for evaluating how well algorithms capture smooth, non-linear trajectories and curvature in the data. We provide functions for generating quadratic and cubic structures, enabling controlled experiments with different degrees of polynomial complexity. Table \@ref(tab:polynomial-tb-pdf) summarizes these functions and their purposes.
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-\begin{table}
-
-\caption{\label{tab:polynomial-tb-pdf}cardinalR polynomial data generation functions}
-\centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{8cm}}
-\toprule
-Function & Explanation\\
-\midrule
-gen\_quadratic & Quadratic pattern.\\
-gen\_cubic & Cubic pattern.\\
-\bottomrule
-\end{tabular}
-\end{table}
 
 
-:::
-:::
-
-
-The first is the quadratic curve of $n$ points in two dimensions. This is generated using `gen_quadratic(n, range)`. The independent variable is defined as $X_1 \sim U(\text{range}[1], \text{range}[2])$, and a raw polynomial basis of degree 2 is applied to form $X_2 = X_1 - X_1^2 + \varepsilon_2$, where $\varepsilon_2 \sim U(0, 0.5)$. This produces a smooth parabolic arc opening downward, with vertical jitter introduced by the noise term.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-quadratic <- gen_quadratic(n = 1000)
-```
-:::
-
-
-The second is the cubic curve of $n$ points in two dimensions. This is generated using `gen_cubic(n, range)`. The independent variable is defined as $X_1 \sim U(\text{range}[1], \text{range}[2])$, and a raw polynomial basis of degree $3$ is applied to construct $X_2 = X_1 + X_1^2 - X_1^3 + \varepsilon_2$, where $\varepsilon_2 \sim U(0, 0.5)$. This produces a more complex curvilinear structure than the quadratic case, with both upward and downward turning points.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-cubic <- gen_cubic(n = 1000)
-```
-:::
-
-
-#### Pyramid
-
-A pyramid structure (Figure \@ref(fig:pyr-proj)) represents data arranged around a central apex and base, useful for exploring how algorithms handle pointed or layered geometries in \pD{} space. The functions provided allow users to generate pyramids with rectangular, triangular, and star-shaped bases, and sharp or blunted apexes. Additionally, it is possible to create a pyramid with a fractal-like internal structure, enabling the study of non-convex and sparse regions. Table \@ref(tab:pyramid-tb-pdf) summarizes these functions.
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-\begin{table}
-
-\caption{\label{tab:pyramid-tb-pdf}cardinalR pyramid data generation functions}
-\centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{8cm}}
-\toprule
-Function & Explanation\\
-\midrule
-gen\_pyrrect & Rectangular-base, with a sharp or blunted apex.\\
-gen\_pyrtri & Triangular-base, with a sharp or blunted apex.\\
-gen\_pyrstar & Star-shaped base, with a sharp or blunted apex.\\
-gen\_pyrfrac & Pyramid with triangular pyramid-shaped holes.\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-
-:::
-:::
-
-
-Let $X_1, \dots, X_p$ denote the coordinates of the generated points. For the rectangular, triangular, and star-shaped based pyramid generator functions, the final dimension, $X_p$, encodes the height of each point and is drawn from an exponential distribution capped at the maximum height $h$. That is, $X_p = z \sim \min\left(\text{Exp}(\lambda = 2/h),\ h\right).$ This distribution creates a natural skew toward smaller height values, resulting in a denser concentration of points near the pyramid's apex. For the star-shaped base pyramid, the final dimension is drawn from a uniform distribution. That is, $X_p = z \sim U(0, h)$.
-
-The remaining dimensions are based on the specific pyramid shape. For the rectangular based pyramid, `gen_pyrrect(n, p, h, l_vec, rt)` (Figure \@ref(fig:pyr-proj) a), let $r_x(z)$ and $r_y(z)$ denote the half-widths of the rectangular cross-section at height $z$. That is, $r_x(z) = r_t + (l_x - r_t)z/h$, $r_y(z) = r_t + (l_y - r_t)z/h$. The first three coordinates are then defined as $X_1 \sim U(-r_x(z),\ r_x(z)), \quad X_2 \sim U(-r_y(z),\ r_y(z)),\text{ and }X_3 \sim U(-r_x(z),\ r_x(z)).$
-
-
-::: {.cell}
-
-```{.r .cell-code}
-pyrrect <- gen_pyrrect(n = 1000, p = 4)
-```
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-For the triangular based pyramid, `gen_pyrtri(n, p, h, l, rt)` (Figure \@ref(fig:pyr-proj) b), let $r(z)$ denote the scaling factor (distance from the origin to triangle vertices) at height $z$. That is, $r(z) = r_t + (l-r_t)z/h$. A point in the triangle at height $z$ is generated using barycentric coordinates $(u, v)$ to ensure uniform sampling within the triangular cross-section: $u, v \sim U(0, 1), \quad \text{if } u + v > 1: u \leftarrow 1 - u,\ v \leftarrow 1 - v$. The first three coordinates (triangle plane) are then: $X_1 = r(z)(1 - u - v)$, $X_2 = r(z)u$, and $X_3 = r(z)v.$ 
-
-
-::: {.cell}
-
-```{.r .cell-code}
-pyrtri <- gen_pyrtri(n = 1000, p = 4)
-```
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-For the star based pyramid, `gen_pyrstar(n, p, h, rb)` (Figure \@ref(fig:pyr-proj) c), let the radius at height $z$, $r(z)$, be such that the radius scales linearly from zero (tip) to the base radius $r_b$. That is, $r(z) = r_b\left(1 - z/h\right)$. Each point is placed within a regular hexagon in the plane $(X_1, X_2)$, using a randomly chosen hexagon sector angle $\theta \in \{0, \pi/3, 2\pi/3, \pi, 4\pi/3, 5\pi/3\}$ and a uniformly random radial scaling factor: $\theta \sim \text{Uniform sample from 6 hexagon angles}$, $r_{\text{point}} \sim \sqrt{U(0, 1)}$. Then, the first two coordinates are: $X_1 = r(z)r_{\text{point}}\cos(\theta)$, and $X_2 = r(z)r_{\text{point}}\sin(\theta)$.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-pyrstar <- gen_pyrstar(n = 1000, p = 4)
-```
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-For rectangular and triangular pyramids, the remaining dimensions $X_4$ to $X_{p-1}$, and for star-based pyramids $X_3$ to $X_{p-1}$, are treated as noise.
-
-Finally, for the Sierpinski-like pyramid, `gen_pyrfrac(n, p)` (Figure \@ref(fig:pyr-proj) d), let $X_1, X_2, \dots, X_p$ denote the coordinates of the generated points. The generation process begins with an initial point $T_0 \in [0, 1]^p$ drawn from a uniform distribution: $T_0 \sim U(0, 1)^p$. Let $C_1, C_2, \dots, C_{p+1}$ denote the corner vertices of a $p\text{-}D$ simplex. At each iteration $i = 1, \dots, n$, a new point is computed by taking the midpoint between the previous point $T_{i-1}$ and a randomly selected vertex $C_k$: $T_i = 1/2(T_{i-1} + C_k), \quad C_k \in \{C_1, \dots, C_{p+1}\}$. This recursive midpoint rule generates self-similar patterns with systematic voids (holes) between clusters of points. The points remain bounded inside the convex hull of the simplex. The final output is a $n \times p$ matrix where each row represents a point: $X = \{T_1, T_2, \dots, T_n\}, \quad X \in \mathbb{R}^{n \times p}$.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-pyrholes <- gen_pyrfrac(n = 1000, p = 4)
-```
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
 
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-Pyramid structures mimic tapering or layered geometries seen in architecture, crystals, and fractal-like natural patterns [@kirkby1983].
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-![Three $2\text{-}D$ projections from $4\text{-}D$, for the `pyrrect` (a1-a3), `pyrtri` (b1-b3), `pyrstar` (c1-c3), and `pyrholes` (d1-d3) data. The `pyrrrect` structure forms a dense rectangular base tapering to a narrow tip, while `pytri` shows a more triangular spread with sharper edges. `Pyrstar` extends into multiple pointed branches radiating from a common core, and `pyrholes` reveals hollow or open regions within an otherwise compact shape. These projections illustrate a range of pyramid-like geometries that vary in density and structure.](05-chap5_files/figure-pdf/pyr-proj-1.pdf){fig-pos='H' width=100%}
-:::
-:::
-
-
-#### S-curve
-
-The S-curve is a smooth, non-linear manifold in $3\text{-}D$ space. Using `gen_scurve(n)`, it is defined by $X_1 = \sin(\theta), \quad X_2 \sim U(0, 2), \quad X_3 = \text{sign}(\theta)(\cos(\theta) - 1), \quad \theta \sim U(-3\pi/2, 3\pi/2).$
-
-This follows the `s_curve()` function from snedata [@james2025], itself adapted from *scikit-learn*, but differs by returning a tibble with standardized names (`x1`, `x2`, `x3`), excluding the color variable, and omitting built-in noise (which can be added separately). S-curve is commonly used in manifold learning and dimension reduction as benchmarks for unfolding curved structure.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-scurve <- gen_scurve(n = 1000)
-```
-:::
-
-
-#### Sphere
-
-Sphere-shaped structures are useful for evaluating how dimension reduction and clustering algorithms handle curved, symmetric manifolds in high-dimensional spaces. The functions generate a variety of spherical forms, including simple circles, uniform and hollow spheres, grid-based spheres, and complex arrangements like clustered spheres within a larger sphere. The first few coordinates define the main geometric form (circle, cycle, sphere, or hemisphere), while higher-dimensional embeddings are achieved by adding noise dimensions. Such spherical or hemispherical structures frequently appear in physical and biological systems, for example in models of celestial bodies, molecular shells, or cell membranes [@tinkham2003; @alberts2014].Table \@ref(tab:sphere-tb-pdf) summarizes these functions.
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-\begin{table}
-
-\caption{\label{tab:sphere-tb-pdf}cardinalR sphere data generation functions}
-\centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{8cm}}
-\toprule
-Function & Explanation\\
-\midrule
-gen\_circle & Circle.\\
-gen\_curvycycle & Curvy cell cycle.\\
-gen\_unifsphere & Uniform sphere.\\
-gen\_hollowsphere & Hollow sphere.\\
-gen\_gridedsphere & Grided sphere.\\
-gen\_clusteredspheres & Multiple small spheres within a big sphere.\\
-gen\_hemisphere & Hemisphere.\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-
-:::
-:::
-
-
-The simplest case, `gen_circle(n, p)` creates a unit circle in two dimensions, with the remaining dimensions forming sinusoidal extensions of the angular parameter at progressively smaller scales (Figure \@ref(fig:sphere-proj) a). Let a latent angle variable $\theta$ is uniformly sampled from the interval $[0, 2\pi]$. Coordinates in the first two dimensions represent a perfect circle on the plane: $$X_1 = \cos(\theta), \quad X_2 = \sin(\theta).$$ For dimensions $X_3$ through $X_p$, sinusoidal transformations of the angle $\theta$ are introduced. The first component is a scaling factor that decreases with the dimension index, defined as $\text{scale}_j = \sqrt{(0.5)^{j-2}}$ for $j = 3, \dots, p$. The second component is a phase shift that is proportional to the dimension index, specifically designed to decorrelate the curves, given by the formula $\phi_j = (j - 2)\pi/2p$. Each additional dimension is computed as: $X_j = \text{scale}_{j}\sin(\theta + \phi_j), \quad j = 3, \dots, p$.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-circle <- gen_circle(n = 1000, p = 4)
-```
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
+::: {.cell layout-align="center"}
 
 :::
 
 
 
-::: {.cell}
+::: {.cell layout-align="center"}
 
 :::
 
 
 
-::: {.cell}
+::: {.cell layout-align="center"}
 
 :::
 
 
-For the one-dimensional nonlinear cycle embedded in $p\text{-}D$ space, `gen_curvycycle(n, p)` (Figure \@ref(fig:sphere-proj) b), let a latent angle variable $\theta$ is uniformly sampled from the interval $[0, 2\pi]$. The first three dimensions define a non-circular closed curve, referred to as a "curvy cycle". In this configuration, $X_1 = \cos(\theta)$ represents horizontal oscillation, while $X_2 = \sqrt{3}/3 + \sin(\theta)$ introduces a vertical offset to avoid centering the curve at the origin. Additionally, $X_3 = 1/3\cos(3\theta)$ introduces a third harmonic perturbation that intricately folds the curve three times along its path, creating a unique and complex shape that oscillates in both dimensions while incorporating the effects of the harmonic perturbation.
 
-Together, these define a periodic, non-trivial, closed curve in $3\text{-}D$ with internal folds that produce a more complex geometry than a standard circle or ellipse. For dimensions $X_4$ through $X_p$, additional structured variability is introduced through decreasing amplitude scaling and phase-shifted sine waves. The scaling factor is defined as $\text{scale}_j = \sqrt{(0.5)^{j-3}}$ for $j$ ranging from $4$ to $p$, which means that the amplitude decreases as the dimension increases. Each dimension $X_j$ is then calculated using the formula $X_j = \text{scale}_j\sin(\theta + \phi_j)$, where the phase shift $\phi_j$ is given by $\phi_j = (j - 2)\pi/2p$. 
+::: {.cell layout-align="center"}
 
-
-::: {.cell}
-
-```{.r .cell-code}
-curvycycle <- gen_curvycycle(n = 1000, p = 4)
-```
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-Building on simple circular structures, the `gen_unifsphere(n, r)` function function extends the idea to three dimensions by generating $n$ observations approximately uniformly distributed on the surface of a sphere of radius $r$.. Each observation is computed from spherical coordinates, with $u \sim U(-1, 1)$ representing $\cos(\phi)$ and $\theta \sim U(0, 2\pi)$ the azimuthal angle. Cartesian coordinates are then defined as $$X_1 = r\sqrt{1 - u^2}\cos(\theta), \quad X_2 = r\sqrt{1 - u^2}\sin(\theta),\text{ and }X_3 = ru,$$ ensuring uniform distribution on the surface (not within) of the sphere. 
-
-
-::: {.cell}
-
-```{.r .cell-code}
-unifsphere <- gen_unifsphere(n = 1000, r = 1)
-```
-:::
-
-
-In contrast, the `gen_hollowsphere(n, p)` function, a wrapper around `geozoo::sphere.hollow()`, generates $n$ points uniformly distributed only on the surface of the $(p-1)$-dimensional sphere embedded in $\mathbb{R}^p$. This results in a hollow shell-like structure with no interior points. For example, when $p=3$, `gen_unifsphere()` produces a solid ball in $3\text{-}D$ space, whereas `gen_hollowsphere()` produces only the spherical boundary. These paired structures allow controlled experiments to investigate how algorithms behave when data is concentrated throughout the full volume versus constrained to the boundary.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-hollowsphere <- gen_hollowsphere(n = 1000, p = 4)
-```
-:::
-
-
-In addition, the `gen_gridedsphere(n)` function constructs a $p\text{-}D$ dataset consisting of approximately $n$ points that are evenly distributed on the surface of the unit $(p-1)$-sphere embedded in $\mathbb{R}^p$ (Figure \@ref(fig:sphere-proj) d). The method relies on forming a regular grid in spherical coordinates, parameterized by $(p-1)$ angular variables: for dimensions $j = 1, \dots, p-2$ the polar angles are drawn from $[0, \pi]$, while the final angle ($j = p-1$) represents the azimuth and is drawn from $[0, 2\pi]$. The number of grid steps along each angular dimension is chosen by decomposing $n$ into $(p-1)$ approximately equal integer factors using the helper function `gen_nproduct(n, p - 1)`.
-
-Each grid point is subsequently mapped into Cartesian space via the standard hyperspherical-to-Cartesian transformation,
-
-$$
-\begin{aligned}
-X_1 &= \cos(\theta_1), \\
-X_2 &= \sin(\theta_1)\cos(\theta_2), \\
-X_3 &= \sin(\theta_1)\sin(\theta_2)\cos(\theta_3), \\
-&\;\;\vdots \\
-X_{p-1} &= \sin(\theta_1)\sin(\theta_2)\cdots \sin(\theta_{p-2})\cos(\theta_{p-1}), \\
-X_p &= \sin(\theta_1)\sin(\theta_2)\cdots \sin(\theta_{p-2})\sin(\theta_{p-1}).
-\end{aligned}
-$$
-
-The result is a deterministic grid of points lying exactly on the surface of the unit $(p-1)$-sphere, without any additional noise dimensions.
-
-For more heterogeneous structures, the `gen_clusteredspheres(n, k, r, loc)` function generates one large sphere of radius $r_1$ and $k$ smaller spheres of radius $r_2$, each centered at a different random location (Figure \@ref(fig:sphere-proj) e). A large uniform sphere centered at the origin is created by sampling $n_1$ points uniformly on the surface of a $p\text{-}D$ sphere with a radius of $r_1$. The sampling is executed using the function `gen_unifsphere(n_1, r_1)`, which generates the desired points in the specified dimensional space. In generation of $k$ smaller uniform spheres, each sphere contains $n_2$ points that are sampled uniformly on a sphere with a radius of $r_2$. These spheres are positioned at distinct random locations in $p$-space, with the center of each sphere being drawn from a normal distribution $N(0, \texttt{loc}^2 I_p)$. Points on spheres are generated using the standard hyperspherical method, which involves sampling $u \sim U(-1, 1)$ to determine the cosine of the polar angle, and sampling $\theta \sim U(0, 2\pi)$ to determine the azimuthal angle (for $3\text{-}D$). Each observation is classified by cluster, with labels such as "big" for the large central sphere and "small_1" to "small_k" for the smaller spheres.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-clusteredspheres <- gen_clusteredspheres(n = c(1000, 100), k = 3, r = c(15, 3),
-                                         loc = 10 / sqrt(3)) |>
-  dplyr::select(-cluster)
-```
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
 :::
-
 
-Finally, the `gen_hemisphere(n, p)` function restricts sampling to a hemisphere of a $4\text{-}D$ sphere (Figure \@ref(fig:sphere-proj) f). Using spherical coordinates, the azimuthal angle $\theta_1 \sim U(0, \pi)$ in the $(x_1, x_2)$ plane, while the elevation angle $\theta_2 \sim U(0, \pi)$ in the $(x_2, x_3)$ plane. Additionally, $\theta_3 \sim U(0, \pi/2)$ in the $(x_3, x_4)$ plane, ensuring that the points remain restricted to a hemisphere. The coordinates are transformed into $4\text{-}D$ Cartesian space: $$X_1 = \sin(\theta_1)\cos(\theta_2), \quad X_2 = \sin(\theta_1)\sin(\theta_2), \quad X_3 = \cos(\theta_1)\cos(\theta_3), \quad X_4 = \cos(\theta_1)\sin(\theta_3).$$ This produces points on one side of a $4\text{-}D$ unit sphere, effectively generating a $4\text{-}D$ hemisphere. 
 
 
-::: {.cell}
+::: {.cell layout-align="center"}
 
 :::
 
@@ -1006,360 +93,117 @@ Finally, the `gen_hemisphere(n, p)` function restricts sampling to a hemisphere 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Three $2\text{-}D$ projections from $4\text{-}D$, `circle` (a1-a3), `curvycycle` (b1-b3), and, $3\text{-}D$ `clusteredspheres` (c1-c3). The `circle` structure forms a smooth, closed loop, while `curvycycle` shows a wavy, continuous pattern forming a twisted ring. The `clusteredspheres` dataset displays multiple compact spherical groups that are clearly separated in higher dimensions but overlap slightly in some $2\text{-}D$ projections, highlighting how projection can distort spatial relationships. These projections show how simple cyclic, wavy curvilinear, and clustered structures appear in $2\text{-}D$, emphasizing the effects of projection on density, continuity, and separation](05-chap5_files/figure-pdf/sphere-proj-1.pdf){fig-align='center' fig-pos='H' width=100%}
+![A \gD{} tSNE layout (left) and four \gD{} projections (a1–a4) of the same \hD{} data. The data consist of three main structures: a star-shaped, a curvilinear, and a Gaussian-shaped clusters. While the tour consistently show the star-shaped cluster as a single coherent group, the \gD{} tSNE layout fragments this structure into several smaller clusters. This illustrates how NLDR may distort global structure, making the same \hD{} cluster appear as multiple clusters in the \gD{} layout.](05-chap5_files/figure-pdf/fig-nldr-layouts-1.pdf){#fig-nldr-layouts fig-align='center' fig-pos='H' width=100%}
 :::
 :::
 
 
-#### Swiss Roll 
+<!-- XXX Expectation from the study: (1) When sample size increases, the structure are more visible, (2) When distance increases the structure can be distorted in some methods, (3) When adding noise will generate new clusters, (4) When changing the n_neighbour parameter than the default: (less) not enough to preserve the structure, (greater) more convenient to preserve the non-linear structure. -->
 
-The Swiss roll is a standard nonlinear manifold, representing a \gD{} plane curled into $3\text{-}D$. The `gen_swissroll(n, w)` generates points as $X_1 = t \cos(t), \quad X_2 = t \sin(t), \quad X_3 \sim U(w_1, w_2), \quad t \sim U(0, 3\pi).$
+The dilemma for the analyst is then understanding **why viewers misidentify the data displayed in the \gD{} NLDR layout and high-dimensional view when the inter-cluster distance vary**. The research described here provides evidence through a cognitive perception experiment.
+
+<!--need to update-->
+The paper is organized as follows. @sec-background provides a summary of the literature on NLDR, high-dimensional data, and visualization methods. @sec-experiment describes the experiment designed to examine people's perception to assess how viewers recognize structure differently from the NLDR layout and the tour view. @sec-results discusses the collected data and results. Limitations are provided in @sec-limitations. A discussion of the presented work, and ideas for future directions are described in @sec-conclusion.
+
+## Background {#sec-background}
+
+Historically, \gD{} representations of \pD{} data have been obtained through techniques based on multidimensional scaling (MDS) [@kruskal1964], including principal component analysis (PCA) (for an overview see @jolliffe2011). These methods aim to construct a \gD{} layout that preserves pairwise distances between observations in the original space by minimizing a stress function. Variants such as non-metric scaling [@saeed2018] and isomap [@silva2002] extend this approach to capture nonlinear relationships. Challenges inherent to high-dimensional data visualization—such as distance concentration and interpretability—are well recognized [@johnstone2009].
+
+Several NLDR methods have since become popular for generating \gD{} representations that aim to preserve either local or global structures of \gD{} data. Examples include tSNE, UMAP, PHATE, TriMAP, and PaCMAP. Each method uses different underlying principles—for example, tSNE and PHATE emphasize local relationships, while TriMAP and PaCMAP are designed to better capture global structure. As a result, these methods can produce very different \gD{} layouts of the same data, potentially leading to misinterpretation of structures such as cluster separation.
+
+An alternative to NLDR for visualizing \pD{} data is to use linear projections. PCA is the classical approach, producing new variables as linear combinations of the original dimensions. While PCA provides a single static projection that maximizes variance, tours—introduced by @As85—extend this idea by generating smooth sequences of linear projections, effectively creating a movie of the data viewed from multiple directions. Tours can reveal structure that may be hidden in any single projection by continuously changing the viewing angle through high-dimensional space. Many tour algorithms have since been developed and are implemented in the R package tourr [@wickham2011], with interactive variants available in langevitour [@harisson2024] and detourr [@hart2022]. Tours are valuable because they preserve the true linear geometry of the data—unlike NLDR methods, they do not warp distances or angles. This makes them faithful but sometimes visually cluttered representations: global structure can obscure local detail, and the phenomenon of piling [@laa2022]—where high-dimensional points project toward the center—can make clusters harder to distinguish.
+
+To assess how well NLDR methods preserve structures such as cluster separation, it is important to quantify inter-cluster distances. A variety of distance-based metrics have been proposed in the clustering and visualization literature [@tadeusz1974; @peter1987; @david1979], including minimum, maximum, and average distances between clusters, centroid distances, and ratios that combine between- and within-cluster variation. In this study, we focus on two complementary measures: the between-to-within (BW) ratio, which captures global separability, and the minimum distance between clusters, which reflects the closest approach of any two clusters. Together, these provide interpretable summaries of both overall and local cluster separation while accounting for within-cluster variability.
+
+The objective of this research is to conduct a cognitive perception experiment that examines how participants recognize and interpret structure differently when viewing a two-dimensional NLDR layout and a tour, generated with langevitour. We investigate how perceived structure changes as true cluster separation (as measured by BW ratio and minimum distance) increases, and how this perception differs across methods. These findings will help identify common misperceptions that can arise when analysts rely solely on NLDR layouts, and will inform better practice in interpreting and reporting structures seen in such visualizations.
+
+## Method {#sec-experiment}
+
+### What is a \gD{} NLDR plot?
+
+The \gD{} representation of the high-dimensional data constructed to preserve as much information, like clustering and non-linear relationships, as possible. There are various commonly used techniques for creating this \gD{} representation, including tSNE, and UMAP. These methods aim to identify a low-dimensional structure that captures the most important patterns or relationships in the data, allowing for visualization and easier interpretation. However, it is important to note that \gD{} embeddings can lose some information from the high-dimensional data, as they necessarily involve a loss of dimensionality.
+
+### What is a tour?
+
+The tour shows a sequence of two-dimensional linear projections of the high-dimensional data. It is similar to looking at shadows of a $3\text{-}D$ object, and trying to infer the shape of the $3\text{-}D$ object. Looking at linear projections of high-dimensional data is like looking at the shadows, and one hopes to gain a sense of what shapes exist in the data. For example, if the data separates into clusters in any of the projections, it means that there are clusters in the data in the high dimensions. If the data shows a non-linear or curvilinear shape it means that there are non-linear associations between some variables. If the data collapses to roughly a line it means that it lives in a lower dimensional space than the number of high dimensions. If the points moving differently from others, there are outliers or unusual observations in the high dimensions.
+
+### What is being tested?
+
+We are generally interested in testing whether "The two plots displays the same data" ($H_0$) against the broad alternative "The two plots do not display the same data" ($H_a$).
+
+Testing this broad null hypothesis ($H_0$) is practically challenging due to the variety of data structures involved. It can be both time-consuming and computationally intensive. Therefore, we focused on one data structure that is particularly useful for investigation: three clusters where two clusters are close together, while one is more distant. Three clusters have different shapes and each cluster contain different number of points. The sample size is $7500$.
+
+Our hypothesis is as follows:
+
+$H_{0m1}$: The distance between the clusters has no effect on the probability of correctly identifying the \gD{} NLDR plot generated by NLDR method $m$ and the tour from the same data. Vs $H_{1m1}$: The distance between the clusters does have an effect on the probability of correctly identifying the \gD{} NLDR plot generated by NLDR method $m$ and the tour from the same data.
+
+This study aims to answer which NLDR methods are more accurate in identifying the same data structure in the \gD{} NLDR plot and the tour, as the distance increases, and to identify which types of data structure components are more prone to misidentification across methods.
+
+### Data generation
+
+For non-attention check attempts, $28$ data structures are generated, while only two data structures are generated for attention check attempts. Before being presented to participants, the data is *scaled*. 
+
+#### Non-attention check data
+
+For the experiment, three cluster data are generated. The three clusters contain different number of points and shapes. Let $C_1, C_2,$ and $C_3$ denote the centroids of three clusters. The pairwise distances between these centroids are calculated as: $d(C_1, C_2) = c_{12} \approx 2.17, \quad d(C_1, C_3) = c_{13} \approx 4, \quad d(C_2, C_3) \approx c_{23} = 3.6$. These results indicate that clusters $C_1$ and $C_2$ are in close proximity, whereas cluster $C_3$ is positioned further away from the other two clusters, suggesting a spatial separation within the data. The reason for using the distance between centroids is that it can be easily controlled. 
+
+In total, there are $28$ data structures used for the experiment. Out of these, $18$ data structures show the same structure in both the \gD{} NLDR plot and tour for each experiment, while the remaining $10$ data structures display different structures in the \gD{} NLDR plot and tour. This means that when data structure $19$ is displayed in the NLDR plot, data structure $20$ appears in the tour. 
+
+To systematically vary the degree of separation in the SAME trials, the original (medium large) centroid distances are scaled by four different factors: $0.1$ (small), $0.6$ (small medium), $0.9$ (medium), and $1.1$ (large). In contrast, data structures used for the DIFFERENT trials retained the original (medium-large) centroid distances.
+
+<!-- XXXX Overview data structure generation, add more details into the appendix -->
+
+#### Attention check data
+
+There are two sets of attention check data; one consisting of three Gaussian clusters and the other consisting of four Gaussian clusters. Each cluster is generated using a multivariate normal distribution where the mean vectors and variances were predefined. Specifically, for the three-cluster case, the mean vectors were set as $[1, 0, 0, 0]$, $[0, 1, 0, 0]$, and $[0, 0, 1, 1]$, with a common variance of $0.1$ for all clusters. For the four-cluster case, the mean vectors were defined as $[1, 0, 0, 1]$, $[0, 1, 1, 0]$, $[1, 0, 1, 0]$, and $[0, 1, 0, 1]$, also using a variance of $0.1$. This approach ensures that data points are normally distributed around the specified centroids, with the spread controlled by the variance parameter. Each Gaussian cluster dataset consists of \hD{} data with a sample size of $7500$, and each cluster contains an equal number of data points.
+
+### Experiment design
+
+The visual layout of the experiment for one participant is shown in @fig-exp-design. Each participant completed $20$ trials: $15$ SAME trials, in which the same data structure was shown in both the \gD{} NLDR plot and the tour; $4$ DIFFERENT trials, showing DIFFERENT data structures; and one attention check trial that could be either SAME or DIFFERENT. For the SAME, five NLDR methods (*tSNE, UMAP, PHATE, PaCMAP, and TriMAP*) were each paired with three of five distance scale factors (*small, small medium, medium, medium large, and large*), giving $15$ balanced combinations. In the DIFFERENT, four NLDR methods were randomly selected, with the remaining method assigned to the attention check trial. All DIFFERENT and attention check trials used a distance scale factor of *medium large*.
 
 
-::: {.cell}
 
-```{.r .cell-code}
-swissroll <- gen_swissroll(n = 1000, w = c(-1, 1))
-```
-:::
-
-
-Compared with `sndata::swiss_roll()` [@james2025], this implementation (i) samples $t$ over $[0, 3\pi]$ instead of $[1.5\pi, 4.5\pi]$, (ii) allows a flexible vertical range $w = (w_1, w_2)$ rather than fixing $z \in [0, z_{\max}]$, and (iii) returns a tibble with `x1, x2, x3` instead of adding a color variable. 
-
-The Swiss roll is a classic benchmark for manifold learning, illustrating how a curved surface can be “unrolled” into lower dimensions. Similar spiral-like forms appear in galaxies, protein folding, and coiled materials [@dimitris2002].
-
-#### Trefoil knots
-
-<!--https://laustep.github.io/stlahblog/posts/TorusKnot4D.html-->
-
-The Trefoil is a closed, nontrivial one-dimensional manifold embedded in $3\text{-}D$ or $4\text{-}D$ space (Figure \@ref(fig:trefoil-proj)). The trefoil features topological complexity in the form of self-overlaps, making it a valuable test case for evaluating the ability of non-linear dimension reduction methods to preserve global structure, loops, and embeddings in high-dimensional data. Table \@ref(tab:trefoil-tb-pdf) summarizes these functions.
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
+::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-\begin{table}
-
-\caption{\label{tab:trefoil-tb-pdf}cardinalR trefoil data generation functions}
-\centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{8cm}}
-\toprule
-Function & Explanation\\
-\midrule
-gen\_trefoil4d & Trefoil in 4-D.\\
-gen\_trefoil3d & Trefoil in 3-D.\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-
+![Experiment design for one participant. Shapes represent distance scale factors, and fill colors denote NLDR methods. Each participant completed 20 trials: $15$ SAME trials showing the same data structure in both the \gD{} plot and tour (purple), $4$ DIFFERENT trials showing different structures (light blue), and one attention check (SAME or DIFFERENT) (red). In SAME trials, five NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) were combined with three of five distance scale factors (small, small medium, medium, medium large, and large). For DIFFERENT trials, four NLDR methods were randomly selected, and the remaining method was used in the attention check. All DIFFERENT and attention check trials used a distance scale factor of *medium large*.](../figures/vis-exp/exp_design.png){#fig-exp-design fig-align='center' width=100%}
 :::
 :::
 
 
-For the $4\text{-}D$ trefoil knot, the function `gen_trefoil4d(n, steps)` generates the structure on the $3$-sphere ($S^3 \subset \mathbb{R}^4$) using two angular parameters, $\theta$ and $\phi$. A band of thickness around the knot path is controlled by the `steps` argument, while the number of $\theta$ and $\phi$ values is determined by the `steps` and `n` arguments, respectively (Figure \@ref(fig:trefoil-proj) a). The coordinates are defined as $$X_1 = \cos(\theta) \cos(\phi), \quad X_2 = \cos(\theta) \sin(\phi), \quad X_3 = \sin(\theta) \cos(1.5 \phi),\text{ and }X_4 = \sin(\theta) \sin(1.5 \phi),$$ where $\theta$ and $\phi$ trace the knot’s path. 
+### Treatments
+
+Two primary treatments were considered in the experiment: the NLDR method and the distance scale factor.
+
+The first treatment consisted of five NLDR methods: *tSNE, UMAP, PHATE, PaCMAP, and TriMAP* each producing a \gD{} representation.
+
+The second treatment, the distance scale factor, controlled the degree of cluster separation in the high-dimensional space. Five categorical levels: *small, small–medium, medium, medium–large, and large* were defined to represent increasing degrees of separability. This categorical design enhances interpretability and perceptual distinctness, allowing participants to discern meaningful structural differences while maintaining robustness against minor data variations.
+
+Cluster separability was quantified using two complementary measures: the *between-to-within (BW) ratio* and the *minimum inter-cluster distance*. A higher value of either metric indicates greater separation among clusters (@fig-dist-metrics). 
+
+The BW ratio, defined as
+
+$$
+\text{BW Ratio} = \frac{B}{W} = \frac{ \sum_{i=1}^{3} n_i \cdot \|\bar{\mathbf{x}}_i - \bar{\mathbf{x}}\|^2 }{ \sum_{i=1}^{3} \sum_{\mathbf{x}_j \in C_i} \|\mathbf{x}_j - \bar{\mathbf{x}}_i\|^2 }.
+$$
+
+where (B) and (W) denote between- and within-cluster dispersion, respectively; $\bar{\mathbf{x}}_i$ is the centroid of cluster $C_i$; $\bar{\mathbf{x}}$ is the overall centroid; and $n_i$ is the number of observations in cluster $C_i$. 
+
+In addition, the minimum distance was used as a complementary measure of global separation:
+
+$$
+\text{minimum distance} = \min_{k \neq \ell} \min_{x \in C_k, , y \in C_\ell} d(x, y),
+$$
+
+which captures the closest proximity between any two clusters.
 
 
-::: {.cell}
-
-```{.r .cell-code}
-trefoil4d <- gen_trefoil4d(n = 500, steps = 5)
-```
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
+::: {.cell layout-align="center"}
 
 :::
 
 
 
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-For the $3\text{-}D$ stereographic projection, `gen_trefoil3d(n, steps)` maps each point $(X_1, X_2, X_3, X_4) \in \mathbb{R}^4$ to $(X_1', X_2', X_3') \in \mathbb{R}^3\text{ using }X_1' = X_1 / (1 - X_4), \quad X_2' = X_2 / (1 - X_4),\text{ and }X_3' = X_3 / (1 - X_4),$ excluding points where $X_4 = 1$ to avoid division by zero (Figure \@ref(fig:trefoil-proj) b). 
-
-
-::: {.cell}
-
-```{.r .cell-code}
-trefoil3d <- gen_trefoil3d(n = 500, steps = 5)
-```
-:::
-
-
-The trefoil knot appears in molecular biology (DNA/protein knotting), fluid dynamics (knotted vortices), and physics (topological phases), making it a useful benchmark for testing whether dimension reduction preserves global loops and topology [@witten1985; @arsuaga2002].
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-![Three $2\text{-}D$ projections from $4\text{-}D$, `trefoil4d` (a1-a3) and $3\text{-}D$ `trefoil3d` (b1-b3) data. The `trefoil4d` structure represents a higher-dimensional extension of the classic trefoil knot, revealing complex twisting and looping patterns that remain continuous across projections. In contrast, the `trefoil3d` dataset maintains a simpler, more compact knot-like form, showing how dimensional extension adds curvature and separation in the embedded space. These projections illustrate a range of looping structures in high-dimensions.](05-chap5_files/figure-pdf/trefoil-proj-1.pdf){fig-pos='H' width=100%}
-:::
-:::
-
-
-#### Trigonometric
-
-Trigonometric-based structures provide flexible ways to simulate complex curved patterns and spirals that often arise in real-world high-dimensional data, such as in biological trajectories, or physical systems (Figure \@ref(fig:triginometric-proj)). The main geometry is defined by the first few coordinates: crescents ($p=2$), cylinders, spirals, and helices ($p=4$). These structures are particularly valuable for testing how well dimension reduction and clustering algorithms preserve intricate geometric and topological features [@calladine1997; @gershenfeld2000]. Table \@ref(tab:trigonometric-tb-pdf) summarizes these functions.
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-\begin{table}
-
-\caption{\label{tab:trigonometric-tb-pdf}cardinalR trigonometric data generation functions}
-\centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{8cm}}
-\toprule
-Function & Explanation\\
-\midrule
-gen\_crescent & Crescent pattern.\\
-gen\_curvycylinder & Curvy cylinder.\\
-gen\_sphericalspiral & Spherical spiral.\\
-gen\_helicalspiral & Helical spiral.\\
-gen\_conicspiral & Conic spiral.\\
-gen\_nonlinear & Nonlinear hyperbola.\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-
-:::
-:::
-
-
-First, the `gen_crescent(n, p)` function generates a $p$-dimensional dataset of $n$ observations based on a $2\text{-}D$ crescent-shaped manifold with optional structured high-dimensional noise (Figure \@ref(fig:triginometric-proj) a). Let $\theta \in [\pi/6, 2\pi]$ be a sequence of $n$ evenly spaced angles. The corresponding $2\text{-}D$ coordinates are defined by: $$X_1 = \cos(\theta), \quad X_2 = \sin(\theta).$$
-
-
-::: {.cell}
-
-```{.r .cell-code}
-crescent <- gen_crescent(n = 1000)
-```
-:::
-
-
-Second, the `gen_curvycylinder(n, p, h)` function generates a $p$-dimensional dataset of $n$ observations structured as a $3\text{-}D$ cylindrical manifold with an added nonlinear curvy dimension, and optional noise dimensions when $p > 4$ (Figure \@ref(fig:triginometric-proj) b). The core structure consists of a circular base and height values, extended by a nonlinear fourth dimension. Let $\theta \sim U(0, 3\pi)$ represent a random angle on a circular base and $z \sim U(0, h)$ represent the height along the cylinder. The coordinates are defined as: $X_1 = \cos(\theta)$ (Circular base, x-axis), $X_2 = \sin(\theta)$ (Circular base, y-axis), $X_3 = z$ (Linear height), and $X_4 = \sin(z)$ (Nonlinear curvy variation along height).  
-
-
-::: {.cell}
-
-```{.r .cell-code}
-curvycylinder <- gen_curvycylinder(n = 1000, h = 10)
-```
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-For a spiraling path on a spherical surface in the first four dimensions, `gen_sphericalspiral(n, p, spins)` (Figure \@ref(fig:triginometric-proj) c), let $\theta \in [0, 2\pi \times \text{spins}]$ be the azimuthal angle (longitude), controls the number of spiral turns and the $\phi \in [0, \pi]$be the polar angle (latitude), controls the vertical sweep from the north to the south pole. Cartesian coordinates from spherical conversion: $X_1 = \sin(\phi)\cos(\theta)$, $X_2 = \sin(\phi)\sin(\theta)$, $X_3 = \cos(\phi) + \varepsilon$, where $\varepsilon \sim U(-0.5, 0.5)$ introduces vertical jitter, and $X_4 = \theta / \max(\theta)$: a normalized progression along the spiral path. This generates a spherical spiral curve embedded in $4\text{-}D$ space, combining both circular and vertical movement, with gentle curvature and non-linear progression.  
-
-
-::: {.cell}
-
-```{.r .cell-code}
-sphericalspiral <- gen_sphericalspiral(n = 1000, spins = 1)
-```
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-For a helical spiral in four dimensions, `gen_helicalspiral(n, p)` (Figure \@ref(fig:triginometric-proj) d), let $\theta \in [0, 5\pi/4]$ be a sequence of angles controlling rotation around a circle. Cartesian coordinates; $X_1 = \cos(\theta)$: circular trajectory along the x-axis, $X_2 = \sin(\theta)$: circular trajectory along the y-axis, $X_3 = 0.05\theta + \varepsilon_3$, with $\varepsilon_3 \sim U(-0.5, 0.5)$: linear progression (height) with vertical jitter, simulating a helix, and $X_4 = 0.1\sin(\theta)$: oscillates with $\theta$, representing a periodic "wobble" along the fourth dimension. 
-
-
-::: {.cell}
-
-```{.r .cell-code}
-helicalspiral <- gen_helicalspiral(n = 1000)
-```
-:::
-
-
-Similarly, the `gen_conicspiral(n, p, spins)` function generates a dataset of $n$ points forming a conical spiral in the first four dimensions of $p\text{-}D$ (Figure \@ref(fig:triginometric-proj) e). The geometry combines radial expansion, vertical elevation, and spiral deformation, simulating a structure that fans out like a $3\text{-}D$ conic helix. The shape is defined by parameter $\theta \in [0, 2\pi\text{spins}]$, controlling the angular progression of the spiral. The Archimedean spiral in the horizontal plane is represented by; $X_1 = \theta\cos(\theta)$ for radial expansion in x, and $X_2 = \theta\sin(\theta)$ for radial expansion in y. The growth pattern resembles a cone, with the height increasing according to $X_3 = 2\theta / \max(\theta) + \varepsilon_3$, with $\varepsilon_3 \sim U(-0.1, 0.6).$ Spiral modulation in the fourth dimension is represented by $X_4 = \theta\sin(2\theta) + \varepsilon_4$, with $\varepsilon_4 \sim U(-0.1, 0.6)$ which simulates a twisting helical component in a non-radial dimension. 
-
-
-::: {.cell}
-
-```{.r .cell-code}
-conicspiral <- gen_conicspiral(n = 1000, spins = 1)
-```
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-Finally, the `gen_nonlinear(n, p, hc, non_fac)` function simulates a non-linear $2\text{-}D$ surface embedded in higher dimensions, constructed using inverse and trigonometric transformations applied to independent variables (Figure \@ref(fig:triginometric-proj) f). The $X_{1} \sim U(0.1, 2)$: base variable (avoids zero to prevent division errors), $X_{3} \sim U(0.1, 0.8)$: independent auxiliary variable, $X_{2} = hc/X_{1} + \text{nonfac}\sin(X_{1})$: non-linear combination of hyperbolic and sinusoidal transformations, creating sharp curvature and oscillation, and $X_{4} = \cos(\pi X_{1}) + \varepsilon$, with $\varepsilon \sim U(-0.1, 0.1)$: additional nonlinear variation based on cosine, simulating more subtle periodic structure. These transformations together result in a non-linear surface warped in multiple ways: sharp vertical shifts due to inverse terms, smooth waves from sine and cosine, and additional jitter. 
-
-
-::: {.cell}
-
-```{.r .cell-code}
-nonlinear <- gen_nonlinear(n = 1000, hc = 1, non_fac = 0.5)
-```
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
+::: {.cell layout-align="center"}
 
 :::
 
@@ -1367,52 +211,76 @@ nonlinear <- gen_nonlinear(n = 1000, hc = 1, non_fac = 0.5)
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Three $2\text{-}D$ projections from $4\text{-}D$, for the `curvycylinder` (a1-a3), `sphericalspiral` (b1-b3), `conicspiral` (c1-c3), and `nonlinear` (d1-d3) data. The `curvycylinder` shows a cylindrical manifold with a nonlinear twist along its height, producing smooth, continuous curvature. The `sphericalspiral` forms a spiral path on a spherical surface, combining circular and vertical motion in a helical form. The `conicspiral` spreads radially while ascending, forming a conical helix with twisting variations in a non-radial dimension. The `nonlinear` dataset exhibits a warped $2\text{-}D$ surface with sharp oscillations and smooth waves, reflecting complex nonlinear interactions. Each shows variations in curvature, density, and continuity.](05-chap5_files/figure-pdf/triginometric-proj-1.pdf){fig-align='center' fig-pos='H' width=100%}
+![Distribution of distance metric values across distance scale factors used as treatments in the experiment. (a) Between-to-within (BW) ratio and (b) minimum inter-cluster distance, each plotted against five categorical distance scale factors: small (S), small–medium (SM), medium (M), medium–large (ML), and large (L). Both metrics increase systematically with the scale factor, confirming that the distance scale treatment effectively controls cluster separability in the high-dimensional space.](05-chap5_files/figure-pdf/fig-dist-metrics-1.pdf){#fig-dist-metrics fig-align='center' width=100%}
 :::
 :::
 
 
-### Generate a spherical or hyperspherical hole within a structure
 
-The package provides functionality for generating datasets with spherical hole (in $2\text{-}D$/$3\text{-}D$) or, more generally, hyperspherical hole (in higher dimensions). These structures are valuable for evaluating how dimension reduction methods and clustering algorithms handle incomplete manifolds or missing regions of the data space. A hyperspherical hole introduces topological complexity: the structure remains continuous but contains excluded regions (voids) that algorithms must correctly represent in lower-dimensional embeddings.
+### Participant recruitment
 
-The core function `gen_hole(df, anchor, r)` removes points from a dataset that fall within a user-specified hypersphere. Formally, given data points ($x \in \mathbb{R}^p$), a center ($a \in \mathbb{R}^p$), and radius ($r > 0$), only points satisfying $||x - a||_2 > r$ are retained. The anchor point ($a$) can either be user-specified or default to the dataset mean, and radius ($r$) is controlled by the user, with safeguards to avoid trivial or degenerate cases. Because it operates generically on any dataset, spherical or hyperspherical holes can be embedded in a wide range of geometric structures.
+Participants were recruited from the Prolific crowd-sourcing platform [@palan2018]. The study expects that the participants are uninvolved judges with no prior knowledge of the data to avoid inadvertently affecting results. Pre-screening procedures were applied the recruitment: potential participants needed with fluent in English and have completed at least 10 Prolific studies with a 98% approval rate.
 
-Two specialized wrappers illustrate this idea. The function `gen_scurvehole(n, r_hole)` generates an S-curve with a spherical hole by applying `gen_hole()` to the output of `gen_scurve()`. This structure has been used in prior diagnostic studies of NLDR methods, since it tests the ability of algorithms to capture non-linear manifolds that are not simply connected. The second wrapper, `gen_unifcubehole(n, p, r_hole)`, generates uniformly sampled cube data with a hyperspherical hole. By embedding a hyperspherical void inside a convex high-dimensional structure, this creates non-convex regions that challenge algorithms in terms of separability and neighborhood preservation.
+### Data collection
 
-### Generate noise dimensions
+The survey web application, [Match-a-roo](https://ebsmonash.shinyapps.io/web_game/) was used for data collection. Participants provided introduction and instructions for the survey. Before start the survey, the participants can lead to the "example" page which allow them to experiment with the data collection interface and practice deciding whether the two displays shown the same data or not. The main purpose of using the "example" was merely intended to familiarize the participants with the questions which would be asked as well as the process of deciding whether the two displays shown the same data or not. The interface did not provide any numeric feedback as to participant correctness.
 
-High-dimensional data structures often benefit from the addition of auxiliary noise dimensions, which can be used to assess the robustness of dimensionality reduction and clustering algorithms. The functions in this section provide flexible ways to generate random noise dimensions, ranging from purely random Gaussian variables to more structured, wavy patterns that mimic non-linear distortions in high-dimensional space. These functions can be applied independently or combined with other geometric structures to create complex simulated datasets. Table \@ref(tab:noise-tb-pdf) details these functions.
+The participants were asked to provide their Prolific ID and their consent to the responses being used for analysis. After giving consent, the participant can start the trials. Two visual displays of data were shown where the data may be the SAME or DIFFERENT. One of the visual displays is a \gD{} NLDR plot, and the other is a tour. The participants were asked to decide whether that data was the same in both displays and to report their confidence about their choice and any comments about the answer.
+
+After completing $20$ evaluations, they were asked for their demographics which included preferred pronoun, the highest level of education achieved, their age category, whether they used principal component analysis in their work, and whether they applied NLDR techniques such as tSNE and UMAP.
+
+## Results {#sec-results}
+
+The data was collected from $127$ participants, resulting in $127 \times 15 = 1905$ evaluations, excluding the attention check trials and the trials shows the different data in two displays.
+
+### Generalized Linear Mixed-Effects Models
+
+Two generalized linear mixed effects models [@mcculloch2001] were fitted to model the likelihood of detecting the data structure in both the \gD{} NLDR plot and the tour. Both models accounted for participant-level variability and the effect of distance measures under different NLDR methods. The general form of the model is given by:
+
+$$\text{logit}(P(y_{ijm} = 1)) = \mu_{m} + \beta_{m} d_{i} + \gamma_{j}$$ {#eq-equation1}
+
+where $\mu_{m}$ is the overall mean for NLDR method $m$, $d_i$ is the distance measure for the data structure $i = 1, \dots, 18$, $\beta_m$ is the fixed effect of BW ratio under NLDR method $m$, $\gamma_j$ is the random effect of the participant $j = 1, 2, \dots, 127$, where $\gamma_j \sim N(0, \sigma_\gamma^2)$. Separate models were fitted using $d_i$ as either the BW ratio or the minimum distance. The NLDR methods denoted by $m$ can include TriMAP, UMAP, PaCMAP, tSNE, and PHATE.
+
+### Correct proportions
+
+The proportion of correct identifications across the different NLDR methods and distance measures was examined to assess how effectively each method preserves cluster separation. Two generalized linear mixed-effects models were fitted using either the scaled BW ratio (@fig-glmm, @tbl-glmm) or the exp(scaled minimum distance) (@fig-glmm-min, @tbl-glmm-min) as predictors. Both models included participant-level random effects to account for within-subject variability and NLDR method as a fixed factor interacting with the distance measure.
+
+Results from the model using the scaled BW ratio (@tbl-glmm) indicate that cluster separability positively influences correct identification for most methods. As shown in @fig-glmm, *UMAP* and *PaCMAP* demonstrate increased accuracy as the scaled BW ratio increases, suggesting that these methods more effectively capture distinct cluster boundaries. *tSNE* and *PHATE* show declining accuracy with larger BW ratios, implying potential over-separation or distortion of cluster geometry at higher distances. *TriMAP* maintains stable performance across the range of separations, indicating robustness to moderate variations in between-cluster distance.
 
 
-::: {.cell}
+::: {.cell layout-align="center"}
 
 :::
 
 
 
-::: {.cell}
+::: {.cell layout-align="center"}
 
 :::
 
 
 
-::: {.cell}
+::: {#tbl-glmm .cell layout-align="center" tbl-cap='Logistic regression model results for correct identification probability as a function of scaled BW ratio and NLDR method (TriMAP as baseline). The table shows estimates, standard errors, test statistics, and *p*-values for main effects and interactions. Significant positive associations with scaled BW ratio indicate improved correctness with greater cluster separation, while negative associations suggest reduced clarity. Significance codes: ($\emph{p}\leq 0.001$ \'`***`\', $\emph{p}\leq 0.01$ \'`**`\', $\emph{p}\leq 0.05$ \'`*`\', $\emph{p}\leq 0.1$ \'`.`\').'}
 ::: {.cell-output-display}
 \begin{table}
-
-\caption{\label{tab:noise-tb-pdf}cardinalR noise dimensions generation functions}
 \centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{10.5cm}}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}{lrrrrl}
 \toprule
-Function & Explanation\\
+term & estimate & std.error & statistic & p.value & p\_val\_sig\\
 \midrule
-gen\_noisedims & Gaussian noise dimensions with optional mean and standard deviation.\\
-gen\_wavydims1 & Wavy noise dimensions based on a user-specified theta sequence with added jitter.\\
-gen\_wavydims2 & Wavy noise dimensions using polynomial transformations of an existing dimension vector.\\
-gen\_wavydims3 & Wavy noise dimensions using a combination of polynomial and sine transformations based on the first three dimensions of a dataset.\\
+(Intercept) & 0.65 & 0.17 & 3.83 & 0.00 & ***\\
+methodUMAP & -0.66 & 0.21 & -3.10 & 0.00 & ***\\
+methodPaCMAP & -0.64 & 0.21 & -3.00 & 0.00 & ***\\
+methodtSNE & -1.02 & 0.22 & -4.67 & 0.00 & ***\\
+methodPHATE & -1.37 & 0.22 & -6.24 & 0.00 & ***\\
+bw\_ratio\_scaled & 0.03 & 0.49 & 0.07 & 0.95 & \\
+methodUMAP:bw\_ratio\_scaled & 1.12 & 0.69 & 1.63 & 0.10 & .\\
+methodPaCMAP:bw\_ratio\_scaled & 0.48 & 0.68 & 0.70 & 0.48 & \\
+methodtSNE:bw\_ratio\_scaled & -2.65 & 0.78 & -3.37 & 0.00 & ***\\
+methodPHATE:bw\_ratio\_scaled & -0.95 & 0.72 & -1.32 & 0.19 & \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 
@@ -1420,81 +288,62 @@ gen\_wavydims3 & Wavy noise dimensions using a combination of polynomial and sin
 :::
 
 
-The `gen_noisedims(n, p, m, s)` function generates $p$ independent Gaussian noise dimensions,
 
-$$
-X_j \sim N(m_j, s_j^2), \quad j = 1, \dots, p,
-$$
-
-with odd-numbered dimensions multiplied by $-1$ to introduce sign alternation, enhancing variability and decorrelation. 
-
-For scenarios where noise should follow a smooth wavy pattern, `gen_wavydims1(n, p, theta)` generates dimensions as
-
-$$
-X_j = \alpha_j \theta + \varepsilon_j, \quad \varepsilon_j \sim N(0, \sigma^2), \quad j = 1, \dots, p,
-$$
-
-where each dimension is scaled by a different factor $\alpha_j$, producing structured noise that oscillates along the latent parameter $\theta$, mimicking trends or trajectories observed in real-world data.
-
-The `gen_wavydims2(n, p, x_1)` function extends this approach by applying a non-linear transformation to an existing dimension vector $x_1$:
-
-$$
-X_j = \beta_j \, (-1)^{\lfloor j/2 \rfloor} \, x_1^{k_j} + \varepsilon_j, \quad j = 1, \dots, p,
-$$
-
-where $k_j$ is a randomly chosen polynomial power, $\beta_j$ is a scaling factor, and $\varepsilon_j$ is small uniform noise.
-
-Finally, `gen_wavydims3(n, p, data)` generates noise for datasets with multiple correlated dimensions. The first three dimensions are small perturbations of the original coordinates $(X_1, X_2, X_3)$, while higher dimensions are constructed via non-linear combinations, including polynomial and trigonometric transformations, e.g.,
-
-$$
-X_j = f_j(X_1, X_2, X_3) + \varepsilon_j, \quad j > 3,
-$$
-
-producing high-dimensional noise that preserves some geometric correlation with the base structure while introducing additional complexity.
-
-### Multiple cluster examples
-
-By using the shape generators mentioned above, we can create various examples of multiple clusters. The package includes some of these examples, which are described in Table \@ref(tab:odd-shape-tb-pdf).
-
-
-::: {.cell}
+::: {.cell layout-align="center"}
 
 :::
 
 
 
-::: {.cell}
+::: {.cell layout-align="center"}
 
 :::
 
 
 
-::: {.cell}
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![Estimated probability of correctly identifying the true cluster structure across different values of the scaled BW ratio for five NLDR methods: TriMAP, UMAP, PaCMAP, tSNE, and PHATE. The left panel shows the estimated probabilities and associated standard errors across scaled BW ratio values. The right panels display the observed probabilities of correct identification (black dots), along with fitted logistic regression lines for each method. The scaled BW ratio quantifies the relative separation between clusters, with higher values indicating more distinct clustering. UMAP and PaCMAP show increased accuracy with higher BW ratios, while tSNE, and PHATE decline in performance. TriMAP remains stable across the range.](05-chap5_files/figure-pdf/fig-glmm-1.pdf){#fig-glmm fig-align='center' fig-pos='H' width=100%}
+:::
+:::
+
+
+Similarly, the model using exp(scaled minimum distance) (@tbl-glmm-min) confirms these trends (@fig-glmm-min). Higher values of exp(scaled minimum distance), representing greater spatial separation between clusters, are associated with improved correctness for *UMAP* and *PaCMAP*. In contrast, *tSNE* and *PHATE* again show a negative association with increasing separation, while *TriMAP* exhibits consistent performance. These patterns suggest that the relative cluster separability—whether quantified by BW ratio or minimum distance—plays a crucial role in how well NLDR methods reveal the underlying structure.
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {#tbl-glmm-min .cell layout-align="center" tbl-cap='Logistic regression model results for correct identification probability as a function of exp(scaled minimum distance) and NLDR method (TriMAP as baseline). The table shows estimates, standard errors, test statistics, and *p*-values for main effects and interactions. Significant positive associations with exp(scaled minimum distance) indicate improved correctness with greater cluster separation, while negative associations suggest reduced clarity. Significance codes: ($\emph{p}\leq 0.001$ \'`***`\', $\emph{p}\leq 0.01$ \'`**`\', $\emph{p}\leq 0.05$ \'`*`\', $\emph{p}\leq 0.1$ \'`.`\').'}
 ::: {.cell-output-display}
 \begin{table}
-
-\caption{\label{tab:odd-shape-tb-pdf}cardinalR multiple clusters generation functions}
 \centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{8.5cm}}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}{lrrrrl}
 \toprule
-Function & Explanation\\
+term & estimate & std.error & statistic & p.value & p\_val\_sig\\
 \midrule
-make\_mobiusgau & Möbius-like cluster combined with a Gaussian.\\
-make\_multigau & Multiple Gaussian clusters in high-dimensional space.\\
-make\_curvygau & Curvilinear cluster with a Gaussian cluster.\\
-make\_klink\_circles & K-link circular clusters (non-linear circular patterns).\\
-make\_chain\_circles & Chain-like circular clusters connected sequentially.\\
-make\_klink\_curvycycle & K-link curvy cycle clusters (curvilinear loop structures).\\
-make\_chain\_curvycycle & Chain-like curvy cycle clusters connected sequentially.\\
-make\_gaucircles & Circular clusters with a Gaussian cluster in the middle.\\
-make\_gaucurvycycle & Curvy circular clusters with a Gaussian in the middle.\\
-make\_onegrid & Single grid in two dimensions.\\
-make\_twogrid\_overlap & Two overlapping grids.\\
-make\_twogrid\_shift & Two grids shifted relative to each other.\\
-make\_shape\_para & Parallel shaped clusters.\\
-make\_three\_clust\_ & Three clusters with different shapes. (eg:- 01, 02, ..., 20)\\
+(Intercept) & 0.36 & 0.34 & 1.08 & 0.28 & \\
+methodUMAP & -1.03 & 0.45 & -2.28 & 0.02 & *\\
+methodPaCMAP & -0.57 & 0.45 & -1.27 & 0.20 & \\
+methodtSNE & -0.03 & 0.47 & -0.07 & 0.95 & \\
+methodPHATE & -0.73 & 0.47 & -1.56 & 0.12 & \\
+exp\_min\_dist\_scaled & 0.20 & 0.20 & 0.97 & 0.33 & \\
+methodUMAP:exp\_min\_dist\_scaled & 0.39 & 0.28 & 1.41 & 0.16 & \\
+methodPaCMAP:exp\_min\_dist\_scaled & 0.02 & 0.28 & 0.08 & 0.94 & \\
+methodtSNE:exp\_min\_dist\_scaled & -0.97 & 0.29 & -3.32 & 0.00 & ***\\
+methodPHATE:exp\_min\_dist\_scaled & -0.55 & 0.29 & -1.90 & 0.06 & .\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 
@@ -1502,42 +351,108 @@ make\_three\_clust\_ & Three clusters with different shapes. (eg:- 01, 02, ..., 
 :::
 
 
-### Additional functions
 
-The package includes various supplementary tools in addition to the shape generating functions mentioned earlier. These tools allow users to create background noise, randomize the rows of the data, relocate clusters, generate a vector whose product and sum are approximately equal to a target value, rotate structures, and normalize the data. Table \@ref(tab:add-tb-pdf) details these functions.
-
-
-::: {.cell}
+::: {.cell layout-align="center"}
 
 :::
 
 
 
-::: {.cell}
+::: {.cell layout-align="center"}
 
 :::
 
 
 
-::: {.cell}
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![Estimated probability of correctly identifying the true cluster structure across different values of the exp(scaled minimum distance) for five NLDR methods: TriMAP, UMAP, PaCMAP, tSNE, and PHATE. The left panel shows the estimated probabilities and associated standard errors across exp(scaled minimum distance) values. The right panels display the observed probabilities of correct identification (black dots), along with fitted logistic regression lines for each method. The exp(scaled minimum distance) quantifies the relative separation between clusters, with higher values indicating more distinct clustering. UMAP and PaCMAP show increased accuracy with higher minimum distances, while tSNE, and PHATE declines in performance. TriMAP remains stable across the range.](05-chap5_files/figure-pdf/fig-glmm-min-1.pdf){#fig-glmm-min fig-align='center' fig-pos='H' width=100%}
+:::
+:::
+
+
+Together, these results highlight that **UMAP and PaCMAP are more sensitive to improvements in cluster separation**, achieving higher correct proportions as inter-cluster distances increase. Conversely, *tSNE* and *PHATE* may lose fidelity in scenarios with very distinct clusters, potentially due to their optimization dynamics. *TriMAP*’s consistent accuracy across distance scales reinforces its stability and balanced preservation of local and global structure.
+
+<!-- ### Time taken for response -->
+
+<!-- To assess the cognitive effort involved in interpreting NLDR layouts, we modeled the log-transformed time taken for responses using the BW ratio and method as predictors. Figure X shows the distribution of time taken for each method across different levels of BW ratio. -->
+
+<!-- From the results (see Table X), the intercepts for all five methods are significantly negative (*p* < 0.001), indicating that overall response times are low across methods. However, the effect of the BW ratio on time taken is minimal. Only UMAP shows a marginally significant increase in time with higher BW ratio (*p* = 0.05), suggesting that greater cluster separation may require slightly more cognitive processing in that layout. For the other methods (tSNE, PHATE, TriMAP, and PaCMAP), BW ratio has no significant effect on response time. -->
+
+<!-- This suggests that while some methods lead to consistently faster or slower interpretations overall (e.g., PACMAP having a slightly lower intercept), the level of cluster separation (BW ratio) does not substantially influence the time taken to make a decision. It’s possible that participants took longer when structure was clearer in order to double-check their judgments, or conversely, struggled with ambiguous structures without measurable time differences. -->
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+### Reasons for mis-identification by method
+
+Understanding why participants misidentified certain data structures provides deeper insight into the perceptual consequences of each NLDR method’s underlying optimization principles. Each method uses a different objective function to balance local and global structure preservation, which can influence how faithfully high-dimensional relationships are represented in \gD{}. To explore these differences, we analyzed misidentifications across methods, identifying where and how each algorithm tended to distort or merge clusters. This analysis highlights systematic weaknesses linked to each method’s design, helping explain why some embeddings were more difficult for participants to interpret correctly.
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+#### TriMAP
+
+TriMAP minimizes a triplet-based loss function that seeks to preserve relative distances among triplets of points in \pD{} (@amid2022). This design emphasizes maintaining global relationships between clusters but can underrepresent local curvature and fine-scale geometry, particularly when clusters differ in density or shape.
+
+@fig-mis-trimap illustrates the two three-cluster data structures that were most frequently misidentified when visualized using TriMAP: *nonlinear_hyperbola2–hemisphere–pyramid_triangular_base* (three_clust_07) and *nonlinear_hyperbola–elliptical–pyramid_rectangular_base* (three_clust_15). In both cases, the underlying cluster separation evident in \pD{} was not well preserved in the \gD{} NLDR layout.
+
+Across these examples, TriMAP tends to merge neighboring clusters or distort curved manifolds, leading to overlaps between nonlinear and compact components such as *elliptical* or *pyramid*-shaped clusters. The algorithm’s emphasis on maintaining global relationships can inadvertently compress local structure, particularly when manifolds differ in curvature or density.
+
+This projection bias results in flattened or partially merged representations, where the curved components (e.g., *nonlinear_hyperbola*) lose their geometric integrity. Consequently, TriMAP’s performance declines when the data structure involves a combination of curvilinear and planar clusters, revealing its sensitivity to differences in shape complexity and scale.
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![TriMAP misidentifications for selected three-cluster data structures. Each column corresponds to one data structure, and each row shows the resulting \gD{} NLDR layout under different distance scale settings: (a) small (S) and (b) large (L). TriMAP often merges clusters or distorts their geometric boundaries, particularly when the data include both compact and curved components. This reflects the method’s difficulty in preserving manifold curvature and relative distances among clusters with differing density or shape.](05-chap5_files/figure-pdf/fig-mis-trimap-1.pdf){#fig-mis-trimap fig-align='center' width=100%}
+:::
+:::
+
+
+
+::: {.cell layout-align="center"}
 ::: {.cell-output-display}
 \begin{table}
-
-\caption{\label{tab:add-tb-pdf}cardinalR additional functions}
 \centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{8cm}}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}{lllll}
 \toprule
-Function & Explanation\\
+data\_structure & cluster1 & cluster2 & cluster3 & distance\_sf\\
 \midrule
-gen\_bkgnoise & Adds background noise.\\
-randomize\_rows & Randomizes the rows.\\
-relocate\_clusters & Relocates the clusters.\\
-gen\_nproduct & Generates a vector of positive integers whose product is approximately equal to a target value.\\
-gen\_nsum & Generates a vector of positive integers whose summation is approximately equal to a target value.\\
-gen\_rotation & Generates rotations.\\
-normalize\_data & Normalizes data.\\
+three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base & large (L)\\
+three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base & small (S)\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 
@@ -1545,143 +460,46 @@ normalize\_data & Normalizes data.\\
 :::
 
 
-## Application
+#### UMAP
 
-This section demonstrates how the package can be used to generate complex high-dimensional datasets, apply dimension reduction (DR) techniques, and evaluate clustering performance. The example shows how diverse geometric structures can be simulated and analyzed to assess algorithmic behavior.
+UMAP optimizes a cross-entropy loss between high- and low-dimensional fuzzy simplicial sets (@leland2018). Its hyper-parameters—n_neighbors and min_dist—govern the trade-off between local and global structure.
 
-### Generating high-dimensional clustered data
+@fig-mis-umap presents the three-cluster data structures that were misidentified by UMAP. The corresponding true high-dimensional structures are *s_curve–cube–pyramid_rectangular_base* (three_clust_02), *nonlinear_hyperbola–elliptical–blunted_cone* (three_clust_05), *helical_hyper_spiral–cube–blunted_cone* (three_clust_09), and *curvy_cylinder–cube–blunted_cone* (three_clust_13).
 
-To illustrate, we generate a dataset with five clusters in $4\text{-}D$, each representing distinct geometric characteristics: a *helical spiral* (elongated and twisted), a *hemisphere* (curved surface), a *uniform cube* (isotropic distribution), a *cone* (density gradient), and a *Gaussian* cluster (compact and spherical) (Figure \@ref(fig:highd-proj)). Each cluster has a unique number of points and scaling factor, representing variation in cluster size and spread across the $4\text{-}D$ space.
+UMAP demonstrates partial success in separating clusters but exhibits notable distortions in geometric structure and merging of neighboring clusters in several cases. For instance, in three_clust_02 and three_clust_09, curved manifolds (s_curve and helical_hyper_spiral) are projected into compact or fragmented \gD{} regions, reducing the apparent curvature and continuity of the original structure. In three_clust_05 and three_clust_13, UMAP tends to merge blunted_cone and elliptical or cube clusters, suggesting difficulty in maintaining separation between clusters of different densities or similar central positions in the high-dimensional space.
 
-
-::: {.cell}
-
-```{.r .cell-code}
-positions <- geozoo::simplex(p=4)$points
-positions <- positions * 0.3
-
-## To generate data
-five_clusts <- gen_multicluster(n = c(2250, 1500, 750, 1250, 1750), k = 5,
-                       loc = positions,
-                       scale = c(0.25, 0.35, 0.3, 1, 0.3),
-                       shape = c("helicalspiral", "hemisphere", "unifcube", 
-                                 "cone", "gaussian"),
-                       rotation = NULL,
-                       is_bkg = FALSE)
-```
-:::
+These results indicate that while UMAP is generally effective at maintaining local neighborhood relationships, it can fail to preserve global geometry when clusters differ in shape or scale. The observed misidentifications likely arise from its default parameterization, where a small min_dist and moderate n_neighbors emphasize local compactness at the expense of broader structural fidelity.
 
 
-
-::: {.cell}
+::: {.cell layout-align="center"}
 
 :::
 
 
 
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
+::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Three $2\text{-}D$ projections from $4\text{-}D$, for the five clusters data. The helical spiral cluster is represented in dark green, the hemisphere cluster in orange, the uniform cube-shaped cluster in purple, the blunted cone cluster in pink, and the Gaussian-shaped cluster in light green.](05-chap5_files/figure-pdf/highd-proj-1.pdf){fig-pos='H' width=100%}
+![UMAP misidentifications for selected three-cluster data structures. Each column corresponds to one data structure, and each row shows the resulting \gD{} NLDR layout under different distance scale settings: (a) small (S), (b) small medium (SM), and (c) medium large (ML). UMAP often merges clusters or distorts curved manifolds, particularly when clusters differ in geometric complexity or density.](05-chap5_files/figure-pdf/fig-mis-umap-1.pdf){#fig-mis-umap fig-align='center' width=100%}
 :::
 :::
 
 
-### Evaluating dimension reduction (DR) methods
 
-We applied six popular DR techniques to the generated dataset: Principal Component Analysis (PCA) [@jolliffe2011], t-distributed stochastic neighbor embedding (tSNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2019], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. 
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-![Assessing which of the 6 NLDR layouts ((a) tSNE, (b) UMAP, (c) PAHTE, (d) TriMAP, (e) PaCMAP, and (f) PCA) of the five clusters data is the better representation using RMSE for varying binwidth ($a_1$). Colour is used for the lines and points in the left plot to match the scatterplots of the NLDR layouts (a-f). Layout f is universally poor. Layouts a and b are universally optimal. Layout b shows six well-separated clusters and latout a shows close clusters, thus layout a is the best choice.](05-chap5_files/figure-pdf/fig-nldr-layouts-1.pdf){#fig-nldr-layouts fig-pos='H' width=100%}
-:::
-:::
-
-
-To assess their performance, we computed the root mean squared error (RMSE) between the observed high-dimensional data and the fitted values, defined as the high-dimensional mappings of the bin centroids [@gamage2025c]. A lower RMSE indicates that the method better preserves the high-dimensional structure in its low-dimensional embedding.
-
-As shown in Figure \@ref(fig:fig-nldr-layouts), tSNE (Figure \@ref(fig:fig-nldr-layouts) a) achieved the lowest RMSE across bin widths (mostly tiny), indicating high preservation of both local and global structures. Its layout displays well-separated clusters with minimal inter-cluster distances, making it the most faithful representation of the underlying data structure. UMAP and PaCMAP (Figure \@ref(fig:fig-nldr-layouts) b and e) produced moderately accurate embeddings, although the six clusters appear more well-separated, while PHATE (Figure \@ref(fig:fig-nldr-layouts) c) show non-linear cluster structures irrespective of the original structure. Also, TriMAP (Figure \@ref(fig:fig-nldr-layouts) d) has high RMSE, and show three clusters with small distances. PCA (Figure \@ref(fig:fig-nldr-layouts) f) failed to capture the non-linear geometry, leading to the highest RMSE.
-
-### Benchmarking clustering algorithms
-
-To further evaluate the structure of the generated data, we benchmarked three clustering algorithms: **$k$-means** [Chapter 20 of @boehmke2019], **hierarchical** [@murtagh2012], and **model-based clustering** [@chris2002; @scrucca2023] using the simulated dataset. The model-based clustering was performed with the `"VVV"` covariance structure, allowing each cluster to vary in volume, shape, and orientation. Cluster validity statistics were computed using the `cluster.stats()` function from the `fpc` package [@christian2024].
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
+::: {.cell layout-align="center"}
 ::: {.cell-output-display}
 \begin{table}
-
-\caption{\label{tab:summaryclust-tb-pdf}Comparison of clustering performance metrics (within–between ratio (wb.ratio), Dunn index, Corrected Rand index, and variation of information (VI) across $k$-means, hierarchical, and model-based clustering methods.}
 \centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2.5cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{2.5cm}>{\raggedleft\arraybackslash}p{2cm}}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}{lllll}
 \toprule
-Metric & wb.ratio & Dunn Index & Corrected Rand & VI\\
+data\_structure & cluster1 & cluster2 & cluster3 & distance\_sf\\
 \midrule
-k-means & 0.61 & 0.01 & 0.42 & 1.32\\
-Hierarchical & 0.61 & 0.01 & 0.50 & 1.15\\
-Model-based & 0.61 & 0.01 & 0.75 & 0.65\\
+three\_clust\_02 & s\_curve & cube & pyramid\_rectangular\_base & small medium (SM)\\
+three\_clust\_05 & nonlinear\_hyperbola & elliptical & blunted\_cone & medium large (ML)\\
+three\_clust\_09 & helical\_hyper\_spiral & cube & blunted\_cone & small (S)\\
+three\_clust\_13 & curvy\_cylinder & cube & blunted\_cone & small (S)\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 
@@ -1689,44 +507,442 @@ Model-based & 0.61 & 0.01 & 0.75 & 0.65\\
 :::
 
 
-Overall, all methods produced similar compactness and separation, as reflected by the *within–between cluster ratios (wb.ratio)* and *Dunn indices*. However, the **model-based clustering** achieved the highest *Corrected Rand Index* ($0.75$) and lowest *Variation of Information (VI)* ($0.65$), indicating the best recovery of the true underlying groups (Table \@ref(tab:summaryclust-tb-pdf)). In comparison, $k$-means and hierarchical clustering showed moderate agreement with the true labels. These findings demonstrate that mixture-based approaches can more effectively capture the heterogeneity of clusters in high-dimensional, non-spherical data.
+#### PaCMAP
 
-## Conclusion
+PaCMAP uses a multi-term objective combining near, mid-range, and further pair constraints (@yingfan2021), designed to improve global structure compared to tSNE and UMAP.
 
-The `cardinalR` package introduces a flexible framework for generating high-dimensional data structures with well-defined geometric properties. It addresses an important need in the evaluation of clustering, machine learning, and DR methods by enabling the construction of customized datasets with interpretable structures, noise characteristics, and clustering arrangements. In this way, `cardinalR` complements existing packages such as `geozoo`, `snedata`, and `mlbench`, while extending the scope to higher dimensions and more complex shapes.
+@fig-mis-pacmap displays the data structures for which PaCMAP produced notable misidentifications in the \gD{} embedding. The true high-dimensional configurations for these datasets include *s_curve–cube–pyramid_rectangular_base* (three_clust_02), *curvy_cylinder–hemisphere–pyramid_triangular_base* (three_clust_03), *crescent–cube–pyramid_rectangular_base* (three_clust_06), *nonlinear_hyperbola2–hemisphere–pyramid_triangular_base* (three_clust_07), *helical_hyper_spiral–cube–blunted_cone* (three_clust_09), *spherical_spiral–gaussian–pyramid_triangular_base* (three_clust_10), *curvy_cylinder–cube–blunted_cone* (three_clust_13), *nonlinear_hyperbola–elliptical–pyramid_rectangular_base* (three_clust_15), and *nonlinear_hyperbola2–cube–blunted_cone* (three_clust_17).
 
-The motivation for developing this package originated from the need to design a perception–misperception experiment, aimed at investigating how well NLDR methods preserve inter-cluster structure. To conduct this study, we required simulated datasets with carefully controlled geometric and clustering properties. While some existing packages provided useful starting points, none fully supported the creation of flexible, high-dimensional data with the specific structural variations needed for our experiment. Developing these generators for research purposes gradually led to the design of `cardinalR` as a general-purpose package, so that other researchers can benefit from the same tools for simulation, benchmarking, and teaching.
+Across these examples, PaCMAP tends to preserve local density structure within clusters effectively but often struggles with global positioning and relative orientation among clusters. For example, in three_clust_02, the s_curve and cube clusters remain relatively well-formed but are positioned too close to the pyramid_rectangular_base cluster, creating apparent overlaps. Similarly, in three_clust_06 and three_clust_07, the pyramid-shaped clusters are fragmented into smaller subgroups, suggesting instability in maintaining global manifold continuity.
 
-The included structures cover a wide range of diagnostic settings. Branching shapes facilitate the study of continuity and topological preservation, the Scurve with a hole allows investigation of incomplete manifolds, and clustered spheres assess separability on curved surfaces. The Möbius strip introduces challenges from non-orientable geometry, while gridded cubes and pyrholes test spatial regularity and clustering in sparse, non-convex regions.
+A consistent observation is that PaCMAP compresses or folds curved or elongated manifolds, such as s_curve, helical_hyper_spiral, and nonlinear_hyperbola2, into smaller regions of the \gD{} space. This distortion likely arises from the algorithm’s use of both near and mid-range neighbor preservation terms, which balance local and global structure but can underrepresent nonlinear curvature when clusters vary in geometric complexity or density.
 
-These structures are designed to support not only algorithm diagnostics, but also teaching high-dimensional concepts, benchmarking reproducibility, and evaluating hyperparameter sensitivity. By allowing users to adjust dimensionality, sample size, noise, and clustering properties, the package promotes transparent experimentation and comparative model evaluation.
+Overall, these results indicate that PaCMAP achieves visually clean separation for simpler or isotropic clusters but tends to overcompress nonlinearly extended clusters and misplace asymmetric shapes, resulting in inaccurate global relationships between clusters.
 
-Future extensions of `cardinalR` may include biologically inspired or application-driven data structures would further broaden its utility in domains such as bioinformatics, forensic science, and spatial analysis.
 
-<!-- - Branching: These functions create a controlled environment for testing how effectively various algorithms preserve branching topology and continuity in their low-dimensional embeddings. -->
+::: {.cell layout-align="center"}
 
-<!-- - Scurve with a hole allowing for evaluation of how well algorithms handle incomplete manifolds or missing local structure. -->
+:::
 
-<!-- - clusteredsphere: This structure allows for cluster separation on curved manifolds in high-dimensional space and can be used to test the ability of NLDR methods and clustering algorithms to detect spherical clusters of different sizes and separations. -->
 
-<!-- - Mobius: The core geometric structure is a Mobius strip—a classic one-sided surface with a half-twist—useful for evaluating how well methods capture non-orientability and twisted manifolds. -->
 
-<!-- - Grided cube: This function is useful for assessing how algorithms preserve uniformly spaced data in high-dimensional spaces. -->
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![PaCMAP misidentifications for selected three-cluster data structures. Each column represents a distinct high-dimensional data structure, while each row corresponds to a resulting \gD{} NLDR layout under different distance scale settings: (a) small (S), (b) small medium (SM), (c) medium large (ML), and (d) large (L). PaCMAP effectively maintains intra-cluster cohesion but often distorts the relative geometry between curved and compact clusters, leading to apparent overlaps or misplacement in \gD{} space.](05-chap5_files/figure-pdf/fig-mis-pacmap-1.pdf){#fig-mis-pacmap fig-align='center' width=100%}
+:::
+:::
 
-<!-- - Pyrholes: This structure is useful for testing clustering and NLDR algorithms on non-convex and sparse high-dimensional shapes. -->
 
-<!-- The application of our high-dimensional data generation package to evaluate the interplay between dimensionality reduction, nuisance variables, and hierarchical clustering yielded several key insights. The ability to generate synthetic datasets with well-defined underlying structures, coupled with the controlled introduction of nuisance variables, provided a valuable platform for assessing the robustness of downstream unsupervised learning techniques. -->
 
-<!-- Our findings demonstrated that the choice of dimensionality reduction method significantly impacted the ability of hierarchical clustering to recover the true underlying clusters. Methods that effectively preserved the global structure of the data, as defined by our generation process, generally led to more accurate and interpretable hierarchical clustering results. However, the presence of nuisance variables often confounded the low-dimensional embeddings, making it more challenging for hierarchical clustering to separate truly distinct groups. This highlights a critical consideration in real-world data analysis, where unmeasured or latent factors can obscure the signal of interest. -->
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+\begin{table}
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}{lllll}
+\toprule
+data\_structure & cluster1 & cluster2 & cluster3 & distance\_sf\\
+\midrule
+three\_clust\_02 & s\_curve & cube & pyramid\_rectangular\_base & medium large (ML)\\
+three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base & small (S)\\
+three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base & small medium (SM)\\
+three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base & large (L)\\
+three\_clust\_06 & crescent & cube & pyramid\_rectangular\_base & large (L)\\
+three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base & small (S)\\
+three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base & small medium (SM)\\
+three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base & medium large (ML)\\
+three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base & large (L)\\
+three\_clust\_09 & helical\_hyper\_spiral & cube & blunted\_cone & small (S)\\
+three\_clust\_10 & spherical\_spiral & gaussian & pyramid\_triangular\_base & small (S)\\
+three\_clust\_10 & spherical\_spiral & gaussian & pyramid\_triangular\_base & large (L)\\
+three\_clust\_13 & curvy\_cylinder & cube & blunted\_cone & small (S)\\
+three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base & small (S)\\
+three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base & small medium (SM)\\
+three\_clust\_17 & nonlinear\_hyperbola2 & cube & blunted\_cone & small medium (SM)\\
+three\_clust\_17 & nonlinear\_hyperbola2 & cube & blunted\_cone & medium large (ML)\\
+\bottomrule
+\end{tabular}}
+\end{table}
 
-<!-- The hierarchical clustering analysis itself, and the choice of linkage criteria, also played a crucial role. Different linkage methods revealed varying degrees of sensitivity to the distorted representations caused by the nuisance variables. For instance, methods that prioritize compact clusters might have been more susceptible to being misled by variance introduced by nuisance factors, while others focusing on the distance between clusters might have shown more resilience. The dendrograms generated by hierarchical clustering provided a visual means to explore the relationships between samples and the potential influence of nuisance, although determining the optimal number of clusters remained a challenge in the presence of these confounding factors. -->
 
-<!-- This application underscores the utility of our data generation package as a powerful tool for controlled experimentation in unsupervised learning. By providing the ground truth cluster assignments and the ability to systematically manipulate data characteristics like dimensionality, geometric structure, and the presence of nuisance variables, researchers can gain a deeper understanding of the strengths and limitations of various DR and clustering algorithms. This controlled environment allows for a more objective evaluation than often possible with real-world datasets where the underlying structure is unknown. -->
+:::
+:::
 
-<!-- One limitation of this particular application was the specific type and magnitude of the nuisance variables introduced. Future work could explore a wider range of nuisance types (e.g., batch effects, technical noise with specific distributions) and their varying degrees of influence on different DR and clustering methodologies. Furthermore, investigating strategies for mitigating the impact of nuisance variables, either during the DR step or within the clustering process itself, would be a valuable extension. -->
 
-<!-- In conclusion, this example demonstrates the critical role of synthetic data generation in dissecting the complex interactions within unsupervised learning pipelines. Our package provides a flexible and controlled means to create such data, enabling researchers to systematically evaluate the performance and robustness of dimensionality reduction and clustering algorithms under well-defined conditions, including the presence of confounding factors. This capability contributes to a more rigorous and informed approach to high-dimensional data analysis. -->
 
-## Acknowledgements
+#### tSNE
 
-The source material for this paper is available at [github.com/JayaniLakshika/paper-cardinalR](https://github.com/JayaniLakshika/paper-cardinalR). This article is created using `knitr` [@yihui2015] and `rmarkdown` [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `tibble` [@kirill2023], `gtools` [@gregory2023], `dplyr` [@hadley2023], `stats` [@core2025], `tidyr` [@hadley2024], `purrr` [@hadley2025], `mvtnorm` [@alan2009], `geozoo` [@barret2016], and `MASS` [@venables2002]. 
+tSNE minimizes the Kullback–Leibler (KL) divergence between pairwise similarities in high and low dimensions (@laurens2008). This objective strongly prioritizes local neighborhood preservation while ignoring global distances.
+
+@fig-mis-tsne illustrates the data structures where tSNE produced misidentifications or distortions in the \gD{} embedding. The affected datasets include *s_curve–cube–pyramid_rectangular_base* (three_clust_02), *curvy_cylinder–hemisphere–pyramid_triangular_base* (three_clust_03), *curv2–gaussian–filled_hexagonal_pyramid* (three_clust_04), *nonlinear_hyperbola–elliptical–blunted_cone* (three_clust_05), *crescent–cube–pyramid_rectangular_base* (three_clust_06), *nonlinear_hyperbola2–hemisphere–pyramid_triangular_base* (three_clust_07), *conic_spiral–gaussian–filled_hexagonal_pyramid* (three_clust_08), *helical_hyper_spiral–cube–blunted_cone* (three_clust_09), *spherical_spiral–gaussian–pyramid_triangular_base* (three_clust_10), *s_curve–hemisphere–filled_hexagonal_pyramid* (three_clust_12), *curv2–gaussian–pyramid_triangular_base* (three_clust_14), *nonlinear_hyperbola–elliptical–pyramid_rectangular_base* (three_clust_15), *crescent–hemisphere–filled_hexagonal_pyramid* (three_clust_16), *nonlinear_hyperbola2–cube–blunted_cone* (three_clust_17), and *conic_spiral–gaussian–pyramid_triangular_base* (three_clust_18).
+
+Across these examples, tSNE successfully captures local structure within clusters—preserving compactness and density—but often fails to represent the global arrangement among multiple clusters. In several cases, tSNE artificially amplifies distances between geometrically related clusters (e.g., s_curve and cube in three_clust_02) or splits continuous manifolds such as nonlinear_hyperbola and helical_hyper_spiral into disjoint fragments. This fragmentation suggests that tSNE’s heavy emphasis on preserving local neighborhoods comes at the cost of losing the true topological continuity of non-linear shapes.
+
+A recurring issue is that tSNE tends to over-separate clusters when they differ in density or curvature. For instance, in three_clust_06 and three_clust_07, one or more clusters (particularly those with curved or open structures) are pushed disproportionately far apart, producing an embedding that exaggerates separation. Additionally, tSNE appears sensitive to cluster anisotropy—for example, pyramid_triangular_base and filled_hexagonal_pyramid clusters often appear distorted or collapsed into compact forms, suggesting that their high-dimensional shape complexity is not faithfully maintained in the low-dimensional layout.
+
+Overall, these misidentifications reveal that while tSNE produces visually distinct clusters with strong local cohesion, it frequently distorts global geometry, particularly when clusters vary in curvature, scale, or orientation.
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![tSNE misidentifications for selected three-cluster data structures. Each column represents a distinct high-dimensional data structure, while each row corresponds to a resulting \gD{} NLDR layout under different distance scale settings: (a) small (S), (b) small medium (SM), (c) medium (M), (d) medium large (ML), and (e) large (L). tSNE effectively maintains within-cluster density and separation but tends to distort the global spatial relationships among clusters—especially when the data include non-linear or anisotropic geometries such as hyperbolas, spirals, and pyramids.](05-chap5_files/figure-pdf/fig-mis-tsne-1.pdf){#fig-mis-tsne fig-align='center' width=100%}
+:::
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+\begin{table}
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}{lllll}
+\toprule
+data\_structure & cluster1 & cluster2 & cluster3 & distance\_sf\\
+\midrule
+three\_clust\_02 & s\_curve & cube & pyramid\_rectangular\_base & medium (M)\\
+three\_clust\_02 & s\_curve & cube & pyramid\_rectangular\_base & medium large (ML)\\
+three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base & medium (M)\\
+three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base & medium large (ML)\\
+three\_clust\_04 & curv2 & gaussian & filled\_hexagonal\_pyramid & small medium (SM)\\
+three\_clust\_05 & nonlinear\_hyperbola & elliptical & blunted\_cone & small medium (SM)\\
+three\_clust\_05 & nonlinear\_hyperbola & elliptical & blunted\_cone & medium (M)\\
+three\_clust\_05 & nonlinear\_hyperbola & elliptical & blunted\_cone & large (L)\\
+three\_clust\_06 & crescent & cube & pyramid\_rectangular\_base & large (L)\\
+three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base & medium (M)\\
+three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base & large (L)\\
+three\_clust\_08 & conic\_spiral & gaussian & filled\_hexagonal\_pyramid & small (S)\\
+three\_clust\_08 & conic\_spiral & gaussian & filled\_hexagonal\_pyramid & large (L)\\
+three\_clust\_09 & helical\_hyper\_spiral & cube & blunted\_cone & small (S)\\
+three\_clust\_09 & helical\_hyper\_spiral & cube & blunted\_cone & medium (M)\\
+three\_clust\_09 & helical\_hyper\_spiral & cube & blunted\_cone & medium large (ML)\\
+three\_clust\_10 & spherical\_spiral & gaussian & pyramid\_triangular\_base & medium large (ML)\\
+three\_clust\_10 & spherical\_spiral & gaussian & pyramid\_triangular\_base & large (L)\\
+three\_clust\_12 & s\_curve & hemisphere & filled\_hexagonal\_pyramid & medium (M)\\
+three\_clust\_12 & s\_curve & hemisphere & filled\_hexagonal\_pyramid & medium large (ML)\\
+three\_clust\_12 & s\_curve & hemisphere & filled\_hexagonal\_pyramid & large (L)\\
+three\_clust\_14 & curv2 & gaussian & pyramid\_triangular\_base & medium large (ML)\\
+three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base & medium (M)\\
+three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base & medium large (ML)\\
+three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base & large (L)\\
+three\_clust\_16 & crescent & hemisphere & filled\_hexagonal\_pyramid & medium large (ML)\\
+three\_clust\_16 & crescent & hemisphere & filled\_hexagonal\_pyramid & large (L)\\
+three\_clust\_17 & nonlinear\_hyperbola2 & cube & blunted\_cone & small (S)\\
+three\_clust\_17 & nonlinear\_hyperbola2 & cube & blunted\_cone & large (L)\\
+three\_clust\_18 & conic\_spiral & gaussian & pyramid\_triangular\_base & large (L)\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+
+:::
+:::
+
+
+
+#### PHATE
+
+PHATE constructs a diffusion-based potential distance that encodes multi-scale manifold structure (@moon2019). This approach excels at capturing continuous transitions, but tends to over-smooth boundaries between discrete clusters.
+
+@fig-mis-phate presents the high-dimensional data structures for which PHATE led to misidentification or structural distortion in the \gD{} embedding. The affected datasets include *curv–elliptical–blunted_cone* (three_clust_01), *s_curve–cube–pyramid_rectangular_base* (three_clust_02), curvy_cylinder–hemisphere–pyramid_triangular_base (three_clust_03), *curv2–gaussian–filled_hexagonal_pyramid* (three_clust_04), *nonlinear_hyperbola–elliptical–blunted_cone* (three_clust_05), *crescent–cube–pyramid_rectangular_base* (three_clust_06), *nonlinear_hyperbola2–hemisphere–pyramid_triangular_base* (three_clust_07), *conic_spiral–gaussian–filled_hexagonal_pyramid* (three_clust_08), *helical_hyper_spiral–cube–blunted_cone* (three_clust_09), *spherical_spiral–gaussian–pyramid_triangular_base* (three_clust_10), *curv–elliptical–pyramid_rectangular_base* (three_clust_11), *s_curve–hemisphere–filled_hexagonal_pyramid* (three_clust_12), *curvy_cylinder–cube–blunted_cone* (three_clust_13), *curv2–gaussian–pyramid_triangular_base* (three_clust_14), *nonlinear_hyperbola–elliptical–pyramid_rectangular_base* (three_clust_15), *crescent–hemisphere–filled_hexagonal_pyramid* (three_clust_16), and *conic_spiral–gaussian–pyramid_triangular_base* (three_clust_18).
+
+PHATE tends to preserve smooth manifold continuity across most clusters but exhibits misidentifications primarily when clusters differ in geometric curvature or density. For instance, in structures such as s_curve–cube–pyramid_rectangular_base (three_clust_02) and curvy_cylinder–hemisphere–pyramid_triangular_base (three_clust_03), PHATE partially merges distinct clusters along gradual transitions, reflecting its tendency to emphasize global manifold smoothness at the expense of discrete cluster separation. This blending effect is especially evident when clusters possess shared curvature characteristics, such as nonlinear_hyperbola and helical_hyper_spiral, or when the transition between shapes is continuous in high-dimensional space.
+
+Another recurring pattern involves shape compression, where complex structures like filled_hexagonal_pyramid and pyramid_triangular_base are collapsed into more isotropic forms. This occurs because PHATE’s diffusion-based approach tends to over-smooth distances, leading to reduced contrast between dense and sparse regions. As a result, clusters with sharp edges or hollow geometries (e.g., pyramidal or conical shapes) lose their distinct form and may appear more circular in the \gD{} embedding.
+
+Overall, PHATE performs well in maintaining global topology and gradual transitions, making it suitable for continuous manifolds such as s_curve or crescent. However, it struggles to preserve clear separation among distinct, non-linear, or sharply bounded clusters, often blending or distorting them when the high-dimensional geometry involves abrupt curvature changes or contrasting densities.
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![PHATE misidentifications for selected three-cluster data structures. Each column represents a distinct high-dimensional data structure, while each row corresponds to a resulting \gD{} NLDR layout under different distance scale settings: (a) small (S), (b) small medium (SM), (c) medium (M), (d) medium large (ML), and (e) large (L). PHATE effectively maintains global continuity but exhibits over-smoothing, leading to partial merging or distortion of geometrically distinct clusters—particularly for combinations involving hyperbolas, pyramids, and cones.](05-chap5_files/figure-pdf/fig-mis-phate-1.pdf){#fig-mis-phate fig-align='center' width=100%}
+:::
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+\begin{table}
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}{lllll}
+\toprule
+data\_structure & cluster1 & cluster2 & cluster3 & distance\_sf\\
+\midrule
+three\_clust\_01 & curv & elliptical & blunted\_cone & large (L)\\
+three\_clust\_02 & s\_curve & cube & pyramid\_rectangular\_base & small (S)\\
+three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base & medium (M)\\
+three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base & large (L)\\
+three\_clust\_04 & curv2 & gaussian & filled\_hexagonal\_pyramid & small (S)\\
+three\_clust\_04 & curv2 & gaussian & filled\_hexagonal\_pyramid & medium (M)\\
+three\_clust\_05 & nonlinear\_hyperbola & elliptical & blunted\_cone & medium large (ML)\\
+three\_clust\_06 & crescent & cube & pyramid\_rectangular\_base & small (S)\\
+three\_clust\_06 & crescent & cube & pyramid\_rectangular\_base & medium (M)\\
+three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base & medium (M)\\
+three\_clust\_08 & conic\_spiral & gaussian & filled\_hexagonal\_pyramid & medium (M)\\
+three\_clust\_09 & helical\_hyper\_spiral & cube & blunted\_cone & medium (M)\\
+three\_clust\_10 & spherical\_spiral & gaussian & pyramid\_triangular\_base & large (L)\\
+three\_clust\_11 & curv & elliptical & pyramid\_rectangular\_base & medium large (ML)\\
+three\_clust\_11 & curv & elliptical & pyramid\_rectangular\_base & large (L)\\
+three\_clust\_12 & s\_curve & hemisphere & filled\_hexagonal\_pyramid & small medium (SM)\\
+three\_clust\_13 & curvy\_cylinder & cube & blunted\_cone & medium (M)\\
+three\_clust\_14 & curv2 & gaussian & pyramid\_triangular\_base & large (L)\\
+three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base & medium (M)\\
+three\_clust\_16 & crescent & hemisphere & filled\_hexagonal\_pyramid & small medium (SM)\\
+three\_clust\_16 & crescent & hemisphere & filled\_hexagonal\_pyramid & medium large (ML)\\
+three\_clust\_18 & conic\_spiral & gaussian & pyramid\_triangular\_base & medium (M)\\
+three\_clust\_18 & conic\_spiral & gaussian & pyramid\_triangular\_base & medium large (ML)\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+
+:::
+:::
+
+
+### Reasons for mis-identification by number of component(s)
+
+Beyond method-specific effects, the complexity of the high-dimensional data itself also influenced recognition accuracy. Some misidentifications involved confusion between a single cluster and another, while others reflected blending or merging of multiple clusters. To investigate these patterns, we categorized misidentifications based on the number of cluster components involved—one, two, or three—and visualized their intersections across NLDR methods using UpSet plots. This analysis reveals how data complexity interacts with embedding behavior, shedding light on whether misidentification arises primarily from local distortions, partial overlaps, or global structural confusion.
+
+#### One component
+
+The first UpSet plot (@fig-upset-one) shows the intersections of single-component misidentifications across methods. Each horizontal bar represents the number of times a particular data structure component was misidentified, and the vertical bars indicate combinations of NLDR methods that shared the same misidentifications.
+
+The most frequently co-misidentified structures across methods included
+*pyramid_rectangular_base, nonlinear_hyperbola, elliptical, s_curve, pyramid_triangular_base, nonlinear_hyperbola2, hemisphere, helical_hyper_spiral, curvy_cylinder, cube, blunted_cone, spherical_spiral, gaussian, and crescent*.
+
+These structures are geometrically curved, non-spherical, or multi-surface, making them prone to distortion in \gD{} embeddings. For instance, nonlinear_hyperbola and s_curve contain pronounced curvature and variable density, which local-attraction methods like tSNE and PHATE often compress unevenly. Similarly, pyramid_rectangular_base and blunted_cone exhibit mixed sharp and smooth edges, challenging methods that rely on uniform neighborhood scaling.
+
+Across methods, the greatest overlap occurred among PaCMAP, PHATE, tSNE, and UMAP, all of which misidentified at least four of these structures. TriMAP exhibited relatively fewer single-component errors, reflecting its stronger preservation of global relationships.
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![UpSet plot showing intersections of misidentified data structure components across NLDR methods. Each horizontal bar on the left represents the number of times a particular data structure component was misidentified. The vertical bars indicate intersections — combinations of NLDR methods that share the same misidentified components. The most frequently co-misidentified components across methods are pyramid_rectangular_base, nonlinear_hyperbola, elliptical, s_curve, pyramid_triangular_base, s_curve, pyramid_triangular_base, nonlinear_hyperbola2, hemisphere, helical_hyper_spiral, curvy_cylinder, cube, blunted_cone, spherical_spiral, gaussian, and crescent, suggesting these structures are more challenging for multiple NLDR techniques to preserve accurately.](05-chap5_files/figure-pdf/fig-upset-one-1.pdf){#fig-upset-one fig-align='center' width=100%}
+:::
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+\begin{table}
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}{llr}
+\toprule
+component & methods & num\_methods\\
+\midrule
+blunted\_cone & PaCMAP, PHATE , tSNE  , UMAP & 4\\
+crescent & PaCMAP, PHATE , tSNE  , UMAP & 4\\
+cube & PaCMAP, PHATE , tSNE  , UMAP & 4\\
+curvy\_cylinder & PaCMAP, PHATE , tSNE  , UMAP & 4\\
+elliptical & PaCMAP, PHATE , TriMAP, tSNE & 4\\
+gaussian & PaCMAP, PHATE , TriMAP, tSNE & 4\\
+helical\_hyper\_spiral & PaCMAP, PHATE , TriMAP, tSNE  , UMAP & 5\\
+hemisphere & PaCMAP, PHATE , TriMAP, tSNE & 4\\
+nonlinear\_hyperbola & PaCMAP, PHATE , tSNE  , UMAP & 4\\
+nonlinear\_hyperbola2 & PaCMAP, PHATE , tSNE & 3\\
+pyramid\_rectangular\_base & PHATE, tSNE & 2\\
+s\_curve & PHATE, tSNE & 2\\
+spherical\_spiral & PHATE, tSNE & 2\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+
+:::
+:::
+
+
+#### Two component
+
+The second UpSet plot (@fig-upset-two) summarizes cases where two components within a dataset were jointly misidentified. These represent situations where NLDR methods distorted the spatial relationships between two distinct geometric structures, leading to overlap or merging in \gD{} space.
+
+Commonly misidentified component pairs included
+nonlinear_hyperbola + elliptical, s_curve + pyramid_rectangular_base, s_curve + cube, nonlinear_hyperbola2 + pyramid_triangular_base, nonlinear_hyperbola2 + hemisphere, helical_hyper_spiral + cube, helical_hyper_spiral + blunted_cone, elliptical + pyramid_rectangular_base, cube + blunted_cone, spherical_spiral + pyramid_triangular_base, spherical_spiral + gaussian, and curvy_cylinder + hemisphere.
+
+The most frequent method overlaps occurred among PHATE and tSNE, which jointly misidentified 37 pairs of components. These methods emphasize local neighborhood continuity and diffusion, often at the expense of maintaining global separation—leading to merging between nearby clusters. In contrast, TriMAP and UMAP contributed to fewer pairwise misidentifications and tended to maintain more distinct boundaries between curved or irregular shapes.
+
+Overall, datasets combining both curved and polyhedral structures (e.g., nonlinear_hyperbola + pyramid_rectangular_base) were particularly challenging, as the embedding needed to balance continuity and separation simultaneously.
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![UpSet plot showing intersections of misidentified data structure components across NLDR methods. Each horizontal bar on the left represents the number of times a particular data structure component was misidentified. The vertical bars indicate intersections — combinations of NLDR methods that share the same misidentified components. The most frequently co-misidentified components across methods are nonlinear_hyperbola + elliptical, s_curve + pyramid_rectangular_base, s_curve + cube, nonlinear_hyperbola2 + pyramid_triangular_base, nonlinear_hyperbola2 + hemisphere, nonlinear_hyperbola + pyramid_rectangular_base, hemisphere + pyramid_triangular_base, helical_hyper_spiral + cube, helical_hyper_spiral + blunted_cone, elliptical + pyramid_rectangular_base, cube + pyramid_rectangular_base, cube + blunted_cone, spherical_spiral + pyramid_triangular_base, spherical_spiral + gaussian, nonlinear_hyperbola + blunted_cone, gaussian + pyramid_triangular_base, elliptical + blunted_cone, curvy_cylinder + pyramid_triangular_base, curvy_cylinder + hemisphere, and, curvy_cylinder + cube, suggesting these structures are more challenging for multiple NLDR techniques to preserve accurately.](05-chap5_files/figure-pdf/fig-upset-two-1.pdf){#fig-upset-two fig-align='center' width=100%}
+:::
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+\begin{table}
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}{llr}
+\toprule
+component & methods & num\_methods\\
+\midrule
+conic\_spiral, filled\_hexagonal\_pyramid & PaCMAP, PHATE , tSNE & 3\\
+conic\_spiral, gaussian & PaCMAP, PHATE , tSNE & 3\\
+conic\_spiral, pyramid\_triangular\_base & PaCMAP, PHATE , tSNE  , UMAP & 4\\
+crescent, cube & PaCMAP, PHATE , tSNE  , UMAP & 4\\
+crescent, filled\_hexagonal\_pyramid & PaCMAP, PHATE , UMAP & 3\\
+crescent, hemisphere & PaCMAP, PHATE , UMAP & 3\\
+crescent, pyramid\_rectangular\_base & PaCMAP, PHATE , tSNE & 3\\
+cube, blunted\_cone & PaCMAP, PHATE , tSNE & 3\\
+cube, pyramid\_rectangular\_base & PaCMAP, PHATE , TriMAP, tSNE & 4\\
+curv, blunted\_cone & PaCMAP, PHATE , tSNE & 3\\
+curv, elliptical & PaCMAP, PHATE , tSNE  , UMAP & 4\\
+curv, pyramid\_rectangular\_base & PaCMAP, PHATE , tSNE  , UMAP & 4\\
+curv2, filled\_hexagonal\_pyramid & PaCMAP, PHATE , TriMAP, tSNE & 4\\
+curv2, gaussian & PaCMAP, PHATE , TriMAP, tSNE  , UMAP & 5\\
+curv2, pyramid\_triangular\_base & PaCMAP, PHATE , TriMAP, tSNE & 4\\
+curvy\_cylinder, blunted\_cone & PaCMAP, tSNE & 2\\
+curvy\_cylinder, cube & PaCMAP, tSNE & 2\\
+curvy\_cylinder, hemisphere & PaCMAP, PHATE , TriMAP, tSNE & 4\\
+curvy\_cylinder, pyramid\_triangular\_base & PaCMAP, PHATE , TriMAP, tSNE & 4\\
+elliptical, blunted\_cone & PaCMAP, PHATE , tSNE  , UMAP & 4\\
+elliptical, pyramid\_rectangular\_base & PaCMAP, PHATE , tSNE  , UMAP & 4\\
+gaussian, filled\_hexagonal\_pyramid & PaCMAP, PHATE , tSNE & 3\\
+gaussian, pyramid\_triangular\_base & PaCMAP, PHATE , tSNE & 3\\
+helical\_hyper\_spiral, blunted\_cone & PHATE, tSNE & 2\\
+helical\_hyper\_spiral, cube & PHATE, tSNE & 2\\
+hemisphere, filled\_hexagonal\_pyramid & PHATE, tSNE & 2\\
+hemisphere, pyramid\_triangular\_base & PHATE, tSNE & 2\\
+nonlinear\_hyperbola, blunted\_cone & PHATE, tSNE & 2\\
+nonlinear\_hyperbola2, pyramid\_triangular\_base & PHATE, tSNE & 2\\
+s\_curve, cube & PHATE, tSNE & 2\\
+s\_curve, filled\_hexagonal\_pyramid & PHATE, tSNE & 2\\
+s\_curve, hemisphere & PHATE, tSNE , UMAP & 3\\
+s\_curve, pyramid\_rectangular\_base & PHATE, tSNE & 2\\
+spherical\_spiral, gaussian & PHATE, tSNE & 2\\
+spherical\_spiral, pyramid\_triangular\_base & PHATE, tSNE , UMAP & 3\\
+nonlinear\_hyperbola2, blunted\_cone & PHATE, tSNE & 2\\
+nonlinear\_hyperbola2, cube & PHATE, tSNE & 2\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+
+:::
+:::
+
+
+
+#### Three component
+
+The third UpSet plot (@fig-upset-three) highlights cases where misidentifications occurred due to complex interactions among three components within a dataset. These represent the most difficult configurations, where multiple structural and density variations coexist.
+
+Frequent co-misidentified triplets included
+s_curve + cube + pyramid_rectangular_base, nonlinear_hyperbola2 + hemisphere + pyramid_triangular_base, nonlinear_hyperbola + elliptical + pyramid_rectangular_base, helical_hyper_spiral + cube + blunted_cone, spherical_spiral + gaussian + pyramid_triangular_base, nonlinear_hyperbola + elliptical + blunted_cone, curvy_cylinder + hemisphere + pyramid_triangular_base, curvy_cylinder + cube + blunted_cone, and crescent + cube + pyramid_rectangular_base.
+
+Most of these triplets involve at least one curved or spiral component combined with a polyhedral structure, which appears to amplify projection distortion. PHATE and tSNE were again the dominant contributors, followed by PaCMAP, while TriMAP rarely misidentified three-component mixtures. The frequent co-occurrence of such errors suggests that preserving relative scaling among non-linear surfaces and multi-faceted shapes remains a key limitation of locally focused NLDR methods.
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![UpSet plot showing intersections of misidentified data structure components across NLDR methods. Each horizontal bar on the left represents the number of times a particular data structure component was misidentified. The vertical bars indicate intersections — combinations of NLDR methods that share the same misidentified components. The most frequently co-misidentified components across methods are s_curve + cube + pyramid_rectangular_base, nonlinear_hyperbola2 + hemisphere + pyramid_triangular_base, nonlinear_hyperbola + elliptical + pyramid_rectangular_base, helical_hyper_spiral + cube + blunted_cone, spherical_spiral + gaussian + pyramid_triangular_base, nonlinear_hyperbola + elliptical + blunted_cone, curvy_cylinder + hemisphere + pyramid_triangular_base, curvy_cylinder + cube + blunted_cone, crescent + cube + pyramid_rectangular_base, suggesting these structures are more challenging for multiple NLDR techniques to preserve accurately.](05-chap5_files/figure-pdf/fig-upset-three-1.pdf){#fig-upset-three fig-align='center' width=100%}
+:::
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+\begin{table}
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}{llr}
+\toprule
+component & methods & num\_methods\\
+\midrule
+conic\_spiral, gaussian, filled\_hexagonal\_pyramid & PaCMAP, PHATE , tSNE & 3\\
+conic\_spiral, gaussian, pyramid\_triangular\_base & PaCMAP, PHATE , UMAP & 3\\
+crescent, cube, pyramid\_rectangular\_base & PaCMAP, PHATE , tSNE & 3\\
+crescent, hemisphere, filled\_hexagonal\_pyramid & PaCMAP, PHATE , tSNE  , UMAP & 4\\
+curv, elliptical, blunted\_cone & PaCMAP, PHATE , TriMAP, tSNE & 4\\
+curv, elliptical, pyramid\_rectangular\_base & PaCMAP, tSNE & 2\\
+curv2, gaussian, filled\_hexagonal\_pyramid & PaCMAP, PHATE , TriMAP, tSNE & 4\\
+curv2, gaussian, pyramid\_triangular\_base & PaCMAP, PHATE , tSNE  , UMAP & 4\\
+curvy\_cylinder, cube, blunted\_cone & PaCMAP, PHATE , tSNE & 3\\
+curvy\_cylinder, hemisphere, pyramid\_triangular\_base & PHATE, tSNE & 2\\
+helical\_hyper\_spiral, cube, blunted\_cone & PHATE, tSNE & 2\\
+nonlinear\_hyperbola, elliptical, blunted\_cone & PHATE, tSNE & 2\\
+s\_curve, cube, pyramid\_rectangular\_base & PHATE, tSNE & 2\\
+s\_curve, hemisphere, filled\_hexagonal\_pyramid & PHATE, tSNE & 2\\
+spherical\_spiral, gaussian, pyramid\_triangular\_base & PHATE, tSNE , UMAP & 3\\
+nonlinear\_hyperbola2, cube, blunted\_cone & PHATE, tSNE & 2\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+
+:::
+:::
+
+
+## Limitations {#sec-limitations}
+
+One of the main drawbacks of visual experiments is their reliance on human judgments. In this context, the effectiveness of identifying the \gD{} NLDR plot and the tour from the same data can be dependent on the perceptual ability and visual skills of the individual. However, when the results from multiple individuals are combined, the overall quality and robustness of the outcome is considerably high.
+
+It is important to remove HTML widget elements such as controls, interactivity, and \gD{} plot elements such as axis labels and text that might introduce bias. We recommend using a crowd-sourcing service like Prolific [@palan2018] to access high-quality data, as it is a time- and cost-effective way.
+
+In this study, we used a specific data structure consisting of three distinct clusters, each with unique shapes. Two of the clusters are in close proximity to one another, while the third cluster is located farther away. Each cluster varies in the number of points it contains. We selected this data structure because it is simple.
+
+To keep the experiment fair and consistent across trials, we approximately fixed the distance between the clusters in each data structure. We also used five distance scale factors to gradually change how far apart the clusters were. While this controlled setup makes it easier to interpret the results, it does limit how well the findings apply to more complex data structures with uneven or irregular cluster arrangements.
+
+## Conclusions {#sec-conclusion}
+
+<!-- - Objective of the experiment (This article has described experimental evidence providing support for the advice of....) -->
+
+<!-- - Overall conclusion (We conducted a perceptual experiment on ...) -->
+
+<!-- - Reasons for the conclusions -->
+
+<!-- - Future work (do the experiment with different factors) -->
+
+<!-- - Disadvantaged of the human experiments (Human evaluation of residuals is expensive, time-consuming and laborious. This is possibly why residual plot analysis is often not done in practice. However, with the emergence of effective computer vision, it is hoped this work helps to lay the foundation for automated residual plot assessment) -->
+
+<!-- - Other interesting results found -->
+
+This study provides empirical evidence that NLDR methods differ substantially in how well they preserve high-dimensional structures that are perceptually meaningful for classification and clustering. By combining a controlled simulation of three clusters with varying separation, shape, and size, and a human recognition experiment, we quantified how structural separability in the original space translates into correct identification of clusters in \gD{} representations.
+
+Our results reveal consistent differences among NLDR methods. UMAP and PaCMAP produced layouts where greater high-dimensional separation—quantified by both the scaled BW ratio and the exponential of the scaled minimum inter-cluster distance—led to higher probabilities of correct identification. These methods explicitly optimize for both local and global relationships: UMAP through fuzzy topological preservation and PaCMAP through adaptive pairwise constraints that balance local and mid-range distances. This dual emphasis likely explains their superior perceptual alignment with the true \pD{} structure. TriMAP showed a similar but less pronounced trend, consistent with its triplet-based loss that prioritizes preservation of global relationships.
+
+In contrast, tSNE exhibited a negative association between separability and correct identification, consistent with prior findings that its Kullback–Leibler divergence loss exaggerates local density differences at the expense of global geometry. As clusters became more distinct in the high-dimensional space, tSNE’s optimization fragmented global relationships, yielding visually appealing but structurally misleading layouts. PHATE, which emphasizes manifold continuity rather than discrete grouping through potential distances, showed no systematic relationship between separability and accuracy, aligning with its design focus on smooth transitions rather than cluster fidelity.
+
+Visual inspection of misidentifications further supports these quantitative results. Curvilinear or non-linear manifolds—such as *s_curve*, *helical_hyper_spiral*, and *nonlinear_hyperbola*—were most often misrepresented, particularly when paired with compact clusters like *cube* or *blunted_cone*. Methods emphasizing local continuity, such as tSNE and PHATE, tended to merge or over-separate these curved structures, while PaCMAP and UMAP occasionally distorted their global positioning when cluster density or scale varied. TriMAP, though better at maintaining overall spatial relationships, frequently compressed curved manifolds against more compact forms, leading to overlap or shape loss. These systematic misidentifications underscore how each method’s underlying loss function—balancing local versus global preservation—directly shapes perceptual fidelity in the resulting embeddings.
+
+Overall, these findings emphasize that NLDR methods should be evaluated not only by visual appearance but by their alignment between quantitative structure and perceptual interpretation. Methods like UMAP and PaCMAP appear to maintain interpretable geometric fidelity across varying levels of separation, while tSNE and PHATE prioritize alternative aspects of structure. The implication for statistical graphics is that perceptually faithful embeddings are not guaranteed by standard algorithmic performance metrics alone.
+
+Future work should extend these analyses to a wider range of experimental conditions, including different noise levels, sample sizes, and dimensionalities, to test the robustness of perceptual fidelity across contexts. Comparing with linear methods such as PCA or supervised embeddings could also clarify whether the observed effects are unique to non-linear transformations or reflect broader perceptual tendencies in cluster interpretation. In addition, exploring alternative data structures—such as overlapping clusters, hierarchical manifolds, or continuous gradients—would help determine how general these perceptual biases are across more complex topologies. Integrating automated visual diagnostics, for example using computer-vision or deep-learning–based similarity metrics, could complement human judgment and provide objective measures of structure preservation. Finally, combining interactive visualization environments with eye-tracking or cognitive-load assessments could reveal how users process and trust NLDR layouts in real time. Such advances would not only improve the interpretability of dimensionality reduction methods but also support the development of human-centered evaluation frameworks that bridge statistical validity and perceptual understanding in high-dimensional data visualization.
+
+## Acknowledgments
+
+A pilot study was conducted with sample subjects from the working group of the Department of Econometrics and Business Statistics, Monash University. This pilot study allowed us to estimate the study's completion time and the effect size and fine-tune the application.
+
+These R packages were used for the work: `tidyverse` (@hadley2019), `lme4` (@douglas2015), `broom.mixed` (@ben2024), `ggbeeswarm` (@erik2023), `emmeans` (@russell2025), `patchwork` (@thomas2024), `colorspace` (@achim2020), `kableExtra` (@hao2024), `conflicted` (@hadley2023), `UpSetR` (@nils2019), `Rtsne` (@jesse2015), `umap` (@tomasz2023), `phateR`(@moon2019), `reticulate` (@kevin2024), `langevitour` (@harisson2024), `gridExtra` (@baptiste2017), `shiny` (@winston2024), `shinydashboard` (@winston2025), `shinythemes` (@winston2021), `bslib` (@carson2025), `shinyjs` (@dean2021), `DT` (@yihui2016), `googledrive` (@lucy2025), `googleAuthR` (@mark2024), `googlesheets4` (@jennifer2025), `shinyalert` (@dean2024a), `shinypop` (@fanny2024), `randomNames` (@damian2024), `shinyfullscreen` (@etienne2021), `shinyWidgets` (@victor2025), `hms` (@kirill2025), `shinythemes` (@winston2021), and `shinycssloaders` (@dean2024b). These `python` packages were used for the work: `trimap` (@amid2022) and `pacmap` (@yingfan2021). 
+
+## Supplementary Materials
+
+All the materials to reproduce the paper can be found at <https://github.com/JayaniLakshika/paper-vis-experiment>.
+
+Appendix: The appendix includes more details about the data structures and their tSNE, UMAP, PHATE, PaCMAP, and TriMAP layouts used in the study (appendix.pdf, Portable Document Format file).
+
+XXX Add Match-a-roo experiment links
