@@ -9,6 +9,14 @@ The primary contributions of this research are fourfold. First, we introduce a n
 <!--scripts/pkg_cran_info.R-->
 The software outputs of this research have been made publicly available to support transparency and reproducibility. The R package `quollr` has been on CRAN since March $2024$ and has received $2950$ downloads from the CRAN mirror; its development version is hosted on GitHub at [https://github.com/jayanilakshika/quollr](https://github.com/jayanilakshika/quollr). The R package `cardinalR` has been available on CRAN since April $2024$ and has received $3151$ downloads from the CRAN mirror, with the latest development version at [https://github.com/jayanilakshika/cardinalR](https://github.com/jayanilakshika/cardinalR). A Shiny application for `quollr` is accessible via one of the mirror sites at [https://menurar.netlify.app/](https://menurar.netlify.app/), with its source code available at [https://github.com/JayaniLakshika/menuraR](https://github.com/JayaniLakshika/menuraR).
 
+
+::: {.cell}
+::: {.cell-output-display}
+![](07-chap7_files/figure-html/unnamed-chunk-1-1.png){width=768}
+:::
+:::
+
+
 The survey web application, **Match-a-roo** ([https://ebsmonash.shinyapps.io/Match-a-roo/](https://ebsmonash.shinyapps.io/Match-a-roo/)), was designed and implemented in Shiny to collect participant responses and demographic information. Each subject accessed the survey through the shinyapps.io server.
 
 All materials associated with this thesis are openly available at [https://github.com/JayaniLakshika/Monash\_PhD\_thesis](https://github.com/JayaniLakshika/Monash_PhD_thesis), reflecting the principles of transparency and reproducible research. The thesis itself is written in Quarto [@Allaire_Quarto_2024] and published online at [https://jayani-lakshika-phd-thesis.netlify.app](https://jayani-lakshika-phd-thesis.netlify.app).
@@ -120,7 +128,7 @@ Need to add final thoughts later...
 
 ::: {.cell}
 ::: {.cell-output-display}
-![](07-chap7_files/figure-html/unnamed-chunk-1-1.png){width=960}
+![](07-chap7_files/figure-html/unnamed-chunk-2-1.png){width=960}
 :::
 :::
 
