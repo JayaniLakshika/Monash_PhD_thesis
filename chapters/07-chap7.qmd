@@ -32,6 +32,8 @@ All materials associated with this thesis are openly available at [https://githu
 
 In addition, a number of R packages were essential in the development of this work, including `tidyverse` [@tidyverse], `lmtest` [@lmtest], `kableExtra` [@kableextra], `patchwork` [@patchwork], `glue` [@glue], `ggpcp` [@ggpcp], `here` [@here], and `knitr` [@knitr]. (Final package list to be confirmed upon completion of writing.)
 
+## Add about polarisR as well.
+
 ## Future work
 
 There are several directions that this work can be developed.
