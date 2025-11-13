@@ -114,3 +114,13 @@ Another valuable direction for future work is to investigate how PCA compares to
 By comparing how users interpret and misinterpret PCA layouts versus NLDR generated layouts, we can gain insights into whether linear techniques are inherently easier to understand or whether they may lead to different types of visual distortions. This work would help clarify when PCA is sufficient for visual analysis and when the added complexity of NLDR is warranted, particularly for exploratory tasks that rely on visual intuition.
 
 ## Final thoughts
+
+Need to add final thoughts later...
+
+
+::: {.cell}
+::: {.cell-output-display}
+![](07-chap7_files/figure-html/unnamed-chunk-1-1.png){width=960}
+:::
+:::
+

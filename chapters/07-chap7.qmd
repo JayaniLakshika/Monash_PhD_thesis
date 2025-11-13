@@ -114,3 +114,26 @@ Another valuable direction for future work is to investigate how PCA compares to
 By comparing how users interpret and misinterpret PCA layouts versus NLDR generated layouts, we can gain insights into whether linear techniques are inherently easier to understand or whether they may lead to different types of visual distortions. This work would help clarify when PCA is sufficient for visual analysis and when the added complexity of NLDR is warranted, particularly for exploratory tasks that rely on visual intuition.
 
 ## Final thoughts
+
+Need to add final thoughts later...
+
+```{r}
+#| fig-width: 10
+#| fig-height: 10
+
+library(knitr)
+library(gridExtra)
+library(png)
+library(grid)
+
+# Read images
+austria_img <- rasterGrob(png::readPNG(here::here("figures/austria.png")), interpolate=TRUE)
+usa_img     <- rasterGrob(png::readPNG(here::here("figures/usa.png")), interpolate=TRUE)
+aus_img     <- rasterGrob(png::readPNG(here::here("figures/usa.png")), interpolate=TRUE)
+aus_img     <- rasterGrob(png::readPNG(here::here("figures/usa.png")), interpolate=TRUE)
+summary_img     <- rasterGrob(png::readPNG(here::here("figures/milestone_summary.png")), interpolate=TRUE)
+
+# Arrange in one row
+grid.arrange(austria_img, usa_img, aus_img, summary_img, ncol = 2)
+
+```
