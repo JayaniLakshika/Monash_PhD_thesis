@@ -22,8 +22,8 @@ image_read_pdf("_book/This-is-my-thesis.pdf", pages = 1) |>
 fs::file_copy("_book/This-is-my-thesis.pdf", "examples/template.pdf", overwrite = TRUE)
 ```
 
-# Monash Thesis Template
+# New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Non-linear Dimension Reduction Layouts of High-dimensional Data
 
-This is a Quarto template that assists you in creating a Monash University thesis. Either fork or download the repository to get started.
+# License
 
-[![](examples/template.png)](examples/template.pdf)
+The code contained in this work is available under the [MIT license](https://opensource.org/licenses/MIT).
