@@ -7,13 +7,24 @@ This thesis presents four key contributions that collectively advance the unders
 The primary contributions of this research are fourfold. First, we introduce a novel method for visualizing how NLDR warps data, thereby improving the diagnostics of NLDR techniques. Second, we conduct a human subject experiment to investigate the perception and misperception of NLDR representations, providing evidence on how clusters at varying distances are identified in comparison to high-dimensional tours. Third, we develop two R packages: `quollr`, which implements the proposed diagnostic method, and `cardinalR`, which generates high-dimensional data structures with enhanced features such as added noise dimensions and background noise. Finally, we create a Shiny application that provides analysts with a user-friendly interface for obtaining the most accurate NLDR representation.
 
 <!--scripts/pkg_cran_info.R-->
-The software outputs of this research have been made publicly available to support transparency and reproducibility. The R package `quollr` has been on CRAN since March $2024$ and has received $2950$ downloads from the CRAN mirror; its development version is hosted on GitHub at [https://github.com/jayanilakshika/quollr](https://github.com/jayanilakshika/quollr). The R package `cardinalR` has been available on CRAN since April $2024$ and has received $3151$ downloads from the CRAN mirror, with the latest development version at [https://github.com/jayanilakshika/cardinalR](https://github.com/jayanilakshika/cardinalR). A Shiny application for `quollr` is accessible via one of the mirror sites at [https://menurar.netlify.app/](https://menurar.netlify.app/), with its source code available at [https://github.com/JayaniLakshika/menuraR](https://github.com/JayaniLakshika/menuraR).
+The software outputs of this research have been made publicly available to support transparency and reproducibility. The R package `quollr` has been on CRAN since March $2024$ and has received $3656$ downloads from the CRAN mirror; its development version is hosted on GitHub at [https://github.com/jayanilakshika/quollr](https://github.com/jayanilakshika/quollr). The R package `cardinalR` has been available on CRAN since April $2024$ and has received $3862$ downloads from the CRAN mirror, with the latest development version at [https://github.com/jayanilakshika/cardinalR](https://github.com/jayanilakshika/cardinalR). A Shiny application for `quollr` is accessible via one of the mirror sites at [https://menurar.netlify.app/](https://menurar.netlify.app/), with its source code available at [https://github.com/JayaniLakshika/menuraR](https://github.com/JayaniLakshika/menuraR).
+
+<!--scripts/git_commits.R-->
+
+::: {.cell}
+::: {.cell-output-display}
+![](07-chap7_files/figure-pdf/unnamed-chunk-1-1.pdf)
+:::
+:::
+
 
 The survey web application, **Match-a-roo** ([https://ebsmonash.shinyapps.io/Match-a-roo/](https://ebsmonash.shinyapps.io/Match-a-roo/)), was designed and implemented in Shiny to collect participant responses and demographic information. Each subject accessed the survey through the shinyapps.io server.
 
 All materials associated with this thesis are openly available at [https://github.com/JayaniLakshika/Monash\_PhD\_thesis](https://github.com/JayaniLakshika/Monash_PhD_thesis), reflecting the principles of transparency and reproducible research. The thesis itself is written in Quarto [@Allaire_Quarto_2024] and published online at [https://jayani-lakshika-phd-thesis.netlify.app](https://jayani-lakshika-phd-thesis.netlify.app).
 
 In addition, a number of R packages were essential in the development of this work, including `tidyverse` [@tidyverse], `lmtest` [@lmtest], `kableExtra` [@kableextra], `patchwork` [@patchwork], `glue` [@glue], `ggpcp` [@ggpcp], `here` [@here], and `knitr` [@knitr]. (Final package list to be confirmed upon completion of writing.)
+
+## Add about polarisR as well.
 
 ## Future work
 
@@ -120,7 +131,7 @@ Need to add final thoughts later...
 
 ::: {.cell}
 ::: {.cell-output-display}
-![](07-chap7_files/figure-pdf/unnamed-chunk-1-1.pdf)
+![](07-chap7_files/figure-pdf/unnamed-chunk-2-1.pdf)
 :::
 :::
 

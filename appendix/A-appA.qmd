@@ -1,17 +1,17 @@
 # Glossary
 
 ```{r}
-library(readr)
-library(kableExtra)
+source(here::here("scripts/software.R"))
 ```
 
 ```{r}
 #| label: tbl-glossary
 #| tbl-pos: H
-#| tbl-cap: "Summary of notation for describing new methodology."
-# Notation used in the paper
+#| tbl-cap: "Glossary."
+# Keywords used in the thesis
 
-glossary_df <- read_csv(here::here("misc/glossary.csv"))
+glossary_df <- read_csv(here::here("misc/glossary.csv")) |>
+  arrange(Term)
 
 if (knitr::is_latex_output()) {
   kable(glossary_df,

@@ -1,7 +1,16 @@
-Term/ Notation ,Description
-Nonlinear dimension reduction (NLDR) techniques,
-tSNE,
-UMAP (Uniform Manifold Approximation and Projection),A manifold learning-based NLDR technique preserving both local and some global structures efficiently.
-PHATE,
-TriMAP,
-PaCMAP,
+Term ,Description
+High-dimensional data,
+Dimension reduction,
+Linear dimension reduction,
+Nonlinear dimension reduction (NLDR) techniques/ methods,
+t-distributed stochastic neighbor embedding (tSNE),
+Uniform Manifold Approximation and Projection (UMAP),A manifold learning-based NLDR technique preserving both local and some global structures efficiently.
+potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm,
+large-scale dimensionality reduction using triplets (TriMAP),
+pairwise controlled manifold approximation (PaCMAP),
+tour,
+NLDR model,
+Layout/ representation,
+Embedding,
+Hyper_parameters,
+Interactive graphics,
