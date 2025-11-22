@@ -65,7 +65,21 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script><link href="https://fonts.googleapis.com/css?family=Fira+Sans%7CMerriweather%7CSource%20Code%20Pro" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -159,7 +173,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/03-chap3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">quollr: An R Package for Visualizing <span class="math inline">\(2\text{-}D\)</span> Models from Non-linear Dimension Reductions in High Dimensional Space</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">quollr: An R Package for Visualizing <span class="math inline">2\text{-}D</span> Models from Non-linear Dimension Reductions in High Dimensional Space</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -577,48 +591,48 @@ Figure&nbsp;C.1: Pairwise relationships among six distance metrics used to quant
 </div>
 <p>We examined six metrics commonly used in clustering validation studies:</p>
 <section id="betweenwithin-bw-ratio" class="level3"><h3 class="anchored" data-anchor-id="betweenwithin-bw-ratio">Between–Within (BW) Ratio</h3>
-<p>The <strong>between–within ratio</strong> compares average inter-cluster distances to average intra-cluster distances: <span class="math display">\[
+<p>The <strong>between–within ratio</strong> compares average inter-cluster distances to average intra-cluster distances: <span class="math display">
 BW = \frac{B}{W},
-\]</span> where</p>
-<p><span class="math display">\[
+</span> where</p>
+<p><span class="math display">
 B = \frac{1}{K(K-1)} \sum_{i &lt; j} ||\mu_i - \mu_j||,
 \quad
 W = \frac{1}{K} \sum_{i=1}^{K} \frac{1}{n_i} \sum_{x \in C_i} ||x - \mu_i||,
-\]</span></p>
-<p><span class="math inline">\(K\)</span> is the number of clusters, <span class="math inline">\(n_i\)</span> is the size of cluster <span class="math inline">\(i\)</span>, <span class="math inline">\(C_i\)</span> denotes the set of points in cluster <span class="math inline">\(i\)</span>, and <span class="math inline">\(\mu_i\)</span> is its centroid. A higher (BW) ratio indicates greater global separation relative to within-cluster compactness.</p>
+</span></p>
+<p><span class="math inline">K</span> is the number of clusters, <span class="math inline">n_i</span> is the size of cluster <span class="math inline">i</span>, <span class="math inline">C_i</span> denotes the set of points in cluster <span class="math inline">i</span>, and <span class="math inline">\mu_i</span> is its centroid. A higher (BW) ratio indicates greater global separation relative to within-cluster compactness.</p>
 </section><section id="minimum-distance-between-clusters" class="level3"><h3 class="anchored" data-anchor-id="minimum-distance-between-clusters">Minimum Distance Between Clusters</h3>
-<p>The <strong>minimum distance</strong> identifies the closest approach between two clusters: <span class="math display">\[
+<p>The <strong>minimum distance</strong> identifies the closest approach between two clusters: <span class="math display">
 d_{\min} = \min_{i \neq j} \min_{x \in C_i, , y \in C_j} ||x - y||.
-\]</span> This metric is sensitive to boundary overlap and captures <strong>local proximity</strong> between clusters.</p>
+</span> This metric is sensitive to boundary overlap and captures <strong>local proximity</strong> between clusters.</p>
 </section><section id="average-distance-between-clusters" class="level3"><h3 class="anchored" data-anchor-id="average-distance-between-clusters">Average Distance Between Clusters</h3>
-<p>The <strong>average inter-cluster distance</strong> represents the overall separation across all cluster pairs: <span class="math display">\[
+<p>The <strong>average inter-cluster distance</strong> represents the overall separation across all cluster pairs: <span class="math display">
 d_{\text{avg}} = \frac{1}{K(K-1)} \sum_{i &lt; j} \frac{1}{n_i n_j}
 \sum_{x \in C_i} \sum_{y \in C_j} ||x - y||.
-\]</span> This provides a smooth measure of global spacing between clusters.</p>
+</span> This provides a smooth measure of global spacing between clusters.</p>
 </section><section id="pearsongamma-coefficient" class="level3"><h3 class="anchored" data-anchor-id="pearsongamma-coefficient">Pearson–Gamma Coefficient</h3>
-<p>The <strong>Pearson–Gamma coefficient</strong> measures the correlation between pairwise distances and binary cluster membership: <span class="math display">\[
+<p>The <strong>Pearson–Gamma coefficient</strong> measures the correlation between pairwise distances and binary cluster membership: <span class="math display">
 \Gamma = \text{corr}(D, M),
-\]</span> where <span class="math inline">\(D\)</span> is the vector of pairwise Euclidean distances and <span class="math inline">\(M\)</span> is a binary indicator matrix (<span class="math inline">\(M_{pq} = 1\)</span> if points <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> belong to the same cluster, <span class="math inline">\(0\)</span> otherwise). A larger <span class="math inline">\(\Gamma\)</span> indicates stronger agreement between geometric and categorical separations.</p>
+</span> where <span class="math inline">D</span> is the vector of pairwise Euclidean distances and <span class="math inline">M</span> is a binary indicator matrix (<span class="math inline">M_{pq} = 1</span> if points <span class="math inline">p</span> and <span class="math inline">q</span> belong to the same cluster, <span class="math inline">0</span> otherwise). A larger <span class="math inline">\Gamma</span> indicates stronger agreement between geometric and categorical separations.</p>
 </section><section id="average-silhouette-distance" class="level3"><h3 class="anchored" data-anchor-id="average-silhouette-distance">Average Silhouette Distance</h3>
-<p>The <strong>silhouette width</strong> for each observation <span class="math inline">\(x_i\)</span> is defined as <span class="math display">\[
+<p>The <strong>silhouette width</strong> for each observation <span class="math inline">x_i</span> is defined as <span class="math display">
 s_i = \frac{b_i - a_i}{\max(a_i, b_i)},
-\]</span> where <span class="math inline">\(a_i\)</span> is the average distance between <span class="math inline">\(x_i\)</span> and all other points in its own cluster, and <span class="math inline">\(b_i\)</span> is the minimum average distance from <span class="math inline">\(x_i\)</span> to all other clusters. The <strong>average silhouette</strong> is then <span class="math display">\[
+</span> where <span class="math inline">a_i</span> is the average distance between <span class="math inline">x_i</span> and all other points in its own cluster, and <span class="math inline">b_i</span> is the minimum average distance from <span class="math inline">x_i</span> to all other clusters. The <strong>average silhouette</strong> is then <span class="math display">
 S = \frac{1}{n} \sum_{i=1}^{n} s_i,
-\]</span> indicating how well each point matches its assigned cluster compared to others.</p>
+</span> indicating how well each point matches its assigned cluster compared to others.</p>
 </section><section id="dunn-and-dunn2-indices" class="level3"><h3 class="anchored" data-anchor-id="dunn-and-dunn2-indices">Dunn and Dunn2 Indices</h3>
-<p>The <strong>Dunn index</strong> evaluates compactness and separation simultaneously: <span class="math display">\[
+<p>The <strong>Dunn index</strong> evaluates compactness and separation simultaneously: <span class="math display">
 D = \frac{\min_{i \neq j} d(C_i, C_j)}{\max_{k} \delta(C_k)},
-\]</span> where <span class="math inline">\(d(C_i, C_j)\)</span> is the inter-cluster distance and <span class="math inline">\(\delta(C_k)\)</span> is the within-cluster diameter. The <strong>Dunn2 index</strong> is a variation that replaces Euclidean distances with average pairwise distances within and between clusters for improved robustness.</p>
+</span> where <span class="math inline">d(C_i, C_j)</span> is the inter-cluster distance and <span class="math inline">\delta(C_k)</span> is the within-cluster diameter. The <strong>Dunn2 index</strong> is a variation that replaces Euclidean distances with average pairwise distances within and between clusters for improved robustness.</p>
 <p>Because these metrics differ in scale and sensitivity, all were standardized and, where necessary, transformed to stabilize non-linear relationships. Specifically, the minimum distance was exponentiated (<code>exp(min_dist_scaled)</code>) to linearize its association with other metrics and reduce the effect of small distance ranges. This transformation allows for clearer comparison across metrics that vary in numerical range or distribution.</p>
 <p>The pairwise correlations among all metrics (<a href="#fig-distance-metrics" class="quarto-xref">Figure&nbsp;<span>C.1</span></a>) demonstrate strong positive associations, indicating that they generally capture consistent patterns of cluster separation. However, the BW ratio and minimum distance were selected as the primary indicators for subsequent analyses. Together, they summarize both global separation (centroid-based distance normalized by cluster spread) and local proximity (the smallest inter-cluster gap). This combination provides a balanced characterization of cluster distinctness that is both geometrically interpretable and perceptually meaningful for visualization studies.</p>
 </section></section><section id="experimental-factors-allocation-to-participants" class="level2" data-number="C.6"><h2 data-number="C.6" class="anchored" data-anchor-id="experimental-factors-allocation-to-participants">
 <span class="header-section-number">C.6</span> Experimental factors allocation to participants</h2>
-<p>Allocation of participants to experimental factors is an important part of experimental design. There are a total of <span class="math inline">\(3 \times 5 = 15\)</span> combinations of factors for the study. Thirty-six replications for each combination results in <span class="math inline">\(10 \times 36 = 360\)</span> evaluations.</p>
-<p>Each factor combination must be evaluated by at least thirty-six participants. Based on the pilot studies for this experiment, we decided to record <span class="math inline">\(20\)</span> evaluations for the study, all conducted within a time frame of <span class="math inline">\(5\)</span> to <span class="math inline">\(10\)</span> minutes. One of the evaluations, featuring three Gaussian clusters, was used as an attention check to ensure data quality. Additionally, three of the evaluations were assigned different data displayed across two displays to reduce the consistency of showing the same data.</p>
+<p>Allocation of participants to experimental factors is an important part of experimental design. There are a total of <span class="math inline">3 \times 5 = 15</span> combinations of factors for the study. Thirty-six replications for each combination results in <span class="math inline">10 \times 36 = 360</span> evaluations.</p>
+<p>Each factor combination must be evaluated by at least thirty-six participants. Based on the pilot studies for this experiment, we decided to record <span class="math inline">20</span> evaluations for the study, all conducted within a time frame of <span class="math inline">5</span> to <span class="math inline">10</span> minutes. One of the evaluations, featuring three Gaussian clusters, was used as an attention check to ensure data quality. Additionally, three of the evaluations were assigned different data displayed across two displays to reduce the consistency of showing the same data.</p>
 <p><a href="#fig-validate-exp-design-ds" class="quarto-xref">Figure&nbsp;<span>C.2</span></a> provides an example of how distance scale factor is allocated using data structures for the first nine participants. It can be observed that the factor combinations are assigned randomly to the data structures among the participants, ensuring a diverse set of data structures for each individual.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-validate-exp-design-ds" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H" data-fig-align="center">
+<div id="fig-validate-exp-design-ds" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="H">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-validate-exp-design-ds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="C-appC_files/figure-html/fig-validate-exp-design-ds-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="H">
 </div>
@@ -631,7 +645,7 @@ Figure&nbsp;C.2: Allocation of method and distance scale factor to the first 9 p
 <p>XXX Add description regarding how experimental factors are allocated to the subjects</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-experiment-design-ds" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H" data-fig-align="center">
+<div id="fig-experiment-design-ds" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="H">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-experiment-design-ds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="C-appC_files/figure-html/fig-experiment-design-ds-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" data-fig-pos="H">
 </div>
@@ -644,8 +658,8 @@ Figure&nbsp;C.3: The experimental design used for the study involved six partici
 </section><section id="data-collection-process" class="level2" data-number="C.7"><h2 data-number="C.7" class="anchored" data-anchor-id="data-collection-process">
 <span class="header-section-number">C.7</span> Data collection process</h2>
 <section id="recruite-participants" class="level3"><h3 class="anchored" data-anchor-id="recruite-participants">Recruite participants</h3>
-<p>Subjects were recruited from Prolific <span class="citation" data-cites="palan2018">(<a href="../refs.html#ref-palan2018" role="doc-biblioref"><strong>palan2018?</strong></a>)</span>, an online platform, to evaluate the trials. The study expects that the participants are uninvolved judges with no prior knowledge of the data to avoid inadvertently affecting results. Potential subjects needed with fluent in English and have completed at least <span class="math inline">\(10\)</span> Prolific studies with a <span class="math inline">\(98\%\)</span> approval rate. The Prolific server only considers participants who are age <span class="math inline">\(18\)</span> and older.</p>
-<p>All subjects were trained using three example displays to orient them to the evaluation trials and provided <a href="https://drive.google.com/file/d/14o-nSjy50Qw2eoQArK5AhjowLIOe6m14/view">introductory materials</a>. All subjects who completed the task were compensated <span class="math inline">\(9.96\)</span> GBP per hour for their time via the Prolific payment system.</p>
+<p>Subjects were recruited from Prolific <span class="citation" data-cites="palan2018">(<a href="../refs.html#ref-palan2018" role="doc-biblioref"><strong>palan2018?</strong></a>)</span>, an online platform, to evaluate the trials. The study expects that the participants are uninvolved judges with no prior knowledge of the data to avoid inadvertently affecting results. Potential subjects needed with fluent in English and have completed at least <span class="math inline">10</span> Prolific studies with a <span class="math inline">98\%</span> approval rate. The Prolific server only considers participants who are age <span class="math inline">18</span> and older.</p>
+<p>All subjects were trained using three example displays to orient them to the evaluation trials and provided <a href="https://drive.google.com/file/d/14o-nSjy50Qw2eoQArK5AhjowLIOe6m14/view">introductory materials</a>. All subjects who completed the task were compensated <span class="math inline">9.96</span> GBP per hour for their time via the Prolific payment system.</p>
 </section><section id="web-application-to-collect-responses" class="level3"><h3 class="anchored" data-anchor-id="web-application-to-collect-responses">Web application to collect responses</h3>
 <p>The survey web application, <a href="https://ebsmonash.shinyapps.io/web_game/">Match-a-roo</a>, is designed to collect survey responses and demographics using the <code>shiny</code> <span class="citation" data-cites="winston2024">(<a href="../refs.html#ref-winston2024" role="doc-biblioref"><strong>winston2024?</strong></a>)</span> package in R. Each subject had access to the survey via the shiny.io server. The first interface of the survey app contained an introduction, instructions for the survey (<a href="#fig-intro-page" class="quarto-xref">Figure&nbsp;<span>C.5</span></a>), a consent form (<a href="#fig-consent" class="quarto-xref">Figure&nbsp;<span>C.6</span></a>), and buttons to access, for example, actual trials. Participants can try three examples prior to the study where the answers were not recorded (<a href="#fig-example" class="quarto-xref">Figure&nbsp;<span>C.7</span></a>). The subjects were first asked for their consent to the responses being used for analysis.</p>
 <!-- A total of $4526$ evaluations from $146$ participants has been collected.  -->
@@ -811,7 +825,7 @@ Table&nbsp;C.6: Summary of the previous experience in Non-linear dimension reduc
 <p>XXX Add plot with time Vs attempt for the subjects XXX Check is there any specific pattern for each demographics with their answers (eg: Male correctly identify more, or in which region…)</p>
 </section></section><section id="non-attention-check-data-generation" class="level2" data-number="C.9"><h2 data-number="C.9" class="anchored" data-anchor-id="non-attention-check-data-generation">
 <span class="header-section-number">C.9</span> Non-attention check data generation</h2>
-<p>The process of generating non-attention check data involves several steps. First, we generate clustering data using a distance scale factor of <span class="math inline">\(1\)</span>, with sample size of <span class="math inline">\(7500\)</span>, no noise dimensions, and no background noise. Next, the data generated with a distance scale factor of <span class="math inline">\(1\)</span> and a sample size of <span class="math inline">\(7500\)</span> is used to create data with different distance scale factors (<span class="math inline">\(0.1\)</span>) (<span class="quarto-unresolved-ref">?alg-gen-diff-sf</span>).</p>
+<p>The process of generating non-attention check data involves several steps. First, we generate clustering data using a distance scale factor of <span class="math inline">1</span>, with sample size of <span class="math inline">7500</span>, no noise dimensions, and no background noise. Next, the data generated with a distance scale factor of <span class="math inline">1</span> and a sample size of <span class="math inline">7500</span> is used to create data with different distance scale factors (<span class="math inline">0.1</span>) (<span class="quarto-unresolved-ref">?alg-gen-diff-sf</span>).</p>
 <!-- ```pseudocode -->
 <!-- #| label: alg-gen-diff-sf -->
 <!-- #| html-line-number: false -->
@@ -849,7 +863,7 @@ Table&nbsp;C.6: Summary of the previous experience in Non-linear dimension reduc
 <div class="cell" data-layout-align="center">
 <div id="tbl-dist-centroid-four-clust" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-dist-centroid-four-clust-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;C.7: <span class="math inline">\(4\text{-}D\)</span> distances between centroid points in three clusters.
+Table&nbsp;C.7: <span class="math inline">4\text{-}D</span> distances between centroid points in three clusters.
 </figcaption><div aria-describedby="tbl-dist-centroid-four-clust-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 

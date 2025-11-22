@@ -85,7 +85,21 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script><link href="https://fonts.googleapis.com/css?family=Fira+Sans%7CMerriweather%7CSource%20Code%20Pro" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -179,7 +193,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/03-chap3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">quollr: An R Package for Visualizing <span class="math inline">\(2\text{-}D\)</span> Models from Non-linear Dimension Reductions in High Dimensional Space</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">quollr: An R Package for Visualizing <span class="math inline">2\text{-}D</span> Models from Non-linear Dimension Reductions in High Dimensional Space</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -307,358 +321,358 @@ Table&nbsp;B.1: NLDR methods and hyper-parameters used for each Figure in the ma
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(1\)</span>a</td>
+<span class="math inline">1</span>a</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 30, min_dist = 0.3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(1\)</span>b</td>
+<span class="math inline">1</span>b</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 5, min_dist = 0.8</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(1\)</span>c</td>
+<span class="math inline">1</span>c</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 5, min_dist = 0.01</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(1\)</span>d</td>
+<span class="math inline">1</span>d</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 5</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(1\)</span>e</td>
+<span class="math inline">1</span>e</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 30</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(1\)</span>f</td>
+<span class="math inline">1</span>f</td>
 <td style="text-align: left;">PHATE</td>
 <td style="text-align: left;">knn = 5</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(1\)</span>g</td>
+<span class="math inline">1</span>g</td>
 <td style="text-align: left;">TriMAP</td>
 <td style="text-align: left;">n_inliers = 12, n_outliers = 4, n_random = 3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(1\)</span>h</td>
+<span class="math inline">1</span>h</td>
 <td style="text-align: left;">PaCMAP</td>
 <td style="text-align: left;">n_neighbors = 30, init = random, MN_ratio = 0.9, FP_ratio = 5</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: left;"><span class="math inline">2</span></td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 47</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(4\)</span>a</td>
+<span class="math inline">4</span>a</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 47</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(5\)</span>b</td>
+<span class="math inline">5</span>b</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 47</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><span class="math inline">\(6\)</span></td>
+<td style="text-align: left;"><span class="math inline">6</span></td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 47</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(8\)</span>a</td>
+<span class="math inline">8</span>a</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 47</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(8\)</span>b</td>
+<span class="math inline">8</span>b</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 62</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(8\)</span>c</td>
+<span class="math inline">8</span>c</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 15, min_dist = 0.1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(8\)</span>d</td>
+<span class="math inline">8</span>d</td>
 <td style="text-align: left;">PHATE</td>
 <td style="text-align: left;">knn = 5</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(8\)</span>e</td>
+<span class="math inline">8</span>e</td>
 <td style="text-align: left;">TriMAP</td>
 <td style="text-align: left;">n_inliers = 12, n_outliers = 4, n_random = 3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(8\)</span>f</td>
+<span class="math inline">8</span>f</td>
 <td style="text-align: left;">PaCMAP</td>
 <td style="text-align: left;">n_neighbors = 10, init = random, MN_ratio = 0.5, FP_ratio = 2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(10\)</span>a</td>
+<span class="math inline">10</span>a</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 30, min_dist = 0.3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(10\)</span>b</td>
+<span class="math inline">10</span>b</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 5, min_dist = 0.8</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(10\)</span>c</td>
+<span class="math inline">10</span>c</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 5, min_dist = 0.01</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(10\)</span>d</td>
+<span class="math inline">10</span>d</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 5</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(10\)</span>e</td>
+<span class="math inline">10</span>e</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 30</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(10\)</span>f</td>
+<span class="math inline">10</span>f</td>
 <td style="text-align: left;">PHATE</td>
 <td style="text-align: left;">knn = 5</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(10\)</span>g</td>
+<span class="math inline">10</span>g</td>
 <td style="text-align: left;">TriMAP</td>
 <td style="text-align: left;">n_inliers = 12, n_outliers = 4, n_random = 3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(10\)</span>h</td>
+<span class="math inline">10</span>h</td>
 <td style="text-align: left;">PaCMAP</td>
 <td style="text-align: left;">n_neighbors = 30, init = random, MN_ratio = 0.9, FP_ratio = 5</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(11\)</span>a</td>
+<span class="math inline">11</span>a</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 30, min_dist = 0.3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(11\)</span>e</td>
+<span class="math inline">11</span>e</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 30</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(12\)</span>a</td>
+<span class="math inline">12</span>a</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 30</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(12\)</span>b</td>
+<span class="math inline">12</span>b</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 89</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(12\)</span>c</td>
+<span class="math inline">12</span>c</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 15, min_dist = 0.1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(12\)</span>d</td>
+<span class="math inline">12</span>d</td>
 <td style="text-align: left;">PHATE</td>
 <td style="text-align: left;">knn = 5</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(12\)</span>e</td>
+<span class="math inline">12</span>e</td>
 <td style="text-align: left;">TriMAP</td>
 <td style="text-align: left;">n_inliers = 12, n_outliers = 4, n_random = 3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(12\)</span>f</td>
+<span class="math inline">12</span>f</td>
 <td style="text-align: left;">PaCMAP</td>
 <td style="text-align: left;">n_neighbors = 10, init = random, MN_ratio = 0.5, FP_ratio = 2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(13\)</span>a</td>
+<span class="math inline">13</span>a</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 30</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(14\)</span>a</td>
+<span class="math inline">14</span>a</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 30</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(A4\)</span>a</td>
+<span class="math inline">A4</span>a</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 71</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(A4\)</span>b</td>
+<span class="math inline">A4</span>b</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 15, min_dist = 0.1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(A4\)</span>c</td>
+<span class="math inline">A4</span>c</td>
 <td style="text-align: left;">PaCMAP</td>
 <td style="text-align: left;">n_neighbors = 10, init = random, MN_ratio = 0.5, FP_ratio = 2</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><span class="math inline">\(A5\)</span></td>
+<td style="text-align: left;"><span class="math inline">A5</span></td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 52</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(A6\)</span>a</td>
+<span class="math inline">A6</span>a</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 30, min_dist = 0.3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(A6\)</span>b</td>
+<span class="math inline">A6</span>b</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 30</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(A7\)</span>a</td>
+<span class="math inline">A7</span>a</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 30, min_dist = 0.3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(A7\)</span>b</td>
+<span class="math inline">A7</span>b</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 30</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(A8\)</span>a</td>
+<span class="math inline">A8</span>a</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 30, min_dist = 0.3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(A8\)</span>b</td>
+<span class="math inline">A8</span>b</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 30</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(A9\)</span>a</td>
+<span class="math inline">A9</span>a</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 30, min_dist = 0.3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(A9\)</span>b</td>
+<span class="math inline">A9</span>b</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 5, min_dist = 0.8</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(A9\)</span>c</td>
+<span class="math inline">A9</span>c</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 5, min_dist = 0.01</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(A9\)</span>d</td>
+<span class="math inline">A9</span>d</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 5</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(A9\)</span>e</td>
+<span class="math inline">A9</span>e</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 30</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(A9\)</span>f</td>
+<span class="math inline">A9</span>f</td>
 <td style="text-align: left;">PHATE</td>
 <td style="text-align: left;">knn = 5</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(A9\)</span>g</td>
+<span class="math inline">A9</span>g</td>
 <td style="text-align: left;">TriMAP</td>
 <td style="text-align: left;">n_inliers = 12, n_outliers = 4, n_random = 3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(A9\)</span>h</td>
+<span class="math inline">A9</span>h</td>
 <td style="text-align: left;">PaCMAP</td>
 <td style="text-align: left;">n_neighbors = 30, init = random, MN_ratio = 0.9, FP_ratio = 5</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(A10\)</span>a</td>
+<span class="math inline">A10</span>a</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 30</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(A10\)</span>b</td>
+<span class="math inline">A10</span>b</td>
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: left;">perplexity = 89</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(A10\)</span>c</td>
+<span class="math inline">A10</span>c</td>
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: left;">n_neighbors = 15, min_dist = 0.1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(A10\)</span>d</td>
+<span class="math inline">A10</span>d</td>
 <td style="text-align: left;">PHATE</td>
 <td style="text-align: left;">knn = 5</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">
-<span class="math inline">\(A10\)</span>e</td>
+<span class="math inline">A10</span>e</td>
 <td style="text-align: left;">TriMAP</td>
 <td style="text-align: left;">n_inliers = 12, n_outliers = 4, n_random = 3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">
-<span class="math inline">\(A10\)</span>f</td>
+<span class="math inline">A10</span>f</td>
 <td style="text-align: left;">PaCMAP</td>
 <td style="text-align: left;">n_neighbors = 10, init = random, MN_ratio = 0.5, FP_ratio = 2</td>
 </tr>
@@ -730,91 +744,91 @@ Table&nbsp;B.3: Summary of notation for describing new methodology.
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(n, p, k\)</span></td>
+<td style="text-align: left;"><span class="math inline">n, p, k</span></td>
 <td style="text-align: left;">number of observations, variables, embedding dimension, respectively</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><span class="math inline">\(\mathbfit{X}, \mathbfit{x}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\mathbfit{X}, \mathbfit{x}</span></td>
 <td style="text-align: left;">
-<span class="math inline">\(p\)</span>-dimensional data (population, sample)</td>
+<span class="math inline">p</span>-dimensional data (population, sample)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(\mathbfit{y}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\mathbfit{y}</span></td>
 <td style="text-align: left;">
-<span class="math inline">\(k\)</span>-dimensional layout</td>
+<span class="math inline">k</span>-dimensional layout</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><span class="math inline">\(P\)</span></td>
-<td style="text-align: left;">orthonormal basis, generating a <span class="math inline">\(d\text{-}dimensional\)</span> linear projection of <span class="math inline">\(p\)</span>-dimensional data</td>
+<td style="text-align: left;"><span class="math inline">P</span></td>
+<td style="text-align: left;">orthonormal basis, generating a <span class="math inline">d\text{-}dimensional</span> linear projection of <span class="math inline">p</span>-dimensional data</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(T\)</span></td>
+<td style="text-align: left;"><span class="math inline">T</span></td>
 <td style="text-align: left;">true model</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><span class="math inline">\(g\)</span></td>
+<td style="text-align: left;"><span class="math inline">g</span></td>
 <td style="text-align: left;">functional mapping from to , especially as prescribed by NLDR</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(\mathbfit{\theta}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\mathbfit{\theta}</span></td>
 <td style="text-align: left;">(Hyper-) parameters for NLDR method</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><span class="math inline">\(r\)</span></td>
+<td style="text-align: left;"><span class="math inline">r</span></td>
 <td style="text-align: left;">ranges of the embedding components</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(C^{(j)}\)</span></td>
+<td style="text-align: left;"><span class="math inline">C^{(j)}</span></td>
 <td style="text-align: left;">
-<span class="math inline">\(j\)</span>-dimensional bin centers</td>
+<span class="math inline">j</span>-dimensional bin centers</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><span class="math inline">\((b_1, b_2)\)</span></td>
+<td style="text-align: left;"><span class="math inline">(b_1, b_2)</span></td>
 <td style="text-align: left;">number of bins in each direction</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><span class="math inline">\((a_1, a_2)\)</span></td>
+<td style="text-align: left;"><span class="math inline">(a_1, a_2)</span></td>
 <td style="text-align: left;">binwidths, distance between centroids in each direction</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><span class="math inline">\((s_1, \ s_2)\)</span></td>
+<td style="text-align: left;"><span class="math inline">(s_1, \ s_2)</span></td>
 <td style="text-align: left;">starting coordinates of the hexagonal grid</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(q\)</span></td>
+<td style="text-align: left;"><span class="math inline">q</span></td>
 <td style="text-align: left;">buffer to ensure hexgrid covers data, proportion of data range, 0-1</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><span class="math inline">\(m\)</span></td>
+<td style="text-align: left;"><span class="math inline">m</span></td>
 <td style="text-align: left;">number of non-empty bins</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(b\)</span></td>
+<td style="text-align: left;"><span class="math inline">b</span></td>
 <td style="text-align: left;">number of hexagons in the grid</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><span class="math inline">\(h\)</span></td>
+<td style="text-align: left;"><span class="math inline">h</span></td>
 <td style="text-align: left;">hexagonal id</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(l\)</span></td>
+<td style="text-align: left;"><span class="math inline">l</span></td>
 <td style="text-align: left;">side length</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><span class="math inline">\(A\)</span></td>
+<td style="text-align: left;"><span class="math inline">A</span></td>
 <td style="text-align: left;">area</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(n_h\)</span></td>
-<td style="text-align: left;">number of points in hexagon <span class="math inline">\(h\)</span> (bin count)</td>
+<td style="text-align: left;"><span class="math inline">n_h</span></td>
+<td style="text-align: left;">number of points in hexagon <span class="math inline">h</span> (bin count)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><span class="math inline">\(w_h\)</span></td>
-<td style="text-align: left;">standardized number of points in hexagon <span class="math inline">\(h\)</span> (standardized bin counts)</td>
+<td style="text-align: left;"><span class="math inline">w_h</span></td>
+<td style="text-align: left;">standardized number of points in hexagon <span class="math inline">h</span> (standardized bin counts)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(d_h\)</span></td>
-<td style="text-align: left;">density of hexagon <span class="math inline">\(h\)</span> (bin density)</td>
+<td style="text-align: left;"><span class="math inline">d_h</span></td>
+<td style="text-align: left;">density of hexagon <span class="math inline">h</span> (bin density)</td>
 </tr>
 </tbody>
 </table>
@@ -876,12 +890,12 @@ Table&nbsp;B.4: R and Python script files used to generate outputs in the main p
 <tr class="odd">
 <td style="text-align: left;">two_nonlinear</td>
 <td style="text-align: left;">04_gen_mse_for_diff_methods.R</td>
-<td style="text-align: left;">Computes HBE with varying bin widths (<span class="math inline">\(a_1\)</span>) for all NLDR embeddings.</td>
+<td style="text-align: left;">Computes HBE with varying bin widths (<span class="math inline">a_1</span>) for all NLDR embeddings.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">two_nonlinear</td>
 <td style="text-align: left;">05_gen_rm_lwd_mse.R</td>
-<td style="text-align: left;">Computes HBE with varying low density bin cutoff for all three binwidth (<span class="math inline">\(a_1\)</span>) choices.</td>
+<td style="text-align: left;">Computes HBE with varying low density bin cutoff for all three binwidth (<span class="math inline">a_1</span>) choices.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">two_nonlinear</td>
@@ -921,7 +935,7 @@ Table&nbsp;B.4: R and Python script files used to generate outputs in the main p
 <tr class="even">
 <td style="text-align: left;">c_shaped_dens_str</td>
 <td style="text-align: left;">01_gen_data.R</td>
-<td style="text-align: left;">Generates the <span class="math inline">\(2\text{-}D\)</span> curved sheet dataset.</td>
+<td style="text-align: left;">Generates the <span class="math inline">2\text{-}D</span> curved sheet dataset.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">c_shaped_dens_str</td>
@@ -971,7 +985,7 @@ Table&nbsp;B.4: R and Python script files used to generate outputs in the main p
 <tr class="even">
 <td style="text-align: left;">pbmc3k</td>
 <td style="text-align: left;">08_gen_mse_for_diff_methods.R</td>
-<td style="text-align: left;">Computes HBE with varying bin widths (<span class="math inline">\(a_1\)</span>) for all NLDR embeddings.</td>
+<td style="text-align: left;">Computes HBE with varying bin widths (<span class="math inline">a_1</span>) for all NLDR embeddings.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">pbmc3k</td>
@@ -986,12 +1000,12 @@ Table&nbsp;B.4: R and Python script files used to generate outputs in the main p
 <tr class="odd">
 <td style="text-align: left;">pbmc3k</td>
 <td style="text-align: left;">11_gen_mse_for_diff_tsne_scD.R</td>
-<td style="text-align: left;">Computes HBE with varying bin widths (<span class="math inline">\(a_1\)</span>) for tSNE embeddings.</td>
+<td style="text-align: left;">Computes HBE with varying bin widths (<span class="math inline">a_1</span>) for tSNE embeddings.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">pbmc3k</td>
 <td style="text-align: left;">12_gen_mse_for_diff_umap_scD.R</td>
-<td style="text-align: left;">Computes HBE with varying bin widths (<span class="math inline">\(a_1\)</span>) for UMAP embeddings.</td>
+<td style="text-align: left;">Computes HBE with varying bin widths (<span class="math inline">a_1</span>) for UMAP embeddings.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">pbmc3k</td>
@@ -1026,7 +1040,7 @@ Table&nbsp;B.4: R and Python script files used to generate outputs in the main p
 <tr class="odd">
 <td style="text-align: left;">mnist</td>
 <td style="text-align: left;">01_data_preprocessing.R</td>
-<td style="text-align: left;">Computes first <span class="math inline">\(10\)</span> principal components and save data.</td>
+<td style="text-align: left;">Computes first <span class="math inline">10</span> principal components and save data.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">mnist</td>
@@ -1036,7 +1050,7 @@ Table&nbsp;B.4: R and Python script files used to generate outputs in the main p
 <tr class="odd">
 <td style="text-align: left;">mnist</td>
 <td style="text-align: left;">03_gen_mse_for_diff_methods.R</td>
-<td style="text-align: left;">Computes HBE with varying bin widths (<span class="math inline">\(a_1\)</span>) for all NLDR embeddings.</td>
+<td style="text-align: left;">Computes HBE with varying bin widths (<span class="math inline">a_1</span>) for all NLDR embeddings.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">mnist</td>
@@ -1062,7 +1076,7 @@ Table&nbsp;B.4: R and Python script files used to generate outputs in the main p
 </div>
 </section><section id="generating-the-2nc7-data" class="level2" data-number="B.5"><h2 data-number="B.5" class="anchored" data-anchor-id="generating-the-2nc7-data">
 <span class="header-section-number">B.5</span> Generating the 2NC7 data</h2>
-<p>This data is constructed by simulating two clusters, each consisting of <span class="math inline">\(1000\)</span> observations. The C-shaped cluster is generated from <span class="math inline">\(\theta \sim U(\text{-}3\pi/2, 0)\)</span>, <span class="math inline">\(X_1 = \sin(\theta)\)</span>, <span class="math inline">\(X_2 \sim U(0, 2)\)</span> (adding thickness to the C), <span class="math inline">\(X_3 = \text{sign}(\theta) \times (\cos(\theta) - 1)\)</span>, <span class="math inline">\(X_4 = \cos(\theta)\)</span>. Observations lie on a manifold in . The other cluster is from <span class="math inline">\(X_1 \sim U(0, 2)\)</span>, <span class="math inline">\(X_2 \sim U(0, 3)\)</span>, <span class="math inline">\(X_3 = \text{-}(X_1^3 + X_2)\)</span>, and <span class="math inline">\(X_4 \sim U(0, 2)\)</span>. It is also curved, but observations lie on a manifold in . Three more variables, <span class="math inline">\(X_5, X_6, X_7\)</span>, that are small amounts of pure noise are added. We would consider <span class="math inline">\(T=(X_1, X_2, X_3, X_4)\)</span> to be the geometric structure (true model) that we hope to capture (<a href="#fig-true-data" class="quarto-xref">Figure&nbsp;<span>B.1</span></a>).</p>
+<p>This data is constructed by simulating two clusters, each consisting of <span class="math inline">1000</span> observations. The C-shaped cluster is generated from <span class="math inline">\theta \sim U(\text{-}3\pi/2, 0)</span>, <span class="math inline">X_1 = \sin(\theta)</span>, <span class="math inline">X_2 \sim U(0, 2)</span> (adding thickness to the C), <span class="math inline">X_3 = \text{sign}(\theta) \times (\cos(\theta) - 1)</span>, <span class="math inline">X_4 = \cos(\theta)</span>. Observations lie on a manifold in . The other cluster is from <span class="math inline">X_1 \sim U(0, 2)</span>, <span class="math inline">X_2 \sim U(0, 3)</span>, <span class="math inline">X_3 = \text{-}(X_1^3 + X_2)</span>, and <span class="math inline">X_4 \sim U(0, 2)</span>. It is also curved, but observations lie on a manifold in . Three more variables, <span class="math inline">X_5, X_6, X_7</span>, that are small amounts of pure noise are added. We would consider <span class="math inline">T=(X_1, X_2, X_3, X_4)</span> to be the geometric structure (true model) that we hope to capture (<a href="#fig-true-data" class="quarto-xref">Figure&nbsp;<span>B.1</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-true-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -1077,67 +1091,67 @@ Figure&nbsp;B.1: Two projections of the true model overlaying the data are shown
 </div>
 </section><section id="computing-hexagon-grid-configurations" class="level2" data-number="B.6"><h2 data-number="B.6" class="anchored" data-anchor-id="computing-hexagon-grid-configurations">
 <span class="header-section-number">B.6</span> Computing hexagon grid configurations</h2>
-<p>Given range of embedding component, <span class="math inline">\(r_2\)</span>, number of bins along the x-axis, <span class="math inline">\(b_1\)</span>, and buffer proportion, <span class="math inline">\(q\)</span>, hexagonal starting point coordinates, <span class="math inline">\(s_1 = \text{-}q\)</span>, and <span class="math inline">\(s_2 = \text{-}qr_2\)</span>. The purpose is to find width of the hexagon, <span class="math inline">\(a_1\)</span> and number of bins along the y-axis, <span class="math inline">\(b_2\)</span>.</p>
+<p>Given range of embedding component, <span class="math inline">r_2</span>, number of bins along the x-axis, <span class="math inline">b_1</span>, and buffer proportion, <span class="math inline">q</span>, hexagonal starting point coordinates, <span class="math inline">s_1 = \text{-}q</span>, and <span class="math inline">s_2 = \text{-}qr_2</span>. The purpose is to find width of the hexagon, <span class="math inline">a_1</span> and number of bins along the y-axis, <span class="math inline">b_2</span>.</p>
 <p>Geometric arguments give rise to the following constraints.</p>
-<p><span class="math inline">\(\text{min }a_1 \text{ s.t.}\)</span></p>
-<p><span id="eq-equation1"><span class="math display">\[
+<p><span class="math inline">\text{min }a_1 \text{ s.t.}</span></p>
+<p><span id="eq-equation1"><span class="math display">
 s_1 - \frac{a_1}{2} &lt; 0,
-\tag{B.1}\]</span></span></p>
-<p><span id="eq-equation2"><span class="math display">\[
+\tag{B.1}</span></span></p>
+<p><span id="eq-equation2"><span class="math display">
 s_1 + (b_1 - 1) \times a_1 \geq 1,
-\tag{B.2}\]</span></span></p>
-<p><span id="eq-equation4"><span class="math display">\[
+\tag{B.2}</span></span></p>
+<p><span id="eq-equation4"><span class="math display">
 s_2 - \frac{a_2}{2} &lt; 0,
-\tag{B.3}\]</span></span></p>
-<p><span id="eq-equation5"><span class="math display">\[
+\tag{B.3}</span></span></p>
+<p><span id="eq-equation5"><span class="math display">
 s_2 + (b_2 - 1) \times a_2 \geq r_2.
-\tag{B.4}\]</span></span></p>
-<p>Since <span class="math inline">\(a_1\)</span> and <span class="math inline">\(a_2\)</span> are distances,</p>
-<p><span class="math display">\[
+\tag{B.4}</span></span></p>
+<p>Since <span class="math inline">a_1</span> and <span class="math inline">a_2</span> are distances,</p>
+<p><span class="math display">
 a_1, a_2 &gt; 0.
-\]</span> Also, <span class="math inline">\((s_1, s_2) \in (\text{-}0.1, \text{-}0.05)\)</span> as these are multiplicative offsets in the negative direction.</p>
+</span> Also, <span class="math inline">(s_1, s_2) \in (\text{-}0.1, \text{-}0.05)</span> as these are multiplicative offsets in the negative direction.</p>
 <p><a href="#eq-equation1" class="quarto-xref">Equation&nbsp;<span>B.1</span></a> can be rearranged as,</p>
-<p><span class="math display">\[
+<p><span class="math display">
 a_1 &gt; 2s_1
-\]</span></p>
-<p>which given <span class="math inline">\(s_1 &lt; 0\)</span> and <span class="math inline">\(a_1 &gt; 0\)</span> will <em>always</em> be true. The same logic follows for <a href="#eq-equation4" class="quarto-xref">Equation&nbsp;<span>B.3</span></a> and substituting <span class="math inline">\(a_2 = \sqrt{3}a_1/{2}\)</span>, and <span class="math inline">\(s_2 = \text{-}qr_2\)</span> to <a href="#eq-equation4" class="quarto-xref">Equation&nbsp;<span>B.3</span></a> can be written as,</p>
-<p><span class="math display">\[
+</span></p>
+<p>which given <span class="math inline">s_1 &lt; 0</span> and <span class="math inline">a_1 &gt; 0</span> will <em>always</em> be true. The same logic follows for <a href="#eq-equation4" class="quarto-xref">Equation&nbsp;<span>B.3</span></a> and substituting <span class="math inline">a_2 = \sqrt{3}a_1/{2}</span>, and <span class="math inline">s_2 = \text{-}qr_2</span> to <a href="#eq-equation4" class="quarto-xref">Equation&nbsp;<span>B.3</span></a> can be written as,</p>
+<p><span class="math display">
 a_1 &gt; -\frac{4}{\sqrt{3}}qr_2
-\]</span></p>
-<p>Also, substituting <span class="math inline">\(a_2 = \sqrt{3}a_1/{2}\)</span>, <span class="math inline">\(s_2 = \text{-}qr_2\)</span> and rearranging <a href="#eq-equation5" class="quarto-xref">Equation&nbsp;<span>B.4</span></a> gives:</p>
-<p><span id="eq-equation6"><span class="math display">\[
+</span></p>
+<p>Also, substituting <span class="math inline">a_2 = \sqrt{3}a_1/{2}</span>, <span class="math inline">s_2 = \text{-}qr_2</span> and rearranging <a href="#eq-equation5" class="quarto-xref">Equation&nbsp;<span>B.4</span></a> gives:</p>
+<p><span id="eq-equation6"><span class="math display">
 a_1 \geq \frac{2(r_2 + qr_2)}{\sqrt{3}(b_2 - 1)}.
-\tag{B.5}\]</span></span></p>
-<p>Similarly, substituting <span class="math inline">\(s_1 = \text{-}q\)</span> <a href="#eq-equation2" class="quarto-xref">Equation&nbsp;<span>B.2</span></a> becomes,</p>
-<p><span id="eq-equation7"><span class="math display">\[
+\tag{B.5}</span></span></p>
+<p>Similarly, substituting <span class="math inline">s_1 = \text{-}q</span> <a href="#eq-equation2" class="quarto-xref">Equation&nbsp;<span>B.2</span></a> becomes,</p>
+<p><span id="eq-equation7"><span class="math display">
 a_1 \geq \frac{(1 + q)}{(b_1 - 1)}.
-\tag{B.6}\]</span></span></p>
+\tag{B.6}</span></span></p>
 <p>This is a linear optimization problem. Therefore, the optimal solution must occur on a vertex. So, by setting <a href="#eq-equation6" class="quarto-xref">Equation&nbsp;<span>B.5</span></a> equals to <a href="#eq-equation7" class="quarto-xref">Equation&nbsp;<span>B.6</span></a> gives,</p>
-<p><span class="math display">\[
+<p><span class="math display">
 \frac{2(r_2 + qr_2)}{\sqrt{3}(b_2 - 1)} = \frac{(1 + q)}{(b_1 - 1)}.
-\]</span></p>
+</span></p>
 <p>After rearranging this,</p>
-<p><span class="math display">\[
+<p><span class="math display">
 b_2 = 1 + \frac{2r_2(b_1 - 1)}{\sqrt{3}}
-\]</span></p>
-<p>and since <span class="math inline">\(b_2\)</span> should be an integer,</p>
-<p><span id="eq-equation8"><span class="math display">\[
+</span></p>
+<p>and since <span class="math inline">b_2</span> should be an integer,</p>
+<p><span id="eq-equation8"><span class="math display">
 b_2 = \Big\lceil1 +\frac{2r_2(b_1 - 1)}{\sqrt{3}}\Big\rceil.
-\tag{B.7}\]</span></span></p>
-<p>Furthermore, with known <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_2\)</span>, by considering <a href="#eq-equation2" class="quarto-xref">Equation&nbsp;<span>B.2</span></a> or <a href="#eq-equation5" class="quarto-xref">Equation&nbsp;<span>B.4</span></a> as the <em>binding</em> or <em>active constraint</em>, can compute <span class="math inline">\(a_1\)</span>.</p>
+\tag{B.7}</span></span></p>
+<p>Furthermore, with known <span class="math inline">b_1</span> and <span class="math inline">b_2</span>, by considering <a href="#eq-equation2" class="quarto-xref">Equation&nbsp;<span>B.2</span></a> or <a href="#eq-equation5" class="quarto-xref">Equation&nbsp;<span>B.4</span></a> as the <em>binding</em> or <em>active constraint</em>, can compute <span class="math inline">a_1</span>.</p>
 <p>If <a href="#eq-equation2" class="quarto-xref">Equation&nbsp;<span>B.2</span></a> is active, then,</p>
-<p><span class="math display">\[
+<p><span class="math display">
 \frac{(1 + q)}{(b_1 - 1)} &lt; \frac{2(r_2 + qr_2)}{\sqrt{3}(b_2 - 1)}.
-\]</span></p>
+</span></p>
 <p>Rearranging this gives,</p>
-<p><span class="math display">\[
+<p><span class="math display">
 r_2 &gt; \frac{\sqrt{3}(b_2 - 1)}{2(b_1 - 1)}.
-\]</span></p>
-<p>Therefore, if this equality is true, then <span class="math display">\[
+</span></p>
+<p>Therefore, if this equality is true, then <span class="math display">
 a_1 = \frac{(1+q)}{(b_1 - 1)},
-\]</span> otherwise, <span class="math display">\[
+</span> otherwise, <span class="math display">
 a_1 = \frac{2r_2(1+q)}{\sqrt{3}(b_2 - 1)}.
-\]</span></p>
+</span></p>
 </section><section id="binning-the-data" class="level2" data-number="B.7"><h2 data-number="B.7" class="anchored" data-anchor-id="binning-the-data">
 <span class="header-section-number">B.7</span> Binning the data</h2>
 <p>Points are assigned to the bin they fall into based on the nearest centroid. If a point is equidistant from multiple centroids, it is assigned to the centroid with the smallest bin ID.</p>
@@ -1155,7 +1169,7 @@ Figure&nbsp;B.2: Binning the data. Points are assigned to the nearest centroid. 
 </div>
 </section><section id="area-of-a-hexagon" class="level2" data-number="B.8"><h2 data-number="B.8" class="anchored" data-anchor-id="area-of-a-hexagon">
 <span class="header-section-number">B.8</span> Area of a hexagon</h2>
-<p>The area of a hexagon is defined as <span class="math inline">\(A = 3\sqrt{3}l^2/2\)</span>, where <span class="math inline">\(l\)</span> is the side length of the hexagon. <span class="math inline">\(l\)</span> can be computed using <span class="math inline">\(a_1\)</span> and <span class="math inline">\(a_2\)</span>.</p>
+<p>The area of a hexagon is defined as <span class="math inline">A = 3\sqrt{3}l^2/2</span>, where <span class="math inline">l</span> is the side length of the hexagon. <span class="math inline">l</span> can be computed using <span class="math inline">a_1</span> and <span class="math inline">a_2</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-tri-param" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
@@ -1169,26 +1183,26 @@ Figure&nbsp;B.3: The components of the right triangle illustrating notation.
 </div>
 </div>
 <p>By applying the Pythagorean theorem, we obtain,</p>
-<p><span class="math display">\[
+<p><span class="math display">
 l^2 = \left(\frac{a_1}{2}\right)^2 + \left(\frac{a_2 - l}{2}\right)^2.
-\]</span> Next, rearranging the terms, we get,</p>
-<p><span class="math display">\[
+</span> Next, rearranging the terms, we get,</p>
+<p><span class="math display">
 l^2 - \left(\frac{a_2 - l}{2}\right)^2 = \left(\frac{a_1}{2}\right)^2,
-\]</span></p>
-<p><span class="math display">\[
+</span></p>
+<p><span class="math display">
 \left[l - \left(\frac{a_2 - l}{2}\right)\right]\left[l + \left(\frac{a_2 - l}{2}\right)\right] = \left(\frac{a_1}{2}\right)^2,
-\]</span></p>
-<p><span class="math display">\[
+</span></p>
+<p><span class="math display">
 3l^2 + 2a_2l - (a_1^2 + a_2^2) = 0.
-\]</span></p>
+</span></p>
 <p>Finally, by solving the quadratic equation, we compute,</p>
-<p><span class="math display">\[
+<p><span class="math display">
 l = \frac{-2a_2 \pm \sqrt{4a_2^2 - 24[-(a_1^2 + a_2^2)]}}{6},
-\]</span></p>
-<p><span class="math display">\[
+</span></p>
+<p><span class="math display">
 l = \frac{-a_2 \pm \sqrt{a_2^2 - 6[-(a_1^2 + a_2^2)]}}{3},
-\]</span></p>
-<p>where <span class="math inline">\(l &gt; 0\)</span>.</p>
+</span></p>
+<p>where <span class="math inline">l &gt; 0</span>.</p>
 </section><section id="sec-curiosities" class="level2" data-number="B.9"><h2 data-number="B.9" class="anchored" data-anchor-id="sec-curiosities">
 <span class="header-section-number">B.9</span> Curiosities about NLDR results discovered by examining the model in the data space</h2>
 <p>With the drawing of the model in the data, several interesting differences between NLDR methods can be observed.</p>
@@ -1240,8 +1254,8 @@ Figure&nbsp;B.5: Exploring the effect of density on the NLDR layout using a curv
 <!-- CHANGES WERE MADE BASED ON THIS THINKING -->
 <!-- <!-- In the field of single-cell studies, clustering is a common analytical task used to identify groups of cells with similar expression profiles. Non-linear dimensional reduction (NLDR) methods are frequently employed to visualize these clusters and help validate the results. However, it is well known that the 2D embeddings produced by t-SNE and UMAP may not accurately reflect the similarities among cell clusters. ALREADY STATED IN PREVIOUS SECTION -->
 <p>As we were writing this paper <span class="citation" data-cites="xia2023">Xia et al. (<a href="../refs.html#ref-xia2023" role="doc-biblioref">2023</a>)</span> appeared proposing a new method called scDEED helping to assess the validity of a embedding. scDEED calculates a reliability score for each cell embedding based on the similarity between the cell’s embedding neighbors and its neighbors prior to embedding. A low reliability score suggests a dubious embedding. It can help in the deciding on optimal hyper-parameters. Here we illustrate how our method compares with the results from scDEED.</p>
-<p>Note that <span class="citation" data-cites="xia2023">Xia et al. (<a href="../refs.html#ref-xia2023" role="doc-biblioref">2023</a>)</span> uses a different PBMC dataset than that used by <span class="citation" data-cites="chen2024">Chen et al. (<a href="../refs.html#ref-chen2024" role="doc-biblioref">2024</a>)</span>, shown by us in the main paper example, which is why this comparison is shown here and not in the main paper. Their data contains <span class="math inline">\(31,021\)</span> cells including cell type labels, and the gene expression levels were in the unit of log-transformed UMI count per <span class="math inline">\(10,000\)</span>. They focused on three sequencing methods (inDrops, DropSeq, and SeqWell) and four common cell types Cytotoxic T cell, CD4+T cell, CD14+ Monocyte, and B cell. Pre-processing follows the process in <span class="citation" data-cites="xia2023">Xia et al. (<a href="../refs.html#ref-xia2023" role="doc-biblioref">2023</a>)</span> again using the Human Peripheral Blood Mononuclear Cells (PBMC) data.</p>
-<p>For illustration purposes, we only selected cells generated with inDrops (<span class="math inline">\(n=5858\)</span> cells). Also, <span class="citation" data-cites="xia2023">Xia et al. (<a href="../refs.html#ref-xia2023" role="doc-biblioref">2023</a>)</span> used first <span class="math inline">\(9\)</span> principal components to generate the UMAP and tSNE with default hyper-parameters. The objective is to what scDEED suggests is the best layout with what HBE would choose. Layout a (<a href="#fig-pbmc-mse-umap" class="quarto-xref">Figure&nbsp;<span>B.6</span></a>) is generated from the hyper-parameters suggested by <span class="citation" data-cites="chen2024">Chen et al. (<a href="../refs.html#ref-chen2024" role="doc-biblioref">2024</a>)</span>, and layout b (<a href="#fig-pbmc-mse-umap" class="quarto-xref">Figure&nbsp;<span>B.6</span></a>) is with suggested hyper-parameters by scDEED to be more accurate. <!--Layouts a and b contain $46$ and $83$ dubious cells respectively.--> The HBE vs binwidth (<span class="math inline">\(a_1\)</span>) plot (<a href="#fig-pbmc-mse-umap" class="quarto-xref">Figure&nbsp;<span>B.6</span></a>) illustrates that our approach would suggest that scDEED is correct here, that layout b is more accurately reflecting the cluster structure in the PBMC data. This is also supported by examining the models in the data space as shown in <a href="#fig-model-pbmc-author-proj" class="quarto-xref">Figure&nbsp;<span>B.7</span></a>.</p>
+<p>Note that <span class="citation" data-cites="xia2023">Xia et al. (<a href="../refs.html#ref-xia2023" role="doc-biblioref">2023</a>)</span> uses a different PBMC dataset than that used by <span class="citation" data-cites="chen2024">Chen et al. (<a href="../refs.html#ref-chen2024" role="doc-biblioref">2024</a>)</span>, shown by us in the main paper example, which is why this comparison is shown here and not in the main paper. Their data contains <span class="math inline">31,021</span> cells including cell type labels, and the gene expression levels were in the unit of log-transformed UMI count per <span class="math inline">10,000</span>. They focused on three sequencing methods (inDrops, DropSeq, and SeqWell) and four common cell types Cytotoxic T cell, CD4+T cell, CD14+ Monocyte, and B cell. Pre-processing follows the process in <span class="citation" data-cites="xia2023">Xia et al. (<a href="../refs.html#ref-xia2023" role="doc-biblioref">2023</a>)</span> again using the Human Peripheral Blood Mononuclear Cells (PBMC) data.</p>
+<p>For illustration purposes, we only selected cells generated with inDrops (<span class="math inline">n=5858</span> cells). Also, <span class="citation" data-cites="xia2023">Xia et al. (<a href="../refs.html#ref-xia2023" role="doc-biblioref">2023</a>)</span> used first <span class="math inline">9</span> principal components to generate the UMAP and tSNE with default hyper-parameters. The objective is to what scDEED suggests is the best layout with what HBE would choose. Layout a (<a href="#fig-pbmc-mse-umap" class="quarto-xref">Figure&nbsp;<span>B.6</span></a>) is generated from the hyper-parameters suggested by <span class="citation" data-cites="chen2024">Chen et al. (<a href="../refs.html#ref-chen2024" role="doc-biblioref">2024</a>)</span>, and layout b (<a href="#fig-pbmc-mse-umap" class="quarto-xref">Figure&nbsp;<span>B.6</span></a>) is with suggested hyper-parameters by scDEED to be more accurate. <!--Layouts a and b contain $46$ and $83$ dubious cells respectively.--> The HBE vs binwidth (<span class="math inline">a_1</span>) plot (<a href="#fig-pbmc-mse-umap" class="quarto-xref">Figure&nbsp;<span>B.6</span></a>) illustrates that our approach would suggest that scDEED is correct here, that layout b is more accurately reflecting the cluster structure in the PBMC data. This is also supported by examining the models in the data space as shown in <a href="#fig-model-pbmc-author-proj" class="quarto-xref">Figure&nbsp;<span>B.7</span></a>.</p>
 <!-- @fig-pbmc-mse-umap compares the metrics rARNX, rRTA, rSC, rGS, along with HBE computed on $a_1=0.04$. This is a parallel coordinate plot where the y-axis shows a normalized score to ensure the metrics are on the same scale. Each line corresponds to one layout. Most metrics (rSC, rARNX, and HBE) consistently indicate that the optimized layout (b) provides a better representation, while rRTA, and rGS slightly favor the published layout. -->
 <!--pbmc3k/11_gen_mse_for_diff_tsne_scD.R-->
 <!--pbmc3k/11_gen_mse_for_diff_umap_scD.R-->
@@ -1252,7 +1266,7 @@ Figure&nbsp;B.5: Exploring the effect of density on the NLDR layout using a curv
 <img src="B-appB_files/figure-html/fig-pbmc-mse-umap-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pbmc-mse-umap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;B.6: Comparing the published layout (a) with what would be suggested to be optimal by scDEED (b), using HBE for varying (i) binwidth (<span class="math inline">\(a_1\)</span>), and (ii) average bin count (<span class="math inline">\(\bar{n}_h\)</span>), on a subset of PBMC3k data. Color represents NLDR layouts. HBE would corroborate that the scDEED optimized layout is better than what was originally published. Plot (ii), which accounts for the density within clusters by using average bin count, shows reduced differences between layouts, indicating that part of the variation in (i) is driven by cluster density rather than true structural differences. Comparison of scaled evaluation metrics (iii) (rRTA, rSC, rGS, rARNX, and HBE using <span class="math inline">\(a_1=0.04\)</span>) for two NLDR layouts of the PBMC3k data the originally published layout (a) and the scDEED optimized layout (b). Each line represents a layout, with color matching the corresponding scatterplots. Most metrics (rSC, rARNX, and HBE) consistently indicate that the optimized layout (b) provides a better representation, while rRTA, and rGS slightly favor the published layout.
+Figure&nbsp;B.6: Comparing the published layout (a) with what would be suggested to be optimal by scDEED (b), using HBE for varying (i) binwidth (<span class="math inline">a_1</span>), and (ii) average bin count (<span class="math inline">\bar{n}_h</span>), on a subset of PBMC3k data. Color represents NLDR layouts. HBE would corroborate that the scDEED optimized layout is better than what was originally published. Plot (ii), which accounts for the density within clusters by using average bin count, shows reduced differences between layouts, indicating that part of the variation in (i) is driven by cluster density rather than true structural differences. Comparison of scaled evaluation metrics (iii) (rRTA, rSC, rGS, rARNX, and HBE using <span class="math inline">a_1=0.04</span>) for two NLDR layouts of the PBMC3k data the originally published layout (a) and the scDEED optimized layout (b). Each line represents a layout, with color matching the corresponding scatterplots. Most metrics (rSC, rARNX, and HBE) consistently indicate that the optimized layout (b) provides a better representation, while rRTA, and rGS slightly favor the published layout.
 </figcaption></figure>
 </div>
 </div>
@@ -1281,7 +1295,7 @@ Figure&nbsp;B.7: Compare the published layout (<a href="#fig-pbmc-mse-umap" clas
 <img src="B-appB_files/figure-html/fig-comp-metric-pbmc-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comp-metric-pbmc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;B.8: Comparison of scaled evaluation metrics (rRTA, rSC, rGS, rARNX, and HBE with <span class="math inline">\(a_1 = 0.06\)</span>) for the eight NLDR layouts computed on the PBMC3k data, shown as a parallel coordinate plot. The color of each line corresponds to a NLDR layout. All, except rGS and rARNX agree that layout e is best or very close to best. Layout d is best according to HBE and rARNX but considered to be much less optimal by rRTA, rSC and rGS. Layout f is considered poor by rARNX and HBE. Layout a is cosidered close to the best by rGS and rSC.
+Figure&nbsp;B.8: Comparison of scaled evaluation metrics (rRTA, rSC, rGS, rARNX, and HBE with <span class="math inline">a_1 = 0.06</span>) for the eight NLDR layouts computed on the PBMC3k data, shown as a parallel coordinate plot. The color of each line corresponds to a NLDR layout. All, except rGS and rARNX agree that layout e is best or very close to best. Layout d is best according to HBE and rARNX but considered to be much less optimal by rRTA, rSC and rGS. Layout f is considered poor by rARNX and HBE. Layout a is cosidered close to the best by rGS and rSC.
 </figcaption></figure>
 </div>
 </div>
@@ -1293,7 +1307,7 @@ Figure&nbsp;B.8: Comparison of scaled evaluation metrics (rRTA, rSC, rGS, rARNX,
 <img src="B-appB_files/figure-html/fig-comp-metric-mnist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comp-metric-mnist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;B.9: Comparison of scaled evaluation metrics (rARNX, rRTA, rSC, rGS, and HBE using <span class="math inline">\(a_1=0.04\)</span>) for six NLDR layouts computed on the MNIST digit 1 data using a parallel coordinate plot. Each line represents a layout (a–f), with colors corresponding to the scatterplots shown on the right. The metrics display different ranking patterns, indicating that no single measure fully captures embedding quality. Layout a is identified as the best according to HBE and rRTA, but is considered much less optimal by rARNX, rSC, and rGS. Layout e is considered the worst, or close to the poorest, by all metrics. Layouts a and f show similar patterns of agreement across metrics, except for rRTA, where layout a performs the best and layout f the worst. Layout c is the worst in rARNX, rSC, and HBE.
+Figure&nbsp;B.9: Comparison of scaled evaluation metrics (rARNX, rRTA, rSC, rGS, and HBE using <span class="math inline">a_1=0.04</span>) for six NLDR layouts computed on the MNIST digit 1 data using a parallel coordinate plot. Each line represents a layout (a–f), with colors corresponding to the scatterplots shown on the right. The metrics display different ranking patterns, indicating that no single measure fully captures embedding quality. Layout a is identified as the best according to HBE and rRTA, but is considered much less optimal by rARNX, rSC, and rGS. Layout e is considered the worst, or close to the poorest, by all metrics. Layouts a and f show similar patterns of agreement across metrics, except for rRTA, where layout a performs the best and layout f the worst. Layout c is the worst in rARNX, rSC, and HBE.
 </figcaption></figure>
 </div>
 </div>

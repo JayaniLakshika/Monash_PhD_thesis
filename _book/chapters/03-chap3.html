@@ -124,7 +124,21 @@ div.csl-indent {
 <script src="../site_libs/plotly-main-2.35.2/plotly-latest.min.js"></script><script src="../site_libs/langevitour-0.8.1/langevitour-pack.js"></script><script src="../site_libs/langevitour-binding-0.8.1/langevitour.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="../site_libs/bootstrap-grid-3.4.1/bootstrap-grid.min.css" rel="stylesheet">
 <script src="../site_libs/detourr-0.2.0/detourr.bundle.js"></script><script src="../site_libs/detourr-binding-0.2.0/detourr.js"></script><link href="https://fonts.googleapis.com/css?family=Fira+Sans%7CMerriweather%7CSource%20Code%20Pro" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -158,7 +172,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/03-chap3.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">quollr: An R Package for Visualizing <span class="math inline">\(2\text{-}D\)</span> Models from Non-linear Dimension Reductions in High Dimensional Space</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/03-chap3.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">quollr: An R Package for Visualizing <span class="math inline">2\text{-}D</span> Models from Non-linear Dimension Reductions in High Dimensional Space</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -218,7 +232,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/03-chap3.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">quollr: An R Package for Visualizing <span class="math inline">\(2\text{-}D\)</span> Models from Non-linear Dimension Reductions in High Dimensional Space</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">quollr: An R Package for Visualizing <span class="math inline">2\text{-}D</span> Models from Non-linear Dimension Reductions in High Dimensional Space</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -304,7 +318,7 @@ window.Quarto = {
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="sec-third-paper" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">quollr: An R Package for Visualizing <span class="math inline">\(2\text{-}D\)</span> Models from Non-linear Dimension Reductions in High Dimensional Space</span></span></h1>
+<h1 class="title"><span id="sec-third-paper" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">quollr: An R Package for Visualizing <span class="math inline">2\text{-}D</span> Models from Non-linear Dimension Reductions in High Dimensional Space</span></span></h1>
 </div>
 
 
@@ -369,7 +383,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="../figures/quollr/quollr_workflow.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Overview of the <code>quollr</code> workflow and software architecture. The process begins with NLDR and <span class="math inline">\(p\text{-}D\)</span> data inputs, followed by data preprocessing and hexagonal binning. Centroids are computed and triangulated to form the <span class="math inline">\(2\text{-}D\)</span> mesh, which is then lifted into the <span class="math inline">\(p\text{-}D\)</span> space. Predictions and error computations are performed on new data, while interactive functions enable dynamic linking between the <span class="math inline">\(p\text{-}D\)</span> and <span class="math inline">\(2\text{-}D\)</span> representations.</figcaption></figure>
+<figcaption>Overview of the <code>quollr</code> workflow and software architecture. The process begins with NLDR and <span class="math inline">p\text{-}D</span> data inputs, followed by data preprocessing and hexagonal binning. Centroids are computed and triangulated to form the <span class="math inline">2\text{-}D</span> mesh, which is then lifted into the <span class="math inline">p\text{-}D</span> space. Predictions and error computations are performed on new data, while interactive functions enable dynamic linking between the <span class="math inline">p\text{-}D</span> and <span class="math inline">2\text{-}D</span> representations.</figcaption></figure>
 </div>
 </div>
 </div>
@@ -393,7 +407,7 @@ window.Quarto = {
 <li><p><code>nldr_data</code>: a tibble containing two-dimensional embeddings, labeled as <code>emb1</code> and <code>emb2</code>, matched to the same <code>ID</code>s.</p></li>
 </ul></section><section id="generated-objects" class="level4"><h4 class="anchored" data-anchor-id="generated-objects">Generated objects</h4>
 <ul>
-<li><p><code>scaled_nldr_obj</code>: the output of <code>gen_scaled_data()</code>, which rescales the embedding to the range <span class="math inline">\([0, 1] \times [0, y_{2,\text{max}}]\)</span>, where <span class="math inline">\(y_{2,\text{max}} = r_2 / r_1\)</span> is the ratio of the embedding ranges. It includes the scaled coordinates (<code>scaled_nldr</code>) and the original limits (<code>lim1</code>, <code>lim2</code>).</p></li>
+<li><p><code>scaled_nldr_obj</code>: the output of <code>gen_scaled_data()</code>, which rescales the embedding to the range <span class="math inline">[0, 1] \times [0, y_{2,\text{max}}]</span>, where <span class="math inline">y_{2,\text{max}} = r_2 / r_1</span> is the ratio of the embedding ranges. It includes the scaled coordinates (<code>scaled_nldr</code>) and the original limits (<code>lim1</code>, <code>lim2</code>).</p></li>
 <li><p><code>hex_bin_obj</code>: the object created by <code>hex_binning()</code>, which defines the structure of the two-dimensional hexagonal grid used in modeling. It includes the grid spacing (<code>a1</code>, <code>a2</code>), the number of bins along each axis, the centroids of all hexagons, polygon coordinates for plotting, and the mapping of each data point to its assigned hexagon.</p></li>
 <li><p><code>highd_vis_model</code>: the main model object returned by <code>fit_highd_model()</code>. It stores all components of the fitted visualization model, including the scaled NLDR data (<code>nldr_scaled_obj</code>), the hexagonal bin structure (<code>hb_obj</code>), the averaged summaries for each bin (<code>model_highd</code>), the corresponding bin centroids (<code>model_2d</code>), and the triangulated mesh connecting neighboring bins (<code>trimesh_data</code>).</p></li>
 </ul></section></section><section id="computational-efficiency-and-optimization" class="level3"><h3 class="anchored" data-anchor-id="computational-efficiency-and-optimization">Computational efficiency and optimization</h3>
@@ -448,11 +462,11 @@ window.Quarto = {
 </div>
 </div>
 <p>The following demonstration of the package’s functionality assumes <code>quollr</code> has been loaded. To begin the workflow, users need two inputs: the high-dimensional dataset and the corresponding nonlinear dimensionality reduction (NLDR) layout. The high-dimensional data must contain a unique <code>ID</code> column, with data columns prefixed by the letter <code>"x"</code> (e.g., <code>x1</code>, <code>x2</code>, etc.). The NLDR dataset should include embedding coordinates labeled as <code>emb1</code> and <code>emb2</code>, ensuring one-to-one correspondence with the high-dimensional data through the shared <code>ID</code>.</p>
-<p>To illustrate the workflow, we use the built-in example dataset <code>scurve</code>, a <span class="math inline">\(7\text{-}D\)</span> simulated dataset consisting of <span class="math inline">\(1000\)</span> observations. The first three variables define a <span class="math inline">\(3\text{-}D\)</span> S-shaped manifold, while the remaining four variables introduce low-magnitude uniform noise, yielding a structured yet noisy high-dimensional dataset.</p>
+<p>To illustrate the workflow, we use the built-in example dataset <code>scurve</code>, a <span class="math inline">7\text{-}D</span> simulated dataset consisting of <span class="math inline">1000</span> observations. The first three variables define a <span class="math inline">3\text{-}D</span> S-shaped manifold, while the remaining four variables introduce low-magnitude uniform noise, yielding a structured yet noisy high-dimensional dataset.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"scurve"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>For this example, we use the UMAP layout, which is produced using <code>n_neighbors =</code> <span class="math inline">\(46\)</span> and <code>min_dist =</code> <span class="math inline">\(0.9\)</span>.</p>
+<p>For this example, we use the UMAP layout, which is produced using <code>n_neighbors =</code> <span class="math inline">46</span> and <code>min_dist =</code> <span class="math inline">0.9</span>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tkonopka/umap">umap</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
@@ -479,15 +493,15 @@ window.Quarto = {
 <span>  q <span class="op">=</span> <span class="fl">0.1</span>, </span>
 <span>  hd_thresh <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="constructing-the-2text-d-model" class="level3"><h3 class="anchored" data-anchor-id="constructing-the-2text-d-model">Constructing the <span class="math inline">\(2\text{-}D\)</span> Model</h3>
+</section><section id="constructing-the-2text-d-model" class="level3"><h3 class="anchored" data-anchor-id="constructing-the-2text-d-model">Constructing the <span class="math inline">2\text{-}D</span> Model</h3>
 <p>Constructing the model primarily involves (i) scaling the NLDR data, (ii) binning the data, (iii) obtaining bin centroids, (iv) connecting centroids with line segments to indicate neighbors, and (v) removing low-density hexagons.</p>
 <section id="scaling-the-data" class="level4"><h4 class="anchored" data-anchor-id="scaling-the-data">Scaling the data</h4>
-<p>The algorithm starts by scaling the NLDR data to to the range <span class="math inline">\([0, 1] \times [0, y_{2,max}]\)</span>, where <span class="math inline">\(y_{2,max} = r_2/r_1\)</span> is the ratio of ranges of embedding components. The output includes the scaled NLDR data (<code>scaled_nldr</code>) along with the original limits of the embeddings (<code>lim1</code>, <code>lim2</code>).</p>
+<p>The algorithm starts by scaling the NLDR data to to the range <span class="math inline">[0, 1] \times [0, y_{2,max}]</span>, where <span class="math inline">y_{2,max} = r_2/r_1</span> is the ratio of ranges of embedding components. The output includes the scaled NLDR data (<code>scaled_nldr</code>) along with the original limits of the embeddings (<code>lim1</code>, <code>lim2</code>).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">scurve_umap_obj</span> <span class="op">&lt;-</span> <span class="fu">gen_scaled_data</span><span class="op">(</span>nldr_data <span class="op">=</span> <span class="va">scurve_umap</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="computing-hexagon-grid-configuration" class="level4"><h4 class="anchored" data-anchor-id="computing-hexagon-grid-configuration">Computing hexagon grid configuration</h4>
-<p>The function <code>calc_bins_y()</code> determines the configuration of the hexagonal grid by computing the number of bins along the y-axis (<code>b2</code>), the hexagon width (<code>a1</code>), and height (<code>a2</code>). This function accepts (1) an object (<code>nldr_scaled_obj</code>) containing three elements: the first is the scaled NLDR data (<code>scaled_nldr</code>), and the second and third are the limits of the original NLDR data (<code>lim1</code> and <code>lim2</code>); (2) the number of bins along the x-axis (<code>b1</code>), and (3) the buffer amount as a proportion (<code>q</code>). The buffer ensures that the grid fully covers the data space by extending one hexagon width (<span class="math inline">\(a_1\)</span>) and height (<span class="math inline">\(a_2\)</span>) beyond the observed data in all directions. By default, <span class="math inline">\(q = 0.1\)</span>, but it must be set to a value smaller than the minimum data value to avoid exceeding the data range.</p>
+<p>The function <code>calc_bins_y()</code> determines the configuration of the hexagonal grid by computing the number of bins along the y-axis (<code>b2</code>), the hexagon width (<code>a1</code>), and height (<code>a2</code>). This function accepts (1) an object (<code>nldr_scaled_obj</code>) containing three elements: the first is the scaled NLDR data (<code>scaled_nldr</code>), and the second and third are the limits of the original NLDR data (<code>lim1</code> and <code>lim2</code>); (2) the number of bins along the x-axis (<code>b1</code>), and (3) the buffer amount as a proportion (<code>q</code>). The buffer ensures that the grid fully covers the data space by extending one hexagon width (<span class="math inline">a_1</span>) and height (<span class="math inline">a_2</span>) beyond the observed data in all directions. By default, <span class="math inline">q = 0.1</span>, but it must be set to a value smaller than the minimum data value to avoid exceeding the data range.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bin_configs</span> <span class="op">&lt;-</span> <span class="fu">calc_bins_y</span><span class="op">(</span></span>
 <span>  nldr_scaled_obj <span class="op">=</span> <span class="va">scurve_umap_obj</span>, </span>
@@ -519,7 +533,7 @@ window.Quarto = {
 <section id="generating-all-possible-centroids-in-a-hexagonal-grid" class="level5"><h5 class="anchored" data-anchor-id="generating-all-possible-centroids-in-a-hexagonal-grid">Generating all possible centroids in a hexagonal grid</h5>
 <p>The <code>gen_centroids()</code> function calculates the centroids of a hexagonal grid.</p>
 <p>The coordinate limits of the embedding (<code>lim1</code> and <code>lim2</code>) are used to compute the aspect ratio between the two axes, which informs vertical spacing. The function then calls <code>calc_bins_y()</code>, a helper function that determines the appropriate number of hexagons along y-axis (<code>b2</code>) and the width of each hexagon (<code>a1</code>) given the specified number of bins along the x-axis (<code>b1</code>) and buffer (<code>q</code>).</p>
-<p>Then, the centroids are computed iteratively. The x-coordinates for centroids in odd-numbered rows are initialized as a sequence spaced by the hexagon width. Even-numbered rows are staggered by half this width to achieve a hexagonal tiling effect. Vertical spacing (<code>vs</code>) is given by <span class="math inline">\(\sqrt{3}/2 \times a_1\)</span>.</p>
+<p>Then, the centroids are computed iteratively. The x-coordinates for centroids in odd-numbered rows are initialized as a sequence spaced by the hexagon width. Even-numbered rows are staggered by half this width to achieve a hexagonal tiling effect. Vertical spacing (<code>vs</code>) is given by <span class="math inline">\sqrt{3}/2 \times a_1</span>.</p>
 <p>The y-coordinates for each row are similarly calculated, and paired with the x-coordinates based on whether the total number of rows is even or odd. In the case of an odd number of rows, the final row uses only the odd-row x-coordinates to maintain the alternating pattern.</p>
 <p>Finally, a tibble is returned containing a unique hexagon ID (<code>h</code>) along with the corresponding x and y centroid coordinates (<code>c_x</code>, <code>c_y</code>), which define the layout of the hexagonal grid over the space.</p>
 <div class="cell">
@@ -543,8 +557,8 @@ window.Quarto = {
 </div>
 </section><section id="creating-the-coordinates-of-the-hexagons" class="level5"><h5 class="anchored" data-anchor-id="creating-the-coordinates-of-the-hexagons">Creating the coordinates of the hexagons</h5>
 <p>Following the generation of hexagonal centroids, the <code>gen_hex_coord()</code> function constructs the coordinates of each hexagonal bin by defining its six polygonal vertices. These coordinates are used to visualize the hexagonal tessellation.</p>
-<p>Each hexagon is defined relative to its centroid <span class="math inline">\((C_x, C_y)\)</span>, with six vertices positioned equidistantly around the center. The function first verifies the presence of the required hexagon width parameter <code>a1</code>. This width determines the horizontal spacing (<code>hs</code>).</p>
-<p>Two derived constants are calculated to define the relative distances to the vertices. The horizontal and vertical offset is defined as <span class="math inline">\(dx = a_1/2\)</span>, and <span class="math inline">\(dy = a_1/\sqrt{3}\)</span> repectively. A vertical spacing factor <span class="math inline">\(vf = a_1/2\sqrt{3}\)</span> refines vertical placement in staggered rows.</p>
+<p>Each hexagon is defined relative to its centroid <span class="math inline">(C_x, C_y)</span>, with six vertices positioned equidistantly around the center. The function first verifies the presence of the required hexagon width parameter <code>a1</code>. This width determines the horizontal spacing (<code>hs</code>).</p>
+<p>Two derived constants are calculated to define the relative distances to the vertices. The horizontal and vertical offset is defined as <span class="math inline">dx = a_1/2</span>, and <span class="math inline">dy = a_1/\sqrt{3}</span> repectively. A vertical spacing factor <span class="math inline">vf = a_1/2\sqrt{3}</span> refines vertical placement in staggered rows.</p>
 <p>With these values, the function determines fixed offsets in the x and y directions for all six vertices relative to the centroid. These offsets form two vectors corresponding to the six compass directions used to define the polygon shape: top, top-left, bottom-left, bottom, bottom-right, and top-right.</p>
 <p>For each centroid, six vertices are computed and assigned a polygon ID as the centroid. These vertices are then combined into a tibble that records the polygon ID (<code>h</code>) and the respective x (<code>x</code>) and y (<code>y</code>) coordinates for all hexagon corners.</p>
 <p>To reduce computational overhead, the geometry calculations are implemented in C++ using <code>gen_hex_coord_cpp()</code>, which returns a <code>tibble</code> of vertex coordinates.</p>
@@ -589,7 +603,7 @@ window.Quarto = {
 </div>
 </section><section id="computing-the-standardized-number-of-points-within-each-hexagon" class="level5"><h5 class="anchored" data-anchor-id="computing-the-standardized-number-of-points-within-each-hexagon">Computing the standardized number of points within each hexagon</h5>
 <p>The <code>compute_std_counts()</code> function calculates both the raw and standardized counts of points inside each hexagon.</p>
-<p>The function begins by grouping the data by hexagon ID (<code>h</code>) and counting the number of NLDR points falling within each bin. These raw counts are stored as <code>n_h</code>. To enable comparisons across bins with varying densities, the function then standardizes these counts by dividing each bin’s count by the maximum count across all bins. This yields a standardized bin counts, <code>w_h</code>, ranging from <span class="math inline">\(0\)</span> to <span class="math inline">\(1\)</span>.</p>
+<p>The function begins by grouping the data by hexagon ID (<code>h</code>) and counting the number of NLDR points falling within each bin. These raw counts are stored as <code>n_h</code>. To enable comparisons across bins with varying densities, the function then standardizes these counts by dividing each bin’s count by the maximum count across all bins. This yields a standardized bin counts, <code>w_h</code>, ranging from <span class="math inline">0</span> to <span class="math inline">1</span>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">std_df</span> <span class="op">&lt;-</span> <span class="fu">compute_std_counts</span><span class="op">(</span></span>
 <span>  scaled_nldr_h <span class="op">=</span> <span class="va">umap_hex_id</span></span>
@@ -689,7 +703,7 @@ window.Quarto = {
 </div>
 </section><section id="identifying-and-removing-low-density-hexagons" class="level4"><h4 class="anchored" data-anchor-id="identifying-and-removing-low-density-hexagons">Identifying and removing low-density hexagons</h4>
 <p>Not all hexagons contain meaningful information. Some may have very few or no data points due to the sparsity or shape of the underlying structure. Simply removing hexagons with low counts (e.g., fewer than a fixed threshold) can lead to gaps or “holes” in the structure, potentially disrupting the continuity of the representation.</p>
-<p>To address this, we propose a more nuanced method that evaluates each hexagon not only based on its own density, but also in the context of its immediate neighbors. The <code>find_low_dens_hex()</code> function identifies hexagonal bins with insufficient local support by calculating the average standardized count across their six neighboring bins. If this mean neighborhood density is below a user-defined threshold (e.g., <span class="math inline">\(0.05\)</span>), the hexagon is flagged for removal.</p>
+<p>To address this, we propose a more nuanced method that evaluates each hexagon not only based on its own density, but also in the context of its immediate neighbors. The <code>find_low_dens_hex()</code> function identifies hexagonal bins with insufficient local support by calculating the average standardized count across their six neighboring bins. If this mean neighborhood density is below a user-defined threshold (e.g., <span class="math inline">0.05</span>), the hexagon is flagged for removal.</p>
 <p>The <code>find_low_dens_hex()</code> function relies on a helper, <code>compute_mean_density_hex()</code>, which iterates over all hexagons and computes the average density across neighbors based on their hexagon ID (<code>h</code>) and a defined number of bins along the x-axis (<code>b1</code>). The hexagonal layout assumes a fixed grid structure, so neighbor IDs are computed by positional offsets.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">low_density_hex</span> <span class="op">&lt;-</span> <span class="fu">find_low_dens_hex</span><span class="op">(</span></span>
@@ -698,7 +712,7 @@ window.Quarto = {
 <span>  md_thresh <span class="op">=</span> <span class="fl">0.05</span></span>
 <span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>For simplicity, we remove low-density hexagons using a threshold of <span class="math inline">\(0\)</span>.</p>
+<p>For simplicity, we remove low-density hexagons using a threshold of <span class="math inline">0</span>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_bin_centroids</span> <span class="op">&lt;-</span> <span class="va">df_bin_centroids</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n_h</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span></span>
@@ -919,7 +933,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Interactive link plots showing the link between the UMAP layout (left) and the fitted model overlaid with the data in <span class="math inline">\(7\text{-}D\)</span> (right) using <code>langevitour</code>. Brushing in either view highlights the corresponding subset of points across both representations, allowing examination of how well the UMAP layout preserves the underlying <code>Scurve</code> structure. Double-clicking on either view clears the selection and dehighlights all points.</p>
+<p>Interactive link plots showing the link between the UMAP layout (left) and the fitted model overlaid with the data in <span class="math inline">7\text{-}D</span> (right) using <code>langevitour</code>. Brushing in either view highlights the corresponding subset of points across both representations, allowing examination of how well the UMAP layout preserves the underlying <code>Scurve</code> structure. Double-clicking on either view clears the selection and dehighlights all points.</p>
 </div>
 </div>
 <p><code>show_error_link_plots()</code> helps to see investigate whether the model fits the points everywhere or fits better in some places, or simply mismatches the pattern.</p>
@@ -962,7 +976,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Interactive link plots showing the link between the residual distribution (left), the UMAP layout (middle) and the fitted model overlaid with the data in <span class="math inline">\(7\text{-}D\)</span> (right) using <code>langevitour</code>. Brushing in any view highlights the corresponding subset across all panels, allowing detailed inspection of how residuals relate to both the UMAP embedding and the <span class="math inline">\(p\text{-}D\)</span> structure. Points with higher residuals typically correspond to sparse or bridging regions in the UMAP layout and the less dense ends of the Scurve, whereas low-residual points tend to cluster within denser, well-preserved regions. Double-clicking clears the selection and resets all highlights.</p>
+<p>Interactive link plots showing the link between the residual distribution (left), the UMAP layout (middle) and the fitted model overlaid with the data in <span class="math inline">7\text{-}D</span> (right) using <code>langevitour</code>. Brushing in any view highlights the corresponding subset across all panels, allowing detailed inspection of how residuals relate to both the UMAP embedding and the <span class="math inline">p\text{-}D</span> structure. Points with higher residuals typically correspond to sparse or bridging regions in the UMAP layout and the less dense ends of the Scurve, whereas low-residual points tend to cluster within denser, well-preserved regions. Double-clicking clears the selection and resets all highlights.</p>
 </div>
 </div>
 <p>As an alternative to using <code>langevitour</code>, link plots can also be generated with the <code>detourr</code> package. In this setup, users can manually construct the linked visualization using the <code>crosstalk</code> <span class="citation" data-cites="joe2023">(<a href="../refs.html#ref-joe2023" role="doc-biblioref"><strong>joe2023?</strong></a>)</span> and <code>htmltools</code> <span class="citation" data-cites="joe2024">(<a href="../refs.html#ref-joe2024" role="doc-biblioref">Cheng et al. 2024</a>)</span> packages. The interactive layout is created by arranging the NLDR plot (<code>nldr_plt</code>), the optional error distribution plot (<code>error_plt</code>), and the tour view produced with <code>detourr</code>, side by side within a flexible grid. The NLDR and error plots are rendered with <code>ggplotly()</code> <span class="citation" data-cites="chapman2020">(<a href="../refs.html#ref-chapman2020" role="doc-biblioref">Sievert 2020</a>)</span> to enable interactive linking. The <code>bscols()</code> function from <code>crosstalk</code> manages synchronization across these panels, allowing for linked brushing and coordinated selection between these interactive plots.</p>
@@ -1009,7 +1023,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Interactive link plots showing the link between the UMAP layout (left) and the fitted model overlaid with the data in <span class="math inline">\(7\text{-}D\)</span> (right) using <code>detourr</code>. Brushing in either view highlights the corresponding subset of points across both representations, allowing examination of how well the UMAP layout preserves the underlying <code>Scurve</code> structure. To highlight points in <code>detourr</code>, use the Select button. Double-clicking on either view clears the selection and dehighlights all points.</p>
+<p>Interactive link plots showing the link between the UMAP layout (left) and the fitted model overlaid with the data in <span class="math inline">7\text{-}D</span> (right) using <code>detourr</code>. Brushing in either view highlights the corresponding subset of points across both representations, allowing examination of how well the UMAP layout preserves the underlying <code>Scurve</code> structure. To highlight points in <code>detourr</code>, use the Select button. Double-clicking on either view clears the selection and dehighlights all points.</p>
 </div>
 </div>
 <p>For analyses that include model error visualization, a three-panel view can be constructed by adding the error distribution plot (<code>error_plt</code>):</p>
@@ -1056,14 +1070,14 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Interactive link plots showing the link between the residual distribution (left), the UMAP layout (middle) and the fitted model overlaid with the data in <span class="math inline">\(7\text{-}D\)</span> (right) using <code>detourr</code>. Brushing in any view highlights the corresponding subset across all panels, allowing detailed inspection of how residuals relate to both the UMAP embedding and the <span class="math inline">\(p\text{-}D\)</span> structure. Points with higher residuals typically correspond to sparse or bridging regions in the UMAP layout and the less dense ends of the Scurve, whereas low-residual points tend to cluster within denser, well-preserved regions. To highlight points in <code>detourr</code>, use the Select button. Double-clicking clears the selection and resets all highlights.</p>
+<p>Interactive link plots showing the link between the residual distribution (left), the UMAP layout (middle) and the fitted model overlaid with the data in <span class="math inline">7\text{-}D</span> (right) using <code>detourr</code>. Brushing in any view highlights the corresponding subset across all panels, allowing detailed inspection of how residuals relate to both the UMAP embedding and the <span class="math inline">p\text{-}D</span> structure. Points with higher residuals typically correspond to sparse or bridging regions in the UMAP layout and the less dense ends of the Scurve, whereas low-residual points tend to cluster within denser, well-preserved regions. To highlight points in <code>detourr</code>, use the Select button. Double-clicking clears the selection and resets all highlights.</p>
 </div>
 </div>
 </section></section></section><section id="application" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="application">
 <span class="header-section-number">3.4</span> Application</h2>
 <p>Single-cell RNA sequencing (scRNA-seq) is a popular and powerful technology that allows you to profile the whole transcriptome of a large number of individual cells <span class="citation" data-cites="andrews2021">(<a href="../refs.html#ref-andrews2021" role="doc-biblioref"><strong>andrews2021?</strong></a>)</span>.</p>
 <p>Clustering of single-cell data is used to identify groups of cells with similar expression profiles. NLDR often used to summarise the discovered clusters, and help to understand the results. The purpose of this example is to <em>illustrate how to use our method to help decide on an appropriate NLDR layout that accurately represents the data</em>.</p>
-<p>Limb muscle cells of mice in <span class="citation" data-cites="tabula2018">(<a href="../refs.html#ref-tabula2018" role="doc-biblioref"><strong>tabula2018?</strong></a>)</span> are examined. There are <span class="math inline">\(1067\)</span> single cells, with <span class="math inline">\(14997\)</span> gene expressions. Following their pre-processing, different NLDR methods were performed using ten principal components. Figure @ref(fig:limb-rwbss) (b) is the reproduction of the published plot. The question is whether this accurately represents the cluster structure in the data. Our method help to provide a better layout.</p>
+<p>Limb muscle cells of mice in <span class="citation" data-cites="tabula2018">(<a href="../refs.html#ref-tabula2018" role="doc-biblioref"><strong>tabula2018?</strong></a>)</span> are examined. There are <span class="math inline">1067</span> single cells, with <span class="math inline">14997</span> gene expressions. Following their pre-processing, different NLDR methods were performed using ten principal components. Figure @ref(fig:limb-rwbss) (b) is the reproduction of the published plot. The question is whether this accurately represents the cluster structure in the data. Our method help to provide a better layout.</p>
 <!-- add function to generate 2D trimesh and the projections (PDF) and langevitour (HTML)-->
 <!-- https://www.nature.com/articles/s41586-018-0590-4#data-availability -->
 <!-- https://figshare.com/articles/dataset/Robject_files_for_tissues_processed_by_Seurat/5821263/1 -->
@@ -1076,7 +1090,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="03-chap3_files/figure-html/limb-rwbss-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Assessing which of the 6 NLDR layouts on the limb muscle data is the better representation using RWBSS for varying binwidth (<span class="math inline">\(a_1\)</span>). Colour used for the lines and points in the left plot and in the scatterplots represents NLDR layout (a-f). Layout d is perform well at large binwidth (where the binwidth is not enough to capture the data struture) and poorly as bin width decreases. Layout f is the best choice.</figcaption></figure>
+<figcaption>Assessing which of the 6 NLDR layouts on the limb muscle data is the better representation using RWBSS for varying binwidth (<span class="math inline">a_1</span>). Colour used for the lines and points in the left plot and in the scatterplots represents NLDR layout (a-f). Layout d is perform well at large binwidth (where the binwidth is not enough to capture the data struture) and poorly as bin width decreases. Layout f is the best choice.</figcaption></figure>
 </div>
 </div>
 </div>
@@ -1095,7 +1109,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Interactive link plots showing the link between the layout b (left) and the fitted model overlaid with the limb muscle data in <span class="math inline">\(10\text{-}D\)</span> (right). Each color represents a different muscle group, with triangulated hexagon centroids on the NLDR layout connected to their corresponding regions in the high-dimensional projection using <code>langevitour</code>. Brushing in either view highlights the same subset of points across both panels, enabling exploration of how clusters in the low-dimensional embedding align with structures in the original high-dimensional space. Double-clicking clears the selection and removes highlights.</p>
+<p>Interactive link plots showing the link between the layout b (left) and the fitted model overlaid with the limb muscle data in <span class="math inline">10\text{-}D</span> (right). Each color represents a different muscle group, with triangulated hexagon centroids on the NLDR layout connected to their corresponding regions in the high-dimensional projection using <code>langevitour</code>. Brushing in either view highlights the same subset of points across both panels, enabling exploration of how clusters in the low-dimensional embedding align with structures in the original high-dimensional space. Double-clicking clears the selection and removes highlights.</p>
 </div>
 </div>
 <div class="cell">
@@ -1113,7 +1127,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Interactive link plots showing the link between the layout f (left) and the fitted model overlaid with the limb muscle data in <span class="math inline">\(10\text{-}D\)</span> (right). Each color represents a different muscle group, with triangulated hexagon centroids on the NLDR layout connected to their corresponding regions in the high-dimensional projection using <code>langevitour</code>. Brushing in either view highlights the same subset of points across both panels, enabling exploration of how clusters in the low-dimensional embedding align with structures in the original high-dimensional space. Double-clicking clears the selection and removes highlights.</p>
+<p>Interactive link plots showing the link between the layout f (left) and the fitted model overlaid with the limb muscle data in <span class="math inline">10\text{-}D</span> (right). Each color represents a different muscle group, with triangulated hexagon centroids on the NLDR layout connected to their corresponding regions in the high-dimensional projection using <code>langevitour</code>. Brushing in either view highlights the same subset of points across both panels, enabling exploration of how clusters in the low-dimensional embedding align with structures in the original high-dimensional space. Double-clicking clears the selection and removes highlights.</p>
 </div>
 </div>
 </section><section id="discussion" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="discussion">
