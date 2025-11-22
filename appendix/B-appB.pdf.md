@@ -286,34 +286,6 @@ mnist & 06\_link\_brush\_layout\_e.R & Creates interactive linked brushing with 
 :::
 
 
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-`````{=html}
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Parameter </th>
-   <th style="text-align:left;"> Value </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> \(n_{neighbors}\) </td>
-   <td style="text-align:left;"> 30 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> \(\theta\) </td>
-   <td style="text-align:left;"> 0.5 </td>
-  </tr>
-</tbody>
-</table>
-
-`````
-:::
-:::
-
-
 ## Generating the 2NC7 data
 
 This data is constructed by simulating two clusters, each consisting of $1000$ observations. The C-shaped cluster is generated from $\theta \sim U(\text{-}3\pi/2, 0)$, $X_1 = \sin(\theta)$, $X_2 \sim U(0, 2)$ (adding thickness to the C), $X_3 = \text{sign}(\theta) \times (\cos(\theta) - 1)$, $X_4 = \cos(\theta)$. Observations lie on a \gD{} manifold in \sD{}. The other cluster is from $X_1 \sim U(0, 2)$, $X_2 \sim U(0, 3)$, $X_3 = \text{-}(X_1^3 + X_2)$, and $X_4 \sim U(0, 2)$. It is also curved, but observations lie on a \tD{} manifold in \sD{}. Three more variables, $X_5, X_6, X_7$, that are small amounts of pure noise are added. We would consider $T=(X_1, X_2, X_3, X_4)$ to be the geometric structure (true model) that we hope to capture (@fig-true-data).

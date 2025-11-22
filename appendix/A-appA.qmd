@@ -25,12 +25,6 @@ if (knitr::is_latex_output()) {
     row_spec(0, bold = TRUE) |>
     column_spec(1:2, width = c("3cm", "12cm"))
 } else {
-  kable(glossary_df,
-        format = "html",
-        escape = FALSE) |>
-    kable_styling(full_width = FALSE,
-                  position = "center",
-                  font_size = 12) |>
-    row_spec(0, bold = TRUE)
+  kable(glossary_df, escape = FALSE) 
 }
 ```

@@ -43,7 +43,7 @@ degrees: 'B.Sc. (Hons) in Statistics, University of Sri Jayewardenepura (USJ), S
 
 format:
   monashthesis-html:
-    html-math-method: katex
+    html-math-method: mathjax
   monashthesis-pdf:
     shorttitle: "interactive and dynamic graphics for studying non-linear dimension reduction models of high-dimensional data"
     link-citations: true

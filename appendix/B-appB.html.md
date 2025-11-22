@@ -41,320 +41,72 @@
 
 ::: {#tbl-fig-param .cell layout-align="center" tbl-pos='H' tbl-cap='NLDR methods and hyper-parameters used for each Figure in the main paper.'}
 ::: {.cell-output-display}
-`````{=html}
-<table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;font-weight: bold;"> Figure </th>
-   <th style="text-align:left;font-weight: bold;"> NLDR method </th>
-   <th style="text-align:left;font-weight: bold;"> Hyper-parameter(s) </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 1a </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 30, min_dist = 0.3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1b </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 5, min_dist = 0.8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1c </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 5, min_dist = 0.01 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1d </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1e </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 30 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1f </td>
-   <td style="text-align:left;"> PHATE </td>
-   <td style="text-align:left;"> knn = 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1g </td>
-   <td style="text-align:left;"> TriMAP </td>
-   <td style="text-align:left;"> n_inliers = 12, n_outliers = 4, n_random = 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1h </td>
-   <td style="text-align:left;"> PaCMAP </td>
-   <td style="text-align:left;"> n_neighbors = 30, init = random, MN_ratio = 0.9, FP_ratio = 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 47 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4a </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 47 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5b </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 47 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 47 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 8a </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 47 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 8b </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 62 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 8c </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 15, min_dist = 0.1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 8d </td>
-   <td style="text-align:left;"> PHATE </td>
-   <td style="text-align:left;"> knn = 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 8e </td>
-   <td style="text-align:left;"> TriMAP </td>
-   <td style="text-align:left;"> n_inliers = 12, n_outliers = 4, n_random = 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 8f </td>
-   <td style="text-align:left;"> PaCMAP </td>
-   <td style="text-align:left;"> n_neighbors = 10, init = random, MN_ratio = 0.5, FP_ratio = 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 10a </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 30, min_dist = 0.3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 10b </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 5, min_dist = 0.8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 10c </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 5, min_dist = 0.01 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 10d </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 10e </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 30 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 10f </td>
-   <td style="text-align:left;"> PHATE </td>
-   <td style="text-align:left;"> knn = 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 10g </td>
-   <td style="text-align:left;"> TriMAP </td>
-   <td style="text-align:left;"> n_inliers = 12, n_outliers = 4, n_random = 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 10h </td>
-   <td style="text-align:left;"> PaCMAP </td>
-   <td style="text-align:left;"> n_neighbors = 30, init = random, MN_ratio = 0.9, FP_ratio = 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 11a </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 30, min_dist = 0.3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 11e </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 30 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 12a </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 30 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 12b </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 89 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 12c </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 15, min_dist = 0.1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 12d </td>
-   <td style="text-align:left;"> PHATE </td>
-   <td style="text-align:left;"> knn = 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 12e </td>
-   <td style="text-align:left;"> TriMAP </td>
-   <td style="text-align:left;"> n_inliers = 12, n_outliers = 4, n_random = 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 12f </td>
-   <td style="text-align:left;"> PaCMAP </td>
-   <td style="text-align:left;"> n_neighbors = 10, init = random, MN_ratio = 0.5, FP_ratio = 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 13a </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 30 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 14a </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 30 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A4a </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 71 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A4b </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 15, min_dist = 0.1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A4c </td>
-   <td style="text-align:left;"> PaCMAP </td>
-   <td style="text-align:left;"> n_neighbors = 10, init = random, MN_ratio = 0.5, FP_ratio = 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A5 </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 52 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A6a </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 30, min_dist = 0.3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A6b </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 30 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A7a </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 30, min_dist = 0.3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A7b </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 30 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A8a </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 30, min_dist = 0.3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A8b </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 30 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A9a </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 30, min_dist = 0.3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A9b </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 5, min_dist = 0.8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A9c </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 5, min_dist = 0.01 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A9d </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A9e </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 30 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A9f </td>
-   <td style="text-align:left;"> PHATE </td>
-   <td style="text-align:left;"> knn = 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A9g </td>
-   <td style="text-align:left;"> TriMAP </td>
-   <td style="text-align:left;"> n_inliers = 12, n_outliers = 4, n_random = 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A9h </td>
-   <td style="text-align:left;"> PaCMAP </td>
-   <td style="text-align:left;"> n_neighbors = 30, init = random, MN_ratio = 0.9, FP_ratio = 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A10a </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 30 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A10b </td>
-   <td style="text-align:left;"> tSNE </td>
-   <td style="text-align:left;"> perplexity = 89 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A10c </td>
-   <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n_neighbors = 15, min_dist = 0.1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A10d </td>
-   <td style="text-align:left;"> PHATE </td>
-   <td style="text-align:left;"> knn = 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A10e </td>
-   <td style="text-align:left;"> TriMAP </td>
-   <td style="text-align:left;"> n_inliers = 12, n_outliers = 4, n_random = 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A10f </td>
-   <td style="text-align:left;"> PaCMAP </td>
-   <td style="text-align:left;"> n_neighbors = 10, init = random, MN_ratio = 0.5, FP_ratio = 2 </td>
-  </tr>
-</tbody>
-</table>
 
-`````
+
+|Figure |NLDR method |Hyper-parameter(s)                                               |
+|:------|:-----------|:----------------------------------------------------------------|
+|$1$a   |UMAP        |n\_neighbors = 30, min\_dist = 0.3                               |
+|$1$b   |UMAP        |n\_neighbors = 5, min\_dist = 0.8                                |
+|$1$c   |UMAP        |n\_neighbors = 5, min\_dist = 0.01                               |
+|$1$d   |tSNE        |perplexity = 5                                                   |
+|$1$e   |tSNE        |perplexity = 30                                                  |
+|$1$f   |PHATE       |knn = 5                                                          |
+|$1$g   |TriMAP      |n\_inliers = 12, n\_outliers = 4, n\_random = 3                  |
+|$1$h   |PaCMAP      |n\_neighbors = 30, init = random, MN\_ratio = 0.9, FP\_ratio = 5 |
+|$2$    |tSNE        |perplexity = 47                                                  |
+|$4$a   |tSNE        |perplexity = 47                                                  |
+|$5$b   |tSNE        |perplexity = 47                                                  |
+|$6$    |tSNE        |perplexity = 47                                                  |
+|$8$a   |tSNE        |perplexity = 47                                                  |
+|$8$b   |tSNE        |perplexity = 62                                                  |
+|$8$c   |UMAP        |n\_neighbors = 15, min\_dist = 0.1                               |
+|$8$d   |PHATE       |knn = 5                                                          |
+|$8$e   |TriMAP      |n\_inliers = 12, n\_outliers = 4, n\_random = 3                  |
+|$8$f   |PaCMAP      |n\_neighbors = 10, init = random, MN\_ratio = 0.5, FP\_ratio = 2 |
+|$10$a  |UMAP        |n\_neighbors = 30, min\_dist = 0.3                               |
+|$10$b  |UMAP        |n\_neighbors = 5, min\_dist = 0.8                                |
+|$10$c  |UMAP        |n\_neighbors = 5, min\_dist = 0.01                               |
+|$10$d  |tSNE        |perplexity = 5                                                   |
+|$10$e  |tSNE        |perplexity = 30                                                  |
+|$10$f  |PHATE       |knn = 5                                                          |
+|$10$g  |TriMAP      |n\_inliers = 12, n\_outliers = 4, n\_random = 3                  |
+|$10$h  |PaCMAP      |n\_neighbors = 30, init = random, MN\_ratio = 0.9, FP\_ratio = 5 |
+|$11$a  |UMAP        |n\_neighbors = 30, min\_dist = 0.3                               |
+|$11$e  |tSNE        |perplexity = 30                                                  |
+|$12$a  |tSNE        |perplexity = 30                                                  |
+|$12$b  |tSNE        |perplexity = 89                                                  |
+|$12$c  |UMAP        |n\_neighbors = 15, min\_dist = 0.1                               |
+|$12$d  |PHATE       |knn = 5                                                          |
+|$12$e  |TriMAP      |n\_inliers = 12, n\_outliers = 4, n\_random = 3                  |
+|$12$f  |PaCMAP      |n\_neighbors = 10, init = random, MN\_ratio = 0.5, FP\_ratio = 2 |
+|$13$a  |tSNE        |perplexity = 30                                                  |
+|$14$a  |tSNE        |perplexity = 30                                                  |
+|$A4$a  |tSNE        |perplexity = 71                                                  |
+|$A4$b  |UMAP        |n\_neighbors = 15, min\_dist = 0.1                               |
+|$A4$c  |PaCMAP      |n\_neighbors = 10, init = random, MN\_ratio = 0.5, FP\_ratio = 2 |
+|$A5$   |tSNE        |perplexity = 52                                                  |
+|$A6$a  |UMAP        |n\_neighbors = 30, min\_dist = 0.3                               |
+|$A6$b  |tSNE        |perplexity = 30                                                  |
+|$A7$a  |UMAP        |n\_neighbors = 30, min\_dist = 0.3                               |
+|$A7$b  |tSNE        |perplexity = 30                                                  |
+|$A8$a  |UMAP        |n\_neighbors = 30, min\_dist = 0.3                               |
+|$A8$b  |tSNE        |perplexity = 30                                                  |
+|$A9$a  |UMAP        |n\_neighbors = 30, min\_dist = 0.3                               |
+|$A9$b  |UMAP        |n\_neighbors = 5, min\_dist = 0.8                                |
+|$A9$c  |UMAP        |n\_neighbors = 5, min\_dist = 0.01                               |
+|$A9$d  |tSNE        |perplexity = 5                                                   |
+|$A9$e  |tSNE        |perplexity = 30                                                  |
+|$A9$f  |PHATE       |knn = 5                                                          |
+|$A9$g  |TriMAP      |n\_inliers = 12, n\_outliers = 4, n\_random = 3                  |
+|$A9$h  |PaCMAP      |n\_neighbors = 30, init = random, MN\_ratio = 0.9, FP\_ratio = 5 |
+|$A10$a |tSNE        |perplexity = 30                                                  |
+|$A10$b |tSNE        |perplexity = 89                                                  |
+|$A10$c |UMAP        |n\_neighbors = 15, min\_dist = 0.1                               |
+|$A10$d |PHATE       |knn = 5                                                          |
+|$A10$e |TriMAP      |n\_inliers = 12, n\_outliers = 4, n\_random = 3                  |
+|$A10$f |PaCMAP      |n\_neighbors = 10, init = random, MN\_ratio = 0.5, FP\_ratio = 2 |
+
+
 :::
 :::
 
@@ -367,11 +119,11 @@ Animations of the \pD{} tours that produced specific projections shown in some f
 ::: {#tbl-links .cell layout-align="center" tbl-pos='H' tbl-cap='Videos of the langevitour animations and the linked plots.'}
 ::: {.cell-output-display}
 `````{=html}
-<table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<table>
  <thead>
   <tr>
-   <th style="text-align:left;font-weight: bold;"> Figure </th>
-   <th style="text-align:left;font-weight: bold;"> URL </th>
+   <th style="text-align:left;"> Figure </th>
+   <th style="text-align:left;"> URL </th>
   </tr>
  </thead>
 <tbody>
@@ -404,103 +156,33 @@ Animations of the \pD{} tours that produced specific projections shown in some f
 
 ::: {#tbl-notation .cell layout-align="center" tbl-pos='H' tbl-cap='Summary of notation for describing new methodology.'}
 ::: {.cell-output-display}
-`````{=html}
-<table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;font-weight: bold;"> Notation </th>
-   <th style="text-align:left;font-weight: bold;"> Description </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> $n, p, k$ </td>
-   <td style="text-align:left;"> number of observations, variables, embedding dimension, respectively </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $\mathbfit{X}, \mathbfit{x}$ </td>
-   <td style="text-align:left;"> $p$-dimensional data (population, sample) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $\mathbfit{y}$ </td>
-   <td style="text-align:left;"> $k$-dimensional layout </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $P$ </td>
-   <td style="text-align:left;"> orthonormal basis, generating a $d\text{-}dimensional$ linear projection of $p$-dimensional data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $T$ </td>
-   <td style="text-align:left;"> true  model </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $g$ </td>
-   <td style="text-align:left;"> functional mapping from \pD{} to \kD{}, especially as prescribed by NLDR </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $\mathbfit{\theta}$ </td>
-   <td style="text-align:left;"> (Hyper-) parameters for NLDR method </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $r$ </td>
-   <td style="text-align:left;"> ranges of the embedding components </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $C^{(j)}$ </td>
-   <td style="text-align:left;"> $j$-dimensional bin centers </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $(b_1, b_2)$ </td>
-   <td style="text-align:left;"> number of bins in each direction </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $(a_1, a_2)$ </td>
-   <td style="text-align:left;"> binwidths, distance between centroids in each direction </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $(s_1, \ s_2)$ </td>
-   <td style="text-align:left;"> starting coordinates of the hexagonal grid </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $q$ </td>
-   <td style="text-align:left;"> buffer to ensure hexgrid covers data, proportion of data range, 0-1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $m$ </td>
-   <td style="text-align:left;"> number of non-empty bins </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $b$ </td>
-   <td style="text-align:left;"> number of  hexagons in the grid </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $h$ </td>
-   <td style="text-align:left;"> hexagonal id </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $l$ </td>
-   <td style="text-align:left;"> side length </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $A$ </td>
-   <td style="text-align:left;"> area </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $n_h$ </td>
-   <td style="text-align:left;"> number of points in hexagon $h$ (bin count) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $w_h$ </td>
-   <td style="text-align:left;"> standardized number of points in hexagon $h$ (standardized bin counts) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> $d_h$ </td>
-   <td style="text-align:left;"> density of hexagon $h$ (bin density) </td>
-  </tr>
-</tbody>
-</table>
 
-`````
+
+|Notation                     |Description                                                                                      |
+|:----------------------------|:------------------------------------------------------------------------------------------------|
+|$n, p, k$                    |number of observations, variables, embedding dimension, respectively                             |
+|$\mathbfit{X}, \mathbfit{x}$ |$p$-dimensional data (population, sample)                                                        |
+|$\mathbfit{y}$               |$k$-dimensional layout                                                                           |
+|$P$                          |orthonormal basis, generating a $d\text{-}dimensional$ linear projection of $p$-dimensional data |
+|$T$                          |true  model                                                                                      |
+|$g$                          |functional mapping from \pD{} to \kD{}, especially as prescribed by NLDR                         |
+|$\mathbfit{\theta}$          |(Hyper-) parameters for NLDR method                                                              |
+|$r$                          |ranges of the embedding components                                                               |
+|$C^{(j)}$                    |$j$-dimensional bin centers                                                                      |
+|$(b_1, b_2)$                 |number of bins in each direction                                                                 |
+|$(a_1, a_2)$                 |binwidths, distance between centroids in each direction                                          |
+|$(s_1, \ s_2)$               |starting coordinates of the hexagonal grid                                                       |
+|$q$                          |buffer to ensure hexgrid covers data, proportion of data range, 0-1                              |
+|$m$                          |number of non-empty bins                                                                         |
+|$b$                          |number of  hexagons in the grid                                                                  |
+|$h$                          |hexagonal id                                                                                     |
+|$l$                          |side length                                                                                      |
+|$A$                          |area                                                                                             |
+|$n_h$                        |number of points in hexagon $h$ (bin count)                                                      |
+|$w_h$                        |standardized number of points in hexagon $h$ (standardized bin counts)                           |
+|$d_h$                        |density of hexagon $h$ (bin density)                                                             |
+
+
 :::
 :::
 
@@ -510,258 +192,54 @@ Animations of the \pD{} tours that produced specific projections shown in some f
 
 ::: {#tbl-script-desc .cell layout-align="center" tbl-pos='H' tbl-cap='R and Python script files used to generate outputs in the main paper.'}
 ::: {.cell-output-display}
-`````{=html}
-<table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;font-weight: bold;"> Folder </th>
-   <th style="text-align:left;font-weight: bold;"> Script </th>
-   <th style="text-align:left;font-weight: bold;"> Description </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> script </td>
-   <td style="text-align:left;"> additional_functions.R </td>
-   <td style="text-align:left;"> Helper functions to render the main paper. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> script </td>
-   <td style="text-align:left;"> evaluation.py </td>
-   <td style="text-align:left;"> Python script implementing additional evaluation metrics such as RTA and GS. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> script </td>
-   <td style="text-align:left;"> nldr_code.R </td>
-   <td style="text-align:left;"> Wrapper functions for running multiple NLDR methods (UMAP, tSNE, PHATE, PaCMAP, TriMAP) with different parameters. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> two_nonlinear </td>
-   <td style="text-align:left;"> 01_gen_data.R </td>
-   <td style="text-align:left;"> Generates the 2NC7 dataset. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> two_nonlinear </td>
-   <td style="text-align:left;"> 02_gen_true_model.R </td>
-   <td style="text-align:left;"> Creates the true structure of 2NC7 data. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> two_nonlinear </td>
-   <td style="text-align:left;"> 03_gen_embeddings.R </td>
-   <td style="text-align:left;"> Computes multiple NLDR embeddings for the 2NC7 data. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> two_nonlinear </td>
-   <td style="text-align:left;"> 04_gen_mse_for_diff_methods.R </td>
-   <td style="text-align:left;"> Computes HBE with varying bin widths ($a_1$) for all NLDR embeddings. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> two_nonlinear </td>
-   <td style="text-align:left;"> 05_gen_rm_lwd_mse.R </td>
-   <td style="text-align:left;"> Computes HBE with varying low density bin cutoff for all three binwidth ($a_1$) choices. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> two_nonlinear </td>
-   <td style="text-align:left;"> 06_gen_model_with_tSNE.R </td>
-   <td style="text-align:left;"> Fits the model for the layout a. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> two_nonlinear </td>
-   <td style="text-align:left;"> 07_example_evaluation_metrics.R </td>
-   <td style="text-align:left;"> Calculates evaluation metrics for all NLDR layouts. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> two_nonlinear </td>
-   <td style="text-align:left;"> 08_gen_model_with_PHATE.R </td>
-   <td style="text-align:left;"> Fits the model for the layout c. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> five_gau_clusters </td>
-   <td style="text-align:left;"> 01_five_gaussian_cluster_data_emb.R </td>
-   <td style="text-align:left;"> Generates data and multiple NLDR embeddings. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> five_gau_clusters </td>
-   <td style="text-align:left;"> 02_gen_model_with_tSNE.R </td>
-   <td style="text-align:left;"> Fits the model for the layout a. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> five_gau_clusters </td>
-   <td style="text-align:left;"> 03_gen_model_with_UMAP.R </td>
-   <td style="text-align:left;"> Fits the model for the layout b. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> five_gau_clusters </td>
-   <td style="text-align:left;"> 04_gen_model_with_PaCMAP.R </td>
-   <td style="text-align:left;"> Fits the model for the layout c. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> c_shaped_dens_str </td>
-   <td style="text-align:left;"> 01_gen_data.R </td>
-   <td style="text-align:left;"> Generates the $2\text{-}D$ curved sheet dataset. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> c_shaped_dens_str </td>
-   <td style="text-align:left;"> 02_gen_embeddings_uni_dens.R </td>
-   <td style="text-align:left;"> Generates multiple NLDR embeddings. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> c_shaped_dens_str </td>
-   <td style="text-align:left;"> 03_gen_model_with_tSNE.R </td>
-   <td style="text-align:left;"> Fits the model for the tSNE layout. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 01_obtain_pca_author.R </td>
-   <td style="text-align:left;"> Obtains  author's PCA results. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 02_obtain_umap_authors.R </td>
-   <td style="text-align:left;"> Obtains  author's UMAP embeddings. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 03_gen_umap_diff_param.R </td>
-   <td style="text-align:left;"> Generates multiple UMAP embeddings with different hyper-parameter values. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 04_gen_tsne_diff_param.R </td>
-   <td style="text-align:left;"> Generates multiple tSNE embeddings with different hyper-parameter values. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 05_gen_phate.R </td>
-   <td style="text-align:left;"> Generates a PHATE embeddings with default hyper-parameters. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 06_gen_trimap.R </td>
-   <td style="text-align:left;"> Generates a TriMAP embeddings with default hyper-parameters. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 07_gen_pacmap.R </td>
-   <td style="text-align:left;"> Generates a PaCMAP embeddings with default hyper-parameters. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 08_gen_mse_for_diff_methods.R </td>
-   <td style="text-align:left;"> Computes HBE with varying bin widths ($a_1$) for all NLDR embeddings. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 09_gen_scDEED.R </td>
-   <td style="text-align:left;"> Generates UMAP embeddings from scDEED results. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 10_pre_process_for_embedding.R </td>
-   <td style="text-align:left;"> Generates PBMC3k data used for scDEED results. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 11_gen_mse_for_diff_tsne_scD.R </td>
-   <td style="text-align:left;"> Computes HBE with varying bin widths ($a_1$) for tSNE embeddings. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 12_gen_mse_for_diff_umap_scD.R </td>
-   <td style="text-align:left;"> Computes HBE with varying bin widths ($a_1$) for UMAP embeddings. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 13_gen_model_with_UMAP.R </td>
-   <td style="text-align:left;"> Fits the model for the layout a. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 14_gen_model_with_tSNE.R </td>
-   <td style="text-align:left;"> Fits the model for the layout e. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 15_gen_model_with_UMAP_scD.R </td>
-   <td style="text-align:left;"> Fits the model for the layout a. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 16_gen_model_with_tSNE_scD.R </td>
-   <td style="text-align:left;"> Fits the model for the layout b. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 17_evaluation_metrics.R </td>
-   <td style="text-align:left;"> Calculates evaluation metrics for all NLDR layouts. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 18_evaluation_metrics_scD.R </td>
-   <td style="text-align:left;"> Calculates evaluation metrics for all NLDR layouts. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> mnist </td>
-   <td style="text-align:left;"> 01_data_preprocessing.R </td>
-   <td style="text-align:left;"> Computes first $10$ principal components and save data. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> mnist </td>
-   <td style="text-align:left;"> 02_gen_diff_embeddings.R </td>
-   <td style="text-align:left;"> Generates multiple NLDR embeddings. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> mnist </td>
-   <td style="text-align:left;"> 03_gen_mse_for_diff_methods.R </td>
-   <td style="text-align:left;"> Computes HBE with varying bin widths ($a_1$) for all NLDR embeddings. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> mnist </td>
-   <td style="text-align:left;"> 04_gen_model_with_tSNE.R </td>
-   <td style="text-align:left;"> Fits the model for the layout a. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> mnist </td>
-   <td style="text-align:left;"> 05_evaluation_metrics.R </td>
-   <td style="text-align:left;"> Calculates evaluation metrics for all NLDR layouts. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> mnist </td>
-   <td style="text-align:left;"> 06_link_brush_layout_e.R </td>
-   <td style="text-align:left;"> Creates interactive linked brushing with layout e. </td>
-  </tr>
-</tbody>
-</table>
-
-`````
-:::
-:::
 
 
+|Folder               |Script                                   |Description                                                                                                        |
+|:--------------------|:----------------------------------------|:------------------------------------------------------------------------------------------------------------------|
+|script               |additional\_functions.R                  |Helper functions to render the main paper.                                                                         |
+|script               |evaluation.py                            |Python script implementing additional evaluation metrics such as RTA and GS.                                       |
+|script               |nldr\_code.R                             |Wrapper functions for running multiple NLDR methods (UMAP, tSNE, PHATE, PaCMAP, TriMAP) with different parameters. |
+|two\_nonlinear       |01\_gen\_data.R                          |Generates the 2NC7 dataset.                                                                                        |
+|two\_nonlinear       |02\_gen\_true\_model.R                   |Creates the true structure of 2NC7 data.                                                                           |
+|two\_nonlinear       |03\_gen\_embeddings.R                    |Computes multiple NLDR embeddings for the 2NC7 data.                                                               |
+|two\_nonlinear       |04\_gen\_mse\_for\_diff\_methods.R       |Computes HBE with varying bin widths ($a_1$) for all NLDR embeddings.                                              |
+|two\_nonlinear       |05\_gen\_rm\_lwd\_mse.R                  |Computes HBE with varying low density bin cutoff for all three binwidth ($a_1$) choices.                           |
+|two\_nonlinear       |06\_gen\_model\_with\_tSNE.R             |Fits the model for the layout a.                                                                                   |
+|two\_nonlinear       |07\_example\_evaluation\_metrics.R       |Calculates evaluation metrics for all NLDR layouts.                                                                |
+|two\_nonlinear       |08\_gen\_model\_with\_PHATE.R            |Fits the model for the layout c.                                                                                   |
+|five\_gau\_clusters  |01\_five\_gaussian\_cluster\_data\_emb.R |Generates data and multiple NLDR embeddings.                                                                       |
+|five\_gau\_clusters  |02\_gen\_model\_with\_tSNE.R             |Fits the model for the layout a.                                                                                   |
+|five\_gau\_clusters  |03\_gen\_model\_with\_UMAP.R             |Fits the model for the layout b.                                                                                   |
+|five\_gau\_clusters  |04\_gen\_model\_with\_PaCMAP.R           |Fits the model for the layout c.                                                                                   |
+|c\_shaped\_dens\_str |01\_gen\_data.R                          |Generates the $2\text{-}D$ curved sheet dataset.                                                                   |
+|c\_shaped\_dens\_str |02\_gen\_embeddings\_uni\_dens.R         |Generates multiple NLDR embeddings.                                                                                |
+|c\_shaped\_dens\_str |03\_gen\_model\_with\_tSNE.R             |Fits the model for the tSNE layout.                                                                                |
+|pbmc3k               |01\_obtain\_pca\_author.R                |Obtains  author\'s PCA results.                                                                                    |
+|pbmc3k               |02\_obtain\_umap\_authors.R              |Obtains  author\'s UMAP embeddings.                                                                                |
+|pbmc3k               |03\_gen\_umap\_diff\_param.R             |Generates multiple UMAP embeddings with different hyper\-parameter values.                                         |
+|pbmc3k               |04\_gen\_tsne\_diff\_param.R             |Generates multiple tSNE embeddings with different hyper\-parameter values.                                         |
+|pbmc3k               |05\_gen\_phate.R                         |Generates a PHATE embeddings with default hyper\-parameters.                                                       |
+|pbmc3k               |06\_gen\_trimap.R                        |Generates a TriMAP embeddings with default hyper\-parameters.                                                      |
+|pbmc3k               |07\_gen\_pacmap.R                        |Generates a PaCMAP embeddings with default hyper\-parameters.                                                      |
+|pbmc3k               |08\_gen\_mse\_for\_diff\_methods.R       |Computes HBE with varying bin widths ($a_1$) for all NLDR embeddings.                                              |
+|pbmc3k               |09\_gen\_scDEED.R                        |Generates UMAP embeddings from scDEED results.                                                                     |
+|pbmc3k               |10\_pre\_process\_for\_embedding.R       |Generates PBMC3k data used for scDEED results.                                                                     |
+|pbmc3k               |11\_gen\_mse\_for\_diff\_tsne\_scD.R     |Computes HBE with varying bin widths ($a_1$) for tSNE embeddings.                                                  |
+|pbmc3k               |12\_gen\_mse\_for\_diff\_umap\_scD.R     |Computes HBE with varying bin widths ($a_1$) for UMAP embeddings.                                                  |
+|pbmc3k               |13\_gen\_model\_with\_UMAP.R             |Fits the model for the layout a.                                                                                   |
+|pbmc3k               |14\_gen\_model\_with\_tSNE.R             |Fits the model for the layout e.                                                                                   |
+|pbmc3k               |15\_gen\_model\_with\_UMAP\_scD.R        |Fits the model for the layout a.                                                                                   |
+|pbmc3k               |16\_gen\_model\_with\_tSNE\_scD.R        |Fits the model for the layout b.                                                                                   |
+|pbmc3k               |17\_evaluation\_metrics.R                |Calculates evaluation metrics for all NLDR layouts.                                                                |
+|pbmc3k               |18\_evaluation\_metrics\_scD.R           |Calculates evaluation metrics for all NLDR layouts.                                                                |
+|mnist                |01\_data\_preprocessing.R                |Computes first $10$ principal components and save data.                                                            |
+|mnist                |02\_gen\_diff\_embeddings.R              |Generates multiple NLDR embeddings.                                                                                |
+|mnist                |03\_gen\_mse\_for\_diff\_methods.R       |Computes HBE with varying bin widths ($a_1$) for all NLDR embeddings.                                              |
+|mnist                |04\_gen\_model\_with\_tSNE.R             |Fits the model for the layout a.                                                                                   |
+|mnist                |05\_evaluation\_metrics.R                |Calculates evaluation metrics for all NLDR layouts.                                                                |
+|mnist                |06\_link\_brush\_layout\_e.R             |Creates interactive linked brushing with layout e.                                                                 |
 
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-`````{=html}
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Parameter </th>
-   <th style="text-align:left;"> Value </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> \(n_{neighbors}\) </td>
-   <td style="text-align:left;"> 30 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> \(\theta\) </td>
-   <td style="text-align:left;"> 0.5 </td>
-  </tr>
-</tbody>
-</table>
 
-`````
 :::
 :::
 
