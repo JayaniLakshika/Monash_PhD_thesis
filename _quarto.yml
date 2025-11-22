@@ -42,7 +42,8 @@ affiliation: Department of Econometrics & Business Statistics
 degrees: 'B.Sc. (Hons) in Statistics, University of Sri Jayewardenepura (USJ), Sri Lanka'
 
 format:
-  monashthesis-html: default
+  monashthesis-html:
+    html-math-method: katex
   monashthesis-pdf:
     shorttitle: "interactive and dynamic graphics for studying non-linear dimension reduction models of high-dimensional data"
     link-citations: true

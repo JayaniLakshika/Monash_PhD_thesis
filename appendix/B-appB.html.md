@@ -52,304 +52,304 @@
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> $1$a </td>
+   <td style="text-align:left;"> 1a </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 30, min\_dist = 0.3 </td>
+   <td style="text-align:left;"> n_neighbors = 30, min_dist = 0.3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $1$b </td>
+   <td style="text-align:left;"> 1b </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 5, min\_dist = 0.8 </td>
+   <td style="text-align:left;"> n_neighbors = 5, min_dist = 0.8 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $1$c </td>
+   <td style="text-align:left;"> 1c </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 5, min\_dist = 0.01 </td>
+   <td style="text-align:left;"> n_neighbors = 5, min_dist = 0.01 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $1$d </td>
+   <td style="text-align:left;"> 1d </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 5 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $1$e </td>
+   <td style="text-align:left;"> 1e </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 30 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $1$f </td>
+   <td style="text-align:left;"> 1f </td>
    <td style="text-align:left;"> PHATE </td>
    <td style="text-align:left;"> knn = 5 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $1$g </td>
+   <td style="text-align:left;"> 1g </td>
    <td style="text-align:left;"> TriMAP </td>
-   <td style="text-align:left;"> n\_inliers = 12, n\_outliers = 4, n\_random = 3 </td>
+   <td style="text-align:left;"> n_inliers = 12, n_outliers = 4, n_random = 3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $1$h </td>
+   <td style="text-align:left;"> 1h </td>
    <td style="text-align:left;"> PaCMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 30, init = random, MN\_ratio = 0.9, FP\_ratio = 5 </td>
+   <td style="text-align:left;"> n_neighbors = 30, init = random, MN_ratio = 0.9, FP_ratio = 5 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $2$ </td>
+   <td style="text-align:left;"> 2 </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 47 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $4$a </td>
+   <td style="text-align:left;"> 4a </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 47 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $5$b </td>
+   <td style="text-align:left;"> 5b </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 47 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $6$ </td>
+   <td style="text-align:left;"> 6 </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 47 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $8$a </td>
+   <td style="text-align:left;"> 8a </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 47 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $8$b </td>
+   <td style="text-align:left;"> 8b </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 62 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $8$c </td>
+   <td style="text-align:left;"> 8c </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 15, min\_dist = 0.1 </td>
+   <td style="text-align:left;"> n_neighbors = 15, min_dist = 0.1 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $8$d </td>
+   <td style="text-align:left;"> 8d </td>
    <td style="text-align:left;"> PHATE </td>
    <td style="text-align:left;"> knn = 5 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $8$e </td>
+   <td style="text-align:left;"> 8e </td>
    <td style="text-align:left;"> TriMAP </td>
-   <td style="text-align:left;"> n\_inliers = 12, n\_outliers = 4, n\_random = 3 </td>
+   <td style="text-align:left;"> n_inliers = 12, n_outliers = 4, n_random = 3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $8$f </td>
+   <td style="text-align:left;"> 8f </td>
    <td style="text-align:left;"> PaCMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 10, init = random, MN\_ratio = 0.5, FP\_ratio = 2 </td>
+   <td style="text-align:left;"> n_neighbors = 10, init = random, MN_ratio = 0.5, FP_ratio = 2 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $10$a </td>
+   <td style="text-align:left;"> 10a </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 30, min\_dist = 0.3 </td>
+   <td style="text-align:left;"> n_neighbors = 30, min_dist = 0.3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $10$b </td>
+   <td style="text-align:left;"> 10b </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 5, min\_dist = 0.8 </td>
+   <td style="text-align:left;"> n_neighbors = 5, min_dist = 0.8 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $10$c </td>
+   <td style="text-align:left;"> 10c </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 5, min\_dist = 0.01 </td>
+   <td style="text-align:left;"> n_neighbors = 5, min_dist = 0.01 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $10$d </td>
+   <td style="text-align:left;"> 10d </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 5 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $10$e </td>
+   <td style="text-align:left;"> 10e </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 30 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $10$f </td>
+   <td style="text-align:left;"> 10f </td>
    <td style="text-align:left;"> PHATE </td>
    <td style="text-align:left;"> knn = 5 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $10$g </td>
+   <td style="text-align:left;"> 10g </td>
    <td style="text-align:left;"> TriMAP </td>
-   <td style="text-align:left;"> n\_inliers = 12, n\_outliers = 4, n\_random = 3 </td>
+   <td style="text-align:left;"> n_inliers = 12, n_outliers = 4, n_random = 3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $10$h </td>
+   <td style="text-align:left;"> 10h </td>
    <td style="text-align:left;"> PaCMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 30, init = random, MN\_ratio = 0.9, FP\_ratio = 5 </td>
+   <td style="text-align:left;"> n_neighbors = 30, init = random, MN_ratio = 0.9, FP_ratio = 5 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $11$a </td>
+   <td style="text-align:left;"> 11a </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 30, min\_dist = 0.3 </td>
+   <td style="text-align:left;"> n_neighbors = 30, min_dist = 0.3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $11$e </td>
+   <td style="text-align:left;"> 11e </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 30 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $12$a </td>
+   <td style="text-align:left;"> 12a </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 30 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $12$b </td>
+   <td style="text-align:left;"> 12b </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 89 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $12$c </td>
+   <td style="text-align:left;"> 12c </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 15, min\_dist = 0.1 </td>
+   <td style="text-align:left;"> n_neighbors = 15, min_dist = 0.1 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $12$d </td>
+   <td style="text-align:left;"> 12d </td>
    <td style="text-align:left;"> PHATE </td>
    <td style="text-align:left;"> knn = 5 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $12$e </td>
+   <td style="text-align:left;"> 12e </td>
    <td style="text-align:left;"> TriMAP </td>
-   <td style="text-align:left;"> n\_inliers = 12, n\_outliers = 4, n\_random = 3 </td>
+   <td style="text-align:left;"> n_inliers = 12, n_outliers = 4, n_random = 3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $12$f </td>
+   <td style="text-align:left;"> 12f </td>
    <td style="text-align:left;"> PaCMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 10, init = random, MN\_ratio = 0.5, FP\_ratio = 2 </td>
+   <td style="text-align:left;"> n_neighbors = 10, init = random, MN_ratio = 0.5, FP_ratio = 2 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $13$a </td>
+   <td style="text-align:left;"> 13a </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 30 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $14$a </td>
+   <td style="text-align:left;"> 14a </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 30 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A4$a </td>
+   <td style="text-align:left;"> A4a </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 71 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A4$b </td>
+   <td style="text-align:left;"> A4b </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 15, min\_dist = 0.1 </td>
+   <td style="text-align:left;"> n_neighbors = 15, min_dist = 0.1 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A4$c </td>
+   <td style="text-align:left;"> A4c </td>
    <td style="text-align:left;"> PaCMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 10, init = random, MN\_ratio = 0.5, FP\_ratio = 2 </td>
+   <td style="text-align:left;"> n_neighbors = 10, init = random, MN_ratio = 0.5, FP_ratio = 2 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A5$ </td>
+   <td style="text-align:left;"> A5 </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 52 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A6$a </td>
+   <td style="text-align:left;"> A6a </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 30, min\_dist = 0.3 </td>
+   <td style="text-align:left;"> n_neighbors = 30, min_dist = 0.3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A6$b </td>
+   <td style="text-align:left;"> A6b </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 30 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A7$a </td>
+   <td style="text-align:left;"> A7a </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 30, min\_dist = 0.3 </td>
+   <td style="text-align:left;"> n_neighbors = 30, min_dist = 0.3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A7$b </td>
+   <td style="text-align:left;"> A7b </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 30 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A8$a </td>
+   <td style="text-align:left;"> A8a </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 30, min\_dist = 0.3 </td>
+   <td style="text-align:left;"> n_neighbors = 30, min_dist = 0.3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A8$b </td>
+   <td style="text-align:left;"> A8b </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 30 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A9$a </td>
+   <td style="text-align:left;"> A9a </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 30, min\_dist = 0.3 </td>
+   <td style="text-align:left;"> n_neighbors = 30, min_dist = 0.3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A9$b </td>
+   <td style="text-align:left;"> A9b </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 5, min\_dist = 0.8 </td>
+   <td style="text-align:left;"> n_neighbors = 5, min_dist = 0.8 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A9$c </td>
+   <td style="text-align:left;"> A9c </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 5, min\_dist = 0.01 </td>
+   <td style="text-align:left;"> n_neighbors = 5, min_dist = 0.01 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A9$d </td>
+   <td style="text-align:left;"> A9d </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 5 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A9$e </td>
+   <td style="text-align:left;"> A9e </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 30 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A9$f </td>
+   <td style="text-align:left;"> A9f </td>
    <td style="text-align:left;"> PHATE </td>
    <td style="text-align:left;"> knn = 5 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A9$g </td>
+   <td style="text-align:left;"> A9g </td>
    <td style="text-align:left;"> TriMAP </td>
-   <td style="text-align:left;"> n\_inliers = 12, n\_outliers = 4, n\_random = 3 </td>
+   <td style="text-align:left;"> n_inliers = 12, n_outliers = 4, n_random = 3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A9$h </td>
+   <td style="text-align:left;"> A9h </td>
    <td style="text-align:left;"> PaCMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 30, init = random, MN\_ratio = 0.9, FP\_ratio = 5 </td>
+   <td style="text-align:left;"> n_neighbors = 30, init = random, MN_ratio = 0.9, FP_ratio = 5 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A10$a </td>
+   <td style="text-align:left;"> A10a </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 30 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A10$b </td>
+   <td style="text-align:left;"> A10b </td>
    <td style="text-align:left;"> tSNE </td>
    <td style="text-align:left;"> perplexity = 89 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A10$c </td>
+   <td style="text-align:left;"> A10c </td>
    <td style="text-align:left;"> UMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 15, min\_dist = 0.1 </td>
+   <td style="text-align:left;"> n_neighbors = 15, min_dist = 0.1 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A10$d </td>
+   <td style="text-align:left;"> A10d </td>
    <td style="text-align:left;"> PHATE </td>
    <td style="text-align:left;"> knn = 5 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A10$e </td>
+   <td style="text-align:left;"> A10e </td>
    <td style="text-align:left;"> TriMAP </td>
-   <td style="text-align:left;"> n\_inliers = 12, n\_outliers = 4, n\_random = 3 </td>
+   <td style="text-align:left;"> n_inliers = 12, n_outliers = 4, n_random = 3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $A10$f </td>
+   <td style="text-align:left;"> A10f </td>
    <td style="text-align:left;"> PaCMAP </td>
-   <td style="text-align:left;"> n\_neighbors = 10, init = random, MN\_ratio = 0.5, FP\_ratio = 2 </td>
+   <td style="text-align:left;"> n_neighbors = 10, init = random, MN_ratio = 0.5, FP_ratio = 2 </td>
   </tr>
 </tbody>
 </table>
@@ -376,20 +376,20 @@ Animations of the \pD{} tours that produced specific projections shown in some f
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> $4$ </td>
-   <td style="text-align:left;"> \href{https://youtu.be/yHKTHK4UBiU}{\texttt{youtu.be/yHKTHK4UBiU}} </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> <a href="https://youtu.be/yHKTHK4UBiU">youtu.be/yHKTHK4UBiU</a> </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $5$ </td>
-   <td style="text-align:left;"> \href{https://youtu.be/FukiminrO90}{\texttt{youtu.be/FukiminrO90}} </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> <a href="https://youtu.be/FukiminrO90">youtu.be/FukiminrO90</a> </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $11$ </td>
-   <td style="text-align:left;"> \href{https://youtu.be/3VfK3M2gnZM}{\texttt{youtu.be/3VfK3M2gnZM}}, \href{https://youtu.be/Es84bwQcndU}{\texttt{youtu.be/Es84bwQcndU}} </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> <a href="https://youtu.be/3VfK3M2gnZM">youtu.be/3VfK3M2gnZM</a>, <a href="https://youtu.be/Es84bwQcndU">youtu.be/Es84bwQcndU</a> </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> $13$ </td>
-   <td style="text-align:left;"> \href{https://youtu.be/sUcGd57Swdg}{\texttt{youtu.be/sUcGd57Swdg}}, \href{https://youtu.be/QiklCjELUxo}{\texttt{youtu.be/QiklCjELUxo}} </td>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:left;"> <a href="https://youtu.be/sUcGd57Swdg">youtu.be/sUcGd57Swdg</a>, <a href="https://youtu.be/QiklCjELUxo">youtu.be/QiklCjELUxo</a> </td>
   </tr>
 </tbody>
 </table>
@@ -522,7 +522,7 @@ Animations of the \pD{} tours that produced specific projections shown in some f
 <tbody>
   <tr>
    <td style="text-align:left;"> script </td>
-   <td style="text-align:left;"> additional\_functions.R </td>
+   <td style="text-align:left;"> additional_functions.R </td>
    <td style="text-align:left;"> Helper functions to render the main paper. </td>
   </tr>
   <tr>
@@ -532,203 +532,231 @@ Animations of the \pD{} tours that produced specific projections shown in some f
   </tr>
   <tr>
    <td style="text-align:left;"> script </td>
-   <td style="text-align:left;"> nldr\_code.R </td>
+   <td style="text-align:left;"> nldr_code.R </td>
    <td style="text-align:left;"> Wrapper functions for running multiple NLDR methods (UMAP, tSNE, PHATE, PaCMAP, TriMAP) with different parameters. </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> two\_nonlinear </td>
-   <td style="text-align:left;"> 01\_gen\_data.R </td>
+   <td style="text-align:left;"> two_nonlinear </td>
+   <td style="text-align:left;"> 01_gen_data.R </td>
    <td style="text-align:left;"> Generates the 2NC7 dataset. </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> two\_nonlinear </td>
-   <td style="text-align:left;"> 02\_gen\_true\_model.R </td>
+   <td style="text-align:left;"> two_nonlinear </td>
+   <td style="text-align:left;"> 02_gen_true_model.R </td>
    <td style="text-align:left;"> Creates the true structure of 2NC7 data. </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> two\_nonlinear </td>
-   <td style="text-align:left;"> 03\_gen\_embeddings.R </td>
+   <td style="text-align:left;"> two_nonlinear </td>
+   <td style="text-align:left;"> 03_gen_embeddings.R </td>
    <td style="text-align:left;"> Computes multiple NLDR embeddings for the 2NC7 data. </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> two\_nonlinear </td>
-   <td style="text-align:left;"> 04\_gen\_mse\_for\_diff\_methods.R </td>
+   <td style="text-align:left;"> two_nonlinear </td>
+   <td style="text-align:left;"> 04_gen_mse_for_diff_methods.R </td>
    <td style="text-align:left;"> Computes HBE with varying bin widths ($a_1$) for all NLDR embeddings. </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> two\_nonlinear </td>
-   <td style="text-align:left;"> 05\_gen\_rm\_lwd\_mse.R </td>
+   <td style="text-align:left;"> two_nonlinear </td>
+   <td style="text-align:left;"> 05_gen_rm_lwd_mse.R </td>
    <td style="text-align:left;"> Computes HBE with varying low density bin cutoff for all three binwidth ($a_1$) choices. </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> two\_nonlinear </td>
-   <td style="text-align:left;"> 06\_gen\_model\_with\_tSNE.R </td>
+   <td style="text-align:left;"> two_nonlinear </td>
+   <td style="text-align:left;"> 06_gen_model_with_tSNE.R </td>
    <td style="text-align:left;"> Fits the model for the layout a. </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> two\_nonlinear </td>
-   <td style="text-align:left;"> 07\_example\_evaluation\_metrics.R </td>
+   <td style="text-align:left;"> two_nonlinear </td>
+   <td style="text-align:left;"> 07_example_evaluation_metrics.R </td>
    <td style="text-align:left;"> Calculates evaluation metrics for all NLDR layouts. </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> two\_nonlinear </td>
-   <td style="text-align:left;"> 08\_gen\_model\_with\_PHATE.R </td>
+   <td style="text-align:left;"> two_nonlinear </td>
+   <td style="text-align:left;"> 08_gen_model_with_PHATE.R </td>
    <td style="text-align:left;"> Fits the model for the layout c. </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> five\_gau\_clusters </td>
-   <td style="text-align:left;"> 01\_five\_gaussian\_cluster\_data\_emb.R </td>
+   <td style="text-align:left;"> five_gau_clusters </td>
+   <td style="text-align:left;"> 01_five_gaussian_cluster_data_emb.R </td>
    <td style="text-align:left;"> Generates data and multiple NLDR embeddings. </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> five\_gau\_clusters </td>
-   <td style="text-align:left;"> 02\_gen\_model\_with\_tSNE.R </td>
+   <td style="text-align:left;"> five_gau_clusters </td>
+   <td style="text-align:left;"> 02_gen_model_with_tSNE.R </td>
    <td style="text-align:left;"> Fits the model for the layout a. </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> five\_gau\_clusters </td>
-   <td style="text-align:left;"> 03\_gen\_model\_with\_UMAP.R </td>
+   <td style="text-align:left;"> five_gau_clusters </td>
+   <td style="text-align:left;"> 03_gen_model_with_UMAP.R </td>
    <td style="text-align:left;"> Fits the model for the layout b. </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> five\_gau\_clusters </td>
-   <td style="text-align:left;"> 04\_gen\_model\_with\_PaCMAP.R </td>
+   <td style="text-align:left;"> five_gau_clusters </td>
+   <td style="text-align:left;"> 04_gen_model_with_PaCMAP.R </td>
    <td style="text-align:left;"> Fits the model for the layout c. </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> c\_shaped\_dens\_str </td>
-   <td style="text-align:left;"> 01\_gen\_data.R </td>
+   <td style="text-align:left;"> c_shaped_dens_str </td>
+   <td style="text-align:left;"> 01_gen_data.R </td>
    <td style="text-align:left;"> Generates the $2\text{-}D$ curved sheet dataset. </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> c\_shaped\_dens\_str </td>
-   <td style="text-align:left;"> 02\_gen\_embeddings\_uni\_dens.R </td>
+   <td style="text-align:left;"> c_shaped_dens_str </td>
+   <td style="text-align:left;"> 02_gen_embeddings_uni_dens.R </td>
    <td style="text-align:left;"> Generates multiple NLDR embeddings. </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> c\_shaped\_dens\_str </td>
-   <td style="text-align:left;"> 03\_gen\_model\_with\_tSNE.R </td>
+   <td style="text-align:left;"> c_shaped_dens_str </td>
+   <td style="text-align:left;"> 03_gen_model_with_tSNE.R </td>
    <td style="text-align:left;"> Fits the model for the tSNE layout. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 01\_obtain\_pca\_author.R </td>
-   <td style="text-align:left;"> Obtains  author\'s PCA results. </td>
+   <td style="text-align:left;"> 01_obtain_pca_author.R </td>
+   <td style="text-align:left;"> Obtains  author's PCA results. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 02\_obtain\_umap\_authors.R </td>
-   <td style="text-align:left;"> Obtains  author\'s UMAP embeddings. </td>
+   <td style="text-align:left;"> 02_obtain_umap_authors.R </td>
+   <td style="text-align:left;"> Obtains  author's UMAP embeddings. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 03\_gen\_umap\_diff\_param.R </td>
-   <td style="text-align:left;"> Generates multiple UMAP embeddings with different hyper\-parameter values. </td>
+   <td style="text-align:left;"> 03_gen_umap_diff_param.R </td>
+   <td style="text-align:left;"> Generates multiple UMAP embeddings with different hyper-parameter values. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 04\_gen\_tsne\_diff\_param.R </td>
-   <td style="text-align:left;"> Generates multiple tSNE embeddings with different hyper\-parameter values. </td>
+   <td style="text-align:left;"> 04_gen_tsne_diff_param.R </td>
+   <td style="text-align:left;"> Generates multiple tSNE embeddings with different hyper-parameter values. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 05\_gen\_phate.R </td>
-   <td style="text-align:left;"> Generates a PHATE embeddings with default hyper\-parameters. </td>
+   <td style="text-align:left;"> 05_gen_phate.R </td>
+   <td style="text-align:left;"> Generates a PHATE embeddings with default hyper-parameters. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 06\_gen\_trimap.R </td>
-   <td style="text-align:left;"> Generates a TriMAP embeddings with default hyper\-parameters. </td>
+   <td style="text-align:left;"> 06_gen_trimap.R </td>
+   <td style="text-align:left;"> Generates a TriMAP embeddings with default hyper-parameters. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 07\_gen\_pacmap.R </td>
-   <td style="text-align:left;"> Generates a PaCMAP embeddings with default hyper\-parameters. </td>
+   <td style="text-align:left;"> 07_gen_pacmap.R </td>
+   <td style="text-align:left;"> Generates a PaCMAP embeddings with default hyper-parameters. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 08\_gen\_mse\_for\_diff\_methods.R </td>
+   <td style="text-align:left;"> 08_gen_mse_for_diff_methods.R </td>
    <td style="text-align:left;"> Computes HBE with varying bin widths ($a_1$) for all NLDR embeddings. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 09\_gen\_scDEED.R </td>
+   <td style="text-align:left;"> 09_gen_scDEED.R </td>
    <td style="text-align:left;"> Generates UMAP embeddings from scDEED results. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 10\_pre\_process\_for\_embedding.R </td>
+   <td style="text-align:left;"> 10_pre_process_for_embedding.R </td>
    <td style="text-align:left;"> Generates PBMC3k data used for scDEED results. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 11\_gen\_mse\_for\_diff\_tsne\_scD.R </td>
+   <td style="text-align:left;"> 11_gen_mse_for_diff_tsne_scD.R </td>
    <td style="text-align:left;"> Computes HBE with varying bin widths ($a_1$) for tSNE embeddings. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 12\_gen\_mse\_for\_diff\_umap\_scD.R </td>
+   <td style="text-align:left;"> 12_gen_mse_for_diff_umap_scD.R </td>
    <td style="text-align:left;"> Computes HBE with varying bin widths ($a_1$) for UMAP embeddings. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 13\_gen\_model\_with\_UMAP.R </td>
+   <td style="text-align:left;"> 13_gen_model_with_UMAP.R </td>
    <td style="text-align:left;"> Fits the model for the layout a. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 14\_gen\_model\_with\_tSNE.R </td>
+   <td style="text-align:left;"> 14_gen_model_with_tSNE.R </td>
    <td style="text-align:left;"> Fits the model for the layout e. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 15\_gen\_model\_with\_UMAP\_scD.R </td>
+   <td style="text-align:left;"> 15_gen_model_with_UMAP_scD.R </td>
    <td style="text-align:left;"> Fits the model for the layout a. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 16\_gen\_model\_with\_tSNE\_scD.R </td>
+   <td style="text-align:left;"> 16_gen_model_with_tSNE_scD.R </td>
    <td style="text-align:left;"> Fits the model for the layout b. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 17\_evaluation\_metrics.R </td>
+   <td style="text-align:left;"> 17_evaluation_metrics.R </td>
    <td style="text-align:left;"> Calculates evaluation metrics for all NLDR layouts. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pbmc3k </td>
-   <td style="text-align:left;"> 18\_evaluation\_metrics\_scD.R </td>
+   <td style="text-align:left;"> 18_evaluation_metrics_scD.R </td>
    <td style="text-align:left;"> Calculates evaluation metrics for all NLDR layouts. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> mnist </td>
-   <td style="text-align:left;"> 01\_data\_preprocessing.R </td>
+   <td style="text-align:left;"> 01_data_preprocessing.R </td>
    <td style="text-align:left;"> Computes first $10$ principal components and save data. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> mnist </td>
-   <td style="text-align:left;"> 02\_gen\_diff\_embeddings.R </td>
+   <td style="text-align:left;"> 02_gen_diff_embeddings.R </td>
    <td style="text-align:left;"> Generates multiple NLDR embeddings. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> mnist </td>
-   <td style="text-align:left;"> 03\_gen\_mse\_for\_diff\_methods.R </td>
+   <td style="text-align:left;"> 03_gen_mse_for_diff_methods.R </td>
    <td style="text-align:left;"> Computes HBE with varying bin widths ($a_1$) for all NLDR embeddings. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> mnist </td>
-   <td style="text-align:left;"> 04\_gen\_model\_with\_tSNE.R </td>
+   <td style="text-align:left;"> 04_gen_model_with_tSNE.R </td>
    <td style="text-align:left;"> Fits the model for the layout a. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> mnist </td>
-   <td style="text-align:left;"> 05\_evaluation\_metrics.R </td>
+   <td style="text-align:left;"> 05_evaluation_metrics.R </td>
    <td style="text-align:left;"> Calculates evaluation metrics for all NLDR layouts. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> mnist </td>
-   <td style="text-align:left;"> 06\_link\_brush\_layout\_e.R </td>
+   <td style="text-align:left;"> 06_link_brush_layout_e.R </td>
    <td style="text-align:left;"> Creates interactive linked brushing with layout e. </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+:::
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+`````{=html}
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Parameter </th>
+   <th style="text-align:left;"> Value </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> \(n_{neighbors}\) </td>
+   <td style="text-align:left;"> 30 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> \(\theta\) </td>
+   <td style="text-align:left;"> 0.5 </td>
   </tr>
 </tbody>
 </table>

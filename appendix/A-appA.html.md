@@ -10,7 +10,7 @@
 ::: {#tbl-glossary .cell tbl-pos='H' tbl-cap='Glossary.'}
 ::: {.cell-output-display}
 `````{=html}
-<table class="table" style="font-size: 14px; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:left;font-weight: bold;"> Term </th>

@@ -148,7 +148,9 @@ kable(fig_param_df,
   row_spec(54, hline_after = TRUE)
   
 } else {
-  kable(fig_param_df,
+  kable(fig_param_df |>
+  mutate(across(everything(), ~ gsub("\\$", "", .))) |>
+  mutate(across(everything(), ~ gsub("\\\\_", "_", .))),
       format = "html",
       escape = FALSE) |>
     kable_styling(full_width = FALSE,
@@ -171,6 +173,17 @@ Animations of the \pD{} tours that produced specific projections shown in some f
 
 links_df <- read_csv(here::here("misc/video_links.csv"))
 
+links_df_html <- links_df
+
+links_df_html$URL <- gsub(
+  "\\\\href\\{([^}]+)\\}\\{\\\\texttt\\{([^}]+)\\}\\}",
+  "<a href=\"\\1\">\\2</a>",
+  links_df_html$URL
+)
+
+links_df_html$URL <- gsub("\\$", "", links_df_html$URL)
+
+
 if (knitr::is_latex_output()) {
   
   # Create the table
@@ -185,7 +198,8 @@ if (knitr::is_latex_output()) {
   
 } else {
   
-  kable(links_df,
+  kable(links_df_html |>
+  mutate(across(everything(), ~ gsub("\\$", "", .))),
           format = "html",
           escape = FALSE) |>
         kable_styling(full_width = FALSE,
@@ -262,7 +276,10 @@ if (knitr::is_latex_output()) {
   
 } else {
   
-  kable(fig_param_df,
+  kable(fig_param_df |>
+  mutate(across(everything(), ~ gsub("\\\\_", "_", .)))|>
+  mutate(across(everything(), ~ gsub("\\\\-", "-", .)))|>
+  mutate(across(everything(), ~ gsub("\\\\'", "'", .))),
           format = "html",
           escape = FALSE) |>
         kable_styling(full_width = FALSE,
@@ -271,6 +288,18 @@ if (knitr::is_latex_output()) {
         row_spec(0, bold = TRUE)
   
 }
+
+```
+
+```{r}
+df <- tibble::tibble(
+  Parameter = c("\\(n_{neighbors}\\)", "\\(\\theta\\)"),
+  Value = c("30", "0.5")
+)
+
+kable(df,
+      format = "html",
+      escape = FALSE)
 
 ```
 
