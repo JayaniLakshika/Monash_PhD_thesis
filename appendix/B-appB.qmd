@@ -1394,7 +1394,7 @@ pbmc_proj_tsne_model2_best <- plot_proj(
 #| label: fig-model-pbmc-author-proj
 #| fig-pos: "!ht"
 #| fig-width: 10
-#| fig-height: 15
+#| fig-height: 6
 #| out-width: 90%
 
 free(trimesh_removed_pbmc) + free(trimesh_removed_pbmc_best) +
@@ -1657,7 +1657,7 @@ comp_metrics_mnist <- plot_comp_metrics(nldr_metrics) +
 #| fig-cap: "Comparison of scaled evaluation metrics (rARNX, rRTA, rSC, rGS, and HBE using $a_1=0.04$) for six NLDR layouts computed on the MNIST digit 1 data using a parallel coordinate plot. Each line represents a layout (a–f), with colors corresponding to the scatterplots shown on the right. The metrics display different ranking patterns, indicating that no single measure fully captures embedding quality. Layout a is identified as the best according to HBE and rRTA, but is considered much less optimal by rARNX, rSC, and rGS. Layout e is considered the worst, or close to the poorest, by all metrics. Layouts a and f show similar patterns of agreement across metrics, except for rRTA, where layout a performs the best and layout f the worst. Layout c is the worst in rARNX, rSC, and HBE."
 #| fig-pos: "!ht"
 #| out-width: 100%
-#| fig-height: 6
+#| fig-height: 5
 #| fig-width: 6
 
 comp_metrics_mnist + wrap_plots(nldr_mnist1, nldr_mnist2, nldr_mnist3, 

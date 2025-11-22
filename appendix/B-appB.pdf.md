@@ -180,12 +180,12 @@ $13$ & \href{https://youtu.be/sUcGd57Swdg}{\texttt{youtu.be/sUcGd57Swdg}}, \href
 \textbf{Notation} & \textbf{Description}\\
 \midrule
 $n, p, k$ & number of observations, variables, embedding dimension, respectively\\
-$\mathbfit{X}, \mathbfit{x}$ & $p$-dimensional data (population, sample)\\
-$\mathbfit{y}$ & $k$-dimensional layout\\
+$\bm{X}, \bm{x}$ & $p$-dimensional data (population, sample)\\
+$\bm{y}$ & $k$-dimensional layout\\
 $P$ & orthonormal basis, generating a $d\text{-}dimensional$ linear projection of $p$-dimensional data\\
 $T$ & true  model\\
 $g$ & functional mapping from \pD{} to \kD{}, especially as prescribed by NLDR\\
-$\mathbfit{\theta}$ & (Hyper-) parameters for NLDR method\\
+$\bm{\theta}$ & (Hyper-) parameters for NLDR method\\
 $r$ & ranges of the embedding components\\
 $C^{(j)}$ & $j$-dimensional bin centers\\
 $(b_1, b_2)$ & number of bins in each direction\\
@@ -199,7 +199,6 @@ $l$ & side length\\
 $A$ & area\\
 $n_h$ & number of points in hexagon $h$ (bin count)\\
 $w_h$ & standardized number of points in hexagon $h$ (standardized bin counts)\\
-$d_h$ & density of hexagon $h$ (bin density)\\
 \bottomrule
 \end{tabular}
 \endgroup{}

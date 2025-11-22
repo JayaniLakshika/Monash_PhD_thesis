@@ -1552,8 +1552,8 @@ pbmc_proj_tsne_model2_best <- plot_proj(
 #| echo: false
 #| fig-cap: "Compare the published $2\\text{-}D$ layout (a) made with UMAP and the $2\\text{-}D$ layout selected by HBE plot (e) made by tSNE. The two plots on the right show  projections from a tour, with the models overlaid. The published layout a suggested three very separated clusters, but this is not present in the data. While there may be three clusters they are not well-separated. The difference in model fit also indicates this: the published layout a does not spread out fully into the point cloud like the model generated from layout e. This supports the choice that layout e is the better representation of the data, because it does not exaggerate separation between clusters."
 #| label: fig-model-pbmc-author-proj
-#| fig-width: 10
-#| fig-height: 15
+#| fig-width: 9
+#| fig-height: 6
 #| fig-pos: "!ht"
 #| out-width: 90%
 
@@ -1691,8 +1691,10 @@ error_plot_mnist_n_bar <- plot_hbe_nbar(error_mnist_avg) +
 ```{r}
 #| label: fig-mnist-rmse
 #| fig-cap: "Assessing which of the 6 NLDR layouts of the MNIST digit 1 data is the better representation using HBE for varying (i) binwidth ($a_1$), and (ii) average bin count ($\\bar{n}_h$). Colour is used for the lines and points in the left plot to match the scatterplots of the NLDR layouts (a-f). Layout c is universally poor. Layouts a, f that show a big cluster and a small circular cluster are universally optimal. Layout a performs well at tiny binwidth (where most points are in their own bin) and not as well as f with larger binwidth, thus layout f is the best choice. Plot (ii), which accounts for the density within clusters by using average bin count, shows reduced differences between layouts, indicating that part of the variation in (i) is driven by cluster density rather than true structural differences."
-#| out-width: 92%
+#| out-width: 100%
 #| fig-pos: "!ht"
+#| fig-width: 9
+#| fig-height: 7
 
 # Stack the first two plots
 left_column <- error_plot_mnist / error_plot_mnist_n_bar
@@ -1852,10 +1854,10 @@ imge_error_sample_inside <- plot_digit_img(
 ```{r}
 #| label: fig-model-error-mnist
 #| fig-cap: "Summary of the layout structure, and large errors, relative to the MNIST digit 1 shape: (a) layout colored by residual value, and at right (b-e) are images of samples of observations taken at locations around the layout, showing similarity in how the 1's were drawn. Set (f) are images corresponding to large residuals in the big cluster (darker orange in plot a). Along the big cluster, the angle of digit 1 changes (b-d). The small cluster has larger residuals, and the images show that these tend to be European style with a flag at the top, and a base at the bottom. The set in (f) show various poorly written digits."
-#| fig-width: 10
-#| fig-height: 10
 #| fig-pos: "!ht"
 #| out-width: 100%
+#| fig-width: 10
+#| fig-height: 5
 
 # Define your current layout
 top_layout <- right_top_img + middle_img + right_bottom_img + imge_error_sample_outside + imge_error_sample_inside + plot_layout(nrow = 5)
