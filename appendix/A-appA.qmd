@@ -30,7 +30,7 @@ if (knitr::is_latex_output()) {
         escape = FALSE) |>
     kable_styling(full_width = FALSE,
                   position = "center",
-                  font_size = 14) |>
+                  font_size = 12) |>
     row_spec(0, bold = TRUE)
 }
 ```

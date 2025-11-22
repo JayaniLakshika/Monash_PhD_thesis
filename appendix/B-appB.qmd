@@ -1,4 +1,4 @@
-# Appendix to "Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space" {#sec-appendix-a}
+# Appendix: Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space {#sec-appendix-a}
 
 ```{r include=FALSE}
 # Set up chunk for for knitr
@@ -120,7 +120,9 @@ clr_choice <- "#0077A3"
 
 fig_param_df <- read_csv(here::here("misc/fig_nldr_param.csv"))
 
-# Create the table
+if (knitr::is_latex_output()) {
+  
+  # Create the table
 kable(fig_param_df, 
       format = "latex", 
       booktabs = TRUE, escape = FALSE, longtable = TRUE, linesep = "") |>
@@ -144,6 +146,17 @@ kable(fig_param_df,
   row_spec(44, hline_after = TRUE) |>
   row_spec(46, hline_after = TRUE) |>
   row_spec(54, hline_after = TRUE)
+  
+} else {
+  kable(fig_param_df,
+      format = "html",
+      escape = FALSE) |>
+    kable_styling(full_width = FALSE,
+                  position = "center",
+                  font_size = 12) |>
+    row_spec(0, bold = TRUE)
+}
+
 ```
 
 ## Videos links
@@ -158,8 +171,10 @@ Animations of the \pD{} tours that produced specific projections shown in some f
 
 links_df <- read_csv(here::here("misc/video_links.csv"))
 
-# Create the table
-kable(links_df, 
+if (knitr::is_latex_output()) {
+  
+  # Create the table
+  kable(links_df, 
       format = "latex", 
       booktabs = TRUE, escape = FALSE, linesep = "") |>
   kable_styling(position = "center", 
@@ -167,6 +182,19 @@ kable(links_df,
                 font_size = 12) |>
   row_spec(0, bold = TRUE) |>
   column_spec(1:2, width = c("1.5cm", "14cm"))
+  
+} else {
+  
+  kable(links_df,
+          format = "html",
+          escape = FALSE) |>
+        kable_styling(full_width = FALSE,
+                      position = "center",
+                      font_size = 12) |>
+        row_spec(0, bold = TRUE)
+  
+}
+
 ```
 
 ## Notation
@@ -179,15 +207,30 @@ kable(links_df,
 
 notation_df <- read_csv(here::here("misc/notation.csv"))
 
-# Create the table
-kable(notation_df, 
-      format = "latex", 
-      booktabs = TRUE, escape = FALSE, linesep = "") |>
-  kable_styling(position = "center", 
-                full_width = FALSE, 
-                font_size = 12) |>
-  row_spec(0, bold = TRUE) |>
-  column_spec(1:2, width = c("3cm", "12cm"))
+if (knitr::is_latex_output()) {
+  
+  # Create the table
+  kable(notation_df, 
+        format = "latex", 
+        booktabs = TRUE, escape = FALSE, linesep = "") |>
+    kable_styling(position = "center", 
+                  full_width = FALSE, 
+                  font_size = 12) |>
+    row_spec(0, bold = TRUE) |>
+    column_spec(1:2, width = c("3cm", "12cm"))
+  
+} else {
+  
+  kable(notation_df,
+          format = "html",
+          escape = FALSE) |>
+        kable_styling(full_width = FALSE,
+                      position = "center",
+                      font_size = 12) |>
+        row_spec(0, bold = TRUE)
+  
+}
+
 ```
 
 ## Scripts
@@ -199,26 +242,41 @@ kable(notation_df,
 
 fig_param_df <- read_csv(here::here("misc/script_summary.csv"))
 
-# Create the table
-kable(fig_param_df, 
-      format = "latex", 
-      booktabs = TRUE, escape = FALSE, longtable = TRUE, linesep = "") |>
-  kable_styling(position = "center", 
-                full_width = FALSE, 
-                font_size = 12,
-                latex_options = c("repeat_header")) |>
-  row_spec(0, bold = TRUE) |>
-  column_spec(1:3, width = c("3.5cm", "6.5cm", "3cm")) |>
-  row_spec(3, hline_after = TRUE) |>
-  row_spec(11, hline_after = TRUE) |>
-  row_spec(15, hline_after = TRUE) |>
-  row_spec(18, hline_after = TRUE) |>
-  row_spec(36, hline_after = TRUE) 
+if (knitr::is_latex_output()) {
+  
+  # Create the table
+  kable(fig_param_df, 
+        format = "latex", 
+        booktabs = TRUE, escape = FALSE, longtable = TRUE, linesep = "") |>
+    kable_styling(position = "center", 
+                  full_width = FALSE, 
+                  font_size = 12,
+                  latex_options = c("repeat_header")) |>
+    row_spec(0, bold = TRUE) |>
+    column_spec(1:3, width = c("3.5cm", "6.5cm", "3cm")) |>
+    row_spec(3, hline_after = TRUE) |>
+    row_spec(11, hline_after = TRUE) |>
+    row_spec(15, hline_after = TRUE) |>
+    row_spec(18, hline_after = TRUE) |>
+    row_spec(36, hline_after = TRUE) 
+  
+} else {
+  
+  kable(fig_param_df,
+          format = "html",
+          escape = FALSE) |>
+        kable_styling(full_width = FALSE,
+                      position = "center",
+                      font_size = 12) |>
+        row_spec(0, bold = TRUE)
+  
+}
+
 ```
 
 ## Generating the 2NC7 data
 
-This data is constructed by simulating two clusters, each consisting of $1000$ observations. The C-shaped cluster is generated from $\theta \sim U(\text{-}3\pi/2, 0)$, $X_1 = \sin(\theta)$, $X_2 \sim U(0, 2)$ (adding thickness to the C), $X_3 = \text{sign}(\theta) \times (\cos(\theta) - 1)$, $X_4 = \cos(\theta)$. Observations lie on a \gD{} manifold in \sD{}. The other cluster is from $X_1 \sim U(0, 2)$, $X_2 \sim U(0, 3)$, $X_3 = \text{-}(X_1^3 + X_2)$, and $X_4 \sim U(0, 2)$. It is also curved, but observations lie on a \tD{} manifold in\sD{}. Three more variables, $X_5, X_6, X_7$, that are small amounts of pure noise are added. We would consider $T=(X_1, X_2, X_3, X_4)$ to be the geometric structure (true model) that we hope to capture.
+This data is constructed by simulating two clusters, each consisting of $1000$ observations. The C-shaped cluster is generated from $\theta \sim U(\text{-}3\pi/2, 0)$, $X_1 = \sin(\theta)$, $X_2 \sim U(0, 2)$ (adding thickness to the C), $X_3 = \text{sign}(\theta) \times (\cos(\theta) - 1)$, $X_4 = \cos(\theta)$. Observations lie on a \gD{} manifold in \sD{}. The other cluster is from $X_1 \sim U(0, 2)$, $X_2 \sim U(0, 3)$, $X_3 = \text{-}(X_1^3 + X_2)$, and $X_4 \sim U(0, 2)$. It is also curved, but observations lie on a \tD{} manifold in \sD{}. Three more variables, $X_5, X_6, X_7$, that are small amounts of pure noise are added. We would consider $T=(X_1, X_2, X_3, X_4)$ to be the geometric structure (true model) that we hope to capture (@fig-true-data).
 
 ```{r}
 proj_obj1_true <- read_rds(here::here("data/vis-algo/two_nonlinear/two_nonlinear_true_proj_obj1.rds"))
@@ -250,6 +308,7 @@ two_curvy_proj_true2 <- plot_proj(
 ```{r}
 #| fig-width: 10
 #| fig-height: 5
+#| label: fig-true-data
 #| fig-cap: "Two projections of the \\pD{} true model overlaying the data are shown in a, b. Video of the langevitour animations is available at <https://youtu.be/35TrnYJsUUI>."
 
 two_curvy_proj_true1 + two_curvy_proj_true2 +
@@ -258,7 +317,7 @@ two_curvy_proj_true1 + two_curvy_proj_true2 +
 
 ## Computing hexagon grid configurations
 
-Given range of embedding component, $r_2$, number of bins along the x-axis, $b_1$, and buffer proportion, $q$, hexagonal starting point coordinates, $s_1 = \text{-}q$, and $s_2 = \text{-}qr_2$. The purpose is to find width of the hexagon. $a_1$, and number of bins along the y-axis, $b_2$.
+Given range of embedding component, $r_2$, number of bins along the x-axis, $b_1$, and buffer proportion, $q$, hexagonal starting point coordinates, $s_1 = \text{-}q$, and $s_2 = \text{-}qr_2$. The purpose is to find width of the hexagon, $a_1$ and number of bins along the y-axis, $b_2$.
 
 Geometric arguments give rise to the following constraints.
 
@@ -405,7 +464,7 @@ hex_param_vis <- ggplot() +
 #| label: fig-hex-param
 #| fig-cap: "The components of the hexagon grid illustrating notation."
 #| out-width: 30%
-#| fig-pos: H
+#| fig-pos: "!ht"
 #| eval: false
 
 hex_param_vis
@@ -557,7 +616,7 @@ assign_data_vis2 <- ggplot(data = hex_grid, aes(x = x, y = y)) +
 #| fig-cap: "Binning the data. Points are assigned to the nearest centroid. If a point is equidistant from multiple centroids, assigned to the centroid with the smallest bin ID."
 #| fig-width: 12
 #| fig-height: 6
-#| fig-pos: H
+#| fig-pos: "!ht"
 
 assign_data_vis1 + assign_data_vis2 +
   plot_layout(ncol = 2)
@@ -623,7 +682,7 @@ annotate("text", x = 2.5, y = 1.5,
 #| label: fig-tri-param
 #| fig-cap: "The components of the right triangle illustrating notation."
 #| out-width: 30%
-#| fig-pos: H
+#| fig-pos: "!ht"
 
 triangle_plot
 ```
@@ -886,8 +945,8 @@ five_gau_proj_pacmap_model2 <- plot_proj(
 #| label: fig-five-gau-projs
 #| fig-height: 10
 #| fig-width: 15
-#| fig-pos: H
-#| fig-cap: "NLDR's organise points in the \\gD{} layout in different ways, possibly misleadingly, illustrated using three layouts: (a) tSNE, (b) UMAP, (c) PaCMAP. The data has five Gaussian clusters in \\fD{}. The bottom row of plots shows a \\gD{} projection from a tour on \\fD{} revealing the differences generated by the layouts on the model fits.  We would expect the model fit to be like that in (a2) where it is distinctly is separate for each cluster but like a hairball in each. This would indicate the distinct clusters, each being fully \\fD{}. With (c2), the curiousity is that the model is a \\gD{} pancake shape in \\fD{}, indicating that there is some ordering of points done by PaCMAP, posisbly along some principal component axes. Videos of the langevitour animations are available at <https://youtu.be/I-kxCwVfqiQ>, <https://youtu.be/gD1P01FUPyU>, and <https://youtu.be/MxJ_srOFQNk> respectively."
+#| fig-pos: "!ht"
+#| fig-cap: "NLDR's organize points in the \\gD{} layout in different ways, possibly misleadingly, illustrated using three layouts: (a) tSNE, (b) UMAP, (c) PaCMAP. The data has five Gaussian clusters in \\fD{}. The bottom row of plots shows a \\gD{} projection from a tour on \\fD{} revealing the differences generated by the layouts on the model fits.  We would expect the model fit to be like that in (a2) where it is distinctly is separate for each cluster but like a hairball in each. This would indicate the distinct clusters, each being fully \\fD{}. With (c2), the curiousity is that the model is a \\gD{} pancake shape in \\fD{}, indicating that there is some ordering of points done by PaCMAP, posisbly along some principal component axes. Videos of the langevitour animations are available at <https://youtu.be/I-kxCwVfqiQ>, <https://youtu.be/gD1P01FUPyU>, and <https://youtu.be/MxJ_srOFQNk> respectively."
 
 trimesh_removed_gau_tsne + trimesh_removed_gau_umap + trimesh_removed_gau_pacmap +
 five_gau_proj_tsne_model1 + five_gau_proj_umap_model1 + five_gau_proj_pacmap_model1 + 
@@ -1080,7 +1139,7 @@ five_c_shaped_proj_tsne_model1_selected <- ggplot() +
 #| label: fig-one-dens_clust-error
 #| fig-width: 15
 #| fig-height: 10
-#| fig-pos: H
+#| fig-pos: "!ht"
 #| out-width: 100%
 #| fig-cap: "Exploring the effect of density on the NLDR layout using a \\gD{} curved sheet in \\fD{} with different density at each end. Three plots are linked: density plot of residuals (a1, b1), NLDR layout (a2, b2), projection of \\fD{} model and data (a3, b3). The brown points indicate the selected set, which are different in each row. In (a2), the top part of the triangular shape is selected which corresponds to higher residuals (a1) and the sparse end of the structure (a3). In (b2) one of other corners is highlighted, which can be seen to correspond to low residuals (b1) and one side of the dense end of the data (b3). While the tSNE layout represents the dense end of the sheet correctly as two corners in the layout, it contracts the sparse end of the sheet into a single corner. Video of the langevitour animation is available at <https://youtu.be/-KsQH0rII2A>."
 
@@ -1116,7 +1175,7 @@ Note that @xia2023 uses a different PBMC dataset than that used by @chen2024, sh
 
 For illustration purposes, we only selected cells generated with inDrops ($n=5858$ cells). Also, @xia2023 used first $9$ principal components to generate the UMAP and tSNE with default hyper-parameters. The objective is to what scDEED suggests is the best layout with what HBE would choose. Layout a (@fig-pbmc-mse-umap) is generated from the hyper-parameters suggested by @chen2024, and layout b (@fig-pbmc-mse-umap) is with suggested hyper-parameters by scDEED to be more accurate. <!--Layouts a and b contain $46$ and $83$ dubious cells respectively.--> The HBE vs binwidth ($a_1$) plot (@fig-pbmc-mse-umap) illustrates that our approach would suggest that scDEED is correct here, that layout b is more accurately reflecting the cluster structure in the PBMC data. This is also supported by examining the models in the data space as shown in @fig-model-pbmc-author-proj.
 
-@fig-pbmc-mse-umap compares the metrics ARNX, RTA, SC, GS, along with HBE computed on $a_1=0.04$ for the six layouts shown in @fig-pbmc-mse-umap. This is a parallel coordinate plot where the y-axis shows a normalized score to ensure the metrics are on the same scale. Each line corresponds to one layout. The metric ARNX has been reversed so that it aligns with HBE - the lower the value the better the layout. Most metrics (ARNX, RTA, GS, and HBE) consistently indicate that the optimised layout (b) provides a better representation, while SC slightly favors the published layout.
+<!-- @fig-pbmc-mse-umap compares the metrics rARNX, rRTA, rSC, rGS, along with HBE computed on $a_1=0.04$. This is a parallel coordinate plot where the y-axis shows a normalized score to ensure the metrics are on the same scale. Each line corresponds to one layout. Most metrics (rSC, rARNX, and HBE) consistently indicate that the optimized layout (b) provides a better representation, while rRTA, and rGS slightly favor the published layout. -->
 
 ```{r}
 #| label: read-pbmc-umap-layouts
@@ -1177,10 +1236,11 @@ error_pbmc <- error_pbmc |>
 #| label: error-comp-pbmc-umap
 
 error_umap_plot_pbmc <-  plot_hbe(error_pbmc) +
-  scale_x_continuous(breaks = sort(unique(error_pbmc$a1))[c(1, 5, 9, 12, 15, 17, 19, 20, 21)]) +
+  scale_x_continuous(breaks = sort(unique(error_pbmc$a1))[c(1, 5, 9, 12, 15, 18, 20, 21)]) +
   scale_color_manual(values=c('#377eb8', '#e41a1c')) 
 
 error_umap_plot_pbmc_nbar <-  plot_hbe_nbar(error_pbmc_avg) +
+  annotate("text", x = 5, y = 4.5, label = "ii", size = 4, colour = "grey70") +
   scale_color_manual(values=c('#377eb8', '#e41a1c')) 
 ```
 
@@ -1195,14 +1255,17 @@ nldr_metrics <- inner_join(nldr_metrics, error_pbmc_scdeed, by = c("Method" = "m
   mutate(`rGS` = 1 -  GS)
 
 comp_metrics_pbmc_scdeed <- plot_comp_metrics(nldr_metrics) +
+  interior_annotation("iii") +
+  interior_annotation("better", position = c(0.09, 0.15)) +
+  interior_annotation("worse", position = c(0.09, 0.9)) +
   scale_color_manual(values=c('#377eb8', '#e41a1c'))
 ```
 
 ```{r}
 #| label: fig-pbmc-mse-umap
-#| fig-pos: H
+#| fig-pos: "!ht"
 #| out-width: 100%
-#| fig-cap: "Comparing the published layout (a) with what would be suggested to be optimal by scDEED (b), using HBE vs $a_1$, on a subset of PBMC3k data. Color represents NLDR layouts. HBE would corroborate that the scDEED optimised layout is better than what was originally published. Comparison of scaled evaluation metrics (rRTA, rSC, rGS, rARNX, and HBE using $a_1=0.04$) for two NLDR layouts of the PBMC3k data the originally published layout (a) and the scDEED optimised layout (b). Each line represents a layout, with color matching the corresponding scatterplots. Most metrics (rSC, rARNX, and HBE) consistently indicate that the optimised layout (b) provides a better representation, while rRTA, and rGS slightly favor the published layout. "
+#| fig-cap: "Comparing the published layout (a) with what would be suggested to be optimal by scDEED (b), using HBE for varying (i) binwidth ($a_1$), and (ii) average bin count ($\\bar{n}_h$), on a subset of PBMC3k data. Color represents NLDR layouts. HBE would corroborate that the scDEED optimized layout is better than what was originally published. Plot (ii), which accounts for the density within clusters by using average bin count, shows reduced differences between layouts, indicating that part of the variation in (i) is driven by cluster density rather than true structural differences. Comparison of scaled evaluation metrics (iii) (rRTA, rSC, rGS, rARNX, and HBE using $a_1=0.04$) for two NLDR layouts of the PBMC3k data the originally published layout (a) and the scDEED optimized layout (b). Each line represents a layout, with color matching the corresponding scatterplots. Most metrics (rSC, rARNX, and HBE) consistently indicate that the optimized layout (b) provides a better representation, while rRTA, and rGS slightly favor the published layout."
 #| fig-width: 6
 #| fig-height: 4
 
@@ -1341,9 +1404,9 @@ pbmc_proj_tsne_model2_best <- plot_proj(
 
 ```{r}
 #| echo: false
-#| fig-cap: "Compare the published \\gD{} layout (@fig-pbmc-mse-umap a) made with UMAP and the \\gD{} layout made with tSNE selected as optimal by scDEED and also HBE (@fig-pbmc-mse-umap b)(@fig-pbmc-mse-umap). The two plots on the right show projections from a tour, with the models overlaid. The published layout a suggested three separated clusters with two of them are close, but this is not present in the data. While there may be three clusters they are not well-separated. The difference in model fit also indicates this: the published layout a does not capture the nonlinear structure of the clusters like the model generated from layout b. This supports the choice that layout b is the better representation of the data, because it shows close clusters. Videos of the langevitour animations are available at <https://youtu.be/ffiB4MGWyn8> and <https://youtu.be/e7XNL18co1c> respectively."
+#| fig-cap: "Compare the published \\gD{} layout (@fig-pbmc-mse-umap a) made with UMAP and the \\gD{} layout made with tSNE selected as optimal by scDEED (@fig-pbmc-mse-umap b) and also HBE (@fig-pbmc-mse-umap). The two plots on the right show projections from a tour, with the models overlaid. The published layout a suggested three separated clusters with two of them are close, but this is not present in the data. While there may be three clusters they are not well-separated. The difference in model fit also indicates this: the published layout a does not capture the nonlinear structure of the clusters like the model generated from layout b. This supports the choice that layout b is the better representation of the data, because it shows close clusters. Videos of the langevitour animations are available at <https://youtu.be/ffiB4MGWyn8> and <https://youtu.be/e7XNL18co1c> respectively."
 #| label: fig-model-pbmc-author-proj
-#| fig-pos: H
+#| fig-pos: "!ht"
 #| fig-width: 10
 #| fig-height: 15
 #| out-width: 90%
@@ -1357,7 +1420,7 @@ free(trimesh_removed_pbmc) + free(trimesh_removed_pbmc_best) +
 
 ## Compare HBE with existing evaluation metrics
 
-@fig-comp-metric-pbmc and @fig-comp-metric-mnist compare HBE with commonly used evaluation metrics such as RTA, ARNX, sc, and GS across multiple NLDR layouts. These visual comparisons highlight that HBE behaves differently from these existing metrics due to the different settings involved.
+@fig-comp-metric-pbmc and @fig-comp-metric-mnist compare HBE with commonly used evaluation metrics such as rRTA, rARNX, rSC, and rGS across multiple NLDR layouts. These visual comparisons highlight that HBE behaves differently from these existing metrics due to the different settings involved.
 
 ```{r}
 #| label: read-pbmc-nldr
@@ -1471,15 +1534,18 @@ nldr_metrics <- inner_join(nldr_metrics, error_pbmc, by = c("Method" = "method")
   mutate(Method = factor(Method,
                          levels = c("UMAP_5_min_dist_0.8", "UMAP_30_min_dist_0.3", "UMAP_5_min_dist_0.01","tsne_5", "tsne_30", "phate_5", "trimap_12_4_3", "pacmap")))
 
-comp_metrics_pbmc <- plot_comp_metrics(nldr_metrics) + scale_color_manual(
+comp_metrics_pbmc <- plot_comp_metrics(nldr_metrics) + 
+  interior_annotation("better", position = c(0.09, 0.03)) +
+  interior_annotation("worse", position = c(0.09, 0.98)) +
+  scale_color_manual(
     values=c("UMAP_5_min_dist_0.8" = '#999999', "UMAP_30_min_dist_0.3" = '#a65628', "UMAP_5_min_dist_0.01" = '#e41a1c',"tsne_5" = '#377eb8', "tsne_30" = '#4daf4a', "phate_5" = '#ff7f00', "trimap_12_4_3" = '#984ea3', "pacmap" ='#f781bf')) +
   theme(aspect.ratio = 2)
 ```
 
 ```{r}
 #| label: fig-comp-metric-pbmc
-#| fig-cap: "Comparison of scaled evaluation metrics (rRTA, rSC, rGS, rARNX, and HBE with $a_1 = 0.06$) for the eight NLDR layouts computed on the PBMC3k data, shown as a parallel coordinate plot. The color of each line corresponds to an NLDR layout. RTA, SC, GS, and ARNX is reversed so that lower is best. Overall, the metrics show general agreement, with minor differences in ranking. All metrics except SC suggest that layouts d and e outperform layout b. ARNX, GS, and HBE consistently identify layout d as the best, with layout e also performing well."
-#| fig-pos: H
+#| fig-cap: "Comparison of scaled evaluation metrics (rRTA, rSC, rGS, rARNX, and HBE with $a_1 = 0.06$) for the eight NLDR layouts computed on the PBMC3k data, shown as a parallel coordinate plot. The color of each line corresponds to a NLDR layout. All, except rGS and rARNX agree that layout e is best or very close to best. Layout d is best according to HBE and rARNX but considered to be much less optimal by rRTA, rSC and rGS. Layout f is considered poor by rARNX and HBE. Layout a is cosidered close to the best by rGS and rSC."
+#| fig-pos: "!ht"
 #| out-width: 100%
 #| fig-height: 6
 #| fig-width: 6
@@ -1592,6 +1658,8 @@ nldr_metrics <- inner_join(nldr_metrics, error_mnist, by = c("Method" = "method"
                          levels = c("UMAP", "tSNE", "tSNE2", "PHATE", "TriMAP", "PaCMAP")))
 
 comp_metrics_mnist <- plot_comp_metrics(nldr_metrics) +
+  interior_annotation("better", position = c(0.09, 0.03)) +
+  interior_annotation("worse", position = c(0.09, 0.98)) +
   scale_color_manual(
     values=c("UMAP" = '#a65628', "tSNE" = '#984ea3', "tSNE2" = '#999999', 
              "PHATE" = '#377eb8', "TriMAP" = '#ff7f00', "PaCMAP" = '#e41a1c')) +
@@ -1600,8 +1668,8 @@ comp_metrics_mnist <- plot_comp_metrics(nldr_metrics) +
 
 ```{r}
 #| label: fig-comp-metric-mnist
-#| fig-cap: "Comparison of scaled evaluation metrics (ARNX, RTA, SC, GS, and HBE using $a_1=0.04$) for six NLDR layouts computed on the MNIST digit 1 data using a parallel coordinate plot. Each line represents a layout (a–f), with colors corresponding to the scatterplots shown on the right. The metrics display different ranking patterns, indicating that no single measure fully captures embedding quality. ARNX, SC, and GS tend to agree, while RTA and HBE highlight different aspects of structure preservation. Layout c is consistently poor across all metrics, while layouts a and f are generally rated highest except in RTA. Interestingly, ARNX and GS identify layout a as best, whereas HBE and RTA prefer layout f."
-#| fig-pos: H
+#| fig-cap: "Comparison of scaled evaluation metrics (rARNX, rRTA, rSC, rGS, and HBE using $a_1=0.04$) for six NLDR layouts computed on the MNIST digit 1 data using a parallel coordinate plot. Each line represents a layout (a–f), with colors corresponding to the scatterplots shown on the right. The metrics display different ranking patterns, indicating that no single measure fully captures embedding quality. Layout a is identified as the best according to HBE and rRTA, but is considered much less optimal by rARNX, rSC, and rGS. Layout e is considered the worst, or close to the poorest, by all metrics. Layouts a and f show similar patterns of agreement across metrics, except for rRTA, where layout a performs the best and layout f the worst. Layout c is the worst in rARNX, rSC, and HBE."
+#| fig-pos: "!ht"
 #| out-width: 100%
 #| fig-height: 6
 #| fig-width: 6
@@ -1609,4 +1677,3 @@ comp_metrics_mnist <- plot_comp_metrics(nldr_metrics) +
 comp_metrics_mnist + wrap_plots(nldr_mnist1, nldr_mnist2, nldr_mnist3, 
                                     nldr_mnist4, nldr_mnist5, nldr_mnist6, ncol = 2)
 ```
-
