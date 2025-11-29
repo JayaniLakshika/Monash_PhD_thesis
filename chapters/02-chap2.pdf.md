@@ -51,7 +51,7 @@ However, the representation generated can vary dramatically from method to metho
 :::
 
 
-The paper is organized as follows. @sec-background-visalgo provides a summary of the literature on NLDR, and high-dimensional data visualization methods. @sec-method-visalgo contains the details of the new methodology, including a simulated data example. In @sec-bestfit-visalgo, we describe how to assess the best fit and identify the most accurate $2\text{-}D$ layout based on the proposed model diagnostics.  Two applications illustrating the use of the new methodology for bioinformatics and image classification are in @sec-applications-visalgo. Limitations and future directions are provided in @sec-discussion-visalgo. 
+The chapter is organized as follows. @sec-background-visalgo provides a summary of the literature on NLDR, and high-dimensional data visualization methods. @sec-method-visalgo contains the details of the new methodology, including a simulated data example. In @sec-bestfit-visalgo, we describe how to assess the best fit and identify the most accurate $2\text{-}D$ layout based on the proposed model diagnostics.  Two applications illustrating the use of the new methodology for bioinformatics and image classification are in @sec-applications-visalgo. Limitations and future directions are provided in @sec-discussion-visalgo. 
 
 ## Background {#sec-background-visalgo}
 
