@@ -1,4 +1,4 @@
-# Development of an interactive and dynamic graphics system for NLDR users {#sec-fifth-paper}
+# menuraR: An R Shiny App to Help Select the Best Nonlinear Dimension Reduction Representation {#sec-fifth-paper}
 
 ```{r include=FALSE}
 # Set up chunk for for knitr
@@ -17,167 +17,98 @@ knitr::opts_chunk$set(
 )
 ```
 
-<!--This paper is build with quollr 0.3.15-->
+Nonlinear dimension reduction (NLDR) methods such as tSNE and UMAP are widely used to visualize high-dimensional biological data, including single-cell RNA-seq and genomics datasets in two dimensions. However, choosing an appropriate method and tuning hyper-parameters typically requires iterative experimentation and expert knowledge. Existing tools offer limited support for systematically comparing multiple NLDR layouts or diagnosing how well each layout reflects underlying high-dimensional structure. We present `menuraR`, an interactive Shiny web application for evaluating and comparing multiple NLDR layouts quantitatively and qualitatively. Built on the `quollr` package, `menuraR` provides a graphical user interface for generating, visualizing, and diagnosing NLDR representations without programming. Users can compare multiple layouts, assess representation using a diagnostic metric, hexbin error (HBE), and the model fitted in high-dimensions. Also, linked brushing helps to investigate whether the model fits the points everywhere or fits better in some places, or simply mismatches the pattern. An example workflow using a PBMC single-cell dataset demonstrates how `menuraR` supports more informed, transparent, and reproducible analysis of high-dimensional biological data.
 
-```{r include=FALSE}
-#| label: install-libraries
-#| warning: false
-#| echo: false
+## Introduction 
 
-options(repos = c(CRAN = "https://cran.rstudio.com")) # Setup mirror
+Nonlinear dimensionality reduction (NLDR) methods such as tSNE [@laurens2008] and UMAP [@leland2018] have become essential tools for exploring and visualizing high-dimensional data across diverse scientific disciplines. These techniques enable researchers to uncover structures, clusters, and patterns that are not immediately visible in the original feature space. However, the flexibility and power of these methods come with challenges: the quality and interpretability of low-dimensional embeddings are often highly sensitive to hyper-parameter choices, random initialization, and characteristics of the underlying data. As a result, identifying the most meaningful and faithful representation typically requires iterative experimentation, systematic evaluation, and domain expertise.
 
-packages_to_check <- c("remotes", "tidyverse", "patchwork", "colorspace", "kableExtra", "conflicted")
+To address these challenges, we introduce \texttt{menuraR} (\emph{\textbf{m}onitoring \textbf{e}mbeddings of \textbf{n}onlinear \textbf{u}nfoldings for \textbf{r}epresentation and \textbf{a}nalysis in \textbf{R}], an interactive Shiny application created to facilitate the evaluation of NLDR layouts. Building on the functionality of the \texttt{quollr} package [@jayani2025], \texttt{menuraR} provides a graphical user interface that enables users to compare multiple NLDR layouts, explore the effects of different hyper-parameter settings, and apply diagnostic tools for evaluating NLDR layout(s). The \texttt{quollr} package is useful for understanding how NLDR warps high-dimensional space and fits the data. Starting from a two-dimensional NLDR layout, \texttt{quollr} constructs a wireframe representation that is lifted back into the high dimensions (see \cite{gamage2025c} for algorithmic details) and viewed using a tour (\citep{As85], a continuous sequence of linear projections. This model-based view helps reveal how NLDR methods warp high-dimensional geometry, where the embedding fits the data well, and where distortions or mismatches occur.
 
-for (pkg in packages_to_check) {
-  if (!requireNamespace(pkg, quietly = TRUE)) {
-    message(paste("Installing package:", pkg))
-    install.packages(pkg)
-  } else {
-    installed_version <- packageVersion(pkg)
-    available_version <- tryCatch({
-      utils::packageDescription(pkg)$Version
-    }, error = function(e) NA) # Handle cases where package info isn't readily available
+These capabilities are delivered through an intuitive interface that eliminates the need for programming, thereby lowering the technical barrier for researchers and students.
 
-    if (!is.na(available_version) && installed_version < package_version(available_version)) {
-      message(paste("A newer version of package", pkg, "is available. Updating..."))
-      install.packages(pkg)
-    } else {
-      message(paste("Package", pkg, "is up-to-date (version", installed_version, ")."))
-    }
-  }
-}
+A key advantage of \texttt{menuraR} is its accessibility. The application is fully web-based, and does not require a local installation of R or package management. Centralized hosting ensures that users always access the most up-to-date version, while reproducibility is supported through logging and open availability of the underlying code. In this way, \texttt{menuraR} enhances transparency in NLDR evaluation and fosters broader adoption of rigorous visualization practices.
 
-```
+This paper introduces the version $1.0.2$ of \texttt{menuraR}, describing its implementation, core features, and intended use cases. We demonstrate how the application can inform NLDR choices, highlight key visual diagnostics, and support exploratory data analysis and teaching.
 
-```{r}
-#| label: load-libraries
-#| warning: false
-#| echo: false
-library(tibble)
-library(dplyr)
-library(ggplot2)
-library(readr)
-library(tidyr)
-library(patchwork)
-library(colorspace)
-library(kableExtra)
-library(conflicted)
-library(ggbeeswarm)
-library(scales)
-library(GGally)
+## Methods
 
-conflicts_prefer(dplyr::filter)
-conflicts_prefer(dplyr::select)
-```
+The \texttt{menuraR} application is implemented in R using the \texttt{shiny} package \citep{winston2025a}, which provides the reactive framework required for interactive web applications. Supporting packages, including \texttt{shinycssloaders} \citep{dean2024}, are used to indicate progress during computationally intensive tasks.
 
-```{r}
-#| label: plot-theme
-theme_set(theme_linedraw() +
-   theme(
-     #aspect.ratio = 1,
-     plot.background = element_rect(fill = 'transparent', colour = NA),
-     plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
-     panel.background = element_rect(fill = 'transparent', 
-                                     colour = NA),
-     panel.grid.major = element_blank(), 
-     panel.grid.minor = element_blank(), 
-     axis.title.x = element_blank(), axis.title.y = element_blank(),
-     axis.text.x = element_blank(), axis.ticks.x = element_blank(),
-     axis.text.y = element_blank(), axis.ticks.y = element_blank(),
-     legend.background = element_rect(fill = 'transparent', 
-                                      colour = NA),
-     legend.key = element_rect(fill = 'transparent', 
-                               colour = NA),
-     legend.position = "bottom", 
-     legend.title = element_blank(), 
-     legend.text = element_text(size=4),
-     legend.key.height = unit(0.25, 'cm'),
-     legend.key.width = unit(0.25, 'cm'),
-     plot.margin = margin(0, 0, 0, 0)
-   )
-)
-```
+The application enables users to generate and compare two-dimensional NLDR layouts, currently supporting tSNE \citep{jesse2015} and UMAP \citep{james2025} through implementations available in the R ecosystem. Core computations, including layout generation, model fitting, and diagnostic evaluation, are handled by the \texttt{quollr} package \citep{jayani2025}. This includes construction of two-dimensional wireframe representations, lifting these structures into the original high-dimensional space, and computing the hexbin error (HBE) across a range of binwidths.
 
-## Introduction
+\texttt{menuraR} is deployed on the \href{https://shinyapps.io}{shinyapps.io} platform, allowing users to access the application through a web browser without local installation or dependency management. A centralized server environment ensures consistent computational settings across sessions, supporting reproducible evaluation of NLDR layouts.
 
-Non-linear dimensionality reduction (NLDR) methods such as tSNE (@laurens2008) and UMAP (@leland2018) have become essential tools for exploring and visualizing high-dimensional data across diverse scientific disciplines. These techniques enable researchers to uncover structures, clusters, and patterns that are not immediately visible in the original feature space. However, the flexibility and power of these methods come with challenges: the quality and interpretability of low-dimensional embeddings are often highly sensitive to hyper-parameter choices, random initialization, and characteristics of the underlying data. As a result, identifying the most meaningful and faithful representation typically requires iterative experimentation, systematic evaluation, and domain expertise.
-
-To address these challenges, we introduce `menuraR` (*monitoring embeddings of nonlinear unfoldings for representation and analysis in R*), an interactive Shiny application created to facilitate the evaluation of NLDR layouts. Building on the functionality of the `quollr` R package (@jayani2025), `menuraR` provides a graphical user interface that enables users to compare multiple NLDR layouts, explore the effects of different hyper-parameter settings, and apply diagnostic tools for evaluating NLDR layout(s).
-
-These capabilities are delivered through an intuitive interface that eliminates the need for programming, thereby lowering the technical barrier for applied researchers, students, and methodologists.
-
-A key advantage of `menuraR` is its accessibility. The application is fully web-based, requiring no local installation of R or package management. Centralized hosting ensures that users always access the most up-to-date version, while reproducibility is supported through logging and open availability of the underlying code. In this way, `menuraR` enhances transparency in NLDR evaluation and fosters broader adoption of rigorous visualization practices.
-
-This paper introduces version $0.1.0$ of `menuraR`, outlining its implementation, core features, and intended use cases. We demonstrate how the application can inform NLDR choices, highlight key visual diagnostics, and support both exploratory data analysis and teaching.
-
-## Implementation
-
-The `menuraR` application is implemented in the R programming language using the `shiny` package (@winston2025a), which provides the reactive programming framework needed for building interactive web applications. The front end integrates functionality from `htmltools` (@joe2024) to dynamically render markdown documentation within the application, ensuring that explanatory material and usage guidance are seamlessly incorporated alongside interactive elements. To enhance usability, the application employs `shinycssloaders` (@dean2024), which provides responsive loading animations during long-running computations.
-
-From an architectural perspective, `menuraR` is structured around a separation between the user interface (UI) and the computational back end. The UI components: buttons, menus, and plotting panels are rendered through Shiny’s reactive layer, which updates outputs in real time in response to user interactions. Computational tasks, such as fitting tSNE [@jesse2015] or UMAP [@james2025] embeddings, are delegated to the R back end and are executed primarily through functions provided by the `quollr` package (@jayani2025). This modular design ensures that new dimensionality reduction methods or diagnostics can be incorporated with minimal changes to the user-facing interface.
-
-For deployment, `menuraR` is hosted on the [shinyapps.io](https://shinyapps.io) platform, a managed, cloud-based service that supports full R integration. This allows users to run the application directly from any modern web browser without the need to install additional software or manage dependencies locally. The hosted version currently supports the generation of NLDR layouts using tSNE and UMAP, leveraging implementations in the R ecosystem.
-
-This design supports accessibility, reproducibility, and extensibility. Accessibility is achieved through a web-based interface that eliminates the need for local installation. Reproducibility is ensured by maintaining a consistent server-side computational environment across sessions. Extensibility follows from the modular linkage between the Shiny interface and the `quollr` computational back end, which fits model(s) for the NLDR layout(s), computes RWBSS for different binwidths, visualizes the model and generates diagnostics without altering the core interface.
-
+The combination of an interactive Shiny interface with the \texttt{quollr} back end allows users to explore multiple embeddings, assess hyper-parameter effects, and examine diagnostic measures within a single workflow, without requiring programming expertise.
 
 ## The Shiny application
 
-The `menuraR` app contains four main three tabs: (1) Data Upload, (2) Compare NLDR Layouts, and (3) Model diagnostics. Each tab includes numbered steps and clear instructions, guiding users from data input to interpretation of results.
+The \texttt{menuraR} app contains four main three tabs: (1) Data Upload, (2) Compare NLDR Layouts, and (3) Model diagnostics. Each tab includes numbered steps and clear instructions that guide users from data input to interpretation of results.
 
 ### Data upload
 
-Analysis in `menuraR` begins in two ways: by uploading user-provided high-dimensional data or by using one of the built-in example datasets. Two datasets are provided within the application: C-shaped Clusters, a synthetic dataset illustrating nonlinear structure, and PBMC, a biological single-cell dataset for real-world exploration [@rahul2025]. If the user uploads own high-dimensional data, the file should be a CSV and the CSV must have a unique ID column, with data columns prefixed by the letter "x" (e.g., `x1`, `x2`, etc.).
+Analysis in \texttt{menuraR} begins in two ways: by uploading user-provided high-dimensional data or by using one of the built-in example datasets (Figure~\ref{menuraR_ui1}). Two datasets are provided within the application: C-shaped Clusters, a synthetic dataset illustrating nonlinear structure, and PBMC, a biological single-cell dataset for real-world exploration \citep{rahul2025}. If the user uploads their own high-dimensional data, the file should be a CSV and the CSV must have a unique ID column, with data columns prefixed by the letter ``x'' (e.g., \texttt{x1}, \texttt{x2}, etc.).
 
-Once the high-dimensional data uploaded, under "choose your data source", users can specify their data source: "Upload your own data", or "Generate default tSNE and UMAP layouts".
-Selecting *Upload your own NLDR data* activates the uploaded NLDR layouts and metadata for comparison. The NLDR file is a CSV file of pre-computed NLDR, which contains embedding data must be labeled as `emb1` and `emb2`, and each layout should have its columns named with a prefix corresponding to the layout number, such as `1_emb1` and `1_emb2` for the first layout. Also, the meta data CSV file includes the NLDR layout name (e.g., 1, 2, etc.), the method used (like UMAP or tSNE), and any hyper-parameters formatted with the parameter name followed by its value, separated by a dash (e.g., perplexity-30 for tSNE). All uploaded files must be under $100$ MB in size, and it is essential that each dataset follows the variable naming conventions required by the web application. Alternatively, users may choose *Generate default tSNE and UMAP layouts*, in which case the application automatically computes two embeddings using default hyper-parameter settings for tSNE and UMAP.
+Once the high-dimensional data uploaded, under ``Choose the source of NLDR layouts'', users select an NLDR layout source: ``Upload your own NLDR data'', or ``Generate default tSNE and UMAP layouts''.
+Selecting \emph{Upload your own NLDR data} activates the uploaded NLDR layouts and metadata for comparison. Precomputed NLDR layouts are uploaded as a CSV file. For each layout, the two embedding dimensions are labeled \texttt{emb1} and \texttt{emb2}. If multiple layouts are included, embedding columns are prefixed with the layout number (e.g., \texttt{1\_emb1}, \texttt{1\_emb2}). Also, the meta data CSV file includes the NLDR layout name (e.g., 1, 2, etc.), the method used (like UMAP or tSNE), and any hyper-parameters formatted with the parameter name followed by its value, separated by a dash (e.g., perplexity-30 for tSNE). All uploaded files must be under $100$ MB in size, and it is essential that each dataset follows the variable naming conventions required by the web application. Alternatively, users may choose \emph{Generate default tSNE and UMAP layouts}, in which case the application automatically computes two embeddings using default hyper-parameter settings for tSNE and UMAP.
 
-Once loaded, all available NLDR layouts appear in the "Your Loaded NLDR Layouts" box. Users can select or deselect specific layouts to include in the comparison.
+Once loaded, all available NLDR layouts appear in the ``Your Loaded NLDR Layouts'' box. Users can select or deselect specific layouts to include in the comparison.
 
 #### Adding additional layouts
 
-The application also allows users to generate additional layouts directly within the interface. Users select the NLDR method (tSNE or UMAP), specify hyper-parameters, and click “Show Layout” to generate the embedding. If satisfied, they can add it to the comparison using “Add Layout”; otherwise, they may adjust the parameters and regenerate the layout. Multiple additional layouts can be created and compared in this manner.
+The application also allows users to generate additional layouts directly within the interface. Users select the NLDR method (tSNE or UMAP), specify hyper-parameters, and click ``Show Layout'' to generate the embedding. If satisfied, they can add it to the comparison using ``Add Layout''; otherwise, they may adjust the parameters and regenerate the layout. Multiple additional layouts can be created and compared in this manner.
 
-Once the desired layouts are finalized, users click “Start Analysis” to proceed automatically to the next tab, Compare NLDR Layouts, where the evaluation and comparison of embeddings take place.
-
-```{r, out.width = "100%"}
-knitr::include_graphics(here::here("figures/menuraR/menuraR_ui1.png"))
-```
+Once the desired layouts are finalized, users click ``Start Analysis'' to proceed automatically to the next tab, Compare NLDR Layouts, where the evaluation and comparison of embeddings take place.
 
 ### Compare NLDR Layouts
 
-Users can view the $2\text{-}D$ NLDR layouts that have been selected to compare. The app also generates a plot showing the Root Within Bin Sum of Square (RWBSS) against the bandwidth parameter ($a_1$) and identifies the "best" representation that yields the lowest RWBSS for that specific $a_1$. Users can modify the $a_1$ value to see what layout performs best for the chosen bandwidth. 
+The comparison begins by selecting the binwidth (\(a_1\)), which controls the width of the hexagons in the hexagonal grid (Figure~\ref{menuraR_ui2}). For the chosen \(a_1\), the Shiny application visualizes hexagonal grids overlaid on each selected \(2\text{-}D\) NLDR layout. Also, the app constructs a \(2\text{-}D\) wireframe representation for each layout, which forms the basis for subsequent lifting the model into high-dimensional space. The app also generates a plot showing the Hexbin Error (HBE) against the binwidth parameter (\(a_1\)) and identifies the ``best'' representation that yields the lowest HBE for that specific \(a_1\). Users can modify the \(a_1\) value to see what layout performs best for the chosen bandwidth.
 
-Furthermore, users have the option to download the $2\text{-}D$  layouts, corresponding data, the RWBSS versus bin width plot, and the summary table, which contains error, RWBSS, the number of bins along the x-axis ($b1$), the number of bins along the y-axis ($b2$), the total number of bins ($b$), the number of non-empty bins ($m$), the bin width ($a_1$), the bin height ($a_2$), standardized bin counts ($w_h$), and NLDR method id.
-
-```{r, out.width = "100%"}
-knitr::include_graphics(here::here("figures/menuraR/menuraR_ui2.png"))
-```
+Furthermore, users have the option to download the \(2\text{-}D\) layouts, corresponding data, the HBE versus binwidth plot, and the summary table, which contains error, HBE, the number of bins along the x-axis (\(b_1\)), the number of bins along the y-axis (\(b_2\)), the total number of bins (\(b\)), the number of non-empty bins (\(m\)), the bin width (\(a_1\)), the bin height (\(a_2\)), standardized bin counts (\(w_h\)), and NLDR method id.
 
 ### Model diagnostics
 
-Once the best representation is selected, interactive plots are generated to display the high-dimensional model error, the best $2\text{-}D$ layout, and a tour view of the model overlaying the high-dimensional data. This interactivity allows users to identify where the model fits well, where it better in some subspaces, and where it fails to match the data. Additionally, users can explore the mapping between the $2\text{-}D$ layout and the high-dimensional data. Importantly, model diagnostics are not limited to the best NLDR layout; other layouts can also be selected and examined for comparison.
+Once the best representation is selected, interactive plots are generated to display the high-dimensional model error, the best \(2\text{-}D\) layout, and a tour view of the model overlaying the high-dimensional data (Figure~\ref{menuraR_ui3}). This interactivity allows users to identify where the model fits well, where it is better in some subspaces, and where it fails to match the data. Additionally, users can explore the mapping between the \(2\text{-}D\) layout and the high-dimensional data. Importantly, model diagnostics are not limited to the best NLDR layout; other layouts can also be selected and examined for comparison.
 
-```{r, out.width = "100%"}
-knitr::include_graphics(here::here("figures/menuraR/menuraR_ui3.png"))
-```
+## Results
+
+We evaluated \texttt{menuraR} using the PBMC3k single-cell RNA-seq dataset \citep{rahul2025}, a widely used benchmark for assessing dimensionality-reduction methods in single-cell analysis. This dataset contains $2622$ human peripheral blood mononuclear cells (PBMCs) measured across $1000$ gene expression variables and is commonly used to study cellular heterogeneity and population structure at the single-cell level.
+
+In single-cell RNA-seq analysis, clustering is typically used to identify groups of cells with similar expression profiles, while nonlinear dimension reduction (NLDR) methods are employed to summarize and visualize this structure in two dimensions. Importantly, NLDR methods do not use cluster labels to compute embeddings; labels are instead used post hoc for interpretation and visualization. 
+
+We applied NLDR methods to the first nine principal components of the gene expression matrix. Using the \textit{Compare NLDR Layouts} tab of \texttt{menuraR}, we generated four embeddings commonly used in practice: tSNE with perplexity values of $30$ (default) and $18$, and UMAP with $(n_{\text{neighbors}}, \text{min\_dist})$ set to $(15, 0.1)$ (default) and $(41, 0.43)$. Visual comparison showed consistent separation of major immune cell populations across all layouts, with clear differences in cluster separation and neighborhood continuity. Overall, tSNE produced smaller inter-cluster separation, while UMAP yielded more distinct clusters. For both methods, hyper-parameter choices controlled the local–global trade-off: smaller neighborhood sizes or lower perplexity emphasized tight local groupings, whereas larger neighborhood sizes or higher perplexity produced smoother global transitions (Figure~\ref{menuraR_ui2}).
+
+The \textit{Comparison} panel enabled a quantitative comparison of these layouts using the hexbin error (HBE). At a binwidth of $a_1 = 0.06$, the tSNE layout with $\text{perplexity} = 18$ achieved the lowest HBE, indicating the best agreement between the two-dimensional embedding and the fitted high-dimensional model at this binwidth.
+
+Linked brushing in the \textit{Model Diagnostics} tab showed that the model fits the data well and highlighted filled-out and dense clusters that are not visible from the NLDR layout (Figure~\ref{menuraR_ui3}).
 
 ## Limitations
 
-Currently, `menuraR` supports two NLDR methods tSNE and UMAP executed within the R environment on shinyapps.io. Performance may vary depending on dataset size and browser memory limits, as computations are handled server-side.
+Currently, \texttt{menuraR} supports two NLDR methods tSNE and UMAP executed within the R environment on shinyapps.io. Performance may vary depending on dataset size and browser memory limits, as computations are handled server-side.
+
+## Usability survey
+
+We conducted a usability survey with the NUMBATs research group at Monash University to inform decisions regarding the app's design. Participants were asked to complete a series of tasks within the application, including uploading data, generating new NLDR layouts, comparing embeddings, and interpreting model diagnostics. The run sheets used to guide the study are openly available at: \href{https://github.com/JayaniLakshika/paper-menuraR/tree/main/run_sheets}{\texttt{github.com/JayaniLakshika/paper-menuraR/run\_sheets}}. Their interactions, feedback, and suggestions were used to refine the interface, improve documentation, and identify features that enhance usability or require redesign.
+
+## Data availability
+
+The data used in the survey are available at \href{https://github.com/JayaniLakshika/paper-menuraR/tree/main/data}{\texttt{github.com/JayaniLakshika/paper-menuraR/data}}, and the example data used in the app are available at \href{https://github.com/JayaniLakshika/menuraR/tree/main/data}{\texttt{github.com/JayaniLakshika/menuraR/data}}.
 
 ## Conclusions
 
-This paper introduces `menuraR`, a web-based interface designed to assist in the evaluation and selection of the most reasonable NLDR layout(s). Although NLDR methods such as tSNE, and, UMAP are widely used for visualizing high-dimensional data, interpreting and selecting the most representative layout can be complex. `menuraR` addresses this challenge by providing an accessible, intuitive, and interactive environment that encapsulates the diagnostic features of the `quollr` package, making assistant in NLDR selection feasible for users with varying levels of technical expertise. 
+This paper introduces \texttt{menuraR}, a web-based interface designed to assist in the evaluation and selection of the most reasonable NLDR layout(s). Although NLDR methods such as tSNE, and, UMAP are widely used for visualizing high-dimensional data, interpreting and selecting the most representative layout can be complex. \texttt{menuraR} addresses this challenge by providing an accessible, intuitive, and interactive environment that encapsulates the diagnostic features of the \texttt{quollr} package, making assistant in NLDR selection feasible for users with varying levels of technical expertise.
 
-Developed using the R Shiny framework, `menuraR` eliminates many of the technical barriers traditionally associated with advanced statistical software. Users do not need to install additional packages or configure language-specific environments, which is particularly valuable for interdisciplinary research teams and educational settings. The platform allows for comparisons of layouts, visual diagnostics, and selection criteria.
+Developed using the R Shiny framework, \texttt{menuraR} eliminates many of the technical barriers traditionally associated with advanced statistical software. Users do not need to install additional packages or configure language-specific environments, which is particularly valuable for interdisciplinary research teams and educational settings. The platform helps users to compare NLDR layouts, select the ones that most accurately represent the high-dimensional data structure, and assess NLDR results.”
 
-<!-- In future versions of `menuraR`, we plan to incorporate additional NLDR methods such as PHATE and TriMAP in the browser-based interface. We aim to enable in-browser Python execution within webr using reticulate and WebAssembly-backed Python runtimes. Furthermore, we will provide support for user-uploaded data and the export of diagnostic results. Ultimately, we hope to develop a fully reproducible workflow that integrates layout generation, evaluation, and reporting. These developments will continue to enhance `menuraR`’s utility as both a practical tool for data scientists and a teaching aid for instructors covering dimension reduction concepts. -->
+## Competing interests
 
-## Availability
+No competing interest is declared.
 
-The source code for the Shiny application can be found at [`github.com/JayaniLakshika/menuraR`](https://github.com/JayaniLakshika/menuraR). Users can access the web interface at [`menurar.netlify.app`](https://menurar.netlify.app/). 
+## Author contributions statement
 
-## Supplementary material
+J.P.G. developed the \texttt{menuraR} Shiny application, developed the \texttt{quollr} package, conducted the analysis, and designed and conducted the usability survey. D.C., P.H., M.L. and T.S.T. provided methodological guidance and contributed to application design, and usability survey. J.P.G. drafted the manuscript, and all authors reviewed and approved the final version.
 
-All the materials to reproduce the paper can be found at [`github.com/JayaniLakshika/paper-menuraR`](https://github.com/JayaniLakshika/paper-menuraR.git).
+## Acknowledgments
+
+We thank members of NUMBATs, the working group of the Department of Econometrics and Business Statistics, Monash University, Australia, for their participation in the usability survey and for providing valuable feedback that helped improve this research.
+
