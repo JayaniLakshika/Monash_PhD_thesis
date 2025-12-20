@@ -13,7 +13,7 @@ The software outputs of this research have been made publicly available to suppo
 
 ::: {.cell}
 ::: {.cell-output-display}
-![](07-chap7_files/figure-pdf/unnamed-chunk-1-1.pdf)
+![Weekly commit activity for the `cardinalR` and `quollr` packages.](07-chap7_files/figure-pdf/fig-pkg-commit-1.pdf){#fig-pkg-commit}
 :::
 :::
 
@@ -25,7 +25,9 @@ All materials associated with this thesis are openly available at [github.com/Ja
 <!--need to update at the end of writing-->
 In addition, a number of R packages were essential in the development of this work, including `tidyverse` [@tidyverse], `lmtest` [@lmtest], `kableExtra` [@kableextra], `patchwork` [@patchwork], `glue` [@glue], `ggpcp` [@ggpcp], `here` [@here], and `knitr` [@knitr]. (Final package list to be confirmed upon completion of writing.)
 
-## Add about polarisR as well.
+## Software contribution: `polarisR`
+
+I contributed to open-source software development by co-supervising the creation of the `polarisR` package [@divendra2025] during a Google Summer of Code project with Dr. Ursula Laa and Prof. Eun-Kyung Lee, whom I met during my visit to the University of Natural Resources and Life Sciences in Vienna, Austria. `polarisR` is a Shiny application for diagnosing $2\text{-}D$ NLDR layouts using the `quollr` implementation. It also supports comparing how the data appear in high dimensions through various tour methods, including scatter, sage, and slice.
 
 ## Future work
 
@@ -132,7 +134,7 @@ Need to add final thoughts later...
 
 ::: {.cell}
 ::: {.cell-output-display}
-![](07-chap7_files/figure-pdf/unnamed-chunk-2-1.pdf)
+![](07-chap7_files/figure-pdf/unnamed-chunk-1-1.pdf)
 :::
 :::
 

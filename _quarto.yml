@@ -30,7 +30,6 @@ book:
     - "appendix/A-appA.qmd"
     - "appendix/B-appB.qmd"
     - "appendix/C-appC.qmd"
-    - "appendix/D-appD.qmd"
   sidebar:
     style: "docked"
 
