@@ -1,7 +1,8 @@
-## This script is to generate RMSE values with quollr
+## This script is to generate HBE values with quollr
 
 library(tidyverse)
 library(quollr)
+library(here)
 set.seed(20240412)
 
 quad <- function(a = 3, b = 2 * a2, c = -(a2^2 + a1^2))
@@ -97,4 +98,4 @@ error_df <- bind_rows(error_pca, error_tsne,
                       error_umap, error_phate,
                       error_trimap, error_pacmap)
 
-write_rds(error_df, "data/five_clusts/five_clusts_rmse.rds")
+write_rds(error_df, "data/five_clusts/five_clusts_hbe.rds")

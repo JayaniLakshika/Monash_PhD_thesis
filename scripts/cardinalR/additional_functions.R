@@ -10,46 +10,45 @@ interior_annotation <- function(label, position = c(0.92, 0.92), cex = 1, col="g
 
 # Center the data by subtracting the mean of each column
 center_data <- function(data) {
-  apply(data, 2, function(col) col - mean(col))
+  center_values <- colMeans(data)
+  data_centered <- sweep(data, 2, center_values, FUN = "-")  # subtract means
+  data_centered
 }
 
 # Function to scale data manually
-scale_data_manual <- function(data) {
-  # Step 1: Center the data (mean 0)
-  data_centered <- center_data(data)
-
-  # Step 2: Calculate the standard deviation of each dimension
-  sds <- apply(data_centered, 2, sd)
-
-  # Step 3: Scale each dimension to have the range [0, 1]
-  data_scaled <- apply(data_centered, 2, function(col) col / max(abs(col)))
-
-  # Step 4: Scale dimensions according to their variation
-  # The dimension with the highest standard deviation is scaled to [-1, 1]
-  # Other dimensions are scaled to smaller ranges based on their standard deviations
-  max_sd <- max(sds)
-
-  # Normalize the standard deviations to get scaling factors
-  scaling_factors <- sds / max_sd
-
-  for (i in seq_along(scaling_factors)) {
-    data_scaled[, i] <- data_scaled[, i] * scaling_factors[i]
-  }
-
-  # Combine the scaled data with the 'type' column and return as a tibble
-  data_scaled <- as_tibble(data_scaled)
-
-  return(data_scaled)
-}
+# scale_data_manual <- function(data) {
+#   # Step 1: Center the data (mean 0)
+#   data_centered <- center_data(data)
+#
+#   # Step 2: Calculate the standard deviation of each dimension
+#   sds <- apply(data_centered, 2, sd)
+#
+#   # Step 3: Scale each dimension to have the range [0, 1]
+#   data_scaled <- apply(data_centered, 2, function(col) col / max(abs(col)))
+#
+#   # Step 4: Scale dimensions according to their variation
+#   # The dimension with the highest standard deviation is scaled to [-1, 1]
+#   # Other dimensions are scaled to smaller ranges based on their standard deviations
+#   max_sd <- max(sds)
+#
+#   # Normalize the standard deviations to get scaling factors
+#   scaling_factors <- sds / max_sd
+#
+#   for (i in seq_along(scaling_factors)) {
+#     data_scaled[, i] <- data_scaled[, i] * scaling_factors[i]
+#   }
+#
+#   # Combine the scaled data with the 'type' column and return as a tibble
+#   data_scaled <- as_tibble(data_scaled)
+#
+#   return(data_scaled)
+# }
 
 # Get projection
 
-get_projection <- function(projection, proj_scale, scaled_data,
-                           axis_param) {
+get_projection <- function(projection, centered_data, axis_param) {
 
-  projection_scaled <- projection * proj_scale
-  projected <- as.matrix(scaled_data) %*% projection_scaled
-
+  projected <- as.matrix(centered_data) %*% projection
   projected_df <- projected |>
     tibble::as_tibble(.name_repair = "unique") |>
     dplyr::rename(c("proj1" = "...1",
@@ -67,7 +66,7 @@ get_projection <- function(projection, proj_scale, scaled_data,
     limits = limits,
     axis_pos_x = axis_pos_x,
     axis_pos_y = axis_pos_y,
-    axis_labels = names(scaled_data),
+    axis_labels = names(centered_data),
     threshold = threshold)
 
   axes <- axes_obj$axes
@@ -182,15 +181,15 @@ gen_axes <- function(proj, limits = 1, axis_pos_x = NULL, axis_pos_y = NULL, axi
 }
 
 
-plot_rmse <- function(error_df) {
+plot_hbe <- function(error_df) {
 
   ggplot(error_df,
          aes(x = a1,
-             y = RMSE,
+             y = HBE,
              colour = method)) +
     geom_point(size = 0.8) +
     geom_line(linewidth = 0.3) +
-    ylab("RMSE") +
+    ylab("HBE") +
     xlab(expression(paste("binwidth (", a[1], ")"))) +
     theme_minimal() +
     theme(panel.border = element_rect(fill = 'transparent'),
