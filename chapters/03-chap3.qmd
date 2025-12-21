@@ -1,6 +1,6 @@
-# quollr: An R Package for Visualizing 2-D Models from Nonlinear Dimension Reductions in High-Dimensional Space {#sec-third-paper}
+# quollr: An R Package for Visualizing $2\text{-}D$ Models from Nonlinear Dimension Reductions in High-Dimensional Space {#sec-third-paper}
 
-Nonlinear dimension reduction methods provide a low-dimensional representation of high-dimensional data by applying a Nonlinear transformation. However, the complexity of the transformations and data structures can create wildly different representations depending on the method and hyper-parameter choices. It is difficult to determine whether any of these representations are accurate, which one is the best, or whether they have missed important structures. The R package quollr has been developed as a new visual tool to determine which method and which hyper-parameter choices provide the most accurate representation of high-dimensional data. The scurve data from the package is used to illustrate the algorithm. Single-cell RNA sequencing (scRNA-seq) data from mouse limb muscles are used to demonstrate the usability of the package.
+Nonlinear dimension reduction methods provide a low-dimensional representation of high-dimensional data by applying a Nonlinear transformation. However, the complexity of the transformations and data structures can create wildly different representations depending on the method and hyper-parameter choices. It is difficult to determine whether any of these representations are accurate, which one is the best, or whether they have missed important structures. The R package `quollr` has been developed as a new visual tool to determine which method and which hyper-parameter choices provide the most accurate representation of high-dimensional data. The `scurve` data from the package is used to illustrate the algorithm. Single-cell RNA sequencing (scRNA-seq) data from mouse limb muscles are used to demonstrate the usability of the package.
 
 ```{r setup, include=FALSE}
 options(repos = "https://cloud.r-project.org") ## set up CRAN mirror
@@ -12,37 +12,6 @@ knitr::opts_chunk$set(
   comment = ">",
   out.width = "100%",
   htmlwidgets.sizing = TRUE)
-
-```
-
-```{r install-libraries, include=FALSE, warning=FALSE, echo=FALSE, eval=FALSE}
-
-# Ensure remotes is available
-if (!requireNamespace("remotes", quietly = TRUE)) {
-  install.packages("remotes")
-}
-
-# Read the package list
-pkgs_raw <- readLines("_Rpackages.txt")
-pkgs_raw <- pkgs_raw[nzchar(pkgs_raw)]  # remove empty lines
-
-# Split into package and version
-parts <- strsplit(pkgs_raw, "==")
-pkgs <- vapply(parts, `[[`, "", 1)
-versions <- vapply(parts, `[[`, "", 2)
-
-# Install packages with exact versions
-for (i in seq_along(pkgs)) {
-  pkg <- pkgs[i]
-  ver <- versions[i]
-
-  if (!requireNamespace(pkg, quietly = TRUE) ||
-      as.character(packageVersion(pkg)) != ver) {
-
-    message(sprintf("Installing %s (%s)", pkg, ver))
-    remotes::install_version(pkg, version = ver, upgrade = "never")
-  }
-}
 
 ```
 
@@ -98,7 +67,7 @@ source("scripts/additional_functions.R")
 
 <!-- 20 pages-->
 
-# Introduction
+## Introduction
 
 <!-- research gap: add about hexbin pkg, and emphasize that in our package provide regular hexagons-->
 <!-- objective: introduce a new tool to help to determine which method, which parameter choice provide the most useful representation of high-D data.--> 
@@ -538,7 +507,7 @@ hex_grid_scurve + wrap_plots(
 
 The paper is organized as follows. The usage section explains how users can fit a complete model pipeline from hexagonal binning of a $2\text{-}D$ layout to lifting the representation back into $p\text{-}D$ and how the resulting objects can be explored interactively using tour. The next section introduces the implementation of the `quollr` package on CRAN, including a demonstration of the package's key functions and visualization capabilities. In the application section, we illustrate the algorithm's functionality for studying a clustering data structure. Finally, we conclude the paper with a brief summary and discuss potential opportunities for using our algorithm.
 
-# Usage
+## Usage
 
 The package is available on CRAN, and the development version is available at [github.com/JayaniLakshika/quollr](https://github.com/JayaniLakshika/quollr).
 
@@ -577,7 +546,7 @@ tour_view <- show_langevitour(
 
 which produces the model and data plot shown in `r knitr::asis_output(if (knitr::is_html_output()) { "Figure \\@ref(fig:algo-step-html)"} else { "Figure \\@ref(fig:algo-steps)"})`. 
 
-# Implementation
+## Implementation
 
 The implementation of `quollr` is designed to be efficient, and easy to extend. The package is organized into a series of logical components that reflect the main stages of the workflow: data preprocessing, model fitting, low-density bin removal, prediction, visualization, and interactive exploration (Figure `r '\\@ref(fig:workflow)'`). This package structure makes the code easier to maintain and allows new features to be added without changing the existing functionality.
 
@@ -586,7 +555,7 @@ The implementation of `quollr` is designed to be efficient, and easy to extend. 
 knitr::include_graphics("figures/quollr_workflow.png")
 ```
 
-## Software architecture
+### Software architecture
 
 The package is organized into seven core modules corresponding to stages of the workflow: preprocessing, $2\text{-}D$ model construction, lifting the model into $p\text{-}D$, prediction, error computation, visualizations, and interactivity. Each module performs a distinct task and communicates through data objects.
 
@@ -606,17 +575,17 @@ The package is organized into seven core modules corresponding to stages of the 
 
 Each module is internally independent but connected through data objects (see next section). This modular design simplifies maintenance and allows developers to extend individual components such as substituting different binning approaches, extracting centroids, or visualization tools without altering the overall workflow.
 
-## Data objects
+### Data objects
 
 The internal data objects follow the tidy data principle: each variable is stored in a column, each observation in a row, and each type of information in its own table. This structure makes the package easy to use with the `tidyverse` and other visualization tools.
 
-### Input objects
+#### Input objects
 
 - `highd_data`: a tibble containing the original high-dimensional observations with a unique identifier (`ID`) and variable columns prefixed with `x` (e.g., `x1`, `x2`, …).
 
 - `nldr_data`: a tibble containing two-dimensional embeddings, labeled as `emb1` and `emb2`, matched to the same `ID`s.
 
-### Generated objects
+#### Generated objects
 
 - `scaled_nldr_obj`: the output of `gen_scaled_data()`, which rescales the embedding to the range $[0, 1] \times [0, y_{2,\text{max}}]$, where $y_{2,\text{max}} = r_2 / r_1$ is the ratio of the embedding ranges. It includes the scaled coordinates (`scaled_nldr`) and the original limits (`lim1`, `lim2`).
 
@@ -624,11 +593,11 @@ The internal data objects follow the tidy data principle: each variable is store
 
 - `highd_vis_model`: the main model object returned by `fit_highd_model()`. It stores all components of the fitted model, including the scaled NLDR data (`nldr_scaled_obj`), the hexagonal bin configurations (`hb_obj`), the averaged $p\text{-}D$ summaries for each bin (`model_highd`), the corresponding $2\text{-}D$ bin centroids (`model_2d`), and the triangulated mesh connecting neighboring bins (`trimesh_data`). 
 
-## Computational efficiency and optimization
+### Computational efficiency and optimization
 
 Several core computations within `quollr` are optimized using compiled C++ code via the `Rcpp` and `RcppArmadillo` packages. While the user interacts with high-level R functions, performance-critical steps such as nearest-neighbor searches (`compute_highd_dist()`), error metrics (`compute_errors()`), $2\text{-}D$ distance calculations (`calc_2d_dist_cpp()`), and generation of hexagon coordinates (`gen_hex_coord_cpp()`) are handled internally in C++. This design provides significant speedups when analyzing large datasets while maintaining a user-friendly R interface. These C++ functions are not exported but are bundled within the package and fully accessible for inspection in the source code.
 
-## Pipeline implementation
+### Pipeline implementation
 
 In this section, we demonstrate the implementation of each step of the pipeline discussed in the Usage section (`fit_highd_model` and `comb_data_model`). Each step can be run independently to ensure flexibility in the modelling aproach.
 
@@ -686,7 +655,7 @@ The algorithm starts by scaling the NLDR data to to the range $[0, 1] \times [0,
 scurve_umap_obj <- gen_scaled_data(nldr_data = scurve_umap)
 ```
 
-### Hexagon binning
+#### Hexagon binning
 
 The hexagon binning process builds a complete hexagonal tessellation over the $2\text{-}D$ NLDR embedding and assigns points to bins for downstream modeling. The workflow proceeds through several steps, beginning with selecting an appropriate grid configurations and ending with assigning NLDR points to their corresponding hexagons.
 
@@ -756,7 +725,7 @@ hb_obj <- hex_binning(
   q = 0.1)
 ```
 
-### Computing the standardized number of points within each hexagon
+#### Computing the standardized number of points within each hexagon
 
 The `compute_std_counts()` function calculates both the raw and standardized counts of points inside each hexagon.
 
@@ -770,7 +739,7 @@ std_df <- compute_std_counts(
 head(std_df, 5)
 ```
 
-### Obtaining bin centroids
+#### Obtaining bin centroids
 
 The `merge_hexbin_centroids()` function combines hexagonal bin coordinates, raw and standardized counts within each hexagons.
 
@@ -785,7 +754,7 @@ df_bin_centroids <- merge_hexbin_centroids(
 head(df_bin_centroids, 5)
 ```
 
-### Indicating neighbors by line segments connecting centroids
+#### Indicating neighbors by line segments connecting centroids
 
 To represent the neighborhood structure of hexagonal bins in a $2\text{-}D$ layout, we employ Delaunay triangulation [@lee1980;@albrecht2024] on the centroids of hexagons.
 
@@ -813,7 +782,7 @@ trimesh <- update_trimesh_index(trimesh_data = trimesh)
 head(trimesh, 5)
 ```
 
-### Identifying and removing low-density hexagons
+#### Identifying and removing low-density hexagons
 
 Not all hexagons contain meaningful information. Some may have very few or no data points due to the sparsity or shape of the underlying structure. Simply removing hexagons with low counts (e.g., fewer than a fixed threshold) can lead to gaps or "holes" in the $2\text{-}D$ structure, potentially disrupting the continuity of the representation.
 
@@ -842,7 +811,7 @@ trimesh <- trimesh |>
 trimesh <- update_trimesh_index(trimesh)
 ```
 
-### Lifting the model into high dimensions
+#### Lifting the model into high dimensions
 
 The final step involves lifting the fitted $2\text{-}D$ model into $p\text{-}D$. This is done by modelling a point in $p\text{-}D$ as the  $p\text{-}D$ mean of data points in the $2\text{-}D$ centroid. This is performed using the `avg_highd_data()` function, which takes $p\text{-}D$ data (`highd_data`) and embedding data with their corresponding hexagonal bin IDs as inputs (`scaled_nldr_hexid`).
 
@@ -855,7 +824,7 @@ df_bin <- avg_highd_data(
 head(df_bin, 5)
 ```
 
-## Prediction
+### Prediction
 
 The `predict_emb()` function is used to predict a point in a $2\text{-}D$ embedding for a new $p\text{-}D$ data point using the fitted model. This function is useful to predict $2\text{-}D$ embedding irrespective of the NLDR technique.
 
@@ -875,7 +844,7 @@ head(predict_data, 5)
 
 It is worth noting that while `predict_emb()` provides a general approach that works across methods, some NLDR techniques have their own built-in prediction mechanisms. For example, UMAP [@tomasz2023] supports direct prediction of embeddings for new data once a model is fitted.
 
-## Compute residuals and hexbin error (HBE)
+### Compute residuals and hexbin error (HBE)
 
 Hexbin error (HBE) serves as a goodness-of-fit metric for evaluating the high-dimensional to $2\text{-}D$ mapping. The `glance()` function computes these summary diagnostics by combining the fitted model returned by `fit_highd_model()` with the $p\text{-}D$ data. After renaming the model output to avoid join conflicts, `predict_emb()` is used to assign each observation to a hexagon in the $2\text{-}D$ embedding. The resulting bin assignments are joined with both the model output and the $p\text{-}D$ data, allowing squared and absolute differences between the true and modeled $p\text{-}D$ coordinates to be computed for every dimension. Total absolute error (`Error`) and hexbin error (`HBE`, the root mean squared error) are then obtained using an efficient C++ implementation (`compute_errors()`), and returned in a tidy tibble.
 
@@ -895,7 +864,7 @@ model_error <- augment(
 )
 ```
 
-## Visualizations
+### Visualizations
 
 The package offers several $2\text{-}D$ visualizations (`r knitr::asis_output(if (knitr::is_html_output()) { "Figure \\@ref(fig:geom-outputs)"} else { "Figure \\@ref(fig:geom-outputs-pdf)"})`), including a full hexagonal grid, a hexagonal grid that matches the data, a full grid based on centroid triangulation, a centroid triangulation grid that aligns with the data, and a triangular mesh for any provided set of points.
 
@@ -903,7 +872,7 @@ The generated $p\text{-}D$ model, overlaid with the data, can also be visualized
 
 Furthermore, there are two interactive plots, `show_link_plots` and `show_error_link_plots`, which are designed to help diagnose the model. Each visualization can be generated using its respective function, as described in this section.
 
-### Hexagonal grid
+#### Hexagonal grid
 
 The `geom_hexgrid()` function introduces a custom `ggplot2` layer designed for visualizing hexagonal grid on a provided set of bin centroids.
 
@@ -927,7 +896,7 @@ data_hexgrid <- ggplot() +
     ) 
 ```
 
-### Triangular mesh
+#### Triangular mesh
 
 The `geom_trimesh()` function introduces a custom `ggplot2` layer designed for visualizing $2\text{-}D$ wireframe on a provided set of bin centroids.
 
@@ -985,7 +954,7 @@ full_hexgrid + data_hexgrid +
   plot_layout(ncol = 4)
 ```
 
-### $p\text{-}D$ model visualization
+#### $p\text{-}D$ model visualization
 
 To visualize how well the $p\text{-}D$ model captures the underlying structure of the high-dimensional data, we provide a tour of the model in $p\text{-}D$ using the `show_langevitour()` function (`r knitr::asis_output(if (knitr::is_html_output()) { "Figure \\@ref(fig:scurve-highd-model-html)"} else { "Figure \\@ref(fig:scurve-highd-model-pdf)"})`). This function renders a dynamic projection of both the high-dimensional data and the model using the `langevitour` R package [@paul2023].
 
@@ -1045,7 +1014,7 @@ detour(
 
 In the resulting interactive visualization, blue points represent the high-dimensional data, orange points represent the model centroids from each bin, and the lines between model points reflect the $2\text{-}D$ wireframe structure mapped to high-dimensional space.
 
-### Linked plots
+#### Linked plots
 
 Two types of interactively linked plots can be generated to assess the model fits everywhere, or better in some subspaces, or completely mismatch the data. The plots are linked using `crosstalk`, which allows interactive brushing: selecting or brushing points in one plot automatically highlights the corresponding points in the other linked views. 
 
@@ -1434,7 +1403,7 @@ error_plot_scurve_hist1 + scurve_umap_plt_select1_lk2 + scurve_proj_umap_model1_
 
 In the implementation examples, points are shown without cluster-based coloring unless explicitly stated. When points are colored by cluster, linked plot functionality is currently only partially supported: selections made in the `langevitour` controls are not reflected in the corresponding highlights in the interactive $2\text{-}D$ layout. As a result, cluster-specific exploration must be carried out separately in the tour view and the interactive $2\text{-}D$ layout. In addition to `langevitour`, linked plots can also be constructed using tour views generated with the `detourr` package. (see [vignette: 8. Linked plots with `detourr`](https://jayanilakshika.github.io/quollr/articles/quollr8linkeddetourr.html) for details.)
 
-# Application
+## Application
 
 Single-cell RNA sequencing (scRNA-seq) is a popular and powerful technology that allows you to profile the whole transcriptome of a large number of individual cells [@andrews2021]. 
 
@@ -2076,7 +2045,7 @@ class(linked_plt_best) <- c(class(linked_plt_best), "htmlwidget")
 linked_plt_best
 ```
 
-# Discussion
+## Discussion
 
 The `quollr` package introduces a new framework for interpreting NLDR outputs by fitting a geometric wireframe model in $2\text{-}D$ and lifting it into high-dimensional space. This lifted model provides a direct way to assess how well a $2\text{-}D$ layout, produced by methods such as tSNE, UMAP, PHATE, TriMAP, or PaCMAP, preserves the structure of the original high-dimensional data. The approach offers both numerical and visual diagnostics to support the selection of NLDR methods and tuning hyper-parameters that produce the most accurate $2\text{-}D$ representations.
 
@@ -2088,6 +2057,6 @@ The modular structure of the package is designed to support both flexibility and
 
 There are several avenues for future development. While hexagonal binning provides a regular structure conducive to modeling, alternative spatial discretizations (e.g., adaptive binning or density-aware tessellations) could be explored to better capture varying data densities. Expanding support for additional distance metrics in the lifting and prediction steps may improve performance across different domains. Additionally, statistical inference tools could be introduced to assess the stability and robustness of the fitted model, which would enhance interpretability and confidence in the outcomes. A potential extension of the current implementation would be to synchronize cluster selections between the tour view and the linked $2\text{-}D$ layout, enabling more direct cluster-specific comparisons across views.
 
-# Acknowledgements
+## Acknowledgements
 
 The source code for reproducing this paper can be found at: [github.com/JayaniLakshika/paper-quollr](https://github.com/JayaniLakshika/paper-quollr). This article is created using \CRANpkg{knitr} [@yihui2015] and \CRANpkg{rmarkdown} [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `dplyr` [@hadley2023], `ggplot2` [@hadley2016], `interp` (>= 1.1-6) [@albrecht2024], `langevitour` [@paul2023], `detourr` [@casper2025], `proxy`[@david2022], `stats` [@core2025], `tibble` [@kirill2023], `tidyselect` [@lionel2024], `crosstalk` [@joe2023], `plotly` [@chapman2020], `htmltools` [@joe2024], `kableExtra` [@hao2024], `patchwork` [@thomas2024], and `readr` [@hadley2024].
