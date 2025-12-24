@@ -473,8 +473,8 @@
     "objectID": "chapters/07-chap7.html#software-contribution-polarisr",
     "href": "chapters/07-chap7.html#software-contribution-polarisr",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.4 Software contribution: polarisR\n",
-    "text": "7.4 Software contribution: polarisR\n\nI contributed to open-source software development by co-supervising the creation of the polarisR package (Yadav et al. 2025) during a Google Summer of Code project with Dr. Ursula Laa and Prof. Eun-Kyung Lee, whom I met during my visit to the University of Natural Resources and Life Sciences in Vienna, Austria. polarisR is a Shiny application for diagnosing 2\\text{-}D NLDR layouts using the quollr implementation. It also supports comparing how the data appear in high dimensions through various tour methods, including scatter, sage, and slice.",
+    "section": "\n7.5 Software contribution: polarisR\n",
+    "text": "7.5 Software contribution: polarisR\n\nI contributed to open-source software development by co-supervising the creation of the polarisR package (Yadav et al. 2025) during a Google Summer of Code project with Dr. Ursula Laa and Prof. Eun-Kyung Lee, whom I met during my visit to the University of Natural Resources and Life Sciences in Vienna, Austria. polarisR is a Shiny application for diagnosing 2\\text{-}D NLDR layouts using the quollr implementation. It also supports comparing how the data appear in high dimensions through various tour methods, including scatter, sage, and slice.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -493,8 +493,8 @@
     "objectID": "chapters/07-chap7.html#final-thoughts",
     "href": "chapters/07-chap7.html#final-thoughts",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.11 Final thoughts",
-    "text": "7.11 Final thoughts\nNeed to add final thoughts later…\n\n\n\n\n\n\n\n\n\n\n\n\nAllaire, J., and Dervieux, C. (2024), quarto: R Interface to Quarto Markdown Publishing System.\n\n\nBarber, C. B., Dobkin, D. P., and Huhdanpaa, H. (1996), “The Quickhull Algorithm for Convex Hulls,” ACM Trans. Math. Softw., 22, 469--483.\n\n\nBuja, A., Cook, D., Hofmann, H., Lawrence, M., Lee, E.-K., Swayne, D. F., and Wickham, H. (2009), “Statistical inference for exploratory data analysis and model diagnostics,” Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences, 367, 4361–4383.\n\n\nCook, D., Buja, A., Cabrera, J., and Hurley, C. (2000), “Grand Tour and Projection Pursuit,” Journal of Computational and Graphical Statistics, 4. https://doi.org/10.1080/10618600.1995.10474674.\n\n\nDang, T. N., and Wilkinson, L. (2014), “ScagExplorer: Exploring Scatterplots by Their Scagnostics,” in 2014 IEEE pacific visualization symposium, pp. 73–80. https://doi.org/10.1109/PacificVis.2014.42.\n\n\nHart, C., and Wang, E. (2022), detourr: Portable and Performant Tour Animations.\n\n\nKonopka, T. (2023), umap: Uniform Manifold Approximation and Projection.\n\n\nLaurent, S. (2023), cxhull: Convex Hull.\n\n\nSievert, C. (2020), Interactive web-based data visualization with r, plotly, and shiny, Chapman; Hall/CRC.\n\n\nWickham, H. (2016), ggplot2: Elegant Graphics for Data Analysis, Springer-Verlag New York.\n\n\nWilhelm, A. F. X., Wegman, E. J., and Symanzik, J. (1999), “Visual clustering and classification: The Oronsay particle size data set revisited,” Comput. Stat., USA: Kluwer Academic Publishers, 14, 109--146. https://doi.org/10.1007/PL00022701.\n\n\nWilkinson, L., and and, G. W. (2008), “Scagnostics Distributions,” Journal of Computational and Graphical Statistics, ASA Website, 17, 473–491. https://doi.org/10.1198/106186008X320465.\n\n\nYadav, D., Laa, U., Gamage, J. P., and Lee, E.-K. (2025), polarisR: Non-Linear Dimensionality Reduction Visualization Tool.",
+    "section": "\n7.12 Final thoughts",
+    "text": "7.12 Final thoughts\nNeed to add final thoughts later…\n\n\n\n\n\n\n\n\n\n\n\n\nAllaire, J., and Dervieux, C. (2024), quarto: R Interface to Quarto Markdown Publishing System.\n\n\nBarber, C. B., Dobkin, D. P., and Huhdanpaa, H. (1996), “The Quickhull Algorithm for Convex Hulls,” ACM Trans. Math. Softw., 22, 469--483.\n\n\nBuja, A., Cook, D., Hofmann, H., Lawrence, M., Lee, E.-K., Swayne, D. F., and Wickham, H. (2009), “Statistical inference for exploratory data analysis and model diagnostics,” Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences, 367, 4361–4383.\n\n\nCook, D., Buja, A., Cabrera, J., and Hurley, C. (2000), “Grand Tour and Projection Pursuit,” Journal of Computational and Graphical Statistics, 4. https://doi.org/10.1080/10618600.1995.10474674.\n\n\nDang, T. N., and Wilkinson, L. (2014), “ScagExplorer: Exploring Scatterplots by Their Scagnostics,” in 2014 IEEE pacific visualization symposium, pp. 73–80. https://doi.org/10.1109/PacificVis.2014.42.\n\n\nHart, C., and Wang, E. (2022), detourr: Portable and Performant Tour Animations.\n\n\nKonopka, T. (2023), umap: Uniform Manifold Approximation and Projection.\n\n\nLaurent, S. (2023), cxhull: Convex Hull.\n\n\nSievert, C. (2020), Interactive web-based data visualization with r, plotly, and shiny, Chapman; Hall/CRC.\n\n\nWickham, H. (2016), ggplot2: Elegant Graphics for Data Analysis, Springer-Verlag New York.\n\n\nWilhelm, A. F. X., Wegman, E. J., and Symanzik, J. (1999), “Visual clustering and classification: The Oronsay particle size data set revisited,” Comput. Stat., USA: Kluwer Academic Publishers, 14, 109--146. https://doi.org/10.1007/PL00022701.\n\n\nWilkinson, L., and and, G. W. (2008), “Scagnostics Distributions,” Journal of Computational and Graphical Statistics, ASA Website, 17, 473–491. https://doi.org/10.1198/106186008X320465.\n\n\nYadav, D., Laa, U., Gamage, J. P., and Lee, E.-K. (2025), polarisR: Non-Linear Dimensionality Reduction Visualization Tool.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -755,8 +755,8 @@
     "objectID": "chapters/07-chap7.html#contributions",
     "href": "chapters/07-chap7.html#contributions",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.3 Contributions",
-    "text": "7.3 Contributions\nThe primary contributions of this research are fivefold. First, we introduce a novel method for visualizing how NLDR warps data, thereby improving the diagnostics of NLDR techniques. Second, we develop an R package, quollr, which implements the proposed diagnostic method. Third, we create cardinalR, a package that generates high-dimensional clustering data structures with enhanced features such as added noise dimensions and background noise. Fourth, we conduct a human-subject experiment to investigate the perception and misperception of NLDR representations, providing evidence on how data structures are identified in NLDR layouts compared to tours. Finally, we develop a Shiny application that offers analysts a user-friendly interface for selecting the most accurate NLDR representation.\n\nThe software outputs of this research have been made publicly available to support transparency and reproducibility. The R package quollr has been on CRAN since March 2024 and has received 3656 downloads from the CRAN mirror; its development version is hosted on GitHub at github.com/jayanilakshika/quollr. The R package cardinalR has been available on CRAN since April 2024 and has received 3862 downloads from the CRAN mirror, with the latest development version at github.com/jayanilakshika/cardinalR. A Shiny application for quollr is accessible via one of the mirror sites at menurar.netlify.app/, with its source code available at github.com/JayaniLakshika/menuraR.\n\n\n\n\n\n\n\n\nFigure 7.1: Weekly commit activity for the cardinalR and quollr packages.\n\n\n\n\nThe survey web application, Match-a-roo (https://ebsmonash.shinyapps.io/Match-a-roo/), was designed and implemented in Shiny to collect participant responses and demographic information. Each subject accessed the survey through the shinyapps.io server.\n\nIn addition, a number of R packages were essential in the development of this work, including tidyverse (tidyverse?), lmtest (lmtest?), kableExtra (kableextra?), patchwork (patchwork?), glue (glue?), ggpcp (ggpcp?), here (here?), and knitr (knitr?). (Final package list to be confirmed upon completion of writing.)",
+    "section": "\n7.4 Contributions",
+    "text": "7.4 Contributions\nThe primary contributions of this research are fivefold. First, we introduce a novel method for visualizing how NLDR warps data, thereby improving the diagnostics of NLDR techniques. Second, we develop an R package, quollr, which implements the proposed diagnostic method. Third, we create cardinalR, a package that generates high-dimensional clustering data structures with enhanced features such as added noise dimensions and background noise. Fourth, we conduct a human-subject experiment to investigate the perception and misperception of NLDR representations, providing evidence on how data structures are identified in NLDR layouts compared to tours. Finally, we develop a Shiny application that offers analysts a user-friendly interface for selecting the most accurate NLDR representation.\n\n\n\n\n\n\n\n\nFigure 7.1: Weekly commit activity for the cardinalR and quollr packages.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -766,7 +766,7 @@
     "href": "chapters/07-chap7.html#reproducibility-and-availability",
     "title": "7  Conclusion and future plans",
     "section": "\n7.2 Reproducibility and availability",
-    "text": "7.2 Reproducibility and availability\nAll materials associated with this thesis are openly available to support transparency and reproducible research. The thesis is written in Quarto (Allaire and Dervieux 2024) and is available in both HTML and PDF formats. The HTML version, which includes interactive figures and linked visualizations, is published at jayani-lakshika-phd-thesis.netlify. The PDF version of the thesis is available at github.com/JayaniLakshika/Monash_PhD_thesis/_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-dimensional-Data.pdf.\nAll source code, data, and software used to generate the analyzes, figures, and results are maintained in a public GitHub repository at github.com/JayaniLakshika/Monash_PhD_thesis, enabling full reproduction of this work.",
+    "text": "7.2 Reproducibility and availability\nAll materials associated with this thesis are openly available to support transparency and reproducible research. The thesis is written in Quarto (Allaire and Dervieux 2024) and is available in both HTML and PDF formats. The HTML version, which includes interactive figures and linked visualizations, is published at jayani-lakshika-phd-thesis.netlify. The PDF version of the thesis is available at github.com/JayaniLakshika/Monash_PhD_thesis/_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-dimensional-Data.pdf. All source code, data, and software used to generate the analyzes, figures, and results are maintained in a public GitHub repository at github.com/JayaniLakshika/Monash_PhD_thesis, enabling full reproduction of this work.\n\nThe software outputs of this research have been made publicly available to support transparency and reproducibility. The R package quollr has been on CRAN since March 2024 and has received 5041 downloads from the CRAN mirror; its development version is hosted on GitHub at github.com/jayanilakshika/quollr. The R package cardinalR has been available on CRAN since April 2024 and has received 4283 downloads from the CRAN mirror, with the latest development version at github.com/jayanilakshika/cardinalR.\nA Shiny application for quollr is accessible via one of the mirror sites at menurar.netlify.app/, with its source code available at github.com/JayaniLakshika/menuraR. The survey web application, Match-a-roo (https://ebsmonash.shinyapps.io/Match-a-roo/), was designed and implemented in Shiny to collect participant responses and demographic information. Each subject accessed the survey through the shinyapps.io server.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -775,8 +775,8 @@
     "objectID": "chapters/07-chap7.html#mentoring",
     "href": "chapters/07-chap7.html#mentoring",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.9 Mentoring",
-    "text": "7.9 Mentoring\nIn July 2025, I had the privilege of serving as a coach in the Monash Innovation Guarantee Postgraduate (MIG-P) program. Over three inspiring weeks, I worked with a diverse cohort of master’s students as they tackled real-world, industry-defined challenges. It was an incredible experience to support their journey from exploration and ideation through to prototyping and pitching—witnessing their creativity, resilience, and ability to thrive in ambiguity.\n\n\n\n\n\n\n\nFigure 7.2",
+    "section": "\n7.10 Mentoring",
+    "text": "7.10 Mentoring\nIn July 2025, I had the privilege of serving as a coach in the Monash Innovation Guarantee Postgraduate (MIG-P) program. Over three inspiring weeks, I worked with a diverse cohort of master’s students as they tackled real-world, industry-defined challenges. It was an incredible experience to support their journey from exploration and ideation through to prototyping and pitching—witnessing their creativity, resilience, and ability to thrive in ambiguity.\n\n\n\n\n\n\n\nFigure 7.2",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -785,8 +785,8 @@
     "objectID": "chapters/07-chap7.html#workshops",
     "href": "chapters/07-chap7.html#workshops",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.8 Workshops",
-    "text": "7.8 Workshops",
+    "section": "\n7.9 Workshops",
+    "text": "7.9 Workshops",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -795,8 +795,8 @@
     "objectID": "chapters/07-chap7.html#presentations",
     "href": "chapters/07-chap7.html#presentations",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.5 Presentations",
-    "text": "7.5 Presentations\nI presented my research work at 12^{th}-Conference of the Asian Regional Section of the International Association for Statistical Computing (IASC-ARS 2023) (Wollongon, Australia), Australian Statistical Conference (ASC 2023) (Wollongon, Australia), Bioinformatics Seminar 2024, Victorian branch of the Australian and New Zealand Industrial and Applied Mathematics Society (VicANZIAM) 2024 (RMIT university, Melbourne, Australia), Faculty of BusEco Three Minute Thesis (3MT) competition 2024, useR! 2024 (Salzburg, Austria), Graphics Group Presentation 2024 (Nebraska, USA), UNO Data Science Club 2024 (Omaha, USA), Joint Statistical Meetings (JSM) 2025 (Nashville, USA), useR! 2025 (Durham, USA), Biometrics in the Bush Capital (BIBC2025) (Canberra, Australia), and Australian Statistical Conference (ASC 2025) (Perth, Western Australia).",
+    "section": "\n7.6 Presentations",
+    "text": "7.6 Presentations\nI presented my research work at 12^{th}-Conference of the Asian Regional Section of the International Association for Statistical Computing (IASC-ARS 2023) (Wollongon, Australia), Australian Statistical Conference (ASC 2023) (Wollongon, Australia), Bioinformatics Seminar 2024, Victorian branch of the Australian and New Zealand Industrial and Applied Mathematics Society (VicANZIAM) 2024 (RMIT university, Melbourne, Australia), Faculty of BusEco Three Minute Thesis (3MT) competition 2024, useR! 2024 (Salzburg, Austria), Graphics Group Presentation 2024 (Nebraska, USA), UNO Data Science Club 2024 (Omaha, USA), Joint Statistical Meetings (JSM) 2025 (Nashville, USA), useR! 2025 (Durham, USA), Biometrics in the Bush Capital (BIBC2025) (Canberra, Australia), and Australian Statistical Conference (ASC 2025) (Perth, Western Australia).",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -805,8 +805,8 @@
     "objectID": "chapters/07-chap7.html#visiting",
     "href": "chapters/07-chap7.html#visiting",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.6 Visiting",
-    "text": "7.6 Visiting",
+    "section": "\n7.7 Visiting",
+    "text": "7.7 Visiting",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -815,8 +815,8 @@
     "objectID": "chapters/07-chap7.html#organizing-numbats-seminars",
     "href": "chapters/07-chap7.html#organizing-numbats-seminars",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.7 Organizing NUMBATs seminars",
-    "text": "7.7 Organizing NUMBATs seminars",
+    "section": "\n7.8 Organizing NUMBATs seminars",
+    "text": "7.8 Organizing NUMBATs seminars",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -825,8 +825,18 @@
     "objectID": "chapters/07-chap7.html#awards",
     "href": "chapters/07-chap7.html#awards",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.10 Awards",
-    "text": "7.10 Awards",
+    "section": "\n7.11 Awards",
+    "text": "7.11 Awards",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-chap7.html#supporting-r-packages",
+    "href": "chapters/07-chap7.html#supporting-r-packages",
+    "title": "7  Conclusion and future plans",
+    "section": "\n7.3 Supporting R packages",
+    "text": "7.3 Supporting R packages\n\nIn addition, a number of R packages were essential in the development of this work, including tidyverse (tidyverse?), lmtest (lmtest?), kableExtra (kableextra?), patchwork (patchwork?), glue (glue?), ggpcp (ggpcp?), here (here?), and knitr (knitr?). (Final package list to be confirmed upon completion of writing.)",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
