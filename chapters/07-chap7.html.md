@@ -134,6 +134,14 @@ In addition, a number of R packages were essential in the development of this wo
 
 I contributed to open-source software development by co-supervising the creation of the `polarisR` package [@divendra2025] during a Google Summer of Code project with Dr. Ursula Laa and Prof. Eun-Kyung Lee, whom I met during my visit to the University of Natural Resources and Life Sciences in Vienna, Austria. `polarisR` is a Shiny application for diagnosing $2\text{-}D$ NLDR layouts using the `quollr` implementation. It also supports comparing how the data appear in high dimensions through various tour methods, including scatter, sage, and slice.
 
+## Presentations
+
+I presented my research work at $12^{th}$-Conference of the Asian Regional Section of the International Association for Statistical Computing (IASC-ARS 2023) (Wollongon, Australia), Australian Statistical Conference (ASC 2023) (Wollongon, Australia), Bioinformatics Seminar 2024, Victorian branch of the Australian and New Zealand Industrial and Applied Mathematics Society (VicANZIAM) 2024 (RMIT university, Melbourne, Australia), Faculty of BusEco Three Minute Thesis (3MT) competition 2024, useR! 2024 (Salzburg, Austria), Graphics Group Presentation 2024 (Nebraska, USA), UNO Data Science Club 2024 (Omaha, USA), Joint Statistical Meetings (JSM) 2025 (Nashville, USA), useR! 2025 (Durham, USA), Biometrics in the Bush Capital (BIBC2025) (Canberra, Australia), and Australian Statistical Conference (ASC 2025) (Perth, Western Australia).
+
+## Visiting
+
+## Organizing NUMBATs seminars
+
 ## Workshops
 
 ## Mentoring
@@ -147,6 +155,8 @@ In July 2025, I had the privilege of serving as a coach in the Monash Innovation
 :::
 :::
 
+
+## Awards
 
 ## Final thoughts
 
