@@ -47,7 +47,9 @@ Once the desired layouts are finalized, users click ``Start Analysis'' to procee
 
 
 ::: {.cell layout-align="center"}
-
+::: {.cell-output-display}
+![Data Upload and NLDR layout Configuration in `menuraR`. The *Data Input* tab enables users to upload high-dimensional datasets or use built-in examples, and generate or upload NLDR layouts. Users can create additional layouts with custom hyper-parameters, and manage loaded embeddings for downstream comparison.](../figures/menuraR/menuraR_ui1.png){#fig-menuraR_ui1 fig-align='center' width=100%}
+:::
 :::
 
 

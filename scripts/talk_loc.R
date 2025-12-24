@@ -106,13 +106,13 @@ aus <- ne_countries(country = "Australia", returnclass = "sf")
 # Approximate coordinates for major cities
 cities <- data.frame(
   name = c("Sydney", "Melbourne", "Canberra", "Perth"),
-  lon = c(151.2093, 144.9631, 149.1300, 115.8575),
-  lat = c(-33.8688, -37.8136, -35.2809, -31.9505),
+  lon = c(151.2093, 140.9631, 149.1300, 115.8575),
+  lat = c(-25.8688, -35.8136, -36.2809, -31.9505),
   image = c(
-    here::here("figures/tennessee.png"),
-    here::here("figures/tennessee.png"),
-    here::here("figures/tennessee.png"),
-    here::here("figures/tennessee.png")
+    here::here("figures/sydney.png"),
+    here::here("figures/melbourne.png"),
+    here::here("figures/canberra.png"),
+    here::here("figures/perth.png")
   ) # replace with your images or URLs
 )
 
@@ -123,7 +123,7 @@ aus_map <- ggplot(aus) +
   #           nudge_y = 0.5, size = 4) +                                # city labels
   coord_sf(
     xlim = c(110, 155),    # longitude limits to zoom on southeast region
-    ylim = c(-40, -30)     # latitude limits
+    ylim = c(-40, -20)     # latitude limits
   ) +
   theme_minimal() +
   theme(

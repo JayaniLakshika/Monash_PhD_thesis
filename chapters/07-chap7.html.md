@@ -141,7 +141,7 @@ Need to add final thoughts later...
 
 ::: {.cell}
 ::: {.cell-output-display}
-![](07-chap7_files/figure-html/unnamed-chunk-1-1.png){width=960}
+![](07-chap7_files/figure-html/unnamed-chunk-1-1.png){width=768}
 :::
 :::
 

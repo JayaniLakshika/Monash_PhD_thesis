@@ -150,8 +150,8 @@ By comparing how users interpret and misinterpret PCA layouts versus NLDR genera
 Need to add final thoughts later...
 
 ```{r}
-#| fig-width: 10
-#| fig-height: 10
+#| fig-width: 8
+#| fig-height: 11
 
 library(knitr)
 library(gridExtra)
@@ -161,8 +161,7 @@ library(grid)
 # Read images
 austria_img <- rasterGrob(png::readPNG(here::here("figures/austria.png")), interpolate=TRUE)
 usa_img     <- rasterGrob(png::readPNG(here::here("figures/usa.png")), interpolate=TRUE)
-aus_img     <- rasterGrob(png::readPNG(here::here("figures/usa.png")), interpolate=TRUE)
-aus_img     <- rasterGrob(png::readPNG(here::here("figures/usa.png")), interpolate=TRUE)
+aus_img     <- rasterGrob(png::readPNG(here::here("figures/australia.png")), interpolate=TRUE)
 summary_img     <- rasterGrob(png::readPNG(here::here("figures/pkg_summary.png")), interpolate=TRUE)
 
 # Arrange in one row
