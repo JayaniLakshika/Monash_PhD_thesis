@@ -263,18 +263,19 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title"><b>Sections</b></h2>
    
   <ul class="collapse">
-<li><a href="#future-work" id="toc-future-work" class="nav-link active" data-scroll-target="#future-work"><span class="header-section-number">7.1</span> Future work</a></li>
-  <li><a href="#reproducibility-and-availability" id="toc-reproducibility-and-availability" class="nav-link" data-scroll-target="#reproducibility-and-availability"><span class="header-section-number">7.2</span> Reproducibility and availability</a></li>
-  <li><a href="#supporting-r-packages" id="toc-supporting-r-packages" class="nav-link" data-scroll-target="#supporting-r-packages"><span class="header-section-number">7.3</span> Supporting R packages</a></li>
-  <li><a href="#contributions" id="toc-contributions" class="nav-link" data-scroll-target="#contributions"><span class="header-section-number">7.4</span> Contributions</a></li>
-  <li><a href="#software-contribution-polarisr" id="toc-software-contribution-polarisr" class="nav-link" data-scroll-target="#software-contribution-polarisr"><span class="header-section-number">7.5</span> Software contribution: <code>polarisR</code></a></li>
+<li><a href="#contributions" id="toc-contributions" class="nav-link active" data-scroll-target="#contributions"><span class="header-section-number">7.1</span> Contributions</a></li>
+  <li><a href="#future-work" id="toc-future-work" class="nav-link" data-scroll-target="#future-work"><span class="header-section-number">7.2</span> Future work</a></li>
+  <li><a href="#reproducibility-and-availability" id="toc-reproducibility-and-availability" class="nav-link" data-scroll-target="#reproducibility-and-availability"><span class="header-section-number">7.3</span> Reproducibility and availability</a></li>
+  <li><a href="#supporting-r-packages" id="toc-supporting-r-packages" class="nav-link" data-scroll-target="#supporting-r-packages"><span class="header-section-number">7.4</span> Supporting R packages</a></li>
+  <li><a href="#research-workflow-and-project-organization" id="toc-research-workflow-and-project-organization" class="nav-link" data-scroll-target="#research-workflow-and-project-organization"><span class="header-section-number">7.5</span> Research workflow and project organization</a></li>
   <li><a href="#presentations" id="toc-presentations" class="nav-link" data-scroll-target="#presentations"><span class="header-section-number">7.6</span> Presentations</a></li>
   <li><a href="#visiting" id="toc-visiting" class="nav-link" data-scroll-target="#visiting"><span class="header-section-number">7.7</span> Visiting</a></li>
   <li><a href="#organizing-numbats-seminars" id="toc-organizing-numbats-seminars" class="nav-link" data-scroll-target="#organizing-numbats-seminars"><span class="header-section-number">7.8</span> Organizing NUMBATs seminars</a></li>
   <li><a href="#workshops" id="toc-workshops" class="nav-link" data-scroll-target="#workshops"><span class="header-section-number">7.9</span> Workshops</a></li>
   <li><a href="#mentoring" id="toc-mentoring" class="nav-link" data-scroll-target="#mentoring"><span class="header-section-number">7.10</span> Mentoring</a></li>
-  <li><a href="#awards" id="toc-awards" class="nav-link" data-scroll-target="#awards"><span class="header-section-number">7.11</span> Awards</a></li>
-  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts"><span class="header-section-number">7.12</span> Final thoughts</a></li>
+  <li><a href="#additional-contributions" id="toc-additional-contributions" class="nav-link" data-scroll-target="#additional-contributions"><span class="header-section-number">7.11</span> Additional contributions</a></li>
+  <li><a href="#awards" id="toc-awards" class="nav-link" data-scroll-target="#awards"><span class="header-section-number">7.12</span> Awards</a></li>
+  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts"><span class="header-section-number">7.13</span> Final thoughts</a></li>
   </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/chapters/07-chap7.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -294,8 +295,11 @@ window.Quarto = {
 
 
 </header><p>This thesis presents five key contributions that collectively advance the understanding and evaluation of NLDR methods. The work introduces a new method and software for NLDR diagnostics, provides insights into how people identify data structures when NLDR layouts and tour views are shown together, develops methods for generating clustering data structures, and implements user-friendly tools that support exploratory analysis and visualization.</p>
-<section id="future-work" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="future-work">
-<span class="header-section-number">7.1</span> Future work</h2>
+<section id="contributions" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="contributions">
+<span class="header-section-number">7.1</span> Contributions</h2>
+<p>The primary contributions of this research are fivefold. First, we introduce a novel method for visualizing how NLDR warps data, thereby improving the diagnostics of NLDR techniques. Second, we develop an R package, <code>quollr</code>, which implements the proposed diagnostic method. Third, we create <code>cardinalR</code>, a package that generates high-dimensional clustering data structures with enhanced features such as added noise dimensions and background noise. Fourth, we conduct a human-subject experiment to investigate the perception and misperception of NLDR representations, providing evidence on how data structures are identified in NLDR layouts compared to tours. Finally, we develop a Shiny application that offers analysts a user-friendly interface for selecting the most accurate NLDR representation.</p>
+</section><section id="future-work" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="future-work">
+<span class="header-section-number">7.2</span> Future work</h2>
 <p>There are several directions that this work can be developed.</p>
 <!-- - Scagnostics to evaluate NLDR -->
 <!-- - 3D NLDR investigation (rather than using hexbin centroids, use kmeans to investigate the model in 3D) -->
@@ -351,19 +355,16 @@ window.Quarto = {
 </section><section id="comparative-perceptual-study-of-pca-and-nldr-methods" class="level3"><h3 class="anchored" data-anchor-id="comparative-perceptual-study-of-pca-and-nldr-methods">Comparative perceptual study of PCA and NLDR Methods</h3>
 <p>Another valuable direction for future work is to investigate how PCA compares to NLDR methods in terms of human perception and interpretability. PCA is a linear method widely used for its simplicity and mathematical transparency, whereas NLDR methods often involve non-linear transformations and hyper-parameter tuning.</p>
 <p>By comparing how users interpret and misinterpret PCA layouts versus NLDR generated layouts, we can gain insights into whether linear techniques are inherently easier to understand or whether they may lead to different types of visual distortions. This work would help clarify when PCA is sufficient for visual analysis and when the added complexity of NLDR is warranted, particularly for exploratory tasks that rely on visual intuition.</p>
-</section></section><section id="reproducibility-and-availability" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="reproducibility-and-availability">
-<span class="header-section-number">7.2</span> Reproducibility and availability</h2>
+</section></section><section id="reproducibility-and-availability" class="level2" data-number="7.3"><h2 data-number="7.3" class="anchored" data-anchor-id="reproducibility-and-availability">
+<span class="header-section-number">7.3</span> Reproducibility and availability</h2>
 <p>All materials associated with this thesis are openly available to support transparency and reproducible research. The thesis is written in Quarto <span class="citation" data-cites="jjallaire2024">(<a href="../refs.html#ref-jjallaire2024" role="doc-biblioref">Allaire and Dervieux 2024</a>)</span> and is available in both <strong>HTML</strong> and <strong>PDF</strong> formats. The <strong>HTML version</strong>, which includes interactive figures and linked visualizations, is published at <a href="https://jayani-lakshika-phd-thesis.netlify.app">jayani-lakshika-phd-thesis.netlify</a>. The <strong>PDF version</strong> of the thesis is available at <a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-dimensional-Data.pdf">github.com/JayaniLakshika/Monash_PhD_thesis/_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-dimensional-Data.pdf</a>. All source code, data, and software used to generate the analyzes, figures, and results are maintained in a public GitHub repository at <a href="https://github.com/JayaniLakshika/Monash_PhD_thesis">github.com/JayaniLakshika/Monash_PhD_thesis</a>, enabling full reproduction of this work.</p>
 <!--scripts/pkg_cran_info.R-->
 <p>The software outputs of this research have been made publicly available to support transparency and reproducibility. The R package <code>quollr</code> has been on CRAN since March <span class="math inline">2024</span> and has received <span class="math inline">5041</span> downloads from the CRAN mirror; its development version is hosted on GitHub at <a href="https://github.com/jayanilakshika/quollr">github.com/jayanilakshika/quollr</a>. The R package <code>cardinalR</code> has been available on CRAN since April <span class="math inline">2024</span> and has received <span class="math inline">4283</span> downloads from the CRAN mirror, with the latest development version at <a href="https://github.com/jayanilakshika/cardinalR">github.com/jayanilakshika/cardinalR</a>.</p>
 <p>A Shiny application for <code>quollr</code> is accessible via one of the mirror sites at <a href="https://menurar.netlify.app/">menurar.netlify.app/</a>, with its source code available at <a href="https://github.com/JayaniLakshika/menuraR">github.com/JayaniLakshika/menuraR</a>. The survey web application, <strong>Match-a-roo</strong> (<a href="https://ebsmonash.shinyapps.io/Match-a-roo/">https://ebsmonash.shinyapps.io/Match-a-roo/</a>), was designed and implemented in Shiny to collect participant responses and demographic information. Each subject accessed the survey through the <a href="https://www.shinyapps.io/">shinyapps.io</a> server.</p>
-</section><section id="supporting-r-packages" class="level2" data-number="7.3"><h2 data-number="7.3" class="anchored" data-anchor-id="supporting-r-packages">
-<span class="header-section-number">7.3</span> Supporting R packages</h2>
+</section><section id="supporting-r-packages" class="level2" data-number="7.4"><h2 data-number="7.4" class="anchored" data-anchor-id="supporting-r-packages">
+<span class="header-section-number">7.4</span> Supporting R packages</h2>
 <!--need to update at the end of writing-->
 <p>In addition, a number of R packages were essential in the development of this work, including <code>tidyverse</code> <span class="citation" data-cites="tidyverse">(<a href="../refs.html#ref-tidyverse" role="doc-biblioref"><strong>tidyverse?</strong></a>)</span>, <code>lmtest</code> <span class="citation" data-cites="lmtest">(<a href="../refs.html#ref-lmtest" role="doc-biblioref"><strong>lmtest?</strong></a>)</span>, <code>kableExtra</code> <span class="citation" data-cites="kableextra">(<a href="../refs.html#ref-kableextra" role="doc-biblioref"><strong>kableextra?</strong></a>)</span>, <code>patchwork</code> <span class="citation" data-cites="patchwork">(<a href="../refs.html#ref-patchwork" role="doc-biblioref"><strong>patchwork?</strong></a>)</span>, <code>glue</code> <span class="citation" data-cites="glue">(<a href="../refs.html#ref-glue" role="doc-biblioref"><strong>glue?</strong></a>)</span>, <code>ggpcp</code> <span class="citation" data-cites="ggpcp">(<a href="../refs.html#ref-ggpcp" role="doc-biblioref"><strong>ggpcp?</strong></a>)</span>, <code>here</code> <span class="citation" data-cites="here">(<a href="../refs.html#ref-here" role="doc-biblioref"><strong>here?</strong></a>)</span>, and <code>knitr</code> <span class="citation" data-cites="knitr">(<a href="../refs.html#ref-knitr" role="doc-biblioref"><strong>knitr?</strong></a>)</span>. (Final package list to be confirmed upon completion of writing.)</p>
-</section><section id="contributions" class="level2" data-number="7.4"><h2 data-number="7.4" class="anchored" data-anchor-id="contributions">
-<span class="header-section-number">7.4</span> Contributions</h2>
-<p>The primary contributions of this research are fivefold. First, we introduce a novel method for visualizing how NLDR warps data, thereby improving the diagnostics of NLDR techniques. Second, we develop an R package, <code>quollr</code>, which implements the proposed diagnostic method. Third, we create <code>cardinalR</code>, a package that generates high-dimensional clustering data structures with enhanced features such as added noise dimensions and background noise. Fourth, we conduct a human-subject experiment to investigate the perception and misperception of NLDR representations, providing evidence on how data structures are identified in NLDR layouts compared to tours. Finally, we develop a Shiny application that offers analysts a user-friendly interface for selecting the most accurate NLDR representation.</p>
 <!--scripts/git_commits.R-->
 <div class="cell">
 <div class="cell-output-display">
@@ -377,10 +378,8 @@ Figure&nbsp;7.1: Weekly commit activity for the <code>cardinalR</code> and <code
 </div>
 </div>
 </div>
-</section><section id="software-contribution-polarisr" class="level2" data-number="7.5"><h2 data-number="7.5" class="anchored" data-anchor-id="software-contribution-polarisr">
-<span class="header-section-number">7.5</span> Software contribution: <code>polarisR</code>
-</h2>
-<p>I contributed to open-source software development by co-supervising the creation of the <code>polarisR</code> package <span class="citation" data-cites="divendra2025">(<a href="../refs.html#ref-divendra2025" role="doc-biblioref">Yadav et al. 2025</a>)</span> during a Google Summer of Code project with Dr.&nbsp;Ursula Laa and Prof.&nbsp;Eun-Kyung Lee, whom I met during my visit to the University of Natural Resources and Life Sciences in Vienna, Austria. <code>polarisR</code> is a Shiny application for diagnosing <span class="math inline">2\text{-}D</span> NLDR layouts using the <code>quollr</code> implementation. It also supports comparing how the data appear in high dimensions through various tour methods, including scatter, sage, and slice.</p>
+</section><section id="research-workflow-and-project-organization" class="level2" data-number="7.5"><h2 data-number="7.5" class="anchored" data-anchor-id="research-workflow-and-project-organization">
+<span class="header-section-number">7.5</span> Research workflow and project organization</h2>
 </section><section id="presentations" class="level2" data-number="7.6"><h2 data-number="7.6" class="anchored" data-anchor-id="presentations">
 <span class="header-section-number">7.6</span> Presentations</h2>
 <p>I presented my research work at <span class="math inline">12^{th}</span>-Conference of the Asian Regional Section of the International Association for Statistical Computing (IASC-ARS 2023) (Wollongon, Australia), Australian Statistical Conference (ASC 2023) (Wollongon, Australia), Bioinformatics Seminar 2024, Victorian branch of the Australian and New Zealand Industrial and Applied Mathematics Society (VicANZIAM) 2024 (RMIT university, Melbourne, Australia), Faculty of BusEco Three Minute Thesis (3MT) competition 2024, useR! 2024 (Salzburg, Austria), Graphics Group Presentation 2024 (Nebraska, USA), UNO Data Science Club 2024 (Omaha, USA), Joint Statistical Meetings (JSM) 2025 (Nashville, USA), useR! 2025 (Durham, USA), Biometrics in the Bush Capital (BIBC2025) (Canberra, Australia), and Australian Statistical Conference (ASC 2025) (Perth, Western Australia).</p>
@@ -405,10 +404,13 @@ Figure&nbsp;7.2
 </div>
 </div>
 </div>
-</section><section id="awards" class="level2" data-number="7.11"><h2 data-number="7.11" class="anchored" data-anchor-id="awards">
-<span class="header-section-number">7.11</span> Awards</h2>
-</section><section id="final-thoughts" class="level2" data-number="7.12"><h2 data-number="7.12" class="anchored" data-anchor-id="final-thoughts">
-<span class="header-section-number">7.12</span> Final thoughts</h2>
+</section><section id="additional-contributions" class="level2" data-number="7.11"><h2 data-number="7.11" class="anchored" data-anchor-id="additional-contributions">
+<span class="header-section-number">7.11</span> Additional contributions</h2>
+<p>I contributed to open-source software development by co-supervising the creation of the <code>polarisR</code> package <span class="citation" data-cites="divendra2025">(<a href="../refs.html#ref-divendra2025" role="doc-biblioref">Yadav et al. 2025</a>)</span> during a Google Summer of Code project with Dr.&nbsp;Ursula Laa and Prof.&nbsp;Eun-Kyung Lee, whom I met during my visit to the University of Natural Resources and Life Sciences in Vienna, Austria. <code>polarisR</code> is a Shiny application for diagnosing <span class="math inline">2\text{-}D</span> NLDR layouts using the <code>quollr</code> implementation. It also supports comparing how the data appear in high dimensions through various tour methods, including scatter, sage, and slice.</p>
+</section><section id="awards" class="level2" data-number="7.12"><h2 data-number="7.12" class="anchored" data-anchor-id="awards">
+<span class="header-section-number">7.12</span> Awards</h2>
+</section><section id="final-thoughts" class="level2" data-number="7.13"><h2 data-number="7.13" class="anchored" data-anchor-id="final-thoughts">
+<span class="header-section-number">7.13</span> Final thoughts</h2>
 <p>Need to add final thoughts later…</p>
 <div class="cell">
 <div class="cell-output-display">

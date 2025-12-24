@@ -2,6 +2,10 @@
 
 This thesis presents five key contributions that collectively advance the understanding and evaluation of NLDR methods. The work introduces a new method and software for NLDR diagnostics, provides insights into how people identify data structures when NLDR layouts and tour views are shown together, develops methods for generating clustering data structures, and implements user-friendly tools that support exploratory analysis and visualization.
 
+## Contributions
+
+The primary contributions of this research are fivefold. First, we introduce a novel method for visualizing how NLDR warps data, thereby improving the diagnostics of NLDR techniques. Second, we develop an R package, `quollr`, which implements the proposed diagnostic method. Third, we create `cardinalR`, a package that generates high-dimensional clustering data structures with enhanced features such as added noise dimensions and background noise. Fourth, we conduct a human-subject experiment to investigate the perception and misperception of NLDR representations, providing evidence on how data structures are identified in NLDR layouts compared to tours. Finally, we develop a Shiny application that offers analysts a user-friendly interface for selecting the most accurate NLDR representation.
+
 ## Future work
 
 There are several directions that this work can be developed.
@@ -117,10 +121,6 @@ A Shiny application for `quollr` is accessible via one of the mirror sites at [m
 <!--need to update at the end of writing-->
 In addition, a number of R packages were essential in the development of this work, including `tidyverse` [@tidyverse], `lmtest` [@lmtest], `kableExtra` [@kableextra], `patchwork` [@patchwork], `glue` [@glue], `ggpcp` [@ggpcp], `here` [@here], and `knitr` [@knitr]. (Final package list to be confirmed upon completion of writing.)
 
-## Contributions
-
-The primary contributions of this research are fivefold. First, we introduce a novel method for visualizing how NLDR warps data, thereby improving the diagnostics of NLDR techniques. Second, we develop an R package, `quollr`, which implements the proposed diagnostic method. Third, we create `cardinalR`, a package that generates high-dimensional clustering data structures with enhanced features such as added noise dimensions and background noise. Fourth, we conduct a human-subject experiment to investigate the perception and misperception of NLDR representations, providing evidence on how data structures are identified in NLDR layouts compared to tours. Finally, we develop a Shiny application that offers analysts a user-friendly interface for selecting the most accurate NLDR representation.
-
 <!--scripts/git_commits.R-->
 
 ::: {.cell}
@@ -130,9 +130,7 @@ The primary contributions of this research are fivefold. First, we introduce a n
 :::
 
 
-## Software contribution: `polarisR`
-
-I contributed to open-source software development by co-supervising the creation of the `polarisR` package [@divendra2025] during a Google Summer of Code project with Dr. Ursula Laa and Prof. Eun-Kyung Lee, whom I met during my visit to the University of Natural Resources and Life Sciences in Vienna, Austria. `polarisR` is a Shiny application for diagnosing $2\text{-}D$ NLDR layouts using the `quollr` implementation. It also supports comparing how the data appear in high dimensions through various tour methods, including scatter, sage, and slice.
+## Research workflow and project organization
 
 ## Presentations
 
@@ -155,6 +153,10 @@ In July 2025, I had the privilege of serving as a coach in the Monash Innovation
 :::
 :::
 
+
+## Additional contributions
+
+I contributed to open-source software development by co-supervising the creation of the `polarisR` package [@divendra2025] during a Google Summer of Code project with Dr. Ursula Laa and Prof. Eun-Kyung Lee, whom I met during my visit to the University of Natural Resources and Life Sciences in Vienna, Austria. `polarisR` is a Shiny application for diagnosing $2\text{-}D$ NLDR layouts using the `quollr` implementation. It also supports comparing how the data appear in high dimensions through various tour methods, including scatter, sage, and slice.
 
 ## Awards
 
