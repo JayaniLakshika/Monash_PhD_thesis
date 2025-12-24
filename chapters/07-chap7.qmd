@@ -149,17 +149,23 @@ I presented my research work at $12^{th}$-Conference of the Asian Regional Secti
 
 ## Visiting
 
+In July $2024$, I had the privilege of visiting A/Prof. Ursula Laa at the University of Natural Resources and Life Sciences, Vienna (BOKU University), accompanied by Prof. Di Cook, Prof. Eun-Kyung Lee, and A/Prof. Natalia da Silva. During this visit, I engaged with academic staff, students, and fellow visitors at BOKU University, gaining valuable insights into their research and receiving constructive feedback on my work and its potential contributions to ongoing projects. <!--I am deeply grateful to my main supervisor, Prof. Di Cook, for organizing this visit, and to A/Prof. Ursula Laa for graciously hosting me.-->
+
+From late October to late December $2024$, I visited Prof. Heike Hofmann, A/Prof. Susan VanderPlas, and Dr. Michelle Graham at the University of Nebraska, Lincoln, USA (UNL). During this time, I presented my research on high-dimensional data visualization and dimension reduction techniques, participated in the Nebraska R User Group meetings, and joined discussions with the Graphics Group, which provided rich opportunities for collaboration and learning. <!--I am grateful to Prof. Di Cook for organizing this visit, to Prof. Heike Hofmann and A/Prof. Susan VanderPlas for inviting me, and to Dr. Michelle Graham for taking the time to meet during my stay.-->
+
+These visits were invaluable for broadening my perspective, fostering meaningful exchanges with experts, and deepening my understanding of dynamic visualization and multivariate data analysis. I also explored several resources that informed my work, including research on dynamic tours for high-dimensional data, parallel coordinate plots, perceptual accuracy in visualizations, and interactive visualization tools such as *langevitour* and *tourr*.
+
 ## Academic service & community engagment
 
 During my PhD, I contributed to the academic and statistical communities through service, leadership, and outreach, supporting inclusive research and knowledge exchange. My roles include NUMBATs Seminar Organizer (Monash University, 2025), Session Chair at useR! 2024 (Salzburg) and ASC 2023 (Wollongong), Tutorial Helper for WOMBATs Tutorials (Monash University, 2022), and organizer for R-Ladies Melbourne (2023). These activities let me connect with diverse audiences, support early-career researchers, and share ideas about stats and computational methods.
 
 ## Workshops
 
-I have been part of delivering [workshops](https://jayanilakshika.netlify.app/workshops) on *Reproducible Reporting and Research with Quarto* (September 2025) and *Reproducible Reporting, Academic Papers, Presentations, and Theses with Quarto* (July 2025), contributing to hands-on training for researchers on reproducible practices and effective research communication.
+I have been part of delivering and preparing materials for [workshops](https://jayanilakshika.netlify.app/workshops) on *Reproducible Reporting and Research with Quarto* (September 2025) and *Reproducible Reporting, Academic Papers, Presentations, and Theses with Quarto* (July 2025), contributing to hands-on training for researchers on reproducible practices and effective research communication.
 
 ## Mentoring
 
-In July 2025, I had the privilege of serving as a coach in the Monash Innovation Guarantee Postgraduate (MIG-P) program. Over three inspiring weeks, I worked with a diverse cohort of master’s students as they tackled real-world, industry-defined challenges. It was an incredible experience to support their journey from exploration and ideation through to prototyping and pitching—witnessing their creativity, resilience, and ability to thrive in ambiguity.
+In July $2025$, I had the privilege of serving as a coach in the Monash Innovation Guarantee Postgraduate (MIG-P) program. Over three inspiring weeks, I worked with a diverse cohort of master’s students as they tackled real-world, industry-defined challenges. It was an incredible experience to support their journey from exploration and ideation through to prototyping and pitching—witnessing their creativity, resilience, and ability to thrive in ambiguity.
 
 ```{r fig-migp, out.width = "30%", fig.pos="H", fig.cap=""}
 
@@ -172,7 +178,7 @@ I contributed to open-source software development by co-supervising the creation
 
 ## Teaching
 
-
+I have contributed to teaching a range of undergraduate and postgraduate courses in statistics, data analysis, and machine learning. These include *Statistical Thinking* ([ETC5242], 2025; [ETC2420], 2025), *Introduction to Data Analysis* ([ETC5510], 2024; [ETC1010], 2024), *Introduction to Machine Learning* ([ETC3250], 2023–2024; [ETC5250], 2023–2025), and *Exploratory Data Analysis* ([ETC5521], 2023). 
 
 ## Final thoughts
 

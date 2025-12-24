@@ -786,7 +786,7 @@
     "href": "chapters/07-chap7.html#workshops",
     "title": "7  Conclusion and future plans",
     "section": "\n7.9 Workshops",
-    "text": "7.9 Workshops\nI have been part of delivering workshops on Reproducible Reporting and Research with Quarto (September 2025) and Reproducible Reporting, Academic Papers, Presentations, and Theses with Quarto (July 2025), contributing to hands-on training for researchers on reproducible practices and effective research communication.",
+    "text": "7.9 Workshops\nI have been part of delivering and preparing materials for workshops on Reproducible Reporting and Research with Quarto (September 2025) and Reproducible Reporting, Academic Papers, Presentations, and Theses with Quarto (July 2025), contributing to hands-on training for researchers on reproducible practices and effective research communication.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -806,7 +806,7 @@
     "href": "chapters/07-chap7.html#visiting",
     "title": "7  Conclusion and future plans",
     "section": "\n7.7 Visiting",
-    "text": "7.7 Visiting",
+    "text": "7.7 Visiting\nIn July 2024, I had the privilege of visiting A/Prof. Ursula Laa at the University of Natural Resources and Life Sciences, Vienna (BOKU University), accompanied by Prof. Di Cook, Prof. Eun-Kyung Lee, and A/Prof. Natalia da Silva. During this visit, I engaged with academic staff, students, and fellow visitors at BOKU University, gaining valuable insights into their research and receiving constructive feedback on my work and its potential contributions to ongoing projects. \nFrom late October to late December 2024, I visited Prof. Heike Hofmann, A/Prof. Susan VanderPlas, and Dr. Michelle Graham at the University of Nebraska, Lincoln, USA (UNL). During this time, I presented my research on high-dimensional data visualization and dimension reduction techniques, participated in the Nebraska R User Group meetings, and joined discussions with the Graphics Group, which provided rich opportunities for collaboration and learning. \nThese visits were invaluable for broadening my perspective, fostering meaningful exchanges with experts, and deepening my understanding of dynamic visualization and multivariate data analysis. I also explored several resources that informed my work, including research on dynamic tours for high-dimensional data, parallel coordinate plots, perceptual accuracy in visualizations, and interactive visualization tools such as langevitour and tourr.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -876,7 +876,7 @@
     "href": "chapters/07-chap7.html#teaching",
     "title": "7  Conclusion and future plans",
     "section": "\n7.12 Teaching",
-    "text": "7.12 Teaching",
+    "text": "7.12 Teaching\nI have contributed to teaching a range of undergraduate and postgraduate courses in statistics, data analysis, and machine learning. These include Statistical Thinking ([ETC5242], 2025; [ETC2420], 2025), Introduction to Data Analysis ([ETC5510], 2024; [ETC1010], 2024), Introduction to Machine Learning ([ETC3250], 2023–2024; [ETC5250], 2023–2025), and Exploratory Data Analysis ([ETC5521], 2023).",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
