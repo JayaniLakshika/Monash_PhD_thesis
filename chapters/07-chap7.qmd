@@ -149,9 +149,13 @@ I presented my research work at $12^{th}$-Conference of the Asian Regional Secti
 
 ## Visiting
 
-## Organizing NUMBATs seminars
+## Academic service & community engagment
+
+During my PhD, I contributed to the academic and statistical communities through service, leadership, and outreach, supporting inclusive research and knowledge exchange. My roles include NUMBATs Seminar Organizer (Monash University, 2025), Session Chair at useR! 2024 (Salzburg) and ASC 2023 (Wollongong), Tutorial Helper for WOMBATs Tutorials (Monash University, 2022), and organizer for R-Ladies Melbourne (2023). These activities let me connect with diverse audiences, support early-career researchers, and share ideas about stats and computational methods.
 
 ## Workshops
+
+I have been part of delivering [workshops](https://jayanilakshika.netlify.app/workshops) on *Reproducible Reporting and Research with Quarto* (September 2025) and *Reproducible Reporting, Academic Papers, Presentations, and Theses with Quarto* (July 2025), contributing to hands-on training for researchers on reproducible practices and effective research communication.
 
 ## Mentoring
 
@@ -165,6 +169,10 @@ knitr::include_graphics(here::here("figures/mig2025.png"))
 ## Additional contributions
 
 I contributed to open-source software development by co-supervising the creation of the `polarisR` package [@divendra2025] during a Google Summer of Code project with Dr. Ursula Laa and Prof. Eun-Kyung Lee, whom I met during my visit to the University of Natural Resources and Life Sciences in Vienna, Austria. `polarisR` is a Shiny application for diagnosing $2\text{-}D$ NLDR layouts using the `quollr` implementation. It also supports comparing how the data appear in high dimensions through various tour methods, including scatter, sage, and slice.
+
+## Teaching
+
+
 
 ## Final thoughts
 

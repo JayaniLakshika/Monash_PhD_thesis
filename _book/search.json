@@ -786,7 +786,7 @@
     "href": "chapters/07-chap7.html#workshops",
     "title": "7  Conclusion and future plans",
     "section": "\n7.9 Workshops",
-    "text": "7.9 Workshops",
+    "text": "7.9 Workshops\nI have been part of delivering workshops on Reproducible Reporting and Research with Quarto (September 2025) and Reproducible Reporting, Academic Papers, Presentations, and Theses with Quarto (July 2025), contributing to hands-on training for researchers on reproducible practices and effective research communication.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -857,6 +857,26 @@
     "title": "7  Conclusion and future plans",
     "section": "\n7.11 Additional contributions",
     "text": "7.11 Additional contributions\nI contributed to open-source software development by co-supervising the creation of the polarisR package (Yadav et al. 2025) during a Google Summer of Code project with Dr. Ursula Laa and Prof. Eun-Kyung Lee, whom I met during my visit to the University of Natural Resources and Life Sciences in Vienna, Austria. polarisR is a Shiny application for diagnosing 2\\text{-}D NLDR layouts using the quollr implementation. It also supports comparing how the data appear in high dimensions through various tour methods, including scatter, sage, and slice.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-chap7.html#academic-service-community-engagment",
+    "href": "chapters/07-chap7.html#academic-service-community-engagment",
+    "title": "7  Conclusion and future plans",
+    "section": "\n7.8 Academic service & community engagment",
+    "text": "7.8 Academic service & community engagment\nDuring my PhD, I contributed to the academic and statistical communities through service, leadership, and outreach, supporting inclusive research and knowledge exchange. My roles include NUMBATs Seminar Organizer (Monash University, 2025), Session Chair at useR! 2024 (Salzburg) and ASC 2023 (Wollongong), Tutorial Helper for WOMBATs Tutorials (Monash University, 2022), and organizer for R-Ladies Melbourne (2023). These activities let me connect with diverse audiences, support early-career researchers, and share ideas about stats and computational methods.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-chap7.html#teaching",
+    "href": "chapters/07-chap7.html#teaching",
+    "title": "7  Conclusion and future plans",
+    "section": "\n7.12 Teaching",
+    "text": "7.12 Teaching",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
