@@ -140,9 +140,9 @@ I presented my research work at $12^{th}$-Conference of the Asian Regional Secti
 
 ## Visiting
 
-In July $2024$, I had the privilege of visiting A/Prof. Ursula Laa at the University of Natural Resources and Life Sciences, Vienna (BOKU University), accompanied by Prof. Di Cook, Prof. Eun-Kyung Lee, and A/Prof. Natalia da Silva. During this visit, I engaged with academic staff, students, and fellow visitors at BOKU University, gaining valuable insights into their research and receiving constructive feedback on my work and its potential contributions to ongoing projects. <!--I am deeply grateful to my main supervisor, Prof. Di Cook, for organizing this visit, and to A/Prof. Ursula Laa for graciously hosting me.-->
+In July $2024$, I had the privilege of visiting A/Prof Ursula Laa at the University of Natural Resources and Life Sciences, Vienna (BOKU University), accompanied by Prof Di Cook, Prof Eun-Kyung Lee, and Dr Natalia da Silva. During this visit, I engaged with academic staff, students, and fellow visitors at BOKU University, gaining valuable insights into their research and receiving constructive feedback on my work and its potential contributions to ongoing projects. <!--I am deeply grateful to my main supervisor, Prof. Di Cook, for organizing this visit, and to A/Prof. Ursula Laa for graciously hosting me.-->
 
-From late October to late December $2024$, I visited Prof. Heike Hofmann, A/Prof. Susan VanderPlas, and Dr. Michelle Graham at the University of Nebraska, Lincoln, USA (UNL). During this time, I presented my research on high-dimensional data visualization and dimension reduction techniques, participated in the Nebraska R User Group meetings, and joined discussions with the Graphics Group, which provided rich opportunities for collaboration and learning. <!--I am grateful to Prof. Di Cook for organizing this visit, to Prof. Heike Hofmann and A/Prof. Susan VanderPlas for inviting me, and to Dr. Michelle Graham for taking the time to meet during my stay.-->
+From late October to late December $2024$, I visited Prof Heike Hofmann, A/Prof Susan VanderPlas, and Dr Michelle Graham at the University of Nebraska, Lincoln, USA (UNL). During this time, I presented my research on high-dimensional data visualization and dimension reduction techniques, participated in the Nebraska R User Group meetings, and joined discussions with the Graphics Group, which provided rich opportunities for collaboration and learning. <!--I am grateful to Prof. Di Cook for organizing this visit, to Prof. Heike Hofmann and A/Prof. Susan VanderPlas for inviting me, and to Dr. Michelle Graham for taking the time to meet during my stay.-->
 
 These visits were invaluable for broadening my perspective, fostering meaningful exchanges with experts, and deepening my understanding of dynamic visualization and multivariate data analysis. I also explored several resources that informed my work, including research on dynamic tours for high-dimensional data, parallel coordinate plots, perceptual accuracy in visualizations, and interactive visualization tools such as *langevitour* and *tourr*.
 
@@ -179,9 +179,9 @@ I have contributed to teaching a range of undergraduate and postgraduate courses
 This journey has been as much about exploring the unknown as it has been about developing resilience and insight along the way. I am deeply grateful for the people, places, and lessons that have shaped both this work and the path forward.
 
 
-::: {.cell}
+::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![](07-chap7_files/figure-html/unnamed-chunk-1-1.png){width=768}
+![](07-chap7_files/figure-html/unnamed-chunk-1-1.png){fig-align='center' width=768}
 :::
 :::
 
