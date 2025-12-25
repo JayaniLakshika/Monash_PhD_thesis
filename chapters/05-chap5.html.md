@@ -277,7 +277,7 @@ methodPHATE & -1.37 & 0.22 & -6.24 & 0.00 & ***\\
 bw\_ratio\_scaled & 0.03 & 0.49 & 0.07 & 0.95 & \\
 methodUMAP:bw\_ratio\_scaled & 1.12 & 0.69 & 1.63 & 0.10 & .\\
 methodPaCMAP:bw\_ratio\_scaled & 0.48 & 0.68 & 0.70 & 0.48 & \\
-methodtSNE:bw\_ratio\_scaled & -2.65 & 0.78 & -3.37 & 0.00 & ***\\
+methodtSNE:bw\_ratio\_scaled & -2.65 & 0.78 & -3.38 & 0.00 & ***\\
 methodPHATE:bw\_ratio\_scaled & -0.95 & 0.72 & -1.32 & 0.19 & \\
 \bottomrule
 \end{tabular}}

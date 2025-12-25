@@ -171,12 +171,12 @@ I have been part of delivering and preparing materials for [workshops](https://j
 
 ## Mentoring
 
-In July $2025$, I had the privilege of serving as a coach in the Monash Innovation Guarantee Postgraduate (MIG-P) program. Over three inspiring weeks, I worked with a diverse cohort of master’s students as they tackled real-world, industry-defined challenges. It was an incredible experience to support their journey from exploration and ideation through to prototyping and pitching—witnessing their creativity, resilience, and ability to thrive in ambiguity.
+In July $2025$, I had the privilege of serving as a coach in the Monash Innovation Guarantee Postgraduate (MIG-P) program (@fig-migp). Over three inspiring weeks, I worked with a diverse cohort of master’s students as they tackled real-world, industry-defined challenges. It was an incredible experience to support their journey from exploration and ideation through to prototyping and pitching—witnessing their creativity, resilience, and ability to thrive in ambiguity.
 
 
 ::: {.cell}
 ::: {.cell-output-display}
-![](../figures/mig2025.png){#fig-migp fig-pos='H' width=30%}
+![Moments from mentoring master’s students in the Monash Innovation Guarantee Postgraduate (MIG-P) program (July 2025), highlighting collaboration, creativity, and team-based problem solving.](../figures/mig2025.png){#fig-migp fig-pos='H' width=30%}
 :::
 :::
 
@@ -196,7 +196,7 @@ This journey has been as much about exploring the unknown as it has been about d
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![](07-chap7_files/figure-html/unnamed-chunk-2-1.png){fig-align='center' width=768}
+![Geographic footprint of the PhD journey, highlighting research visits, conferences, and academic engagements across Australia, Austria, and the United States. Locations include Salzburg and Vienna (Austria), Nebraska and Tennessee (USA), and Melbourne, Sydney, Canberra, and Perth (Australia), alongside moments from conferences, collaborations, and software dissemination.](07-chap7_files/figure-html/fig-mem-1.png){#fig-mem fig-align='center' width=768}
 :::
 :::
 

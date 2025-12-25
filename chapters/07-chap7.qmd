@@ -2,6 +2,10 @@
 library(tidyverse)
 library(ggrepel)
 library(ggbeeswarm)
+library(knitr)
+library(gridExtra)
+library(png)
+library(grid)
 ```
 
 # Conclusion and future plans {#sec-conclusion}
@@ -207,9 +211,13 @@ I have been part of delivering and preparing materials for [workshops](https://j
 
 ## Mentoring
 
-In July $2025$, I had the privilege of serving as a coach in the Monash Innovation Guarantee Postgraduate (MIG-P) program. Over three inspiring weeks, I worked with a diverse cohort of master’s students as they tackled real-world, industry-defined challenges. It was an incredible experience to support their journey from exploration and ideation through to prototyping and pitching—witnessing their creativity, resilience, and ability to thrive in ambiguity.
+In July $2025$, I had the privilege of serving as a coach in the Monash Innovation Guarantee Postgraduate (MIG-P) program (@fig-migp). Over three inspiring weeks, I worked with a diverse cohort of master’s students as they tackled real-world, industry-defined challenges. It was an incredible experience to support their journey from exploration and ideation through to prototyping and pitching—witnessing their creativity, resilience, and ability to thrive in ambiguity.
 
-```{r fig-migp, out.width = "30%", fig.pos="H", fig.cap=""}
+```{r}
+#| fig-cap: "Moments from mentoring master’s students in the Monash Innovation Guarantee Postgraduate (MIG-P) program (July 2025), highlighting collaboration, creativity, and team-based problem solving."
+#| fig-pos: H
+#| out-width: "30%"
+#| label: fig-migp
 
 knitr::include_graphics(here::here("figures/mig2025.png"))
 ```
@@ -230,11 +238,8 @@ This journey has been as much about exploring the unknown as it has been about d
 #| fig-width: 8
 #| fig-height: 11
 #| fig-align: "center"
-
-library(knitr)
-library(gridExtra)
-library(png)
-library(grid)
+#| fig-cap: "Geographic footprint of the PhD journey, highlighting research visits, conferences, and academic engagements across Australia, Austria, and the United States. Locations include Salzburg and Vienna (Austria), Nebraska and Tennessee (USA), and Melbourne, Sydney, Canberra, and Perth (Australia), alongside moments from conferences, collaborations, and software dissemination."
+#| label: fig-mem
 
 # Read images
 austria_img <- rasterGrob(png::readPNG(here::here("figures/austria.png")), interpolate=TRUE)
