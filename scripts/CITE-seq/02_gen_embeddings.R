@@ -49,6 +49,26 @@ write_rds(tSNE_data, file = paste0("data/CITE-seq/CITE-seq_tsne_perplexity_", pe
 
 ## UMAP
 
+n_neighbors <- 30
+min_dist <- 0.3
+
+UMAP_model <- umap(data,
+                   n_neighbors = n_neighbors,
+                   min_dist = min_dist,
+                   n_components =  2,
+                   init ="spca")
+
+UMAP_data <- UMAP_model |>
+  as_tibble(.name_repair = "unique")
+
+names(UMAP_data) <- c("emb1", "emb2")
+
+## Run only once
+write_rds(UMAP_data, file = paste0("data/CITE-seq/CITE-seq_umap_n-neigbors_", n_neighbors, "_min-dist_", min_dist, ".rds"))
+
+
+## UMAP
+
 n_neighbors <- 15
 min_dist <- 0.1
 
