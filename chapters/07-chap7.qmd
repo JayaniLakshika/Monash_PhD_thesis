@@ -1,3 +1,9 @@
+```{r}
+library(tidyverse)
+library(ggrepel)
+library(ggbeeswarm)
+```
+
 # Conclusion and future plans {#sec-conclusion}
 
 This thesis presents five key contributions that collectively advance the understanding and evaluation of NLDR methods. The work introduces a new method and software for NLDR diagnostics, provides insights into how people identify data structures when NLDR layouts and tour views are shown together, develops methods for generating clustering data structures, and implements user-friendly tools that support exploratory analysis and visualization.
@@ -121,7 +127,6 @@ A Shiny application for `quollr` is accessible via one of the mirror sites at [m
 #| fig-cap: "Weekly commit activity for the `cardinalR` and `quollr` packages."
 #| label: fig-pkg-commit
 
-library(tidyverse)
 commits <- read_rds(here::here("data/git_commits.rds"))
 
 commits |>
@@ -143,7 +148,42 @@ In addition, a number of R packages were essential in the development of this wo
 
 ## Research workflow and project organization
 
-Presentations, package development, and writing are the three primary types of activities that shape this thesis. I have developed a habit of using Git and Github to track and synchronize my academic work since I started the PhD program. All commits are grouped by the activity types, with annotations of important milestones, shown in Figure \@ref(fig:phd-ghcommits). It has been a fruitful program.
+Presentations, package development, and writing are the three primary types of activities that shape this thesis. I have developed a habit of using Git and Github to track and synchronize my academic work since I started the PhD program. All commits are grouped by the activity types, with annotations of important milestones, shown in @fig-task-commit. It has been a fruitful program.
+
+<!--scripts/git_commits.R-->
+```{r}
+#| fig-cap: "Plots of my Git commits split by the activity types during my PhD years, labeled with some milestones."
+#| label: fig-task-commit
+
+phd_commits <- read_rds(here::here("data/git_commits_by_tasks.rds"))
+
+types <- c("Presentation", "Analysis & writing", "Package", "Shiny app")
+
+phd_commits |>
+  ggplot(aes(x = When, y = Repository, colour = Repository)) +
+  ggbeeswarm::geom_quasirandom(groupOnX = FALSE, size = 0.6) +
+  geom_label_repel(
+    aes(label = event), data = filter(phd_commits, Repository == types[3]),
+    nudge_y = 0.5, hjust = 0,
+    arrow = arrow(length = unit(0.02, "npc"), type = "closed")
+  ) +
+  geom_label_repel(
+    aes(label = event), data = filter(phd_commits, Repository == types[2]),
+    nudge_y = -1, hjust = 0,
+    arrow = arrow(length = unit(0.02, "npc"), type = "closed")
+  ) +
+  geom_label_repel(
+    aes(label = event), data = filter(phd_commits, Repository == types[1]),
+    nudge_y = 4, hjust = 1,
+    arrow = arrow(length = unit(0.02, "npc"), type = "closed")
+  ) +
+  ylab("") +
+  scale_colour_brewer(palette = "Set2") +
+  theme_bw() +
+  theme(legend.position = "none")
+
+
+```
 
 ## Presentations
 

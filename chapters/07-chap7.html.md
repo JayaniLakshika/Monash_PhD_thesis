@@ -1,3 +1,9 @@
+
+::: {.cell}
+
+:::
+
+
 # Conclusion and future plans {#sec-conclusion}
 
 This thesis presents five key contributions that collectively advance the understanding and evaluation of NLDR methods. The work introduces a new method and software for NLDR diagnostics, provides insights into how people identify data structures when NLDR layouts and tour views are shown together, develops methods for generating clustering data structures, and implements user-friendly tools that support exploratory analysis and visualization.
@@ -132,7 +138,16 @@ In addition, a number of R packages were essential in the development of this wo
 
 ## Research workflow and project organization
 
-Presentations, package development, and writing are the three primary types of activities that shape this thesis. I have developed a habit of using Git and Github to track and synchronize my academic work since I started the PhD program. All commits are grouped by the activity types, with annotations of important milestones, shown in Figure \@ref(fig:phd-ghcommits). It has been a fruitful program.
+Presentations, package development, and writing are the three primary types of activities that shape this thesis. I have developed a habit of using Git and Github to track and synchronize my academic work since I started the PhD program. All commits are grouped by the activity types, with annotations of important milestones, shown in @fig-task-commit. It has been a fruitful program.
+
+<!--scripts/git_commits.R-->
+
+::: {.cell}
+::: {.cell-output-display}
+![Plots of my Git commits split by the activity types during my PhD years, labeled with some milestones.](07-chap7_files/figure-html/fig-task-commit-1.png){#fig-task-commit width=768}
+:::
+:::
+
 
 ## Presentations
 
@@ -181,7 +196,7 @@ This journey has been as much about exploring the unknown as it has been about d
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![](07-chap7_files/figure-html/unnamed-chunk-1-1.png){fig-align='center' width=768}
+![](07-chap7_files/figure-html/unnamed-chunk-2-1.png){fig-align='center' width=768}
 :::
 :::
 

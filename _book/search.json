@@ -776,7 +776,7 @@
     "href": "chapters/07-chap7.html#mentoring",
     "title": "7  Conclusion and future plans",
     "section": "\n7.10 Mentoring",
-    "text": "7.10 Mentoring\nIn July 2025, I had the privilege of serving as a coach in the Monash Innovation Guarantee Postgraduate (MIG-P) program. Over three inspiring weeks, I worked with a diverse cohort of master’s students as they tackled real-world, industry-defined challenges. It was an incredible experience to support their journey from exploration and ideation through to prototyping and pitching—witnessing their creativity, resilience, and ability to thrive in ambiguity.\n\n\n\n\n\n\n\nFigure 7.2",
+    "text": "7.10 Mentoring\nIn July 2025, I had the privilege of serving as a coach in the Monash Innovation Guarantee Postgraduate (MIG-P) program. Over three inspiring weeks, I worked with a diverse cohort of master’s students as they tackled real-world, industry-defined challenges. It was an incredible experience to support their journey from exploration and ideation through to prototyping and pitching—witnessing their creativity, resilience, and ability to thrive in ambiguity.\n\n\n\n\n\n\n\nFigure 7.3",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -846,7 +846,7 @@
     "href": "chapters/07-chap7.html#research-workflow-and-project-organization",
     "title": "7  Conclusion and future plans",
     "section": "\n7.5 Research workflow and project organization",
-    "text": "7.5 Research workflow and project organization\nPresentations, package development, and writing are the three primary types of activities that shape this thesis. I have developed a habit of using Git and Github to track and synchronize my academic work since I started the PhD program. All commits are grouped by the activity types, with annotations of important milestones, shown in Figure @ref(fig:phd-ghcommits). It has been a fruitful program.",
+    "text": "7.5 Research workflow and project organization\nPresentations, package development, and writing are the three primary types of activities that shape this thesis. I have developed a habit of using Git and Github to track and synchronize my academic work since I started the PhD program. All commits are grouped by the activity types, with annotations of important milestones, shown in Figure 7.2. It has been a fruitful program.\n\n\n\n\n\n\n\n\nFigure 7.2: Plots of my Git commits split by the activity types during my PhD years, labeled with some milestones.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
