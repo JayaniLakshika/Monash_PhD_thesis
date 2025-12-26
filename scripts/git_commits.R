@@ -96,7 +96,7 @@ phd_milestones <-
     "2024-11-13", "Graphics group", types[1],
     "2024-07-10", "useR! 2024", types[1],
     "2024-07-10", "3MT", types[1],
-    "2023-05-15", "MGBP seminar", types[1],
+    "2024-05-15", "MGBP seminar", types[1],
     "2023-12-10", "ASC2023", types[1],
     "2023-12-08", "IASC ARS 2023", types[1],
     "2024-01-01", "Init quollr", types[3],
