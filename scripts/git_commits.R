@@ -107,14 +107,14 @@ phd_milestones <-
     "2025-12-18", "Release cardinalR", types[3],
     "2025-12-14", "Release menuraR", types[4],
     "2025-08-20", "Release Match-a-roo", types[4],
-    "2024-10-08", "Init vis-exp paper", types[2],
-    "2025-03-17", "Init menuraR paper", types[2],
-    "2024-01-09", "Init vis-algo paper", types[2],
-    "2024-02-05", "Init quollr paper", types[2],
-    "2025-03-11", "Init cardinalR paper", types[2],
-    "2025-11-14", "Submit vis-algo paper", types[2],
-    "2025-12-20", "Submit quollr paper", types[2],
-    "2025-12-20", "Submit cardinalR paper", types[2]
+    "2024-10-08", "Init vis-exp ppr", types[2],
+    "2025-03-17", "Init menuraR ppr", types[2],
+    "2024-01-09", "Init vis-algo ppr", types[2],
+    "2024-02-05", "Init quollr ppr", types[2],
+    "2025-03-11", "Init cardinalR ppr", types[2],
+    "2025-11-14", "Submit vis-algo ppr", types[2],
+    "2025-12-20", "Submit quollr ppr", types[2],
+    "2025-12-20", "Submit cardinalR ppr", types[2]
   ) %>%
   mutate(date = ymd(date))
 
