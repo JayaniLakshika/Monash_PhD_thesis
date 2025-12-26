@@ -95,7 +95,7 @@ nldr1 <- umap_pbmc |>
 ```{r}
 #| label: fig-NLDR-variety-intro
 #| echo: false
-#| fig-cap: "Eight different NLDR representations of a human PBMC CITE-seq dataset (@hao2021). Different techniques and different hyper-parameter choices are used (*(a) UMAP (n_neighbors = 15, min_dist = 0.1), (b) UMAP (n_neighbors = 54, min_dist = 0.5), (c) PaCMAP (n_neighbors = 51, init = random, MN_ratio = 0.3, FP_ratio = 2), (d) tSNE (perplexity = 30), (e) tSNE (perplexity = 84), (f) PHATE (knn = 5), (g) TriMAP (n_inliers = 12, n_outliers = 4, n_random = 3), (h) PaCMAP (n_neighbors = 10, init = random, MN_ratio = 0.5, FP_ratio = 2)*). Researchers may have seen any of these in their analysis of this data, depending on their choice of method, or typical hyper-parameter choice. Would they make different decisions downstream in the analysis depending on which version seen? Which is the most accurate representation of the structure in high dimensions?"
+#| fig-cap: "UMAP representation of a human PBMC CITE-seq dataset [@hao2021] generated using n_neighbors = 30 and min_dist = 0.3. The layout suggests the presence of multiple clusters with different shapes, including compact, well-separated groups as well as elongated and partially overlapping structures. *Is this the most reasonable representation of the structure(s) present in the PBMC CITE-seq data?*"
 #| fig-width: 4
 #| fig-height: 4
 #| out-width: 50%
@@ -104,7 +104,7 @@ nldr1 <- umap_pbmc |>
 nldr1
 ```
 
-Yet this strength also introduces a critical risk: **NLDR can hallucinate structure**, creating patterns in the low-dimensional space that do not exist in the high-dimensional data. This issue is strikingly illustrated in @fig-NLDR-variety-intro, where eight different NLDR representations of the same CITE-seq dataset vary dramatically due to differences in method or hyper-parameter choices. Such variability raises essential questions: *Which layout can be trusted? Which accurately represents the high-dimensional data structure(s)?*
+Yet this strength also introduces a critical risk: **NLDR can hallucinate structure**, creating patterns in the low-dimensional space that do not exist in the high-dimensional data. This is illustrated in @fig-NLDR-variety-intro, where a UMAP layout of a CITE-seq dataset appears to show several distinct clusters with different shapes. While these patterns are visually appealing and easy to interpret, it is not obvious whether they reflect true structure in the high-dimensional data or arise from the choice of method and hyper-parameters. This naturally leads to key questions: *Can this layout be trusted? Is it a reasonable representation of the structure(s) present in the high-dimensional data?*
 
 Despite the widespread use of NLDR, there is no widely accepted or visually interpretable framework for **diagnosing the reliability of NLDR representations**. Analysts are left to rely on subjective judgment when choosing and interpreting NLDR layouts, without tools to distinguish faithful representations from artifacts. There is also a lack of benchmark clustering datasets for testing specially NLDR methods.
 
