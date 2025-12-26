@@ -1183,7 +1183,7 @@ High-dimensional data structures often benefit from the addition of auxiliary no
 
 
 
-::: {#tbl-noise-tb .cell tbl-cap='cardinalR noise dimensions generation functions.'}
+::: {#tbl-noise-tb .cell tbl-cap='`cardinalR` noise dimensions generation functions.'}
 ::: {.cell-output-display}
 
 
@@ -1246,7 +1246,7 @@ By using the shape generators mentioned above, we can create various examples of
 
 
 
-::: {#tbl-odd-shape-tb .cell tbl-cap='cardinalR multiple clusters generation functions.'}
+::: {#tbl-odd-shape-tb .cell tbl-cap='`cardinalR` multiple clusters generation functions.'}
 ::: {.cell-output-display}
 
 
@@ -1282,7 +1282,7 @@ The package includes various supplementary tools in addition to the shape genera
 
 
 
-::: {#tbl-add-tb .cell tbl-cap='cardinalR additional functions.'}
+::: {#tbl-add-tb .cell tbl-cap='`cardinalR` additional functions.'}
 ::: {.cell-output-display}
 
 

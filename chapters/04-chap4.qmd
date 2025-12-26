@@ -2108,7 +2108,7 @@ noise_fun_tb <- tibble(fun = c("gen_noisedims",
 ```
 
 ```{r tbl-noise-tb}
-#| tbl-cap: "cardinalR noise dimensions generation functions."
+#| tbl-cap: "`cardinalR` noise dimensions generation functions."
 
 if (knitr::is_latex_output()) {
     noise_fun_tb |> 
@@ -2195,7 +2195,7 @@ odd_shapes_tb <- tibble(fun = c("make_mobiusgau",
 ```
 
 ```{r tbl-odd-shape-tb}
-#| tbl-cap: "cardinalR multiple clusters generation functions."
+#| tbl-cap: "`cardinalR` multiple clusters generation functions."
 
 if (knitr::is_latex_output()) {
     odd_shapes_tb |> 
@@ -2231,7 +2231,7 @@ add_fun_tb <- tibble(fun = c("gen_bkgnoise",
 ```
 
 ```{r tbl-add-tb}
-#| tbl-cap: "cardinalR additional functions."
+#| tbl-cap: "`cardinalR` additional functions."
 
 if (knitr::is_latex_output()) {
     add_fun_tb |> 
