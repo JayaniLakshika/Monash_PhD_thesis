@@ -127,13 +127,10 @@ The shape generators form the foundation of the package, providing functions to 
 
 
 
-::: {#tbl-shape-tb .cell}
+::: {#tbl-shape-tb .cell tbl-cap='Overview of shape-generation functions, including their required parameters and a brief description of each geometric structure produced. The generators cover branching patterns, spheres, spirals, pyramids, Gaussian clouds, and other nonlinear shapes.'}
 ::: {.cell-output-display}
-\begin{table}
 
-\caption{\label{tab:tbl-shape-tb}Overview of shape-generation functions, including their required parameters and a brief description of each geometric structure produced. The generators cover branching patterns, spheres, spirals, pyramids, Gaussian clouds, and other nonlinear shapes.}
-\centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{8cm}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{8cm}}
 \toprule
 Function & Arguments & Explanation\\
 \midrule
@@ -173,7 +170,6 @@ Function & Arguments & Explanation\\
 \texttt{gen\_nonlinear} & \texttt{n, hc, non\_fac} & Nonlinear hyperbola.\\
 \bottomrule
 \end{tabular}
-\end{table}
 
 
 :::
@@ -187,13 +183,10 @@ Function & Arguments & Explanation\\
 
 
 
-::: {#tbl-arg-shape-tb .cell}
+::: {#tbl-arg-shape-tb .cell tbl-cap='Argument definitions for the shape generators. The table lists each argument, its data type, and a description of its role in controlling geometric structure, dimensionality, scaling, curvature, spacing, and other features of the simulated high-dimensional datasets.'}
 ::: {.cell-output-display}
-\begin{table}
 
-\caption{\label{tab:tbl-arg-shape-tb}Argument definitions for the shape generators. The table lists each argument, its data type, and a description of its role in controlling geometric structure, dimensionality, scaling, curvature, spacing, and other features of the simulated high-dimensional datasets.}
-\centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{3cm}l}
+\begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{3cm}l}
 \toprule
 Argument & Type (positive) & Explanation\\
 \midrule
@@ -222,7 +215,6 @@ Argument & Type (positive) & Explanation\\
 \texttt{rb} & real value & Base radius of the pyramid.\\
 \bottomrule
 \end{tabular}
-\end{table}
 
 
 :::
@@ -1095,13 +1087,10 @@ High-dimensional data structures often benefit from the addition of auxiliary no
 
 
 
-::: {#tbl-noise-tb .cell}
+::: {#tbl-noise-tb .cell tbl-cap='cardinalR noise dimensions generation functions.'}
 ::: {.cell-output-display}
-\begin{table}
 
-\caption{\label{tab:tbl-noise-tb}cardinalR noise dimensions generation functions}
-\centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{10.5cm}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{10.5cm}}
 \toprule
 Function & Explanation\\
 \midrule
@@ -1111,7 +1100,6 @@ Function & Explanation\\
 \texttt{gen\_wavydims3} & Wavy noise dimensions using a combination of polynomial and sine transformations based on the first three dimensions of a dataset.\\
 \bottomrule
 \end{tabular}
-\end{table}
 
 
 :::
@@ -1165,13 +1153,10 @@ By using the shape generators mentioned above, we can create various examples of
 
 
 
-::: {#tbl-odd-shape-tb .cell}
+::: {#tbl-odd-shape-tb .cell tbl-cap='cardinalR multiple clusters generation functions.'}
 ::: {.cell-output-display}
-\begin{table}
 
-\caption{\label{tab:tbl-odd-shape-tb}cardinalR multiple clusters generation functions}
-\centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{8.5cm}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{8.5cm}}
 \toprule
 Function & Explanation\\
 \midrule
@@ -1190,7 +1175,6 @@ Function & Explanation\\
 \texttt{make\_shape\_para} & Parallel shaped clusters.\\
 \bottomrule
 \end{tabular}
-\end{table}
 
 
 :::
@@ -1208,13 +1192,10 @@ The package includes various supplementary tools in addition to the shape genera
 
 
 
-::: {#tbl-add-tb .cell}
+::: {#tbl-add-tb .cell tbl-cap='cardinalR additional functions.'}
 ::: {.cell-output-display}
-\begin{table}
 
-\caption{\label{tab:tbl-add-tb}cardinalR additional functions}
-\centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{8cm}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{8cm}}
 \toprule
 Function & Explanation\\
 \midrule
@@ -1226,7 +1207,6 @@ Function & Explanation\\
 \texttt{normalize\_data} & Normalizes data.\\
 \bottomrule
 \end{tabular}
-\end{table}
 
 
 :::
