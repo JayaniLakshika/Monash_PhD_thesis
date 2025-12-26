@@ -731,7 +731,7 @@ pyrrect <- gen_pyrrect(n = 1000, p = 4)
 ```
 
 ```{r}
-pyrrect_lang <- langevitour::langevitour(pyrrect, levelColors = "black", enableControls = FALSE, width = "400px", height = "300px")
+pyrrect_lang <- langevitour::langevitour(pyrrect, levelColors = "black", enableControls = FALSE, width = "500px", height = "300px")
 ```
 
 ```{r pyrrect-proj1}
@@ -820,7 +820,7 @@ pyrtri <- gen_pyrtri(n = 1000, p = 4)
 ```
 
 ```{r}
-pyrtri_lang <- langevitour::langevitour(pyrtri, levelColors = "black", enableControls = FALSE, width = "400px", height = "300px")
+pyrtri_lang <- langevitour::langevitour(pyrtri, levelColors = "black", enableControls = FALSE, width = "500px", height = "300px")
 ```
 
 ```{r pyrtri-proj1}
@@ -909,7 +909,7 @@ pyrstar <- gen_pyrstar(n = 1000, p = 4)
 ```
 
 ```{r}
-pyrstar_lang <- langevitour::langevitour(pyrstar, levelColors = "black", enableControls = FALSE, width = "400px", height = "300px")
+pyrstar_lang <- langevitour::langevitour(pyrstar, levelColors = "black", enableControls = FALSE, width = "500px", height = "300px")
 ```
 
 ```{r pyrstar-proj1}
@@ -1000,7 +1000,7 @@ pyrholes <- gen_pyrfrac(n = 1000, p = 4)
 ```
 
 ```{r}
-pyrholes_lang <- langevitour::langevitour(pyrholes, levelColors = "black", enableControls = FALSE, width = "400px", height = "300px")
+pyrholes_lang <- langevitour::langevitour(pyrholes, levelColors = "black", enableControls = FALSE, width = "500px", height = "300px")
 ```
 
 ```{r pyrholes-proj1}
@@ -2089,7 +2089,7 @@ The package provides functionality for generating datasets with spherical hole (
 
 The core function `gen_hole(df, anchor, r)` removes points from a dataset that fall within a user-specified hypersphere. Formally, given data points ($x \in \mathbb{R}^p$), a center ($a \in \mathbb{R}^p$), and radius ($r > 0$), only points satisfying $\sqrt{\sum_{i=1}^n(x_i-a_i)^2} > r$ are retained. The anchor point ($a$) can either be user-specified or default to the dataset mean, and radius ($r$) is controlled by the user, with safeguards to avoid trivial or degenerate cases. Because it operates generically on any dataset, spherical or hyperspherical holes can be embedded in a wide range of geometric structures.
 
-Two specialized wrappers illustrate this idea. The function `gen_scurvehole(n, r_hole)` generates an S-curve with a spherical hole by applying `gen_hole()` to the output of `gen_scurve()`. This structure has been used in prior diagnostic studies of NLDR methods [@tenenbaum2000, @van2007], since it tests the ability of algorithms to capture non-linear manifolds that are not simply connected. The second wrapper, `gen_unifcubehole(n, p, r_hole)`, generates uniformly sampled cube data with a hyperspherical hole. By embedding a hyperspherical void inside a convex high-dimensional structure, this creates non-convex regions that challenge algorithms in terms of separability and neighborhood preservation.
+Two specialized wrappers illustrate this idea. The function `gen_scurvehole(n, r_hole)` generates an S-curve with a spherical hole by applying `gen_hole()` to the output of `gen_scurve()`. This structure has been used in prior diagnostic studies of NLDR methods [@tenenbaum2000; @van2007], since it tests the ability of algorithms to capture non-linear manifolds that are not simply connected. The second wrapper, `gen_unifcubehole(n, p, r_hole)`, generates uniformly sampled cube data with a hyperspherical hole. By embedding a hyperspherical void inside a convex high-dimensional structure, this creates non-convex regions that challenge algorithms in terms of separability and neighborhood preservation.
 
 ### Generate noise dimensions
 
