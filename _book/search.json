@@ -513,8 +513,8 @@
     "objectID": "chapters/07-chap7.html#presentations",
     "href": "chapters/07-chap7.html#presentations",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.6 Presentations",
-    "text": "7.6 Presentations\nI presented my research work at 12^{th}-Conference of the Asian Regional Section of the International Association for Statistical Computing (IASC-ARS 2023) (Wollongon, Australia), Australian Statistical Conference (ASC 2023) (Wollongon, Australia), Bioinformatics Seminar 2024, Victorian branch of the Australian and New Zealand Industrial and Applied Mathematics Society (VicANZIAM) 2024 (RMIT university, Melbourne, Australia), Faculty of BusEco Three Minute Thesis (3MT) competition 2024, useR! 2024 (Salzburg, Austria), Graphics Group Presentation 2024 (Nebraska, USA), UNO Data Science Club 2024 (Omaha, USA), Joint Statistical Meetings (JSM) 2025 (Nashville, USA), useR! 2025 (Durham, USA), Biometrics in the Bush Capital (BIBC2025) (Canberra, Australia), and Australian Statistical Conference (ASC 2025) (Perth, Western Australia).",
+    "section": "\n7.7 Presentations",
+    "text": "7.7 Presentations\nI presented my research work at 12^{th}-Conference of the Asian Regional Section of the International Association for Statistical Computing (IASC-ARS 2023) (Wollongon, Australia), Australian Statistical Conference (ASC 2023) (Wollongon, Australia), Bioinformatics Seminar 2024, Victorian branch of the Australian and New Zealand Industrial and Applied Mathematics Society (VicANZIAM) 2024 (RMIT university, Melbourne, Australia), Faculty of BusEco Three Minute Thesis (3MT) competition 2024, useR! 2024 (Salzburg, Austria), Graphics Group Presentation 2024 (Nebraska, USA), UNO Data Science Club 2024 (Omaha, USA), Joint Statistical Meetings (JSM) 2025 (Nashville, USA), useR! 2025 (Durham, USA), Biometrics in the Bush Capital (BIBC2025) (Canberra, Australia), and Australian Statistical Conference (ASC 2025) (Perth, Western Australia).",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -523,8 +523,8 @@
     "objectID": "chapters/07-chap7.html#visiting",
     "href": "chapters/07-chap7.html#visiting",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.7 Visiting",
-    "text": "7.7 Visiting\nIn July 2024, I had the privilege of visiting A/Prof Ursula Laa at the University of Natural Resources and Life Sciences, Vienna (BOKU University), accompanied by Prof Di Cook, Prof Eun-Kyung Lee, and Dr Natalia da Silva. During this visit, I engaged with academic staff, students, and fellow visitors at BOKU University, gaining valuable insights into their research and receiving constructive feedback on my work and its potential contributions to ongoing projects. \nFrom late October to late December 2024, I visited Prof Heike Hofmann, A/Prof Susan VanderPlas, and Dr Michelle Graham at the University of Nebraska, Lincoln, USA (UNL). During this time, I presented my research on high-dimensional data visualization and dimension reduction techniques, participated in the Nebraska R User Group meetings, and joined discussions with the Graphics Group, which provided rich opportunities for collaboration and learning. \nThese visits were invaluable for broadening my perspective, fostering meaningful exchanges with experts, and deepening my understanding of dynamic visualization and multivariate data analysis. I also explored several resources that informed my work, including research on dynamic tours for high-dimensional data, parallel coordinate plots, perceptual accuracy in visualizations, and interactive visualization tools such as langevitour and tourr.",
+    "section": "\n7.8 Visiting",
+    "text": "7.8 Visiting\nIn July 2024, I had the privilege of visiting A/Prof Ursula Laa at the University of Natural Resources and Life Sciences, Vienna (BOKU University), accompanied by Prof Di Cook, Prof Eun-Kyung Lee, and Dr Natalia da Silva. During this visit, I engaged with academic staff, students, and fellow visitors at BOKU University, gaining valuable insights into their research and receiving constructive feedback on my work and its potential contributions to ongoing projects. \nFrom late October to late December 2024, I visited Prof Heike Hofmann, A/Prof Susan VanderPlas, and Dr Michelle Graham at the University of Nebraska, Lincoln, USA (UNL). During this time, I presented my research on high-dimensional data visualization and dimension reduction techniques, participated in the Nebraska R User Group meetings, and joined discussions with the Graphics Group, which provided rich opportunities for collaboration and learning. \nThese visits were invaluable for broadening my perspective, fostering meaningful exchanges with experts, and deepening my understanding of dynamic visualization and multivariate data analysis. I also explored several resources that informed my work, including research on dynamic tours for high-dimensional data, parallel coordinate plots, perceptual accuracy in visualizations, and interactive visualization tools such as langevitour and tourr.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -533,8 +533,8 @@
     "objectID": "chapters/07-chap7.html#academic-service-community-engagment",
     "href": "chapters/07-chap7.html#academic-service-community-engagment",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.8 Academic service & community engagment",
-    "text": "7.8 Academic service & community engagment\nDuring my PhD, I contributed to the academic and statistical communities through service, leadership, and outreach, supporting inclusive research and knowledge exchange. My roles include NUMBATs Seminar Organizer (Monash University, 2025), Session Chair at useR! 2024 (Salzburg) and ASC 2023 (Wollongong), Tutorial Helper for WOMBATs Tutorials (Monash University, 2022), and organizer for R-Ladies Melbourne (2023). These activities let me connect with diverse audiences, support early-career researchers, and share ideas about stats and computational methods.",
+    "section": "\n7.9 Academic service & community engagment",
+    "text": "7.9 Academic service & community engagment\nDuring my PhD, I contributed to the academic and statistical communities through service, leadership, and outreach, supporting inclusive research and knowledge exchange. My roles include NUMBATs Seminar Organizer (Monash University, 2025), Session Chair at useR! 2024 (Salzburg) and ASC 2023 (Wollongong), Tutorial Helper for WOMBATs Tutorials (Monash University, 2022), and organizer for R-Ladies Melbourne (2023). These activities let me connect with diverse audiences, support early-career researchers, and share ideas about stats and computational methods.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -543,8 +543,8 @@
     "objectID": "chapters/07-chap7.html#workshops",
     "href": "chapters/07-chap7.html#workshops",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.9 Workshops",
-    "text": "7.9 Workshops\nI have been part of delivering and preparing materials for workshops on Reproducible Reporting and Research with Quarto (September 2025) and Reproducible Reporting, Academic Papers, Presentations, and Theses with Quarto (July 2025), contributing to hands-on training for researchers on reproducible practices and effective research communication.",
+    "section": "\n7.10 Workshops",
+    "text": "7.10 Workshops\nI have been part of delivering and preparing materials for workshops on Reproducible Reporting and Research with Quarto (September 2025) and Reproducible Reporting, Academic Papers, Presentations, and Theses with Quarto (July 2025), contributing to hands-on training for researchers on reproducible practices and effective research communication.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -553,8 +553,8 @@
     "objectID": "chapters/07-chap7.html#mentoring",
     "href": "chapters/07-chap7.html#mentoring",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.10 Mentoring",
-    "text": "7.10 Mentoring\nIn July 2025, I had the privilege of serving as a coach in the Monash Innovation Guarantee Postgraduate (MIG-P) program (Figure 7.3). Over three inspiring weeks, I worked with a diverse cohort of master’s students as they tackled real-world, industry-defined challenges. It was an incredible experience to support their journey from exploration and ideation through to prototyping and pitching—witnessing their creativity, resilience, and ability to thrive in ambiguity.\n\n\n\n\n\n\n\nFigure 7.3: Moments from mentoring master’s students in the Monash Innovation Guarantee Postgraduate (MIG-P) program (July 2025), highlighting collaboration, creativity, and team-based problem solving.",
+    "section": "\n7.11 Mentoring",
+    "text": "7.11 Mentoring\nIn July 2025, I had the privilege of serving as a coach in the Monash Innovation Guarantee Postgraduate (MIG-P) program (Figure 7.3). Over three inspiring weeks, I worked with a diverse cohort of master’s students as they tackled real-world, industry-defined challenges. It was an incredible experience to support their journey from exploration and ideation through to prototyping and pitching—witnessing their creativity, resilience, and ability to thrive in ambiguity.\n\n\n\n\n\n\n\nFigure 7.3: Moments from mentoring master’s students in the Monash Innovation Guarantee Postgraduate (MIG-P) program (July 2025), highlighting collaboration, creativity, and team-based problem solving.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -563,8 +563,8 @@
     "objectID": "chapters/07-chap7.html#additional-contributions",
     "href": "chapters/07-chap7.html#additional-contributions",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.11 Additional contributions",
-    "text": "7.11 Additional contributions\nI contributed to open-source software development by co-supervising the creation of the polarisR package (Yadav et al. 2025) during a Google Summer of Code project with Dr. Ursula Laa and Prof. Eun-Kyung Lee, whom I met during my visit to the University of Natural Resources and Life Sciences in Vienna, Austria. polarisR is a Shiny application for diagnosing 2\\text{-}D NLDR layouts using the quollr implementation. It also supports comparing how the data appear in high dimensions through various tour methods, including scatter, sage, and slice.",
+    "section": "\n7.12 Additional contributions",
+    "text": "7.12 Additional contributions\nI contributed to open-source software development by co-supervising the creation of the polarisR package (Yadav et al. 2025) during a Google Summer of Code project with Dr. Ursula Laa and Prof. Eun-Kyung Lee, whom I met during my visit to the University of Natural Resources and Life Sciences in Vienna, Austria. polarisR is a Shiny application for diagnosing 2\\text{-}D NLDR layouts using the quollr implementation. It also supports comparing how the data appear in high dimensions through various tour methods, including scatter, sage, and slice.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -573,8 +573,8 @@
     "objectID": "chapters/07-chap7.html#teaching",
     "href": "chapters/07-chap7.html#teaching",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.12 Teaching",
-    "text": "7.12 Teaching\nI have contributed to teaching a range of undergraduate and postgraduate courses in statistics, data analysis, and machine learning. These include Statistical Thinking ([ETC5242], 2025; [ETC2420], 2025), Introduction to Data Analysis ([ETC5510], 2024; [ETC1010], 2024), Introduction to Machine Learning ([ETC3250], 2023–2024; [ETC5250], 2023–2025), and Exploratory Data Analysis ([ETC5521], 2023).",
+    "section": "\n7.13 Teaching",
+    "text": "7.13 Teaching\nI have contributed to teaching a range of undergraduate and postgraduate courses in statistics, data analysis, and machine learning. These include Statistical Thinking ([ETC5242], 2025; [ETC2420], 2025), Introduction to Data Analysis ([ETC5510], 2024; [ETC1010], 2024), Introduction to Machine Learning ([ETC3250], 2023–2024; [ETC5250], 2023–2025), and Exploratory Data Analysis ([ETC5521], 2023).",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -583,8 +583,8 @@
     "objectID": "chapters/07-chap7.html#final-thoughts",
     "href": "chapters/07-chap7.html#final-thoughts",
     "title": "7  Conclusion and future plans",
-    "section": "\n7.13 Final thoughts",
-    "text": "7.13 Final thoughts\nThis journey has been as much about exploring the unknown as it has been about developing resilience and insight along the way. I am deeply grateful for the people, places, and lessons that have shaped both this work and the path forward.\n\n\n\n\n\n\n\nFigure 7.4: Geographic footprint of the PhD journey, highlighting research visits, conferences, and academic engagements across Australia, Austria, and the United States. Locations include Salzburg and Vienna (Austria), Nebraska and Tennessee (USA), and Melbourne, Sydney, Canberra, and Perth (Australia), alongside moments from conferences, collaborations, and software dissemination.\n\n\n\n\n\n\n\n\nAllaire, J., and Dervieux, C. (2024), quarto: R Interface to Quarto Markdown Publishing System.\n\n\nBarber, C. B., Dobkin, D. P., and Huhdanpaa, H. (1996), “The Quickhull Algorithm for Convex Hulls,” ACM Trans. Math. Softw., 22, 469--483.\n\n\nBuja, A., Cook, D., Hofmann, H., Lawrence, M., Lee, E.-K., Swayne, D. F., and Wickham, H. (2009), “Statistical inference for exploratory data analysis and model diagnostics,” Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences, 367, 4361–4383.\n\n\nCook, D., Buja, A., Cabrera, J., and Hurley, C. (2000), “Grand Tour and Projection Pursuit,” Journal of Computational and Graphical Statistics, 4. https://doi.org/10.1080/10618600.1995.10474674.\n\n\nDang, T. N., and Wilkinson, L. (2014), “ScagExplorer: Exploring Scatterplots by Their Scagnostics,” in 2014 IEEE pacific visualization symposium, pp. 73–80. https://doi.org/10.1109/PacificVis.2014.42.\n\n\nHart, C., and Wang, E. (2025), Detourr: Portable and performant tour animations.\n\n\nKonopka, T. (2023), umap: Uniform Manifold Approximation and Projection.\n\n\nLaurent, S. (2023), cxhull: Convex Hull.\n\n\nSievert, C. (2020), Interactive web-based data visualization with r, plotly, and shiny, Chapman; Hall/CRC.\n\n\nWickham, H. (2016), ggplot2: Elegant Graphics for Data Analysis, Springer-Verlag New York.\n\n\nWilhelm, A. F. X., Wegman, E. J., and Symanzik, J. (1999), “Visual clustering and classification: The Oronsay particle size data set revisited,” Comput. Stat., USA: Kluwer Academic Publishers, 14, 109--146. https://doi.org/10.1007/PL00022701.\n\n\nWilkinson, L., and and, G. W. (2008), “Scagnostics Distributions,” Journal of Computational and Graphical Statistics, ASA Website, 17, 473–491. https://doi.org/10.1198/106186008X320465.\n\n\nYadav, D., Laa, U., Gamage, J. P., and Lee, E.-K. (2025), polarisR: Non-Linear Dimensionality Reduction Visualization Tool.",
+    "section": "\n7.14 Final thoughts",
+    "text": "7.14 Final thoughts\nThis journey has been as much about exploring the unknown as it has been about developing resilience and insight along the way. I am deeply grateful for the people, places, and lessons that have shaped both this work and the path forward.\n\n\n\n\n\n\n\nFigure 7.4: Geographic footprint of the PhD journey, highlighting research visits, conferences, and academic engagements across Australia, Austria, and the United States. Locations include Salzburg and Vienna (Austria), Nebraska and Tennessee (USA), and Melbourne, Sydney, Canberra, and Perth (Australia), alongside moments from conferences, collaborations, and software dissemination.\n\n\n\n\n\n\n\n\nAllaire, J., and Dervieux, C. (2024), quarto: R Interface to Quarto Markdown Publishing System.\n\n\nBarber, C. B., Dobkin, D. P., and Huhdanpaa, H. (1996), “The Quickhull Algorithm for Convex Hulls,” ACM Trans. Math. Softw., 22, 469--483.\n\n\nBuja, A., Cook, D., Hofmann, H., Lawrence, M., Lee, E.-K., Swayne, D. F., and Wickham, H. (2009), “Statistical inference for exploratory data analysis and model diagnostics,” Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences, 367, 4361–4383.\n\n\nCook, D., Buja, A., Cabrera, J., and Hurley, C. (2000), “Grand Tour and Projection Pursuit,” Journal of Computational and Graphical Statistics, 4. https://doi.org/10.1080/10618600.1995.10474674.\n\n\nDang, T. N., and Wilkinson, L. (2014), “ScagExplorer: Exploring Scatterplots by Their Scagnostics,” in 2014 IEEE pacific visualization symposium, pp. 73–80. https://doi.org/10.1109/PacificVis.2014.42.\n\n\nHart, C., and Wang, E. (2025), Detourr: Portable and performant tour animations.\n\n\nKonopka, T. (2023), umap: Uniform Manifold Approximation and Projection.\n\n\nLaurent, S. (2023), cxhull: Convex Hull.\n\n\nSievert, C. (2020), Interactive web-based data visualization with r, plotly, and shiny, Chapman; Hall/CRC.\n\n\nWickham, H. (2016), ggplot2: Elegant Graphics for Data Analysis, Springer-Verlag New York.\n\n\nWilhelm, A. F. X., Wegman, E. J., and Symanzik, J. (1999), “Visual clustering and classification: The Oronsay particle size data set revisited,” Comput. Stat., USA: Kluwer Academic Publishers, 14, 109--146. https://doi.org/10.1007/PL00022701.\n\n\nWilkinson, L., and and, G. W. (2008), “Scagnostics Distributions,” Journal of Computational and Graphical Statistics, ASA Website, 17, 473–491. https://doi.org/10.1198/106186008X320465.\n\n\nYadav, D., Laa, U., Gamage, J. P., and Lee, E.-K. (2025), polarisR: Non-Linear Dimensionality Reduction Visualization Tool.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
@@ -839,6 +839,16 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>C</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception in Nonlinear Dimension Reduction: A User Study\"</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-chap7.html#planning-and-design-software",
+    "href": "chapters/07-chap7.html#planning-and-design-software",
+    "title": "7  Conclusion and future plans",
+    "section": "\n7.6 Planning and design software",
+    "text": "7.6 Planning and design software\nIn addition to the completed methods and software presented in this thesis, a large amount of exploratory planning and design work went into the development of the R packages quollr and cardinalR, as well as the Shiny application menuraR. This includes personal working sheets, sketches, and early conceptual diagrams that show how initial ideas gradually evolved into the implemented software tools.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Conclusion and future plans</span>"
     ]
   }
 ]
