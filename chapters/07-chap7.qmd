@@ -158,6 +158,7 @@ Presentations, package development, and writing are the three primary types of a
 ```{r}
 #| fig-cap: "Plots of my Git commits split by the activity types during my PhD years, labeled with some milestones."
 #| label: fig-task-commit
+#| out-width: "100%"
 
 phd_commits <- read_rds(here::here("data/git_commits_by_tasks.rds"))
 
@@ -166,19 +167,24 @@ types <- c("Presentation", "Analysis & writing", "Package", "Shiny app")
 phd_commits |>
   ggplot(aes(x = When, y = Repository, colour = Repository)) +
   ggbeeswarm::geom_quasirandom(groupOnX = FALSE, size = 0.6) +
+    geom_label_repel(
+    aes(label = event), data = filter(phd_commits, Repository == types[4]),
+    nudge_y = 2, hjust = 0,
+    arrow = arrow(length = unit(0.02, "npc"), type = "closed")
+  ) +
   geom_label_repel(
     aes(label = event), data = filter(phd_commits, Repository == types[3]),
-    nudge_y = 0.5, hjust = 0,
+    nudge_y = -0.15, hjust = 0,
     arrow = arrow(length = unit(0.02, "npc"), type = "closed")
   ) +
   geom_label_repel(
     aes(label = event), data = filter(phd_commits, Repository == types[2]),
-    nudge_y = -1, hjust = 0,
+    nudge_y = -2, hjust = 0,
     arrow = arrow(length = unit(0.02, "npc"), type = "closed")
   ) +
   geom_label_repel(
     aes(label = event), data = filter(phd_commits, Repository == types[1]),
-    nudge_y = 4, hjust = 1,
+    nudge_y = 0.7, hjust = 1,
     arrow = arrow(length = unit(0.02, "npc"), type = "closed")
   ) +
   ylab("") +

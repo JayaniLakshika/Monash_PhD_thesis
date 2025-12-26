@@ -3,6 +3,7 @@
 library(gh)
 library(tidyverse)
 library(lubridate)
+conflicts_prefer(dplyr::filter)
 
 # ------------------------------------------------------------------------------
 # Function: get_commits_from_github()
@@ -86,67 +87,40 @@ phd_milestones <-
     "2023-08-15", "Confirmation", types[1],
     "2024-08-06", "Mid-Candidature", types[1],
     "2025-07-28", "Pre-Submission", types[1],
-    "2017-05-29", "ASC2025", types[1],
-    "2017-10-28", "BIBC2025", types[1],
-    "2017-12-11", "IDWSDS", types[1],
-    "2018-05-24", "JSM2025", types[1],
-    "2018-07-13", "useR! 2025", types[1],
-    "2018-10-04", "UNO", types[1],
-    "2019-01-17", "Graphics group", types[1],
-    "2019-07-28", "useR! 2024", types[1],
-    "2019-07-28", "3MT", types[1],
-    "2019-07-28", "MGBP seminar", types[1],
-    "2017-05-29", "ASC2023", types[1],
-    "2017-05-29", "IASC ARS 2023", types[1],
-    "2016-12-15", "Init quollr", types[3],
-    "2017-07-20", "Init cardinalR", types[3],
-    "2017-07-20", "Init menuraR", types[4],
-    "2017-07-20", "Init Match-a-roo", types[4],
-    "2017-07-28", "Release quollr", types[3],
-    "2018-01-09", "Release cardinalR", types[3],
-    "2017-07-20", "Release menuraR", types[4],
-    "2017-07-20", "Release Match-a-roo", types[4],
-    "2017-08-22", "Init vis-exp paper", types[2],
-    "2017-08-22", "Init menuraR paper", types[2],
-    "2017-08-22", "Init thesis", types[2],
-    "2017-08-22", "Submit vis-algo paper", types[2],
-    "2017-08-22", "Submit quollr paper", types[2],
-    "2019-02-13", "Submit cardinalR paper", types[2],
-    "2026-01-14", "Submit thesis", types[2]
+    "2025-11-15", "ASC2025", types[1],
+    "2025-11-15", "BIBC2025", types[1],
+    "2025-10-14", "IDWSDS", types[1],
+    "2025-08-04", "JSM2025", types[1],
+    "2025-08-09", "useR! 2025", types[1],
+    "2024-11-23", "UNO", types[1],
+    "2024-11-13", "Graphics group", types[1],
+    "2024-07-10", "useR! 2024", types[1],
+    "2024-07-10", "3MT", types[1],
+    "2023-05-15", "MGBP seminar", types[1],
+    "2023-12-10", "ASC2023", types[1],
+    "2023-12-08", "IASC ARS 2023", types[1],
+    "2024-01-01", "Init quollr", types[3],
+    "2024-03-08", "Init cardinalR", types[3],
+    "2024-07-09", "Init menuraR", types[4],
+    "2023-03-21", "Init Match-a-roo", types[4],
+    "2025-12-19", "Release quollr", types[3],
+    "2025-12-18", "Release cardinalR", types[3],
+    "2025-12-14", "Release menuraR", types[4],
+    "2025-08-20", "Release Match-a-roo", types[4],
+    "2024-10-08", "Init vis-exp paper", types[2],
+    "2025-03-17", "Init menuraR paper", types[2],
+    "2024-01-09", "Init vis-algo paper", types[2],
+    "2024-02-05", "Init quollr paper", types[2],
+    "2025-03-11", "Init cardinalR paper", types[2],
+    "2025-11-14", "Submit vis-algo paper", types[2],
+    "2025-12-20", "Submit quollr paper", types[2],
+    "2025-12-20", "Submit cardinalR paper", types[2]
   ) %>%
   mutate(date = ymd(date))
 
 phd_commits <- phd_commits %>%
   mutate(date = as_date(When)) %>%
-  left_join(phd_milestones) %>%
+  left_join(phd_milestones, relationship = "many-to-many") %>%
   mutate(event = case_when(duplicated(event) ~ NA_character_, TRUE ~ event))
 
 write_rds(phd_commits, here::here("data/git_commits_by_tasks.rds"))
-
-library(ggrepel)
-library(ggbeeswarm)
-library(ggplot2)
-
-p_commits <- phd_commits %>%
-  ggplot(aes(x = When, y = Repository, colour = Repository)) +
-  ggbeeswarm::geom_quasirandom(groupOnX = FALSE, size = 0.6) +
-  geom_label_repel(
-    aes(label = event), data = filter(phd_commits, Repository == types[3]),
-    nudge_y = 0.5, hjust = 0,
-    arrow = arrow(length = unit(0.02, "npc"), type = "closed")
-  ) +
-  geom_label_repel(
-    aes(label = event), data = filter(phd_commits, Repository == types[2]),
-    nudge_y = -1, hjust = 0,
-    arrow = arrow(length = unit(0.02, "npc"), type = "closed")
-  ) +
-  geom_label_repel(
-    aes(label = event), data = filter(phd_commits, Repository == types[1]),
-    nudge_y = 4, hjust = 1,
-    arrow = arrow(length = unit(0.02, "npc"), type = "closed")
-  ) +
-  ylab("") +
-  scale_colour_brewer(palette = "Set2") +
-  theme_bw() +
-  theme(legend.position = "none")
-

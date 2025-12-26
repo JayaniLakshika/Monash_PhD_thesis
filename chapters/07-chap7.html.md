@@ -144,7 +144,7 @@ Presentations, package development, and writing are the three primary types of a
 
 ::: {.cell}
 ::: {.cell-output-display}
-![Plots of my Git commits split by the activity types during my PhD years, labeled with some milestones.](07-chap7_files/figure-html/fig-task-commit-1.png){#fig-task-commit width=768}
+![Plots of my Git commits split by the activity types during my PhD years, labeled with some milestones.](07-chap7_files/figure-html/fig-task-commit-1.png){#fig-task-commit width=100%}
 :::
 :::
 
