@@ -30,9 +30,9 @@ Nonlinear dimension reduction methods provide a low-dimensional representation o
 <!-- objective: introduce a new tool to help to determine which method, which parameter choice provide the most useful representation of high-D data.--> 
 <!--intro with S-curve with 5 methods-->
 
-Nonlinear dimension reduction (NLDR) techniques, such as t-distributed stochastic neighbor embedding (tSNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2019], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021], can create hugely different representations depending on the selected method and hyper-parameter choices. It is difficult to determine whether any of these representations are accurate, which one is the best, or whether they have missed important structures. 
+Nonlinear dimension reduction (NLDR) techniques, such as t-distributed stochastic neighbor embedding (tSNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021], can create hugely different representations depending on the selected method and hyper-parameter choices. It is difficult to determine whether any of these representations are accurate, which one is the best, or whether they have missed important structures. 
 
-This paper presents the R package, `quollr`, which is useful for understanding how NLDR warps high-dimensional space and fits the data. Starting with an NLDR layout, our approach is to create a $2\text{-}D$ wireframe model representation, that can be lifted and displayed in the high-dimensional ($p\text{-}D$) space (Figure \@ref(fig:overview)).
+This paper presents the R package, `quollr`, which is useful for understanding how NLDR warps high-dimensional space and fits the data. Starting with an NLDR layout, our approach is to create a $2\text{-}D$ wireframe model representation, that can be lifted and displayed in the high-dimensional ($p\text{-}D$) space (@fig-overview).
 
 
 ::: {.cell}
@@ -109,11 +109,11 @@ tour_view <- show_langevitour(
 :::
 
 
-which produces the model and data plot shown in Figure \@ref(fig:algo-steps). 
+which produces the model and data plot shown in @fig-algo-steps. 
 
 ## Implementation
 
-The implementation of `quollr` is designed to be efficient, and easy to extend. The package is organized into a series of logical components that reflect the main stages of the workflow: data preprocessing, model fitting, low-density bin removal, prediction, visualization, and interactive exploration (Figure \@ref(fig:workflow)). This package structure makes the code easier to maintain and allows new features to be added without changing the existing functionality.
+The implementation of `quollr` is designed to be efficient, and easy to extend. The package is organized into a series of logical components that reflect the main stages of the workflow: data preprocessing, model fitting, low-density bin removal, prediction, visualization, and interactive exploration (@fig-workflow). This package structure makes the code easier to maintain and allows new features to be added without changing the existing functionality.
 
 
 ::: {.cell}
@@ -675,7 +675,7 @@ model_error <- augment(
 
 ### Visualizations
 
-The package offers several $2\text{-}D$ visualizations (Figure \@ref(fig:geom-outputs-pdf)), including a full hexagonal grid, a hexagonal grid that matches the data, a full grid based on centroid triangulation, a centroid triangulation grid that aligns with the data, and a triangular mesh for any provided set of points.
+The package offers several $2\text{-}D$ visualizations (@fig-geom-outputs-pdf), including a full hexagonal grid, a hexagonal grid that matches the data, a full grid based on centroid triangulation, a centroid triangulation grid that aligns with the data, and a triangular mesh for any provided set of points.
 
 The generated $p\text{-}D$ model, overlaid with the data, can also be visualized using `show_langevitour`. Additionally, it features a function for visualizing the $2\text{-}D$ projection of the fitted model overlaid on the data, called `plot_proj`. 
 
@@ -685,7 +685,7 @@ Furthermore, there are two interactive plots, `show_link_plots` and `show_error_
 
 The `geom_hexgrid()` function introduces a custom `ggplot2` layer designed for visualizing hexagonal grid on a provided set of bin centroids.
 
-To display the complete grid, users should supply all available bin centroids (Figure \@ref(fig:geom-outputs-pdf)a). 
+To display the complete grid, users should supply all available bin centroids (@fig-geom-outputs-pdf a). 
 
 
 ::: {.cell}
@@ -700,7 +700,7 @@ full_hexgrid <- ggplot() +
 :::
 
 
-If the goal is to plot only the subset of hexagons that correspond to bins containing data points, then only the centroids associated with those bins should be passed (Figure \@ref(fig:geom-outputs-pdf)b).
+If the goal is to plot only the subset of hexagons that correspond to bins containing data points, then only the centroids associated with those bins should be passed (@fig-geom-outputs-pdf b).
 
 
 ::: {.cell}
@@ -719,7 +719,7 @@ data_hexgrid <- ggplot() +
 
 The `geom_trimesh()` function introduces a custom `ggplot2` layer designed for visualizing $2\text{-}D$ wireframe on a provided set of bin centroids.
 
-To display the complete wireframe, users should supply all available bin centroids (Figure \@ref(fig:geom-outputs-pdf)c). 
+To display the complete wireframe, users should supply all available bin centroids (@fig-geom-outputs-pdf c). 
 
 
 ::: {.cell}
@@ -734,7 +734,7 @@ full_triangulation_grid <- ggplot() +
 :::
 
 
-If the goal is to plot only the subset of hexagons that correspond to bins containing data points, then only the centroids associated with those bins should be passed (Figure \@ref(fig:geom-outputs-pdf)d).
+If the goal is to plot only the subset of hexagons that correspond to bins containing data points, then only the centroids associated with those bins should be passed (@fig-geom-outputs-pdf d).
 
 
 ::: {.cell}
@@ -771,7 +771,7 @@ data_triangulation_grid <- ggplot() +
 
 #### $p\text{-}D$ model visualization
 
-To visualize how well the $p\text{-}D$ model captures the underlying structure of the high-dimensional data, we provide a tour of the model in $p\text{-}D$ using the `show_langevitour()` function (Figure \@ref(fig:scurve-highd-model-pdf)). This function renders a dynamic projection of both the high-dimensional data and the model using the `langevitour` R package [@paul2023].
+To visualize how well the $p\text{-}D$ model captures the underlying structure of the high-dimensional data, we provide a tour of the model in $p\text{-}D$ using the `show_langevitour()` function (@fig-scurve-highd-model-pdf). This function renders a dynamic projection of both the high-dimensional data and the model using the `langevitour` R package [@harisson2024].
 
 Before plotting, the data needs to be organized into a combined format through the `comb_data_model()` function. This function takes three inputs: `highd_data` (the high-dimensional observations), `model_highd` (high-dimensional summaries for each bin), and `model_2d` (the hexagonal bin centroids of the model). It returns a tidy data frame combining both the data and the model.
 
@@ -812,7 +812,7 @@ show_langevitour(
 :::
 
 
-As an alternative to `langevitour`, users can explore the fitted $p\text{-}D$ model using the `detourr` [@casper2025] (Figure \@ref(fig:scurve-highd-model-detourrpdf)). The combined data object from `comb_data_model()` can be passed directly to the `detour()` function, where `tour_aes()` defines the projection variables and color mapping. The visualization is rendered using `show_scatter()`, which can display both data points and the model’s structural edges via the `edges` argument.
+As an alternative to `langevitour`, users can explore the fitted $p\text{-}D$ model using the `detourr` [@casper2025] (@fig-scurve-highd-model-detourrpdf). The combined data object from `comb_data_model()` can be passed directly to the `detour()` function, where `tour_aes()` defines the projection variables and color mapping. The visualization is rendered using `show_scatter()`, which can display both data points and the model’s structural edges via the `edges` argument.
 
 
 ::: {.cell}
@@ -853,7 +853,7 @@ In the resulting interactive visualization, blue points represent the high-dimen
 
 Two types of interactively linked plots can be generated to assess the model fits everywhere, or better in some subspaces, or completely mismatch the data. The plots are linked using `crosstalk`, which allows interactive brushing: selecting or brushing points in one plot automatically highlights the corresponding points in the other linked views. 
 
-First, the function `show_link_plots()` provides linking a $2\text{-}D$ NLDR layout and a tour (via `langevitour`) of the model overlaid the data (Figure \@ref(fig:scurve-nldrlink-pdf)).
+First, the function `show_link_plots()` provides linking a $2\text{-}D$ NLDR layout and a tour (via `langevitour`) of the model overlaid the data (@fig-scurve-nldrlink-pdf).
 
 The `point_data` for `show_link_plots()` can be prepared using the `comb_all_data_model()` function. This function combines the high-dimensional data (`highd_data`), the NLDR data (`nldr_data`), and the bin-averaged high-dimensional model representation (`model_highd`) aligned to the $2\text{-}D$ bin layout (`model_2d`). This combined dataset includes both the original observations and the bin-level model averages, labeled with a `type` variable for distinguishing between them. Also, the `show_link_plots()` function takes `edge_data`, which defines connections between neighboring bins.
 
@@ -912,7 +912,7 @@ nldrdt_link
 :::
 
 
-The function `show_error_link_plots()` generates three side-by-side, interactively linked plots; a error distribution, a $2\text{-}D$ NLDR layout, and a tour (via `langevitour`) of the model overlaid the data (Figure \@ref(fig:scurve-linkerror-pdf)). The function takes the output from `comb_all_data_model_error()` (`point_data`) and `edge_data` which defines connections between neighboring bins.
+The function `show_error_link_plots()` generates three side-by-side, interactively linked plots; a error distribution, a $2\text{-}D$ NLDR layout, and a tour (via `langevitour`) of the model overlaid the data (@fig-scurve-linkerror-pdf). The function takes the output from `comb_all_data_model_error()` (`point_data`) and `edge_data` which defines connections between neighboring bins.
 
 The `point_data` can be generated using the `comb_all_data_model_error()` function. The function requires several arguments: points data which contain high-dimensional data (`highd_data`), NLDR data (`nldr_data`), high-dimensional model data (`model_highd`), $2\text{-}D$ model data (`model_2d`), and model error (`error_data`). This combined dataset includes both the original observations and the bin-level model averages, labeled with a `type` variable for distinguishing between them.
 
@@ -971,9 +971,9 @@ Single-cell RNA sequencing (scRNA-seq) is a popular and powerful technology that
 
 Clustering of single-cell data is used to identify groups of cells with similar expression profiles. NLDR often used to summarize the discovered clusters, and help to understand the results. The purpose of this example is to *illustrate how to use our method to help decide on an appropriate NLDR layout that accurately represents the data*.
 
-Limb muscle cells of mice in @tabula2018 are examined. There are $1067$ single cells, with $14997$ gene expressions. Following their pre-processing, different NLDR methods were performed using ten principal components. Figure \@ref(fig:limb-hbe) (a) is the reproduction of the published plot. This was generated using tSNE with $\text{perplexity}=30$, the default hyper-parameters. The question is whether this accurately represents the cluster structure in the data. Note that the cluster variable is not used to produce the $2\text{-}D$ layout. 
+Limb muscle cells of mice in @tabula2018 are examined. There are $1067$ single cells, with $14997$ gene expressions. Following their pre-processing, different NLDR methods were performed using ten principal components. @fig-limb-hbe (a) is the reproduction of the published plot. This was generated using tSNE with $\text{perplexity}=30$, the default hyper-parameters. The question is whether this accurately represents the cluster structure in the data. Note that the cluster variable is not used to produce the $2\text{-}D$ layout. 
 
-We illustrate how to use `quollr` to assess whether this is a reasonable layout. Figure \@ref(fig:limb-hbe) shows five alternative layouts, and the HBE plot summarizing the resulting model fits. Layout b is produce by UMAP ($\text{neighbors}=5, ~\text{minimum distance}=0.1$); layout c was produced by PHATE ($\text{knn}=5$); layout d was produced by TriMAP ($\text{number of inliers}=12,~\text{outliers}=4,~\text{random}=3$); layout e was produced by by PaCMAP ($\text{neighbors}=10,~\text{init = "random"}, ~\text{MN-ratio}=0.5,~\text{FP-ratio}=2$); layout f was produced by tSNE ($\text{perplexity}=15$). 
+We illustrate how to use `quollr` to assess whether this is a reasonable layout. @fig-limb-hbe shows five alternative layouts, and the HBE plot summarizing the resulting model fits. Layout b is produce by UMAP ($\text{neighbors}=5, ~\text{minimum distance}=0.1$); layout c was produced by PHATE ($\text{knn}=5$); layout d was produced by TriMAP ($\text{number of inliers}=12,~\text{outliers}=4,~\text{random}=3$); layout e was produced by by PaCMAP ($\text{neighbors}=10,~\text{init = "random"}, ~\text{MN-ratio}=0.5,~\text{FP-ratio}=2$); layout f was produced by tSNE ($\text{perplexity}=15$). 
 
 The HBE plot indicates that the two tSNE layouts outperform all the other methods across a range of binwidths, but that the result with perplexity of $15$ outperforms the other. There are small visual difference between the two layouts. Both support that there are $5-6$ clusters. Layout a has slightly more space between clusters.  Layout d three small clusters at the top whereas layout f has only two, and another smaller one at the bottom. 
 <!-- add function to generate 2D trimesh and the projections (PDF) and langevitour (HTML)-->
@@ -1013,7 +1013,7 @@ plot_hbe_layouts(plots = list(error_plot_limb, nldr1,
 ```
 
 ::: {.cell-output-display}
-![Assessing which of the 6 NLDR layouts on the limb muscle data is the better representation using HBE for varying binwidth ($a_1$). Color used for the lines and points in the left plot and in the scatterplots represents NLDR layout (a-f). Layout d performs well at large binwidth (where the binwidth is not enough to capture the data structure) and poorly as the bin width decreases. Layout f is the best choice.\label{fig:limb-hbe}](03-chap3_files/figure-pdf/fig-limb-hbe-1.pdf){#fig-limb-hbe fig-pos='!ht' fig-alt='A multi-panel figure shows five alternative 2D embeddings of the same high-dimensional data, arranged side by side (panels b–f). Each panel is a scatterplot with two unlabeled embedding axes (dimension 1 on the horizontal axis and dimension 2 on the vertical axis, each spanning a similar, roughly symmetric range around zero). Points represent the same set of observations in every panel, plotted with identical color or marker scheme so that corresponding observations can be visually compared across layouts. Panel b shows a UMAP layout (neighbors = 5, minimum distance = 0.1), panel c a PHATE layout (knn = 5), panel d a TriMAP layout (inliers = 12, outliers = 4, random = 3), panel e a PaCMAP layout (neighbors = 10, init = random, MN-ratio = 0.5, FP-ratio = 2), and panel f a tSNE layout (perplexity = 15). Across panels, similar clusters of points appear but are arranged differently in space: some layouts show more clearly separated compact clusters, while others show overlapping or elongated groups, reflecting how each method balances local versus global structure. The accompanying HBE plot (typically a separate panel) summarizes model fit quality for each layout, with one value per method indicating that some embeddings provide a more faithful representation of the original data structure than others.' width=100%}
+![Assessing which of the 6 NLDR layouts on the limb muscle data is the better representation using HBE for varying binwidth ($a_1$). Color used for the lines and points in the left plot and in the scatterplots represents NLDR layout (a-f). Layout d performs well at large binwidth (where the binwidth is not enough to capture the data structure) and poorly as the bin width decreases. Layout f is the best choice.](03-chap3_files/figure-pdf/fig-limb-hbe-1.pdf){#fig-limb-hbe fig-pos='!ht' fig-alt='A multi-panel figure shows five alternative 2D embeddings of the same high-dimensional data, arranged side by side (panels b–f). Each panel is a scatterplot with two unlabeled embedding axes (dimension 1 on the horizontal axis and dimension 2 on the vertical axis, each spanning a similar, roughly symmetric range around zero). Points represent the same set of observations in every panel, plotted with identical color or marker scheme so that corresponding observations can be visually compared across layouts. Panel b shows a UMAP layout (neighbors = 5, minimum distance = 0.1), panel c a PHATE layout (knn = 5), panel d a TriMAP layout (inliers = 12, outliers = 4, random = 3), panel e a PaCMAP layout (neighbors = 10, init = random, MN-ratio = 0.5, FP-ratio = 2), and panel f a tSNE layout (perplexity = 15). Across panels, similar clusters of points appear but are arranged differently in space: some layouts show more clearly separated compact clusters, while others show overlapping or elongated groups, reflecting how each method balances local versus global structure. The accompanying HBE plot (typically a separate panel) summarizes model fit quality for each layout, with one value per method indicating that some embeddings provide a more faithful representation of the original data structure than others.' width=100%}
 :::
 :::
 
@@ -1050,7 +1050,7 @@ plot_hbe_layouts(plots = list(error_plot_limb, nldr1,
 :::
 
 
-Figure \@ref(fig:model-limb) show how to examine the resulting models of the layouts overlaid on the data in high dimensions. Point color represents the cluster reported in the published paper. In each case the best model is produced using $\text{binwidth}=0.06$. A binwidth of $0.06$ is used because it is small enough to show local structure and differences between clusters, but large enough to avoid breaking the layout into too many small pieces that would make the plots hard to interpret. The plots in these figures are best understand using small steps. 
+@fig-model-limb show how to examine the resulting models of the layouts overlaid on the data in high dimensions. Point color represents the cluster reported in the published paper. In each case the best model is produced using $\text{binwidth}=0.06$. A binwidth of $0.06$ is used because it is small enough to show local structure and differences between clusters, but large enough to avoid breaking the layout into too many small pieces that would make the plots hard to interpret. The plots in these figures are best understand using small steps. 
 
 1. Examine the model in the data space for each, by looking at the tour views. In each case, the clustering doesn't quite match the separations in the data, and both models help see this. For example, the orange cluster ($1$) should probably be split into more than one cluster because both models show large stretched lines connecting a small group far from the remaining orange points. 
 
@@ -1085,7 +1085,7 @@ Figure \@ref(fig:model-limb) show how to examine the resulting models of the lay
 
 ::: {.cell}
 ::: {.cell-output-display}
-![Representative views of two selected NLDR layouts for the Limb muscle dataset ($n=1067$), shown row-wise. The top row (a1–a3) corresponds to the published $2\text{-}D$ layout (Figure \ref{fig:limb-hbe}a), and the bottom row (f1–f3) corresponds to the $2\text{-}D$ layout selected (Figure \ref{fig:limb-hbe}f) selected using the HBE plot. In each row, the left panel (a1, f1) shows the NLDR embedding with points colored by muscle group and overlaid with triangulated hexagon centroids. The middle (a2, f2) and right (a3, f3) panels show two different $2\text{-}D$ projections of the fitted model and data in the original $10\text{-}D$ space, with the same triangular mesh displayed. Together, these panels summarize how the low-dimensional layouts relate to the underlying high-dimensional structure across different viewing directions.](03-chap3_files/figure-pdf/fig-model-limb-1.pdf){#fig-model-limb fig-pos='!ht' fig-alt='The figure consists of six panels arranged in two rows and three columns, showing representative views of two NLDR layouts for the Limb muscle dataset (n=1067). In the top row (a1–a3), the left panel (a1) shows the published 2-D NLDR embedding with points colored by muscle group and overlaid with triangulated hexagon centroids. The middle (a2) and right (a3) panels show two different 2-D projections of the corresponding 10-D data and fitted model, with points plotted as individual markers and the same triangular mesh connecting centroids. In the bottom row (f1–f3), the left panel (f1) shows the 2-D NLDR layout selected using the HBE plot, again with colored points and triangulated centroids, while panels (f2) and (f3) show two different 2-D projections of the associated 10-D structure with the same mesh displayed. Across all panels, axes represent continuous numeric coordinates, color encodes muscle group, and the triangular mesh is used consistently to show correspondence between the low-dimensional layouts and the high-dimensional projections.' width=100%}
+![Representative views of two selected NLDR layouts for the Limb muscle dataset ($n=1067$), shown row-wise. The top row (a1–a3) corresponds to the published $2\text{-}D$ layout (@fig-limb-hbe a), and the bottom row (f1–f3) corresponds to the $2\text{-}D$ layout selected (@fig-limb-hbe f) selected using the HBE plot. In each row, the left panel (a1, f1) shows the NLDR embedding with points colored by muscle group and overlaid with triangulated hexagon centroids. The middle (a2, f2) and right (a3, f3) panels show two different $2\text{-}D$ projections of the fitted model and data in the original $10\text{-}D$ space, with the same triangular mesh displayed. Together, these panels summarize how the low-dimensional layouts relate to the underlying high-dimensional structure across different viewing directions.](03-chap3_files/figure-pdf/fig-model-limb-1.pdf){#fig-model-limb fig-pos='!ht' fig-alt='The figure consists of six panels arranged in two rows and three columns, showing representative views of two NLDR layouts for the Limb muscle dataset (n=1067). In the top row (a1–a3), the left panel (a1) shows the published 2-D NLDR embedding with points colored by muscle group and overlaid with triangulated hexagon centroids. The middle (a2) and right (a3) panels show two different 2-D projections of the corresponding 10-D data and fitted model, with points plotted as individual markers and the same triangular mesh connecting centroids. In the bottom row (f1–f3), the left panel (f1) shows the 2-D NLDR layout selected using the HBE plot, again with colored points and triangulated centroids, while panels (f2) and (f3) show two different 2-D projections of the associated 10-D structure with the same mesh displayed. Across all panels, axes represent continuous numeric coordinates, color encodes muscle group, and the triangular mesh is used consistently to show correspondence between the low-dimensional layouts and the high-dimensional projections.' width=100%}
 :::
 :::
 
@@ -1116,4 +1116,4 @@ There are several avenues for future development. While hexagonal binning provid
 
 ## Acknowledgements
 
-The source code for reproducing this paper can be found at: [github.com/JayaniLakshika/paper-quollr](https://github.com/JayaniLakshika/paper-quollr). This article is created using \CRANpkg{knitr} [@yihui2015] and \CRANpkg{rmarkdown} [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `dplyr` [@hadley2023], `ggplot2` [@hadley2016], `interp` (>= 1.1-6) [@albrecht2024], `langevitour` [@paul2023], `detourr` [@casper2025], `proxy`[@david2022], `stats` [@core2025], `tibble` [@kirill2023], `tidyselect` [@lionel2024], `crosstalk` [@joe2023], `plotly` [@chapman2020], `htmltools` [@joe2024], `kableExtra` [@hao2024], `patchwork` [@thomas2024], and `readr` [@hadley2024].
+The source code for reproducing this paper can be found at: [github.com/JayaniLakshika/paper-quollr](https://github.com/JayaniLakshika/paper-quollr). This article is created using `knitr` [@yihui2015] and `rmarkdown` [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `dplyr` [@hadley2023], `ggplot2` [@hadley2016], `interp` (>= 1.1-6) [@albrecht2024], `langevitour` [@harisson2024], `detourr` [@casper2025], `proxy`[@david2022], `stats` [@core2025], `tibble` [@kirill2023], `tidyselect` [@lionel2024], `crosstalk` [@joe2023], `plotly` [@chapman2020], `htmltools` [@joe2024], `kableExtra` [@hao2024], `patchwork` [@thomas2024], and `readr` [@hadley2024].

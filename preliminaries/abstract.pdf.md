@@ -31,10 +31,10 @@ The inclusion of co-authors reflects the fact that the work came from active col
 \endfoot
 \bottomrule
 \endlastfoot
-2 &  & Revised and resubmitted in the Journal of Computational and Graphical Statistics & 80\%  Concept, Analysis, Software, Writing &  & No\\
-3 &  & Submitted in the R Journal & 80\%  Concept, Analysis, Software, Writing &  & No\\
-4 &  & Submitted in the R Journal & 80\%  Concept, Analysis, Software, Writing &  & No\\
-6 &  & Submitted in the Oxford Academic (Bioinformatics Advances) & 80\%  Concept, Analysis, Software, Writing &  & No\\*
+2 &  & Revised and resubmitted in the Journal of Computational and Graphical Statistics & 77\%  Concept, Analysis, Software, Writing & D Cook 10\%, P Harrison 5\%, M Lydeamore 5\%, TS Talagala 3\% & No\\
+3 &  & Submitted in the R Journal & 77\%  Concept, Analysis, Software, Writing & D Cook 10\%, P Harrison 5\%, M Lydeamore 5\%, TS Talagala 3\% & No\\
+4 &  & Submitted in the R Journal & 77\%  Concept, Analysis, Software, Writing & D Cook 10\%, P Harrison 5\%, M Lydeamore 5\%, TS Talagala 3\% & No\\
+6 &  & Submitted in the Oxford Academic (Bioinformatics Advances) & 77\%  Concept, Analysis, Software, Writing & D Cook 10\%, P Harrison 5\%, M Lydeamore 5\%, TS Talagala 3\% & No\\*
 \end{longtable}
 \endgroup{}
 
@@ -44,7 +44,7 @@ The inclusion of co-authors reflects the fact that the work came from active col
 
 
 
-Chapters 3 is planned for submission to peer-reviewed journal.
+Chapters $5$ is planned for submission to peer-reviewed journal.
 
 \clearpage
 
@@ -62,7 +62,7 @@ I have renumbered sections of submitted papers in order to generate a consistent
 
 **Student signature**: 
 
-**Date**: 13th January 2026 
+**Date**: 14th January 2026 
 
 I hereby certify that the above declaration correctly reflects the nature and extent of the student’s and co-authors’ contributions to this work. In instances where I am not the responsible author I have consulted with the responsible author to agree on the respective contributions of the authors.
 
@@ -70,4 +70,4 @@ I hereby certify that the above declaration correctly reflects the nature and ex
 
 **Main Supervisor signature**:
 
-**Date**: 13th January 2026
+**Date**: 14th January 2026
