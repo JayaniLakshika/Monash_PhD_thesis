@@ -85,7 +85,7 @@ Here, the shapes have $200$, $300$, and $500$ points respectively (`n`), are pos
 The main function of the package is `gen_multicluster()`, which generates datasets consisting of multiple clusters with user-specified characteristics. 
 To maintain consistency across generators, the function identifies the arguments required by each chosen generator function and supplies only those arguments that are valid for that specific generator. This design enables the combination of cluster types with differing parameter requirements within the same dataset. When clusters are generated with fewer dimensions than others, the function augments the lower-dimensional clusters with additional Gaussian noise variables so that all clusters are represented in the same dimensional space. These noise dimensions are drawn independently from normal distributions $X \sim \mathcal{N}(\mu, \sigma^2)$, where the mean ($\mu$) is set to the average of the cluster coordinates and the standard deviation ($\sigma$) defaults to $0.2$.
 
-An optional argument, `is_bkg`, adds background noise drawn from a multivariate normal distribution centered on the dataset’s overall mean with standard deviations matching the observed spread. Extra arguments (`...`) can be passed to cluster generators, allowing further control over per-cluster characteristics like radius of the sphere. The main arguments of the `gen_multicluster()` function are shown in @tbl-main-tb-html.
+An optional argument, `is_bkg`, adds background noise drawn from a multivariate normal distribution centered on the dataset’s overall mean with standard deviations matching the observed spread. Extra arguments (`...`) can be passed to cluster generators, allowing further control over per-cluster characteristics like radius of the sphere. The main arguments of the `gen_multicluster()` function are shown in @tbl-main-tb.
 
 
 ::: {.cell}
@@ -94,11 +94,9 @@ An optional argument, `is_bkg`, adds background noise drawn from a multivariate 
 
 
 
-::: {#tbl-main-tb-html .cell}
+::: {#tbl-main-tb .cell tbl-cap='The main arguments for `gen_multicluster()`.'}
 ::: {.cell-output-display}
 
-
-Table: The main arguments for `gen_multicluster()`.
 
 |Argument              |Type               |Explanation                           |
 |:---------------------|:------------------|:-------------------------------------|
@@ -115,15 +113,9 @@ Table: The main arguments for `gen_multicluster()`.
 :::
 
 
-
-::: {#tbl-main-tb-pdf .cell}
-
-:::
-
-
 ### Shape generators
 
-The shape generators form the foundation of the package, providing functions to create synthetic datasets from simple, well-defined geometric forms such as cones, pyramids, spheres, grids, and branching structures. Each generator includes the parameter `n`, which specifies the number of points to generate. Some functions, such as `gen_unifcube()`, also take the dimension `p`, while others include arguments specific to the geometry (e.g., radius for spheres (`r`), width for bands (`w`)). If higher-dimensional data are required, additional noise dimensions can be appended after data generation using any noise generator function. This flexibility allows users to construct both low- and high-dimensional datasets from the same underlying structures. @tbl-shape-tb-html outlines these functions. The main arguments of the functions described in @tbl-arg-shape-tb-html.
+The shape generators form the foundation of the package, providing functions to create synthetic datasets from simple, well-defined geometric forms such as cones, pyramids, spheres, grids, and branching structures. Each generator includes the parameter `n`, which specifies the number of points to generate. Some functions, such as `gen_unifcube()`, also take the dimension `p`, while others include arguments specific to the geometry (e.g., radius for spheres (`r`), width for bands (`w`)). If higher-dimensional data are required, additional noise dimensions can be appended after data generation using any noise generator function. This flexibility allows users to construct both low- and high-dimensional datasets from the same underlying structures. @tbl-shape-tb outlines these functions. The main arguments of the functions described in @tbl-arg-shape-tb.
 
 
 ::: {.cell}
@@ -132,11 +124,9 @@ The shape generators form the foundation of the package, providing functions to 
 
 
 
-::: {#tbl-shape-tb-html .cell}
+::: {#tbl-shape-tb .cell tbl-cap='Overview of shape-generation functions, including their required parameters and a brief description of each geometric structure produced. The generators cover branching patterns, spheres, spirals, pyramids, Gaussian clouds, and other nonlinear shapes.'}
 ::: {.cell-output-display}
 
-
-Table: Overview of shape-generation functions, including their required parameters and a brief description of each geometric structure produced. The generators cover branching patterns, spheres, spirals, pyramids, Gaussian clouds, and other nonlinear shapes.
 
 |Function                            |Arguments                     |Explanation                                             |
 |:-----------------------------------|:-----------------------------|:-------------------------------------------------------|
@@ -181,23 +171,15 @@ Table: Overview of shape-generation functions, including their required paramete
 
 
 
-::: {#tbl-shape-tb-pdf .cell}
-
-:::
-
-
-
 ::: {.cell}
 
 :::
 
 
 
-::: {#tbl-arg-shape-tb-html .cell}
+::: {#tbl-arg-shape-tb .cell tbl-cap='Argument definitions for the shape generators. The table lists each argument, its data type, and a description of its role in controlling geometric structure, dimensionality, scaling, curvature, spacing, and other features of the simulated high-dimensional datasets.'}
 ::: {.cell-output-display}
 
-
-Table: Argument definitions for the shape generators. The table lists each argument, its data type, and a description of its role in controlling geometric structure, dimensionality, scaling, curvature, spacing, and other features of the simulated high-dimensional datasets.
 
 |Argument              |Type (positive) |Explanation                                      |
 |:---------------------|:---------------|:------------------------------------------------|
@@ -224,12 +206,6 @@ Table: Argument definitions for the shape generators. The table lists each argum
 
 
 :::
-:::
-
-
-
-::: {#tbl-arg-shape-tb-pdf .cell}
-
 :::
 
 
@@ -1009,7 +985,7 @@ Viewing the $4\text{-}D$ `trefoil4d` and $3\text{-}D$ `trefoil3d` data. The `tre
 
 Trigonometric-based structures provide flexible ways to simulate complex curved patterns and spirals that often arise in real-world high-dimensional data, such as in biological trajectories, or physical systems (@fig-triginometric). The main geometry is defined by the first few coordinates: crescents ($p=2$), cylinders, spirals, and helices ($p=4$). These structures are particularly valuable for testing how well dimension reduction and clustering algorithms preserve intricate geometric and topological features [@calladine1997; @gershenfeld2000]. 
 
-First, the `gen_crescent(n, p)` function generates a $p$-dimensional dataset of $n$ observations based on a $2\text{-}D$ crescent-shaped manifold with optional structured high-dimensional noise (@fig:triginometric a). Let $\{\theta_i\}_{i=1}^n$  be a sequence of $n$ evenly spaced angles on the interval $[\pi/6, 2\pi]$, defined as $\theta_i = \frac{\pi}{6} + (i-1)\frac{2\pi - \pi/6}{n-1}, \quad i = 1,\dots,n$. The corresponding $2\text{-}D$ coordinates are defined by: $$X_{i1} = \cos(\theta_i), \quad X_{i2} = \sin(\theta_i).$$
+First, the `gen_crescent(n, p)` function generates a $p$-dimensional dataset of $n$ observations based on a $2\text{-}D$ crescent-shaped manifold with optional structured high-dimensional noise (@fig-triginometric a). Let $\{\theta_i\}_{i=1}^n$  be a sequence of $n$ evenly spaced angles on the interval $[\pi/6, 2\pi]$, defined as $\theta_i = \frac{\pi}{6} + (i-1)\frac{2\pi - \pi/6}{n-1}, \quad i = 1,\dots,n$. The corresponding $2\text{-}D$ coordinates are defined by: $$X_{i1} = \cos(\theta_i), \quad X_{i2} = \sin(\theta_i).$$
 
 
 ::: {.cell}
@@ -1198,7 +1174,7 @@ Two specialized wrappers illustrate this idea. The function `gen_scurvehole(n, r
 
 ### Generate noise dimensions
 
-High-dimensional data structures often benefit from the addition of auxiliary noise dimensions, which can be used to assess the robustness of dimension reduction and clustering algorithms. The functions in this section provide flexible ways to generate random noise dimensions, ranging from purely random Gaussian variables to more structured, wavy patterns that mimic nonlinear distortions in high-dimensional space. These functions can be applied independently or combined with other geometric structures to create complex simulated datasets. @tbl-noise-tb-html details these functions.
+High-dimensional data structures often benefit from the addition of auxiliary noise dimensions, which can be used to assess the robustness of dimension reduction and clustering algorithms. The functions in this section provide flexible ways to generate random noise dimensions, ranging from purely random Gaussian variables to more structured, wavy patterns that mimic nonlinear distortions in high-dimensional space. These functions can be applied independently or combined with other geometric structures to create complex simulated datasets. @tbl-noise-tb details these functions.
 
 
 ::: {.cell}
@@ -1207,11 +1183,9 @@ High-dimensional data structures often benefit from the addition of auxiliary no
 
 
 
-::: {#tbl-noise-tb-html .cell}
+::: {#tbl-noise-tb .cell tbl-cap='cardinalR noise dimensions generation functions.'}
 ::: {.cell-output-display}
 
-
-Table: cardinalR noise dimensions generation functions
 
 |Function                    |Explanation                                                                                                                        |
 |:---------------------------|:----------------------------------------------------------------------------------------------------------------------------------|
@@ -1222,12 +1196,6 @@ Table: cardinalR noise dimensions generation functions
 
 
 :::
-:::
-
-
-
-::: {#tbl-noise-tb-pdf .cell}
-
 :::
 
 
@@ -1269,7 +1237,7 @@ In $p\text{-}D$ space, a rotation is an orthogonal transformation that changes t
 
 ### Multiple cluster examples
 
-By using the shape generators mentioned above, we can create various examples of multiple clusters. The package includes some of these examples, which are described in @tbl-odd-shape-tb-html.
+By using the shape generators mentioned above, we can create various examples of multiple clusters. The package includes some of these examples, which are described in @tbl-odd-shape-tb.
 
 
 ::: {.cell}
@@ -1278,11 +1246,9 @@ By using the shape generators mentioned above, we can create various examples of
 
 
 
-::: {#tbl-odd-shape-tb-html .cell}
+::: {#tbl-odd-shape-tb .cell tbl-cap='cardinalR multiple clusters generation functions.'}
 ::: {.cell-output-display}
 
-
-Table: cardinalR multiple clusters generation functions
 
 |Function                             |Explanation                                                |
 |:------------------------------------|:----------------------------------------------------------|
@@ -1305,15 +1271,9 @@ Table: cardinalR multiple clusters generation functions
 :::
 
 
-
-::: {#tbl-odd-shape-tb-pdf .cell}
-
-:::
-
-
 ### Additional functions
 
-The package includes various supplementary tools in addition to the shape generating functions mentioned earlier. These tools allow users to create background noise, randomize the rows of the data, relocate clusters, generate a vector whose product and sum are approximately equal to a target value, rotate structures, and normalize the data. @tbl-add-tb-html details these functions. More detailed explanations are available in [jayanilakshika.github.io/cardinalR/articles/03additionalfun](https://jayanilakshika.github.io/cardinalR/articles/03additionalfun.html).
+The package includes various supplementary tools in addition to the shape generating functions mentioned earlier. These tools allow users to create background noise, randomize the rows of the data, relocate clusters, generate a vector whose product and sum are approximately equal to a target value, rotate structures, and normalize the data. @tbl-add-tb details these functions. More detailed explanations are available in [jayanilakshika.github.io/cardinalR/articles/03additionalfun](https://jayanilakshika.github.io/cardinalR/articles/03additionalfun.html).
 
 
 ::: {.cell}
@@ -1322,11 +1282,9 @@ The package includes various supplementary tools in addition to the shape genera
 
 
 
-::: {#tbl-add-tb-html .cell}
+::: {#tbl-add-tb .cell tbl-cap='cardinalR additional functions.'}
 ::: {.cell-output-display}
 
-
-Table: cardinalR additional functions
 
 |Function                        |Explanation                                                                                       |
 |:-------------------------------|:-------------------------------------------------------------------------------------------------|
@@ -1339,12 +1297,6 @@ Table: cardinalR additional functions
 
 
 :::
-:::
-
-
-
-::: {#tbl-add-tb-pdf .cell}
-
 :::
 
 
@@ -1541,7 +1493,7 @@ Future extensions of `cardinalR` may include biologically inspired or applicatio
 
 ## Acknowledgements
 
-The source material for this paper, including the full datasets and figures, is available at [github.com/JayaniLakshika/paper-cardinalR](https://github.com/JayaniLakshika/paper-cardinalR). This article is created using \CRANpkg{knitr} [@yihui2015] and \CRANpkg{rmarkdown} [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `tibble` [@kirill2023], `gtools` [@gregory2023], `dplyr` [@hadley2023], `stats` [@core2025], `tidyr` [@hadley2024], `purrr` [@hadley2025], `mvtnorm` [@alan2009], `geozoo` [@barret2016], and `MASS` [@venables2002]. 
+The source material for this paper, including the full datasets and figures, is available at [github.com/JayaniLakshika/paper-cardinalR](https://github.com/JayaniLakshika/paper-cardinalR). This article is created using `knitr` [@yihui2015] and `rmarkdown` [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `tibble` [@kirill2023], `gtools` [@gregory2023], `dplyr` [@hadley2023], `stats` [@core2025], `tidyr` [@hadley2024], `purrr` [@hadley2025], `mvtnorm` [@alan2009], `geozoo` [@barret2016], and `MASS` [@venables2002]. 
 
 
 

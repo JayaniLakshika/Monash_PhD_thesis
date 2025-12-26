@@ -113,7 +113,7 @@ Here, the shapes have $200$, $300$, and $500$ points respectively (`n`), are pos
 The main function of the package is `gen_multicluster()`, which generates datasets consisting of multiple clusters with user-specified characteristics. 
 To maintain consistency across generators, the function identifies the arguments required by each chosen generator function and supplies only those arguments that are valid for that specific generator. This design enables the combination of cluster types with differing parameter requirements within the same dataset. When clusters are generated with fewer dimensions than others, the function augments the lower-dimensional clusters with additional Gaussian noise variables so that all clusters are represented in the same dimensional space. These noise dimensions are drawn independently from normal distributions $X \sim \mathcal{N}(\mu, \sigma^2)$, where the mean ($\mu$) is set to the average of the cluster coordinates and the standard deviation ($\sigma$) defaults to $0.2$.
 
-An optional argument, `is_bkg`, adds background noise drawn from a multivariate normal distribution centered on the dataset’s overall mean with standard deviations matching the observed spread. Extra arguments (`...`) can be passed to cluster generators, allowing further control over per-cluster characteristics like radius of the sphere. The main arguments of the `gen_multicluster()` function are shown in `r knitr::asis_output(ifelse(knitr::is_html_output(), '@tbl-main-tb-html', '@tbl-main-tb-pdf'))`.
+An optional argument, `is_bkg`, adds background noise drawn from a multivariate normal distribution centered on the dataset’s overall mean with standard deviations matching the observed spread. Extra arguments (`...`) can be passed to cluster generators, allowing further control over per-cluster characteristics like radius of the sphere. The main arguments of the `gen_multicluster()` function are shown in @tbl-main-tb.
 
 ```{r}
 main_tb <- tibble(arg = c("n",
@@ -140,24 +140,26 @@ main_tb <- tibble(arg = c("n",
     mutate(arg = gsub("_", "\\\\_", arg))
 ```
 
-```{r tbl-main-tb-html, eval=knitr::is_html_output()}
-main_tb |> 
-  mutate(arg = paste0("<code>", arg, "</code>")) |> 
-  kable(caption = "The main arguments for `gen_multicluster()`.", col.names = c("Argument", "Type", "Explanation"), linesep = "", escape = FALSE, table.pos = "!ht") 
-```
+```{r tbl-main-tb}
+#| tbl-cap: "The main arguments for `gen_multicluster()`."
 
-```{r tbl-main-tb-pdf, eval=knitr::is_latex_output()}
-main_tb |> 
-    mutate(arg = paste0("\\texttt{", arg, "}")) |> 
-  kable(caption = "The main arguments for \\texttt{gen\\_multicluster()}.", format="latex", col.names = c("Argument", "Type", "Explanation"), booktabs = T, table.pos = "!ht", linesep = "", escape = FALSE)  |>
-  column_spec(1, width = "2cm") |>
-  column_spec(2, width = "3cm") |>
-  column_spec(3, width = "8cm")
+if (knitr::is_latex_output()) {
+    main_tb |> 
+        mutate(arg = paste0("\\texttt{", arg, "}")) |> 
+        kable(format="latex", col.names = c("Argument", "Type", "Explanation"), booktabs = T, table.pos = "!ht", linesep = "", escape = FALSE)  |>
+        column_spec(1, width = "2cm") |>
+        column_spec(2, width = "3cm") |>
+        column_spec(3, width = "8cm")
+} else {
+    main_tb |> 
+        mutate(arg = paste0("<code>", arg, "</code>")) |> 
+        kable(col.names = c("Argument", "Type", "Explanation"), linesep = "", escape = FALSE, table.pos = "!ht") 
+}
 ```
 
 ### Shape generators
 
-The shape generators form the foundation of the package, providing functions to create synthetic datasets from simple, well-defined geometric forms such as cones, pyramids, spheres, grids, and branching structures. Each generator includes the parameter `n`, which specifies the number of points to generate. Some functions, such as `gen_unifcube()`, also take the dimension `p`, while others include arguments specific to the geometry (e.g., radius for spheres (`r`), width for bands (`w`)). If higher-dimensional data are required, additional noise dimensions can be appended after data generation using any noise generator function. This flexibility allows users to construct both low- and high-dimensional datasets from the same underlying structures. `r knitr::asis_output(ifelse(knitr::is_html_output(), '@tbl-shape-tb-html', '@tbl-shape-tb-pdf'))` outlines these functions. The main arguments of the functions described in `r knitr::asis_output(ifelse(knitr::is_html_output(), '@tbl-arg-shape-tb-html', '@tbl-arg-shape-tb-pdf'))`.
+The shape generators form the foundation of the package, providing functions to create synthetic datasets from simple, well-defined geometric forms such as cones, pyramids, spheres, grids, and branching structures. Each generator includes the parameter `n`, which specifies the number of points to generate. Some functions, such as `gen_unifcube()`, also take the dimension `p`, while others include arguments specific to the geometry (e.g., radius for spheres (`r`), width for bands (`w`)). If higher-dimensional data are required, additional noise dimensions can be appended after data generation using any noise generator function. This flexibility allows users to construct both low- and high-dimensional datasets from the same underlying structures. @tbl-shape-tb outlines these functions. The main arguments of the functions described in @tbl-arg-shape-tb.
 
 ```{r}
 shape_tb <- tibble(fun = c("gen_expbranches",
@@ -266,21 +268,24 @@ shape_tb <- tibble(fun = c("gen_expbranches",
    mutate(parm = gsub("_", "\\\\_", parm))
 ```
 
-```{r tbl-shape-tb-html, eval=knitr::is_html_output()}
-shape_tb |> 
-  mutate(parm = paste0("<code>", parm, "</code>")) |>
-  mutate(fun = paste0("<code>", fun, "</code>")) |> 
-  kable(caption = "Overview of shape-generation functions, including their required parameters and a brief description of each geometric structure produced. The generators cover branching patterns, spheres, spirals, pyramids, Gaussian clouds, and other nonlinear shapes.", col.names = c("Function", "Arguments", "Explanation"), escape = FALSE, table.pos = "!ht") 
-```
+```{r tbl-shape-tb}
+#| tbl-cap: "Overview of shape-generation functions, including their required parameters and a brief description of each geometric structure produced. The generators cover branching patterns, spheres, spirals, pyramids, Gaussian clouds, and other nonlinear shapes."
 
-```{r tbl-shape-tb-pdf, eval=knitr::is_latex_output()}
-shape_tb |>
-  mutate(parm = paste0("\\texttt{", parm, "}")) |>
-  mutate(fun = paste0("\\texttt{", fun, "}")) |> 
-  kable(caption = "Overview of shape-generation functions, including their required parameters and a brief description of each geometric structure produced. The generators cover branching patterns, spheres, spirals, pyramids, Gaussian clouds, and other nonlinear shapes.", format="latex", col.names = c("Function", "Arguments", "Explanation"), escape = FALSE, booktabs = T, table.pos = "!ht", linesep = "")  |>
-  column_spec(1, width = "3.5cm") |>
-  column_spec(2, width = "1.5cm") |>
-  column_spec(3, width = "8cm")
+if (knitr::is_latex_output()) {
+    shape_tb |>
+        mutate(parm = paste0("\\texttt{", parm, "}")) |>
+        mutate(fun = paste0("\\texttt{", fun, "}")) |> 
+        kable(format="latex", col.names = c("Function", "Arguments", "Explanation"), escape = FALSE, booktabs = T, table.pos = "!ht", linesep = "")  |>
+        column_spec(1, width = "3.5cm") |>
+        column_spec(2, width = "1.5cm") |>
+        column_spec(3, width = "8cm")
+} else {
+    shape_tb |> 
+        mutate(parm = paste0("<code>", parm, "</code>")) |>
+        mutate(fun = paste0("<code>", fun, "</code>")) |> 
+        kable(col.names = c("Function", "Arguments", "Explanation"), escape = FALSE, table.pos = "!ht")
+}
+ 
 ```
 
 ```{r}
@@ -310,19 +315,21 @@ arg_branching_tb <- tibble(arg = c("n", "k", "p", "h", "ratio", "s", "r", "n_vec
    mutate(arg = gsub("_", "\\\\_", arg))
 ```
 
-```{r tbl-arg-shape-tb-html, eval=knitr::is_html_output()}
-arg_branching_tb |> 
-  mutate(arg = paste0("<code>", arg, "</code>")) |>
-  kable(caption = "Argument definitions for the shape generators. The table lists each argument, its data type, and a description of its role in controlling geometric structure, dimensionality, scaling, curvature, spacing, and other features of the simulated high-dimensional datasets.", col.names = c("Argument", "Type (positive)", "Explanation"), escape = FALSE, table.pos = "!ht") 
-```
+```{r tbl-arg-shape-tb}
+#| tbl-cap: "Argument definitions for the shape generators. The table lists each argument, its data type, and a description of its role in controlling geometric structure, dimensionality, scaling, curvature, spacing, and other features of the simulated high-dimensional datasets."
 
-```{r tbl-arg-shape-tb-pdf, eval=knitr::is_latex_output()}
-arg_branching_tb |> 
-  mutate(arg = paste0("\\texttt{", arg, "}")) |> 
-  kable(caption = "Argument definitions for the shape generators. The table lists each argument, its data type, and a description of its role in controlling geometric structure, dimensionality, scaling, curvature, spacing, and other features of the simulated high-dimensional datasets.", format="latex", col.names = c("Argument", "Type (positive)", "Explanation"), booktabs = T, escape = FALSE, table.pos = "!ht")  |>
-  column_spec(1, width = "1cm") |>
-  column_spec(1, width = "2cm") |>
-  column_spec(2, width = "3cm")
+if (knitr::is_latex_output()) {
+    arg_branching_tb |> 
+        mutate(arg = paste0("\\texttt{", arg, "}")) |> 
+        kable(format="latex", col.names = c("Argument", "Type (positive)", "Explanation"), booktabs = T, escape = FALSE, table.pos = "!ht")  |>
+        column_spec(1, width = "1cm") |>
+        column_spec(1, width = "2cm") |>
+        column_spec(2, width = "3cm")
+} else {
+    arg_branching_tb |> 
+        mutate(arg = paste0("<code>", arg, "</code>")) |>
+        kable(col.names = c("Argument", "Type (positive)", "Explanation"), escape = FALSE, table.pos = "!ht") 
+}
 ```
 
 #### Branching
@@ -1679,7 +1686,7 @@ trefoil4d_proj1 + trefoil4d_proj2 + trefoil4d_proj3 +
 
 Trigonometric-based structures provide flexible ways to simulate complex curved patterns and spirals that often arise in real-world high-dimensional data, such as in biological trajectories, or physical systems (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-triginometric"} else { "@fig-triginometric-proj"})`). The main geometry is defined by the first few coordinates: crescents ($p=2$), cylinders, spirals, and helices ($p=4$). These structures are particularly valuable for testing how well dimension reduction and clustering algorithms preserve intricate geometric and topological features [@calladine1997; @gershenfeld2000]. 
 
-First, the `gen_crescent(n, p)` function generates a $p$-dimensional dataset of $n$ observations based on a $2\text{-}D$ crescent-shaped manifold with optional structured high-dimensional noise (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig:triginometric a"} else { "@fig:triginometric-proj a"})`). Let $\{\theta_i\}_{i=1}^n$  be a sequence of $n$ evenly spaced angles on the interval $[\pi/6, 2\pi]$, defined as $\theta_i = \frac{\pi}{6} + (i-1)\frac{2\pi - \pi/6}{n-1}, \quad i = 1,\dots,n$. The corresponding $2\text{-}D$ coordinates are defined by: $$X_{i1} = \cos(\theta_i), \quad X_{i2} = \sin(\theta_i).$$
+First, the `gen_crescent(n, p)` function generates a $p$-dimensional dataset of $n$ observations based on a $2\text{-}D$ crescent-shaped manifold with optional structured high-dimensional noise (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-triginometric a"} else { "@fig-triginometric-proj a"})`). Let $\{\theta_i\}_{i=1}^n$  be a sequence of $n$ evenly spaced angles on the interval $[\pi/6, 2\pi]$, defined as $\theta_i = \frac{\pi}{6} + (i-1)\frac{2\pi - \pi/6}{n-1}, \quad i = 1,\dots,n$. The corresponding $2\text{-}D$ coordinates are defined by: $$X_{i1} = \cos(\theta_i), \quad X_{i2} = \sin(\theta_i).$$
 
 ```{r data-crescent}
 crescent <- gen_crescent(n = 1000)
@@ -2086,7 +2093,7 @@ Two specialized wrappers illustrate this idea. The function `gen_scurvehole(n, r
 
 ### Generate noise dimensions
 
-High-dimensional data structures often benefit from the addition of auxiliary noise dimensions, which can be used to assess the robustness of dimension reduction and clustering algorithms. The functions in this section provide flexible ways to generate random noise dimensions, ranging from purely random Gaussian variables to more structured, wavy patterns that mimic nonlinear distortions in high-dimensional space. These functions can be applied independently or combined with other geometric structures to create complex simulated datasets. `r knitr::asis_output(ifelse(knitr::is_html_output(), '@tbl-noise-tb-html', '@tbl-noise-tb-pdf'))` details these functions.
+High-dimensional data structures often benefit from the addition of auxiliary noise dimensions, which can be used to assess the robustness of dimension reduction and clustering algorithms. The functions in this section provide flexible ways to generate random noise dimensions, ranging from purely random Gaussian variables to more structured, wavy patterns that mimic nonlinear distortions in high-dimensional space. These functions can be applied independently or combined with other geometric structures to create complex simulated datasets. @tbl-noise-tb details these functions.
 
 ```{r}
 noise_fun_tb <- tibble(fun = c("gen_noisedims",
@@ -2100,18 +2107,20 @@ noise_fun_tb <- tibble(fun = c("gen_noisedims",
   mutate(fun = gsub("_", "\\\\_", fun))
 ```
 
-```{r tbl-noise-tb-html, eval=knitr::is_html_output()}
-noise_fun_tb |> 
-  mutate(fun = paste0("<code>", fun, "</code>")) |> 
-  kable(caption = "cardinalR noise dimensions generation functions", col.names = c("Function", "Explanation"), escape = FALSE, table.pos = "!ht") 
-```
+```{r tbl-noise-tb}
+#| tbl-cap: "cardinalR noise dimensions generation functions."
 
-```{r tbl-noise-tb-pdf, eval=knitr::is_latex_output()}
-noise_fun_tb |> 
-  mutate(fun = paste0("\\texttt{", fun, "}")) |> 
-  kable(caption = "cardinalR noise dimensions generation functions", format="latex", col.names = c("Function", "Explanation"), escape = FALSE, booktabs = T, table.pos = "!ht")  |>
-  column_spec(1, width = "2.5cm") |>
-  column_spec(2, width = "10.5cm")
+if (knitr::is_latex_output()) {
+    noise_fun_tb |> 
+        mutate(fun = paste0("\\texttt{", fun, "}")) |> 
+        kable(format="latex", col.names = c("Function", "Explanation"), escape = FALSE, booktabs = T, table.pos = "!ht")  |>
+        column_spec(1, width = "2.5cm") |>
+        column_spec(2, width = "10.5cm")
+} else {
+    noise_fun_tb |> 
+        mutate(fun = paste0("<code>", fun, "</code>")) |> 
+        kable(col.names = c("Function", "Explanation"), escape = FALSE, table.pos = "!ht") 
+}
 ```
 
 The `gen_noisedims(n, p, m, s)` function generates $p$ independent Gaussian noise dimensions,
@@ -2152,7 +2161,7 @@ In $p\text{-}D$ space, a rotation is an orthogonal transformation that changes t
 
 ### Multiple cluster examples
 
-By using the shape generators mentioned above, we can create various examples of multiple clusters. The package includes some of these examples, which are described in `r knitr::asis_output(ifelse(knitr::is_html_output(), '@tbl-odd-shape-tb-html', '@tbl-odd-shape-tb-pdf'))`.
+By using the shape generators mentioned above, we can create various examples of multiple clusters. The package includes some of these examples, which are described in @tbl-odd-shape-tb.
 
 ```{r}
 odd_shapes_tb <- tibble(fun = c("make_mobiusgau",
@@ -2185,23 +2194,25 @@ odd_shapes_tb <- tibble(fun = c("make_mobiusgau",
   mutate(fun = gsub("_", "\\\\_", fun))
 ```
 
-```{r tbl-odd-shape-tb-html, eval=knitr::is_html_output()}
-odd_shapes_tb |> 
-  mutate(fun = paste0("<code>", fun, "</code>")) |> 
-  kable(caption = "cardinalR multiple clusters generation functions", col.names = c("Function", "Explanation"), linesep = "", escape = FALSE, table.pos = "!ht") 
-```
+```{r tbl-odd-shape-tb}
+#| tbl-cap: "cardinalR multiple clusters generation functions."
 
-```{r tbl-odd-shape-tb-pdf, eval=knitr::is_latex_output()}
-odd_shapes_tb |> 
-  mutate(fun = paste0("\\texttt{", fun, "}")) |> 
-  kable(caption = "cardinalR multiple clusters generation functions", format="latex", col.names = c("Function", "Explanation"), escape = FALSE, booktabs = T, linesep = "", table.pos = "!ht")  |>
-  column_spec(1, width = "3.5cm") |>
-  column_spec(2, width = "8.5cm")
+if (knitr::is_latex_output()) {
+    odd_shapes_tb |> 
+        mutate(fun = paste0("\\texttt{", fun, "}")) |> 
+        kable(format="latex", col.names = c("Function", "Explanation"), escape = FALSE, booktabs = T, linesep = "", table.pos = "!ht")  |>
+        column_spec(1, width = "3.5cm") |>
+        column_spec(2, width = "8.5cm")
+} else {
+    odd_shapes_tb |> 
+        mutate(fun = paste0("<code>", fun, "</code>")) |> 
+        kable(col.names = c("Function", "Explanation"), linesep = "", escape = FALSE, table.pos = "!ht") 
+}
 ```
 
 ### Additional functions
 
-The package includes various supplementary tools in addition to the shape generating functions mentioned earlier. These tools allow users to create background noise, randomize the rows of the data, relocate clusters, generate a vector whose product and sum are approximately equal to a target value, rotate structures, and normalize the data. `r knitr::asis_output(ifelse(knitr::is_html_output(), '@tbl-add-tb-html', 'tbl-add-tb-pdf'))` details these functions. More detailed explanations are available in [jayanilakshika.github.io/cardinalR/articles/03additionalfun](https://jayanilakshika.github.io/cardinalR/articles/03additionalfun.html).
+The package includes various supplementary tools in addition to the shape generating functions mentioned earlier. These tools allow users to create background noise, randomize the rows of the data, relocate clusters, generate a vector whose product and sum are approximately equal to a target value, rotate structures, and normalize the data. @tbl-add-tb details these functions. More detailed explanations are available in [jayanilakshika.github.io/cardinalR/articles/03additionalfun](https://jayanilakshika.github.io/cardinalR/articles/03additionalfun.html).
 
 ```{r}
 add_fun_tb <- tibble(fun = c("gen_bkgnoise",
@@ -2219,18 +2230,20 @@ add_fun_tb <- tibble(fun = c("gen_bkgnoise",
   mutate(fun = gsub("_", "\\\\_", fun))
 ```
 
-```{r tbl-add-tb-html, eval=knitr::is_html_output()}
-add_fun_tb |> 
-  mutate(fun = paste0("<code>", fun, "</code>")) |> 
-  kable(caption = "cardinalR additional functions", col.names = c("Function", "Explanation"), linesep = "", escape = FALSE, table.pos = "!ht") 
-```
+```{r tbl-add-tb}
+#| tbl-cap: "cardinalR additional functions."
 
-```{r tbl-add-tb-pdf, eval=knitr::is_latex_output()}
-add_fun_tb |> 
-  mutate(fun = paste0("\\texttt{", fun, "}")) |> 
-  kable(caption = "cardinalR additional functions", format="latex", col.names = c("Function", "Explanation"), booktabs = T, linesep = "", escape = FALSE, table.pos = "!ht")  |>
-  column_spec(1, width = "4cm") |>
-  column_spec(2, width = "8cm")
+if (knitr::is_latex_output()) {
+    add_fun_tb |> 
+        mutate(fun = paste0("\\texttt{", fun, "}")) |> 
+        kable(format="latex", col.names = c("Function", "Explanation"), booktabs = T, linesep = "", escape = FALSE, table.pos = "!ht")  |>
+        column_spec(1, width = "4cm") |>
+        column_spec(2, width = "8cm")
+} else {
+    add_fun_tb |> 
+        mutate(fun = paste0("<code>", fun, "</code>")) |> 
+        kable(col.names = c("Function", "Explanation"), linesep = "", escape = FALSE, table.pos = "!ht") 
+}
 ```
 
 ## Application
@@ -2706,7 +2719,7 @@ Future extensions of `cardinalR` may include biologically inspired or applicatio
 
 ## Acknowledgements
 
-The source material for this paper, including the full datasets and figures, is available at [github.com/JayaniLakshika/paper-cardinalR](https://github.com/JayaniLakshika/paper-cardinalR). This article is created using \CRANpkg{knitr} [@yihui2015] and \CRANpkg{rmarkdown} [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `tibble` [@kirill2023], `gtools` [@gregory2023], `dplyr` [@hadley2023], `stats` [@core2025], `tidyr` [@hadley2024], `purrr` [@hadley2025], `mvtnorm` [@alan2009], `geozoo` [@barret2016], and `MASS` [@venables2002]. 
+The source material for this paper, including the full datasets and figures, is available at [github.com/JayaniLakshika/paper-cardinalR](https://github.com/JayaniLakshika/paper-cardinalR). This article is created using `knitr` [@yihui2015] and `rmarkdown` [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `tibble` [@kirill2023], `gtools` [@gregory2023], `dplyr` [@hadley2023], `stats` [@core2025], `tidyr` [@hadley2024], `purrr` [@hadley2025], `mvtnorm` [@alan2009], `geozoo` [@barret2016], and `MASS` [@venables2002]. 
 
 
 

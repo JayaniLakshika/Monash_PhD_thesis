@@ -36,7 +36,7 @@ The current work implemented in the `cardinalR` R package builds on these approa
 
 The motivation for developing this package originated from our own work in studying nonlinear dimension reduction (NLDR) algorithms. We wanted to conduct a visualization experiment to understand perception and misperception of a variety of NLDR methods. This required simulated datasets with carefully controlled geometric and clustering properties. While some existing packages provided useful starting points, none fully supported the creation of flexible, high-dimensional data with the specific structural variations needed for our experiment. Developing these generators for research purposes underlies `cardinalR`, which is now a general-purpose package that should be useful for research and teaching.
 
-The example data structures are best viewed using a tour [@As85]. These show the data as a sequence of low dimensional projections (typically $2\text{-}D$), providing a good sense of the shape in high dimensions. The interactive tour plots included in this paper are produced using the software `langevitour` [@paul2023].
+The example data structures are best viewed using a tour [@As85]. These show the data as a sequence of low dimensional projections (typically $2\text{-}D$), providing a good sense of the shape in high dimensions. The interactive tour plots included in this paper are produced using the software `langevitour` [@harisson2024].
 
 The next section provides an overview of the usage of the `cardinalR` package, illustrating how its modular components can be combined to generate complex high-dimensional datasets. This is followed by a section describing the implementation of the package, including its design principles and key functions. The Application section then demonstrates how the simulated clustering structures can be used to evaluate and compare dimension reduction and clustering methods. Finally, we give a brief conclusion of the paper and discuss potential opportunities for the use of our data collection.
 
@@ -44,7 +44,7 @@ The next section provides an overview of the usage of the `cardinalR` package, i
 
 The `cardinalR` package is built on a modular framework where individual geometric generators (e.g., Gaussian, cone, sphere) create well-defined shapes (A full list of available shape generators are available at <https://jayanilakshika.github.io/cardinalR/reference/index.html>.), which can then be combined into a single dataset including scaling, rotation, and translation. The package is available on CRAN, and the source is available on GitHub at [JayaniLakshika/cardinalR](https://github.com/JayaniLakshika/cardinalR). 
 
-The main function, `gen_multicluster()`, is an all-in-one function that includes generating individual shapes, handling scaling and rotating of these shapes, and combining the result into a single unified dataset. This function and associated workflow allow flexible construction of complex, high-dimensional structures for evaluating clustering and dimension reduction methods. Figure \@ref(fig:workflow) illustrates the workflow of `gen_multicluster()`.
+The main function, `gen_multicluster()`, is an all-in-one function that includes generating individual shapes, handling scaling and rotating of these shapes, and combining the result into a single unified dataset. This function and associated workflow allow flexible construction of complex, high-dimensional structures for evaluating clustering and dimension reduction methods. @fig-workflow illustrates the workflow of `gen_multicluster()`.
 
 
 ::: {.cell layout-align="center"}
@@ -85,7 +85,7 @@ Here, the shapes have $200$, $300$, and $500$ points respectively (`n`), are pos
 The main function of the package is `gen_multicluster()`, which generates datasets consisting of multiple clusters with user-specified characteristics. 
 To maintain consistency across generators, the function identifies the arguments required by each chosen generator function and supplies only those arguments that are valid for that specific generator. This design enables the combination of cluster types with differing parameter requirements within the same dataset. When clusters are generated with fewer dimensions than others, the function augments the lower-dimensional clusters with additional Gaussian noise variables so that all clusters are represented in the same dimensional space. These noise dimensions are drawn independently from normal distributions $X \sim \mathcal{N}(\mu, \sigma^2)$, where the mean ($\mu$) is set to the average of the cluster coordinates and the standard deviation ($\sigma$) defaults to $0.2$.
 
-An optional argument, `is_bkg`, adds background noise drawn from a multivariate normal distribution centered on the dataset’s overall mean with standard deviations matching the observed spread. Extra arguments (`...`) can be passed to cluster generators, allowing further control over per-cluster characteristics like radius of the sphere. The main arguments of the `gen_multicluster()` function are shown in Table \@ref(tab:main-tb-pdf).
+An optional argument, `is_bkg`, adds background noise drawn from a multivariate normal distribution centered on the dataset’s overall mean with standard deviations matching the observed spread. Extra arguments (`...`) can be passed to cluster generators, allowing further control over per-cluster characteristics like radius of the sphere. The main arguments of the `gen_multicluster()` function are shown in @tbl-main-tb.
 
 
 ::: {.cell}
@@ -94,19 +94,10 @@ An optional argument, `is_bkg`, adds background noise drawn from a multivariate 
 
 
 
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
+::: {#tbl-main-tb .cell tbl-cap='The main arguments for `gen_multicluster()`.'}
 ::: {.cell-output-display}
-\begin{table}
 
-\caption{\label{tab:main-tb-pdf}The main arguments for \texttt{gen\_multicluster()}.}
-\centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{8cm}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{8cm}}
 \toprule
 Argument & Type & Explanation\\
 \midrule
@@ -119,7 +110,6 @@ Argument & Type & Explanation\\
 \texttt{is\_bkg} & boolean & Background noise should exist or not.\\
 \bottomrule
 \end{tabular}
-\end{table}
 
 
 :::
@@ -128,7 +118,7 @@ Argument & Type & Explanation\\
 
 ### Shape generators
 
-The shape generators form the foundation of the package, providing functions to create synthetic datasets from simple, well-defined geometric forms such as cones, pyramids, spheres, grids, and branching structures. Each generator includes the parameter `n`, which specifies the number of points to generate. Some functions, such as `gen_unifcube()`, also take the dimension `p`, while others include arguments specific to the geometry (e.g., radius for spheres (`r`), width for bands (`w`)). If higher-dimensional data are required, additional noise dimensions can be appended after data generation using any noise generator function. This flexibility allows users to construct both low- and high-dimensional datasets from the same underlying structures. Table \@ref(tab:shape-tb-pdf) outlines these functions. The main arguments of the functions described in Table \@ref(tab:arg-shape-tb-pdf).
+The shape generators form the foundation of the package, providing functions to create synthetic datasets from simple, well-defined geometric forms such as cones, pyramids, spheres, grids, and branching structures. Each generator includes the parameter `n`, which specifies the number of points to generate. Some functions, such as `gen_unifcube()`, also take the dimension `p`, while others include arguments specific to the geometry (e.g., radius for spheres (`r`), width for bands (`w`)). If higher-dimensional data are required, additional noise dimensions can be appended after data generation using any noise generator function. This flexibility allows users to construct both low- and high-dimensional datasets from the same underlying structures. @tbl-shape-tb outlines these functions. The main arguments of the functions described in @tbl-arg-shape-tb.
 
 
 ::: {.cell}
@@ -137,17 +127,11 @@ The shape generators form the foundation of the package, providing functions to 
 
 
 
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
+::: {#tbl-shape-tb .cell}
 ::: {.cell-output-display}
 \begin{table}
 
-\caption{\label{tab:shape-tb-pdf}Overview of shape-generation functions, including their required parameters and a brief description of each geometric structure produced. The generators cover branching patterns, spheres, spirals, pyramids, Gaussian clouds, and other nonlinear shapes.}
+\caption{\label{tab:tbl-shape-tb}Overview of shape-generation functions, including their required parameters and a brief description of each geometric structure produced. The generators cover branching patterns, spheres, spirals, pyramids, Gaussian clouds, and other nonlinear shapes.}
 \centering
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{8cm}}
 \toprule
@@ -203,17 +187,11 @@ Function & Arguments & Explanation\\
 
 
 
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
+::: {#tbl-arg-shape-tb .cell}
 ::: {.cell-output-display}
 \begin{table}
 
-\caption{\label{tab:arg-shape-tb-pdf}Argument definitions for the shape generators. The table lists each argument, its data type, and a description of its role in controlling geometric structure, dimensionality, scaling, curvature, spacing, and other features of the simulated high-dimensional datasets.}
+\caption{\label{tab:tbl-arg-shape-tb}Argument definitions for the shape generators. The table lists each argument, its data type, and a description of its role in controlling geometric structure, dimensionality, scaling, curvature, spacing, and other features of the simulated high-dimensional datasets.}
 \centering
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{3cm}l}
 \toprule
@@ -253,7 +231,7 @@ Argument & Type (positive) & Explanation\\
 
 #### Branching
 
-A branching structure (Figure \@ref(fig:branch-proj)) captures trajectories that diverge or bifurcate from a common origin, similar to processes such as cell differentiation in biology [@trapnell2014]. We introduce a set of data generation functions specifically designed to simulate high-dimensional branching structures with various geometries, total number of points (`n`) generated across all branches, with points allocated approximately evenly among branches, and number of branches (`k`). Although these functions can generate multiple branches, they do not produce a formal *multicluster* dataset: the branches form a single connected structure, with multiple visually distinct arms rather than independent clusters. 
+A branching structure (@fig-branch-proj) captures trajectories that diverge or bifurcate from a common origin, similar to processes such as cell differentiation in biology [@trapnell2014]. We introduce a set of data generation functions specifically designed to simulate high-dimensional branching structures with various geometries, total number of points (`n`) generated across all branches, with points allocated approximately evenly among branches, and number of branches (`k`). Although these functions can generate multiple branches, they do not produce a formal *multicluster* dataset: the branches form a single connected structure, with multiple visually distinct arms rather than independent clusters. 
 
 The simplest structures are approximately linear branches in $2\text{-}D$, generated by the `gen_linearbranches(n, k)` function. These consist of $k$ short line segments in the first two dimensions, with added jitter to simulate variability. Mathematically, each branch $i$ is defined as
 
@@ -315,7 +293,7 @@ where $\sigma_i = (-1)^{i+1}$ alternates the sign of the exponent to produce mir
 :::
 
 
-High-dimensional generalizations are provided by `gen_orglinearbranches(n, p, k)` (Figure \@ref(fig:branch-proj)) and `gen_orgcurvybranches(n, p, k)`. For branch 
+High-dimensional generalizations are provided by `gen_orglinearbranches(n, p, k)` (@fig-branch-proj) and `gen_orgcurvybranches(n, p, k)`. For branch 
 $i$, the active coordinate pair $(i_1, i_2)$ indexes the selected $2\text{-}D$ subspace. When `allow_share = TRUE`, multiple branches may share the same subspace; otherwise, subspaces are sampled without replacement until all possible $\binom{p}{2}$ combinations are exhausted, after which additional branches may repeat subspaces. 
 
 In both cases, branch $i$ is generated according to
@@ -390,7 +368,7 @@ Across all branching generators, the scale parameter $s_i$ controls the strength
 
 #### Cone
 
-To simulate a cone-shaped structure in arbitrary dimensions (Figure \@ref(fig:cone-proj)), we define a function `gen_cone(n, p, h, ratio)`, which creates a high-dimensional cone with options for a sharp or blunted apex, allowing for a dense concentration of points near the tip.
+To simulate a cone-shaped structure in arbitrary dimensions (@fig-cone-proj), we define a function `gen_cone(n, p, h, ratio)`, which creates a high-dimensional cone with options for a sharp or blunted apex, allowing for a dense concentration of points near the tip.
 
 This function generates $n$ points in $p\text{-}D$, where the last dimension, $X_p$, represents the height along the cone's axis, and the first $p-1$ dimensions define a shrinking hyperspherical cross-section toward the tip. Heights are sampled from a truncated exponential distribution, $X_p \sim \text{Exp}(\lambda = 2/h)$, truncated to the interval $[0, h]$, producing a higher density of points near the tip. At each height $X_p$, the radius of the cross-section increases linearly from base to tip according to $r = r_{\text{min}} + (r_{\text{max}} - r_{\text{min}}) X_p / h$, where $r_{\text{min}} = \text{ratio} \in [0, 1]$ and $r_{\text{max}} = 1$.
 
@@ -523,11 +501,11 @@ The second is the cubic curve of $n$ points in two dimensions. This is generated
 
 #### Pyramid
 
-A pyramid structure (Figure \@ref(fig:pyr-proj)) represents data arranged around a central apex and base, useful for exploring how algorithms handle pointed or layered geometries in $p\text{-}D$ space. The functions provided allow users to generate pyramids with rectangular, triangular, and star-shaped bases, and sharp or blunted apexes. Additionally, it is possible to create a pyramid with a fractal-like internal structure, enabling the study of non-convex and sparse regions. 
+A pyramid structure (@fig-pyr-proj) represents data arranged around a central apex and base, useful for exploring how algorithms handle pointed or layered geometries in $p\text{-}D$ space. The functions provided allow users to generate pyramids with rectangular, triangular, and star-shaped bases, and sharp or blunted apexes. Additionally, it is possible to create a pyramid with a fractal-like internal structure, enabling the study of non-convex and sparse regions. 
 
 Let $X_1, \dots, X_p$ denote the coordinates of the generated points. For the rectangular, triangular, and star-shaped based pyramid generator functions, the final dimension, $X_p$, encodes the height of each point and is drawn from an exponential distribution capped at the maximum height $h$. That is, $X_p = z \sim \min\left(\text{Exp}(\lambda = 2/h),\ h\right).$ This distribution creates a natural skew toward smaller height values, resulting in a denser concentration of points near the pyramid's apex. For the star-shaped base pyramid, the final dimension is drawn from a uniform distribution. That is, $X_p = z \sim U(0, h)$.
 
-The remaining dimensions are based on the specific pyramid shape. For the rectangular based pyramid, `gen_pyrrect(n, p, h, l_vec, rt)` (Figure \@ref(fig:pyr-proj) a) the base shape is a rectangle whose size shrinks linearly with height. Let $l_x$ and $l_y$ denote the half-widths of the rectangular base in the $X_1$ and $X_2$ directions, specified via $l_{vec}=(l_x,l_y)$, and let $r_t$ denote the half-width at the pyramid tip. At height $z\in [0,h]$, the half-widths of the rectangular cross-section are $r_x(z) = r_t + (l_x - r_t)z/h$, $r_y(z) = r_t + (l_y - r_t)z/h$. The first three coordinates are then defined as $X_1 \sim U(-r_x(z),\ r_x(z)), \quad X_2 \sim U(-r_y(z),\ r_y(z)),\text{ and }X_3 \sim U(-r_x(z),\ r_x(z))$.
+The remaining dimensions are based on the specific pyramid shape. For the rectangular based pyramid, `gen_pyrrect(n, p, h, l_vec, rt)` (@fig-pyr-proj a) the base shape is a rectangle whose size shrinks linearly with height. Let $l_x$ and $l_y$ denote the half-widths of the rectangular base in the $X_1$ and $X_2$ directions, specified via $l_{vec}=(l_x,l_y)$, and let $r_t$ denote the half-width at the pyramid tip. At height $z\in [0,h]$, the half-widths of the rectangular cross-section are $r_x(z) = r_t + (l_x - r_t)z/h$, $r_y(z) = r_t + (l_y - r_t)z/h$. The first three coordinates are then defined as $X_1 \sim U(-r_x(z),\ r_x(z)), \quad X_2 \sim U(-r_y(z),\ r_y(z)),\text{ and }X_3 \sim U(-r_x(z),\ r_x(z))$.
 
 
 ::: {.cell}
@@ -559,7 +537,7 @@ The remaining dimensions are based on the specific pyramid shape. For the rectan
 :::
 
 
-For the triangular based pyramid, `gen_pyrtri(n, p, h, l, rt)` (Figure \@ref(fig:pyr-proj) b), let $r(z)$ denote the scaling factor (distance from the origin to triangle vertices) at height $z$. That is, $r(z) = r_t + (l-r_t)z/h$. A point in the triangle at height $z$ is generated using barycentric coordinates $(u, v)$ to ensure uniform sampling within the triangular cross-section: $u, v \sim U(0, 1), \quad \text{if } u + v > 1: u \leftarrow 1 - u,\ v \leftarrow 1 - v$. The first three coordinates (triangle plane) are then: $X_1 = r(z)(1 - u - v)$, $X_2 = r(z)u$, and $X_3 = r(z)v.$ 
+For the triangular based pyramid, `gen_pyrtri(n, p, h, l, rt)` (@fig-pyr-proj b), let $r(z)$ denote the scaling factor (distance from the origin to triangle vertices) at height $z$. That is, $r(z) = r_t + (l-r_t)z/h$. A point in the triangle at height $z$ is generated using barycentric coordinates $(u, v)$ to ensure uniform sampling within the triangular cross-section: $u, v \sim U(0, 1), \quad \text{if } u + v > 1: u \leftarrow 1 - u,\ v \leftarrow 1 - v$. The first three coordinates (triangle plane) are then: $X_1 = r(z)(1 - u - v)$, $X_2 = r(z)u$, and $X_3 = r(z)v.$ 
 
 
 ::: {.cell}
@@ -591,7 +569,7 @@ For the triangular based pyramid, `gen_pyrtri(n, p, h, l, rt)` (Figure \@ref(fig
 :::
 
 
-For the star based pyramid, `gen_pyrstar(n, p, h, rb)` (Figure \@ref(fig:pyr-proj) c), let the radius at height $z$, $r(z)$, be such that the radius scales linearly from zero (tip) to the base radius $r_b$. That is, $r(z) = r_b\left(1 - z/h\right)$. Each point is placed within a regular hexagon in the plane $(X_1, X_2)$, using a randomly chosen hexagon sector angle $\theta \in \{0, \pi/3, 2\pi/3, \pi, 4\pi/3, 5\pi/3\}$ and a uniformly random radial scaling factor: $\theta \sim DiscreteUniform\{0, \pi/3, \dots, 5\pi/3\}$, $r_{\text{point}} \sim \sqrt{U(0, 1)}$. Then, the first two coordinates are: $X_1 = r(z)r_{\text{point}}\cos(\theta)$, and $X_2 = r(z)r_{\text{point}}\sin(\theta)$.
+For the star based pyramid, `gen_pyrstar(n, p, h, rb)` (@fig-pyr-proj c), let the radius at height $z$, $r(z)$, be such that the radius scales linearly from zero (tip) to the base radius $r_b$. That is, $r(z) = r_b\left(1 - z/h\right)$. Each point is placed within a regular hexagon in the plane $(X_1, X_2)$, using a randomly chosen hexagon sector angle $\theta \in \{0, \pi/3, 2\pi/3, \pi, 4\pi/3, 5\pi/3\}$ and a uniformly random radial scaling factor: $\theta \sim DiscreteUniform\{0, \pi/3, \dots, 5\pi/3\}$, $r_{\text{point}} \sim \sqrt{U(0, 1)}$. Then, the first two coordinates are: $X_1 = r(z)r_{\text{point}}\cos(\theta)$, and $X_2 = r(z)r_{\text{point}}\sin(\theta)$.
 
 
 ::: {.cell}
@@ -625,7 +603,7 @@ For the star based pyramid, `gen_pyrstar(n, p, h, rb)` (Figure \@ref(fig:pyr-pro
 
 For rectangular and triangular pyramids, the remaining dimensions $X_4$ to $X_{p-1}$, and for star-based pyramids $X_3$ to $X_{p-1}$, are treated as noise.
 
-Finally, for the Sierpinski-like pyramid, `gen_pyrfrac(n, p)` (Figure \@ref(fig:pyr-proj) d), let $X_1, X_2, \dots, X_p$ denote the coordinates of the generated points. The generation process begins with an initial point $T_0 \in [0, 1]^p$ drawn from a uniform distribution: $T_0 \sim U(0, 1)^p$. Let $C_1, C_2, \dots, C_{p+1}$ denote the corner vertices of a $p\text{-}D$ simplex. At each iteration $i = 1, \dots, n$, a new point is computed by taking the midpoint between the previous point $T_{i-1}$ and a randomly selected vertex $C_k$: $T_i = 1/2(T_{i-1} + C_k), \quad C_k \in \{C_1, \dots, C_{p+1}\}$. This recursive midpoint rule generates self-similar patterns with systematic voids (holes) between clusters of points. The points remain bounded inside the convex hull of the simplex. The final output is a $n \times p$ matrix where each row represents a point: $X = \{T_1, T_2, \dots, T_n\}, \quad X \in \mathbb{R}^{n \times p}$.
+Finally, for the Sierpinski-like pyramid, `gen_pyrfrac(n, p)` (@fig-pyr-proj d), let $X_1, X_2, \dots, X_p$ denote the coordinates of the generated points. The generation process begins with an initial point $T_0 \in [0, 1]^p$ drawn from a uniform distribution: $T_0 \sim U(0, 1)^p$. Let $C_1, C_2, \dots, C_{p+1}$ denote the corner vertices of a $p\text{-}D$ simplex. At each iteration $i = 1, \dots, n$, a new point is computed by taking the midpoint between the previous point $T_{i-1}$ and a randomly selected vertex $C_k$: $T_i = 1/2(T_{i-1} + C_k), \quad C_k \in \{C_1, \dots, C_{p+1}\}$. This recursive midpoint rule generates self-similar patterns with systematic voids (holes) between clusters of points. The points remain bounded inside the convex hull of the simplex. The final output is a $n \times p$ matrix where each row represents a point: $X = \{T_1, T_2, \dots, T_n\}, \quad X \in \mathbb{R}^{n \times p}$.
 
 
 ::: {.cell}
@@ -689,7 +667,7 @@ This follows the `s_curve()` function from snedata [@james2025], itself adapted 
 
 Sphere-shaped structures are useful for evaluating how dimension reduction and clustering algorithms handle curved, symmetric manifolds in high-dimensional spaces. Throughout this section, we follow the standard mathematical terminology: a *sphere* refers to the hollow $(p-1)$-dimensional surface in $\mathbb{R}^p$, while a *ball* refers to the filled interior region. The functions generate a variety of spherical forms, including simple circles, uniform and hollow spheres, grid-based spheres, and complex arrangements like clustered spheres within a larger sphere. The first few coordinates define the main geometric form (circle, cycle, sphere, or hemisphere), while higher-dimensional embeddings are achieved by adding noise dimensions. Such spherical or hemispherical structures frequently appear in physical and biological systems, for example in models of celestial bodies, molecular shells, or cell membranes [@tinkham2003; @alberts2014].
 
-The simplest case, `gen_circle(n, p)` creates a unit circle in two dimensions, with the remaining dimensions forming sinusoidal extensions of the angular parameter at progressively smaller scales (Figure \@ref(fig:sphere-proj) a). Let a latent angle variable $\theta \sim U(0, 2\pi)$. Coordinates in the first two dimensions represent a perfect circle on the plane: $$X_1 = \cos(\theta), \quad X_2 = \sin(\theta).$$ For dimensions $X_3$ through $X_p$, sinusoidal transformations of the angle $\theta$ are introduced. The first component is a scaling factor that decreases with the dimension index, defined as $\text{s}_j = \sqrt{(0.5)^{j-2}}$ for $j = 3, \dots, p$. The second component is a phase shift that is proportional to the dimension index, specifically designed to decorrelate the curves, given by the formula $\phi_j = (j - 2)\pi/2p$. Each additional dimension is computed as: $X_j = \text{s}_{j}\sin(\theta + \phi_j), \quad j = 3, \dots, p$.
+The simplest case, `gen_circle(n, p)` creates a unit circle in two dimensions, with the remaining dimensions forming sinusoidal extensions of the angular parameter at progressively smaller scales (@fig-sphere-proj a). Let a latent angle variable $\theta \sim U(0, 2\pi)$. Coordinates in the first two dimensions represent a perfect circle on the plane: $$X_1 = \cos(\theta), \quad X_2 = \sin(\theta).$$ For dimensions $X_3$ through $X_p$, sinusoidal transformations of the angle $\theta$ are introduced. The first component is a scaling factor that decreases with the dimension index, defined as $\text{s}_j = \sqrt{(0.5)^{j-2}}$ for $j = 3, \dots, p$. The second component is a phase shift that is proportional to the dimension index, specifically designed to decorrelate the curves, given by the formula $\phi_j = (j - 2)\pi/2p$. Each additional dimension is computed as: $X_j = \text{s}_{j}\sin(\theta + \phi_j), \quad j = 3, \dots, p$.
 
 
 ::: {.cell}
@@ -721,7 +699,7 @@ The simplest case, `gen_circle(n, p)` creates a unit circle in two dimensions, w
 :::
 
 
-For the one-dimensional nonlinear cycle embedded in $p\text{-}D$ space, `gen_curvycycle(n, p)` (Figure \@ref(fig:sphere-proj) b), let a latent angle variable $\theta \sim U(0, 2\pi)$. The first three dimensions define a non-circular closed curve, referred to as a `"curvy cycle"`. In this configuration, $X_1 = \cos(\theta)$ represents horizontal oscillation, while $X_2 = \sqrt{3}/3 + \sin(\theta)$ introduces a vertical offset to avoid centering the curve at the origin. Additionally, $X_3 = 1/3\cos(3\theta)$ introduces a third harmonic perturbation that intricately folds the curve three times along its path, creating a unique and complex shape that oscillates in both dimensions while incorporating the effects of the harmonic perturbation.
+For the one-dimensional nonlinear cycle embedded in $p\text{-}D$ space, `gen_curvycycle(n, p)` (@fig-sphere-proj b), let a latent angle variable $\theta \sim U(0, 2\pi)$. The first three dimensions define a non-circular closed curve, referred to as a `"curvy cycle"`. In this configuration, $X_1 = \cos(\theta)$ represents horizontal oscillation, while $X_2 = \sqrt{3}/3 + \sin(\theta)$ introduces a vertical offset to avoid centering the curve at the origin. Additionally, $X_3 = 1/3\cos(3\theta)$ introduces a third harmonic perturbation that intricately folds the curve three times along its path, creating a unique and complex shape that oscillates in both dimensions while incorporating the effects of the harmonic perturbation.
 
 Together, these define a periodic, non-trivial, closed curve in $3\text{-}D$ with internal folds that produce a more complex geometry than a standard circle or ellipse. For dimensions $X_4$ through $X_p$, additional structured variability is introduced through decreasing amplitude scaling and phase-shifted sine waves. The scaling factor is defined as $\text{s}_j = \sqrt{(0.5)^{j-3}}$ for $j$ ranging from $4$ to $p$, which means that the amplitude decreases as the dimension increases. Each dimension $X_j$ is then calculated using the formula $X_j = \text{s}_j\sin(\theta + \phi_j)$, where the phase shift $\phi_j$ is given by $\phi_j = (j - 2)\pi/(2p)$. 
 
@@ -771,7 +749,7 @@ In contrast, the `gen_hollowsphere(n, p)` function, a wrapper around `geozoo::sp
 :::
 
 
-In addition, the `gen_gridedsphere(n)` function constructs a $p$-dimensional dataset consisting of approximately $n$ points arranged on the surface of the unit $(p-1)$-sphere embedded in $\mathbb{R}^p$ (Figure \@ref(fig:sphere-proj) d). Rather than sampling points uniformly, this function creates a deterministic grid in spherical coordinates, using $(p-1)$ angular variables: the first $(p-2)$ angles are taken from $[0, \pi]$, and the final angle from $[0, 2\pi]$. The number of grid points along each angular dimension is determined by decomposing $n$ into $(p-1)$ approximately equal integer factors via `gen_nproduct(n, p - 1)`. 
+In addition, the `gen_gridedsphere(n)` function constructs a $p$-dimensional dataset consisting of approximately $n$ points arranged on the surface of the unit $(p-1)$-sphere embedded in $\mathbb{R}^p$ (@fig:sphere-proj d). Rather than sampling points uniformly, this function creates a deterministic grid in spherical coordinates, using $(p-1)$ angular variables: the first $(p-2)$ angles are taken from $[0, \pi]$, and the final angle from $[0, 2\pi]$. The number of grid points along each angular dimension is determined by decomposing $n$ into $(p-1)$ approximately equal integer factors via `gen_nproduct(n, p - 1)`. 
 
 Each grid point is subsequently mapped into Cartesian space via the standard hyperspherical-to-Cartesian transformation,
 
@@ -788,7 +766,7 @@ $$
 
 The result is a deterministic grid of points lying exactly on the surface of the unit $(p-1)$-sphere, without any additional noise dimensions.
 
-For more heterogeneous structures, the `gen_clusteredspheres(n, k, r, loc)` function generates one large sphere of radius $r_1$ and $k$ smaller spheres of radius $r_2$, each centered at a different random location (Figure \@ref(fig:sphere-proj) e). A large Uniform ball centered at the origin is created by sampling $n_1$ points uniformly on the surface of a $p\text{-}D$ sphere with a radius of $r_1$. The sampling is executed using the function `gen_unifsphere(n_1, r_1)`, which generates the desired points in the specified dimensional space. In generation of $k$ smaller Uniform balls, each sphere contains $n_2$ points that are sampled uniformly on a sphere with a radius of $r_2$. These spheres are positioned at distinct random locations in $p\text{-}D$, with the center of each sphere being drawn from a normal distribution $N(0, \texttt{loc}^2 I_p)$. Points on spheres are generated using the standard hyperspherical method, which involves sampling $u \sim U(-1, 1)$ to determine the cosine of the polar angle, and sampling $\theta \sim U(0, 2\pi)$ to determine the azimuthal angle (for $3\text{-}D$). Each observation is classified by cluster, with labels such as "big" for the large central sphere and "small_1" to "small_k" for the smaller spheres.
+For more heterogeneous structures, the `gen_clusteredspheres(n, k, r, loc)` function generates one large sphere of radius $r_1$ and $k$ smaller spheres of radius $r_2$, each centered at a different random location (@fig-sphere-proj e). A large Uniform ball centered at the origin is created by sampling $n_1$ points uniformly on the surface of a $p\text{-}D$ sphere with a radius of $r_1$. The sampling is executed using the function `gen_unifsphere(n_1, r_1)`, which generates the desired points in the specified dimensional space. In generation of $k$ smaller Uniform balls, each sphere contains $n_2$ points that are sampled uniformly on a sphere with a radius of $r_2$. These spheres are positioned at distinct random locations in $p\text{-}D$, with the center of each sphere being drawn from a normal distribution $N(0, \texttt{loc}^2 I_p)$. Points on spheres are generated using the standard hyperspherical method, which involves sampling $u \sim U(-1, 1)$ to determine the cosine of the polar angle, and sampling $\theta \sim U(0, 2\pi)$ to determine the azimuthal angle (for $3\text{-}D$). Each observation is classified by cluster, with labels such as "big" for the large central sphere and "small_1" to "small_k" for the smaller spheres.
 
 
 ::: {.cell}
@@ -820,7 +798,7 @@ For more heterogeneous structures, the `gen_clusteredspheres(n, k, r, loc)` func
 :::
 
 
-Finally, the `gen_hemisphere(n, p)` function restricts sampling to a hemisphere of a $4\text{-}D$ sphere (Figure \@ref(fig:sphere-proj) f). Using spherical coordinates, the azimuthal angle $\theta_1 \sim U(0, \pi)$ in the $(x_1, x_2)$ plane, while the elevation angle $\theta_2 \sim U(0, \pi)$ in the $(x_2, x_3)$ plane. Additionally, $\theta_3 \sim U(0, \pi/2)$ in the $(x_3, x_4)$ plane, ensuring that the points remain restricted to a hemisphere. The coordinates are transformed into $4\text{-}D$ Cartesian space: $$X_1 = \sin(\theta_1)\cos(\theta_2), \quad X_2 = \sin(\theta_1)\sin(\theta_2), \\\quad X_3 = \cos(\theta_1)\cos(\theta_3), \quad X_4 = \cos(\theta_1)\sin(\theta_3).$$ This produces points on one side of a $4\text{-}D$ unit sphere, effectively generating a $4\text{-}D$ hemisphere. 
+Finally, the `gen_hemisphere(n, p)` function restricts sampling to a hemisphere of a $4\text{-}D$ sphere (@fig-sphere-proj f). Using spherical coordinates, the azimuthal angle $\theta_1 \sim U(0, \pi)$ in the $(x_1, x_2)$ plane, while the elevation angle $\theta_2 \sim U(0, \pi)$ in the $(x_2, x_3)$ plane. Additionally, $\theta_3 \sim U(0, \pi/2)$ in the $(x_3, x_4)$ plane, ensuring that the points remain restricted to a hemisphere. The coordinates are transformed into $4\text{-}D$ Cartesian space: $$X_1 = \sin(\theta_1)\cos(\theta_2), \quad X_2 = \sin(\theta_1)\sin(\theta_2), \\\quad X_3 = \cos(\theta_1)\cos(\theta_3), \quad X_4 = \cos(\theta_1)\sin(\theta_3).$$ This produces points on one side of a $4\text{-}D$ unit sphere, effectively generating a $4\text{-}D$ hemisphere. 
 
 
 ::: {.cell}
@@ -854,15 +832,9 @@ The Swiss roll is a classic benchmark for manifold learning, illustrating how a 
 
 <!--https://laustep.github.io/stlahblog/posts/TorusKnot4D.html-->
 
-The Trefoil is a closed, nontrivial one-dimensional manifold embedded in $3\text{-}D$ or $4\text{-}D$ space (Figure \@ref(fig:trefoil-proj)). The trefoil features topological complexity in the form of self-overlaps, making it a valuable test case for evaluating the ability of non-linear dimension reduction methods to preserve global structure, loops, and embeddings in high-dimensional data. 
+The Trefoil is a closed, nontrivial one-dimensional manifold embedded in $3\text{-}D$ or $4\text{-}D$ space (@fig-trefoil-proj). The trefoil features topological complexity in the form of self-overlaps, making it a valuable test case for evaluating the ability of non-linear dimension reduction methods to preserve global structure, loops, and embeddings in high-dimensional data. 
 
-For the $4\text{-}D$ trefoil knot [@laurent2024], the function `gen_trefoil4d(n, steps)` generates the structure on the $3$-sphere ($S^3 \subset \mathbb{R}^4$) using two angular parameters, $\theta$ and $\phi$. A band of thickness around the knot path is controlled by the `steps` argument, while the number of $\theta$ and $\phi$ values is determined by the `steps` and `n` arguments, respectively (Figure \@ref(fig:trefoil-proj) a). The coordinates are defined as $$X_1 = \cos(\theta) \cos(\phi), \quad X_2 = \cos(\theta) \sin(\phi), \\\quad X_3 = \sin(\theta) \cos(1.5 \phi),\text{ and }X_4 = \sin(\theta) \sin(1.5 \phi),$$ where $\theta$ parameterizes the band thickness and $\phi$ parameterizes the knot trajectory. 
-
-
-::: {.cell}
-
-:::
-
+For the $4\text{-}D$ trefoil knot [@laurent2024], the function `gen_trefoil4d(n, steps)` generates the structure on the $3$-sphere ($S^3 \subset \mathbb{R}^4$) using two angular parameters, $\theta$ and $\phi$. A band of thickness around the knot path is controlled by the `steps` argument, while the number of $\theta$ and $\phi$ values is determined by the `steps` and `n` arguments, respectively (@fig-trefoil-proj a). The coordinates are defined as $$X_1 = \cos(\theta) \cos(\phi), \quad X_2 = \cos(\theta) \sin(\phi), \\\quad X_3 = \sin(\theta) \cos(1.5 \phi),\text{ and }X_4 = \sin(\theta) \sin(1.5 \phi),$$ where $\theta$ parameterizes the band thickness and $\phi$ parameterizes the knot trajectory. 
 
 
 ::: {.cell}
@@ -888,7 +860,13 @@ For the $4\text{-}D$ trefoil knot [@laurent2024], the function `gen_trefoil4d(n,
 :::
 
 
-For the $3\text{-}D$ stereographic projection [@laurent2024], `gen_trefoil3d(n, steps)` maps each point $(X_1, X_2, X_3, X_4) \in \mathbb{R}^4$ to $(X_1', X_2', X_3') \in \mathbb{R}^3\text{ using }X_1' = X_1 / (1 - X_4), \quad X_2' = X_2 / (1 - X_4),\text{ and }X_3' = X_3 / (1 - X_4),$ excluding points where $X_4 = 1$ to avoid division by zero (Figure \@ref(fig:trefoil-proj) b). 
+
+::: {.cell}
+
+:::
+
+
+For the $3\text{-}D$ stereographic projection [@laurent2024], `gen_trefoil3d(n, steps)` maps each point $(X_1, X_2, X_3, X_4) \in \mathbb{R}^4$ to $(X_1', X_2', X_3') \in \mathbb{R}^3\text{ using }X_1' = X_1 / (1 - X_4), \quad X_2' = X_2 / (1 - X_4),\text{ and }X_3' = X_3 / (1 - X_4),$ excluding points where $X_4 = 1$ to avoid division by zero (@fig-trefoil-proj b). 
 
 
 ::: {.cell}
@@ -938,17 +916,9 @@ The trefoil knot appears in molecular biology (DNA/protein knotting), fluid dyna
 
 #### Trigonometric
 
-Trigonometric-based structures provide flexible ways to simulate complex curved patterns and spirals that often arise in real-world high-dimensional data, such as in biological trajectories, or physical systems (Figure \@ref(fig:triginometric-proj)). The main geometry is defined by the first few coordinates: crescents ($p=2$), cylinders, spirals, and helices ($p=4$). These structures are particularly valuable for testing how well dimension reduction and clustering algorithms preserve intricate geometric and topological features [@calladine1997; @gershenfeld2000]. 
+Trigonometric-based structures provide flexible ways to simulate complex curved patterns and spirals that often arise in real-world high-dimensional data, such as in biological trajectories, or physical systems (@fig-triginometric-proj). The main geometry is defined by the first few coordinates: crescents ($p=2$), cylinders, spirals, and helices ($p=4$). These structures are particularly valuable for testing how well dimension reduction and clustering algorithms preserve intricate geometric and topological features [@calladine1997; @gershenfeld2000]. 
 
-First, the `gen_crescent(n, p)` function generates a $p$-dimensional dataset of $n$ observations based on a $2\text{-}D$ crescent-shaped manifold with optional structured high-dimensional noise (Figure \@ref(fig:triginometric-proj) a). Let $\{\theta_i\}_{i=1}^n$  be a sequence of $n$ evenly spaced angles on the interval $[\pi/6, 2\pi]$, defined as $\theta_i = \frac{\pi}{6} + (i-1)\frac{2\pi - \pi/6}{n-1}, \quad i = 1,\dots,n$. The corresponding $2\text{-}D$ coordinates are defined by: $$X_{i1} = \cos(\theta_i), \quad X_{i2} = \sin(\theta_i).$$
-
-
-::: {.cell}
-
-:::
-
-
-Second, the `gen_curvycylinder(n, p, h)` function generates a $p\text{-}D$ dataset of $n$ observations structured as a $3\text{-}D$ cylindrical manifold with an added nonlinear curvy dimension, and optional noise dimensions when $p > 4$ (Figure \@ref(fig:triginometric-proj) b). The core structure consists of a circular base and height values, extended by a nonlinear fourth dimension. Let $\theta \sim U(0, 3\pi)$ represent a random angle on a circular base and $z \sim U(0, h)$ represent the height along the cylinder. The coordinates are defined as: $X_1 = \cos(\theta)$ (Circular base, x-axis), $X_2 = \sin(\theta)$ (Circular base, y-axis), $X_3 = z$ (Linear height), and $X_4 = \sin(z)$ (Nonlinear curvy variation along height).  
+First, the `gen_crescent(n, p)` function generates a $p$-dimensional dataset of $n$ observations based on a $2\text{-}D$ crescent-shaped manifold with optional structured high-dimensional noise (@fig-triginometric-proj a). Let $\{\theta_i\}_{i=1}^n$  be a sequence of $n$ evenly spaced angles on the interval $[\pi/6, 2\pi]$, defined as $\theta_i = \frac{\pi}{6} + (i-1)\frac{2\pi - \pi/6}{n-1}, \quad i = 1,\dots,n$. The corresponding $2\text{-}D$ coordinates are defined by: $$X_{i1} = \cos(\theta_i), \quad X_{i2} = \sin(\theta_i).$$
 
 
 ::: {.cell}
@@ -956,31 +926,7 @@ Second, the `gen_curvycylinder(n, p, h)` function generates a $p\text{-}D$ datas
 :::
 
 
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-For a spiraling path on a spherical surface in the first four dimensions, `gen_sphericalspiral(n, p, spins)` (Figure \@ref(fig:triginometric-proj) c), let $\theta \in [0, 2\pi \times \text{spins}]$  be the azimuthal angle (longitude), controls the number of spiral turns and the $\phi \in [0, \pi]$ be the polar angle (latitude), controls the vertical sweep from the north to the south pole. Cartesian coordinates from spherical conversion: $X_1 = \sin(\phi)\cos(\theta)$, $X_2 = \sin(\phi)\sin(\theta)$, $X_3 = \cos(\phi) + \varepsilon$, where $\varepsilon \sim U(-0.5, 0.5)$ introduces vertical jitter, and $X_4 = \theta / \max(\theta)$: a normalized progression along the spiral path. This generates a spherical spiral curve embedded in $4\text{-}D$ space, combining both circular and vertical movement, with gentle curvature and non-linear progression.  
+Second, the `gen_curvycylinder(n, p, h)` function generates a $p\text{-}D$ dataset of $n$ observations structured as a $3\text{-}D$ cylindrical manifold with an added nonlinear curvy dimension, and optional noise dimensions when $p > 4$ (@fig-triginometric-proj b). The core structure consists of a circular base and height values, extended by a nonlinear fourth dimension. Let $\theta \sim U(0, 3\pi)$ represent a random angle on a circular base and $z \sim U(0, h)$ represent the height along the cylinder. The coordinates are defined as: $X_1 = \cos(\theta)$ (Circular base, x-axis), $X_2 = \sin(\theta)$ (Circular base, y-axis), $X_3 = z$ (Linear height), and $X_4 = \sin(z)$ (Nonlinear curvy variation along height).  
 
 
 ::: {.cell}
@@ -1012,15 +958,7 @@ For a spiraling path on a spherical surface in the first four dimensions, `gen_s
 :::
 
 
-For a helical spiral in four dimensions, `gen_helicalspiral(n, p)` (Figure \@ref(fig:triginometric-proj) d), let $\theta \in [0, 5\pi/4]$  be a sequence of angles controlling rotation around a circle. Cartesian coordinates; $X_1 = \cos(\theta)$: circular trajectory along the x-axis, $X_2 = \sin(\theta)$: circular trajectory along the y-axis, $X_3 = 0.05\theta + \varepsilon_3$, with $\varepsilon_3 \sim U(-0.5, 0.5)$: linear progression (height) with vertical jitter, simulating a helix, and $X_4 = 0.1\sin(\theta)$: oscillates with $\theta$, representing a periodic "wobble" along the fourth dimension. 
-
-
-::: {.cell}
-
-:::
-
-
-Similarly, the `gen_conicspiral(n, p, spins)` function generates a dataset of $n$ points forming a conical spiral in the first four dimensions of $p\text{-}D$ (Figure \@ref(fig:triginometric-proj) e). The geometry combines radial expansion, vertical elevation, and spiral deformation, simulating a structure that fans out like a $3\text{-}D$ conic helix. The shape is defined by parameter $\theta \in [0, 2\pi\text{spins}]$, controlling the angular progression of the spiral. The Archimedean spiral in the horizontal plane is represented by; $X_1 = \theta\cos(\theta)$ for radial expansion in $x$, and $X_2 = \theta\sin(\theta)$ for radial expansion in $y$. The growth pattern resembles a cone, with the height increasing according to $X_3 = 2\theta / \max(\theta) + \varepsilon_3$, with $\varepsilon_3 \sim U(-0.1, 0.6).$ Spiral modulation in the fourth dimension is represented by $X_4 = \theta\sin(2\theta) + \varepsilon_4$, with $\varepsilon_4 \sim U(-0.1, 0.6)$ which simulates a twisting helical component in a non-radial dimension. 
+For a spiraling path on a spherical surface in the first four dimensions, `gen_sphericalspiral(n, p, spins)` (@fig-triginometric-proj c), let $\theta \in [0, 2\pi \times \text{spins}]$  be the azimuthal angle (longitude), controls the number of spiral turns and the $\phi \in [0, \pi]$ be the polar angle (latitude), controls the vertical sweep from the north to the south pole. Cartesian coordinates from spherical conversion: $X_1 = \sin(\phi)\cos(\theta)$, $X_2 = \sin(\phi)\sin(\theta)$, $X_3 = \cos(\phi) + \varepsilon$, where $\varepsilon \sim U(-0.5, 0.5)$ introduces vertical jitter, and $X_4 = \theta / \max(\theta)$: a normalized progression along the spiral path. This generates a spherical spiral curve embedded in $4\text{-}D$ space, combining both circular and vertical movement, with gentle curvature and non-linear progression.  
 
 
 ::: {.cell}
@@ -1052,7 +990,47 @@ Similarly, the `gen_conicspiral(n, p, spins)` function generates a dataset of $n
 :::
 
 
-Finally, the `gen_nonlinear(n, p, hc, non_fac)` function simulates a nonlinear $2\text{-}D$ surface embedded in higher dimensions, constructed using inverse and trigonometric transformations applied to independent variables (Figure \@ref(fig:triginometric-proj) f). The $X_{1} \sim U(0.1, 2)$: base variable (avoids zero to prevent division errors), $X_{3} \sim U(0.1, 0.8)$: independent auxiliary variable, $X_{2} = hc/X_{1} + \text{non\_fac}\sin(X_{1})$: nonlinear combination of hyperbolic and sinusoidal transformations, creating sharp curvature and oscillation, and $X_{4} = \cos(\pi X_{1}) + \varepsilon$, with $\varepsilon \sim U(-0.1, 0.1)$: additional nonlinear variation based on cosine, simulating more subtle periodic structure. These transformations together result in a nonlinear surface warped in multiple ways: sharp vertical shifts due to inverse terms, smooth waves from sine and cosine, and additional jitter. 
+For a helical spiral in four dimensions, `gen_helicalspiral(n, p)` (@fig-triginometric-proj d), let $\theta \in [0, 5\pi/4]$  be a sequence of angles controlling rotation around a circle. Cartesian coordinates; $X_1 = \cos(\theta)$: circular trajectory along the x-axis, $X_2 = \sin(\theta)$: circular trajectory along the y-axis, $X_3 = 0.05\theta + \varepsilon_3$, with $\varepsilon_3 \sim U(-0.5, 0.5)$: linear progression (height) with vertical jitter, simulating a helix, and $X_4 = 0.1\sin(\theta)$: oscillates with $\theta$, representing a periodic "wobble" along the fourth dimension. 
+
+
+::: {.cell}
+
+:::
+
+
+Similarly, the `gen_conicspiral(n, p, spins)` function generates a dataset of $n$ points forming a conical spiral in the first four dimensions of $p\text{-}D$ (@fig-triginometric-proj e). The geometry combines radial expansion, vertical elevation, and spiral deformation, simulating a structure that fans out like a $3\text{-}D$ conic helix. The shape is defined by parameter $\theta \in [0, 2\pi\text{spins}]$, controlling the angular progression of the spiral. The Archimedean spiral in the horizontal plane is represented by; $X_1 = \theta\cos(\theta)$ for radial expansion in $x$, and $X_2 = \theta\sin(\theta)$ for radial expansion in $y$. The growth pattern resembles a cone, with the height increasing according to $X_3 = 2\theta / \max(\theta) + \varepsilon_3$, with $\varepsilon_3 \sim U(-0.1, 0.6).$ Spiral modulation in the fourth dimension is represented by $X_4 = \theta\sin(2\theta) + \varepsilon_4$, with $\varepsilon_4 \sim U(-0.1, 0.6)$ which simulates a twisting helical component in a non-radial dimension. 
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+Finally, the `gen_nonlinear(n, p, hc, non_fac)` function simulates a nonlinear $2\text{-}D$ surface embedded in higher dimensions, constructed using inverse and trigonometric transformations applied to independent variables (@fig-triginometric-proj f). The $X_{1} \sim U(0.1, 2)$: base variable (avoids zero to prevent division errors), $X_{3} \sim U(0.1, 0.8)$: independent auxiliary variable, $X_{2} = hc/X_{1} + \text{non\_fac}\sin(X_{1})$: nonlinear combination of hyperbolic and sinusoidal transformations, creating sharp curvature and oscillation, and $X_{4} = \cos(\pi X_{1}) + \varepsilon$, with $\varepsilon \sim U(-0.1, 0.1)$: additional nonlinear variation based on cosine, simulating more subtle periodic structure. These transformations together result in a nonlinear surface warped in multiple ways: sharp vertical shifts due to inverse terms, smooth waves from sine and cosine, and additional jitter. 
 
 
 ::: {.cell}
@@ -1108,7 +1086,7 @@ Two specialized wrappers illustrate this idea. The function `gen_scurvehole(n, r
 
 ### Generate noise dimensions
 
-High-dimensional data structures often benefit from the addition of auxiliary noise dimensions, which can be used to assess the robustness of dimension reduction and clustering algorithms. The functions in this section provide flexible ways to generate random noise dimensions, ranging from purely random Gaussian variables to more structured, wavy patterns that mimic nonlinear distortions in high-dimensional space. These functions can be applied independently or combined with other geometric structures to create complex simulated datasets. Table \@ref(tab:noise-tb-pdf) details these functions.
+High-dimensional data structures often benefit from the addition of auxiliary noise dimensions, which can be used to assess the robustness of dimension reduction and clustering algorithms. The functions in this section provide flexible ways to generate random noise dimensions, ranging from purely random Gaussian variables to more structured, wavy patterns that mimic nonlinear distortions in high-dimensional space. These functions can be applied independently or combined with other geometric structures to create complex simulated datasets. @tbl-noise-tb details these functions.
 
 
 ::: {.cell}
@@ -1117,17 +1095,11 @@ High-dimensional data structures often benefit from the addition of auxiliary no
 
 
 
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
+::: {#tbl-noise-tb .cell}
 ::: {.cell-output-display}
 \begin{table}
 
-\caption{\label{tab:noise-tb-pdf}cardinalR noise dimensions generation functions}
+\caption{\label{tab:tbl-noise-tb}cardinalR noise dimensions generation functions}
 \centering
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{10.5cm}}
 \toprule
@@ -1184,7 +1156,7 @@ In $p\text{-}D$ space, a rotation is an orthogonal transformation that changes t
 
 ### Multiple cluster examples
 
-By using the shape generators mentioned above, we can create various examples of multiple clusters. The package includes some of these examples, which are described in Table \@ref(tab:odd-shape-tb-pdf).
+By using the shape generators mentioned above, we can create various examples of multiple clusters. The package includes some of these examples, which are described in @tbl-odd-shape-tb.
 
 
 ::: {.cell}
@@ -1193,17 +1165,11 @@ By using the shape generators mentioned above, we can create various examples of
 
 
 
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
+::: {#tbl-odd-shape-tb .cell}
 ::: {.cell-output-display}
 \begin{table}
 
-\caption{\label{tab:odd-shape-tb-pdf}cardinalR multiple clusters generation functions}
+\caption{\label{tab:tbl-odd-shape-tb}cardinalR multiple clusters generation functions}
 \centering
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{8.5cm}}
 \toprule
@@ -1233,7 +1199,7 @@ Function & Explanation\\
 
 ### Additional functions
 
-The package includes various supplementary tools in addition to the shape generating functions mentioned earlier. These tools allow users to create background noise, randomize the rows of the data, relocate clusters, generate a vector whose product and sum are approximately equal to a target value, rotate structures, and normalize the data. Table \@ref(tab:add-tb-pdf) details these functions. More detailed explanations are available in [jayanilakshika.github.io/cardinalR/articles/03additionalfun](https://jayanilakshika.github.io/cardinalR/articles/03additionalfun.html).
+The package includes various supplementary tools in addition to the shape generating functions mentioned earlier. These tools allow users to create background noise, randomize the rows of the data, relocate clusters, generate a vector whose product and sum are approximately equal to a target value, rotate structures, and normalize the data. @tbl-add-tb details these functions. More detailed explanations are available in [jayanilakshika.github.io/cardinalR/articles/03additionalfun](https://jayanilakshika.github.io/cardinalR/articles/03additionalfun.html).
 
 
 ::: {.cell}
@@ -1242,17 +1208,11 @@ The package includes various supplementary tools in addition to the shape genera
 
 
 
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
+::: {#tbl-add-tb .cell}
 ::: {.cell-output-display}
 \begin{table}
 
-\caption{\label{tab:add-tb-pdf}cardinalR additional functions}
+\caption{\label{tab:tbl-add-tb}cardinalR additional functions}
 \centering
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{8cm}}
 \toprule
@@ -1277,7 +1237,7 @@ Function & Explanation\\
 
 This section demonstrates how the package can be used to generate complex high-dimensional datasets, evaluate dimension reduction (DR) and clustering methods. The example shows how diverse geometric structures can be simulated and analyzed to assess algorithmic behavior.
 
-To illustrate how high-dimensional clustered data can be generated using `cardinalR`, we generate a dataset with five clusters in $4\text{-}D$, each representing distinct geometric characteristics: a *helical spiral* (elongated and twisted), a *hemisphere* (curved surface), a *uniform cube* (isotropic distribution), a *cone* (density gradient), and a *Gaussian* cluster (compact and spherical) (Figure \@ref(fig:highd-proj)). Each cluster has a unique number of points and scaling factor, representing variation in cluster size and spread across the $4\text{-}D$ space.
+To illustrate how high-dimensional clustered data can be generated using `cardinalR`, we generate a dataset with five clusters in $4\text{-}D$, each representing distinct geometric characteristics: a *helical spiral* (elongated and twisted), a *hemisphere* (curved surface), a *uniform cube* (isotropic distribution), a *cone* (density gradient), and a *Gaussian* cluster (compact and spherical) (@fig-highd-proj). Each cluster has a unique number of points and scaling factor, representing variation in cluster size and spread across the $4\text{-}D$ space.
 
 
 ::: {.cell}
@@ -1331,7 +1291,7 @@ five_clusts <- gen_multicluster(n = c(2250, 1500, 750, 1250, 1750), k = 5,
 
 ### Evaluating dimension reduction (DR) methods
 
-We applied six popular DR techniques to the generated dataset: Principal Component Analysis (PCA) [@jolliffe2011], tSNE, uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2019], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. 
+We applied six popular DR techniques to the generated dataset: Principal Component Analysis (PCA) [@jolliffe2011], tSNE, uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. 
 
 <!--scripts/five_clusts/02_gen_embeddings.R-->
 
@@ -1357,7 +1317,7 @@ We applied six popular DR techniques to the generated dataset: Principal Compone
 
 To assess their performance, we computed the hexbin error (HBE) between the observed high-dimensional data and the fitted values, defined as the high-dimensional mappings of the bin centroids [@gamage2025c]. A lower HBE indicates that the method better preserves the high-dimensional structure in its low-dimensional embedding.
 
-As shown in Figure \@ref(fig:fig-nldr-layouts), tSNE (Figure \@ref(fig:fig-nldr-layouts) a) achieved the lowest HBE across bin widths (mostly tiny), indicating high preservation of both local and global structures. Its layout displays well-separated clusters with minimal inter-cluster distances, making it the most faithful representation of the underlying data structure. UMAP and PaCMAP (Figure \@ref(fig:fig-nldr-layouts) b and e) produced moderately accurate embeddings, although the six clusters appear more well-separated, while PHATE (Figure \@ref(fig:fig-nldr-layouts) c) show nonlinear cluster structures irrespective of the original structure. Also, TriMAP (Figure \@ref(fig:fig-nldr-layouts) d) has high HBE, and show three clusters with small distances. PCA (Figure \@ref(fig:fig-nldr-layouts) f) failed to capture the non-linear geometry, leading to the highest HBE.
+As shown in @fig-nldr-layouts, tSNE (@fig-nldr-layouts a) achieved the lowest HBE across bin widths (mostly tiny), indicating high preservation of both local and global structures. Its layout displays well-separated clusters with minimal inter-cluster distances, making it the most faithful representation of the underlying data structure. UMAP and PaCMAP (@fig-nldr-layouts b and e) produced moderately accurate embeddings, although the six clusters appear more well-separated, while PHATE (@fig-nldr-layouts c) show nonlinear cluster structures irrespective of the original structure. Also, TriMAP (@fig-nldr-layouts d) has high HBE, and show three clusters with small distances. PCA (@fig-nldr-layouts f) failed to capture the non-linear geometry, leading to the highest HBE.
 
 ### Benchmarking clustering algorithms
 
@@ -1372,7 +1332,7 @@ To further evaluate the structure of the generated data, we benchmarked three cl
 :::
 
 
-Figure \@ref(fig:fig-cluster-stats) shows a selection of cluster metrics for $2-10$ clusters for each of the methods, $k$-means, hierarchical, and model-based. As is typical, the suggestion of the best solution varies between cluster statistics. Although the metrics differ in their preferences, several show consistent support for a $4-5$ cluster solution. Pearson gamma (`pearsongamma`) increases sharply up to five clusters before leveling off, Calinski–Harabasz index (`ch`) increases sharply from 4 to 5 clusters and Dunn (`dunn2`) has a maximum at 5 for two methods and at 4 for $k$-means. All of these are interpreted as higher is better. With the other three, lower is better. WB ratio (`wb.ratio`) and within-cluster sum of squares (`within.cluster.ss`) steadily decline with number of clusters, possibly elbowing around 5 clusters. The S-index (`sindex`) is optimized at 4 clusters for $k$-means, 3, 6 or 8 for hierarchical clustering, and 4 or 8 for model-based. Overall, $k$-means performs slightly better than the hierarchical and model-based clustering across most metrics and number of clusters.
+@fig-cluster-stats shows a selection of cluster metrics for $2-10$ clusters for each of the methods, $k$-means, hierarchical, and model-based. As is typical, the suggestion of the best solution varies between cluster statistics. Although the metrics differ in their preferences, several show consistent support for a $4-5$ cluster solution. Pearson gamma (`pearsongamma`) increases sharply up to five clusters before leveling off, Calinski–Harabasz index (`ch`) increases sharply from 4 to 5 clusters and Dunn (`dunn2`) has a maximum at 5 for two methods and at 4 for $k$-means. All of these are interpreted as higher is better. With the other three, lower is better. WB ratio (`wb.ratio`) and within-cluster sum of squares (`within.cluster.ss`) steadily decline with number of clusters, possibly elbowing around 5 clusters. The S-index (`sindex`) is optimized at 4 clusters for $k$-means, 3, 6 or 8 for hierarchical clustering, and 4 or 8 for model-based. Overall, $k$-means performs slightly better than the hierarchical and model-based clustering across most metrics and number of clusters.
 
 
 ::: {.cell}
@@ -1430,7 +1390,7 @@ Figure \@ref(fig:fig-cluster-stats) shows a selection of cluster metrics for $2-
 :::
 
 
-Figure \@ref(fig:highd-proj-clust-algo-pdf) shows the four- and five-cluster $k$-means solutions, with cluster id used to color the points. Neither solution captures the geometric nature of the true clusters, but they are both reasonable partitions of the data. To examine either one, it is best to subset to a single cluster to view in the tour. With each solution, the five original shapes are each split by the clustering. More than 5 clusters would be needed to better capture the original shapes.
+@fig-highd-proj-clust-algo-pdf shows the four- and five-cluster $k$-means solutions, with cluster id used to color the points. Neither solution captures the geometric nature of the true clusters, but they are both reasonable partitions of the data. To examine either one, it is best to subset to a single cluster to view in the tour. With each solution, the five original shapes are each split by the clustering. More than 5 clusters would be needed to better capture the original shapes.
 
 ## Conclusion
 
@@ -1444,7 +1404,7 @@ Future extensions of `cardinalR` may include biologically inspired or applicatio
 
 ## Acknowledgements
 
-The source material for this paper, including the full datasets and figures, is available at [github.com/JayaniLakshika/paper-cardinalR](https://github.com/JayaniLakshika/paper-cardinalR). This article is created using \CRANpkg{knitr} [@yihui2015] and \CRANpkg{rmarkdown} [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `tibble` [@kirill2023], `gtools` [@gregory2023], `dplyr` [@hadley2023], `stats` [@core2025], `tidyr` [@hadley2024], `purrr` [@hadley2025], `mvtnorm` [@alan2009], `geozoo` [@barret2016], and `MASS` [@venables2002]. 
+The source material for this paper, including the full datasets and figures, is available at [github.com/JayaniLakshika/paper-cardinalR](https://github.com/JayaniLakshika/paper-cardinalR). This article is created using `knitr` [@yihui2015] and `rmarkdown` [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `tibble` [@kirill2023], `gtools` [@gregory2023], `dplyr` [@hadley2023], `stats` [@core2025], `tidyr` [@hadley2024], `purrr` [@hadley2025], `mvtnorm` [@alan2009], `geozoo` [@barret2016], and `MASS` [@venables2002]. 
 
 
 

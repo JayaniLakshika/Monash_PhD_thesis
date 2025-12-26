@@ -369,12 +369,12 @@ Figure&nbsp;4.1: Workflow for generating high-dimensional clustered data. The us
 </section><section id="implementation" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="implementation">
 <span class="header-section-number">4.3</span> Implementation</h2>
 <p>The main function of the package is <code>gen_multicluster()</code>, which generates datasets consisting of multiple clusters with user-specified characteristics. To maintain consistency across generators, the function identifies the arguments required by each chosen generator function and supplies only those arguments that are valid for that specific generator. This design enables the combination of cluster types with differing parameter requirements within the same dataset. When clusters are generated with fewer dimensions than others, the function augments the lower-dimensional clusters with additional Gaussian noise variables so that all clusters are represented in the same dimensional space. These noise dimensions are drawn independently from normal distributions <span class="math inline">X \sim \mathcal{N}(\mu, \sigma^2)</span>, where the mean (<span class="math inline">\mu</span>) is set to the average of the cluster coordinates and the standard deviation (<span class="math inline">\sigma</span>) defaults to <span class="math inline">0.2</span>.</p>
-<p>An optional argument, <code>is_bkg</code>, adds background noise drawn from a multivariate normal distribution centered on the dataset’s overall mean with standard deviations matching the observed spread. Extra arguments (<code>...</code>) can be passed to cluster generators, allowing further control over per-cluster characteristics like radius of the sphere. The main arguments of the <code>gen_multicluster()</code> function are shown in <a href="#tbl-main-tb-html" class="quarto-xref">Table&nbsp;<span>4.1</span></a>.</p>
+<p>An optional argument, <code>is_bkg</code>, adds background noise drawn from a multivariate normal distribution centered on the dataset’s overall mean with standard deviations matching the observed spread. Extra arguments (<code>...</code>) can be passed to cluster generators, allowing further control over per-cluster characteristics like radius of the sphere. The main arguments of the <code>gen_multicluster()</code> function are shown in <a href="#tbl-main-tb" class="quarto-xref">Table&nbsp;<span>4.1</span></a>.</p>
 <div class="cell">
-<div id="tbl-main-tb-html" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-main-tb-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="tbl-main-tb" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-main-tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4.1: The main arguments for <code>gen_multicluster()</code>.
-</figcaption><div aria-describedby="tbl-main-tb-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-main-tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
@@ -430,23 +430,13 @@ Table&nbsp;4.1: The main arguments for <code>gen_multicluster()</code>.
 </figure>
 </div>
 </div>
-<div id="tbl-main-tb-pdf" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-main-tb-pdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.2
-</figcaption><div aria-describedby="tbl-main-tb-pdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>
-
-</div>
-</div>
-</figure>
-</div>
 <section id="shape-generators" class="level3"><h3 class="anchored" data-anchor-id="shape-generators">Shape generators</h3>
-<p>The shape generators form the foundation of the package, providing functions to create synthetic datasets from simple, well-defined geometric forms such as cones, pyramids, spheres, grids, and branching structures. Each generator includes the parameter <code>n</code>, which specifies the number of points to generate. Some functions, such as <code>gen_unifcube()</code>, also take the dimension <code>p</code>, while others include arguments specific to the geometry (e.g., radius for spheres (<code>r</code>), width for bands (<code>w</code>)). If higher-dimensional data are required, additional noise dimensions can be appended after data generation using any noise generator function. This flexibility allows users to construct both low- and high-dimensional datasets from the same underlying structures. <a href="#tbl-shape-tb-html" class="quarto-xref">Table&nbsp;<span>4.3</span></a> outlines these functions. The main arguments of the functions described in <a href="#tbl-arg-shape-tb-html" class="quarto-xref">Table&nbsp;<span>4.5</span></a>.</p>
+<p>The shape generators form the foundation of the package, providing functions to create synthetic datasets from simple, well-defined geometric forms such as cones, pyramids, spheres, grids, and branching structures. Each generator includes the parameter <code>n</code>, which specifies the number of points to generate. Some functions, such as <code>gen_unifcube()</code>, also take the dimension <code>p</code>, while others include arguments specific to the geometry (e.g., radius for spheres (<code>r</code>), width for bands (<code>w</code>)). If higher-dimensional data are required, additional noise dimensions can be appended after data generation using any noise generator function. This flexibility allows users to construct both low- and high-dimensional datasets from the same underlying structures. <a href="#tbl-shape-tb" class="quarto-xref">Table&nbsp;<span>4.2</span></a> outlines these functions. The main arguments of the functions described in <a href="#tbl-arg-shape-tb" class="quarto-xref">Table&nbsp;<span>4.3</span></a>.</p>
 <div class="cell">
-<div id="tbl-shape-tb-html" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-shape-tb-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.3: Overview of shape-generation functions, including their required parameters and a brief description of each geometric structure produced. The generators cover branching patterns, spheres, spirals, pyramids, Gaussian clouds, and other nonlinear shapes.
-</figcaption><div aria-describedby="tbl-shape-tb-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="tbl-shape-tb" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-shape-tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.2: Overview of shape-generation functions, including their required parameters and a brief description of each geometric structure produced. The generators cover branching patterns, spheres, spirals, pyramids, Gaussian clouds, and other nonlinear shapes.
+</figcaption><div aria-describedby="tbl-shape-tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
@@ -637,21 +627,11 @@ Table&nbsp;4.3: Overview of shape-generation functions, including their required
 </figure>
 </div>
 </div>
-<div id="tbl-shape-tb-pdf" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-shape-tb-pdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.4
-</figcaption><div aria-describedby="tbl-shape-tb-pdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>
-
-</div>
-</div>
-</figure>
-</div>
 <div class="cell">
-<div id="tbl-arg-shape-tb-html" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-arg-shape-tb-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.5: Argument definitions for the shape generators. The table lists each argument, its data type, and a description of its role in controlling geometric structure, dimensionality, scaling, curvature, spacing, and other features of the simulated high-dimensional datasets.
-</figcaption><div aria-describedby="tbl-arg-shape-tb-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="tbl-arg-shape-tb" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-arg-shape-tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.3: Argument definitions for the shape generators. The table lists each argument, its data type, and a description of its role in controlling geometric structure, dimensionality, scaling, curvature, spacing, and other features of the simulated high-dimensional datasets.
+</figcaption><div aria-describedby="tbl-arg-shape-tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
@@ -771,16 +751,6 @@ Table&nbsp;4.5: Argument definitions for the shape generators. The table lists e
 </div>
 </figure>
 </div>
-</div>
-<div id="tbl-arg-shape-tb-pdf" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-arg-shape-tb-pdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.6
-</figcaption><div aria-describedby="tbl-arg-shape-tb-pdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>
-
-</div>
-</div>
-</figure>
 </div>
 <section id="branching" class="level4"><h4 class="anchored" data-anchor-id="branching">Branching</h4>
 <p>A branching structure (<a href="#fig-branch" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>) captures trajectories that diverge or bifurcate from a common origin, similar to processes such as cell differentiation in biology <span class="citation" data-cites="trapnell2014">(<a href="../refs.html#ref-trapnell2014" role="doc-biblioref">Trapnell et al. 2014</a>)</span>. We introduce a set of data generation functions specifically designed to simulate high-dimensional branching structures with various geometries, total number of points (<code>n</code>) generated across all branches, with points allocated approximately evenly among branches, and number of branches (<code>k</code>). Although these functions can generate multiple branches, they do not produce a formal <em>multicluster</em> dataset: the branches form a single connected structure, with multiple visually distinct arms rather than independent clusters.</p>
@@ -1022,7 +992,7 @@ Figure&nbsp;4.6: Viewing the <span class="math inline">4\text{-}D</span> <code>t
 </div>
 </section><section id="trigonometric" class="level4"><h4 class="anchored" data-anchor-id="trigonometric">Trigonometric</h4>
 <p>Trigonometric-based structures provide flexible ways to simulate complex curved patterns and spirals that often arise in real-world high-dimensional data, such as in biological trajectories, or physical systems (<a href="#fig-triginometric" class="quarto-xref">Figure&nbsp;<span>4.7</span></a>). The main geometry is defined by the first few coordinates: crescents (<span class="math inline">p=2</span>), cylinders, spirals, and helices (<span class="math inline">p=4</span>). These structures are particularly valuable for testing how well dimension reduction and clustering algorithms preserve intricate geometric and topological features <span class="citation" data-cites="calladine1997 gershenfeld2000">(<a href="../refs.html#ref-calladine1997" role="doc-biblioref">Calladine et al. 1997</a>; <a href="../refs.html#ref-gershenfeld2000" role="doc-biblioref">Gershenfeld 2000</a>)</span>.</p>
-<p>First, the <code>gen_crescent(n, p)</code> function generates a <span class="math inline">p</span>-dimensional dataset of <span class="math inline">n</span> observations based on a <span class="math inline">2\text{-}D</span> crescent-shaped manifold with optional structured high-dimensional noise (<span class="citation" data-cites="fig:triginometric">(<a href="../refs.html#ref-fig:triginometric" role="doc-biblioref"><strong>fig:triginometric?</strong></a>)</span> a). Let <span class="math inline">\{\theta_i\}_{i=1}^n</span> be a sequence of <span class="math inline">n</span> evenly spaced angles on the interval <span class="math inline">[\pi/6, 2\pi]</span>, defined as <span class="math inline">\theta_i = \frac{\pi}{6} + (i-1)\frac{2\pi - \pi/6}{n-1}, \quad i = 1,\dots,n</span>. The corresponding <span class="math inline">2\text{-}D</span> coordinates are defined by: <span class="math display">X_{i1} = \cos(\theta_i), \quad X_{i2} = \sin(\theta_i).</span></p>
+<p>First, the <code>gen_crescent(n, p)</code> function generates a <span class="math inline">p</span>-dimensional dataset of <span class="math inline">n</span> observations based on a <span class="math inline">2\text{-}D</span> crescent-shaped manifold with optional structured high-dimensional noise (<a href="#fig-triginometric" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> a). Let <span class="math inline">\{\theta_i\}_{i=1}^n</span> be a sequence of <span class="math inline">n</span> evenly spaced angles on the interval <span class="math inline">[\pi/6, 2\pi]</span>, defined as <span class="math inline">\theta_i = \frac{\pi}{6} + (i-1)\frac{2\pi - \pi/6}{n-1}, \quad i = 1,\dots,n</span>. The corresponding <span class="math inline">2\text{-}D</span> coordinates are defined by: <span class="math display">X_{i1} = \cos(\theta_i), \quad X_{i2} = \sin(\theta_i).</span></p>
 <p>Second, the <code>gen_curvycylinder(n, p, h)</code> function generates a <span class="math inline">p\text{-}D</span> dataset of <span class="math inline">n</span> observations structured as a <span class="math inline">3\text{-}D</span> cylindrical manifold with an added nonlinear curvy dimension, and optional noise dimensions when <span class="math inline">p &gt; 4</span> (<a href="#fig-triginometric" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> b). The core structure consists of a circular base and height values, extended by a nonlinear fourth dimension. Let <span class="math inline">\theta \sim U(0, 3\pi)</span> represent a random angle on a circular base and <span class="math inline">z \sim U(0, h)</span> represent the height along the cylinder. The coordinates are defined as: <span class="math inline">X_1 = \cos(\theta)</span> (Circular base, x-axis), <span class="math inline">X_2 = \sin(\theta)</span> (Circular base, y-axis), <span class="math inline">X_3 = z</span> (Linear height), and <span class="math inline">X_4 = \sin(z)</span> (Nonlinear curvy variation along height).</p>
 <p>For a spiraling path on a spherical surface in the first four dimensions, <code>gen_sphericalspiral(n, p, spins)</code> (<a href="#fig-triginometric" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> c), let <span class="math inline">\theta \in [0, 2\pi \times \text{spins}]</span> be the azimuthal angle (longitude), controls the number of spiral turns and the <span class="math inline">\phi \in [0, \pi]</span> be the polar angle (latitude), controls the vertical sweep from the north to the south pole. Cartesian coordinates from spherical conversion: <span class="math inline">X_1 = \sin(\phi)\cos(\theta)</span>, <span class="math inline">X_2 = \sin(\phi)\sin(\theta)</span>, <span class="math inline">X_3 = \cos(\phi) + \varepsilon</span>, where <span class="math inline">\varepsilon \sim U(-0.5, 0.5)</span> introduces vertical jitter, and <span class="math inline">X_4 = \theta / \max(\theta)</span>: a normalized progression along the spiral path. This generates a spherical spiral curve embedded in <span class="math inline">4\text{-}D</span> space, combining both circular and vertical movement, with gentle curvature and non-linear progression.</p>
 <p>For a helical spiral in four dimensions, <code>gen_helicalspiral(n, p)</code> (<a href="#fig-triginometric" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> d), let <span class="math inline">\theta \in [0, 5\pi/4]</span> be a sequence of angles controlling rotation around a circle. Cartesian coordinates; <span class="math inline">X_1 = \cos(\theta)</span>: circular trajectory along the x-axis, <span class="math inline">X_2 = \sin(\theta)</span>: circular trajectory along the y-axis, <span class="math inline">X_3 = 0.05\theta + \varepsilon_3</span>, with <span class="math inline">\varepsilon_3 \sim U(-0.5, 0.5)</span>: linear progression (height) with vertical jitter, simulating a helix, and <span class="math inline">X_4 = 0.1\sin(\theta)</span>: oscillates with <span class="math inline">\theta</span>, representing a periodic “wobble” along the fourth dimension.</p>
@@ -1058,14 +1028,14 @@ Figure&nbsp;4.7: Viewing the <span class="math inline">4\text{-}D</span> <code>c
 </section></section><section id="generate-a-spherical-or-hyperspherical-hole-within-a-structure" class="level3"><h3 class="anchored" data-anchor-id="generate-a-spherical-or-hyperspherical-hole-within-a-structure">Generate a spherical or hyperspherical hole within a structure</h3>
 <p>The package provides functionality for generating datasets with spherical hole (in <span class="math inline">2\text{-}D</span>/<span class="math inline">3\text{-}D</span>) or, more generally, hyperspherical hole (in higher dimensions). These structures are valuable for evaluating how dimension reduction methods and clustering algorithms handle incomplete manifolds or missing regions of the data space. A hyperspherical hole introduces topological complexity: the structure remains continuous but contains excluded regions (voids) that algorithms must correctly represent in lower-dimensional embeddings.</p>
 <p>The core function <code>gen_hole(df, anchor, r)</code> removes points from a dataset that fall within a user-specified hypersphere. Formally, given data points (<span class="math inline">x \in \mathbb{R}^p</span>), a center (<span class="math inline">a \in \mathbb{R}^p</span>), and radius (<span class="math inline">r &gt; 0</span>), only points satisfying <span class="math inline">\sqrt{\sum_{i=1}^n(x_i-a_i)^2} &gt; r</span> are retained. The anchor point (<span class="math inline">a</span>) can either be user-specified or default to the dataset mean, and radius (<span class="math inline">r</span>) is controlled by the user, with safeguards to avoid trivial or degenerate cases. Because it operates generically on any dataset, spherical or hyperspherical holes can be embedded in a wide range of geometric structures.</p>
-<p>Two specialized wrappers illustrate this idea. The function <code>gen_scurvehole(n, r_hole)</code> generates an S-curve with a spherical hole by applying <code>gen_hole()</code> to the output of <code>gen_scurve()</code>. This structure has been used in prior diagnostic studies of NLDR methods <span class="citation" data-cites="tenenbaum2000">(<a href="../refs.html#ref-van2007" role="doc-biblioref"><strong>van2007?</strong></a>)</span>, since it tests the ability of algorithms to capture non-linear manifolds that are not simply connected. The second wrapper, <code>gen_unifcubehole(n, p, r_hole)</code>, generates uniformly sampled cube data with a hyperspherical hole. By embedding a hyperspherical void inside a convex high-dimensional structure, this creates non-convex regions that challenge algorithms in terms of separability and neighborhood preservation.</p>
+<p>Two specialized wrappers illustrate this idea. The function <code>gen_scurvehole(n, r_hole)</code> generates an S-curve with a spherical hole by applying <code>gen_hole()</code> to the output of <code>gen_scurve()</code>. This structure has been used in prior diagnostic studies of NLDR methods <span class="citation" data-cites="tenenbaum2000">Maaten et al. (<a href="../refs.html#ref-van2007" role="doc-biblioref">2007</a>)</span>, since it tests the ability of algorithms to capture non-linear manifolds that are not simply connected. The second wrapper, <code>gen_unifcubehole(n, p, r_hole)</code>, generates uniformly sampled cube data with a hyperspherical hole. By embedding a hyperspherical void inside a convex high-dimensional structure, this creates non-convex regions that challenge algorithms in terms of separability and neighborhood preservation.</p>
 </section><section id="generate-noise-dimensions" class="level3"><h3 class="anchored" data-anchor-id="generate-noise-dimensions">Generate noise dimensions</h3>
-<p>High-dimensional data structures often benefit from the addition of auxiliary noise dimensions, which can be used to assess the robustness of dimension reduction and clustering algorithms. The functions in this section provide flexible ways to generate random noise dimensions, ranging from purely random Gaussian variables to more structured, wavy patterns that mimic nonlinear distortions in high-dimensional space. These functions can be applied independently or combined with other geometric structures to create complex simulated datasets. <a href="#tbl-noise-tb-html" class="quarto-xref">Table&nbsp;<span>4.7</span></a> details these functions.</p>
+<p>High-dimensional data structures often benefit from the addition of auxiliary noise dimensions, which can be used to assess the robustness of dimension reduction and clustering algorithms. The functions in this section provide flexible ways to generate random noise dimensions, ranging from purely random Gaussian variables to more structured, wavy patterns that mimic nonlinear distortions in high-dimensional space. These functions can be applied independently or combined with other geometric structures to create complex simulated datasets. <a href="#tbl-noise-tb" class="quarto-xref">Table&nbsp;<span>4.4</span></a> details these functions.</p>
 <div class="cell">
-<div id="tbl-noise-tb-html" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-noise-tb-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.7: cardinalR noise dimensions generation functions
-</figcaption><div aria-describedby="tbl-noise-tb-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="tbl-noise-tb" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-noise-tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.4: cardinalR noise dimensions generation functions.
+</figcaption><div aria-describedby="tbl-noise-tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
@@ -1100,16 +1070,6 @@ Table&nbsp;4.7: cardinalR noise dimensions generation functions
 </figure>
 </div>
 </div>
-<div id="tbl-noise-tb-pdf" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-noise-tb-pdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.8
-</figcaption><div aria-describedby="tbl-noise-tb-pdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>
-
-</div>
-</div>
-</figure>
-</div>
 <p>The <code>gen_noisedims(n, p, m, s)</code> function generates <span class="math inline">p</span> independent Gaussian noise dimensions,</p>
 <p><span class="math display">
 X_j \sim N(m_j, s_j^2), \quad j = 1, \dots, p,
@@ -1133,12 +1093,12 @@ X_j = f_j(X_1, X_2, X_3) + \varepsilon_j, \quad j &gt; 3,
 </section><section id="rotating-shape-generators" class="level3"><h3 class="anchored" data-anchor-id="rotating-shape-generators">Rotating shape generators</h3>
 <p>In <span class="math inline">p\text{-}D</span> space, a rotation is an orthogonal transformation that changes the orientation of data while preserving its total variance and pairwise distances. The function <code>gen_rotation()</code> generates such rotation matrices for any dimension, given a list of rotation planes (axis pairs) and angles.</p>
 </section><section id="multiple-cluster-examples" class="level3"><h3 class="anchored" data-anchor-id="multiple-cluster-examples">Multiple cluster examples</h3>
-<p>By using the shape generators mentioned above, we can create various examples of multiple clusters. The package includes some of these examples, which are described in <a href="#tbl-odd-shape-tb-html" class="quarto-xref">Table&nbsp;<span>4.9</span></a>.</p>
+<p>By using the shape generators mentioned above, we can create various examples of multiple clusters. The package includes some of these examples, which are described in <a href="#tbl-odd-shape-tb" class="quarto-xref">Table&nbsp;<span>4.5</span></a>.</p>
 <div class="cell">
-<div id="tbl-odd-shape-tb-html" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-odd-shape-tb-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.9: cardinalR multiple clusters generation functions
-</figcaption><div aria-describedby="tbl-odd-shape-tb-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="tbl-odd-shape-tb" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-odd-shape-tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.5: cardinalR multiple clusters generation functions.
+</figcaption><div aria-describedby="tbl-odd-shape-tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
@@ -1209,23 +1169,13 @@ Table&nbsp;4.9: cardinalR multiple clusters generation functions
 </figure>
 </div>
 </div>
-<div id="tbl-odd-shape-tb-pdf" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-odd-shape-tb-pdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.10
-</figcaption><div aria-describedby="tbl-odd-shape-tb-pdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>
-
-</div>
-</div>
-</figure>
-</div>
 </section><section id="additional-functions" class="level3"><h3 class="anchored" data-anchor-id="additional-functions">Additional functions</h3>
-<p>The package includes various supplementary tools in addition to the shape generating functions mentioned earlier. These tools allow users to create background noise, randomize the rows of the data, relocate clusters, generate a vector whose product and sum are approximately equal to a target value, rotate structures, and normalize the data. <a href="#tbl-add-tb-html" class="quarto-xref">Table&nbsp;<span>4.11</span></a> details these functions. More detailed explanations are available in <a href="https://jayanilakshika.github.io/cardinalR/articles/03additionalfun.html">jayanilakshika.github.io/cardinalR/articles/03additionalfun</a>.</p>
+<p>The package includes various supplementary tools in addition to the shape generating functions mentioned earlier. These tools allow users to create background noise, randomize the rows of the data, relocate clusters, generate a vector whose product and sum are approximately equal to a target value, rotate structures, and normalize the data. <a href="#tbl-add-tb" class="quarto-xref">Table&nbsp;<span>4.6</span></a> details these functions. More detailed explanations are available in <a href="https://jayanilakshika.github.io/cardinalR/articles/03additionalfun.html">jayanilakshika.github.io/cardinalR/articles/03additionalfun</a>.</p>
 <div class="cell">
-<div id="tbl-add-tb-html" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-add-tb-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.11: cardinalR additional functions
-</figcaption><div aria-describedby="tbl-add-tb-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="tbl-add-tb" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-add-tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.6: cardinalR additional functions.
+</figcaption><div aria-describedby="tbl-add-tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
@@ -1267,16 +1217,6 @@ Table&nbsp;4.11: cardinalR additional functions
 </div>
 </figure>
 </div>
-</div>
-<div id="tbl-add-tb-pdf" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-add-tb-pdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.12
-</figcaption><div aria-describedby="tbl-add-tb-pdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>
-
-</div>
-</div>
-</figure>
 </div>
 </section></section><section id="application" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="application">
 <span class="header-section-number">4.4</span> Application</h2>
@@ -1371,7 +1311,7 @@ Figure&nbsp;4.11: Views of the five-cluster synthetic dataset colored by the <sp
 <p>Future extensions of <code>cardinalR</code> may include biologically inspired or application-driven data structures that would further broaden its utility in domains such as bioinformatics, forensic science, and spatial analysis.</p>
 </section><section id="acknowledgements" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="acknowledgements">
 <span class="header-section-number">4.6</span> Acknowledgements</h2>
-<p>The source material for this paper, including the full datasets and figures, is available at <a href="https://github.com/JayaniLakshika/paper-cardinalR">github.com/JayaniLakshika/paper-cardinalR</a>. This article is created using <span class="citation" data-cites="yihui2015">(<a href="../refs.html#ref-yihui2015" role="doc-biblioref">Xie 2015</a>)</span> and <span class="citation" data-cites="yihui2018">(<a href="../refs.html#ref-yihui2018" role="doc-biblioref">Xie et al. 2018</a>)</span> in R with the <code>rjtools::rjournal_article</code> template. These <code>R</code> packages were used for this work: <code>cli</code> <span class="citation" data-cites="gabor2025">(<a href="../refs.html#ref-gabor2025" role="doc-biblioref">Csárdi 2025</a>)</span>, <code>tibble</code> <span class="citation" data-cites="kirill2023">(<a href="../refs.html#ref-kirill2023" role="doc-biblioref">Müller and Wickham 2023</a>)</span>, <code>gtools</code> <span class="citation" data-cites="gregory2023">(<a href="../refs.html#ref-gregory2023" role="doc-biblioref">Warnes et al. 2023</a>)</span>, <code>dplyr</code> <span class="citation" data-cites="hadley2023">(<a href="../refs.html#ref-hadley2023" role="doc-biblioref">Wickham 2023</a>)</span>, <code>stats</code> <span class="citation" data-cites="core2025">(<a href="../refs.html#ref-core2025" role="doc-biblioref">R Core Team 2025</a>)</span>, <code>tidyr</code> <span class="citation" data-cites="hadley2024">(<a href="../refs.html#ref-hadley2024" role="doc-biblioref">Wickham et al. 2024</a>)</span>, <code>purrr</code> <span class="citation" data-cites="hadley2025">(<a href="../refs.html#ref-hadley2025" role="doc-biblioref">Wickham and Henry 2025</a>)</span>, <code>mvtnorm</code> <span class="citation" data-cites="alan2009">(<a href="../refs.html#ref-alan2009" role="doc-biblioref">Genz and Bretz 2009</a>)</span>, <code>geozoo</code> <span class="citation" data-cites="barret2016">(<a href="../refs.html#ref-barret2016" role="doc-biblioref">Schloerke 2016</a>)</span>, and <code>MASS</code> <span class="citation" data-cites="venables2002">(<a href="../refs.html#ref-venables2002" role="doc-biblioref">Venables and Ripley 2002</a>)</span>.</p>
+<p>The source material for this paper, including the full datasets and figures, is available at <a href="https://github.com/JayaniLakshika/paper-cardinalR">github.com/JayaniLakshika/paper-cardinalR</a>. This article is created using <code>knitr</code> <span class="citation" data-cites="yihui2015">(<a href="../refs.html#ref-yihui2015" role="doc-biblioref">Xie 2015</a>)</span> and <code>rmarkdown</code> <span class="citation" data-cites="yihui2018">(<a href="../refs.html#ref-yihui2018" role="doc-biblioref">Xie et al. 2018</a>)</span> in R with the <code>rjtools::rjournal_article</code> template. These <code>R</code> packages were used for this work: <code>cli</code> <span class="citation" data-cites="gabor2025">(<a href="../refs.html#ref-gabor2025" role="doc-biblioref">Csárdi 2025</a>)</span>, <code>tibble</code> <span class="citation" data-cites="kirill2023">(<a href="../refs.html#ref-kirill2023" role="doc-biblioref">Müller and Wickham 2023</a>)</span>, <code>gtools</code> <span class="citation" data-cites="gregory2023">(<a href="../refs.html#ref-gregory2023" role="doc-biblioref">Warnes et al. 2023</a>)</span>, <code>dplyr</code> <span class="citation" data-cites="hadley2023">(<a href="../refs.html#ref-hadley2023" role="doc-biblioref">Wickham 2023</a>)</span>, <code>stats</code> <span class="citation" data-cites="core2025">(<a href="../refs.html#ref-core2025" role="doc-biblioref">R Core Team 2025</a>)</span>, <code>tidyr</code> <span class="citation" data-cites="hadley2024">(<a href="../refs.html#ref-hadley2024" role="doc-biblioref">Wickham et al. 2024</a>)</span>, <code>purrr</code> <span class="citation" data-cites="hadley2025">(<a href="../refs.html#ref-hadley2025" role="doc-biblioref">Wickham and Henry 2025</a>)</span>, <code>mvtnorm</code> <span class="citation" data-cites="alan2009">(<a href="../refs.html#ref-alan2009" role="doc-biblioref">Genz and Bretz 2009</a>)</span>, <code>geozoo</code> <span class="citation" data-cites="barret2016">(<a href="../refs.html#ref-barret2016" role="doc-biblioref">Schloerke 2016</a>)</span>, and <code>MASS</code> <span class="citation" data-cites="venables2002">(<a href="../refs.html#ref-venables2002" role="doc-biblioref">Venables and Ripley 2002</a>)</span>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -1435,6 +1375,9 @@ Laurent, S. (2024), <span>“<a href="https://laustep.github.io/stlahblog/posts/
 <div id="ref-friedrich2024" class="csl-entry" role="listitem">
 Leisch, F., and Dimitriadou, E. (2024), <em><a href="https://CRAN.R-project.org/package=mlbench"><span class="nocase">mlbench: Machine Learning Benchmark Problems</span></a></em>.
 </div>
+<div id="ref-van2007" class="csl-entry" role="listitem">
+Maaten, L. van der, Postma, E., and Herik, H. (2007), <span>“<span>Dimensionality Reduction: A Comparative Review</span>,”</span> <em>Journal of Machine Learning Research - JMLR</em>, 10.
+</div>
 <div id="ref-kirkby1983" class="csl-entry" role="listitem">
 Mandelbrot, B. B. (1983), <span>“The fractal geometry of nature,”</span> <em>Earth Surface Processes and Landforms</em>, 8, 406–406. <a href="https://doi.org/10.1002/esp.3290080415">https://doi.org/10.1002/esp.3290080415</a>.
 </div>
@@ -1473,6 +1416,9 @@ Scrucca, Luca., Fraley, Chris., Murphy, T. Brendan., and Raftery, A. E. (2023), 
 </div>
 <div id="ref-leonard2007" class="csl-entry" role="listitem">
 Stefanski, L. A. (2007), <span>“<span>Residual (Sur) Realism</span>,”</span> <em>The American Statistician</em>, [American Statistical Association, Taylor &amp; Francis, Ltd.], 61, 163–177. <a href="https://doi.org/10.1198/000313007X208407">https://doi.org/10.1198/000313007X208407</a>.
+</div>
+<div id="ref-tenenbaum2000" class="csl-entry" role="listitem">
+Tenenbaum, J. B., Silva, V. de, and Langford, J. C. (2000), <span>“A global geometric framework for nonlinear dimensionality reduction,”</span> <em>Science</em>, American Association for the Advancement of Science, 290, 2319–2323. <a href="https://doi.org/10.1126/science.290.5500.2319">https://doi.org/10.1126/science.290.5500.2319</a>.
 </div>
 <div id="ref-tinkham2003" class="csl-entry" role="listitem">
 Tinkham, M. (2003), <em><span class="nocase">Group Theory and Quantum Mechanics</span></em>, Courier Corporation.
