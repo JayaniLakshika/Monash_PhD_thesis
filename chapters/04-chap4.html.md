@@ -36,7 +36,7 @@ The current work implemented in the `cardinalR` R package builds on these approa
 
 The motivation for developing this package originated from our own work in studying nonlinear dimension reduction (NLDR) algorithms. We wanted to conduct a visualization experiment to understand perception and misperception of a variety of NLDR methods. This required simulated datasets with carefully controlled geometric and clustering properties. While some existing packages provided useful starting points, none fully supported the creation of flexible, high-dimensional data with the specific structural variations needed for our experiment. Developing these generators for research purposes underlies `cardinalR`, which is now a general-purpose package that should be useful for research and teaching.
 
-The example data structures are best viewed using a tour [@As85]. These show the data as a sequence of low dimensional projections (typically $2\text{-}D$), providing a good sense of the shape in high dimensions. The interactive tour plots included in this paper are produced using the software `langevitour` [@paul2023].
+The example data structures are best viewed using a tour [@As85]. These show the data as a sequence of low dimensional projections (typically $2\text{-}D$), providing a good sense of the shape in high dimensions. The interactive tour plots included in this paper are produced using the software `langevitour` [@harisson2024].
 
 The next section provides an overview of the usage of the `cardinalR` package, illustrating how its modular components can be combined to generate complex high-dimensional datasets. This is followed by a section describing the implementation of the package, including its design principles and key functions. The Application section then demonstrates how the simulated clustering structures can be used to evaluate and compare dimension reduction and clustering methods. Finally, we give a brief conclusion of the paper and discuss potential opportunities for the use of our data collection.
 
@@ -85,7 +85,7 @@ Here, the shapes have $200$, $300$, and $500$ points respectively (`n`), are pos
 The main function of the package is `gen_multicluster()`, which generates datasets consisting of multiple clusters with user-specified characteristics. 
 To maintain consistency across generators, the function identifies the arguments required by each chosen generator function and supplies only those arguments that are valid for that specific generator. This design enables the combination of cluster types with differing parameter requirements within the same dataset. When clusters are generated with fewer dimensions than others, the function augments the lower-dimensional clusters with additional Gaussian noise variables so that all clusters are represented in the same dimensional space. These noise dimensions are drawn independently from normal distributions $X \sim \mathcal{N}(\mu, \sigma^2)$, where the mean ($\mu$) is set to the average of the cluster coordinates and the standard deviation ($\sigma$) defaults to $0.2$.
 
-An optional argument, `is_bkg`, adds background noise drawn from a multivariate normal distribution centered on the dataset’s overall mean with standard deviations matching the observed spread. Extra arguments (`...`) can be passed to cluster generators, allowing further control over per-cluster characteristics like radius of the sphere. The main arguments of the `gen_multicluster()` function are shown in Table @tbl-main-tb-html.
+An optional argument, `is_bkg`, adds background noise drawn from a multivariate normal distribution centered on the dataset’s overall mean with standard deviations matching the observed spread. Extra arguments (`...`) can be passed to cluster generators, allowing further control over per-cluster characteristics like radius of the sphere. The main arguments of the `gen_multicluster()` function are shown in @tbl-main-tb-html.
 
 
 ::: {.cell}
@@ -123,7 +123,7 @@ Table: The main arguments for `gen_multicluster()`.
 
 ### Shape generators
 
-The shape generators form the foundation of the package, providing functions to create synthetic datasets from simple, well-defined geometric forms such as cones, pyramids, spheres, grids, and branching structures. Each generator includes the parameter `n`, which specifies the number of points to generate. Some functions, such as `gen_unifcube()`, also take the dimension `p`, while others include arguments specific to the geometry (e.g., radius for spheres (`r`), width for bands (`w`)). If higher-dimensional data are required, additional noise dimensions can be appended after data generation using any noise generator function. This flexibility allows users to construct both low- and high-dimensional datasets from the same underlying structures. Table @tbl-shape-tb-html outlines these functions. The main arguments of the functions described in Table @tbl-arg-shape-tb-html.
+The shape generators form the foundation of the package, providing functions to create synthetic datasets from simple, well-defined geometric forms such as cones, pyramids, spheres, grids, and branching structures. Each generator includes the parameter `n`, which specifies the number of points to generate. Some functions, such as `gen_unifcube()`, also take the dimension `p`, while others include arguments specific to the geometry (e.g., radius for spheres (`r`), width for bands (`w`)). If higher-dimensional data are required, additional noise dimensions can be appended after data generation using any noise generator function. This flexibility allows users to construct both low- and high-dimensional datasets from the same underlying structures. @tbl-shape-tb-html outlines these functions. The main arguments of the functions described in @tbl-arg-shape-tb-html.
 
 
 ::: {.cell}
@@ -297,7 +297,7 @@ where $\sigma_i = (-1)^{i+1}$ alternates the sign of the exponent to produce mir
 :::
 
 
-High-dimensional generalizations are provided by `gen_orglinearbranches(n, p, k)` (Figure @fig-branch) and `gen_orgcurvybranches(n, p, k)`. For branch 
+High-dimensional generalizations are provided by `gen_orglinearbranches(n, p, k)` (@fig-branch) and `gen_orgcurvybranches(n, p, k)`. For branch 
 $i$, the active coordinate pair $(i_1, i_2)$ indexes the selected $2\text{-}D$ subspace. When `allow_share = TRUE`, multiple branches may share the same subspace; otherwise, subspaces are sampled without replacement until all possible $\binom{p}{2}$ combinations are exhausted, after which additional branches may repeat subspaces. 
 
 In both cases, branch $i$ is generated according to
@@ -1007,7 +1007,7 @@ Viewing the $4\text{-}D$ `trefoil4d` and $3\text{-}D$ `trefoil3d` data. The `tre
 
 #### Trigonometric
 
-Trigonometric-based structures provide flexible ways to simulate complex curved patterns and spirals that often arise in real-world high-dimensional data, such as in biological trajectories, or physical systems (@fig:triginometric). The main geometry is defined by the first few coordinates: crescents ($p=2$), cylinders, spirals, and helices ($p=4$). These structures are particularly valuable for testing how well dimension reduction and clustering algorithms preserve intricate geometric and topological features [@calladine1997; @gershenfeld2000]. 
+Trigonometric-based structures provide flexible ways to simulate complex curved patterns and spirals that often arise in real-world high-dimensional data, such as in biological trajectories, or physical systems (@fig-triginometric). The main geometry is defined by the first few coordinates: crescents ($p=2$), cylinders, spirals, and helices ($p=4$). These structures are particularly valuable for testing how well dimension reduction and clustering algorithms preserve intricate geometric and topological features [@calladine1997; @gershenfeld2000]. 
 
 First, the `gen_crescent(n, p)` function generates a $p$-dimensional dataset of $n$ observations based on a $2\text{-}D$ crescent-shaped manifold with optional structured high-dimensional noise (@fig:triginometric a). Let $\{\theta_i\}_{i=1}^n$  be a sequence of $n$ evenly spaced angles on the interval $[\pi/6, 2\pi]$, defined as $\theta_i = \frac{\pi}{6} + (i-1)\frac{2\pi - \pi/6}{n-1}, \quad i = 1,\dots,n$. The corresponding $2\text{-}D$ coordinates are defined by: $$X_{i1} = \cos(\theta_i), \quad X_{i2} = \sin(\theta_i).$$
 
@@ -1198,7 +1198,7 @@ Two specialized wrappers illustrate this idea. The function `gen_scurvehole(n, r
 
 ### Generate noise dimensions
 
-High-dimensional data structures often benefit from the addition of auxiliary noise dimensions, which can be used to assess the robustness of dimension reduction and clustering algorithms. The functions in this section provide flexible ways to generate random noise dimensions, ranging from purely random Gaussian variables to more structured, wavy patterns that mimic nonlinear distortions in high-dimensional space. These functions can be applied independently or combined with other geometric structures to create complex simulated datasets. Table @tbl-noise-tb-html details these functions.
+High-dimensional data structures often benefit from the addition of auxiliary noise dimensions, which can be used to assess the robustness of dimension reduction and clustering algorithms. The functions in this section provide flexible ways to generate random noise dimensions, ranging from purely random Gaussian variables to more structured, wavy patterns that mimic nonlinear distortions in high-dimensional space. These functions can be applied independently or combined with other geometric structures to create complex simulated datasets. @tbl-noise-tb-html details these functions.
 
 
 ::: {.cell}
@@ -1269,7 +1269,7 @@ In $p\text{-}D$ space, a rotation is an orthogonal transformation that changes t
 
 ### Multiple cluster examples
 
-By using the shape generators mentioned above, we can create various examples of multiple clusters. The package includes some of these examples, which are described in Table @tbl-odd-shape-tb-html.
+By using the shape generators mentioned above, we can create various examples of multiple clusters. The package includes some of these examples, which are described in @tbl-odd-shape-tb-html.
 
 
 ::: {.cell}
@@ -1313,7 +1313,7 @@ Table: cardinalR multiple clusters generation functions
 
 ### Additional functions
 
-The package includes various supplementary tools in addition to the shape generating functions mentioned earlier. These tools allow users to create background noise, randomize the rows of the data, relocate clusters, generate a vector whose product and sum are approximately equal to a target value, rotate structures, and normalize the data. Table @tbl-add-tb-html details these functions. More detailed explanations are available in [jayanilakshika.github.io/cardinalR/articles/03additionalfun](https://jayanilakshika.github.io/cardinalR/articles/03additionalfun.html).
+The package includes various supplementary tools in addition to the shape generating functions mentioned earlier. These tools allow users to create background noise, randomize the rows of the data, relocate clusters, generate a vector whose product and sum are approximately equal to a target value, rotate structures, and normalize the data. @tbl-add-tb-html details these functions. More detailed explanations are available in [jayanilakshika.github.io/cardinalR/articles/03additionalfun](https://jayanilakshika.github.io/cardinalR/articles/03additionalfun.html).
 
 
 ::: {.cell}
@@ -1352,7 +1352,7 @@ Table: cardinalR additional functions
 
 This section demonstrates how the package can be used to generate complex high-dimensional datasets, evaluate dimension reduction (DR) and clustering methods. The example shows how diverse geometric structures can be simulated and analyzed to assess algorithmic behavior.
 
-To illustrate how high-dimensional clustered data can be generated using `cardinalR`, we generate a dataset with five clusters in $4\text{-}D$, each representing distinct geometric characteristics: a *helical spiral* (elongated and twisted), a *hemisphere* (curved surface), a *uniform cube* (isotropic distribution), a *cone* (density gradient), and a *Gaussian* cluster (compact and spherical) (fig-highd-data). Each cluster has a unique number of points and scaling factor, representing variation in cluster size and spread across the $4\text{-}D$ space.
+To illustrate how high-dimensional clustered data can be generated using `cardinalR`, we generate a dataset with five clusters in $4\text{-}D$, each representing distinct geometric characteristics: a *helical spiral* (elongated and twisted), a *hemisphere* (curved surface), a *uniform cube* (isotropic distribution), a *cone* (density gradient), and a *Gaussian* cluster (compact and spherical) (@fig-highd-data). Each cluster has a unique number of points and scaling factor, representing variation in cluster size and spread across the $4\text{-}D$ space.
 
 
 ::: {.cell}
@@ -1413,7 +1413,7 @@ Viewing five synthetic clusters with distinct geometric structures: a helical sp
 
 ### Evaluating dimension reduction (DR) methods
 
-We applied six popular DR techniques to the generated dataset: Principal Component Analysis (PCA) [@jolliffe2011], tSNE, uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2019], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. 
+We applied six popular DR techniques to the generated dataset: Principal Component Analysis (PCA) [@jolliffe2011], tSNE, uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. 
 
 <!--scripts/five_clusts/02_gen_embeddings.R-->
 
@@ -1439,7 +1439,7 @@ We applied six popular DR techniques to the generated dataset: Principal Compone
 
 To assess their performance, we computed the hexbin error (HBE) between the observed high-dimensional data and the fitted values, defined as the high-dimensional mappings of the bin centroids [@gamage2025c]. A lower HBE indicates that the method better preserves the high-dimensional structure in its low-dimensional embedding.
 
-As shown in Figure @fig-nldr-layouts, tSNE (@fig-nldr-layouts a) achieved the lowest HBE across bin widths (mostly tiny), indicating high preservation of both local and global structures. Its layout displays well-separated clusters with minimal inter-cluster distances, making it the most faithful representation of the underlying data structure. UMAP and PaCMAP (@fig-nldr-layouts b and e) produced moderately accurate embeddings, although the six clusters appear more well-separated, while PHATE (@fig-nldr-layouts c) show nonlinear cluster structures irrespective of the original structure. Also, TriMAP (@fig-nldr-layouts d) has high HBE, and show three clusters with small distances. PCA (@fig-nldr-layouts f) failed to capture the non-linear geometry, leading to the highest HBE.
+As shown in @fig-nldr-layouts, tSNE (@fig-nldr-layouts a) achieved the lowest HBE across bin widths (mostly tiny), indicating high preservation of both local and global structures. Its layout displays well-separated clusters with minimal inter-cluster distances, making it the most faithful representation of the underlying data structure. UMAP and PaCMAP (@fig-nldr-layouts b and e) produced moderately accurate embeddings, although the six clusters appear more well-separated, while PHATE (@fig-nldr-layouts c) show nonlinear cluster structures irrespective of the original structure. Also, TriMAP (@fig-nldr-layouts d) has high HBE, and show three clusters with small distances. PCA (@fig-nldr-layouts f) failed to capture the non-linear geometry, leading to the highest HBE.
 
 ### Benchmarking clustering algorithms
 
