@@ -171,7 +171,15 @@ During my PhD, I contributed to the academic and statistical communities through
 
 ## Workshops
 
-I have been part of delivering and preparing materials for [workshops](https://jayanilakshika.netlify.app/workshops) on *Reproducible Reporting and Research with Quarto* (September 2025) and *Reproducible Reporting, Academic Papers, Presentations, and Theses with Quarto* (July 2025), contributing to hands-on training for researchers on reproducible practices and effective research communication.
+I have been part of delivering and preparing materials for [workshops](https://jayanilakshika.netlify.app/workshops) on *Reproducible Reporting and Research with Quarto* (September 2025) and *Reproducible Reporting, Academic Papers, Presentations, and Theses with Quarto* (July 2025), contributing to hands-on training for researchers on reproducible practices and effective research communication (@fig-workshop).
+
+
+::: {.cell}
+::: {.cell-output-display}
+![Moments from delivering the Reproducible Reporting and Research with Quarto workshop in September 2025, highlighting interactive, hands-on training in reproducible research and academic writing.](../figures/workshop.png){#fig-workshop fig-pos='H' width=30%}
+:::
+:::
+
 
 ## Mentoring
 
