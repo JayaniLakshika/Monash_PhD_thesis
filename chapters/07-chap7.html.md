@@ -177,6 +177,10 @@ In addition to the completed methods and software presented in this thesis, a la
 :::
 
 
+## Software names
+
+Each software name is inspired by an animal. `quollr` is named after the **quoll**, a carnivorous, curious, and endangered marsupial from Australia. `cardinalR` is inspired by the North American **cardinal bird**. `menuraR` comes from Australia’s lyrebirds (**Menura**), famous for their elaborate courtship displays and extraordinary ability to mimic sounds.
+
 ## Presentations
 
 I presented my research work at $12^{th}$-Conference of the Asian Regional Section of the International Association for Statistical Computing (IASC-ARS 2023) (Wollongon, Australia), Australian Statistical Conference (ASC 2023) (Wollongon, Australia), Bioinformatics Seminar 2024, Victorian branch of the Australian and New Zealand Industrial and Applied Mathematics Society (VicANZIAM) 2024 (RMIT university, Melbourne, Australia), Faculty of BusEco Three Minute Thesis (3MT) competition 2024, useR! 2024 (Salzburg, Austria), Graphics Group Presentation 2024 (Nebraska, USA), UNO Data Science Club 2024 (Omaha, USA), Joint Statistical Meetings (JSM) 2025 (Nashville, USA), useR! 2025 (Durham, USA), Biometrics in the Bush Capital (BIBC2025) (Canberra, Australia), and Australian Statistical Conference (ASC 2025) (Perth, Western Australia) (@fig-mem).
