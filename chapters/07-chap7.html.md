@@ -151,17 +151,41 @@ Presentations, package development, and writing are the three primary types of a
 
 ## Planning and design software
 
-In addition to the completed methods and software presented in this thesis, a large amount of exploratory planning and design work went into the development of the R packages `quollr` and `cardinalR`, as well as the Shiny application `menuraR`. This includes personal working sheets, sketches, and early conceptual diagrams that show how initial ideas gradually evolved into the implemented software tools.
+In addition to the completed methods and software presented in this thesis, a large amount of exploratory planning and design work went into the development of the R packages `quollr` (@fig-workquollr) and `cardinalR` (@fig-workcardinalR), as well as the Shiny application `menuraR` (@fig-workmenuraR). This includes personal working sheets, sketches, and early conceptual diagrams that show how initial ideas gradually evolved into the implemented software tools.
+
+
+::: {.cell}
+::: {.cell-output-display}
+![Working sheets used during the planning and development of `quollr`, showing how early ideas evolved into a diagnostic R package.](../figures/quollr.png){#fig-workquollr fig-pos='H' width=80%}
+:::
+:::
+
+
+
+::: {.cell}
+::: {.cell-output-display}
+![Working sheets used during the planning and development of `cardinalR`, documenting the evolution of data generation strategies into software.](../figures/cardinalR.png){#fig-workcardinalR fig-pos='H' width=80%}
+:::
+:::
+
+
+
+::: {.cell}
+::: {.cell-output-display}
+![Working sheets used in the planning and design of `menuraR`, showing how initial concepts were refined into a functional Shiny application.](../figures/menuraR.png){#fig-workmenuraR fig-pos='H' width=80%}
+:::
+:::
+
 
 ## Presentations
 
-I presented my research work at $12^{th}$-Conference of the Asian Regional Section of the International Association for Statistical Computing (IASC-ARS 2023) (Wollongon, Australia), Australian Statistical Conference (ASC 2023) (Wollongon, Australia), Bioinformatics Seminar 2024, Victorian branch of the Australian and New Zealand Industrial and Applied Mathematics Society (VicANZIAM) 2024 (RMIT university, Melbourne, Australia), Faculty of BusEco Three Minute Thesis (3MT) competition 2024, useR! 2024 (Salzburg, Austria), Graphics Group Presentation 2024 (Nebraska, USA), UNO Data Science Club 2024 (Omaha, USA), Joint Statistical Meetings (JSM) 2025 (Nashville, USA), useR! 2025 (Durham, USA), Biometrics in the Bush Capital (BIBC2025) (Canberra, Australia), and Australian Statistical Conference (ASC 2025) (Perth, Western Australia).
+I presented my research work at $12^{th}$-Conference of the Asian Regional Section of the International Association for Statistical Computing (IASC-ARS 2023) (Wollongon, Australia), Australian Statistical Conference (ASC 2023) (Wollongon, Australia), Bioinformatics Seminar 2024, Victorian branch of the Australian and New Zealand Industrial and Applied Mathematics Society (VicANZIAM) 2024 (RMIT university, Melbourne, Australia), Faculty of BusEco Three Minute Thesis (3MT) competition 2024, useR! 2024 (Salzburg, Austria), Graphics Group Presentation 2024 (Nebraska, USA), UNO Data Science Club 2024 (Omaha, USA), Joint Statistical Meetings (JSM) 2025 (Nashville, USA), useR! 2025 (Durham, USA), Biometrics in the Bush Capital (BIBC2025) (Canberra, Australia), and Australian Statistical Conference (ASC 2025) (Perth, Western Australia) (@fig-mem).
 
 ## Visiting
 
-In July $2024$, I had the privilege of visiting A/Prof Ursula Laa at the University of Natural Resources and Life Sciences, Vienna (BOKU University), accompanied by Prof Di Cook, Prof Eun-Kyung Lee, and Dr Natalia da Silva. During this visit, I engaged with academic staff, students, and fellow visitors at BOKU University, gaining valuable insights into their research and receiving constructive feedback on my work and its potential contributions to ongoing projects. <!--I am deeply grateful to my main supervisor, Prof. Di Cook, for organizing this visit, and to A/Prof. Ursula Laa for graciously hosting me.-->
+In July $2024$, I had the privilege of visiting A/Prof Ursula Laa at the University of Natural Resources and Life Sciences, Vienna (BOKU University), accompanied by Prof Di Cook, Prof Eun-Kyung Lee, and Dr Natalia da Silva. During this visit, I engaged with academic staff, students, and fellow visitors at BOKU University, gaining valuable insights into their research and receiving constructive feedback on my work and its potential contributions to ongoing projects (@fig-mem Vienna). <!--I am deeply grateful to my main supervisor, Prof. Di Cook, for organizing this visit, and to A/Prof. Ursula Laa for graciously hosting me.-->
 
-From late October to late December $2024$, I visited Prof Heike Hofmann, A/Prof Susan VanderPlas, and Dr Michelle Graham at the University of Nebraska, Lincoln, USA (UNL). During this time, I presented my research on high-dimensional data visualization and dimension reduction techniques, participated in the Nebraska R User Group meetings, and joined discussions with the Graphics Group, which provided rich opportunities for collaboration and learning. <!--I am grateful to Prof. Di Cook for organizing this visit, to Prof. Heike Hofmann and A/Prof. Susan VanderPlas for inviting me, and to Dr. Michelle Graham for taking the time to meet during my stay.-->
+From late October to late December $2024$, I visited Prof Heike Hofmann, A/Prof Susan VanderPlas, and Dr Michelle Graham at the University of Nebraska, Lincoln, USA (UNL) (@fig-mem Nebraska). During this time, I presented my research on high-dimensional data visualization and dimension reduction techniques, participated in the Nebraska R User Group meetings, and joined discussions with the Graphics Group, which provided rich opportunities for collaboration and learning. <!--I am grateful to Prof. Di Cook for organizing this visit, to Prof. Heike Hofmann and A/Prof. Susan VanderPlas for inviting me, and to Dr. Michelle Graham for taking the time to meet during my stay.-->
 
 These visits were invaluable for broadening my perspective, fostering meaningful exchanges with experts, and deepening my understanding of dynamic visualization and multivariate data analysis. I also explored several resources that informed my work, including research on dynamic tours for high-dimensional data, parallel coordinate plots, perceptual accuracy in visualizations, and interactive visualization tools such as *langevitour* and *tourr*.
 
