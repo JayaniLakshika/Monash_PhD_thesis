@@ -1074,7 +1074,7 @@ The package provides functionality for generating datasets with spherical hole (
 
 The core function `gen_hole(df, anchor, r)` removes points from a dataset that fall within a user-specified hypersphere. Formally, given data points ($x \in \mathbb{R}^p$), a center ($a \in \mathbb{R}^p$), and radius ($r > 0$), only points satisfying $\sqrt{\sum_{i=1}^n(x_i-a_i)^2} > r$ are retained. The anchor point ($a$) can either be user-specified or default to the dataset mean, and radius ($r$) is controlled by the user, with safeguards to avoid trivial or degenerate cases. Because it operates generically on any dataset, spherical or hyperspherical holes can be embedded in a wide range of geometric structures.
 
-Two specialized wrappers illustrate this idea. The function `gen_scurvehole(n, r_hole)` generates an S-curve with a spherical hole by applying `gen_hole()` to the output of `gen_scurve()`. This structure has been used in prior diagnostic studies of NLDR methods [@tenenbaum2000, @van2007], since it tests the ability of algorithms to capture non-linear manifolds that are not simply connected. The second wrapper, `gen_unifcubehole(n, p, r_hole)`, generates uniformly sampled cube data with a hyperspherical hole. By embedding a hyperspherical void inside a convex high-dimensional structure, this creates non-convex regions that challenge algorithms in terms of separability and neighborhood preservation.
+Two specialized wrappers illustrate this idea. The function `gen_scurvehole(n, r_hole)` generates an S-curve with a spherical hole by applying `gen_hole()` to the output of `gen_scurve()`. This structure has been used in prior diagnostic studies of NLDR methods [@tenenbaum2000; @van2007], since it tests the ability of algorithms to capture non-linear manifolds that are not simply connected. The second wrapper, `gen_unifcubehole(n, p, r_hole)`, generates uniformly sampled cube data with a hyperspherical hole. By embedding a hyperspherical void inside a convex high-dimensional structure, this creates non-convex regions that challenge algorithms in terms of separability and neighborhood preservation.
 
 ### Generate noise dimensions
 
@@ -1087,7 +1087,7 @@ High-dimensional data structures often benefit from the addition of auxiliary no
 
 
 
-::: {#tbl-noise-tb .cell tbl-cap='cardinalR noise dimensions generation functions.'}
+::: {#tbl-noise-tb .cell tbl-cap='`cardinalR` noise dimensions generation functions.'}
 ::: {.cell-output-display}
 
 \begin{tabular}{>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{10.5cm}}
@@ -1153,7 +1153,7 @@ By using the shape generators mentioned above, we can create various examples of
 
 
 
-::: {#tbl-odd-shape-tb .cell tbl-cap='cardinalR multiple clusters generation functions.'}
+::: {#tbl-odd-shape-tb .cell tbl-cap='`cardinalR` multiple clusters generation functions.'}
 ::: {.cell-output-display}
 
 \begin{tabular}{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{8.5cm}}
@@ -1192,7 +1192,7 @@ The package includes various supplementary tools in addition to the shape genera
 
 
 
-::: {#tbl-add-tb .cell tbl-cap='cardinalR additional functions.'}
+::: {#tbl-add-tb .cell tbl-cap='`cardinalR` additional functions.'}
 ::: {.cell-output-display}
 
 \begin{tabular}{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{8cm}}
