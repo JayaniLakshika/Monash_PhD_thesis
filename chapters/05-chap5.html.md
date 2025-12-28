@@ -347,6 +347,33 @@ The participant-level distribution of correct identification proportions (@fig-v
 :::
 
 
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![](05-chap5_files/figure-html/unnamed-chunk-9-1.png){fig-align='center' width=100%}
+:::
+:::
+
+
 ## Limitations {#sec-limitations}
 
 One of the main drawbacks of visual experiments is their reliance on human judgments. In this context, the effectiveness of identifying the $2\text{-}D$ NLDR plot and the tour from the same data can be dependent on the perceptual ability and visual skills of the individual. However, when the results from multiple individuals are combined, the overall quality and robustness of the outcome is considerably high.

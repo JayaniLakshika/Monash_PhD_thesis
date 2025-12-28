@@ -142,7 +142,7 @@ projected_df <- get_projection(projection = prj1,
 
 three_clust08_proj1 <- plot_proj(
   proj_obj = projected_df, 
-  point_param = c(1.5, 0.2, "#000000"), # size, alpha, color
+  point_param = c(1, 0.05, "#000000"), # size, alpha, color
   plot_limits = c(-0.5, 0.5), 
   title = "a1", 
   cex = 2, 
@@ -192,7 +192,7 @@ projected_df <- get_projection(projection = prj3,
 
 three_clust08_proj3 <- plot_proj(
   proj_obj = projected_df, 
-  point_param = c(1.5, 0.2, "#000000"), # size, alpha, color
+  point_param = c(1, 0.05, "#000000"), # size, alpha, color
   plot_limits = c(-0.5, 0.5), 
   title = "a3", 
   cex = 2, 
@@ -218,7 +218,7 @@ projected_df <- get_projection(projection = prj4,
 
 three_clust08_proj4 <- plot_proj(
   proj_obj = projected_df, 
-  point_param = c(1.5, 0.2, "#000000"), # size, alpha, color
+  point_param = c(1, 0.05, "#000000"), # size, alpha, color
   plot_limits = c(-0.55, 0.55), 
   title = "a4", 
   cex = 2, 
@@ -414,7 +414,7 @@ bw_ratio_quasi <- ggplot(data = results_df_method_ds,
          x = distance_factor,
          y = bw_ratio
        )) +
-  geom_quasirandom() +
+  geom_quasirandom(alpha = 0.5) +
   interior_annotation("a", position = c(0.05, 0.92), cex = 2) +
   ylab("BW ratio") +
   xlab("distance scale factor") +
@@ -426,7 +426,7 @@ min_dist_quasi <- ggplot(data = results_df_method_ds,
          x = distance_factor,
          y = min_dist
        )) +
-  geom_quasirandom() +
+  geom_quasirandom(alpha = 0.5) +
   interior_annotation("b", position = c(0.05, 0.92), cex = 2) +
   ylab("minimum distance") +
   xlab("distance scale factor") +
@@ -857,6 +857,158 @@ subj_acc_plt <- ggplot(subj_ci,
 
 dt_acc_plt + subj_acc_plt +
   plot_layout(ncol = 2)
+```
+
+```{r}
+
+nldr1_three_clust_07 <- get_embeddings(dt_structutre = "three_clust_07") |>
+    filter(scale_factor == c(0.1, 1.1)) |>
+    filter(method %in% c("tsne", "umap"))
+
+nld_plt1_three_clust_07 <- ggplot(
+    data = nldr1_three_clust_07,
+    aes(
+        x = emb1,
+        y = emb2
+    )
+  ) +
+    geom_point(alpha=0.05, size=1, colour = "black") +
+    facet_grid(scale_factor~method, scales = "free") +
+    theme(aspect.ratio = 1,
+          strip.text = element_text(size = 10))
+
+```
+
+```{r}
+
+three_clust_07_data <- high_d_data |> 
+    filter(dataset == "three_clust_07") |> 
+    filter(scale_factor == 0.1) |> 
+    filter(sample_size == 7500) |>
+    pull(high_d_data)
+
+three_clust_07_data <- three_clust_07_data[[1]] |> 
+    select(-cluster)
+
+# Apply the scaling
+
+centered_three_clust_07_data <- center_data(three_clust_07_data) |>
+    as_tibble()
+
+## First projection
+prj1 <- cbind(
+  c(0.13547,-0.08077,-0.14494,-0.06269),
+  c(-0.02681,-0.20528,0.06918,0.04658))
+
+
+projected_df <- get_projection(projection = prj1, 
+                               centered_data = centered_three_clust_07_data, 
+                               axis_param = list(limits = 0.5,
+                                                 axis_scaled = 3, 
+                                                 axis_pos_x = -1.4, 
+                                                 axis_pos_y = -1.4, 
+                                                 threshold = 0.03))
+
+three_clust07_proj1 <- plot_proj(
+  proj_obj = projected_df, 
+  point_param = c(1, 0.05, "#000000"), # size, alpha, color
+  plot_limits = c(-1.5, 0.7), 
+  title = "a1", 
+  cex = 1, 
+  axis_text_size = 2,
+  is_color = FALSE)
+
+## Second projection
+prj2 <- cbind(
+  c(-0.13993,0.00179,-0.15287,-0.08282),
+  c(0.01124,0.16552,-0.07749,0.12761))
+
+projected_df <- get_projection(projection = prj2, 
+                               centered_data = centered_three_clust_07_data, 
+                               axis_param = list(limits = 0.5,
+                                                 axis_scaled = 4, 
+                                                 axis_pos_x = -0.9, 
+                                                 axis_pos_y = -0.9, 
+                                                 threshold = 0.055))
+
+three_clust07_proj2 <- plot_proj(
+  proj_obj = projected_df, 
+  point_param = c(1, 0.05, "#000000"), # size, alpha, color
+  plot_limits = c(-1, 1.5), 
+  title = "a2", 
+  cex = 1, 
+  axis_text_size = 2,
+  is_color = FALSE)
+```
+
+
+```{r}
+
+three_clust_07_data <- high_d_data |> 
+    filter(dataset == "three_clust_07") |> 
+    filter(scale_factor == 1.1) |> 
+    filter(sample_size == 7500) |>
+    pull(high_d_data)
+
+three_clust_07_data <- three_clust_07_data[[1]] |> 
+    select(-cluster)
+
+# Apply the scaling
+
+centered_three_clust_07_data <- center_data(three_clust_07_data) |>
+    as_tibble()
+
+## First projection
+prj1 <- cbind(
+  c(0.13547,-0.08077,-0.14494,-0.06269),
+  c(-0.02681,-0.20528,0.06918,0.04658))
+
+
+projected_df <- get_projection(projection = prj1, 
+                               centered_data = centered_three_clust_07_data, 
+                               axis_param = list(limits = 0.5,
+                                                 axis_scaled = 3, 
+                                                 axis_pos_x = -0.4, 
+                                                 axis_pos_y = -0.4, 
+                                                 threshold = 0.03))
+
+three_clust07_proj1_1 <- plot_proj(
+  proj_obj = projected_df, 
+  point_param = c(1, 0.05, "#000000"), # size, alpha, color
+  plot_limits = c(-0.5, 0.5), 
+  title = "b1", 
+  cex = 1, 
+  axis_text_size = 2,
+  is_color = FALSE)
+
+## Second projection
+prj2 <- cbind(
+  c(-0.13993,0.00179,-0.15287,-0.08282),
+  c(0.01124,0.16552,-0.07749,0.12761))
+
+projected_df <- get_projection(projection = prj2, 
+                               centered_data = centered_three_clust_07_data, 
+                               axis_param = list(limits = 0.5,
+                                                 axis_scaled = 4, 
+                                                 axis_pos_x = -0.45, 
+                                                 axis_pos_y = -0.45, 
+                                                 threshold = 0.055))
+
+three_clust07_proj2_1 <- plot_proj(
+  proj_obj = projected_df, 
+  point_param = c(1, 0.05, "#000000"), # size, alpha, color
+  plot_limits = c(-0.55, 0.55), 
+  title = "b2", 
+  cex = 1, 
+  axis_text_size = 2,
+  is_color = FALSE)
+```
+
+```{r}
+#| fig-height: 3.5
+#| fig-width: 6.7
+
+(three_clust07_proj1 + three_clust07_proj2) / (three_clust07_proj1_1 + three_clust07_proj2_1) | nld_plt1_three_clust_07
 ```
 
 ## Limitations {#sec-limitations}
