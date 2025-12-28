@@ -41,7 +41,7 @@ scale_data_manual <- function(data) {
 
 get_embeddings <- function(dt_structutre){
 
-  embedding_data <- read_rds(here::here("data/embedding_data_three_clust_all.rds"))
+  embedding_data <- read_rds(here::here("data/vis-exp/embedding_data_three_clust_all.rds"))
 
   embedding_data_selected <- embedding_data |>
     filter(dataset == dt_structutre) |>

@@ -78,13 +78,295 @@ theme_set(theme_linedraw() +
 )
 ```
 
+## Introduction
+
+Nonlinear dimension reduction (NLDR) is popular for making a suitable $2\text{-}D$ representation of high-dimensional ($p\text{-}D$) data by applying nonlinear transformations. Recently developed methods include t-distributed stochastic neighbor embedding (tSNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. However, in different data structures, the $2\text{-}D$ representation generated can vary dramatically from what is observed in $p\text{-}D$ (@fig-nldr-layouts). 
+
+```{r}
+#| label: nldr-layouts
+
+clr_choice <- "#000000"
+
+nldr1 <- get_embeddings(dt_structutre = "three_clust_08") |>
+    filter(scale_factor == 1) |>
+    filter(method == "tsne")
+
+nld_plt1 <- ggplot(
+  data = nldr1,
+  aes(
+    x = emb1,
+    y = emb2
+  )
+) +
+  geom_point(alpha=0.2, size=1, colour = clr_choice) +
+  theme(aspect.ratio = 1) 
+
+```
+
+```{r}
+#| label: high-d-data
+
+high_d_data <- read_rds(here::here("data/vis-exp/high_d_data_three_close_clust_all.rds"))
+
+three_clust_08_data <- high_d_data |> 
+    filter(dataset == "three_clust_08") |> 
+    filter(scale_factor == 1) |> 
+    filter(sample_size == 7500) |>
+    pull(high_d_data)
+
+three_clust_08_data <- three_clust_08_data[[1]] |> 
+  select(-cluster)
+
+# Apply the scaling
+
+scaled_three_clust_08_data <- scale_data_manual(three_clust_08_data) |>
+  as_tibble()
+```
+
+```{r}
+#| label: high-d-proj1
+
+## First projection
+projection <- cbind(
+  c(0.13547,-0.08077,-0.14494,-0.06269),
+  c(-0.02681,-0.20528,0.06918,0.04658))
+
+projection_scaled <- projection * 3
+
+projected <- as.matrix(scaled_three_clust_08_data) %*% projection_scaled
+
+projected_df <- projected |>
+  tibble::as_tibble(.name_repair = "unique") |>
+  dplyr::rename(c("proj1" = "...1",
+                  "proj2" = "...2")) |>
+  #dplyr::mutate(type = df_exe$type) |>
+  dplyr::mutate(ID = dplyr::row_number())
+
+axes_obj <- gen_axes(
+  proj = projection * 3,
+  limits = 1.3,
+  axis_pos_x = -0.7,
+  axis_pos_y = -0.7,
+  axis_labels = names(scaled_three_clust_08_data),
+  threshold = 0.08)
+
+axes1 <- axes_obj$axes
+circle1 <- axes_obj$circle
+
+three_clust08_proj1 <- projected_df |>
+  ggplot(
+    aes(
+      x = proj1,
+      y = proj2)) +
+  geom_point(alpha=0.1, 
+             size=0.2, 
+             colour = clr_choice) +
+  geom_segment(
+    data=axes1,
+    aes(x=x1, y=y1, xend=x2, yend=y2),
+    colour="grey70") +
+  geom_text(
+    data=axes1,
+    aes(x=x2, y=y2, label=rownames(axes1)),
+    colour="grey50",
+    size = 4) +
+  geom_path(
+    data=circle1,
+    aes(x=c1, y=c2), colour="grey70") +
+  coord_fixed() +
+  xlim(c(-1, 1)) +
+  ylim(c(-1, 1)) +
+  interior_annotation("a1", c(0.08, 0.94), 2)
+```
+
+```{r}
+#| label: high-d-proj2
+## Second projection
+projection <- cbind(
+  c(-0.13993,0.00179,-0.15287,-0.08282),
+  c(0.01124,0.16552,-0.07749,0.12761))
+
+projection_scaled <- projection * 3
+
+projected <- as.matrix(scaled_three_clust_08_data) %*% projection_scaled
+
+projected_df <- projected |>
+  tibble::as_tibble(.name_repair = "unique") |>
+  dplyr::rename(c("proj1" = "...1",
+                  "proj2" = "...2")) |>
+  #dplyr::mutate(type = df_exe$type) |>
+  dplyr::mutate(ID = dplyr::row_number())
+
+axes_obj <- gen_axes(
+  proj = projection * 3,
+  limits = 1.3,
+  axis_pos_x = -0.7,
+  axis_pos_y = -0.7,
+  axis_labels = names(scaled_three_clust_08_data),
+  threshold = 0.1)
+
+axes2 <- axes_obj$axes
+circle2 <- axes_obj$circle
+
+three_clust08_proj2 <- projected_df |>
+  ggplot(
+    aes(
+      x = proj1,
+      y = proj2)) +
+  geom_point(alpha=0.1, 
+             size=0.2, 
+             colour = clr_choice) +
+  geom_segment(
+    data=axes2,
+    aes(x=x1, y=y1, xend=x2, yend=y2),
+    colour="grey70") +
+  geom_text(
+    data=axes2,
+    aes(x=x2, y=y2, label=rownames(axes2)),
+    colour="grey50",
+    size = 4) +
+  geom_path(
+    data=circle2,
+    aes(x=c1, y=c2), colour="grey70") +
+  coord_fixed() +
+  xlim(c(-1, 1)) +
+  ylim(c(-1, 1)) +
+  interior_annotation("a2", c(0.08, 0.94), 2)
+```
+
+```{r}
+#| label: high-d-proj3
+## Third projection
+projection <- cbind(
+  c(-0.09101,0.05539,0.18359,0.06896),
+  c(-0.13489,0.06141,-0.12634,0.10901))
+
+projection_scaled <- projection * 3
+
+projected <- as.matrix(scaled_three_clust_08_data) %*% projection_scaled
+
+projected_df <- projected |>
+  tibble::as_tibble(.name_repair = "unique") |>
+  dplyr::rename(c("proj1" = "...1",
+                  "proj2" = "...2")) |>
+  #dplyr::mutate(type = df_exe$type) |>
+  dplyr::mutate(ID = dplyr::row_number())
+
+axes_obj <- gen_axes(
+  proj = projection * 3,
+  limits = 1.3,
+  axis_pos_x = -0.7,
+  axis_pos_y = -0.7,
+  axis_labels = names(scaled_three_clust_08_data),
+  threshold = 0.08)
+
+axes3 <- axes_obj$axes
+circle3 <- axes_obj$circle
+
+three_clust08_proj3 <- projected_df |>
+  ggplot(
+    aes(
+      x = proj1,
+      y = proj2)) +
+  geom_point(alpha=0.1, 
+             size=0.2, 
+             colour = clr_choice) +
+  geom_segment(
+    data=axes3,
+    aes(x=x1, y=y1, xend=x2, yend=y2),
+    colour="grey70") +
+  geom_text(
+    data=axes3,
+    aes(x=x2, y=y2, label=rownames(axes3)),
+    colour="grey50",
+    size = 4) +
+  geom_path(
+    data=circle3,
+    aes(x=c1, y=c2), colour="grey70") +
+  coord_fixed() +
+  xlim(c(-1, 1)) +
+  ylim(c(-1, 1)) +
+  interior_annotation("a3", c(0.08, 0.94), 2)
+```
+
+```{r}
+#| label: high-d-proj4
+## Fourth projection
+projection <- cbind(
+  c(-0.11690,-0.04468,-0.02008,-0.18371),
+  c(-0.15317,0.11424,-0.08414,0.07888))
+
+projection_scaled <- projection * 3
+
+projected <- as.matrix(scaled_three_clust_08_data) %*% projection_scaled
+
+projected_df <- projected |>
+  tibble::as_tibble(.name_repair = "unique") |>
+  dplyr::rename(c("proj1" = "...1",
+                  "proj2" = "...2")) |>
+  #dplyr::mutate(type = df_exe$type) |>
+  dplyr::mutate(ID = dplyr::row_number())
+
+axes_obj <- gen_axes(
+  proj = projection * 3,
+  limits = 1.3,
+  axis_pos_x = -0.7,
+  axis_pos_y = -0.7,
+  axis_labels = names(scaled_three_clust_08_data),
+  threshold = 0.08)
+
+axes4 <- axes_obj$axes
+circle4 <- axes_obj$circle
+
+three_clust08_proj4 <- projected_df |>
+  ggplot(
+    aes(
+      x = proj1,
+      y = proj2)) +
+  geom_point(alpha=0.1, 
+             size=0.2, 
+             colour = clr_choice) +
+  geom_segment(
+    data=axes4,
+    aes(x=x1, y=y1, xend=x2, yend=y2),
+    colour="grey70") +
+  geom_text(
+    data=axes4,
+    aes(x=x2, y=y2, label=rownames(axes4)),
+    colour="grey50",
+    size = 4) +
+  geom_path(
+    data=circle4,
+    aes(x=c1, y=c2), colour="grey70") +
+  coord_fixed() +
+  xlim(c(-1, 1)) +
+  ylim(c(-1, 1)) +
+  interior_annotation("a4", c(0.08, 0.94), 2)
+```
+
+```{r}
+#| label: fig-nldr-layouts
+#| fig-pos: "!ht"
+#| fig-width: 15
+#| fig-height: 8
+#| fig-cap: "A $2\\text{-}D$ tSNE layout (left) and four $2\\text{-}D$ projections (a1–a4) of the same $4\\text{-}D$ data. The data consist of three main structures: a star-shaped, a curvilinear, and a Gaussian-shaped clusters. While the tour consistently show the star-shaped cluster as a single coherent group, the $2\\text{-}D$ tSNE layout fragments this structure into several smaller clusters. This illustrates how NLDR may distort global structure, making the same $4\\text{-}D$ cluster appear as multiple clusters in the $2\\text{-}D$ layout."
+
+nld_plt1 | (three_clust08_proj1 | three_clust08_proj2) / 
+  (three_clust08_proj3 | three_clust08_proj4) + 
+  plot_layout(widths = c(1, 2))
+```
+
+The dilemma for the analyst is then understanding **why viewers misidentify the data displayed in the $2\text{-}D$ NLDR layout and high-dimensional view when the inter-cluster distance vary**. The research described here provides evidence through a cognitive perception experiment.
+
+The paper is organized as follows. @sec-background provides a summary of the literature on NLDR, high-dimensional data, and visualization methods. @sec-experiment describes the experiment designed to examine people's perception to assess how viewers recognize structure differently from a $2\text{-}D$ NLDR layout and the tour view. @sec-results discusses the collected data, results, and reasons for misperception. Limitations are provided in @sec-limitations. A discussion of the presented work, and ideas for future directions are described in @sec-conclusion.
+
 ## Background {#sec-background}
 
 Historically, $2\text{-}D$ representations of $p\text{-}D$ data have been obtained through techniques based on multidimensional scaling (MDS) [@kruskal1964], including principal component analysis (PCA) (for an overview see @jolliffe2011). These methods aim to construct a $2\text{-}D$ layout that preserves pairwise distances between observations in the original space by minimizing a stress function. Variants such as non-metric scaling [@saeed2018] and isomap [@silva2002] extend this approach to capture nonlinear relationships. Challenges inherent to high-dimensional data visualization such as distance concentration and interpretability are well recognized [@johnstone2009].
 
 Several NLDR methods have since become popular for generating $2\text{-}D$ representations that aim to preserve either local or global structures of $p\text{-}D$ data. Examples include tSNE, UMAP, PHATE, TriMAP, and PaCMAP. Each method uses different underlying principles. For example, tSNE and PHATE emphasize local relationships, while TriMAP and PaCMAP are designed to better capture global structure. As a result, these methods can produce very different $2\text{-}D$ layouts of the same data, potentially leading to misinterpretation of structures such as cluster separation.
 
-An alternative to NLDR for visualizing $p\text{-}D$ data is to use linear projections. PCA is the classical approach, producing new variables as linear combinations of the original dimensions. While PCA provides a single static projection that maximizes variance, tours introduced by @As85 extend this idea by generating smooth sequences of linear projections, effectively creating a movie of the data viewed from multiple directions. Tours can reveal structure that may be hidden in any single projection by continuously changing the viewing angle through high-dimensional space. Many tour algorithms have since been developed and are implemented in the R package `tourr` [@wickham2011], with interactive variants available in `langevitour` [@harisson2024] and `detourr` [@hart2022]. Tours are valuable because they preserve the true linear geometry of the data unlike NLDR methods, they do not warp distances or angles. This makes them faithful but sometimes visually cluttered representations: global structure can obscure local detail, and the phenomenon of piling [@laa2022]—where high-dimensional points project toward the center—can make clusters harder to distinguish.
+An alternative to NLDR for visualizing $p\text{-}D$ data is to use linear projections. PCA is the classical approach, producing new variables as linear combinations of the original dimensions. While PCA provides a single static projection that maximizes variance, tours introduced by @As85 extend this idea by generating smooth sequences of linear projections, effectively creating a movie of the data viewed from multiple directions. Tours can reveal structure that may be hidden in any single projection by continuously changing the viewing angle through high-dimensional space. Many tour algorithms have since been developed and are implemented in the R package `tourr` [@wickham2011], with interactive variants available in `langevitour` [@harisson2024] and `detourr` [@hart2022]. Tours are valuable because they preserve the true linear geometry of the data unlike NLDR methods, they do not warp distances or angles. This makes them faithful but sometimes visually cluttered representations: global structure can obscure local detail, and the phenomenon of piling [@laa2022], where high-dimensional points project toward the center, can make clusters harder to distinguish.
 
 To assess how well NLDR methods preserve structures such as cluster separation, it is important to quantify inter-cluster distances. A variety of distance-based metrics have been proposed in the clustering and visualization literature [@tadeusz1974; @peter1987; @david1979], including minimum, maximum, and average distances between clusters, centroid distances, and ratios that combine between- and within-cluster variation. In this study, we focus on two distance measures: the between-to-within (BW) ratio, which captures global separability, and the minimum distance between clusters, which reflects the closest approach of any two clusters. Together, these provide interpretable summaries of both overall and local cluster separation while accounting for within-cluster variability.
 
