@@ -245,6 +245,7 @@ window.Quarto = {
   <ul class="collapse">
 <li><a href="#sec-experiment" id="toc-sec-experiment" class="nav-link active" data-scroll-target="#sec-experiment"><span class="header-section-number">5.1</span> Method</a></li>
   <li><a href="#sec-results" id="toc-sec-results" class="nav-link" data-scroll-target="#sec-results"><span class="header-section-number">5.2</span> Results</a></li>
+  <li><a href="#sec-limitations" id="toc-sec-limitations" class="nav-link" data-scroll-target="#sec-limitations"><span class="header-section-number">5.3</span> Limitations</a></li>
   </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/chapters/05-chap5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -287,7 +288,7 @@ window.Quarto = {
 <p>The visual layout of the experiment for one participant is shown in <a href="#fig-exp-design" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>. Each participant completed <span class="math inline">20</span> trials: <span class="math inline">15</span> SAME trials, in which the same data structure was shown in both the NLDR plot and the tour; <span class="math inline">4</span> DIFFERENT trials, showing DIFFERENT data structures; and one attention check trial that could be either SAME or DIFFERENT. For the SAME, five NLDR methods (<em>tSNE, UMAP, PHATE, PaCMAP, and TriMAP</em>) were each paired with three of five distance scale factors (<em>small, small-medium, medium, medium-large, and large</em>), giving <span class="math inline">15</span> balanced combinations. In the DIFFERENT, four NLDR methods were randomly selected, with the remaining method assigned to the attention check trial. All DIFFERENT and attention check trials used a distance scale factor of <em>medium-large</em>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-exp-design" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-exp-design" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-exp-design-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../figures/vis-exp/exp_design.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%" data-fig-pos="!ht">
 </div>
@@ -427,7 +428,7 @@ Table&nbsp;5.1: Estimated trends of correct identification probability with resp
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-glmm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-glmm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-glmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-chap5_files/figure-html/fig-glmm-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
@@ -525,7 +526,7 @@ Table&nbsp;5.2: Estimated trends of correct identification probability with resp
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-glmm-min" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-glmm-min" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-glmm-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-chap5_files/figure-html/fig-glmm-min-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
@@ -536,9 +537,16 @@ Figure&nbsp;5.4: Estimated probability of correct identification as a function o
 </div>
 </div>
 <p>Taken together, these results demonstrate that the impact of cluster separability on correct identification is robust to the choice of distance measure but varies substantially across NLDR methods. Methods such as UMAP benefit from increased separation, whereas tSNE and PHATE appear sensitive to over-separation, potentially leading to distortions in the low-dimensional representation. TriMAP, by contrast, shows little sensitivity to changes in separation, suggesting robustness across a wide range of cluster configurations.</p>
+</section><section id="patterns-for-misidentification" class="level3"><h3 class="anchored" data-anchor-id="patterns-for-misidentification">Patterns for misidentification</h3>
+</section></section><section id="sec-limitations" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="sec-limitations">
+<span class="header-section-number">5.3</span> Limitations</h2>
+<p>One of the main drawbacks of visual experiments is their reliance on human judgments. In this context, the effectiveness of identifying the <span class="math inline">2\text{-}D</span> NLDR plot and the tour from the same data can be dependent on the perceptual ability and visual skills of the individual. However, when the results from multiple individuals are combined, the overall quality and robustness of the outcome is considerably high.</p>
+<p>It is important to remove HTML widget elements such as controls, interactivity, and <span class="math inline">2\text{-}D</span> plot elements such as axis labels and text that might introduce bias. We recommend using a crowd-sourcing service like Prolific <span class="citation" data-cites="palan2018">(<a href="../refs.html#ref-palan2018" role="doc-biblioref"><strong>palan2018?</strong></a>)</span> to access high-quality data, as it is a time- and cost-effective way.</p>
+<p>In this study, we used a specific data structure consisting of three distinct clusters, each with unique shapes. Two of the clusters are in close proximity to one another, while the third cluster is located farther away. Each cluster varies in the number of points it contains. We selected this data structure because it is simple.</p>
+<p>To keep the experiment fair and consistent across trials, we approximately fixed the distance between the clusters in each data structure. We also used five distance scale factors to gradually change how far apart the clusters were. While this controlled setup makes it easier to interpret the results, it does limit how well the findings apply to more complex data structures with uneven or irregular cluster arrangements.</p>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
