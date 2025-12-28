@@ -259,6 +259,13 @@ Taken together, these results demonstrate that the impact of cluster separabilit
 
 ### Patterns for misidentification
 
+To better understand why misidentification occurs, we examine patterns of correct identification across different high-dimensional data structures and across subjects. Rather than viewing errors as random noise, this analysis highlights how the geometry of the data and the behavior of the dimension reduction methods together lead to systematic confusion between structures.
+
+@fig-var-sum shows correct identification proportions summarized by high-dimensional data structure (@fig-var-sum a) and by participant (@fig-var-sum b). There is clear variability at both levels. Across data structures, the proportion of correct identification ranges from about $0.31$ to approximately $0.70$, indicating large differences in how easily different geometric configurations can be recognized from their NLDR representations. Some structures are identified reliably, while others remain difficult even when cluster separation increases. This suggests that misidentification is largely driven by the underlying geometry of the data and by how well those features are represented in $2\text{-}D$ layouts.
+
+The participant-level distribution of correct identification proportions (@fig-var-sum b) shows clear variability in performance, with most participants achieving moderate accuracy rather than clustering at chance or near-perfect levels. This pattern suggests that misidentification is not driven by a small number of poorly performing individuals, but reflects broader differences in how participants interpret and identify structure from the $2\text{-}D$ NLDR layouts and the corresponding tour views generated from the same $p\text{-}D$ data.
+
+
 <!-- #### Summary -->
 <!-- data structure wise analysis-->
 
@@ -271,7 +278,7 @@ Taken together, these results demonstrate that the impact of cluster separabilit
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![](05-chap5_files/figure-html/unnamed-chunk-6-1.png){fig-align='center' width=100%}
+![Correct identification proportions by (a) data structure and (b) participant. The plot a shows aggregated proportions with $95\%$ Wilson binomial confidence intervals, illustrating differences in identification difficulty across three-cluster structures. The plot b displays participant-level proportions and highlight between-subject variability.](05-chap5_files/figure-html/fig-var-sum-1.png){#fig-var-sum fig-align='center' width=100%}
 :::
 :::
 

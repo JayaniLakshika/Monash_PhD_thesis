@@ -288,7 +288,7 @@ window.Quarto = {
 <p>The visual layout of the experiment for one participant is shown in <a href="#fig-exp-design" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>. Each participant completed <span class="math inline">20</span> trials: <span class="math inline">15</span> SAME trials, in which the same data structure was shown in both the NLDR plot and the tour; <span class="math inline">4</span> DIFFERENT trials, showing DIFFERENT data structures; and one attention check trial that could be either SAME or DIFFERENT. For the SAME, five NLDR methods (<em>tSNE, UMAP, PHATE, PaCMAP, and TriMAP</em>) were each paired with three of five distance scale factors (<em>small, small-medium, medium, medium-large, and large</em>), giving <span class="math inline">15</span> balanced combinations. In the DIFFERENT, four NLDR methods were randomly selected, with the remaining method assigned to the attention check trial. All DIFFERENT and attention check trials used a distance scale factor of <em>medium-large</em>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-exp-design" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-exp-design" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-exp-design-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../figures/vis-exp/exp_design.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%" data-fig-pos="!ht">
 </div>
@@ -428,7 +428,7 @@ Table&nbsp;5.1: Estimated trends of correct identification probability with resp
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-glmm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-glmm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-glmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-chap5_files/figure-html/fig-glmm-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
@@ -526,7 +526,7 @@ Table&nbsp;5.2: Estimated trends of correct identification probability with resp
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-glmm-min" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-glmm-min" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-glmm-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-chap5_files/figure-html/fig-glmm-min-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
@@ -538,13 +538,20 @@ Figure&nbsp;5.4: Estimated probability of correct identification as a function o
 </div>
 <p>Taken together, these results demonstrate that the impact of cluster separability on correct identification is robust to the choice of distance measure but varies substantially across NLDR methods. Methods such as UMAP benefit from increased separation, whereas tSNE and PHATE appear sensitive to over-separation, potentially leading to distortions in the low-dimensional representation. TriMAP, by contrast, shows little sensitivity to changes in separation, suggesting robustness across a wide range of cluster configurations.</p>
 </section><section id="patterns-for-misidentification" class="level3"><h3 class="anchored" data-anchor-id="patterns-for-misidentification">Patterns for misidentification</h3>
+<p>To better understand why misidentification occurs, we examine patterns of correct identification across different high-dimensional data structures and across subjects. Rather than viewing errors as random noise, this analysis highlights how the geometry of the data and the behavior of the dimension reduction methods together lead to systematic confusion between structures.</p>
+<p><a href="#fig-var-sum" class="quarto-xref">Figure&nbsp;<span>5.5</span></a> shows correct identification proportions summarized by high-dimensional data structure (<a href="#fig-var-sum" class="quarto-xref">Figure&nbsp;<span>5.5</span></a> a) and by participant (<a href="#fig-var-sum" class="quarto-xref">Figure&nbsp;<span>5.5</span></a> b). There is clear variability at both levels. Across data structures, the proportion of correct identification ranges from about <span class="math inline">0.31</span> to approximately <span class="math inline">0.70</span>, indicating large differences in how easily different geometric configurations can be recognized from their NLDR representations. Some structures are identified reliably, while others remain difficult even when cluster separation increases. This suggests that misidentification is largely driven by the underlying geometry of the data and by how well those features are represented in <span class="math inline">2\text{-}D</span> layouts.</p>
+<p>The participant-level distribution of correct identification proportions (<a href="#fig-var-sum" class="quarto-xref">Figure&nbsp;<span>5.5</span></a> b) shows clear variability in performance, with most participants achieving moderate accuracy rather than clustering at chance or near-perfect levels. This pattern suggests that misidentification is not driven by a small number of poorly performing individuals, but reflects broader differences in how participants interpret and identify structure from the <span class="math inline">2\text{-}D</span> NLDR layouts and the corresponding tour views generated from the same <span class="math inline">p\text{-}D</span> data.</p>
 <!-- #### Summary -->
 <!-- data structure wise analysis-->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<div id="fig-var-sum" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-var-sum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-chap5_files/figure-html/fig-var-sum-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-var-sum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.5: Correct identification proportions by (a) data structure and (b) participant. The plot a shows aggregated proportions with <span class="math inline">95\%</span> Wilson binomial confidence intervals, illustrating differences in identification difficulty across three-cluster structures. The plot b displays participant-level proportions and highlight between-subject variability.
+</figcaption></figure>
 </div>
 </div>
 </div>
