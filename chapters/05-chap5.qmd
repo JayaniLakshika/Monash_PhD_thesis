@@ -887,6 +887,9 @@ three_clust_07_data <- high_d_data |>
     filter(sample_size == 7500) |>
     pull(high_d_data)
 
+cluster <- three_clust_07_data[[1]] |> 
+    pull(cluster)
+
 three_clust_07_data <- three_clust_07_data[[1]] |> 
     select(-cluster)
 
@@ -909,6 +912,12 @@ projected_df <- get_projection(projection = prj1,
                                                  axis_pos_y = -1.4, 
                                                  threshold = 0.03))
 
+cluster_means <- projected_df$projected_df |>
+  mutate(cluster = cluster) |>
+  group_by(cluster) |>
+  summarise(mean_proj1 = mean(proj1),
+            mean_proj2 = mean(proj2))
+
 three_clust07_proj1 <- plot_proj(
   proj_obj = projected_df, 
   point_param = c(1, 0.05, "#000000"), # size, alpha, color
@@ -916,7 +925,15 @@ three_clust07_proj1 <- plot_proj(
   title = "a1", 
   cex = 1, 
   axis_text_size = 2,
-  is_color = FALSE)
+  is_color = FALSE) + 
+  geom_point(
+    data = cluster_means,
+    aes(x = mean_proj1, y = mean_proj2),
+    colour = "#de2d26",
+    fill = "#de2d26",
+    shape = 21,
+    size = 0.1,
+    stroke = 1) 
 
 ## Second projection
 prj2 <- cbind(
@@ -931,6 +948,12 @@ projected_df <- get_projection(projection = prj2,
                                                  axis_pos_y = -0.9, 
                                                  threshold = 0.055))
 
+cluster_means <- projected_df$projected_df |>
+  mutate(cluster = cluster) |>
+  group_by(cluster) |>
+  summarise(mean_proj1 = mean(proj1),
+            mean_proj2 = mean(proj2))
+
 three_clust07_proj2 <- plot_proj(
   proj_obj = projected_df, 
   point_param = c(1, 0.05, "#000000"), # size, alpha, color
@@ -938,7 +961,15 @@ three_clust07_proj2 <- plot_proj(
   title = "a2", 
   cex = 1, 
   axis_text_size = 2,
-  is_color = FALSE)
+  is_color = FALSE) + 
+  geom_point(
+    data = cluster_means,
+    aes(x = mean_proj1, y = mean_proj2),
+    colour = "#de2d26",
+    fill = "#de2d26",
+    shape = 21,
+    size = 0.1,
+    stroke = 1) 
 ```
 
 
@@ -972,6 +1003,12 @@ projected_df <- get_projection(projection = prj1,
                                                  axis_pos_y = -0.4, 
                                                  threshold = 0.03))
 
+cluster_means <- projected_df$projected_df |>
+  mutate(cluster = cluster) |>
+  group_by(cluster) |>
+  summarise(mean_proj1 = mean(proj1),
+            mean_proj2 = mean(proj2))
+
 three_clust07_proj1_1 <- plot_proj(
   proj_obj = projected_df, 
   point_param = c(1, 0.05, "#000000"), # size, alpha, color
@@ -979,7 +1016,15 @@ three_clust07_proj1_1 <- plot_proj(
   title = "b1", 
   cex = 1, 
   axis_text_size = 2,
-  is_color = FALSE)
+  is_color = FALSE) + 
+  geom_point(
+    data = cluster_means,
+    aes(x = mean_proj1, y = mean_proj2),
+    colour = "#de2d26",
+    fill = "#de2d26",
+    shape = 21,
+    size = 0.1,
+    stroke = 1) 
 
 ## Second projection
 prj2 <- cbind(
@@ -994,6 +1039,12 @@ projected_df <- get_projection(projection = prj2,
                                                  axis_pos_y = -0.45, 
                                                  threshold = 0.055))
 
+cluster_means <- projected_df$projected_df |>
+  mutate(cluster = cluster) |>
+  group_by(cluster) |>
+  summarise(mean_proj1 = mean(proj1),
+            mean_proj2 = mean(proj2))
+
 three_clust07_proj2_1 <- plot_proj(
   proj_obj = projected_df, 
   point_param = c(1, 0.05, "#000000"), # size, alpha, color
@@ -1001,7 +1052,15 @@ three_clust07_proj2_1 <- plot_proj(
   title = "b2", 
   cex = 1, 
   axis_text_size = 2,
-  is_color = FALSE)
+  is_color = FALSE) + 
+  geom_point(
+    data = cluster_means,
+    aes(x = mean_proj1, y = mean_proj2),
+    colour = "#de2d26",
+    fill = "#de2d26",
+    shape = 21,
+    size = 0.1,
+    stroke = 1) 
 ```
 
 ```{r}
