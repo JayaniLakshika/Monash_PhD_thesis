@@ -7,36 +7,9 @@ interior_annotation <- function(label, position = c(0.92, 0.92), cex = 1, col="g
 
 # Center the data by subtracting the mean of each column
 center_data <- function(data) {
-  apply(data, 2, function(col) col - mean(col))
-}
-
-# Function to scale data manually
-scale_data_manual <- function(data) {
-  # Step 1: Center the data (mean 0)
-  data_centered <- center_data(data)
-
-  # Step 2: Calculate the standard deviation of each dimension
-  sds <- apply(data_centered, 2, sd)
-
-  # Step 3: Scale each dimension to have the range [0, 1]
-  data_scaled <- apply(data_centered, 2, function(col) col / max(abs(col)))
-
-  # Step 4: Scale dimensions according to their variation
-  # The dimension with the highest standard deviation is scaled to [-1, 1]
-  # Other dimensions are scaled to smaller ranges based on their standard deviations
-  max_sd <- max(sds)
-
-  # Normalize the standard deviations to get scaling factors
-  scaling_factors <- sds / max_sd
-
-  for (i in seq_along(scaling_factors)) {
-    data_scaled[, i] <- data_scaled[, i] * scaling_factors[i]
-  }
-
-  # Combine the scaled data with the 'type' column and return as a tibble
-  data_scaled <- as_tibble(data_scaled)
-
-  return(data_scaled)
+  center_values <- colMeans(data)
+  data_centered <- sweep(data, 2, center_values, FUN = "-")  # subtract means
+  data_centered
 }
 
 get_embeddings <- function(dt_structutre){
@@ -78,8 +51,106 @@ get_embeddings <- function(dt_structutre){
 
 }
 
-gen_axes <- function(proj, limits = 1, axis_pos_x = NULL, axis_pos_y = NULL,
-                     axis_labels, threshold = 0) {
+# Get projection
+
+get_projection <- function(projection, centered_data, axis_param) {
+
+  projected <- as.matrix(centered_data) %*% projection
+  projected_df <- projected |>
+    tibble::as_tibble(.name_repair = "unique") |>
+    dplyr::rename(c("proj1" = "...1",
+                    "proj2" = "...2")) |>
+    dplyr::mutate(ID = dplyr::row_number())
+
+  limits <- axis_param$limits
+  axis_scaled <- axis_param$axis_scaled
+  axis_pos_x <- axis_param$axis_pos_x
+  axis_pos_y <- axis_param$axis_pos_y
+  threshold <- axis_param$threshold
+
+  axes_obj <- gen_axes(
+    proj = projection * axis_scaled,
+    limits = limits,
+    axis_pos_x = axis_pos_x,
+    axis_pos_y = axis_pos_y,
+    axis_labels = names(centered_data),
+    threshold = threshold)
+
+  axes <- axes_obj$axes
+  circle <- axes_obj$circle
+
+  return(list(projected_df = projected_df,
+              axes = axes,
+              circle = circle))
+
+}
+
+# Plot projection
+plot_proj <- function(proj_obj,
+                      point_param = c(1.5, 0.5, "#000000"), # size, alpha, color
+                      plot_limits, title, cex = 2,
+                      position = c(0.92, 0.92),
+                      axis_text_size = 3,
+                      is_color = FALSE) {
+
+  projected_df <- proj_obj$projected_df
+  axes <- proj_obj$axes
+  circle <- proj_obj$circle
+
+  if(is_color == FALSE) {
+
+    initial_plot <- ggplot() +
+      geom_point(
+        data = projected_df,
+        aes(
+          x = proj1,
+          y = proj2),
+        size = as.numeric(point_param[1]),
+        alpha = as.numeric(point_param[2]),
+        color = point_param[3])
+
+  } else {
+
+    projected_df <- projected_df |>
+      dplyr::mutate(cluster = proj_obj$cluster)
+
+    initial_plot <- ggplot() +
+      geom_point(
+        data = projected_df,
+        aes(
+          x = proj1,
+          y = proj2,
+          color = cluster),
+        size = as.numeric(point_param[1]),
+        alpha = as.numeric(point_param[2]))
+
+  }
+
+  initial_plot <- initial_plot +
+    geom_segment(
+      data=axes,
+      aes(x=x1, y=y1, xend=x2, yend=y2),
+      colour="grey70") +
+    geom_text(
+      data=axes,
+      aes(x=x2, y=y2),
+      label=rownames(axes),
+      colour="grey50",
+      size = axis_text_size) +
+    geom_path(
+      data=circle,
+      aes(x=c1, y=c2), colour="grey70") +
+    xlim(plot_limits) +
+    ylim(plot_limits) +
+    interior_annotation(title, position, cex = cex)
+
+  initial_plot
+
+}
+
+# Generate axes
+
+gen_axes <- function(proj, limits = 1, axis_pos_x = NULL, axis_pos_y = NULL, axis_labels, threshold) {
 
   axis_scale <- limits/6
 
@@ -115,7 +186,6 @@ gen_axes <- function(proj, limits = 1, axis_pos_x = NULL, axis_pos_y = NULL,
   return(list(axes = axes, circle = circle))
 
 }
-
 
 plot_data_structures <- function(structure, ds_factor,
                                  method_vec = c("trimap", "umap", "pacmap", "tsne", "phate"),
