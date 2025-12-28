@@ -143,3 +143,117 @@ $$\text{logit}(P(y_{ijm} = 1)) = \mu_{m} + \beta_{m} d_{i} + \gamma_{j}$$ {#eq-e
 
 where $\mu_{m}$ is the overall mean for NLDR method $m$, $d_i$ is the distance measure for the data structure $i = 1, \dots, 18$, $\beta_m$ is the fixed effect of BW ratio under NLDR method $m$, $\gamma_j$ is the random effect of the participant $j = 1, 2, \dots, 127$, where $\gamma_j \sim N(0, \sigma_\gamma^2)$. Separate models were fitted using $d_i$ as either the scaled BW ratio or the exp(scaled minimum distance). The NLDR methods denoted by $m$ can include TriMAP, UMAP, PaCMAP, tSNE, and PHATE.
 
+## Results {#sec-results}
+
+The data was collected from $127$ participants, resulting in $127 \times 15 = 1905$ evaluations, excluding the attention check trials and the trials shows the different data in two displays.
+
+### Correct proportions
+
+The proportion of correct identifications across NLDR methods and distance conditions was analysed to evaluate how effectively each method preserves cluster separation. Results are summarized using two generalized linear mixed-effects models, with either the scaled BW ratio (@fig-glmm, @tbl-glmm) or the exp(scaled minimum distance) (@fig-glmm-min, @tbl-glmm-min) as the distance predictor. Both models accounted for participant-level variability through random effects and included NLDR method as a fixed factor interacting with the distance measure.
+
+Results from the model using the scaled BW ratio (@tbl-glmm) indicate that cluster separability positively influences correct identification for some NLDR methods. As shown in @fig-glmm, UMAP exhibits a clear increase in accuracy as the scaled BW ratio increases, suggesting that this method benefits from greater between-cluster separation. PaCMAP shows a positive but weaker trend, while TriMAP maintains stable performance across the range of separations. In contrast, tSNE and PHATE display declining accuracy at higher BW ratios, indicating that increased separation may distort or obscure structural cues for these methods.
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {#tbl-glmm .cell layout-align="center" tbl-cap='Estimated trends of correct identification probability with respect to scaled BW ratio by NLDR method.The table shows method-specific slope estimates (log-odds scale) for the effect of the scaled BW ratio on the probability of correct identification, obtained from a generalized linear mixed-effects model. Estimates represent the change in log-odds of correct identification per unit increase in scaled BW ratio for each NLDR method, along with standard errors (SE), asymptotic 95\% confidence intervals (LCL, UCL), Wald z-statistics, and corresponding p-values. Positive estimates indicate improved identification accuracy with increasing cluster separation, while negative estimates indicate declining accuracy. Significance codes: ($\emph{p}\leq 0.001$ \'`***`\', $\emph{p}\leq 0.01$ \'`**`\', $\emph{p}\leq 0.05$ \'`*`\', $\emph{p}\leq 0.1$ \'`.`\').'}
+::: {.cell-output-display}
+
+
+|method | estimate|   SE| asymp.LCL| asymp.UCL| z.ratio| p.value|p_val_sig |
+|:------|--------:|----:|---------:|---------:|-------:|-------:|:---------|
+|TriMAP |     0.03| 0.49|     -0.92|      0.99|    0.07|    0.95|          |
+|UMAP   |     1.15| 0.49|      0.19|      2.11|    2.35|    0.02|*         |
+|PaCMAP |     0.51| 0.48|     -0.43|      1.45|    1.06|    0.29|          |
+|tSNE   |    -2.61| 0.62|     -3.83|     -1.40|   -4.20|    0.00|***       |
+|PHATE  |    -0.92| 0.54|     -1.97|      0.13|   -1.71|    0.09|.         |
+
+
+:::
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![Estimated probability of correct identification as a function of the scaled BW ratio for five NLDR methods. The left panel shows model-based estimated probabilities with 95\% confidence intervals across values of the scaled BW ratio. The right panels show observed proportions of correct identification (black points) and fitted logistic regression curves for each method. The scaled BW ratio measures relative cluster separation, with larger values indicating greater separability. Performance trends differ across methods, with UMAP showing increasing accuracy, tSNE and PHATE decreasing accuracy, and TriMAP exhibiting relatively stable performance.](05-chap5_files/figure-html/fig-glmm-1.png){#fig-glmm fig-align='center' fig-pos='!ht' width=100%}
+:::
+:::
+
+
+To assess whether these patterns depend on how separation is quantified, we fitted a second model using the exp(scaled minimum distance) as an alternative measure of cluster separability (@tbl-glmm-min). The results closely mirror those obtained with the BW ratio (@fig-glmm-min). In particular, UMAP again shows a significant positive association between separation and correct identification probability, confirming that greater spatial distance between clusters enhances its ability to reveal the underlying structure. Conversely, tSNE demonstrates a strong negative association, with performance deteriorating as minimum distance increases, while PHATE exhibits a weaker but consistent negative trend. The effects for PaCMAP and TriMAP are not statistically significant, indicating comparatively stable performance across varying levels of separation.
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {#tbl-glmm-min .cell layout-align="center" tbl-cap='Estimated trends of correct identification probability with respect to exp(scaled minimum distance) by NLDR method.The table shows method-specific slope estimates (log-odds scale) for the effect of the exp(scaled minimum distance) on the probability of correct identification, obtained from a generalized linear mixed-effects model. Estimates represent the change in log-odds of correct identification per unit increase in exp(scaled minimum distance) for each NLDR method, along with standard errors (SE), asymptotic 95\% confidence intervals (LCL, UCL), Wald z-statistics, and corresponding p-values. Positive estimates indicate improved identification accuracy with increasing cluster separation, while negative estimates indicate declining accuracy. Significance codes: ($\emph{p}\leq 0.001$ \'`***`\', $\emph{p}\leq 0.01$ \'`**`\', $\emph{p}\leq 0.05$ \'`*`\', $\emph{p}\leq 0.1$ \'`.`\').'}
+::: {.cell-output-display}
+
+
+|method | estimate|   SE| asymp.LCL| asymp.UCL| z.ratio| p.value|p_val_sig |
+|:------|--------:|----:|---------:|---------:|-------:|-------:|:---------|
+|TriMAP |     0.20| 0.20|     -0.20|      0.59|    0.97|    0.33|          |
+|UMAP   |     0.59| 0.20|      0.20|      0.98|    2.99|    0.00|***       |
+|PaCMAP |     0.22| 0.19|     -0.16|      0.60|    1.12|    0.26|          |
+|tSNE   |    -0.78| 0.22|     -1.20|     -0.35|   -3.60|    0.00|***       |
+|PHATE  |    -0.35| 0.21|     -0.76|      0.06|   -1.68|    0.09|.         |
+
+
+:::
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![Estimated probability of correct identification as a function of the exp(scaled minimum distance) for five NLDR methods. The left panel shows model-based estimated probabilities with 95% confidence intervals across values of the exp(scaled minimum distance). The right panels show observed proportions of correct identification (black points) and fitted logistic regression curves for each method. Larger values correspond to greater spatial separation between clusters. UMAP shows increasing accuracy with increasing separation, whereas tSNE and PHATE show declining trends, and TriMAP exhibits relatively stable performance.](05-chap5_files/figure-html/fig-glmm-min-1.png){#fig-glmm-min fig-align='center' fig-pos='!ht' width=100%}
+:::
+:::
+
+
+Taken together, these results demonstrate that the impact of cluster separability on correct identification is robust to the choice of distance measure but varies substantially across NLDR methods. Methods such as UMAP benefit from increased separation, whereas tSNE and PHATE appear sensitive to over-separation, potentially leading to distortions in the low-dimensional representation. TriMAP, by contrast, shows little sensitivity to changes in separation, suggesting robustness across a wide range of cluster configurations.
+

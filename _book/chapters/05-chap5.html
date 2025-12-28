@@ -244,6 +244,7 @@ window.Quarto = {
    
   <ul class="collapse">
 <li><a href="#sec-experiment" id="toc-sec-experiment" class="nav-link active" data-scroll-target="#sec-experiment"><span class="header-section-number">5.1</span> Method</a></li>
+  <li><a href="#sec-results" id="toc-sec-results" class="nav-link" data-scroll-target="#sec-results"><span class="header-section-number">5.2</span> Results</a></li>
   </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/chapters/05-chap5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -286,7 +287,7 @@ window.Quarto = {
 <p>The visual layout of the experiment for one participant is shown in <a href="#fig-exp-design" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>. Each participant completed <span class="math inline">20</span> trials: <span class="math inline">15</span> SAME trials, in which the same data structure was shown in both the NLDR plot and the tour; <span class="math inline">4</span> DIFFERENT trials, showing DIFFERENT data structures; and one attention check trial that could be either SAME or DIFFERENT. For the SAME, five NLDR methods (<em>tSNE, UMAP, PHATE, PaCMAP, and TriMAP</em>) were each paired with three of five distance scale factors (<em>small, small-medium, medium, medium-large, and large</em>), giving <span class="math inline">15</span> balanced combinations. In the DIFFERENT, four NLDR methods were randomly selected, with the remaining method assigned to the attention check trial. All DIFFERENT and attention check trials used a distance scale factor of <em>medium-large</em>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-exp-design" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
+<div id="fig-exp-design" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-exp-design-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../figures/vis-exp/exp_design.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%" data-fig-pos="!ht">
 </div>
@@ -333,6 +334,208 @@ Figure&nbsp;5.2: Distribution of distance metric values across distance scale fa
 <p>Two generalized linear mixed effects models <span class="citation" data-cites="mcculloch2001">(<a href="../refs.html#ref-mcculloch2001" role="doc-biblioref"><strong>mcculloch2001?</strong></a>)</span> were fitted to model the likelihood of detecting the data structure in both the <span class="math inline">2\text{-}D</span> NLDR plot and the tour (<a href="../appendix/B-appB.html#eq-equation1" class="quarto-xref">Equation&nbsp;<span>B.1</span></a>). Both models accounted for participant-level variability and the effect of distance measures under different NLDR methods. The general form of the model is given by:</p>
 <p><span id="eq-equation1"><span class="math display">\text{logit}(P(y_{ijm} = 1)) = \mu_{m} + \beta_{m} d_{i} + \gamma_{j} \tag{5.1}</span></span></p>
 <p>where <span class="math inline">\mu_{m}</span> is the overall mean for NLDR method <span class="math inline">m</span>, <span class="math inline">d_i</span> is the distance measure for the data structure <span class="math inline">i = 1, \dots, 18</span>, <span class="math inline">\beta_m</span> is the fixed effect of BW ratio under NLDR method <span class="math inline">m</span>, <span class="math inline">\gamma_j</span> is the random effect of the participant <span class="math inline">j = 1, 2, \dots, 127</span>, where <span class="math inline">\gamma_j \sim N(0, \sigma_\gamma^2)</span>. Separate models were fitted using <span class="math inline">d_i</span> as either the scaled BW ratio or the exp(scaled minimum distance). The NLDR methods denoted by <span class="math inline">m</span> can include TriMAP, UMAP, PaCMAP, tSNE, and PHATE.</p>
+</section></section><section id="sec-results" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="sec-results">
+<span class="header-section-number">5.2</span> Results</h2>
+<p>The data was collected from <span class="math inline">127</span> participants, resulting in <span class="math inline">127 \times 15 = 1905</span> evaluations, excluding the attention check trials and the trials shows the different data in two displays.</p>
+<section id="correct-proportions" class="level3"><h3 class="anchored" data-anchor-id="correct-proportions">Correct proportions</h3>
+<p>The proportion of correct identifications across NLDR methods and distance conditions was analysed to evaluate how effectively each method preserves cluster separation. Results are summarized using two generalized linear mixed-effects models, with either the scaled BW ratio (<a href="#fig-glmm" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>, <a href="#tbl-glmm" class="quarto-xref">Table&nbsp;<span>5.1</span></a>) or the exp(scaled minimum distance) (<a href="#fig-glmm-min" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>, <a href="#tbl-glmm-min" class="quarto-xref">Table&nbsp;<span>5.2</span></a>) as the distance predictor. Both models accounted for participant-level variability through random effects and included NLDR method as a fixed factor interacting with the distance measure.</p>
+<p>Results from the model using the scaled BW ratio (<a href="#tbl-glmm" class="quarto-xref">Table&nbsp;<span>5.1</span></a>) indicate that cluster separability positively influences correct identification for some NLDR methods. As shown in <a href="#fig-glmm" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>, UMAP exhibits a clear increase in accuracy as the scaled BW ratio increases, suggesting that this method benefits from greater between-cluster separation. PaCMAP shows a positive but weaker trend, while TriMAP maintains stable performance across the range of separations. In contrast, tSNE and PHATE display declining accuracy at higher BW ratios, indicating that increased separation may distort or obscure structural cues for these methods.</p>
+<div class="cell" data-layout-align="center">
+<div id="tbl-glmm" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-glmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.1: Estimated trends of correct identification probability with respect to scaled BW ratio by NLDR method.The table shows method-specific slope estimates (log-odds scale) for the effect of the scaled BW ratio on the probability of correct identification, obtained from a generalized linear mixed-effects model. Estimates represent the change in log-odds of correct identification per unit increase in scaled BW ratio for each NLDR method, along with standard errors (SE), asymptotic 95% confidence intervals (LCL, UCL), Wald z-statistics, and corresponding p-values. Positive estimates indicate improved identification accuracy with increasing cluster separation, while negative estimates indicate declining accuracy. Significance codes: (<span class="math inline">\emph{p}\leq 0.001</span> ‘<code>***</code>’, <span class="math inline">\emph{p}\leq 0.01</span> ‘<code>**</code>’, <span class="math inline">\emph{p}\leq 0.05</span> ‘<code>*</code>’, <span class="math inline">\emph{p}\leq 0.1</span> ‘<code>.</code>’).
+</figcaption><div aria-describedby="tbl-glmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 13%">
+<col style="width: 7%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 14%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">method</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">asymp.LCL</th>
+<th style="text-align: right;">asymp.UCL</th>
+<th style="text-align: right;">z.ratio</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: left;">p_val_sig</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">TriMAP</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">-0.92</td>
+<td style="text-align: right;">0.99</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">UMAP</td>
+<td style="text-align: right;">1.15</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.19</td>
+<td style="text-align: right;">2.11</td>
+<td style="text-align: right;">2.35</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: left;">*</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PaCMAP</td>
+<td style="text-align: right;">0.51</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">-0.43</td>
+<td style="text-align: right;">1.45</td>
+<td style="text-align: right;">1.06</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tSNE</td>
+<td style="text-align: right;">-2.61</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">-3.83</td>
+<td style="text-align: right;">-1.40</td>
+<td style="text-align: right;">-4.20</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: left;">***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PHATE</td>
+<td style="text-align: right;">-0.92</td>
+<td style="text-align: right;">0.54</td>
+<td style="text-align: right;">-1.97</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">-1.71</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: left;">.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-glmm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-glmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-chap5_files/figure-html/fig-glmm-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-glmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: Estimated probability of correct identification as a function of the scaled BW ratio for five NLDR methods. The left panel shows model-based estimated probabilities with 95% confidence intervals across values of the scaled BW ratio. The right panels show observed proportions of correct identification (black points) and fitted logistic regression curves for each method. The scaled BW ratio measures relative cluster separation, with larger values indicating greater separability. Performance trends differ across methods, with UMAP showing increasing accuracy, tSNE and PHATE decreasing accuracy, and TriMAP exhibiting relatively stable performance.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>To assess whether these patterns depend on how separation is quantified, we fitted a second model using the exp(scaled minimum distance) as an alternative measure of cluster separability (<a href="#tbl-glmm-min" class="quarto-xref">Table&nbsp;<span>5.2</span></a>). The results closely mirror those obtained with the BW ratio (<a href="#fig-glmm-min" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>). In particular, UMAP again shows a significant positive association between separation and correct identification probability, confirming that greater spatial distance between clusters enhances its ability to reveal the underlying structure. Conversely, tSNE demonstrates a strong negative association, with performance deteriorating as minimum distance increases, while PHATE exhibits a weaker but consistent negative trend. The effects for PaCMAP and TriMAP are not statistically significant, indicating comparatively stable performance across varying levels of separation.</p>
+<div class="cell" data-layout-align="center">
+<div id="tbl-glmm-min" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-glmm-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.2: Estimated trends of correct identification probability with respect to exp(scaled minimum distance) by NLDR method.The table shows method-specific slope estimates (log-odds scale) for the effect of the exp(scaled minimum distance) on the probability of correct identification, obtained from a generalized linear mixed-effects model. Estimates represent the change in log-odds of correct identification per unit increase in exp(scaled minimum distance) for each NLDR method, along with standard errors (SE), asymptotic 95% confidence intervals (LCL, UCL), Wald z-statistics, and corresponding p-values. Positive estimates indicate improved identification accuracy with increasing cluster separation, while negative estimates indicate declining accuracy. Significance codes: (<span class="math inline">\emph{p}\leq 0.001</span> ‘<code>***</code>’, <span class="math inline">\emph{p}\leq 0.01</span> ‘<code>**</code>’, <span class="math inline">\emph{p}\leq 0.05</span> ‘<code>*</code>’, <span class="math inline">\emph{p}\leq 0.1</span> ‘<code>.</code>’).
+</figcaption><div aria-describedby="tbl-glmm-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 13%">
+<col style="width: 7%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 14%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">method</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">asymp.LCL</th>
+<th style="text-align: right;">asymp.UCL</th>
+<th style="text-align: right;">z.ratio</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: left;">p_val_sig</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">TriMAP</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">-0.20</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">0.97</td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">UMAP</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.98</td>
+<td style="text-align: right;">2.99</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: left;">***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PaCMAP</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.19</td>
+<td style="text-align: right;">-0.16</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">1.12</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tSNE</td>
+<td style="text-align: right;">-0.78</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">-1.20</td>
+<td style="text-align: right;">-0.35</td>
+<td style="text-align: right;">-3.60</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: left;">***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PHATE</td>
+<td style="text-align: right;">-0.35</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">-0.76</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">-1.68</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: left;">.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-glmm-min" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-glmm-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-chap5_files/figure-html/fig-glmm-min-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-glmm-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.4: Estimated probability of correct identification as a function of the exp(scaled minimum distance) for five NLDR methods. The left panel shows model-based estimated probabilities with 95% confidence intervals across values of the exp(scaled minimum distance). The right panels show observed proportions of correct identification (black points) and fitted logistic regression curves for each method. Larger values correspond to greater spatial separation between clusters. UMAP shows increasing accuracy with increasing separation, whereas tSNE and PHATE show declining trends, and TriMAP exhibits relatively stable performance.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>Taken together, these results demonstrate that the impact of cluster separability on correct identification is robust to the choice of distance measure but varies substantially across NLDR methods. Methods such as UMAP benefit from increased separation, whereas tSNE and PHATE appear sensitive to over-separation, potentially leading to distortions in the low-dimensional representation. TriMAP, by contrast, shows little sensitivity to changes in separation, suggesting robustness across a wide range of cluster configurations.</p>
 
 
 </section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
