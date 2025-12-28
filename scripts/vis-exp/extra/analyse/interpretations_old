@@ -1,0 +1,62 @@
+
+Each method's performance in this context reflects **how sensitive or robust it is to cluster separability** in the original space.
+
+tSNE
+
+* **GLMM coefficient:** `-0.7373`, **significant negative**
+* **Interpretation:** When clusters are *closer* in high-D, t-SNE is **more likely** to get it right.
+* **Explanation:**
+
+  * t-SNE focuses heavily on **local similarities**, so it's optimized for detecting subtle local patterns (even in overlapping clusters).
+  * If clusters are close, t-SNE may still form visually separable blobs due to the repulsive force between points.
+  * But when clusters are far apart, t-SNE might scatter them arbitrarily, breaking global structure.
+* **Literature support:** van der Maaten & Hinton (2008) describe how t-SNE only preserves **small pairwise distances** and discards global geometry.
+
+---
+
+### 📐 **TriMAP**
+
+* **GLMM coefficient:** `0.07809`, **not significant**
+* **Interpretation:** Cluster separation in the original space does **not meaningfully affect** TriMAP's success in your case.
+* **Explanation:**
+
+  * TriMAP uses **triplet loss**, preserving relative distances (e.g., “A is closer to B than to C”), not absolute inter-cluster distances.
+  * This helps with global structure in general but doesn’t always help with cluster separation in downstream interpretation.
+* **Literature support:** Amid & Warmuth (2020) highlight focus on global layout over local clusters.
+
+---
+
+### 🌐 **UMAP**
+
+* **GLMM coefficient:** `0.6609`, **significant positive**
+* **Interpretation:** Greater true inter-cluster distance leads to **better results** from UMAP.
+* **Explanation:**
+
+  * UMAP builds a fuzzy topological graph from local neighborhoods but embeds it in a way that balances both **local and global** geometry.
+  * It performs better when high-D clusters are well separated, because there's less ambiguity when constructing the graph.
+* **Literature support:** McInnes et al. (2018) emphasize UMAP's ability to preserve topological features of well-separated data manifolds.
+
+---
+
+### 🔬 **PHATE**
+
+* **Model not shown**, but here's how it would likely behave:
+* **Expected trend:** **Mild positive** or **non-significant** relation.
+* **Explanation:**
+
+  * PHATE excels at modeling **continuums** or trajectories, not necessarily discrete clusters.
+  * If clusters are far apart, PHATE may over-smooth them into a single structure.
+* **Literature support:** Moon et al. (2019) describe PHATE’s focus on denoising and manifold unfolding.
+
+---
+
+### 🧭 **PaCMAP**
+
+* **Coefficient:** `0.397`, borderline significant (from previous context)
+* **Interpretation:** Larger high-D cluster separation **somewhat improves** PaCMAP’s performance.
+* **Explanation:**
+
+  * PaCMAP uses **near, mid, and far** pairs to shape the embedding.
+  * It can preserve meaningful cluster separations when they exist in the high-D space.
+* **Literature support:** Wang et al. (2021) note PaCMAP’s strength in both local and global structure preservation, especially when clusters are distinct.
+

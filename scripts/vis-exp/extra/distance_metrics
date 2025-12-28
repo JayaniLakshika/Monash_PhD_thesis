@@ -1,0 +1,212 @@
+Perfect 👍 — let’s go one by one and write **mathematical definitions / formulas** for each of the quantities from `cluster.stats()`.
+
+Suppose we have:
+
+* dataset $X = \{x_1, x_2, \dots, x_n\}$ in some metric space with distance function $d(\cdot, \cdot)$
+* clustering assignment $C = \{C_1, C_2, \dots, C_k\}$, where $C_i$ is the set of indices of points in cluster $i$.
+* $n_i = |C_i|$ = size of cluster $i$.
+
+---
+
+### **Within-cluster measures**
+
+1. **Diameter** of cluster $i$:
+
+$$
+\text{diameter}(i) = \max_{p, q \in C_i} d(x_p, x_q)
+$$
+
+2. **Average distance** within cluster $i$:
+
+$$
+\text{average.distance}(i) = \frac{2}{n_i(n_i-1)} \sum_{p < q,\, p,q \in C_i} d(x_p, x_q)
+$$
+
+3. **Median distance** within cluster $i$:
+
+$$
+\text{median.distance}(i) = \text{median}\{ d(x_p, x_q) : p,q \in C_i,\, p < q \}
+$$
+
+4. **Within.dist**:
+
+$$
+\text{within.dist} = \{ d(x_p, x_q) : p,q \in C_i,\, i=1,\dots,k,\; p < q \}
+$$
+
+5. **Within-cluster sum of squares (SS)**:
+   If distances are Euclidean,
+
+$$
+\text{within.cluster.ss} = \sum_{i=1}^k \sum_{p \in C_i} \| x_p - \bar{x}_{C_i} \|^2
+$$
+
+where $\bar{x}_{C_i}$ is the centroid of cluster $i$.
+(With distance input, the function computes it from pairwise distances squared.)
+
+6. **Average.within** (weighted mean of average distances):
+
+$$
+\text{average.within} = \frac{1}{n} \sum_{i=1}^k n_i \cdot \text{average.distance}(i)
+$$
+
+---
+
+### **Between-cluster measures**
+
+7. **Separation** of cluster $i$:
+
+$$
+\text{separation}(i) = \min_{p \in C_i,\; q \notin C_i} d(x_p, x_q)
+$$
+
+8. **Max.diameter** (worst-case cluster spread):
+
+$$
+\text{max.diameter} = \max_{i=1,\dots,k} \text{diameter}(i)
+$$
+
+9. **Min.separation** (best-case cluster closeness):
+
+$$
+\text{min.separation} = \min_{i=1,\dots,k} \text{separation}(i)
+$$
+
+10. **Average.toother** for cluster $i$:
+
+$$
+\text{average.toother}(i) = \frac{1}{n_i (n - n_i)} \sum_{p \in C_i} \sum_{q \notin C_i} d(x_p, x_q)
+$$
+
+11. **Separation.matrix**:
+
+$$
+\text{separation.matrix}[i,j] = \min_{p \in C_i, q \in C_j} d(x_p, x_q), \quad i \neq j
+$$
+
+12. **Ave.between.matrix**:
+
+$$
+\text{ave.between.matrix}[i,j] = \frac{1}{n_i n_j} \sum_{p \in C_i} \sum_{q \in C_j} d(x_p, x_q), \quad i \neq j
+$$
+
+13. **Between.dist**:
+
+$$
+\text{between.dist} = \{ d(x_p, x_q) : p \in C_i, q \in C_j,\; i \neq j \}
+$$
+
+14. **Average.between** (mean of all between-cluster distances):
+
+$$
+\text{average.between} = \frac{1}{|\text{between.dist}|} \sum d(x_p, x_q), \quad p \in C_i, q \in C_j,\; i \neq j
+$$
+
+---
+
+### **Indices**
+
+15. **WB ratio** (within/between ratio):
+
+$$
+\text{wb.ratio} = \frac{\text{average.within}}{\text{average.between}}
+$$
+
+16. **Calinski–Harabasz (CH) index**:
+    Let
+
+$$
+WSS = \sum_{i=1}^k \sum_{p \in C_i} \| x_p - \bar{x}_{C_i} \|^2,
+\quad
+BSS = \sum_{i=1}^k n_i \| \bar{x}_{C_i} - \bar{x} \|^2
+$$
+
+with $\bar{x}$ the overall centroid. Then:
+
+$$
+CH = \frac{BSS / (k-1)}{WSS / (n-k)}
+$$
+
+---
+
+✅ That covers the ones you listed: explicit formulas for within/between distances, matrices, summary measures, and CH.
+
+Would you like me to also **draw a schematic figure** (clusters with arrows/distances labeled) to visually explain *diameter, separation, average.between* etc.?
+
+
+General
+
+
+* **Minimum distance (separation):**
+
+$$
+d_{\min}(C_i, C_j) = \min_{x \in C_i, \, y \in C_j} d(x,y)
+$$
+
+* **Maximum distance:**
+
+$$
+d_{\max}(C_i, C_j) = \max_{x \in C_i, \, y \in C_j} d(x,y)
+$$
+
+* **Average distance:**
+
+$$
+d_{\text{avg}}(C_i, C_j) = \frac{1}{n_i n_j} \sum_{x \in C_i} \sum_{y \in C_j} d(x,y)
+$$
+
+where $n_i = |C_i|$.
+
+---
+
+Now extend your summary statistics across **all pairs** $(i, j), \; i < j, \; i, j = 1,\dots,K$.
+
+---
+
+### Generalized versions:
+
+1. **Minimum of minimum distances:**
+
+$$
+\text{min\_min\_dist} = \min_{1 \leq i < j \leq K} \, d_{\min}(C_i, C_j)
+$$
+
+---
+
+2. **Maximum of maximum distances:**
+
+$$
+\text{max\_max\_dist} = \max_{1 \leq i < j \leq K} \, d_{\max}(C_i, C_j)
+$$
+
+---
+
+3. **Maximum of minimum distances:**
+
+$$
+\text{max\_min\_dist} = \max_{1 \leq i < j \leq K} \, d_{\min}(C_i, C_j)
+$$
+
+---
+
+4. **Minimum of maximum distances:**
+
+$$
+\text{min\_max\_dist} = \min_{1 \leq i < j \leq K} \, d_{\max}(C_i, C_j)
+$$
+
+---
+
+5. **Maximum of average distances:**
+
+$$
+\text{avg\_max\_dist} = \max_{1 \leq i < j \leq K} \, d_{\text{avg}}(C_i, C_j)
+$$
+
+---
+
+6. **Minimum of average distances:**
+
+$$
+\text{avg\_min\_dist} = \min_{1 \leq i < j \leq K} \, d_{\text{avg}}(C_i, C_j)
+$$
