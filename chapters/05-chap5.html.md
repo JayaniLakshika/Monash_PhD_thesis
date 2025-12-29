@@ -347,6 +347,8 @@ The participant-level distribution of correct identification proportions (@fig-v
 :::
 
 
+To better understand the visual sources of these misidentifications, we examine representative NLDR layouts for data structures that are commonly confused. Figures Y and Z present 2-D projections alongside tSNE and UMAP layouts for `three_clust_12` and `three_clust_07` under both small and large cluster separation. These examples demonstrate that increasing separation does not necessarily lead to clearer or more interpretable low-dimensional representations.
+
 
 ::: {.cell layout-align="center"}
 
@@ -400,6 +402,8 @@ The participant-level distribution of correct identification proportions (@fig-v
 :::
 :::
 
+
+These results suggest that misidentification isn’t random—it follows patterns that can be understood. It happens because of the way the high-dimensional geometry, cluster separation, and NLDR method interact in 2-D layouts. Shapes that are highly curved, intertwined, or made up of multiple competing forms are especially prone to confusion, while methods that better preserve global structure make it easier to correctly identify clusters. This shows that it’s important to evaluate NLDR methods not just by their algorithms, but also by how interpretable the resulting visualizations are.
 
 ## Limitations {#sec-limitations}
 

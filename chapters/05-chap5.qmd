@@ -859,6 +859,8 @@ dt_acc_plt + subj_acc_plt +
   plot_layout(ncol = 2)
 ```
 
+To better understand the visual sources of these misidentifications, we examine representative NLDR layouts for data structures that are commonly confused. Figures Y and Z present 2-D projections alongside tSNE and UMAP layouts for `three_clust_12` and `three_clust_07` under both small and large cluster separation. These examples demonstrate that increasing separation does not necessarily lead to clearer or more interpretable low-dimensional representations.
+
 ```{r}
 
 nldr1_three_clust_07 <- get_embeddings(dt_structutre = "three_clust_07") |>
@@ -1281,6 +1283,8 @@ three_clust12_proj2_1 <- plot_proj(
 
 (three_clust12_proj1 + three_clust12_proj2) / (three_clust12_proj1_1 + three_clust12_proj2_1) | nld_plt1_three_clust_12
 ```
+
+These results suggest that misidentification isn’t random—it follows patterns that can be understood. It happens because of the way the high-dimensional geometry, cluster separation, and NLDR method interact in 2-D layouts. Shapes that are highly curved, intertwined, or made up of multiple competing forms are especially prone to confusion, while methods that better preserve global structure make it easier to correctly identify clusters. This shows that it’s important to evaluate NLDR methods not just by their algorithms, but also by how interpretable the resulting visualizations are.
 
 ## Limitations {#sec-limitations}
 
