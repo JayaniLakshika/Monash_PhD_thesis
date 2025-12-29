@@ -369,7 +369,7 @@ The participant-level distribution of correct identification proportions (@fig-v
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![](05-chap5_files/figure-html/unnamed-chunk-9-1.png){fig-align='center' width=100%}
+![tSNE and UMAP layouts and $2\text{-}D$ projections for the data structure `three_clust_07`, composed of a nonlinear hyperbola, a hemisphere, and a triangular pyramid, shown under small and large cluster separation. Panels (a1–a2) show two fixed $2\text{-}D$ projections at small separation, and panels (b1–b2) show the same projections at large separation; the corresponding tSNE and UMAP layouts are shown in the right panels. At small separation, curved and rounded components overlap substantially in both methods, making the structure difficult to distinguish. With increased separation, UMAP yields smoother, more continuous representations that retain the curvature of the hyperbolic component and improve spacing between clusters. In contrast, tSNE bends and breaks the hyperbolic structure and introduces irregular gaps between points, weakening global shape cues.](05-chap5_files/figure-html/fig-three07-miss-1.png){#fig-three07-miss fig-align='center' width=100%}
 :::
 :::
 
@@ -396,7 +396,7 @@ The participant-level distribution of correct identification proportions (@fig-v
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![](05-chap5_files/figure-html/unnamed-chunk-13-1.png){fig-align='center' width=100%}
+![tSNE and UMAP layouts and $2\text{-}D$ projections for the data structure `three_clust_12`, composed of an S-curve, a hemisphere, and a filled hexagonal pyramid, shown under small and large cluster separation. Panels (a1–a2) show two fixed $2\text{-}D$ projections at small separation, and panels (b1–b2) show the same projections at large separation; the corresponding tSNE and UMAP layouts are shown in the right panels. At small separation, curved and rounded components overlap substantially in both methods, making the structure difficult to distinguish. With increased separation, UMAP preserves the distinct geometric character of each component, maintaining an elongated S-curve, a compact hemisphere, and a coherent pyramidal structure. In contrast, tSNE fragments curved and volumetric components into irregular, disconnected pieces, obscuring global shape cues.](05-chap5_files/figure-html/fig-three12-miss-1.png){#fig-three12-miss fig-align='center' width=100%}
 :::
 :::
 
