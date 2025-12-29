@@ -999,8 +999,8 @@ projected_df <- get_projection(projection = prj1,
                                centered_data = centered_three_clust_07_data, 
                                axis_param = list(limits = 0.5,
                                                  axis_scaled = 3, 
-                                                 axis_pos_x = -0.4, 
-                                                 axis_pos_y = -0.4, 
+                                                 axis_pos_x = -0.45, 
+                                                 axis_pos_y = -0.45, 
                                                  threshold = 0.03))
 
 cluster_means <- projected_df$projected_df |>
@@ -1012,7 +1012,7 @@ cluster_means <- projected_df$projected_df |>
 three_clust07_proj1_1 <- plot_proj(
   proj_obj = projected_df, 
   point_param = c(1, 0.05, "#000000"), # size, alpha, color
-  plot_limits = c(-0.5, 0.5), 
+  plot_limits = c(-0.55, 0.3), 
   title = "b1", 
   cex = 1, 
   axis_text_size = 2,
@@ -1048,7 +1048,7 @@ cluster_means <- projected_df$projected_df |>
 three_clust07_proj2_1 <- plot_proj(
   proj_obj = projected_df, 
   point_param = c(1, 0.05, "#000000"), # size, alpha, color
-  plot_limits = c(-0.55, 0.55), 
+  plot_limits = c(-0.55, 0.7), 
   title = "b2", 
   cex = 1, 
   axis_text_size = 2,
@@ -1116,18 +1116,32 @@ projected_df <- get_projection(projection = prj1,
                                centered_data = centered_three_clust_12_data, 
                                axis_param = list(limits = 0.5,
                                                  axis_scaled = 3, 
-                                                 axis_pos_x = -1.4, 
-                                                 axis_pos_y = -1.4, 
+                                                 axis_pos_x = -0.8, 
+                                                 axis_pos_y = -0.8, 
                                                  threshold = 0.03))
+
+cluster_means <- projected_df$projected_df |>
+  mutate(cluster = cluster) |>
+  group_by(cluster) |>
+  summarise(mean_proj1 = mean(proj1),
+            mean_proj2 = mean(proj2))
 
 three_clust12_proj1 <- plot_proj(
   proj_obj = projected_df, 
   point_param = c(1, 0.05, "#000000"), # size, alpha, color
-  plot_limits = c(-1.5, 0.7), 
+  plot_limits = c(-0.9, 0.8), 
   title = "a1", 
   cex = 1, 
   axis_text_size = 2,
-  is_color = FALSE)
+  is_color = FALSE) + 
+  geom_point(
+    data = cluster_means,
+    aes(x = mean_proj1, y = mean_proj2),
+    colour = "#de2d26",
+    fill = "#de2d26",
+    shape = 21,
+    size = 0.1,
+    stroke = 1) 
 
 ## Second projection
 prj2 <- cbind(
@@ -1138,18 +1152,32 @@ projected_df <- get_projection(projection = prj2,
                                centered_data = centered_three_clust_12_data, 
                                axis_param = list(limits = 0.5,
                                                  axis_scaled = 4, 
-                                                 axis_pos_x = -0.9, 
-                                                 axis_pos_y = -0.9, 
+                                                 axis_pos_x = -0.7, 
+                                                 axis_pos_y = -0.7, 
                                                  threshold = 0.055))
+
+cluster_means <- projected_df$projected_df |>
+  mutate(cluster = cluster) |>
+  group_by(cluster) |>
+  summarise(mean_proj1 = mean(proj1),
+            mean_proj2 = mean(proj2))
 
 three_clust12_proj2 <- plot_proj(
   proj_obj = projected_df, 
   point_param = c(1, 0.05, "#000000"), # size, alpha, color
-  plot_limits = c(-1, 1.5), 
+  plot_limits = c(-0.8, 0.7), 
   title = "a2", 
   cex = 1, 
   axis_text_size = 2,
-  is_color = FALSE)
+  is_color = FALSE) + 
+  geom_point(
+    data = cluster_means,
+    aes(x = mean_proj1, y = mean_proj2),
+    colour = "#de2d26",
+    fill = "#de2d26",
+    shape = 21,
+    size = 0.1,
+    stroke = 1) 
 ```
 
 
@@ -1179,18 +1207,32 @@ projected_df <- get_projection(projection = prj1,
                                centered_data = centered_three_clust_12_data, 
                                axis_param = list(limits = 0.5,
                                                  axis_scaled = 3, 
-                                                 axis_pos_x = -0.4, 
-                                                 axis_pos_y = -0.4, 
+                                                 axis_pos_x = -0.2, 
+                                                 axis_pos_y = -0.2, 
                                                  threshold = 0.03))
+
+cluster_means <- projected_df$projected_df |>
+  mutate(cluster = cluster) |>
+  group_by(cluster) |>
+  summarise(mean_proj1 = mean(proj1),
+            mean_proj2 = mean(proj2))
 
 three_clust12_proj1_1 <- plot_proj(
   proj_obj = projected_df, 
   point_param = c(1, 0.05, "#000000"), # size, alpha, color
-  plot_limits = c(-0.5, 0.5), 
+  plot_limits = c(-0.3, 0.55), 
   title = "b1", 
   cex = 1, 
   axis_text_size = 2,
-  is_color = FALSE)
+  is_color = FALSE) + 
+  geom_point(
+    data = cluster_means,
+    aes(x = mean_proj1, y = mean_proj2),
+    colour = "#de2d26",
+    fill = "#de2d26",
+    shape = 21,
+    size = 0.1,
+    stroke = 1) 
 
 ## Second projection
 prj2 <- cbind(
@@ -1205,14 +1247,28 @@ projected_df <- get_projection(projection = prj2,
                                                  axis_pos_y = -0.45, 
                                                  threshold = 0.055))
 
+cluster_means <- projected_df$projected_df |>
+  mutate(cluster = cluster) |>
+  group_by(cluster) |>
+  summarise(mean_proj1 = mean(proj1),
+            mean_proj2 = mean(proj2))
+
 three_clust12_proj2_1 <- plot_proj(
   proj_obj = projected_df, 
   point_param = c(1, 0.05, "#000000"), # size, alpha, color
-  plot_limits = c(-0.55, 0.55), 
+  plot_limits = c(-0.55, 0.4), 
   title = "b2", 
   cex = 1, 
   axis_text_size = 2,
-  is_color = FALSE)
+  is_color = FALSE) + 
+  geom_point(
+    data = cluster_means,
+    aes(x = mean_proj1, y = mean_proj2),
+    colour = "#de2d26",
+    fill = "#de2d26",
+    shape = 21,
+    size = 0.1,
+    stroke = 1) 
 ```
 
 ```{r}
