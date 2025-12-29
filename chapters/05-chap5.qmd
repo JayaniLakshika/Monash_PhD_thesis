@@ -1114,11 +1114,11 @@ prj1 <- cbind(
 
 projected_df <- get_projection(projection = prj1, 
                                centered_data = centered_three_clust_12_data, 
-                               axis_param = list(limits = 0.8,
+                               axis_param = list(limits = 1,
                                                  axis_scaled = 3, 
-                                                 axis_pos_x = -0.8, 
-                                                 axis_pos_y = -0.8, 
-                                                 threshold = 0.03))
+                                                 axis_pos_x = -0.7, 
+                                                 axis_pos_y = -0.7, 
+                                                 threshold = 0.06))
 
 cluster_means <- projected_df$projected_df |>
   mutate(cluster = cluster) |>
@@ -1152,9 +1152,9 @@ projected_df <- get_projection(projection = prj2,
                                centered_data = centered_three_clust_12_data, 
                                axis_param = list(limits = 0.8,
                                                  axis_scaled = 4, 
-                                                 axis_pos_x = -0.7, 
-                                                 axis_pos_y = -0.7, 
-                                                 threshold = 0.055))
+                                                 axis_pos_x = -0.65, 
+                                                 axis_pos_y = -0.65, 
+                                                 threshold = 0.088))
 
 cluster_means <- projected_df$projected_df |>
   mutate(cluster = cluster) |>
@@ -1205,7 +1205,7 @@ prj1 <- cbind(
 
 projected_df <- get_projection(projection = prj1, 
                                centered_data = centered_three_clust_12_data, 
-                               axis_param = list(limits = 0.8,
+                               axis_param = list(limits = 0.5,
                                                  axis_scaled = 3, 
                                                  axis_pos_x = -0.2, 
                                                  axis_pos_y = -0.2, 
@@ -1241,7 +1241,7 @@ prj2 <- cbind(
 
 projected_df <- get_projection(projection = prj2, 
                                centered_data = centered_three_clust_12_data, 
-                               axis_param = list(limits = 0.8,
+                               axis_param = list(limits = 0.5,
                                                  axis_scaled = 4, 
                                                  axis_pos_x = -0.45, 
                                                  axis_pos_y = -0.45, 
