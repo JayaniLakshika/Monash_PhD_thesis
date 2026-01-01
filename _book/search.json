@@ -760,7 +760,7 @@
     "text": "C.2 Scripts",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception in Nonlinear Dimension Reduction: A User Study\"</span>"
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study\"</span>"
     ]
   },
   {
@@ -771,7 +771,7 @@
     "text": "C.3 Generating non-attention check data structures\nExcellent — this section can be turned into a smooth, cohesive narrative that reads like an appendix entry in a methodological paper, where each data-generating function is described mathematically and conceptually. Here’s a refined version written in a unified academic style with mathematical explanations integrated naturally into the prose.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception in Nonlinear Dimension Reduction: A User Study\"</span>"
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study\"</span>"
     ]
   },
   {
@@ -782,7 +782,7 @@
     "text": "C.4 layouts\nAll layouts used in the experiment are available in the supplementary repository: github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts. These include all embeddings generated under different NLDR methods with default hyper-parameter settings for the simulated high-dimensional data structures.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception in Nonlinear Dimension Reduction: A User Study\"</span>"
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study\"</span>"
     ]
   },
   {
@@ -804,7 +804,7 @@
     "text": "C.6 Experimental factors allocation to participants\nAllocation of participants to experimental factors is an important part of experimental design. There are a total of 3 \\times 5 = 15 combinations of factors for the study. Thirty-six replications for each combination results in 10 \\times 36 = 360 evaluations.\nEach factor combination must be evaluated by at least thirty-six participants. Based on the pilot studies for this experiment, we decided to record 20 evaluations for the study, all conducted within a time frame of 5 to 10 minutes. One of the evaluations, featuring three Gaussian clusters, was used as an attention check to ensure data quality. Additionally, three of the evaluations were assigned different data displayed across two displays to reduce the consistency of showing the same data.\nFigure C.2 provides an example of how distance scale factor is allocated using data structures for the first nine participants. It can be observed that the factor combinations are assigned randomly to the data structures among the participants, ensuring a diverse set of data structures for each individual.\n\n\n\n\n\n\n\nFigure C.2: Allocation of method and distance scale factor to the first 9 participants for the SAME attempts only. Each participant has experienced all factor combinations with randomly assigned data structures.\n\n\n\n\nXXX Add description regarding how experimental factors are allocated to the subjects\n\n\n\n\n\n\n\nFigure C.3: The experimental design used for the study involved six participants. Each small box contains data structure id in black text. The gray color represents two plots that display the same data, while the orange color indicates two plots that show different data. The green color signifies the attention check trial. If the two plots show different data, the data used in the tour is mentioned within the brackets. The title of each small box contains the NLDR method, and within the brackets, the distance scale factor (S for small, M for medium, and L for large). The red color text in the top right corner of the small box represents the attempt.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception in Nonlinear Dimension Reduction: A User Study\"</span>"
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study\"</span>"
     ]
   },
   {
@@ -837,7 +837,7 @@
     "text": "C.9 Non-attention check data generation\nThe process of generating non-attention check data involves several steps. First, we generate clustering data using a distance scale factor of 1, with sample size of 7500, no noise dimensions, and no background noise. Next, the data generated with a distance scale factor of 1 and a sample size of 7500 is used to create data with different distance scale factors (0.1) (?alg-gen-diff-sf).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTable C.7: 4\\text{-}D distances between centroid points in three clusters.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception in Nonlinear Dimension Reduction: A User Study\"</span>"
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study\"</span>"
     ]
   },
   {
@@ -845,10 +845,10 @@
     "href": "appendix/C-appC.html#non-linear-dimension-reduction-data-generation",
     "title": "Appendix C — Appendix to “Perception and Misperception in Nonlinear Dimension Reduction: A User Study”",
     "section": "\nC.10 Non-linear dimension reduction data generation",
-    "text": "C.10 Non-linear dimension reduction data generation\nDimension reduction data generation is performed using various methods: tSNE ((algo-gen-tsne?)), UMAP ((algo-gen-umap?)), PHATE ((algo-gen-phate?)), PaCMAP ((algo-gen-pacmap?)), and TriMAP ((algo-gen-trimap?)) on each high-dimensional dataset, which are then combined at the end.",
+    "text": "C.10 Non-linear dimension reduction data generation\nDimension reduction data generation is performed using various methods: tSNE ((algo-gen-tsne?)), UMAP ((algo-gen-umap?)), PHATE ((algo-gen-phate?)), PaCMAP ((algo-gen-pacmap?)), and TriMAP ((algo-gen-trimap?)) on each high-dimensional dataset, which are then combined at the end.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPalan, S., and Schitter, C. (2018), “Prolific. Ac—a subject pool for online experiments,” Journal of Behavioral and Experimental Finance, Elsevier, 17, 22–27.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception in Nonlinear Dimension Reduction: A User Study\"</span>"
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study\"</span>"
     ]
   },
   {
@@ -877,7 +877,7 @@
     "href": "appendix/C-appC.html#data-structures",
     "title": "Appendix C — Appendix to “Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study”",
     "section": "\nC.2 Data structures",
-    "text": "C.2 Data structures",
+    "text": "C.2 Data structures\n\n\n\n\n\n\n\n\n\n\nData structure\nCluster1\nCluster2\nCluster3\n\n\n\nthree_clust_01\ncurv\nelliptical\nblunted_cone\n\n\nthree_clust_02\ns_curve\ncube\npyramid_rectangular_base\n\n\nthree_clust_03\ncurvy_cylinder\nhemisphere\npyramid_triangular_base\n\n\nthree_clust_04\ncurv2\ngaussian\nfilled_hexagonal_pyramid\n\n\nthree_clust_05\nnonlinear_hyperbola\nelliptical\nblunted_cone\n\n\nthree_clust_06\ncrescent\ncube\npyramid_rectangular_base\n\n\nthree_clust_07\nnonlinear_hyperbola2\nhemisphere\npyramid_triangular_base\n\n\nthree_clust_08\nconic_spiral\ngaussian\nfilled_hexagonal_pyramid\n\n\nthree_clust_09\nhelical_hyper_spiral\ncube\nblunted_cone\n\n\nthree_clust_10\nspherical_spiral\ngaussian\npyramid_triangular_base\n\n\nthree_clust_11\ncurv\nelliptical\npyramid_rectangular_base\n\n\nthree_clust_12\ns_curve\nhemisphere\nfilled_hexagonal_pyramid\n\n\nthree_clust_13\ncurvy_cylinder\ncube\nblunted_cone\n\n\nthree_clust_14\ncurv2\ngaussian\npyramid_triangular_base\n\n\nthree_clust_15\nnonlinear_hyperbola\nelliptical\npyramid_rectangular_base\n\n\nthree_clust_16\ncrescent\nhemisphere\nfilled_hexagonal_pyramid\n\n\nthree_clust_17\nnonlinear_hyperbola2\ncube\nblunted_cone\n\n\nthree_clust_18\nconic_spiral\ngaussian\npyramid_triangular_base\n\n\n\n\n\nXX Add the table of data components XX Add tour and projections for the data",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>C</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study\"</span>"

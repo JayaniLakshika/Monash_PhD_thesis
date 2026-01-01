@@ -168,6 +168,40 @@ Animations of the $p\text{-}D$ tours that used for the study are available on Yo
 
 ## Data structures
 
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+
+
+|Data structure |Cluster1             |Cluster2   |Cluster3                 |
+|:--------------|:--------------------|:----------|:------------------------|
+|three_clust_01 |curv                 |elliptical |blunted_cone             |
+|three_clust_02 |s_curve              |cube       |pyramid_rectangular_base |
+|three_clust_03 |curvy_cylinder       |hemisphere |pyramid_triangular_base  |
+|three_clust_04 |curv2                |gaussian   |filled_hexagonal_pyramid |
+|three_clust_05 |nonlinear_hyperbola  |elliptical |blunted_cone             |
+|three_clust_06 |crescent             |cube       |pyramid_rectangular_base |
+|three_clust_07 |nonlinear_hyperbola2 |hemisphere |pyramid_triangular_base  |
+|three_clust_08 |conic_spiral         |gaussian   |filled_hexagonal_pyramid |
+|three_clust_09 |helical_hyper_spiral |cube       |blunted_cone             |
+|three_clust_10 |spherical_spiral     |gaussian   |pyramid_triangular_base  |
+|three_clust_11 |curv                 |elliptical |pyramid_rectangular_base |
+|three_clust_12 |s_curve              |hemisphere |filled_hexagonal_pyramid |
+|three_clust_13 |curvy_cylinder       |cube       |blunted_cone             |
+|three_clust_14 |curv2                |gaussian   |pyramid_triangular_base  |
+|three_clust_15 |nonlinear_hyperbola  |elliptical |pyramid_rectangular_base |
+|three_clust_16 |crescent             |hemisphere |filled_hexagonal_pyramid |
+|three_clust_17 |nonlinear_hyperbola2 |cube       |blunted_cone             |
+|three_clust_18 |conic_spiral         |gaussian   |pyramid_triangular_base  |
+
+
+:::
+:::
+
+
+XX Add the table of data components
+XX Add tour and projections for the data
+
 ## $2\text{-}D$ layouts
 
 All $2\text{-}D$ layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts](https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods with default hyper-parameter settings for the simulated $4\text{-}D$ data structures.

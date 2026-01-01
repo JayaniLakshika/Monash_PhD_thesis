@@ -97,6 +97,26 @@ links_df |>
 
 ## Data structures
 
+```{r}
+#| tbl-cap: "The main arguments for `gen_multicluster()`."
+
+dt_str <- read_csv(here::here("data/vis-exp/data_structures_components.csv")) 
+
+if (knitr::is_latex_output()) {
+    dt_str |> 
+        kable(format="latex", col.names = c("Data structure", "Cluster1", "Cluster2", "Cluster3"), booktabs = T, table.pos = "!ht", linesep = "", escape = FALSE)  |>
+        column_spec(1, width = "2cm") |>
+        column_spec(2, width = "3cm") |>
+        column_spec(3, width = "4cm") |>
+        column_spec(4, width = "4cm")
+} else {
+    dt_str |> 
+        kable(col.names = c("Data structure", "Cluster1", "Cluster2", "Cluster3"), linesep = "", escape = FALSE, table.pos = "!ht") 
+}
+```
+
+XX Add tour and projections for the data
+
 ## $2\text{-}D$ layouts
 
 All $2\text{-}D$ layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts](https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods with default hyper-parameter settings for the simulated $4\text{-}D$ data structures.
