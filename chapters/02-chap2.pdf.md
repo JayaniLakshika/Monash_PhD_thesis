@@ -1,4 +1,4 @@
-# Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space {#sec-first-paper}
+# Choosing Better NLDR Layouts by Evaluating the Model in the High-Dimensional Data Space {#sec-first-paper}
 
 Nonlinear dimension reduction (NLDR) techniques such as tSNE, and UMAP provide a low-dimensional representation of high-dimensional data ($p\text{-}D$) by applying a nonlinear transformation. NLDR often exaggerates random patterns. But NLDR views have an important role in data analysis because, if done well, they provide a concise visual (and conceptual) summary of $p\text{-}D$ distributions. The NLDR methods and hyper-parameter choices can create wildly different representations, making it difficult to decide which is best, or whether any or all are accurate or misleading. To help assess the NLDR and decide on which, if any, is the most reasonable representation of the structure(s) present in the $p\text{-}D$ data, we have developed an algorithm to show the $2\text{-}D$ NLDR model in the $p\text{-}D$ space, viewed with a tour, a movie of linear projections. From this, one can see if the model fits everywhere, or better in some subspaces, or completely mismatches the data. Also, we can see how different methods may have similar summaries or quirks.
 
@@ -72,7 +72,7 @@ Our proposed solution is to use the tour to examine how the NLDR is warping the 
 
 ### What is the NLDR model?
 
-At first glance, thinking of NLDR as a modeling technique might seem strange. It is a simplified representation or abstraction of a system, process, or phenomenon in the real world. The $p\text{-}D$   observations are the realization of the phenomenon, and the $k\text{-}D$ NLDR layout is the simplified representation. Typically, $k=2$, which is used for the rest of this paper. From a statistical perspective we can consider the distances between points in the $2\text{-}D$   layout to be variance that the model explains, and the (relative) difference with their distances in $p\text{-}D$   is the error, or unexplained variance. We can also imagine that the positioning of points in $2\text{-}D$    represent the fitted values, that will have some prescribed position in $p\text{-}D$   that can be compared with their observed values. This is the conceptual framework underlying the more formal versions of factor analysis [@joreskog1969] and MDS. (Note that, for this thinking the full $p\text{-}D$   data needs to be available, not just the interpoint distances.)
+At first glance, thinking of NLDR as a modeling technique might seem strange. It is a simplified representation or abstraction of a system, process, or phenomenon in the real world. The $p\text{-}D$   observations are the realization of the phenomenon, and the $k\text{-}D$ NLDR layout is the simplified representation. Typically, $k=2$, which is used for the rest of this chapter. From a statistical perspective we can consider the distances between points in the $2\text{-}D$   layout to be variance that the model explains, and the (relative) difference with their distances in $p\text{-}D$   is the error, or unexplained variance. We can also imagine that the positioning of points in $2\text{-}D$    represent the fitted values, that will have some prescribed position in $p\text{-}D$   that can be compared with their observed values. This is the conceptual framework underlying the more formal versions of factor analysis [@joreskog1969] and MDS. (Note that, for this thinking the full $p\text{-}D$   data needs to be available, not just the interpoint distances.)
 
 We define the NLDR as a function $g\text{:}~ \mathbb{R}^{n\times p} \rightarrow \mathbb{R}^{n\times 2}$, with hyper-parameters $\bm{\theta}$. These parameters, $\bm{\theta}$, depend on the choice of $g$, and can be considered part of model fitting in the traditional sense. Common choices for $g$ include functions used in tSNE, UMAP, PHATE, TriMAP, PaCMAP, or MDS, although in theory any function that does this mapping is suitable. 
 
@@ -545,11 +545,11 @@ Researchers usually use $2\text{-}D$ layouts, but if a $k\text{-}D$ ($k>2$) layo
 
 ## Supplementary Materials {#sec-supplementary}
 
-All the materials to reproduce the paper can be found at [https://github.com/JayaniLakshika/paper-nldr-vis-algorithm](https://github.com/JayaniLakshika/paper-nldr-vis-algorithm). 
+All the materials to reproduce the chapter can be found at [https://github.com/JayaniLakshika/paper-nldr-vis-algorithm](https://github.com/JayaniLakshika/paper-nldr-vis-algorithm). 
 
 The supplementary materials provide additional details on the methods and hyper-parameters used to generate layouts, video links of animated $p\text{-}D$ tours, notation summaries, and the R and Python scripts used in the study. They also describe the generation of the 2NC7 data, computation of hexagon grid configurations, and data binning procedures. Further sections highlight interesting NLDR behaviors observed in the data space and compare HBE with existing evaluation metrics for the PBMC3k and MNIST datasets.
 
-The R package `quollr`, available on CRAN and at [https://jayanilakshika.github.io/quollr/](https://jayanilakshika.github.io/quollr/), provides software accompaying this paper to fit the wireframe model representation, compute diagnostics, visualize the model in the data with `langevitour` and link multiple plots interactively. 
+The R package `quollr`, available on CRAN and at [https://jayanilakshika.github.io/quollr/](https://jayanilakshika.github.io/quollr/), provides software accompaying this chapter to fit the wireframe model representation, compute diagnostics, visualize the model in the data with `langevitour` and link multiple plots interactively. 
 
 
 ## Acknowledgments

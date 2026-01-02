@@ -1,4 +1,4 @@
-# cardinalR: cardinalR: Generating Interesting High-Dimensional Data Structures {#sec-fourth-paper}
+# cardinalR: Generating Interesting High-Dimensional Data Structures {#sec-fourth-paper}
 
 Simulated high dimensional data is useful for testing, validating, and improving algorithms used in dimension reduction, supervised and unsupervised learning. High-dimensional data is characterized by multiple variables that are dependent or associated in some way, such as linear, nonlinear, clustering or anomalies. Here we provide new methods for generating a variety of high-dimensional structures using mathematical functions and statistical distributions organized into the R package `cardinalR`. Several example data sets are also provided. These will be useful for researchers to better understand how different analytical methods work and can be improved, with a special focus on nonlinear dimension reduction methods. This package enriches the existing toolset of benchmark datasets for evaluating algorithms.
 
@@ -36,9 +36,9 @@ The current work implemented in the `cardinalR` R package builds on these approa
 
 The motivation for developing this package originated from our own work in studying nonlinear dimension reduction (NLDR) algorithms. We wanted to conduct a visualization experiment to understand perception and misperception of a variety of NLDR methods. This required simulated datasets with carefully controlled geometric and clustering properties. While some existing packages provided useful starting points, none fully supported the creation of flexible, high-dimensional data with the specific structural variations needed for our experiment. Developing these generators for research purposes underlies `cardinalR`, which is now a general-purpose package that should be useful for research and teaching.
 
-The example data structures are best viewed using a tour [@As85]. These show the data as a sequence of low dimensional projections (typically $2\text{-}D$), providing a good sense of the shape in high dimensions. The interactive tour plots included in this paper are produced using the software `langevitour` [@harisson2024].
+The example data structures are best viewed using a tour [@As85]. These show the data as a sequence of low dimensional projections (typically $2\text{-}D$), providing a good sense of the shape in high dimensions. The interactive tour plots included in this chapter are produced using the software `langevitour` [@harisson2024].
 
-The next section provides an overview of the usage of the `cardinalR` package, illustrating how its modular components can be combined to generate complex high-dimensional datasets. This is followed by a section describing the implementation of the package, including its design principles and key functions. The Application section then demonstrates how the simulated clustering structures can be used to evaluate and compare dimension reduction and clustering methods. Finally, we give a brief conclusion of the paper and discuss potential opportunities for the use of our data collection.
+The next section provides an overview of the usage of the `cardinalR` package, illustrating how its modular components can be combined to generate complex high-dimensional datasets. This is followed by a section describing the implementation of the package, including its design principles and key functions. The Application section then demonstrates how the simulated clustering structures can be used to evaluate and compare dimension reduction and clustering methods. Finally, we give a brief conclusion of the chapter and discuss potential opportunities for the use of our data collection.
 
 ## Usage
 
@@ -1384,7 +1384,7 @@ Future extensions of `cardinalR` may include biologically inspired or applicatio
 
 ## Acknowledgements
 
-The source material for this paper, including the full datasets and figures, is available at [github.com/JayaniLakshika/paper-cardinalR](https://github.com/JayaniLakshika/paper-cardinalR). This article is created using `knitr` [@yihui2015] and `rmarkdown` [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `tibble` [@kirill2023], `gtools` [@gregory2023], `dplyr` [@hadley2023], `stats` [@core2025], `tidyr` [@hadley2024], `purrr` [@hadley2025], `mvtnorm` [@alan2009], `geozoo` [@barret2016], and `MASS` [@venables2002]. 
+The source material for this chapter, including the full datasets and figures, is available at [github.com/JayaniLakshika/paper-cardinalR](https://github.com/JayaniLakshika/paper-cardinalR). This article is created using `knitr` [@yihui2015] and `rmarkdown` [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `tibble` [@kirill2023], `gtools` [@gregory2023], `dplyr` [@hadley2023], `stats` [@core2025], `tidyr` [@hadley2024], `purrr` [@hadley2025], `mvtnorm` [@alan2009], `geozoo` [@barret2016], and `MASS` [@venables2002]. 
 
 
 

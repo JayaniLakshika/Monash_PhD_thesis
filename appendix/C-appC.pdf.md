@@ -26,9 +26,92 @@
 :::
 
 
-## Videos links
+## Scripts
 
-Animations of the $p\text{-}D$ tours that used for the study are available on YouTube at the links given in @tbl-links-html.
+
+::: {#tbl-script-desc .cell layout-align="center" tbl-pos='H' tbl-cap='R script files used to generate outputs in the main paper.'}
+::: {.cell-output-display}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{8.7cm}>{\raggedright\arraybackslash}p{6cm}>{\raggedright\arraybackslash}p{8.7cm}}
+\toprule
+\textbf{Script} & \textbf{Description}\\
+\midrule
+\endfirsthead
+\multicolumn{2}{@{}l}{\textit{(continued)}}\\
+\toprule
+\textbf{Script} & \textbf{Description}\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+additional\_functions.R & Helper functions to render the main paper.\\
+01\_attention\_check\_data\_structures.R & Function to generate three- and four- Gaussian clusters data  for attention check.\\
+01\_data\_structure\_components.R & Functions to generate data structure components for non-attention check.\\
+02\_data\_structures.R & Functions to generate three clusters data structure for non-attention check.\\
+03\_exp\_design\_with\_method\_and\_distance\_factor.R & Creates the experimental design, varying NLDR method and distance scale factors.\\
+04\_exp\_design\_with\_new\_ds\_factors.R & Extends the experimental design to include additional distance scale factor.\\
+05\_gen\_clust3\_attention\_check\_data.R & Generates three-cluster data for attention check.\\
+05\_gen\_cluster3\_high\_d\_data.R & Generates three-cluster data with medium-large distance scale factor.\\
+06\_gen\_clusters3\_with\_diff\_dist.R & Generates three-cluster data with varying inter-cluster distance scale factors.\\
+09\_gen\_clusters\_merge\_all\_data.R & Merges all generated cluster data (attention and non-attention check) into a single combined dataset.\\
+10\_gen\_embeddings.R & Computes multiple NLDR embeddings for specific distance scale factor.\\
+11\_comb\_emb\_default\_data.R & Combines NLDR embeddings for all distance scale factors.\\
+12\_comb\_data.R & Merge all NLDR embeddings generated for attention and non-attention check.\\
+13\_data\_processing\_method\_ds\_factor\_missings.R & Processes collected experimental data and generates the `result\_method\_ds\_factor\_missings.rds` file, containing all relevant details for the same data structure shown in both displays.\\
+13\_data\_processing\_method\_ds\_factor.R & Processes collected experimental data and generates the `result\_method\_ds\_factor.rds` file, containing all relevant details for the same data structure shown in both displays.\\
+17\_compute\_distance\_btw\_centroids.R & Computes different distance metrics between cluster in the high-dimensional space.\\
+19\_find\_which\_replicates\_missing.R & Identifies missing responses across experimental conditions.\\*
+\end{longtable}
+\endgroup{}
+
+
+:::
+:::
+
+
+
+## Data structures
+
+@tbl-dt-str summarizes the three-cluster data structures used in the experiment. Each data structure was generated using the `cardinalR` package [@jayani2025b] and comprises three clusters with distinct geometric forms. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in $4\text{-}D$ space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods.
+
+
+::: {#tbl-dt-str .cell layout-align="center" tbl-cap='Description of the simulated three-cluster data structures. Each data structure consists of three clusters with different geometric shapes.'}
+::: {.cell-output-display}
+
+\begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{3cm}}
+\toprule
+Data structure & Cluster1 & Cluster2 & Cluster3\\
+\midrule
+three\_clust\_01 & curv & elliptical & blunted\_cone\\
+three\_clust\_02 & s\_curve & cube & pyramid\_rectangular\_base\\
+three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base\\
+three\_clust\_04 & curv2 & gaussian & filled\_hexagonal\_pyramid\\
+three\_clust\_05 & nonlinear\_hyperbola & elliptical & blunted\_cone\\
+three\_clust\_06 & crescent & cube & pyramid\_rectangular\_base\\
+three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base\\
+three\_clust\_08 & conic\_spiral & gaussian & filled\_hexagonal\_pyramid\\
+three\_clust\_09 & helical\_hyper\_spiral & cube & blunted\_cone\\
+three\_clust\_10 & spherical\_spiral & gaussian & pyramid\_triangular\_base\\
+three\_clust\_11 & curv & elliptical & pyramid\_rectangular\_base\\
+three\_clust\_12 & s\_curve & hemisphere & filled\_hexagonal\_pyramid\\
+three\_clust\_13 & curvy\_cylinder & cube & blunted\_cone\\
+three\_clust\_14 & curv2 & gaussian & pyramid\_triangular\_base\\
+three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base\\
+three\_clust\_16 & crescent & hemisphere & filled\_hexagonal\_pyramid\\
+three\_clust\_17 & nonlinear\_hyperbola2 & cube & blunted\_cone\\
+three\_clust\_18 & conic\_spiral & gaussian & pyramid\_triangular\_base\\
+\bottomrule
+\end{tabular}
+
+
+:::
+:::
+
+
+Animations of the $4\text{-}D$ tours that used for the study are available on YouTube at the links given in @tbl-links-html.
 
 
 ::: {.cell layout-align="center"}
@@ -45,8 +128,8 @@ Animations of the $p\text{-}D$ tours that used for the study are available on Yo
   <tr>
    <th style="text-align:left;"> data structure </th>
    <th style="text-align:left;"> small </th>
-   <th style="text-align:left;"> medium </th>
-   <th style="text-align:left;"> large </th>
+   <th style="text-align:left;"> small-medium </th>
+   <th style="text-align:left;"> medium-large </th>
   </tr>
  </thead>
 <tbody>
@@ -166,53 +249,14 @@ Animations of the $p\text{-}D$ tours that used for the study are available on Yo
 :::
 
 
-## Data structures
 
-@tbl-dt-str summarizes the three-cluster data structures used in the experiment. Each data structure was generated using the `cardinalR` package and comprises three clusters with distinct geometric forms. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in $4\text{-}D$ space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods.
+## $2\text{-}D$ NLDR layouts
 
-
-::: {#tbl-dt-str .cell layout-align="center" tbl-cap='Description of the simulated three-cluster data structures. Each data structure consists of three clusters with different geometric shapes.'}
-::: {.cell-output-display}
-
-\begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{3cm}}
-\toprule
-Data structure & Cluster1 & Cluster2 & Cluster3\\
-\midrule
-three\_clust\_01 & curv & elliptical & blunted\_cone\\
-three\_clust\_02 & s\_curve & cube & pyramid\_rectangular\_base\\
-three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base\\
-three\_clust\_04 & curv2 & gaussian & filled\_hexagonal\_pyramid\\
-three\_clust\_05 & nonlinear\_hyperbola & elliptical & blunted\_cone\\
-three\_clust\_06 & crescent & cube & pyramid\_rectangular\_base\\
-three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base\\
-three\_clust\_08 & conic\_spiral & gaussian & filled\_hexagonal\_pyramid\\
-three\_clust\_09 & helical\_hyper\_spiral & cube & blunted\_cone\\
-three\_clust\_10 & spherical\_spiral & gaussian & pyramid\_triangular\_base\\
-three\_clust\_11 & curv & elliptical & pyramid\_rectangular\_base\\
-three\_clust\_12 & s\_curve & hemisphere & filled\_hexagonal\_pyramid\\
-three\_clust\_13 & curvy\_cylinder & cube & blunted\_cone\\
-three\_clust\_14 & curv2 & gaussian & pyramid\_triangular\_base\\
-three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base\\
-three\_clust\_16 & crescent & hemisphere & filled\_hexagonal\_pyramid\\
-three\_clust\_17 & nonlinear\_hyperbola2 & cube & blunted\_cone\\
-three\_clust\_18 & conic\_spiral & gaussian & pyramid\_triangular\_base\\
-\bottomrule
-\end{tabular}
-
-
-:::
-:::
-
-
-XX Add projections for the data
-
-## $2\text{-}D$ layouts
-
-All $2\text{-}D$ layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts](https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods with default hyper-parameter settings for the simulated $4\text{-}D$ data structures.
+All $2\text{-}D$ NLDR layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/paper-vis-experiment/figures/layouts](https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) with default hyper-parameter settings for the simulated $4\text{-}D$ data structures.
 
 ## Distance metrics
 
-To evaluate how well NLDR methods preserve the underlying structure of high-dimensional data, we considered several inter-cluster distance metrics that quantify the degree of cluster separation. These metrics provide complementary perspectives on how distinct or overlapping clusters are in the original space, allowing quantitative comparison of separability across NLDR methods.
+To quantify cluster separation in the high-dimensional space, we considered several inter-cluster distance metrics that capture different aspects of separability (@fig-distance-metrics). Together, these metrics reflect both global separation between clusters and more local boundary proximity.
 
 
 ::: {.cell layout-align="center"}
@@ -223,11 +267,14 @@ To evaluate how well NLDR methods preserve the underlying structure of high-dime
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Pairwise relationships among six distance metrics used to quantify cluster separation in the high-dimensional space: between–within (BW) ratio, exponentiated scaled minimum distance, quantile-ranked average between-cluster distance, Pearson–Gamma coefficient, average silhouette distance, and square-root–transformed Dunn and Dunn2 indices. The diagonal panels show the distribution of each metric, while the lower panels depict scatterplots colored by distance scaling factor (0.1–1.1). Upper panels report Pearson correlation coefficients for all pairs, with significance indicated by asterisks (*** p < 0.001). Metrics show high positive correlation, confirming that they capture consistent structural variation. The BW ratio and exponentiated minimum distance were chosen for the main analysis because they provide complementary summaries of global cluster separation and local boundary distance, which are directly interpretable in the context of NLDR evaluation.](C-appC_files/figure-pdf/fig-distance-metrics-1.pdf){#fig-distance-metrics fig-align='center' width=100%}
+![Pairwise relationships among six distance metrics used to quantify cluster separation in the high-dimensional space: between–within (BW) ratio, exponentiated scaled minimum distance, quantile-ranked average between-cluster distance, Pearson–Gamma coefficient, average silhouette distance, and square-root–transformed Dunn and Dunn2 indices. The diagonal panels show the distribution of each metric, while the lower panels show scatterplots colored by distance scaling factor (S, SM, M, ML, L). Upper panels report Pearson correlation coefficients for all pairs, with significance indicated by asterisks ($p < 0.001$ '`***`'). Metrics show high positive correlation, confirming that they capture consistent structural variation. The BW ratio and exponentiated minimum distance were chosen for the main analysis because they provide complementary summaries of global cluster separation and local boundary distance.](C-appC_files/figure-pdf/fig-distance-metrics-1.pdf){#fig-distance-metrics fig-align='center' width=100%}
 :::
 :::
 
 
+As shown in @fig-distance-metrics, most metric pairs are strongly positively correlated, indicating that they respond similarly as cluster separation increases. This suggests that the distance scaling used in the simulations effectively controls separability and that the metrics capture related structural changes. The scatterplots also show differences in sensitivity across scaling levels, with some metrics responding more clearly at smaller separations and others providing better discrimination at larger separations.
+
+Based on these patterns, we selected the BW ratio and the exponentiated scaled minimum distance for the main analyses. The BW ratio captures overall separation by contrasting between- and within-cluster dispersion, while the exponentiated minimum distance focuses on the closest boundaries between clusters. Both measures are strongly correlated with the other metrics (upper panels of @fig-distance-metrics) but reflect complementary aspects of separability, allowing us to assess whether perceptual accuracy is driven more by global structure, local proximity, or both.
 
 ## Data collection process
 
@@ -315,7 +362,7 @@ Once the participant records their answers, a new row is added to the "result_df
 
 ### Data cleaning
 
-The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty-three trials, including the demographics and the attention check trial. Participants who exceeded the average time of $5-10$ minutes were excluded, as determined from the pilot study. Following this, individuals who didn't accurately detect the attention check trial were also removed. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set is further refined by filtering out all the responses, which showed the same data structures in $2\text{-}D$ static and motion plots.
+The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty-three trials, including the demographics and the attention check trial. Participants who exceeded the average time of $5-10$ minutes were excluded, as determined from the pilot study. Following this, individuals who didn't accurately detect the attention check trial were also removed. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set is further refined by filtering out all the responses, which showed the same data structures in $2\text{-}D$ NLDR plot and tour.
 
 ### Demographics
 
@@ -415,7 +462,7 @@ Total & 18 & 109 & 127 & 100.00\\
 
 
 
-::: {#tbl-nldr .cell layout-align="center" tbl-cap='Summary of the previous experience in Non-linear dimension reduction techniques of participants recruited for this study.'}
+::: {#tbl-nldr .cell layout-align="center" tbl-cap='Summary of the previous experience in Nonlinear dimension reduction techniques of participants recruited for this study.'}
 ::: {.cell-output-display}
 
 \begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}}

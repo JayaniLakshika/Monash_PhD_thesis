@@ -28,6 +28,37 @@
 
 ## Scripts
 
+
+::: {#tbl-script-desc .cell layout-align="center" tbl-pos='H' tbl-cap='R script files used to generate outputs in the main paper.'}
+::: {.cell-output-display}
+
+
+|Script                                                 |Description                                                                                                                                        |
+|:------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------|
+|additional\_functions.R                                |Helper functions to render the main paper.                                                                                                         |
+|01\_attention\_check\_data\_structures.R               |Function to generate three- and four- Gaussian clusters data  for attention check.                                                                 |
+|01\_data\_structure\_components.R                      |Functions to generate data structure components for non-attention check.                                                                           |
+|02\_data\_structures.R                                 |Functions to generate three clusters data structure for non-attention check.                                                                       |
+|03\_exp\_design\_with\_method\_and\_distance\_factor.R |Creates the experimental design, varying NLDR method and distance scale factors.                                                                   |
+|04\_exp\_design\_with\_new\_ds\_factors.R              |Extends the experimental design to include additional distance scale factor.                                                                       |
+|05\_gen\_clust3\_attention\_check\_data.R              |Generates three-cluster data for attention check.                                                                                                  |
+|05\_gen\_cluster3\_high\_d\_data.R                     |Generates three-cluster data with medium-large distance scale factor.                                                                              |
+|06\_gen\_clusters3\_with\_diff\_dist.R                 |Generates three-cluster data with varying inter-cluster distance scale factors.                                                                    |
+|09\_gen\_clusters\_merge\_all\_data.R                  |Merges all generated cluster data (attention and non-attention check) into a single combined dataset.                                              |
+|10\_gen\_embeddings.R                                  |Computes multiple NLDR embeddings for specific distance scale factor.                                                                              |
+|11\_comb\_emb\_default\_data.R                         |Combines NLDR embeddings for all distance scale factors.                                                                                           |
+|12\_comb\_data.R                                       |Merge all NLDR embeddings generated for attention and non-attention check.                                                                         |
+|13\_data\_processing\_method\_ds\_factor\_missings.R   |Processes collected experimental data and generates the file, containing all relevant details for the same data structure shown in both displays.  |
+|13\_data\_processing\_method\_ds\_factor.R             |Processes collected experimental data and generates the  file, containing all relevant details for the same data structure shown in both displays. |
+|17\_compute\_distance\_btw\_centroids.R                |Computes different distance metrics between cluster in the high-dimensional space.                                                                 |
+|19\_find\_which\_replicates\_missing.R                 |Identifies missing responses across experimental conditions.                                                                                       |
+
+
+:::
+:::
+
+
+
 ## Data structures
 
 @tbl-dt-str summarizes the three-cluster data structures used in the experiment. Each data structure was generated using the `cardinalR` package [@jayani2025b] and comprises three clusters with distinct geometric forms. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in $4\text{-}D$ space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods.
@@ -80,8 +111,8 @@ Animations of the $4\text{-}D$ tours that used for the study are available on Yo
   <tr>
    <th style="text-align:left;"> data structure </th>
    <th style="text-align:left;"> small </th>
-   <th style="text-align:left;"> medium </th>
-   <th style="text-align:left;"> large </th>
+   <th style="text-align:left;"> small-medium </th>
+   <th style="text-align:left;"> medium-large </th>
   </tr>
  </thead>
 <tbody>

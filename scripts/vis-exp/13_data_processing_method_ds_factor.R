@@ -90,6 +90,14 @@ data_all <- data_all |>
 data_all <- data_all |>
   select(-user_id, -prolific_id)
 
+## Only filter the is_same ==DIFFERENT and non-attention check
+
+data_all_diff <- data_all |>
+  filter(is_same == "DIFFERENT") |>
+  filter(is_attention_check == "NO")
+
+write_rds(data_all_diff, here::here("data/result_method_ds_factor_diff.rds"))
+
 ## Only filter the is_same ==SAME and non-attention check
 
 data_all <- data_all |>

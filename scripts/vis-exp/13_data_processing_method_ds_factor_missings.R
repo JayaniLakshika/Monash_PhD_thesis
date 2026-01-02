@@ -13,8 +13,14 @@ conflicts_prefer(dplyr::lag)
 design_df <- read_rds(here::here("data/experiment_design_with_methods_and_distance_factor_missings.rds"))
 design_df2 <- read_rds(here::here("data/experiment_design_with_methods_and_distance_factor_missings_batch02.rds"))
 design_df3 <- read_rds(here::here("data/experiment_design_with_methods_and_distance_factor_missings_batch03.rds"))
+design_df4 <- read_rds(here::here("data/experiment_design_with_methods_and_distance_factor_missings_batch04.rds"))
+design_df5 <- read_rds(here::here("data/experiment_design_with_methods_and_distance_factor_missings_batch05.rds")) |>
+  mutate(distance_factor = as.numeric(as.character(distance_factor)))
 
-design_df <- bind_rows(design_df, design_df2, design_df3)
+design_df6 <- read_rds(here::here("data/experiment_design_with_methods_and_distance_factor_missings_batch06.rds")) |>
+  mutate(distance_factor = as.numeric(as.character(distance_factor)))
+
+design_df <- bind_rows(design_df, design_df2, design_df3, design_df4, design_df5, design_df6)
 
 ## To read the results
 results_df <- read_csv(here::here("data/collected_data/method_with_distance_sf/result_df_missings.csv"))
@@ -70,6 +76,14 @@ data_all <- data_all |>
 ## Remove user_id and prolific_id
 data_all <- data_all |>
   select(-user_id, -prolific_id)
+
+## Only filter the is_same ==DIFFERENT and non-attention check
+
+data_all_diff <- data_all |>
+  filter(is_same == "DIFFERENT") |>
+  filter(is_attention_check == "NO")
+
+write_rds(data_all_diff, here::here("data/result_method_ds_factor_diff_missings.rds"))
 
 ## Only filter the is_same ==SAME and non-attention check
 

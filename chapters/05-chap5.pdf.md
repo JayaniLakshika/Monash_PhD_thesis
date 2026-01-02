@@ -76,7 +76,7 @@ Nonlinear dimension reduction (NLDR) is popular for making a suitable $2\text{-}
 
 The dilemma for the analyst is then understanding **why viewers misidentify the data displayed in the $2\text{-}D$ NLDR layout and high-dimensional view when the inter-cluster distance vary**. The research described here provides evidence through a cognitive perception experiment.
 
-The paper is organized as follows. @sec-background provides a summary of the literature on NLDR, high-dimensional data, and visualization methods. @sec-experiment describes the experiment designed to examine people's perception to assess how viewers recognize structure differently from a $2\text{-}D$ NLDR layout and the tour view. @sec-results discusses the collected data, results, and reasons for misperception. Limitations are provided in @sec-limitations. A discussion of the presented work, and ideas for future directions are described in @sec-exp-conclusion.
+The chapter is organized as follows. @sec-background provides a summary of the literature on NLDR, high-dimensional data, and visualization methods. @sec-experiment describes the experiment designed to examine people's perception to assess how viewers recognize structure differently from a $2\text{-}D$ NLDR layout and the tour view. @sec-results discusses the collected data, results, and reasons for misperception. Limitations are provided in @sec-limitations. A discussion of the presented work, and ideas for future directions are described in @sec-exp-conclusion.
 
 ## Background {#sec-background}
 
@@ -154,7 +154,7 @@ Cluster separability was quantified using two complementary measures: the *betwe
 The BW ratio, defined as
 
 $$
-\text{BW Ratio} = \frac{B}{W} = \frac{ \sum_{i=1}^{3} n_i \cdot \|\bar{\mathbf{x}}_i - \bar{\mathbf{x}}\|^2 }{ \sum_{i=1}^{3} \sum_{\mathbf{x}_j \in C_i} \|\mathbf{x}_j - \bar{\mathbf{x}}_i\|^2 }.
+\text{BW Ratio} = \frac{B}{W} = \frac{ \sum_{i=1}^{3} n_i \cdot \|\bar{\mathbf{x}}_i - \bar{\mathbf{x}}\|^2 }{ \sum_{i=1}^{3} \sum_{\mathbf{x}_j \in C_i} \|\mathbf{x}_j - \bar{\mathbf{x}}_i\|^2 },
 $$
 
 where (B) and (W) denote between- and within-cluster dispersion, respectively; $\bar{\mathbf{x}}_i$ is the centroid of cluster $C_i$; $\bar{\mathbf{x}}$ is the overall centroid; and $n_i$ is the number of observations in cluster $C_i$. 
@@ -361,9 +361,9 @@ The participant-level distribution of correct identification proportions (@fig-v
 
 To better understand the visual sources of these misidentifications, we examine tSNE and UMAP layouts for data structures that are commonly confused. @fig-three07-miss and @fig-three12-miss present $2\text{-}D$ projections alongside tSNE and UMAP layouts for `three_clust_12` and `three_clust_07` under both small and large cluster separation. These examples demonstrate that increasing separation does not necessarily lead to clearer or more interpretable low-dimensional representations.
 
-For three_clust_12 (@fig-three12-miss), increased separation leads to improved visual clarity in UMAP, which more effectively preserves the distinct geometric characteristics of the S-curve, hemisphere, and pyramidal component. Nevertheless, even at larger separations, residual distortions and partial proximity between components remain, allowing perceptual ambiguity to persist. In contrast, tSNE introduces fragmentation and compression of curved and volumetric components, disrupting global shape cues and causing visually distinct structures to appear more similar.
+For `three_clust_12` (@fig-three12-miss), increased separation leads to improved visual clarity in UMAP, which more effectively preserves the distinct geometric characteristics of the S-curve, hemisphere, and pyramidal component. Nevertheless, even at larger separations, residual distortions and partial proximity between components remain, allowing perceptual ambiguity to persist. In contrast, tSNE introduces fragmentation and compression of curved and volumetric components, disrupting global shape cues and causing visually distinct structures to appear more similar.
 
-A similar pattern is observed for three_clust_07 (@fig-three07-miss). While greater separation improves cluster spacing in UMAP and supports a smoother representation of the hyperbolic component, some ambiguity remains. For tSNE, increasing separation does not consistently enhance interpretability: the hyperbolic structure is distorted and fragmented, and irregular gaps are introduced, weakening global geometric cues essential for recognition.
+A similar pattern is observed for `three_clust_07` (@fig-three07-miss). While greater separation improves cluster spacing in UMAP and supports a smoother representation of the hyperbolic component, some ambiguity remains. For tSNE, increasing separation does not consistently enhance interpretability: the hyperbolic structure is distorted and fragmented, and irregular gaps are introduced, weakening global geometric cues essential for recognition.
 
 
 ::: {.cell layout-align="center"}
@@ -445,17 +445,14 @@ Overall, these findings emphasize that NLDR methods should be evaluated not only
 
 Future work should extend these analyses to a wider range of experimental conditions, including different noise levels, sample sizes, and dimensionalities, to test the robustness of perceptual failures occur. Comparing with linear methods such as PCA or supervised embeddings could also clarify whether the observed effects are unique to nonlinear transformations or reflect broader perceptual tendencies in cluster interpretation. In addition, exploring alternative data structures such as overlapping clusters, hierarchical manifolds, or continuous gradients would help determine how general these perceptual biases are across more complex topologies. Integrating automated visual diagnostics, for example using computer-vision or deep-learning–based similarity metrics, could complement human judgment and provide objective measures of structure preservation. Finally, combining interactive visualization environments with eye-tracking or cognitive-load assessments could reveal how users process and trust NLDR layouts in real time. Such advances would not only improve the interpretability of dimension reduction methods but also support the development of human-centered evaluation frameworks.
 
+## Supplementary Materials
+
+All the materials to reproduce the chapter can be found at [github.com/JayaniLakshika/paper-vis-experiment](https://github.com/JayaniLakshika/paper-vis-experiment).
+
+The appendix provides additional details on the experimental materials and process, including the three-cluster data structures, $2\text{-}D$ NLDR layouts, inter-cluster distance metrics, and the data collection and analysis processes, along with links to videos, and scripts.
 
 ## Acknowledgments
 
 A pilot study was conducted with sample subjects from the working group of the Department of Econometrics and Business Statistics, Monash University. This pilot study allowed us to estimate the study's completion time and the effect size and fine-tune the application.
 
 These R packages were used for the work: `tidyverse` (@hadley2019), `lme4` (@douglas2015), `broom.mixed` (@ben2024), `ggbeeswarm` (@erik2023), `emmeans` (@russell2025), `patchwork` (@thomas2024), `colorspace` (@achim2020), `kableExtra` (@hao2024), `conflicted` (@hadley2023), `Rtsne` (@jesse2015), `umap` (@tomasz2023), `phateR`(@moon2019), `reticulate` (@kevin2024), `langevitour` (@harisson2024), `gridExtra` (@baptiste2017), `shiny` (@winston2025a), `shinydashboard` (@winston2025b), `shinythemes` (@winston2021), `bslib` (@carson2025), `shinyjs` (@dean2021), `DT` (@yihui2016), `googledrive` (@lucy2025), `googleAuthR` (@mark2024), `googlesheets4` (@jennifer2025), `shinyalert` (@dean2024a), `shinypop` (@fanny2024), `randomNames` (@damian2024), `shinyfullscreen` (@etienne2021), `shinyWidgets` (@victor2025), `hms` (@kirill2025), `shinythemes` (@winston2021), and `shinycssloaders` (@dean2024b). These `python` packages were used for the work: `trimap` (@amid2022) and `pacmap` (@yingfan2021). 
-
-## Supplementary Materials
-
-All the materials to reproduce the paper can be found at [github.com/JayaniLakshika/paper-vis-experiment](https://github.com/JayaniLakshika/paper-vis-experiment).
-
-Appendix: The appendix includes more details about the data structures and their tSNE, UMAP, PHATE, PaCMAP, and TriMAP layouts used in the study.
-
-XXX Add Match-a-roo experiment links
