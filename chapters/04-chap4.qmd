@@ -276,7 +276,7 @@ if (knitr::is_latex_output()) {
         mutate(parm = paste0("\\texttt{", parm, "}")) |>
         mutate(fun = paste0("\\texttt{", fun, "}")) |> 
         kable(format="latex", col.names = c("Function", "Arguments", "Explanation"), escape = FALSE, booktabs = T, table.pos = "!ht", linesep = "")  |>
-        column_spec(1, width = "3.5cm") |>
+        column_spec(1, width = "4cm") |>
         column_spec(2, width = "1.5cm") |>
         column_spec(3, width = "8cm")
 } else {
@@ -2201,7 +2201,7 @@ if (knitr::is_latex_output()) {
     odd_shapes_tb |> 
         mutate(fun = paste0("\\texttt{", fun, "}")) |> 
         kable(format="latex", col.names = c("Function", "Explanation"), escape = FALSE, booktabs = T, linesep = "", table.pos = "!ht")  |>
-        column_spec(1, width = "3.5cm") |>
+        column_spec(1, width = "4.5cm") |>
         column_spec(2, width = "8.5cm")
 } else {
     odd_shapes_tb |> 

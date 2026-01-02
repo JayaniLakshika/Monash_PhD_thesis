@@ -130,7 +130,7 @@ The shape generators form the foundation of the package, providing functions to 
 ::: {#tbl-shape-tb .cell tbl-cap='Overview of shape-generation functions, including their required parameters and a brief description of each geometric structure produced. The generators cover branching patterns, spheres, spirals, pyramids, Gaussian clouds, and other nonlinear shapes.'}
 ::: {.cell-output-display}
 
-\begin{tabular}{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{8cm}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{8cm}}
 \toprule
 Function & Arguments & Explanation\\
 \midrule
@@ -1156,7 +1156,7 @@ By using the shape generators mentioned above, we can create various examples of
 ::: {#tbl-odd-shape-tb .cell tbl-cap='`cardinalR` multiple clusters generation functions.'}
 ::: {.cell-output-display}
 
-\begin{tabular}{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{8.5cm}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{4.5cm}>{\raggedright\arraybackslash}p{8.5cm}}
 \toprule
 Function & Explanation\\
 \midrule
