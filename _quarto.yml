@@ -6,7 +6,7 @@ execute:
   keep-md: true
 
 book:
-  title: "New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Nonlinear Dimension Reduction Layouts of High-dimensional Data"
+  title: "New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Nonlinear Dimension Reduction Layouts of High-Dimensional Data"
   author: "Piyadi Gamage Jayani Lakshika"
   repo-url: https://github.com/JayaniLakshika/Monash_PhD_thesis
   repo-subdir: Thesis

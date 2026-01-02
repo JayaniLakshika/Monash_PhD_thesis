@@ -869,7 +869,15 @@ A similar pattern is observed for three_clust_07 (@fig-three07-miss). While grea
 
 nldr1_three_clust_07 <- get_embeddings(dt_structutre = "three_clust_07") |>
     filter(scale_factor == c(0.1, 1.1)) |>
-    filter(method %in% c("tsne", "umap"))
+    filter(method %in% c("tsne", "umap")) |>
+    mutate(scale_factor = recode(scale_factor,
+                             `0.1` = "S",
+                             `1.1` = "L")) |>
+    mutate(scale_factor = factor(scale_factor,
+                             c("S", "L"))) |>
+    mutate(method = recode(method,
+                             "tsne" = "tSNE",
+                             "umap" = "UMAP")) 
 
 nld_plt1_three_clust_07 <- ggplot(
     data = nldr1_three_clust_07,
@@ -1082,7 +1090,15 @@ three_clust07_proj2_1 <- plot_proj(
 
 nldr1_three_clust_12 <- get_embeddings(dt_structutre = "three_clust_12") |>
   filter(scale_factor == c(0.1, 1.1)) |>
-  filter(method %in% c("tsne", "umap"))
+  filter(method %in% c("tsne", "umap")) |>
+    mutate(scale_factor = recode(scale_factor,
+                             `0.1` = "S",
+                             `1.1` = "L")) |>
+    mutate(scale_factor = factor(scale_factor,
+                           c("S", "L"))) |>
+    mutate(method = recode(method,
+                             "tsne" = "tSNE",
+                             "umap" = "UMAP")) 
 
 nld_plt1_three_clust_12 <- ggplot(
   data = nldr1_three_clust_12,
