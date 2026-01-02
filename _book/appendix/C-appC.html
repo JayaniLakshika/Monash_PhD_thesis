@@ -420,9 +420,14 @@ Table&nbsp;C.1: Videos
 </div>
 </section><section id="data-structures" class="level2" data-number="C.2"><h2 data-number="C.2" class="anchored" data-anchor-id="data-structures">
 <span class="header-section-number">C.2</span> Data structures</h2>
+<p><a href="#tbl-dt-str" class="quarto-xref">Table&nbsp;<span>C.2</span></a> summarizes the three-cluster data structures used in the experiment. Each data structure was generated using the <code>cardinalR</code> package and comprises three clusters with distinct geometric forms. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in <span class="math inline">4\text{-}D</span> space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods.</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-dt-str" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-dt-str-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.2: Description of the simulated three-cluster data structures. Each data structure consists of three clusters with different geometric shapes.
+</figcaption><div aria-describedby="tbl-dt-str-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 20%">
 <col style="width: 29%">
@@ -548,7 +553,10 @@ Table&nbsp;C.1: Videos
 </table>
 </div>
 </div>
-<p>XX Add the table of data components XX Add tour and projections for the data</p>
+</figure>
+</div>
+</div>
+<p>XX Add projections for the data</p>
 </section><section id="text-d-layouts" class="level2" data-number="C.3"><h2 data-number="C.3" class="anchored" data-anchor-id="text-d-layouts">
 <span class="header-section-number">C.3</span> <span class="math inline">2\text{-}D</span> layouts</h2>
 <p>All <span class="math inline">2\text{-}D</span> layouts used in the experiment are available in the supplementary repository: <a href="https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts">github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts</a>. These include all <span class="math inline">2\text{-}D</span> embeddings generated under different NLDR methods with default hyper-parameter settings for the simulated <span class="math inline">4\text{-}D</span> data structures.</p>
@@ -670,12 +678,13 @@ Figure&nbsp;C.8: The end page of the study app.
 <section id="data-cleaning" class="level3"><h3 class="anchored" data-anchor-id="data-cleaning">Data cleaning</h3>
 <p>The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty-three trials, including the demographics and the attention check trial. Participants who exceeded the average time of <span class="math inline">5-10</span> minutes were excluded, as determined from the pilot study. Following this, individuals who didn’t accurately detect the attention check trial were also removed. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set is further refined by filtering out all the responses, which showed the same data structures in <span class="math inline">2\text{-}D</span> static and motion plots.</p>
 </section><section id="demographics" class="level3"><h3 class="anchored" data-anchor-id="demographics">Demographics</h3>
-<p>Along with the responses to the trials, we have collected a series of demographic information including preferred pronoun, age range category, education background, and previous experience in PCA and Non-linear dimension reduction techniques. <a href="#tbl-pronoun" class="quarto-xref">Table&nbsp;<span>C.2</span></a>, <a href="#tbl-age" class="quarto-xref">Table&nbsp;<span>C.3</span></a>, <a href="#tbl-education" class="quarto-xref">Table&nbsp;<span>C.4</span></a>, <a href="#tbl-pca" class="quarto-xref">Table&nbsp;<span>C.5</span></a>, and <a href="#tbl-nldr" class="quarto-xref">Table&nbsp;<span>C.6</span></a> provide summaries of the demographic data.</p>
-<p>XXX After collecting data need to add interpretations</p>
+<p>Along with the responses to the trials, we have collected a series of demographic information including preferred pronoun, age range category, education background, and previous experience in PCA and Non-linear dimension reduction techniques. <a href="#tbl-pronoun" class="quarto-xref">Table&nbsp;<span>C.3</span></a>, <a href="#tbl-age" class="quarto-xref">Table&nbsp;<span>C.4</span></a>, <a href="#tbl-education" class="quarto-xref">Table&nbsp;<span>C.5</span></a>, <a href="#tbl-pca" class="quarto-xref">Table&nbsp;<span>C.6</span></a>, and <a href="#tbl-nldr" class="quarto-xref">Table&nbsp;<span>C.7</span></a> provide summaries of the demographic data.</p>
+<p>The participants are fairly balanced in terms of pronouns, with similar proportions identifying as <em>she/her</em> (<span class="math inline">50.4\%</span>) and <em>he/him</em> (<span class="math inline">48.0\%</span>), and a small number identifying as <em>they/them</em> (<span class="math inline">1.6\%</span>). Participants cover a wide age range, with most between <span class="math inline">25</span> and <span class="math inline">34</span> years old (<span class="math inline">35.4\%</span>), followed by those aged <span class="math inline">18–24</span> (<span class="math inline">20.5\%</span>) and <span class="math inline">35–44</span> (<span class="math inline">19.7\%</span>). The sample has more younger and mid-adult age groups, while still including representation from older participants.</p>
+<p>Most participants have completed an undergraduate degree (<span class="math inline">44.9\%</span>) or a postgraduate qualification (<span class="math inline">26.8\%</span>), with others reporting some undergraduate study (<span class="math inline">21.3\%</span>). Only a small proportion did not complete high school. Prior experience with dimension reduction methods is limited: the majority report no previous experience with PCA (<span class="math inline">84.2\%</span>) or nonlinear dimension reduction techniques (<span class="math inline">86.6\%</span>). This suggests that most participants approached the task without strong prior familiarity, allowing the results to reflect general perceptual interpretation rather than expert knowledge.</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-pronoun" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pronoun-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;C.2: Summary of the pronoun distribution of participants recruited for this study.
+Table&nbsp;C.3: Summary of the pronoun distribution of participants recruited for this study.
 </figcaption><div aria-describedby="tbl-pronoun-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 
@@ -687,7 +696,7 @@ Table&nbsp;C.2: Summary of the pronoun distribution of participants recruited fo
 <div class="cell" data-layout-align="center">
 <div id="tbl-age" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;C.3: Summary of the age distribution of participants recruited for this study.
+Table&nbsp;C.4: Summary of the age distribution of participants recruited for this study.
 </figcaption><div aria-describedby="tbl-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 
@@ -699,7 +708,7 @@ Table&nbsp;C.3: Summary of the age distribution of participants recruited for th
 <div class="cell" data-layout-align="center">
 <div id="tbl-education" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-education-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;C.4: Summary of the educational distribution of participants recruited for this study.
+Table&nbsp;C.5: Summary of the educational distribution of participants recruited for this study.
 </figcaption><div aria-describedby="tbl-education-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 
@@ -711,7 +720,7 @@ Table&nbsp;C.4: Summary of the educational distribution of participants recruite
 <div class="cell" data-layout-align="center">
 <div id="tbl-pca" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;C.5: Summary of the previous experience in PCA of participants recruited for this study.
+Table&nbsp;C.6: Summary of the previous experience in PCA of participants recruited for this study.
 </figcaption><div aria-describedby="tbl-pca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 
@@ -723,7 +732,7 @@ Table&nbsp;C.5: Summary of the previous experience in PCA of participants recrui
 <div class="cell" data-layout-align="center">
 <div id="tbl-nldr" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nldr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;C.6: Summary of the previous experience in Non-linear dimension reduction techniques of participants recruited for this study.
+Table&nbsp;C.7: Summary of the previous experience in Non-linear dimension reduction techniques of participants recruited for this study.
 </figcaption><div aria-describedby="tbl-nldr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 

@@ -97,25 +97,32 @@ links_df |>
 
 ## Data structures
 
+@tbl-dt-str summarizes the three-cluster data structures used in the experiment. Each data structure was generated using the `cardinalR` package and comprises three clusters with distinct geometric forms. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in $4\text{-}D$ space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods.
+
 ```{r}
-#| tbl-cap: "The main arguments for `gen_multicluster()`."
+#| tbl-cap: "Description of the simulated three-cluster data structures. Each data structure consists of three clusters with different geometric shapes."
+#| label: tbl-dt-str
 
 dt_str <- read_csv(here::here("data/vis-exp/data_structures_components.csv")) 
 
 if (knitr::is_latex_output()) {
     dt_str |> 
-        kable(format="latex", col.names = c("Data structure", "Cluster1", "Cluster2", "Cluster3"), booktabs = T, table.pos = "!ht", linesep = "", escape = FALSE)  |>
-        column_spec(1, width = "2cm") |>
-        column_spec(2, width = "3cm") |>
-        column_spec(3, width = "4cm") |>
-        column_spec(4, width = "4cm")
+      mutate(data_structure = gsub("_", "\\\\_", data_structure)) |>
+      mutate(cluster1 = gsub("_", "\\\\_", cluster1)) |>
+      mutate(cluster2 = gsub("_", "\\\\_", cluster2)) |>
+      mutate(cluster3 = gsub("_", "\\\\_", cluster3)) |>
+      kable(format="latex", col.names = c("Data structure", "Cluster1", "Cluster2", "Cluster3"), booktabs = T, table.pos = "!ht", linesep = "", escape = FALSE)  |>
+      column_spec(1, width = "2cm") |>
+      column_spec(2, width = "4cm") |>
+      column_spec(3, width = "2cm") |>
+      column_spec(4, width = "3cm")
 } else {
     dt_str |> 
-        kable(col.names = c("Data structure", "Cluster1", "Cluster2", "Cluster3"), linesep = "", escape = FALSE, table.pos = "!ht") 
+      kable(col.names = c("Data structure", "Cluster1", "Cluster2", "Cluster3"), linesep = "", escape = FALSE, table.pos = "!ht") 
 }
 ```
 
-XX Add tour and projections for the data
+XX Add projections for the data
 
 ## $2\text{-}D$ layouts
 
@@ -265,7 +272,9 @@ The initial step in the data cleaning process involves the selection of subjects
 
 Along with the responses to the trials, we have collected a series of demographic information including preferred pronoun, age range category, education background, and previous experience in PCA and Non-linear dimension reduction techniques. @tbl-pronoun, @tbl-age, @tbl-education, @tbl-pca, and @tbl-nldr provide summaries of the demographic data.  
 
-XXX After collecting data need to add interpretations
+The participants are fairly balanced in terms of pronouns, with similar proportions identifying as *she/her* ($50.4\%$) and *he/him* ($48.0\%$), and a small number identifying as *they/them* ($1.6\%$). Participants cover a wide age range, with most between $25$ and $34$ years old ($35.4\%$), followed by those aged $18–24$ ($20.5\%$) and $35–44$ ($19.7\%$). The sample has more younger and mid-adult age groups, while still including representation from older participants.
+
+Most participants have completed an undergraduate degree ($44.9\%$) or a postgraduate qualification ($26.8\%$), with others reporting some undergraduate study ($21.3\%$). Only a small proportion did not complete high school. Prior experience with dimension reduction methods is limited: the majority report no previous experience with PCA ($84.2\%$) or nonlinear dimension reduction techniques ($86.6\%$). This suggests that most participants approached the task without strong prior familiarity, allowing the results to reflect general perceptual interpretation rather than expert knowledge.
 
 ```{r}
 #| label: read-collected-data

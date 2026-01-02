@@ -168,8 +168,10 @@ Animations of the $p\text{-}D$ tours that used for the study are available on Yo
 
 ## Data structures
 
+@tbl-dt-str summarizes the three-cluster data structures used in the experiment. Each data structure was generated using the `cardinalR` package and comprises three clusters with distinct geometric forms. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in $4\text{-}D$ space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods.
 
-::: {.cell layout-align="center"}
+
+::: {#tbl-dt-str .cell layout-align="center" tbl-cap='Description of the simulated three-cluster data structures. Each data structure consists of three clusters with different geometric shapes.'}
 ::: {.cell-output-display}
 
 
@@ -199,8 +201,7 @@ Animations of the $p\text{-}D$ tours that used for the study are available on Yo
 :::
 
 
-XX Add the table of data components
-XX Add tour and projections for the data
+XX Add projections for the data
 
 ## $2\text{-}D$ layouts
 
@@ -317,7 +318,9 @@ The initial step in the data cleaning process involves the selection of subjects
 
 Along with the responses to the trials, we have collected a series of demographic information including preferred pronoun, age range category, education background, and previous experience in PCA and Non-linear dimension reduction techniques. @tbl-pronoun, @tbl-age, @tbl-education, @tbl-pca, and @tbl-nldr provide summaries of the demographic data.  
 
-XXX After collecting data need to add interpretations
+The participants are fairly balanced in terms of pronouns, with similar proportions identifying as *she/her* ($50.4\%$) and *he/him* ($48.0\%$), and a small number identifying as *they/them* ($1.6\%$). Participants cover a wide age range, with most between $25$ and $34$ years old ($35.4\%$), followed by those aged $18–24$ ($20.5\%$) and $35–44$ ($19.7\%$). The sample has more younger and mid-adult age groups, while still including representation from older participants.
+
+Most participants have completed an undergraduate degree ($44.9\%$) or a postgraduate qualification ($26.8\%$), with others reporting some undergraduate study ($21.3\%$). Only a small proportion did not complete high school. Prior experience with dimension reduction methods is limited: the majority report no previous experience with PCA ($84.2\%$) or nonlinear dimension reduction techniques ($86.6\%$). This suggests that most participants approached the task without strong prior familiarity, allowing the results to reflect general perceptual interpretation rather than expert knowledge.
 
 
 ::: {.cell layout-align="center"}

@@ -1319,7 +1319,7 @@ In contrast, the `gen_hollowsphere(n, p)` function, a wrapper around `geozoo::sp
 hollowsphere <- gen_hollowsphere(n = 1000, p = 4)
 ```
 
-In addition, the `gen_gridedsphere(n)` function constructs a $p$-dimensional dataset consisting of approximately $n$ points arranged on the surface of the unit $(p-1)$-sphere embedded in $\mathbb{R}^p$ (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-sphere d"} else { "@fig:sphere-proj d"})`). Rather than sampling points uniformly, this function creates a deterministic grid in spherical coordinates, using $(p-1)$ angular variables: the first $(p-2)$ angles are taken from $[0, \pi]$, and the final angle from $[0, 2\pi]$. The number of grid points along each angular dimension is determined by decomposing $n$ into $(p-1)$ approximately equal integer factors via `gen_nproduct(n, p - 1)`. 
+In addition, the `gen_gridedsphere(n)` function constructs a $p$-dimensional dataset consisting of approximately $n$ points arranged on the surface of the unit $(p-1)$-sphere embedded in $\mathbb{R}^p$ (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-sphere d"} else { "@fig-sphere-proj d"})`). Rather than sampling points uniformly, this function creates a deterministic grid in spherical coordinates, using $(p-1)$ angular variables: the first $(p-2)$ angles are taken from $[0, \pi]$, and the final angle from $[0, 2\pi]$. The number of grid points along each angular dimension is determined by decomposing $n$ into $(p-1)$ approximately equal integer factors via `gen_nproduct(n, p - 1)`. 
 
 Each grid point is subsequently mapped into Cartesian space via the standard hyperspherical-to-Cartesian transformation,
 

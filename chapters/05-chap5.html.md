@@ -76,7 +76,7 @@ Nonlinear dimension reduction (NLDR) is popular for making a suitable $2\text{-}
 
 The dilemma for the analyst is then understanding **why viewers misidentify the data displayed in the $2\text{-}D$ NLDR layout and high-dimensional view when the inter-cluster distance vary**. The research described here provides evidence through a cognitive perception experiment.
 
-The paper is organized as follows. @sec-background provides a summary of the literature on NLDR, high-dimensional data, and visualization methods. @sec-experiment describes the experiment designed to examine people's perception to assess how viewers recognize structure differently from a $2\text{-}D$ NLDR layout and the tour view. @sec-results discusses the collected data, results, and reasons for misperception. Limitations are provided in @sec-limitations. A discussion of the presented work, and ideas for future directions are described in @sec-conclusion.
+The paper is organized as follows. @sec-background provides a summary of the literature on NLDR, high-dimensional data, and visualization methods. @sec-experiment describes the experiment designed to examine people's perception to assess how viewers recognize structure differently from a $2\text{-}D$ NLDR layout and the tour view. @sec-results discusses the collected data, results, and reasons for misperception. Limitations are provided in @sec-limitations. A discussion of the presented work, and ideas for future directions are described in @sec-exp-conclusion.
 
 ## Background {#sec-background}
 
@@ -419,7 +419,7 @@ In this study, we used a specific data structure consisting of three distinct cl
 
 To keep the experiment fair and consistent across trials, we approximately fixed the distance between the clusters in each data structure. We also used five distance scale factors to gradually change how far apart the clusters were. While this controlled setup makes it easier to interpret the results, it does limit how well the findings apply to more complex data structures with uneven or irregular cluster arrangements.
 
-## Conclusions {#sec-conclusion}
+## Conclusions {#sec-exp-conclusion}
 
 This study provides empirical evidence that NLDR methods differ substantially in how well they preserve high-dimensional structures that are perceptually meaningful for classification and clustering. By combining a controlled simulation of three clusters with varying separation, shape, and size, and a human recognition experiment, we quantified how structural separability in the original space translates into correct identification of clusters in $2\text{-}D$ representations.
 

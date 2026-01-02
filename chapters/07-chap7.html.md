@@ -134,7 +134,7 @@ A Shiny application for `quollr` is accessible via one of the mirror sites at [m
 ## Supporting R packages
 
 <!--need to update at the end of writing-->
-In addition, a number of R packages were essential in the development of this work, including `tidyverse` [@tidyverse], `lmtest` [@lmtest], `kableExtra` [@kableextra], `patchwork` [@patchwork], `glue` [@glue], `ggpcp` [@ggpcp], `here` [@here], and `knitr` [@knitr]. (Final package list to be confirmed upon completion of writing.)
+In addition, a number of R packages were essential in the development of this work, including (Final package list to be confirmed upon completion of writing.)
 
 ## Research workflow and project organization
 
