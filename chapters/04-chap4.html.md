@@ -1,4 +1,4 @@
-# cardinalR: cardinalR: Generating Interesting High-Dimensional Data Structures {#sec-fourth-paper}
+# cardinalR: Generating Interesting High-Dimensional Data Structures {#sec-fourth-paper}
 
 Simulated high dimensional data is useful for testing, validating, and improving algorithms used in dimension reduction, supervised and unsupervised learning. High-dimensional data is characterized by multiple variables that are dependent or associated in some way, such as linear, nonlinear, clustering or anomalies. Here we provide new methods for generating a variety of high-dimensional structures using mathematical functions and statistical distributions organized into the R package `cardinalR`. Several example data sets are also provided. These will be useful for researchers to better understand how different analytical methods work and can be improved, with a special focus on nonlinear dimension reduction methods. This package enriches the existing toolset of benchmark datasets for evaluating algorithms.
 
