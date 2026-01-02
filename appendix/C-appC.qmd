@@ -139,7 +139,14 @@ To evaluate how well NLDR methods preserve the underlying structure of high-dime
 ## To join the distance
 distance_df <- read_rds(here::here("data/vis-exp/three_clust_min_avg_dist_df.rds")) |>
   filter(distance_sf != 0.8) |>
-  mutate(distance_sf = as.factor(distance_sf)) |>
+  mutate(distance_sf = recode(distance_sf,
+                           `0.1` = "S",
+                           `0.6` = "SM",
+                           `0.9` = "M",
+                           `1` = "ML",
+                           `1.1` = "L")) |>
+  mutate(distance_sf = factor(distance_sf, 
+                              levels = c("S", "SM", "M", "ML", "L"))) |>
   mutate(bw_ratio = 1/wb_ratio)
 
 metrics <- c("min_dist", "avg_btw_dist", "bw_ratio", "dunn", "dunn2",
