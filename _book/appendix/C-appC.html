@@ -186,7 +186,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/02-chap2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Choosing Better NLDR Layouts by Evaluating the Model in the High-Dimensional Data Space</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -561,7 +561,7 @@ Table&nbsp;C.2: Videos
 <p>All <span class="math inline">2\text{-}D</span> layouts used in the experiment are available in the supplementary repository: <a href="https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts">github.com/JayaniLakshika/paper-vis-experiment/figures/layouts</a>. These include all <span class="math inline">2\text{-}D</span> embeddings generated under different NLDR methods with default hyper-parameter settings for the simulated <span class="math inline">4\text{-}D</span> data structures.</p>
 </section><section id="distance-metrics" class="level2" data-number="C.4"><h2 data-number="C.4" class="anchored" data-anchor-id="distance-metrics">
 <span class="header-section-number">C.4</span> Distance metrics</h2>
-<p>To evaluate how well NLDR methods preserve the underlying structure of high-dimensional data, we considered several inter-cluster distance metrics that quantify the degree of cluster separation (<a href="#fig-distance-metrics" class="quarto-xref">Figure&nbsp;<span>C.1</span></a>). These metrics provide complementary perspectives on how distinct or overlapping clusters are in the high-dimensional space, allowing quantitative comparison of separability across NLDR methods.</p>
+<p>To quantify cluster separation in the high-dimensional space, we considered several inter-cluster distance metrics that capture different aspects of separability (<a href="#fig-distance-metrics" class="quarto-xref">Figure&nbsp;<span>C.1</span></a>). Together, these metrics reflect both global separation between clusters and more local boundary proximity.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-distance-metrics" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -574,6 +574,8 @@ Figure&nbsp;C.1: Pairwise relationships among six distance metrics used to quant
 </div>
 </div>
 </div>
+<p>As shown in <a href="#fig-distance-metrics" class="quarto-xref">Figure&nbsp;<span>C.1</span></a>, most metric pairs are strongly positively correlated, indicating that they respond similarly as cluster separation increases. This suggests that the distance scaling used in the simulations effectively controls separability and that the metrics capture related structural changes. The scatterplots also show differences in sensitivity across scaling levels, with some metrics responding more clearly at smaller separations and others providing better discrimination at larger separations.</p>
+<p>Based on these patterns, we selected the BW ratio and the exponentiated scaled minimum distance for the main analyses. The BW ratio captures overall separation by contrasting between- and within-cluster dispersion, while the exponentiated minimum distance focuses on the closest boundaries between clusters. Both measures are strongly correlated with the other metrics (upper panels of <a href="#fig-distance-metrics" class="quarto-xref">Figure&nbsp;<span>C.1</span></a>) but reflect complementary aspects of separability, allowing us to assess whether perceptual accuracy is driven more by global structure, local proximity, or both.</p>
 </section><section id="data-collection-process" class="level2" data-number="C.5"><h2 data-number="C.5" class="anchored" data-anchor-id="data-collection-process">
 <span class="header-section-number">C.5</span> Data collection process</h2>
 <section id="recruite-participants" class="level3"><h3 class="anchored" data-anchor-id="recruite-participants">Recruite participants</h3>

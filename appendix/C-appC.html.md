@@ -208,7 +208,7 @@ All $2\text{-}D$ layouts used in the experiment are available in the supplementa
 
 ## Distance metrics
 
-To evaluate how well NLDR methods preserve the underlying structure of high-dimensional data, we considered several inter-cluster distance metrics that quantify the degree of cluster separation (@fig-distance-metrics). These metrics provide complementary perspectives on how distinct or overlapping clusters are in the high-dimensional space, allowing quantitative comparison of separability across NLDR methods.
+To quantify cluster separation in the high-dimensional space, we considered several inter-cluster distance metrics that capture different aspects of separability (@fig-distance-metrics). Together, these metrics reflect both global separation between clusters and more local boundary proximity.
 
 
 ::: {.cell layout-align="center"}
@@ -224,6 +224,9 @@ To evaluate how well NLDR methods preserve the underlying structure of high-dime
 :::
 
 
+As shown in @fig-distance-metrics, most metric pairs are strongly positively correlated, indicating that they respond similarly as cluster separation increases. This suggests that the distance scaling used in the simulations effectively controls separability and that the metrics capture related structural changes. The scatterplots also show differences in sensitivity across scaling levels, with some metrics responding more clearly at smaller separations and others providing better discrimination at larger separations.
+
+Based on these patterns, we selected the BW ratio and the exponentiated scaled minimum distance for the main analyses. The BW ratio captures overall separation by contrasting between- and within-cluster dispersion, while the exponentiated minimum distance focuses on the closest boundaries between clusters. Both measures are strongly correlated with the other metrics (upper panels of @fig-distance-metrics) but reflect complementary aspects of separability, allowing us to assess whether perceptual accuracy is driven more by global structure, local proximity, or both.
 
 ## Data collection process
 
