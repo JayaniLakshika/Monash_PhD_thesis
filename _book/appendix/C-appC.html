@@ -290,7 +290,7 @@ window.Quarto = {
 <span class="header-section-number">C.1</span> Scripts</h2>
 </section><section id="data-structures" class="level2" data-number="C.2"><h2 data-number="C.2" class="anchored" data-anchor-id="data-structures">
 <span class="header-section-number">C.2</span> Data structures</h2>
-<p><a href="#tbl-dt-str" class="quarto-xref">Table&nbsp;<span>C.1</span></a> summarizes the three-cluster data structures used in the experiment. Each data structure was generated using the <code>cardinalR</code> package and comprises three clusters with distinct geometric forms. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in <span class="math inline">4\text{-}D</span> space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods.</p>
+<p><a href="#tbl-dt-str" class="quarto-xref">Table&nbsp;<span>C.1</span></a> summarizes the three-cluster data structures used in the experiment. Each data structure was generated using the <code>cardinalR</code> package <span class="citation" data-cites="jayani2025b">(<a href="../refs.html#ref-jayani2025b" role="doc-biblioref">Gamage et al. 2025</a>)</span> and comprises three clusters with distinct geometric forms. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in <span class="math inline">4\text{-}D</span> space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods.</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-dt-str" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-dt-str-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -428,7 +428,7 @@ Table&nbsp;C.1: Description of the simulated three-cluster data structures. Each
 </div>
 <p>Animations of the <span class="math inline">4\text{-}D</span> tours that used for the study are available on YouTube at the links given in <a href="#tbl-links-html" class="quarto-xref">Table&nbsp;<span>C.2</span></a>.</p>
 <div class="cell" data-layout-align="center" data-tbl-pos="H">
-<div id="tbl-links-html" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center" data-tbl-pos="H">
+<div id="tbl-links-html" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-pos="H" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-links-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;C.2: Videos
 </figcaption><div aria-describedby="tbl-links-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -558,7 +558,7 @@ Table&nbsp;C.2: Videos
 </div>
 </section><section id="text-d-nldr-layouts" class="level2" data-number="C.3"><h2 data-number="C.3" class="anchored" data-anchor-id="text-d-nldr-layouts">
 <span class="header-section-number">C.3</span> <span class="math inline">2\text{-}D</span> NLDR layouts</h2>
-<p>All <span class="math inline">2\text{-}D</span> layouts used in the experiment are available in the supplementary repository: <a href="https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts">github.com/JayaniLakshika/paper-vis-experiment/figures/layouts</a>. These include all <span class="math inline">2\text{-}D</span> embeddings generated under different NLDR methods with default hyper-parameter settings for the simulated <span class="math inline">4\text{-}D</span> data structures.</p>
+<p>All <span class="math inline">2\text{-}D</span> NLDR layouts used in the experiment are available in the supplementary repository: <a href="https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts">github.com/JayaniLakshika/paper-vis-experiment/figures/layouts</a>. These include all <span class="math inline">2\text{-}D</span> embeddings generated under different NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) with default hyper-parameter settings for the simulated <span class="math inline">4\text{-}D</span> data structures.</p>
 </section><section id="distance-metrics" class="level2" data-number="C.4"><h2 data-number="C.4" class="anchored" data-anchor-id="distance-metrics">
 <span class="header-section-number">C.4</span> Distance metrics</h2>
 <p>To quantify cluster separation in the high-dimensional space, we considered several inter-cluster distance metrics that capture different aspects of separability (<a href="#fig-distance-metrics" class="quarto-xref">Figure&nbsp;<span>C.1</span></a>). Together, these metrics reflect both global separation between clusters and more local boundary proximity.</p>
@@ -958,6 +958,9 @@ Table&nbsp;C.7: Summary of the previous experience in Nonlinear dimension reduct
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-winston2025a" class="csl-entry" role="listitem">
 Chang, W., Cheng, J., Allaire, J., Sievert, C., Schloerke, B., Xie, Y., Allen, J., McPherson, J., Dipert, A., and Borges, B. (2025), <em><a href="https://CRAN.R-project.org/package=shiny">Shiny: Web application framework for r</a></em>.
+</div>
+<div id="ref-jayani2025b" class="csl-entry" role="listitem">
+Gamage, J. P., Cook, D., Harrison, P., Lydeamore, M., and Talagala, T. S. (2025), <em><a href="https://github.com/jayanilakshika/cardinalR">cardinalR: Collection of data structures</a></em>.
 </div>
 <div id="ref-palan2018" class="csl-entry" role="listitem">
 Palan, S., and Schitter, C. (2018), <span>“Prolific. Ac—a subject pool for online experiments,”</span> <em>Journal of Behavioral and Experimental Finance</em>, Elsevier, 17, 22–27.
