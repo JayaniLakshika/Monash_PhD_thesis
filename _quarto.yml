@@ -68,3 +68,5 @@ format:
           \newcommand\sD{$7\text{-}D$}
           \usepackage{bm}
           \newcommand{\mathbfit}[1]{\bm{#1}}
+          \usepackage{array}
+          \usepackage{booktabs}

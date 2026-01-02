@@ -331,20 +331,14 @@ Most participants have completed an undergraduate degree ($44.9\%$) or a postgra
 
 ::: {#tbl-pronoun .cell layout-align="center" tbl-cap='Summary of the pronoun distribution of participants recruited for this study.'}
 ::: {.cell-output-display}
-\begin{table}
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{lrrrr}
-\toprule
-Pronoun & Period I & Period II & Total & \%\\
-\midrule
-he/him & 7 & 54 & 61 & 48.03\\
-she/her & 11 & 53 & 64 & 50.39\\
-they/them & 0 & 2 & 2 & 1.57\\
-Total & 18 & 109 & 127 & 100.00\\
-\bottomrule
-\end{tabular}}
-\end{table}
+
+
+|Pronoun   | Period I| Period II| Total|      %|
+|:---------|--------:|---------:|-----:|------:|
+|he/him    |        7|        54|    61|  48.03|
+|she/her   |       11|        53|    64|  50.39|
+|they/them |        0|         2|     2|   1.57|
+|Total     |       18|       109|   127| 100.00|
 
 
 :::
@@ -354,23 +348,16 @@ Total & 18 & 109 & 127 & 100.00\\
 
 ::: {#tbl-age .cell layout-align="center" tbl-cap='Summary of the age distribution of participants recruited for this study.'}
 ::: {.cell-output-display}
-\begin{table}
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{lrrrr}
-\toprule
-Age group & Period I & Period II & Total & \%\\
-\midrule
-18 - 24 & 3 & 23 & 26 & 20.47\\
-25 - 34 & 9 & 36 & 45 & 35.43\\
-35 - 44 & 3 & 22 & 25 & 19.69\\
-45 - 54 & 1 & 12 & 13 & 10.24\\
-Over 55 & 2 & 16 & 18 & 14.17\\
-\addlinespace
-Total & 18 & 109 & 127 & 100.00\\
-\bottomrule
-\end{tabular}}
-\end{table}
+
+
+|Age group | Period I| Period II| Total|      %|
+|:---------|--------:|---------:|-----:|------:|
+|18 - 24   |        3|        23|    26|  20.47|
+|25 - 34   |        9|        36|    45|  35.43|
+|35 - 44   |        3|        22|    25|  19.69|
+|45 - 54   |        1|        12|    13|  10.24|
+|Over 55   |        2|        16|    18|  14.17|
+|Total     |       18|       109|   127| 100.00|
 
 
 :::
@@ -380,23 +367,16 @@ Total & 18 & 109 & 127 & 100.00\\
 
 ::: {#tbl-education .cell layout-align="center" tbl-cap='Summary of the educational distribution of participants recruited for this study.'}
 ::: {.cell-output-display}
-\begin{table}
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{lrrrr}
-\toprule
-Education & Period I & Period II & Total & \%\\
-\midrule
-Completed some undergraduate courses & 4 & 23 & 27 & 21.26\\
-Did not complete high school & 0 & 4 & 4 & 3.15\\
-Higher degree master or doctorate & 3 & 31 & 34 & 26.77\\
-Prefer not to answer & 3 & 2 & 5 & 3.94\\
-Undergraduate degree (A bachelor) & 8 & 49 & 57 & 44.88\\
-\addlinespace
-Total & 18 & 109 & 127 & 100.00\\
-\bottomrule
-\end{tabular}}
-\end{table}
+
+
+|Education                            | Period I| Period II| Total|      %|
+|:------------------------------------|--------:|---------:|-----:|------:|
+|Completed some undergraduate courses |        4|        23|    27|  21.26|
+|Did not complete high school         |        0|         4|     4|   3.15|
+|Higher degree master or doctorate    |        3|        31|    34|  26.77|
+|Prefer not to answer                 |        3|         2|     5|   3.94|
+|Undergraduate degree (A bachelor)    |        8|        49|    57|  44.88|
+|Total                                |       18|       109|   127| 100.00|
 
 
 :::
@@ -406,19 +386,13 @@ Total & 18 & 109 & 127 & 100.00\\
 
 ::: {#tbl-pca .cell layout-align="center" tbl-cap='Summary of the previous experience in PCA of participants recruited for this study.'}
 ::: {.cell-output-display}
-\begin{table}
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{lrrrr}
-\toprule
-Experience with PCA & Period I & Period II & Total & \%\\
-\midrule
-No & 15 & 92 & 107 & 84.25\\
-Yes & 3 & 17 & 20 & 15.75\\
-Total & 18 & 109 & 127 & 100.00\\
-\bottomrule
-\end{tabular}}
-\end{table}
+
+
+|Experience with PCA | Period I| Period II| Total|      %|
+|:-------------------|--------:|---------:|-----:|------:|
+|No                  |       15|        92|   107|  84.25|
+|Yes                 |        3|        17|    20|  15.75|
+|Total               |       18|       109|   127| 100.00|
 
 
 :::
@@ -428,19 +402,13 @@ Total & 18 & 109 & 127 & 100.00\\
 
 ::: {#tbl-nldr .cell layout-align="center" tbl-cap='Summary of the previous experience in Non-linear dimension reduction techniques of participants recruited for this study.'}
 ::: {.cell-output-display}
-\begin{table}
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{lrrrr}
-\toprule
-Experience with NLDR & Period I & Period II & Total & \%\\
-\midrule
-No & 15 & 95 & 110 & 86.61\\
-Yes & 3 & 14 & 17 & 13.39\\
-Total & 18 & 109 & 127 & 100.00\\
-\bottomrule
-\end{tabular}}
-\end{table}
+
+
+|Experience with NLDR | Period I| Period II| Total|      %|
+|:--------------------|--------:|---------:|-----:|------:|
+|No                   |       15|        95|   110|  86.61|
+|Yes                  |        3|        14|    17|  13.39|
+|Total                |       18|       109|   127| 100.00|
 
 
 :::

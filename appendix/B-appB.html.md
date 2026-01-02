@@ -1,4 +1,4 @@
-# Appendix: Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space {#sec-appendix-a}
+# Appendix to "Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space" {#sec-appendix-a}
 
 
 
