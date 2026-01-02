@@ -166,6 +166,8 @@ Animations of the $p\text{-}D$ tours that used for the study are available on Yo
 :::
 
 
+## Scripts
+
 ## Data structures
 
 @tbl-dt-str summarizes the three-cluster data structures used in the experiment. Each data structure was generated using the `cardinalR` package and comprises three clusters with distinct geometric forms. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in $4\text{-}D$ space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods.
@@ -203,13 +205,13 @@ Animations of the $p\text{-}D$ tours that used for the study are available on Yo
 
 XX Add projections for the data
 
-## $2\text{-}D$ layouts
+## $2\text{-}D$ NLDR layouts
 
 All $2\text{-}D$ layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts](https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods with default hyper-parameter settings for the simulated $4\text{-}D$ data structures.
 
 ## Distance metrics
 
-To evaluate how well NLDR methods preserve the underlying structure of high-dimensional data, we considered several inter-cluster distance metrics that quantify the degree of cluster separation. These metrics provide complementary perspectives on how distinct or overlapping clusters are in the original space, allowing quantitative comparison of separability across NLDR methods.
+To evaluate how well NLDR methods preserve the underlying structure of high-dimensional data, we considered several inter-cluster distance metrics that quantify the degree of cluster separation (@fig-distance-metrics). These metrics provide complementary perspectives on how distinct or overlapping clusters are in the high-dimensional space, allowing quantitative comparison of separability across NLDR methods.
 
 
 ::: {.cell layout-align="center"}
@@ -220,7 +222,7 @@ To evaluate how well NLDR methods preserve the underlying structure of high-dime
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Pairwise relationships among six distance metrics used to quantify cluster separation in the high-dimensional space: between–within (BW) ratio, exponentiated scaled minimum distance, quantile-ranked average between-cluster distance, Pearson–Gamma coefficient, average silhouette distance, and square-root–transformed Dunn and Dunn2 indices. The diagonal panels show the distribution of each metric, while the lower panels depict scatterplots colored by distance scaling factor (0.1–1.1). Upper panels report Pearson correlation coefficients for all pairs, with significance indicated by asterisks (*** p < 0.001***). Metrics show high positive correlation, confirming that they capture consistent structural variation. The BW ratio and exponentiated minimum distance were chosen for the main analysis because they provide complementary summaries of global cluster separation and local boundary distance, which are directly interpretable in the context of NLDR evaluation.](C-appC_files/figure-html/fig-distance-metrics-1.png){#fig-distance-metrics fig-align='center' width=100%}
+![Pairwise relationships among six distance metrics used to quantify cluster separation in the high-dimensional space: between–within (BW) ratio, exponentiated scaled minimum distance, quantile-ranked average between-cluster distance, Pearson–Gamma coefficient, average silhouette distance, and square-root–transformed Dunn and Dunn2 indices. The diagonal panels show the distribution of each metric, while the lower panels show scatterplots colored by distance scaling factor ($0.1, 0.6, 0.9, 1, 1.1$). Upper panels report Pearson correlation coefficients for all pairs, with significance indicated by asterisks (*** $p < 0.001$). Metrics show high positive correlation, confirming that they capture consistent structural variation. The BW ratio and exponentiated minimum distance were chosen for the main analysis because they provide complementary summaries of global cluster separation and local boundary distance.](C-appC_files/figure-html/fig-distance-metrics-1.png){#fig-distance-metrics fig-align='center' width=100%}
 :::
 :::
 
