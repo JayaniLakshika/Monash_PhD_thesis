@@ -203,11 +203,43 @@ Animations of the $p\text{-}D$ tours that used for the study are available on Yo
 :::
 
 
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![](C-appC_files/figure-html/fig-dt-prj-1.png){#fig-dt-prj fig-align='center' fig-pos='!ht' width=100%}
+:::
+:::
+
+
 XX Add projections for the data
 
 ## $2\text{-}D$ NLDR layouts
 
-All $2\text{-}D$ layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts](https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods with default hyper-parameter settings for the simulated $4\text{-}D$ data structures.
+All $2\text{-}D$ layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/paper-vis-experiment/figures/layouts](https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods with default hyper-parameter settings for the simulated $4\text{-}D$ data structures.
 
 ## Distance metrics
 
@@ -222,7 +254,7 @@ To evaluate how well NLDR methods preserve the underlying structure of high-dime
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Pairwise relationships among six distance metrics used to quantify cluster separation in the high-dimensional space: between–within (BW) ratio, exponentiated scaled minimum distance, quantile-ranked average between-cluster distance, Pearson–Gamma coefficient, average silhouette distance, and square-root–transformed Dunn and Dunn2 indices. The diagonal panels show the distribution of each metric, while the lower panels show scatterplots colored by distance scaling factor ($0.1, 0.6, 0.9, 1, 1.1$). Upper panels report Pearson correlation coefficients for all pairs, with significance indicated by asterisks (*** $p < 0.001$). Metrics show high positive correlation, confirming that they capture consistent structural variation. The BW ratio and exponentiated minimum distance were chosen for the main analysis because they provide complementary summaries of global cluster separation and local boundary distance.](C-appC_files/figure-html/fig-distance-metrics-1.png){#fig-distance-metrics fig-align='center' width=100%}
+![Pairwise relationships among six distance metrics used to quantify cluster separation in the high-dimensional space: between–within (BW) ratio, exponentiated scaled minimum distance, quantile-ranked average between-cluster distance, Pearson–Gamma coefficient, average silhouette distance, and square-root–transformed Dunn and Dunn2 indices. The diagonal panels show the distribution of each metric, while the lower panels show scatterplots colored by distance scaling factor (S, SM, M, ML, L). Upper panels report Pearson correlation coefficients for all pairs, with significance indicated by asterisks ($p < 0.001$ '`***`'). Metrics show high positive correlation, confirming that they capture consistent structural variation. The BW ratio and exponentiated minimum distance were chosen for the main analysis because they provide complementary summaries of global cluster separation and local boundary distance.](C-appC_files/figure-html/fig-distance-metrics-1.png){#fig-distance-metrics fig-align='center' width=100%}
 :::
 :::
 

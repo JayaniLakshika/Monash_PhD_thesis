@@ -291,7 +291,7 @@ window.Quarto = {
 <span class="header-section-number">C.1</span> Videos links</h2>
 <p>Animations of the <span class="math inline">p\text{-}D</span> tours that used for the study are available on YouTube at the links given in <a href="#tbl-links-html" class="quarto-xref">Table&nbsp;<span>C.1</span></a>.</p>
 <div class="cell" data-layout-align="center" data-tbl-pos="H">
-<div id="tbl-links-html" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-pos="H" data-layout-align="center">
+<div id="tbl-links-html" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center" data-tbl-pos="H">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-links-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;C.1: Videos
 </figcaption><div aria-describedby="tbl-links-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -559,13 +559,25 @@ Table&nbsp;C.2: Description of the simulated three-cluster data structures. Each
 </figure>
 </div>
 </div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-dt-prj" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%" data-fig-pos="!ht" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-dt-prj-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C-appC_files/figure-html/fig-dt-prj-1.png" id="fig-dt-prj" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:100.0%" data-fig-pos="!ht">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-dt-prj-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.1
+</figcaption></figure>
+</div>
+</div>
+</div>
 <p>XX Add projections for the data</p>
 </section><section id="text-d-nldr-layouts" class="level2" data-number="C.4"><h2 data-number="C.4" class="anchored" data-anchor-id="text-d-nldr-layouts">
 <span class="header-section-number">C.4</span> <span class="math inline">2\text{-}D</span> NLDR layouts</h2>
-<p>All <span class="math inline">2\text{-}D</span> layouts used in the experiment are available in the supplementary repository: <a href="https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts">github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts</a>. These include all <span class="math inline">2\text{-}D</span> embeddings generated under different NLDR methods with default hyper-parameter settings for the simulated <span class="math inline">4\text{-}D</span> data structures.</p>
+<p>All <span class="math inline">2\text{-}D</span> layouts used in the experiment are available in the supplementary repository: <a href="https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts">github.com/JayaniLakshika/paper-vis-experiment/figures/layouts</a>. These include all <span class="math inline">2\text{-}D</span> embeddings generated under different NLDR methods with default hyper-parameter settings for the simulated <span class="math inline">4\text{-}D</span> data structures.</p>
 </section><section id="distance-metrics" class="level2" data-number="C.5"><h2 data-number="C.5" class="anchored" data-anchor-id="distance-metrics">
 <span class="header-section-number">C.5</span> Distance metrics</h2>
-<p>To evaluate how well NLDR methods preserve the underlying structure of high-dimensional data, we considered several inter-cluster distance metrics that quantify the degree of cluster separation (<a href="#fig-distance-metrics" class="quarto-xref">Figure&nbsp;<span>C.1</span></a>). These metrics provide complementary perspectives on how distinct or overlapping clusters are in the high-dimensional space, allowing quantitative comparison of separability across NLDR methods.</p>
+<p>To evaluate how well NLDR methods preserve the underlying structure of high-dimensional data, we considered several inter-cluster distance metrics that quantify the degree of cluster separation (<a href="#fig-distance-metrics" class="quarto-xref">Figure&nbsp;<span>C.2</span></a>). These metrics provide complementary perspectives on how distinct or overlapping clusters are in the high-dimensional space, allowing quantitative comparison of separability across NLDR methods.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-distance-metrics" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -573,7 +585,7 @@ Table&nbsp;C.2: Description of the simulated three-cluster data structures. Each
 <img src="C-appC_files/figure-html/fig-distance-metrics-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-distance-metrics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;C.1: Pairwise relationships among six distance metrics used to quantify cluster separation in the high-dimensional space: between–within (BW) ratio, exponentiated scaled minimum distance, quantile-ranked average between-cluster distance, Pearson–Gamma coefficient, average silhouette distance, and square-root–transformed Dunn and Dunn2 indices. The diagonal panels show the distribution of each metric, while the lower panels show scatterplots colored by distance scaling factor (<span class="math inline">0.1, 0.6, 0.9, 1, 1.1</span>). Upper panels report Pearson correlation coefficients for all pairs, with significance indicated by asterisks (*** <span class="math inline">p &lt; 0.001</span>). Metrics show high positive correlation, confirming that they capture consistent structural variation. The BW ratio and exponentiated minimum distance were chosen for the main analysis because they provide complementary summaries of global cluster separation and local boundary distance.
+Figure&nbsp;C.2: Pairwise relationships among six distance metrics used to quantify cluster separation in the high-dimensional space: between–within (BW) ratio, exponentiated scaled minimum distance, quantile-ranked average between-cluster distance, Pearson–Gamma coefficient, average silhouette distance, and square-root–transformed Dunn and Dunn2 indices. The diagonal panels show the distribution of each metric, while the lower panels show scatterplots colored by distance scaling factor (S, SM, M, ML, L). Upper panels report Pearson correlation coefficients for all pairs, with significance indicated by asterisks (<span class="math inline">p &lt; 0.001</span> ‘<code>***</code>’). Metrics show high positive correlation, confirming that they capture consistent structural variation. The BW ratio and exponentiated minimum distance were chosen for the main analysis because they provide complementary summaries of global cluster separation and local boundary distance.
 </figcaption></figure>
 </div>
 </div>
@@ -584,10 +596,10 @@ Figure&nbsp;C.1: Pairwise relationships among six distance metrics used to quant
 <p>Subjects were recruited from Prolific <span class="citation" data-cites="palan2018">(<a href="../refs.html#ref-palan2018" role="doc-biblioref">Palan and Schitter 2018</a>)</span>, an online platform, to evaluate the trials. The study expects that the participants are uninvolved judges with no prior knowledge of the data to avoid inadvertently affecting results. Potential subjects needed with fluent in English and have completed at least <span class="math inline">10</span> Prolific studies with a <span class="math inline">98\%</span> approval rate. The Prolific server only considers participants who are age <span class="math inline">18</span> and older.</p>
 <p>All subjects were trained using three example displays to orient them to the evaluation trials and provided <a href="https://drive.google.com/file/d/14o-nSjy50Qw2eoQArK5AhjowLIOe6m14/view">introductory materials</a>. All subjects who completed the task were compensated <span class="math inline">9.96</span> GBP per hour for their time via the Prolific payment system.</p>
 </section><section id="web-application-to-collect-responses" class="level3"><h3 class="anchored" data-anchor-id="web-application-to-collect-responses">Web application to collect responses</h3>
-<p>The survey web application, <a href="https://ebsmonash.shinyapps.io/web_game/">Match-a-roo</a>, is designed to collect survey responses and demographics using the <code>shiny</code> <span class="citation" data-cites="winston2025a">(<a href="../refs.html#ref-winston2025a" role="doc-biblioref">Chang et al. 2025</a>)</span> package in R. Each subject had access to the survey via the <a href="https://www.shinyapps.io/">shiny.io server</a>. The first interface of the survey app contained an introduction, instructions for the survey (<a href="#fig-intro-page" class="quarto-xref">Figure&nbsp;<span>C.3</span></a>), a consent form (<a href="#fig-consent" class="quarto-xref">Figure&nbsp;<span>C.4</span></a>), and buttons to access, for example, actual trials. Participants can try three examples prior to the study where the answers were not recorded (<a href="#fig-example" class="quarto-xref">Figure&nbsp;<span>C.5</span></a>). The subjects were first asked for their consent to the responses being used for analysis.</p>
+<p>The survey web application, <a href="https://ebsmonash.shinyapps.io/web_game/">Match-a-roo</a>, is designed to collect survey responses and demographics using the <code>shiny</code> <span class="citation" data-cites="winston2025a">(<a href="../refs.html#ref-winston2025a" role="doc-biblioref">Chang et al. 2025</a>)</span> package in R. Each subject had access to the survey via the <a href="https://www.shinyapps.io/">shiny.io server</a>. The first interface of the survey app contained an introduction, instructions for the survey (<a href="#fig-intro-page" class="quarto-xref">Figure&nbsp;<span>C.4</span></a>), a consent form (<a href="#fig-consent" class="quarto-xref">Figure&nbsp;<span>C.5</span></a>), and buttons to access, for example, actual trials. Participants can try three examples prior to the study where the answers were not recorded (<a href="#fig-example" class="quarto-xref">Figure&nbsp;<span>C.6</span></a>). The subjects were first asked for their consent to the responses being used for analysis.</p>
 <p>A total of <span class="math inline">1905</span> evaluations from <span class="math inline">127</span> participants has been collected.</p>
-<p>After giving consent, the participant can start the trials. Two visual displays of data are shown where the data may be the same or different (<a href="#fig-act" class="quarto-xref">Figure&nbsp;<span>C.6</span></a>). One of the visual displays is a <span class="math inline">2\text{-}D</span> static plot, and the other is a motion plot made of many <span class="math inline">2\text{-}D</span> plots. The participants were asked to decide whether that data was the same in both displays and to report their confidence about their choice and any comments about the answer.</p>
-<p>When the participants completed the twenty-three evaluations, they were asked for their demographics which included preferred pronoun, the highest level of education achieved, their age category, whether they used principal component analysis in their work, and whether they applied NLDR techniques such as tSNE and UMAP (<a href="#fig-demo" class="quarto-xref">Figure&nbsp;<span>C.7</span></a>). Finally, the participants need to click on prolific URL (<a href="https://app.prolific.co/submissions/complete?cc=CLDDOZ10">https://app.prolific.co/submissions/</a>) to redirect back to the Prolific app (<a href="#fig-end" class="quarto-xref">Figure&nbsp;<span>C.8</span></a>).</p>
+<p>After giving consent, the participant can start the trials. Two visual displays of data are shown where the data may be the same or different (<a href="#fig-act" class="quarto-xref">Figure&nbsp;<span>C.7</span></a>). One of the visual displays is a <span class="math inline">2\text{-}D</span> static plot, and the other is a motion plot made of many <span class="math inline">2\text{-}D</span> plots. The participants were asked to decide whether that data was the same in both displays and to report their confidence about their choice and any comments about the answer.</p>
+<p>When the participants completed the twenty-three evaluations, they were asked for their demographics which included preferred pronoun, the highest level of education achieved, their age category, whether they used principal component analysis in their work, and whether they applied NLDR techniques such as tSNE and UMAP (<a href="#fig-demo" class="quarto-xref">Figure&nbsp;<span>C.8</span></a>). Finally, the participants need to click on prolific URL (<a href="https://app.prolific.co/submissions/complete?cc=CLDDOZ10">https://app.prolific.co/submissions/</a>) to redirect back to the Prolific app (<a href="#fig-end" class="quarto-xref">Figure&nbsp;<span>C.9</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-exp-setup" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -595,7 +607,7 @@ Figure&nbsp;C.1: Pairwise relationships among six distance metrics used to quant
 <img src="../figures/vis-exp/experiment.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exp-setup-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;C.2: Diagram of online experiment setup.
+Figure&nbsp;C.3: Diagram of online experiment setup.
 </figcaption></figure>
 </div>
 </div>
@@ -607,7 +619,7 @@ Figure&nbsp;C.2: Diagram of online experiment setup.
 <img src="../figures/vis-exp/introduction.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-intro-page-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;C.3: The introduction page of the study app.
+Figure&nbsp;C.4: The introduction page of the study app.
 </figcaption></figure>
 </div>
 </div>
@@ -619,7 +631,7 @@ Figure&nbsp;C.3: The introduction page of the study app.
 <img src="../figures/vis-exp/consent.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-consent-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;C.4: The consent form provided in the study app.
+Figure&nbsp;C.5: The consent form provided in the study app.
 </figcaption></figure>
 </div>
 </div>
@@ -631,7 +643,7 @@ Figure&nbsp;C.4: The consent form provided in the study app.
 <img src="../figures/vis-exp/example.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;C.5: The example trial page of the study app.
+Figure&nbsp;C.6: The example trial page of the study app.
 </figcaption></figure>
 </div>
 </div>
@@ -643,7 +655,7 @@ Figure&nbsp;C.5: The example trial page of the study app.
 <img src="../figures/vis-exp/attempt.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-act-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;C.6: The actual trial page of the study app.
+Figure&nbsp;C.7: The actual trial page of the study app.
 </figcaption></figure>
 </div>
 </div>
@@ -655,7 +667,7 @@ Figure&nbsp;C.6: The actual trial page of the study app.
 <img src="../figures/vis-exp/demographics.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-demo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;C.7: The demographics page of the study app.
+Figure&nbsp;C.8: The demographics page of the study app.
 </figcaption></figure>
 </div>
 </div>
@@ -667,12 +679,12 @@ Figure&nbsp;C.7: The demographics page of the study app.
 <img src="../figures/vis-exp/end_page.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-end-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;C.8: The end page of the study app.
+Figure&nbsp;C.9: The end page of the study app.
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>Once a participant starts the study (<a href="#fig-exp-setup" class="quarto-xref">Figure&nbsp;<span>C.2</span></a>), the “eligibility_subject_IDs” Google Sheet is connected and read in the Shiny app to identify which subject IDs have not yet been assigned to anyone, as indicated by the “used” column. If the “used” column is marked as NA, it means that the subject ID has not been assigned.</p>
+<p>Once a participant starts the study (<a href="#fig-exp-setup" class="quarto-xref">Figure&nbsp;<span>C.3</span></a>), the “eligibility_subject_IDs” Google Sheet is connected and read in the Shiny app to identify which subject IDs have not yet been assigned to anyone, as indicated by the “used” column. If the “used” column is marked as NA, it means that the subject ID has not been assigned.</p>
 <p>After identifying the eligible subject IDs, one is randomly assigned to the participant, and “1” is recorded in the “used” column corresponding to that subject ID. This subject ID will later assist in connecting the experiment design, high-dimensional data, and embedding data.</p>
 <p>Once a subject ID is allocated to a participant, the experiment design data is loaded, and the relevant attempts, data structure, and methods are presented to the participant. This process continues until the participant completes all attempts. After determining the data structure and methods, the relevant high-dimensional and embedding data is loaded from “high_d_data_three_clust_all.rds” and “embedding_data_three_clust_all.rds,” respectively, and displayed in both motion and <span class="math inline">2\text{-}D</span> static plots.</p>
 <p>Once the participant records their answers, a new row is added to the “result_df” Google Sheet with their responses. This continues until the participant finishes the study. Finally, after completing the evaluations, participants are asked to fill out a demographics questionnaire. Their responses are then recorded in a new row of the “demographic_details” Google Sheet.</p>

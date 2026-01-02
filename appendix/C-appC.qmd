@@ -88,7 +88,6 @@ links_df <- tibble::tibble(
 links_df |>
   kableExtra::kable(
     format = "html",
-    label = "tbllinks",
     escape = FALSE, 
     booktabs = TRUE
   )
@@ -124,11 +123,118 @@ if (knitr::is_latex_output()) {
 }
 ```
 
+```{r}
+#| label: high-d-proj08
+
+high_d_data <- read_rds(here::here("data/vis-exp/high_d_data_three_close_clust_all.rds"))
+
+three_clust_08_data <- high_d_data |> 
+    filter(dataset == "three_clust_08") |> 
+    filter(scale_factor == 1) |> 
+    filter(sample_size == 7500) |>
+    pull(high_d_data)
+
+three_clust_08_data <- three_clust_08_data[[1]] |> 
+  select(-cluster)
+
+# Apply the scaling
+
+centered_three_clust_08_data <- center_data(three_clust_08_data) |>
+  as_tibble()
+```
+
+```{r}
+#| label: high-d-proj1
+
+## First projection
+prj1 <- cbind(
+  c(0.13547,-0.08077,-0.14494,-0.06269),
+  c(-0.02681,-0.20528,0.06918,0.04658))
+
+
+projected_df <- get_projection(projection = prj1, 
+                               centered_data = centered_three_clust_08_data, 
+                               axis_param = list(limits = 0.5,
+                                                 axis_scaled = 3, 
+                                                 axis_pos_x = -0.4, 
+                                                 axis_pos_y = -0.4, 
+                                                 threshold = 0.03))
+
+three_clust08_proj1 <- plot_proj(
+  proj_obj = projected_df, 
+  point_param = c(1, 0.05, "#000000"), # size, alpha, color
+  plot_limits = c(-0.5, 0.5), 
+  title = "a1", 
+  cex = 2, 
+  axis_text_size = 4,
+  is_color = FALSE)
+```
+
+```{r}
+#| label: high-d-proj2
+## Second projection
+prj2 <- cbind(
+  c(-0.13993,0.00179,-0.15287,-0.08282),
+  c(0.01124,0.16552,-0.07749,0.12761))
+
+projected_df <- get_projection(projection = prj2, 
+                               centered_data = centered_three_clust_08_data, 
+                               axis_param = list(limits = 0.5,
+                                                 axis_scaled = 4, 
+                                                 axis_pos_x = -0.45, 
+                                                 axis_pos_y = -0.45, 
+                                                 threshold = 0.055))
+
+three_clust08_proj2 <- plot_proj(
+  proj_obj = projected_df, 
+  point_param = c(1, 0.05, "#000000"), # size, alpha, color
+  plot_limits = c(-0.55, 0.55), 
+  title = "a2", 
+  cex = 2, 
+  axis_text_size = 4,
+  is_color = FALSE)
+```
+
+```{r}
+#| label: high-d-proj3
+## Third projection
+prj3 <- cbind(
+  c(-0.09101,0.05539,0.18359,0.06896),
+  c(-0.13489,0.06141,-0.12634,0.10901))
+
+projected_df <- get_projection(projection = prj3, 
+                               centered_data = centered_three_clust_08_data, 
+                               axis_param = list(limits = 0.5,
+                                                 axis_scaled = 3.7, 
+                                                 axis_pos_x = -0.4, 
+                                                 axis_pos_y = -0.4, 
+                                                 threshold = 0.04))
+
+three_clust08_proj3 <- plot_proj(
+  proj_obj = projected_df, 
+  point_param = c(1, 0.05, "#000000"), # size, alpha, color
+  plot_limits = c(-0.5, 0.5), 
+  title = "a3", 
+  cex = 2, 
+  axis_text_size = 4,
+  is_color = FALSE)
+```
+
+```{r}
+#| label: fig-dt-prj
+#| fig-pos: "!ht"
+#| fig-width: 18
+#| fig-height: 6
+
+three_clust08_proj1 + three_clust08_proj2 + three_clust08_proj3 +
+  plot_layout(ncol = 3)
+```
+
 XX Add projections for the data
 
 ## $2\text{-}D$ NLDR layouts
 
-All $2\text{-}D$ layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts](https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods with default hyper-parameter settings for the simulated $4\text{-}D$ data structures.
+All $2\text{-}D$ layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/paper-vis-experiment/figures/layouts](https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods with default hyper-parameter settings for the simulated $4\text{-}D$ data structures.
 
 ## Distance metrics
 
@@ -179,7 +285,7 @@ metrics_scaled <- c("bw_ratio",
 #| fig-width: 10
 #| fig-height: 10
 #| label: fig-distance-metrics
-#| fig-cap: "Pairwise relationships among six distance metrics used to quantify cluster separation in the high-dimensional space: between–within (BW) ratio, exponentiated scaled minimum distance, quantile-ranked average between-cluster distance, Pearson–Gamma coefficient, average silhouette distance, and square-root–transformed Dunn and Dunn2 indices. The diagonal panels show the distribution of each metric, while the lower panels show scatterplots colored by distance scaling factor ($0.1, 0.6, 0.9, 1, 1.1$). Upper panels report Pearson correlation coefficients for all pairs, with significance indicated by asterisks (*** $p < 0.001$). Metrics show high positive correlation, confirming that they capture consistent structural variation. The BW ratio and exponentiated minimum distance were chosen for the main analysis because they provide complementary summaries of global cluster separation and local boundary distance."
+#| fig-cap: "Pairwise relationships among six distance metrics used to quantify cluster separation in the high-dimensional space: between–within (BW) ratio, exponentiated scaled minimum distance, quantile-ranked average between-cluster distance, Pearson–Gamma coefficient, average silhouette distance, and square-root–transformed Dunn and Dunn2 indices. The diagonal panels show the distribution of each metric, while the lower panels show scatterplots colored by distance scaling factor (S, SM, M, ML, L). Upper panels report Pearson correlation coefficients for all pairs, with significance indicated by asterisks ($p < 0.001$ '`***`'). Metrics show high positive correlation, confirming that they capture consistent structural variation. The BW ratio and exponentiated minimum distance were chosen for the main analysis because they provide complementary summaries of global cluster separation and local boundary distance."
 
 GGally::ggpairs(distance_df_scaled |> select(all_of(metrics_scaled), distance_sf),
                 columns = metrics_scaled,

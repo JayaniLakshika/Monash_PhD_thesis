@@ -321,7 +321,7 @@ Cluster separability was quantified using two complementary measures: the *betwe
 The BW ratio, defined as
 
 $$
-\text{BW Ratio} = \frac{B}{W} = \frac{ \sum_{i=1}^{3} n_i \cdot \|\bar{\mathbf{x}}_i - \bar{\mathbf{x}}\|^2 }{ \sum_{i=1}^{3} \sum_{\mathbf{x}_j \in C_i} \|\mathbf{x}_j - \bar{\mathbf{x}}_i\|^2 }.
+\text{BW Ratio} = \frac{B}{W} = \frac{ \sum_{i=1}^{3} n_i \cdot \|\bar{\mathbf{x}}_i - \bar{\mathbf{x}}\|^2 }{ \sum_{i=1}^{3} \sum_{\mathbf{x}_j \in C_i} \|\mathbf{x}_j - \bar{\mathbf{x}}_i\|^2 },
 $$
 
 where (B) and (W) denote between- and within-cluster dispersion, respectively; $\bar{\mathbf{x}}_i$ is the centroid of cluster $C_i$; $\bar{\mathbf{x}}$ is the overall centroid; and $n_i$ is the number of observations in cluster $C_i$. 
@@ -861,9 +861,9 @@ dt_acc_plt + subj_acc_plt +
 
 To better understand the visual sources of these misidentifications, we examine tSNE and UMAP layouts for data structures that are commonly confused. @fig-three07-miss and @fig-three12-miss present $2\text{-}D$ projections alongside tSNE and UMAP layouts for `three_clust_12` and `three_clust_07` under both small and large cluster separation. These examples demonstrate that increasing separation does not necessarily lead to clearer or more interpretable low-dimensional representations.
 
-For three_clust_12 (@fig-three12-miss), increased separation leads to improved visual clarity in UMAP, which more effectively preserves the distinct geometric characteristics of the S-curve, hemisphere, and pyramidal component. Nevertheless, even at larger separations, residual distortions and partial proximity between components remain, allowing perceptual ambiguity to persist. In contrast, tSNE introduces fragmentation and compression of curved and volumetric components, disrupting global shape cues and causing visually distinct structures to appear more similar.
+For `three_clust_12` (@fig-three12-miss), increased separation leads to improved visual clarity in UMAP, which more effectively preserves the distinct geometric characteristics of the S-curve, hemisphere, and pyramidal component. Nevertheless, even at larger separations, residual distortions and partial proximity between components remain, allowing perceptual ambiguity to persist. In contrast, tSNE introduces fragmentation and compression of curved and volumetric components, disrupting global shape cues and causing visually distinct structures to appear more similar.
 
-A similar pattern is observed for three_clust_07 (@fig-three07-miss). While greater separation improves cluster spacing in UMAP and supports a smoother representation of the hyperbolic component, some ambiguity remains. For tSNE, increasing separation does not consistently enhance interpretability: the hyperbolic structure is distorted and fragmented, and irregular gaps are introduced, weakening global geometric cues essential for recognition.
+A similar pattern is observed for `three_clust_07` (@fig-three07-miss). While greater separation improves cluster spacing in UMAP and supports a smoother representation of the hyperbolic component, some ambiguity remains. For tSNE, increasing separation does not consistently enhance interpretability: the hyperbolic structure is distorted and fragmented, and irregular gaps are introduced, weakening global geometric cues essential for recognition.
 
 ```{r}
 

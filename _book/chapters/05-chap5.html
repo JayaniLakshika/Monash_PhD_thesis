@@ -294,7 +294,7 @@ window.Quarto = {
 <p>Nonlinear dimension reduction (NLDR) is popular for making a suitable <span class="math inline">2\text{-}D</span> representation of high-dimensional (<span class="math inline">p\text{-}D</span>) data by applying nonlinear transformations. Recently developed methods include t-distributed stochastic neighbor embedding (tSNE) <span class="citation" data-cites="laurens2008">(<a href="../refs.html#ref-laurens2008" role="doc-biblioref">Maaten and Hinton 2008</a>)</span>, uniform manifold approximation and projection (UMAP) <span class="citation" data-cites="leland2018">(<a href="../refs.html#ref-leland2018" role="doc-biblioref">McInnes et al. 2018</a>)</span>, potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm <span class="citation" data-cites="moon2019">(<a href="../refs.html#ref-moon2019" role="doc-biblioref">Moon et al. 2019</a>)</span>, large-scale dimensionality reduction Using triplets (TriMAP) <span class="citation" data-cites="amid2022">(<a href="../refs.html#ref-amid2022" role="doc-biblioref">Amid and Warmuth 2022</a>)</span>, and pairwise controlled manifold approximation (PaCMAP) <span class="citation" data-cites="yingfan2021">(<a href="../refs.html#ref-yingfan2021" role="doc-biblioref">Wang et al. 2021</a>)</span>. However, in different data structures, the <span class="math inline">2\text{-}D</span> representation generated can vary dramatically from what is observed in <span class="math inline">p\text{-}D</span> (<a href="#fig-nldr-layouts" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-nldr-layouts" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
+<div id="fig-nldr-layouts" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-nldr-layouts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-chap5_files/figure-html/fig-nldr-layouts-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
@@ -337,7 +337,7 @@ Figure&nbsp;5.1: A <span class="math inline">2\text{-}D</span> tSNE layout (left
 <p>The visual layout of the experiment for one participant is shown in <a href="#fig-exp-design" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>. Each participant completed <span class="math inline">20</span> trials: <span class="math inline">15</span> SAME trials, in which the same data structure was shown in both the <span class="math inline">2\text{-}D</span> NLDR plot and the tour; <span class="math inline">4</span> DIFFERENT trials, showing DIFFERENT data structures; and one attention check trial that could be either SAME or DIFFERENT. For the SAME, five NLDR methods (<em>tSNE, UMAP, PHATE, PaCMAP, and TriMAP</em>) were each paired with three of five distance scale factors (<em>small, small-medium, medium, medium-large, and large</em>), giving <span class="math inline">15</span> balanced combinations. In the DIFFERENT, four NLDR methods were randomly selected, with the remaining method assigned to the attention check trial. All DIFFERENT and attention check trials used a distance scale factor of <em>medium-large</em>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-exp-design" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
+<div id="fig-exp-design" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-exp-design-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../figures/vis-exp/exp_design.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%" data-fig-pos="!ht">
 </div>
@@ -354,7 +354,7 @@ Figure&nbsp;5.2: Experiment design for one participant. Shapes represent distanc
 <p>Cluster separability was quantified using two complementary measures: the <em>between-to-within (BW) ratio</em> and the <em>minimum inter-cluster distance</em>. A higher value of either metric indicates greater separation among clusters (<a href="#fig-dist-metrics" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>).</p>
 <p>The BW ratio, defined as</p>
 <p><span class="math display">
-\text{BW Ratio} = \frac{B}{W} = \frac{ \sum_{i=1}^{3} n_i \cdot \|\bar{\mathbf{x}}_i - \bar{\mathbf{x}}\|^2 }{ \sum_{i=1}^{3} \sum_{\mathbf{x}_j \in C_i} \|\mathbf{x}_j - \bar{\mathbf{x}}_i\|^2 }.
+\text{BW Ratio} = \frac{B}{W} = \frac{ \sum_{i=1}^{3} n_i \cdot \|\bar{\mathbf{x}}_i - \bar{\mathbf{x}}\|^2 }{ \sum_{i=1}^{3} \sum_{\mathbf{x}_j \in C_i} \|\mathbf{x}_j - \bar{\mathbf{x}}_i\|^2 },
 </span></p>
 <p>where (B) and (W) denote between- and within-cluster dispersion, respectively; <span class="math inline">\bar{\mathbf{x}}_i</span> is the centroid of cluster <span class="math inline">C_i</span>; <span class="math inline">\bar{\mathbf{x}}</span> is the overall centroid; and <span class="math inline">n_i</span> is the number of observations in cluster <span class="math inline">C_i</span>.</p>
 <p>In addition, the minimum distance was used as a complementary measure of global separation:</p>
@@ -477,7 +477,7 @@ Table&nbsp;5.1: Estimated trends of correct identification probability with resp
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-glmm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
+<div id="fig-glmm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-glmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-chap5_files/figure-html/fig-glmm-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
@@ -575,7 +575,7 @@ Table&nbsp;5.2: Estimated trends of correct identification probability with resp
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-glmm-min" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
+<div id="fig-glmm-min" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-glmm-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-chap5_files/figure-html/fig-glmm-min-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
@@ -605,8 +605,8 @@ Figure&nbsp;5.6: Correct identification proportions by (a) data structure and (b
 </div>
 </div>
 <p>To better understand the visual sources of these misidentifications, we examine tSNE and UMAP layouts for data structures that are commonly confused. <a href="#fig-three07-miss" class="quarto-xref">Figure&nbsp;<span>5.7</span></a> and <a href="#fig-three12-miss" class="quarto-xref">Figure&nbsp;<span>5.8</span></a> present <span class="math inline">2\text{-}D</span> projections alongside tSNE and UMAP layouts for <code>three_clust_12</code> and <code>three_clust_07</code> under both small and large cluster separation. These examples demonstrate that increasing separation does not necessarily lead to clearer or more interpretable low-dimensional representations.</p>
-<p>For three_clust_12 (<a href="#fig-three12-miss" class="quarto-xref">Figure&nbsp;<span>5.8</span></a>), increased separation leads to improved visual clarity in UMAP, which more effectively preserves the distinct geometric characteristics of the S-curve, hemisphere, and pyramidal component. Nevertheless, even at larger separations, residual distortions and partial proximity between components remain, allowing perceptual ambiguity to persist. In contrast, tSNE introduces fragmentation and compression of curved and volumetric components, disrupting global shape cues and causing visually distinct structures to appear more similar.</p>
-<p>A similar pattern is observed for three_clust_07 (<a href="#fig-three07-miss" class="quarto-xref">Figure&nbsp;<span>5.7</span></a>). While greater separation improves cluster spacing in UMAP and supports a smoother representation of the hyperbolic component, some ambiguity remains. For tSNE, increasing separation does not consistently enhance interpretability: the hyperbolic structure is distorted and fragmented, and irregular gaps are introduced, weakening global geometric cues essential for recognition.</p>
+<p>For <code>three_clust_12</code> (<a href="#fig-three12-miss" class="quarto-xref">Figure&nbsp;<span>5.8</span></a>), increased separation leads to improved visual clarity in UMAP, which more effectively preserves the distinct geometric characteristics of the S-curve, hemisphere, and pyramidal component. Nevertheless, even at larger separations, residual distortions and partial proximity between components remain, allowing perceptual ambiguity to persist. In contrast, tSNE introduces fragmentation and compression of curved and volumetric components, disrupting global shape cues and causing visually distinct structures to appear more similar.</p>
+<p>A similar pattern is observed for <code>three_clust_07</code> (<a href="#fig-three07-miss" class="quarto-xref">Figure&nbsp;<span>5.7</span></a>). While greater separation improves cluster spacing in UMAP and supports a smoother representation of the hyperbolic component, some ambiguity remains. For tSNE, increasing separation does not consistently enhance interpretability: the hyperbolic structure is distorted and fragmented, and irregular gaps are introduced, weakening global geometric cues essential for recognition.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-three07-miss" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
