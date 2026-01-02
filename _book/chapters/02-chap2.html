@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>2&nbsp; Choosing Better NLDR Layouts by Evaluating the Model in the High-Dimensional Data Space – New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Nonlinear Dimension Reduction Layouts of High-Dimensional Data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/03-chap3.html" rel="next">
+<link href="../chapters/01-chap1.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7d60fad984a4391ca7fd423b65835770.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6bfa1c4240d960a1d3852aa95d00af59.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link href="https://fonts.googleapis.com/css?family=Fira+Sans|Merriweather|Source%20Code%20Pro" rel="stylesheet">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+</head>
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/02-chap2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Choosing Better NLDR Layouts by Evaluating the Model in the High-Dimensional Data Space</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Nonlinear Dimension Reduction Layouts of High-Dimensional Data</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/tree/master/Thesis/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Nonlinear-Dimension-Reduction-Layouts-of-High-Dimensional-Data.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Front matter</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../preliminaries/abstract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Abstract</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../preliminaries/acknowledgements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/01-chap1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/02-chap2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Choosing Better NLDR Layouts by Evaluating the Model in the High-Dimensional Data Space</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/03-chap3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">quollr: An R Package for Visualizing <span class="math inline">2\text{-}D</span> Models from Nonlinear Dimension Reductions in High-Dimensional Space</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/04-chap4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">cardinalR: Generating Interesting High-Dimensional Data Structures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/05-chap5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/06-chap6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">menuraR: An R Shiny App to Help Select the Best Nonlinear Dimension Reduction Representation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/07-chap7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Conclusion and future plans</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../refs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/A-appA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Glossary</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/B-appB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Appendix to “Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space”</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/C-appC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Appendix to “Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study”</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title"><b>Sections</b></h2>
+   
+  <ul class="collapse">
+<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">2.1</span> Introduction</a></li>
+  <li><a href="#sec-background-visalgo" id="toc-sec-background-visalgo" class="nav-link" data-scroll-target="#sec-background-visalgo"><span class="header-section-number">2.2</span> Background</a></li>
+  <li><a href="#sec-method-visalgo" id="toc-sec-method-visalgo" class="nav-link" data-scroll-target="#sec-method-visalgo"><span class="header-section-number">2.3</span> Method</a></li>
+  <li><a href="#sec-bestfit-visalgo" id="toc-sec-bestfit-visalgo" class="nav-link" data-scroll-target="#sec-bestfit-visalgo"><span class="header-section-number">2.4</span> Choosing the best <span class="math inline">2\text{-}D</span> layout</a></li>
+  <li><a href="#sec-applications-visalgo" id="toc-sec-applications-visalgo" class="nav-link" data-scroll-target="#sec-applications-visalgo"><span class="header-section-number">2.5</span> Applications</a></li>
+  <li><a href="#sec-discussion-visalgo" id="toc-sec-discussion-visalgo" class="nav-link" data-scroll-target="#sec-discussion-visalgo"><span class="header-section-number">2.6</span> Discussion</a></li>
+  <li><a href="#sec-supplementary" id="toc-sec-supplementary" class="nav-link" data-scroll-target="#sec-supplementary"><span class="header-section-number">2.7</span> Supplementary Materials</a></li>
+  <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments"><span class="header-section-number">2.8</span> Acknowledgments</a></li>
+  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/chapters/02-chap2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-first-paper" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Choosing Better NLDR Layouts by Evaluating the Model in the High-Dimensional Data Space</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><p>Nonlinear dimension reduction (NLDR) techniques such as tSNE, and UMAP provide a low-dimensional representation of high-dimensional data (<span class="math inline">p\text{-}D</span>) by applying a nonlinear transformation. NLDR often exaggerates random patterns. But NLDR views have an important role in data analysis because, if done well, they provide a concise visual (and conceptual) summary of <span class="math inline">p\text{-}D</span> distributions. The NLDR methods and hyper-parameter choices can create wildly different representations, making it difficult to decide which is best, or whether any or all are accurate or misleading. To help assess the NLDR and decide on which, if any, is the most reasonable representation of the structure(s) present in the <span class="math inline">p\text{-}D</span> data, we have developed an algorithm to show the <span class="math inline">2\text{-}D</span> NLDR model in the <span class="math inline">p\text{-}D</span> space, viewed with a tour, a movie of linear projections. From this, one can see if the model fits everywhere, or better in some subspaces, or completely mismatches the data. Also, we can see how different methods may have similar summaries or quirks.</p>
+<section id="introduction" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="introduction">
+<span class="header-section-number">2.1</span> Introduction</h2>
+<p>Nonlinear dimension reduction (NLDR) is popular for making a convenient low-dimensional (<span class="math inline">k\text{-}D</span>) representation of high-dimensional (<span class="math inline">p\text{-}D</span>) data (<span class="math inline">k &lt; p</span>). Recently developed methods include t-distributed stochastic neighbor embedding (tSNE) <span class="citation" data-cites="laurens2008">(<a href="../refs.html#ref-laurens2008" role="doc-biblioref">Maaten and Hinton 2008</a>)</span>, uniform manifold approximation and projection (UMAP) <span class="citation" data-cites="leland2018">(<a href="../refs.html#ref-leland2018" role="doc-biblioref">McInnes et al. 2018</a>)</span>, potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm <span class="citation" data-cites="moon2019">(<a href="../refs.html#ref-moon2019" role="doc-biblioref">Moon et al. 2019</a>)</span>, large-scale dimensionality reduction using triplets (TriMAP) <span class="citation" data-cites="amid2022">(<a href="../refs.html#ref-amid2022" role="doc-biblioref">Amid and Warmuth 2022</a>)</span>, and pairwise controlled manifold approximation (PaCMAP) <span class="citation" data-cites="yingfan2021">(<a href="../refs.html#ref-yingfan2021" role="doc-biblioref">Wang et al. 2021</a>)</span>.</p>
+<p>However, the representation generated can vary dramatically from method to method, choice of hyper-parameter or even random seed, as illustrated by <a href="#fig-NLDR-variety" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>. The specific method and hyper-parameters used to produce each layout (see Supplementary Materials) is not essential for the discussion. The dilemma for the analyst is which representation to use. The choice might result in different procedures used in the downstream analysis, or different inferential conclusions. Various academics have expressed concerns with current practices and procedures for choosing (e.g. <span class="citation" data-cites="irizarry2024">Irizarry (<a href="../refs.html#ref-irizarry2024" role="doc-biblioref">2024</a>)</span>, <span class="citation" data-cites="chari2023">Chari and Pachter (<a href="../refs.html#ref-chari2023" role="doc-biblioref">2023</a>)</span>). The research described here provides new numerical and visual tools to aid with this decision.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-NLDR-variety" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-NLDR-variety-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-chap2_files/figure-html/fig-NLDR-variety-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NLDR-variety-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Eight different NLDR representations of the same data, produced by tSNE, UMAP, PHATE, TriMAP and PaCMAP with a variety of hyper-parameter choices. The variety in layouts makes it difficult to choose which best represents the data distribution.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>The chapter is organized as follows. <a href="#sec-background-visalgo" class="quarto-xref"><span>Section 2.2</span></a> provides a summary of the literature on NLDR, and high-dimensional data visualization methods. <a href="#sec-method-visalgo" class="quarto-xref"><span>Section 2.3</span></a> contains the details of the new methodology, including a simulated data example. In <a href="#sec-bestfit-visalgo" class="quarto-xref"><span>Section 2.4</span></a>, we describe how to assess the best fit and identify the most accurate <span class="math inline">2\text{-}D</span> layout based on the proposed model diagnostics. Two applications illustrating the use of the new methodology for bioinformatics and image classification are in <a href="#sec-applications-visalgo" class="quarto-xref"><span>Section 2.5</span></a>. Limitations and future directions are provided in <a href="#sec-discussion-visalgo" class="quarto-xref"><span>Section 2.6</span></a>.</p>
+</section><section id="sec-background-visalgo" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="sec-background-visalgo">
+<span class="header-section-number">2.2</span> Background</h2>
+<!-- - Connection between NLDR and MDS-->
+<p>Historically, low-dimensional (<span class="math inline">k\text{-}D</span>) representations of high-dimensional (<span class="math inline">p\text{-}D</span>) data have been computed using multidimensional scaling (MDS) <span class="citation" data-cites="kruskal1964">(<a href="../refs.html#ref-kruskal1964" role="doc-biblioref">Kruskal 1964</a>)</span>, which includes principal components analysis (PCA) (for an overview see <span class="citation" data-cites="jolliffe2011">Jolliffe (<a href="../refs.html#ref-jolliffe2011" role="doc-biblioref">2011</a>)</span>). (A contemporary comprehensive guide to MDS can be found in <span class="citation" data-cites="borg2005">Borg and Groenen (<a href="../refs.html#ref-borg2005" role="doc-biblioref">2005</a>)</span>.) The <span class="math inline">k\text{-}D</span> representation can be considered to be a layout of points in <span class="math inline">k\text{-}D</span> produced by an embedding procedure that maps the data from <span class="math inline">p\text{-}D</span>. In MDS, the <span class="math inline">k\text{-}D</span> layout is constructed by minimizing a stress function that differences distances between points in <span class="math inline">p\text{-}D</span> with potential distances between points in <span class="math inline">k\text{-}D</span>. Various formulations of the stress function result in non-metric scaling <span class="citation" data-cites="saeed2018">(<a href="../refs.html#ref-saeed2018" role="doc-biblioref">Saeed et al. 2018</a>)</span> and isomap <span class="citation" data-cites="silva2002">(<a href="../refs.html#ref-silva2002" role="doc-biblioref">Silva and Tenenbaum 2002</a>)</span>. Challenges in working with high-dimensional data, including visualization, are outlined in <span class="citation" data-cites="johnstone2009">Johnstone and Titterington (<a href="../refs.html#ref-johnstone2009" role="doc-biblioref">2009</a>)</span>.</p>
+<p>Many new methods for NLDR have emerged in recent years, all designed to better capture specific structures potentially existing in <span class="math inline">p\text{-}D</span>. Here we focus on five currently popular techniques: tSNE, UMAP, PHATE, TriMAP and PaCMAP. The methods tSNE, UMAP, TriMAP and PaCMAP can be considered for producing the <span class="math inline">k\text{-}D</span> representation by minimizing the divergence between two inter-point distance distributions. PHATE is an example of a diffusion process spreading to capture geometric shapes, that include both global and local structure. (See <span class="citation" data-cites="coifman2005">Coifman et al. (<a href="../refs.html#ref-coifman2005" role="doc-biblioref">2005</a>)</span> for an explanation of diffusion processes.)</p>
+<p>The array of layouts in <a href="#fig-NLDR-variety" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> illustrate what can emerge from the choices of method and hyper-parameters, and the random seed that initiates the computation. Key structures interpreted from these views suggest: (1) highly <strong>separated clusters</strong> (a, b, e, g, h) with the number ranging from 3-6; (2) <strong>stringy branches</strong> (f), and (3) <strong>barely separated clusters</strong> (c, d) which would <strong>contradict</strong> the other representations. These contradictions arise because these methods and hyper-parameter choices provide different lenses on the interpoint distances in the data.</p>
+<p>The alternative approach to visualizing the high-dimensional data is to use linear projections. PCA is the classical approach, resulting in a set of new variables which are linear combinations of the original variables. Tours, defined by <span class="citation" data-cites="As85">Asimov (<a href="../refs.html#ref-As85" role="doc-biblioref">1985</a>)</span>, broaden the scope by providing movies of linear projections, that provide views the data from all directions. (See <span class="citation" data-cites="lee2021">Lee et al. (<a href="../refs.html#ref-lee2021" role="doc-biblioref">2021</a>)</span> for a review of tour methods.) There are many tour algorithms implemented, with many available in the R package <code>tourr</code> <span class="citation" data-cites="wickham2011">(<a href="../refs.html#ref-wickham2011" role="doc-biblioref">Wickham et al. 2011</a>)</span>, and versions enabling better interactivity in <code>langevitour</code> <span class="citation" data-cites="harisson2024">(<a href="../refs.html#ref-harisson2024" role="doc-biblioref">Harrison 2023</a>)</span> and <code>detourr</code> <span class="citation" data-cites="casper2025">(<a href="../refs.html#ref-casper2025" role="doc-biblioref">Hart and Wang 2025</a>)</span>. Linear projections are a safe way to view high-dimensional data, because they do not warp the space, so they are more faithful representations of the structure. However, linear projections can be cluttered, and global patterns can obscure local structure. The simple activity of projecting data from <span class="math inline">p\text{-}D</span> suffers from piling <span class="citation" data-cites="laa2022">(<a href="../refs.html#ref-laa2022" role="doc-biblioref">Laa et al. 2022</a>)</span>, where data concentrates in the center of projections. NLDR is designed to escape these issues, to exaggerate structure so that it can be observed. But as a result NLDR can hallucinate wildly, to suggest patterns that are not actually present in the data.</p>
+<p>Our proposed solution is to use the tour to examine how the NLDR is warping the space. It follows what <span class="citation" data-cites="wickham2015">Wickham et al. (<a href="../refs.html#ref-wickham2015" role="doc-biblioref">2015</a>)</span> describes as <em>model-in-the-data-space</em>. The fitted model should be overlaid on the data, to examine the fit relative the spread of the observations. While this is straightforward, and commonly done when data is <span class="math inline">2\text{-}D</span>, it is also possible in <span class="math inline">p\text{-}D</span>, for many models, when a tour is used.</p>
+<p><span class="citation" data-cites="wickham2015">Wickham et al. (<a href="../refs.html#ref-wickham2015" role="doc-biblioref">2015</a>)</span> provides several examples of models overlaid on the data in <span class="math inline">p\text{-}D</span>. In hierarchical clustering, a representation of the dendrogrom using points and lines can be constructed by augmenting the data with points marking merging of clusters. Showing the movie of linear projections reveals shows how the algorithm sequentially fitted the cluster model to the data. For linear discriminant analysis or model-based clustering the model can be indicated by <span class="math inline">(p-1)\text{-}D</span> ellipses. It is possible to see whether the elliptical shapes appropriately matches the variance of the relevant clusters, and to compare and contrast different fits. For PCA, one can display the model (a <span class="math inline">k\text{-}D</span> plane of the reduced dimension) using wireframes of transformed cubes. Using a wireframe is the approach we take here, to represent the NLDR model in <span class="math inline">p\text{-}D</span>.</p>
+</section><section id="sec-method-visalgo" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="sec-method-visalgo">
+<span class="header-section-number">2.3</span> Method</h2>
+<section id="what-is-the-nldr-model" class="level3"><h3 class="anchored" data-anchor-id="what-is-the-nldr-model">What is the NLDR model?</h3>
+<p>At first glance, thinking of NLDR as a modeling technique might seem strange. It is a simplified representation or abstraction of a system, process, or phenomenon in the real world. The <span class="math inline">p\text{-}D</span> observations are the realization of the phenomenon, and the <span class="math inline">k\text{-}D</span> NLDR layout is the simplified representation. Typically, <span class="math inline">k=2</span>, which is used for the rest of this chapter. From a statistical perspective we can consider the distances between points in the <span class="math inline">2\text{-}D</span> layout to be variance that the model explains, and the (relative) difference with their distances in <span class="math inline">p\text{-}D</span> is the error, or unexplained variance. We can also imagine that the positioning of points in <span class="math inline">2\text{-}D</span> represent the fitted values, that will have some prescribed position in <span class="math inline">p\text{-}D</span> that can be compared with their observed values. This is the conceptual framework underlying the more formal versions of factor analysis <span class="citation" data-cites="joreskog1969">(<a href="../refs.html#ref-joreskog1969" role="doc-biblioref">Jöreskog 1969</a>)</span> and MDS. (Note that, for this thinking the full <span class="math inline">p\text{-}D</span> data needs to be available, not just the interpoint distances.)</p>
+<p>We define the NLDR as a function <span class="math inline">g\text{:}~ \mathbb{R}^{n\times p} \rightarrow \mathbb{R}^{n\times 2}</span>, with hyper-parameters <span class="math inline">\bm{\theta}</span>. These parameters, <span class="math inline">\bm{\theta}</span>, depend on the choice of <span class="math inline">g</span>, and can be considered part of model fitting in the traditional sense. Common choices for <span class="math inline">g</span> include functions used in tSNE, UMAP, PHATE, TriMAP, PaCMAP, or MDS, although in theory any function that does this mapping is suitable.</p>
+<p>With our goal being to make a representation of this <span class="math inline">2\text{-}D</span> layout that can be lifted into high-dimensional space, the layout needs to be augmented to include neighbor information. A simple approach would be to triangulate the points and add edges. A more stable approach is to first bin the data, reducing it from <span class="math inline">n</span> to <span class="math inline">m\leq n</span> observations, and connect the bin centroids. We recommend using a hexagon grid because it better reflects the data distribution and has less artifacts than a rectangular grid. This process serves to reduce some noisiness in the resulting surface shown in <span class="math inline">p\text{-}D</span>. The steps in this process are shown in <a href="#fig-NLDR-two-curvy" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>, and documented below.</p>
+<!--two_nonlinear/06_gen_model_with_tSNE.R-->
+<!--Full hexagon grid with UMAP data-->
+<!--Non-empty bins with bin centroids-->
+<!--2D model-->
+<p>To illustrate the method and how to use it to choose a reasonable layout, we use <span class="math inline">7\text{-}D</span> simulated data, which we call the “2NC7” data. It has two separated nonlinear clusters, one forming a <span class="math inline">2\text{-}D</span> curved shape, and the other a <span class="math inline">3\text{-}D</span> curved shape, each consisting of <span class="math inline">1000</span> observations. The first four variables hold this cluster structure, and the remaining three are purely noise. We would consider <span class="math inline">T=(X_1, X_2, X_3, X_4)</span> to be the geometric structure (true model) that we hope to capture. This data is sufficiently simple, with just two complexities (two separated curvilinear clusters, and two different implicit dimensions), to adequately explain the new method. The applications section contains two practical examples where NLDR has been used in published work. This data has both global and local structure. The two separated clusters would be considered to be global structure, and the nonlinear low-dimensional shapes could be considered to be local structure, one being <span class="math inline">2\text{-}D</span> and the other <span class="math inline">3\text{-}D</span>. An ideal NLDR layout would reveal the two clusters with moderate separation, and flatten the curvilinear forms while preserving the proximity of points.</p>
+<!-- The remaining variables $X_4, X_5, X_6, X_7$ are all uniform error, with small variance.  -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-NLDR-two-curvy" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-NLDR-two-curvy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-chap2_files/figure-html/fig-NLDR-two-curvy-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NLDR-two-curvy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Key steps for constructing the model on the tSNE layout (<span class="math inline">k=2</span>) of 2NC7: (a) data, (b) hexagon bins, (c) bin centroids, and (d) triangulated centroids. The 2NC7 data is shown.
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="algorithm-to-represent-the-model-in-2text-d" class="level3"><h3 class="anchored" data-anchor-id="algorithm-to-represent-the-model-in-2text-d">Algorithm to represent the model in <span class="math inline">2\text{-}D</span>
+</h3>
+<section id="scale-the-data" class="level4"><h4 class="anchored" data-anchor-id="scale-the-data">Scale the data</h4>
+<p>Because we are working with distances between points, starting with data having a standard scale, e.g.&nbsp;[0, 1], is recommended. The default should take the aspect ratio produced by the NLDR <span class="math inline">(r_1, r_2, ..., r_k)</span> into account. When <span class="math inline">k=2</span>, as in hexagon binning, the default range is <span class="math inline">[0, y_{i,\text{max}}], i=1,2</span>, where <span class="math inline">y_{1,\text{max}}=1</span> and <span class="math inline">y_{2,\text{max}} = r_2/r_1</span> (<a href="#fig-NLDR-two-curvy" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>). If the NLDR aspect ratio is ignored then set <span class="math inline">y_ {2,\text{max}} = 1.</span></p>
+</section><section id="hexagon-grid-configuration" class="level4"><h4 class="anchored" data-anchor-id="hexagon-grid-configuration">Hexagon grid configuration</h4>
+<p>Although there are several implementations of hexagon binning <span class="citation" data-cites="carr1987">(<a href="../refs.html#ref-carr1987" role="doc-biblioref">Carr et al. 1987</a>)</span>, and a published paper <span class="citation" data-cites="dan2023">(<a href="../refs.html#ref-dan2023" role="doc-biblioref">Carr et al. 2023</a>)</span>, surprisingly, none has sufficient detail or components that produce everything needed for this project. So we described the process used here. <a href="#fig-hex-param" class="quarto-xref">Figure&nbsp;<span>2.3</span></a> illustrates the notation used.</p>
+<p>The <span class="math inline">2\text{-}D</span> hexagon grid is defined by its bin centroids. Each hexagon, <span class="math inline">H_h</span> (<span class="math inline">h = 1, \dots, b</span>) is uniquely described by centroid, <span class="math inline">C_{h}^{(2)} = (c_{h1}, c_{h2})</span>. The number of bins in each direction is denoted as <span class="math inline">(b_1, b_2)</span>, with <span class="math inline">b = b_1 \times b_2</span> being the total number of bins. We expect the user to provide just <span class="math inline">b_1</span> and we calculate <span class="math inline">b_2</span> using the NLDR ratio, to compute the grid.</p>
+<p>To ensure that the grid covers the range of data values a buffer parameter (<span class="math inline">q</span>) is set as a proportion of the range. By default, <span class="math inline">q=0.1</span>. The buffer should be extending a full hexagon width (<span class="math inline">a_1</span>) and height (<span class="math inline">a_2</span>) beyond the data, in all directions. The lower left position where the grid starts is defined as <span class="math inline">(s_1, s_2)</span>, and corresponds to the centroid of the lowest left hexagon, <span class="math inline">C_{1}^{(2)} = (c_{11}, c_{12})</span>. This must be smaller than the minimum data value. Because it is one buffer unit, <span class="math inline">q</span> below the minimum data values, <span class="math inline">s_1 = -q</span> and <span class="math inline">s_2 = -qr_2</span>.</p>
+<p>The value for <span class="math inline">b_2</span> is computed by fixing <span class="math inline">b_1</span>. Considering the upper bound of the first NLDR component, <span class="math inline">a_1 &gt; (1+2q)/(b_1 -1)</span>. Similarly, for the second NLDR component,</p>
+<p><span class="math display">
+a_2 \geq \frac{r_2 + q(1 + r_2)}{(b_2 - 1)}.
+</span></p>
+<p>Since <span class="math inline">a_2 = \sqrt{3}a_1/2</span> for regular hexagons,</p>
+<p><span class="math display">
+a_1 \geq \frac{2[r_2 + q(1 + r_2)]}{\sqrt{3}(b_2 - 1)}.
+</span></p>
+<p>This is a linear optimization problem. Therefore, the optimal solution must occur on a vertex. Therefore,</p>
+<p><span id="eq-bin2"><span class="math display">
+b_2 = \Big\lceil1 +\frac{2[r_2 + q(1 + r_2)](b_1 - 1)}{\sqrt{3}(1 + 2q)}\Big\rceil.
+\tag{2.1}</span></span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-hex-param" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-hex-param-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-chap2_files/figure-html/fig-hex-param-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hex-param-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: The components of the hexagon grid illustrating notation.
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="binning-the-data" class="level4"><h4 class="anchored" data-anchor-id="binning-the-data">Binning the data</h4>
+<p>Observations are grouped into bins based on their nearest centroid. This produces a reduction in size of the data from <span class="math inline">n</span> to <span class="math inline">m</span>, where <span class="math inline">m\leq b</span> (total number of bins). This can be defined using the function <span class="math inline">u: \mathbb{R}^{n\times 2} \rightarrow \mathbb{R}^{m\times 2}</span>, where <span class="math display">u(i) = \arg\min_{j = 1, \dots, b} \sqrt{(y_{i1} - C^{(2)}_{j1})^2 + (y_{i2} - C^{(2)}_{j2})^2},</span> maps observation <span class="math inline">i</span> into <span class="math inline">H_h = \{i| u(i) = h\}</span>.</p>
+<p>By default, the bin centroid is used for describing a hexagon (as done in <a href="#fig-NLDR-two-curvy" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> (c)), but any measure of center, such as a mean or weighted mean of the points within each hexagon, could be used. The bin centers, and the binned data, are the two important components needed to render the model representation in high dimensions.</p>
+</section><section id="indicating-neighborhood" class="level4"><h4 class="anchored" data-anchor-id="indicating-neighborhood">Indicating neighborhood</h4>
+<p>Delaunay triangulation <span class="citation" data-cites="lee1980 albrecht2024">(<a href="../refs.html#ref-albrecht2024" role="doc-biblioref">Gebhardt et al. 2024</a>; <a href="../refs.html#ref-lee1980" role="doc-biblioref">Lee and Schachter 1980</a>)</span> is used to connect points so that edges indicate neighboring observations, in both the NLDR layout (<a href="#fig-NLDR-two-curvy" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> (d)) and the <span class="math inline">p\text{-}D</span> model representation. When the data has been binned the triangulation connects centroids. The edges preserve the neighborhood information from the <span class="math inline">2\text{-}D</span> representation when the model is lifted into <span class="math inline">p\text{-}D</span>.</p>
+</section></section><section id="rendering-the-model-in-ptext-d" class="level3"><h3 class="anchored" data-anchor-id="rendering-the-model-in-ptext-d">Rendering the model in <span class="math inline">p\text{-}D</span>
+</h3>
+<p>The last step is to lift the <span class="math inline">2\text{-}D</span> model into <span class="math inline">p\text{-}D</span> by computing <span class="math inline">p\text{-}D</span> vectors that represent bin centroids. We use the <span class="math inline">p\text{-}D</span> mean of the points in a given hexagon, <span class="math inline">H_h</span>, denoted <span class="math inline">C_{h}^{(p)}</span>, to map the centroid <span class="math inline">C_{h}^{(2)} = (c_{h1}, c_{h2})</span> to a point in <span class="math inline">p\text{-}D</span>. Let the <span class="math inline">j^{th}</span> component of the <span class="math inline">p\text{-}D</span> mean be</p>
+<p><span class="math display">C_{hj}^{(p)} = \frac{1}{n_h}\sum_{i =1}^{n_h} x_{hij}, ~~~h = 1, \dots, b;~ j=1, \dots, p; ~ n_h &gt; 0.</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-best-fit-tsne" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-best-fit-tsne-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-chap2_files/figure-html/fig-best-fit-tsne-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-best-fit-tsne-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.4: Lifting the <span class="math inline">2\text{-}D</span> fitted model into <span class="math inline">p\text{-}D</span>. Two projections of the <span class="math inline">p\text{-}D</span> fitted model overlaying the data are shown in b, c.&nbsp;The fit is reasonably tight with the data in one cluster (top one in b), but slightly less so in the other cluster probably because it is <span class="math inline">3\text{-}D</span>. Notice also that, in the <span class="math inline">2\text{-}D</span> layout the two clusters have internal gaps which creates a model with some holes. This lacy pattern happens regardless of the hyper-parameter choice, but this doesn’t severely impact the <span class="math inline">p\text{-}D</span> model representation.
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="sec-summary" class="level3"><h3 class="anchored" data-anchor-id="sec-summary">Measuring the fit</h3>
+<!-- Existing approaches -->
+<p>All NLDR methods internally optimize a quantity to produce a layout for any particular hyper-parameter set. These are not always made available in the model output, and may not be universally comparable between hyper-parameter choices and methods.</p>
+<p>Several common metrics are often used to assess the quality of any NLDR layout, based on preservation of global and local structure of the data. The <span class="math inline">RNX</span> curve quantifies the neighborhood agreement between <span class="math inline">p\text{-}D</span> and <span class="math inline">k\text{-}D</span> spaces, by computing the area under the curve (<span class="math inline">ARNX</span>) across a range of neighborhood scales <span class="citation" data-cites="john2015">(<a href="../refs.html#ref-john2015" role="doc-biblioref">Lee et al. 2015</a>)</span>. A high value indicates better preservation of a balance of global and local structure. Random Triplet Accuracy (RTA) and Centroid Triplet Accuracy compare the order of <span class="math inline">2\text{-}D</span> and <span class="math inline">p\text{-}D</span> distances of random triplets of points <span class="citation" data-cites="yingfan2021">(<a href="../refs.html#ref-yingfan2021" role="doc-biblioref">Wang et al. 2021</a>)</span>. High values indicate preservation of the geometry, suggesting both local and global structure preservation. The Shepard diagram <span class="citation" data-cites="shepard1962">(<a href="../refs.html#ref-shepard1962" role="doc-biblioref">Shepard 1962</a>)</span> and its associated Spearman correlation (SC) <span class="citation" data-cites="spearman1961">(<a href="../refs.html#ref-spearman1961" role="doc-biblioref">Spearman 1961</a>)</span> between <span class="math inline">p\text{-}D</span> and <span class="math inline">k\text{-}D</span> distances. High values indicate preservation of global structure. The Global Score (GS) measures how well an embedding retains the overall geometry of the data relative to a PCA baseline <span class="citation" data-cites="amid2022">(<a href="../refs.html#ref-amid2022" role="doc-biblioref">Amid and Warmuth 2022</a>)</span>. Higher values indicate better preservation of global structure. The metric RTA, SC, GS, and ARNX have been reversed (rRTA, rSC, rGS, and rARNX) so that they align with HBE - the lower the value the better the layout.</p>
+<p><!-- Fitted values,  Error calculation--></p>
+<p>None of the above measures is particularly well-suited to assessing our model fit, as we will show later. Thus, we need a different approach to measuring model fit. Because the model here is similar to a confirmatory factor analysis model (see a general explanation in <span class="citation" data-cites="brown2015">Brown (<a href="../refs.html#ref-brown2015" role="doc-biblioref">2015</a>)</span>), <span class="math inline">\widehat{T} + \epsilon</span>, our approach is similar to the ones used in this area. it is based on “residuals” computed as the difference between the fitted model and observed values in <span class="math inline">p\text{-}D</span>. Observations are associated with their bin center, <span class="math inline">C_{h}^{(p)}</span>, which are also considered to be the <em>fitted values</em>. In factor analysis language, these fitted values might also be denoted as <span class="math inline">\widehat{X}</span>. The error is computed by taking the squared <span class="math inline">p\text{-}D</span> Euclidean distance, of points from their bin centroid, which we will call hexbin error (HBE):</p>
+<p><span id="eq-equation1"><span class="math display"> HBE = \sqrt{\frac{1}{n}\sum_{h = 1}^{m}\sum_{i = 1}^{n_h}\sum_{j = 1}^{p} (\bm{x}_{hij} - C^{(p)}_{hj})^2} \tag{2.2}</span></span></p>
+<p>where <span class="math inline">n</span> is the number of observations, <span class="math inline">m</span> is the number of non-empty bins, <span class="math inline">n_h</span> is the number of observations in <span class="math inline">h^{th}</span> bin, <span class="math inline">p</span> is the number of variables and <span class="math inline">\bm{x}_{hij}</span> is the <span class="math inline">j^{th}</span> dimensional data of <span class="math inline">i^{th}</span> observation in <span class="math inline">h^{th}</span> hexagon. We can consider <span class="math inline">e_{hi} = \sqrt{\sum_{j = 1}^{p} (\bm{x}_{hij} - C^{(p)}_{hj})^2}</span> to be the residual for each observation. <a href="#fig-p-d-error-in-2d-two-curvy" class="quarto-xref">Figure&nbsp;<span>2.5</span></a> shows plots of <span class="math inline">e</span> as a density (a), coloring the points in the NLDR layout (b) and the points in a tour (c). It can be see that the biggest residuals are in one cluster, which occurs due the intentional design that one cluster is slightly <span class="math inline">3\text{-}D</span> and perfectly captured by a <span class="math inline">2\text{-}D</span> layout.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-p-d-error-in-2d-two-curvy" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-p-d-error-in-2d-two-curvy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-chap2_files/figure-html/fig-p-d-error-in-2d-two-curvy-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-p-d-error-in-2d-two-curvy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.5: Examining the distribution of residuals in a jittered dotplot (a), <span class="math inline">2\text{-}D</span> NLDR layout (b) and a tour of <span class="math inline">4\text{-}D</span> data space (c). Color indicates residual (<span class="math inline">e_{hi}</span>), dark color indicating high value. Most large residuals are distributed in one cluster (bottom one in c) and most small residuals are distributed in the other cluster.
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="prediction-into-2text-d" class="level3"><h3 class="anchored" data-anchor-id="prediction-into-2text-d">Prediction into <span class="math inline">2\text{-}D</span>
+</h3>
+<p>NLDR methods are primarily designed for visualization and exploration rather than reconstruction, and do not explicitly provide out-of-sample prediction. Of the five methods studied here, only UMAP provides a <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> function for embedding new data points based on the learned manifold <span class="citation" data-cites="tomasz2023">(<a href="../refs.html#ref-tomasz2023" role="doc-biblioref">Konopka 2023</a>)</span>. Several other approaches, not used here, PCA, neural network autoencoders <span class="citation" data-cites="hinton2006">(<a href="../refs.html#ref-hinton2006" role="doc-biblioref">Hinton and Salakhutdinov 2006</a>)</span> and parametric tSNE <span class="citation" data-cites="van2009">(<a href="../refs.html#ref-van2009" role="doc-biblioref">Maaten 2009</a>)</span> support prediction.</p>
+<p>A benefit of our approach is that for any NLDR method, it provides a way to predict the layout position of a new observation, <span class="math inline">x'</span>. The steps are (1) determine the closest bin centroid in <span class="math inline">p\text{-}D</span>, <span class="math inline">C^{(p)}_{h}</span> and (2) predict the embedding to be the bin centroid in <span class="math inline">2\text{-}D</span>, <span class="math inline">C^{(2)}_{h}</span>.</p>
+</section><section id="tuning" class="level3"><h3 class="anchored" data-anchor-id="tuning">Tuning</h3>
+<p>The model fitting is based on several parameters, including the hexagon bin parameters and the low count bin removal process. The hexagon bin parameters define the bottom-left bin position <span class="math inline">(s_1, \ s_2)</span>, the number of bins in the horizontal direction (<span class="math inline">b_1</span>), which also determines the number of bins in the vertical direction (<span class="math inline">b_2</span>), the total number of bins (<span class="math inline">b</span>), and the total number of non-empty bins (<span class="math inline">m</span>). Low count bins are removed using standardized bin counts, defined as <span class="math inline">w_h = n_h/n, ~~h=1, \dots m</span>.</p>
+<p>Default values are provided for each of these, but deciding on the best model fit is assisted by examining a range of values. The default number of bins <span class="math inline">b=b_1\times b_2</span> is computed based on the sample size, by setting <span class="math inline">b_1=n^{1/3}</span>, consistent with the Diaconis-Freedman rule <span class="citation" data-cites="freedman1981">(<a href="../refs.html#ref-freedman1981" role="doc-biblioref">Freedman and Diaconis 1981</a>)</span>. The value of <span class="math inline">b_2</span> is determined analytically by <span class="math inline">b_1, q, r_2</span> (<a href="#eq-bin2" class="quarto-xref">Equation&nbsp;<span>2.1</span></a>). Values of <span class="math inline">b_1</span> between <span class="math inline">2</span> and <span class="math inline">b_1 = \sqrt{n/r_2}</span> are recommended, where the dependence on <span class="math inline">r_2</span> reflects the preservation of aspect ratio in the NLDR layout.</p>
+<p><a href="#fig-bins-two-curvy" class="quarto-xref">Figure&nbsp;<span>2.6</span></a> shows the hexbin grids for three choices of <span class="math inline">b_1</span>. While the number of bins is the common parameter to modify, bin start positions <span class="math inline">(s_1, \ s_2)</span> can be worth experimenting with also because it can also change bin counts.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-bins-two-curvy" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-bins-two-curvy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-chap2_files/figure-html/fig-bins-two-curvy-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bins-two-curvy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.6: Hexbin density plots of tSNE layout of the 2NC7 data, using three different <span class="math inline">b_1</span> specifications yielding different <span class="math inline">b_2, b, m</span>: (a) <strong>15</strong>, 18, 270, 98, (b) <strong>24</strong>, 29, 696, 209, and (c) <strong>35</strong>, 42, 1470, 386. Color indicates standardized counts, dark indicating high count and light indicates low count. At the smallest binwidth, the data structure is discontinuous, suggesting that there are too many bins.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<!-- #### Handling of low density bins-->
+<p>It is worthwhile to consider what are desirable aspects of a hexbin result, that maps to summarizing the <span class="math inline">p\text{-}D</span> fit well. The binning should capture the underlying data distribution closely, with minimum number of necessary bins. An ideal binning might be indicated by a more uniform distribution of bin counts, or having few relatively empty bins. To help with this assessment average bin count (<span class="math inline">\bar{n} = \sum{n_h}/m</span>), average standardized bin count (<span class="math inline">\bar{w} = \sum{w_h}/m</span>) and proportion of non-empty bins (<span class="math inline">m/b</span>), are also computed. <a href="#fig-param-two-curvy" class="quarto-xref">Figure&nbsp;<span>2.7</span></a> shows some choices of plots of these quantities for a single NLDR layout, with three choices of <span class="math inline">a_1</span> indicated. Some expectations and reasoning for these plots is:</p>
+<ul>
+<li>HBE will increase as <span class="math inline">a_1</span> increases, so good choices will be just before a big increase. In plot a, HBE changes fairly steadily so there is no easy choice to make.</li>
+<li>HBE can also be examined against average standardized bin count or average bin count (plot b). This is similar to the comparison with <span class="math inline">a_1</span> but to use when comparing different NLDR layouts. Different layouts might produce different density of points, which will not be captured well by a comparison of HBE vs <span class="math inline">a_1</span>.</li>
+<li>The proportion of non-empty bins is interesting to examine across different binwidths (plot c). A good binning should have just the right amount of bins to neatly cover the shape of the data, and no more or less. As binwidth gets smaller, <span class="math inline">m/b</span> should roughly get bigger.</li>
+<li>Bins with a small number of observations might be removed to sharpen the wireframe model. This can have adverse effects, though - failing to extend the wireframe into sparse areas, or resulting in holes in the wireframe. Plot d shows the relationship between HBE (computed for all observations despite some bin removal) and the standardized bin count cutoff used to remove bins. For all three chosen bin widths a small number of bins can be removed without affecting HBE.</li>
+</ul>
+<!--two_nonlinear/05_gen_rm_lwd_mse.R--><div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-param-two-curvy" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-param-two-curvy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-chap2_files/figure-html/fig-param-two-curvy-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-param-two-curvy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.7: Various plots to help tune the model fit: (a) HBE vs <span class="math inline">a_1</span>, (b) HBE vs <span class="math inline">\bar{n}_h</span>, (c) proportion of non-empty bins (<span class="math inline">m/b</span>) vs <span class="math inline">a_1</span>, (d) HBE vs <span class="math inline">w_h</span> cutoff used for removing low count bins. Color indicates the three binwidths show in Figure 6: <span class="math inline">0.03</span> (orange dashed), <span class="math inline">0.05</span> (blue solid), and <span class="math inline">0.08</span> (green dotted). The better model fit will have low HBE, but reasonably sized bins that capture the data sufficiently. Proportion of non-empty bins tends to increase with <span class="math inline">a_1</span> (c). Removing a few low count bins doesn’t substantially change HBE, for all three binwidths (d).
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="interactive-graphics" class="level3"><h3 class="anchored" data-anchor-id="interactive-graphics">Interactive graphics</h3>
+<p>Matching points in the <span class="math inline">2\text{-}D</span> layout with their positions in <span class="math inline">p\text{-}D</span> is useful when tuning the fit. This can be used to examine the fitted model in some subspaces in <span class="math inline">p\text{-}D</span>, in particular in association with residual plots.</p>
+<p>The interactive <span class="math inline">2\text{-}D</span> layout <span class="citation" data-cites="chapman2020">(<a href="../refs.html#ref-chapman2020" role="doc-biblioref">Sievert 2020</a>)</span> and the langevitour <span class="citation" data-cites="harisson2024">(<a href="../refs.html#ref-harisson2024" role="doc-biblioref">Harrison 2023</a>)</span> view with the fitted model overlaid can be linked using a browsable HTML widget (<span class="citation" data-cites="joe2025">Cheng and Sievert (<a href="../refs.html#ref-joe2025" role="doc-biblioref">2025</a>)</span>, <span class="citation" data-cites="joe2024">Cheng et al. (<a href="../refs.html#ref-joe2024" role="doc-biblioref">2024</a>)</span>). A rectangular “brush” is used to select points in one plot, which will highlight the corresponding points in the other plot(s). Because the langevitour is dynamic, brush events that become active will pause the animation, so that a user can interrogate the current view. This approach will be illustrated on the examples, to show how it can help to understand how the NLDR has organized the observations, and learn where it does not do well.</p>
+</section></section><section id="sec-bestfit-visalgo" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="sec-bestfit-visalgo">
+<span class="header-section-number">2.4</span> Choosing the best <span class="math inline">2\text{-}D</span> layout</h2>
+<p><a href="#fig-toy-rmse" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> illustrates the approach to compare the fits for different representations and assess the strength of any fit. What does it mean to be a best fit for this problem? Analysts use an NLDR layout to display the structure present in high-dimensional data in a convenient <span class="math inline">2\text{-}D</span> display. It is a competitor to linear dimension reduction that can better represent nonlinear associations such as clusters. However, these methods can hallucinate, suggesting patterns that don’t exist, and grossly exaggerate other patterns. Having a layout that best fits the high-dimensional structure is desirable but more important is to identify bad representations so they can be avoided. The goal is to help users decide on a the most useful and appropriate low-dimensional representation of the high-dimensional data.</p>
+<p>A particular pattern that we commonly see is that analysts tend to pick layouts with clusters that have big separations between them. When you examine their data in a tour, it is almost always that we see there are no big separations, and actually often the suggested clusters are not even present. While we don’t expect that analysts include animated gifs of tours in their papers, we should expect that any <span class="math inline">2\text{-}D</span> representation adequately indicates the clustering that is present, and honestly show lack of separation or lack of clustering when it doesn’t exist. It is important for analysts to have tools to select the accurate representation not the pretty but wrong representation.</p>
+<p>To decide on a reasonable layout, an analyst needs a selection of NLDR representations generated using a range of hyper-parameter choices and possibly different methods, such as tSNE and UMAP. They also require a range of model fits created by varying the binwidths and the level of low count bin removal, along with the calculated HBE values for each layout after transformation into the <span class="math inline">p\text{-}D</span> space. Finally, the analyst must be able to visually examine how well each model fits the data in the original data space.</p>
+<p>Comparing the HBE to obtain the best fit is appropriate if the same NLDR method is used. However, because the HBE is computed on <span class="math inline">p\text{-}D</span> data it measures the fit between model and data so it can also be used to compare the fit of different NLDR methods. A lower HBE indicates a better NLDR representation.</p>
+<!--two_nonlinear/04_gen_mse_for_diff_methods.R-->
+<!--two_nonlinear/07_example_evaluation_metrics.R-->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-toy-rmse" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-toy-rmse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-chap2_files/figure-html/fig-toy-rmse-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-toy-rmse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.8: Assessing which of the 6 NLDR layouts (a-f) on the 2NC7 data is the better representation using HBE for varying (i) binwidth (<span class="math inline">a_1</span>), and (ii) average bin count (<span class="math inline">\bar{n}_h</span>). Color represents NLDR layout. Layout d is universally poor. Layouts b, e that show two close clusters are universally suboptimal. Layout f with little separation performs well at tiny binwidth (where most points are in their own bin) and poorly as binwidth increases. Layout e has small separation with oddly shaped clusters. Layout a is the best choice. Plot (ii), which compares HBE values with respect to average bin count, helps account for differences in cluster density; here, the variation among layouts is reduced, showing that some differences observed in (i) arise from density rather than true structure. Comparison of scaled evaluation metrics (rRTA, rSC, rGS, rARNX, and HBE using <span class="math inline">a_1=0.05</span>) for the six NLDR layouts computed on the 2NC7 data using a parallel coordinate plot (iii). Color of the line indicates NLDR layout.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-toy-rmse" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> compares the metrics rARNX, rRTA, rSC, rGS, along with HBE computed on <span class="math inline">a_1=0.05</span> for the six layouts shown in <a href="#fig-toy-rmse" class="quarto-xref">Figure&nbsp;<span>2.8</span></a>. This is a parallel coordinate plot where the y-axis shows a normalized score to ensure the metrics are on the same scale. Each line corresponds to one layout.</p>
+<p>There is some agreement between the metrics. All, except rARNX and HBE agree that layout d is best. rARNX and HBE agree that layout f is best or very close to best. Layout a is best according to HBE and rARNX but considered to be much less optimal by rRTA, rSC and rGS. Layout c is considered poor by rRTA, rSC, rGS, and rARNX. This illustrates how difficult it is to use the numerical metrics alone to decide on the best layout.</p>
+<p>The problem with rSC is that correlation is not a good measure in the presence of clusters - the further the clusters are apart in the layout produces a Shepard plot with two clusters of distances which will produce a high correlation value. Similar reasoning would explain why rRTA and rGS behave similarly: they put too much emphasis on the global structure. Thus, for the 2NC7 data further apart clusters score better, overly emphasizing that there are two clusters, even though this separation is not accurately reflecting the difference in <span class="math inline">p\text{-}D</span>.</p>
+<p>When the metrics disagree is causes confusion for the analyst, and thus provides a temptation to choose the nicest looking layout (very separated clusters), even though it may be a hallucination. Because HBE is accompanied with a representation of the layout in <span class="math inline">p\text{-}D</span> to compare with the observed data, it can help to add more clarity in making decisions. <a href="#fig-fit-tsne-phate" class="quarto-xref">Figure&nbsp;<span>2.9</span></a> shows the fitted models for layouts a (rated high by HBE and rARNX) and c (rated poorly). These are <span class="math inline">2\text{-}D</span> projections from the tour, with black indicating the fitted model overlaid on the blue points of the data. The reason for the poor fit is that the PHATE layout (c) twists extremely along the 2- and <span class="math inline">3\text{-}D</span> manifolds where the data lies. We have learned that all the NLDR methods tend to have twists in the fit in <span class="math inline">p\text{-}D</span> but this is extreme. This is likely why layout c has poor metrics relative to the other layouts, and it suggests that it does not adequately capture the local structure in the 2NC7 data.</p>
+<!--two_nonlinear/06_gen_model_with_tSNE.R-->
+<!--two_nonlinear/08_gen_model_with_PHATE.R-->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-fit-tsne-phate" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-fit-tsne-phate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-chap2_files/figure-html/fig-fit-tsne-phate-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fit-tsne-phate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.9: Three <span class="math inline">2\text{-}D</span> projections from a tour showing the fitted models (black lines) for layouts a (top row) and c (bottom row) of the 2NC7 data (blue points). Layout c, which was poorly rated by rARNX and HBE covers less of the width of the data than a. The triangular gridding is less visible in c than layout a, and actually corresponds to extreme twisting.
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="sec-applications-visalgo" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="sec-applications-visalgo">
+<span class="header-section-number">2.5</span> Applications</h2>
+<p>To illustrate the approach we use two examples: PBMC3k data (single cell gene expression) where an NLDR layout is used to represent cluster structure present in the <span class="math inline">p\text{-}D</span> data, and MNIST hand-written digits where NLDR is used to represent essentially a low-dimensional nonlinear manifold in <span class="math inline">p\text{-}D</span>.</p>
+<section id="sec-pbmc" class="level3"><h3 class="anchored" data-anchor-id="sec-pbmc">PBMC3k</h3>
+<p>This is a benchmark single-cell RNA-Seq data set collected on Human Peripheral Blood Mononuclear Cells (PBMC3k) as used in <span class="citation" data-cites="pbmc2019">Genomics (<a href="../refs.html#ref-pbmc2019" role="doc-biblioref">2016</a>)</span>. Single-cell data measures the gene expression of individual cells in a sample of tissue (see for example, <span class="citation" data-cites="haque2017">Haque et al. (<a href="../refs.html#ref-haque2017" role="doc-biblioref">2017</a>)</span>). This type of data is used to obtain an understanding of cellular level behavior and heterogeneity in their activity. Clustering of single-cell data is used to identify groups of cells with similar expression profiles. NLDR is often used to summarize the cluster structure. Usually, NLDR does not use the cluster labels to compute the layout, but uses color to represent the cluster labels when it is plotted.</p>
+<p>In this data there are <span class="math inline">2622</span> single cells and <span class="math inline">1000</span> gene expressions (variables). Following the same pre-processing as <span class="citation" data-cites="chen2024">Chen et al. (<a href="../refs.html#ref-chen2024" role="doc-biblioref">2024</a>)</span>, different NLDR techniques were performed on the first nine principal components. <a href="#fig-NLDR-variety" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> shows this data using a variety of methods, and different hyper-parameters. You can see that the result is wildly different depending on the choices. Layout a is a reproduction of the layout that was published in <span class="citation" data-cites="chen2024">Chen et al. (<a href="../refs.html#ref-chen2024" role="doc-biblioref">2024</a>)</span>. This layout suggests that the data has three very well separated clusters, each with an odd shape. The question is whether this accurately represents the cluster structure in the data, or whether they should have chosen b or c or d or e or f or g or h. This is what our new method can help with – to decide which is the more accurate <span class="math inline">2\text{-}D</span> representation of the cluster structure in the <span class="math inline">p\text{-}D</span> data.</p>
+<p><a href="#fig-pbmc-rmse" class="quarto-xref">Figure&nbsp;<span>2.10</span></a> shows HBE across a range of binwidths (<span class="math inline">a_1</span>) for each of the layouts in <a href="#fig-NLDR-variety" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>. The layouts were generated using tSNE and UMAP with various hyper-parameter settings, while PHATE, PaCMAP, and TriMAP were applied using their default settings. Lines are color coded to match the color of the layouts shown on the right. Lower HBE indicates the better fit. Using a range of binwidths shows how the model changes, with possibly the best model being one that is universally low HBE across all binwidths. It can be seen that layout f is sub-optimal with universally higher HBE. Layout a, the published one, is better but it is not as good as layouts b, d, or e. With some imagination layout d perhaps shows three barely distinguishable clusters. Layout e shows three, possibly four, clusters that are more separated. The choice reduces from eight to these two. Layout d has slightly better HBE when the <span class="math inline">a_1</span> is small, but layout e beats it at larger values. Thus we could argue that layout e is the most accurate representation of the cluster structure, of these eight.</p>
+<p>To further assess the choices, we need to look at the model in the data space, by using a tour to show the wireframe model overlaid on the data in the <span class="math inline">9\text{-}D</span> space (<a href="../appendix/B-appB.html#fig-model-pbmc-author-proj" class="quarto-xref">Figure&nbsp;<span>B.7</span></a>). Here we compare the published layout (a) versus what we argue is the best layout (e). The top row (a1, a2, a3) correspond to the published layout and the bottom row (e1, e2, e3) correspond to the optimal choice according to our procedure. The middle and right plots show two projections. The primary difference between the two models is that the model of layout e does not fill out to the extent of the data but concentrates in the center of each point cloud. Both suggest that three clusters is a reasonable interpretation of the structure, but layout e more accurately reflects the separation between them, which is small.</p>
+<!--Fit the best model for author suggestion and compute error-->
+<!--pbmc3k/13_gen_model_with_UMAP.R-->
+<!--pbmc3k/08_gen_mse_for_diff_methods.R-->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-pbmc-rmse" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pbmc-rmse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-chap2_files/figure-html/fig-pbmc-rmse-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pbmc-rmse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.10: Assessing which of the 8 NLDR layouts on the PBMC3k data (shown in <a href="#fig-NLDR-variety" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>) is the better representation using HBE for varying (i) binwidth (<span class="math inline">a_1</span>), and (ii) average bin count (<span class="math inline">\bar{n}_h</span>). Color used for the lines and points in the left plot and in the scatterplots represents NLDR layout (a-h). Layout f is universally poor. Layouts a, c, g, h that show large separations between clusters are universally suboptimal. Layout d with little separation performs well at tiny binwidth (where most points are in their own bin) and poorly as binwidth increases. The choice of best is between layouts b and e, that have small separations between oddly shaped clusters. Layout e is chosen as the best. Plot (ii), which accounts for the density within clusters by using average bin count, shows reduced differences between layouts, indicating that part of the variation in (i) is driven by cluster density rather than true structural differences.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<!--best choice-->
+<!--Fit the best model and compute error-->
+<!--pbmc3k/14_gen_model_with_tSNE.R-->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-model-pbmc-author-proj" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-model-pbmc-author-proj-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-chap2_files/figure-html/fig-model-pbmc-author-proj-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" data-fig-pos="!ht">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model-pbmc-author-proj-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.11: Compare the published <span class="math inline">2\text{-}D</span> layout (a) made with UMAP and the <span class="math inline">2\text{-}D</span> layout selected by HBE plot (e) made by tSNE. The two plots on the right show projections from a tour, with the models overlaid. The published layout a suggested three very separated clusters, but this is not present in the data. While there may be three clusters they are not well-separated. The difference in model fit also indicates this: the published layout a does not spread out fully into the point cloud like the model generated from layout e. This supports the choice that layout e is the better representation of the data, because it does not exaggerate separation between clusters.
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="sec-mnist" class="level3"><h3 class="anchored" data-anchor-id="sec-mnist">MNIST hand-written digits</h3>
+<p>The digit “1” of the MNIST dataset <span class="citation" data-cites="lecun1998">(<a href="../refs.html#ref-lecun1998" role="doc-biblioref">LeCun et al. 1998</a>)</span> consists of <span class="math inline">7877</span> grayscale images of handwritten “1”s. Each image is <span class="math inline">28 \times 28</span> pixels which corresponds to <span class="math inline">784</span> variables. The first <span class="math inline">10</span> principal components, explaining <span class="math inline">83\%</span> of the total variation, are used. This data essentially lies on a nonlinear manifold in the high dimensions, defined by the shapes that “1”s make when sketched. We expect that the best layout captures this type of structure and does not exhibit distinct clusters.</p>
+<!--mnist/03_gen_mse_for_diff_methods.R-->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-mnist-rmse" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mnist-rmse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-chap2_files/figure-html/fig-mnist-rmse-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mnist-rmse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.12: Assessing which of the 6 NLDR layouts of the MNIST digit 1 data is the better representation using HBE for varying (i) binwidth (<span class="math inline">a_1</span>), and (ii) average bin count (<span class="math inline">\bar{n}_h</span>). Colour is used for the lines and points in the left plot to match the scatterplots of the NLDR layouts (a-f). Layout c is universally poor. Layouts a, f that show a big cluster and a small circular cluster are universally optimal. Layout a performs well at tiny binwidth (where most points are in their own bin) and not as well as f with larger binwidth, thus layout f is the best choice. Plot (ii), which accounts for the density within clusters by using average bin count, shows reduced differences between layouts, indicating that part of the variation in (i) is driven by cluster density rather than true structural differences.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-mnist-rmse" class="quarto-xref">Figure&nbsp;<span>2.12</span></a> compares the fit of six layouts computed using UMAP (b), PHATE (c), TriMAP (d), PaCMAP (e) with default hyper-parameter setting and two tSNE runs, one with default hyper-parameter setting (a) and the other changing perplexity to <span class="math inline">89</span> (f). The layouts are reasonably similar in that they all have the observations in a single blob. Some (b, c) have a more curved shape than others. Layout e is the most different having a linear shape, and a single very large outlier. Both a and f have a small clump of points perhaps slightly disconnected from the other points, in the lower to middle right.</p>
+<p>The layout plots are colored to match the lines in the HBE vs binwidth (<span class="math inline">a_1</span>) plot. Layouts a, b and f fit the data better than c, d, e, and layout f appears to be the best fit. <a href="#fig-clust-mnist" class="quarto-xref">Figure&nbsp;<span>2.13</span></a> shows this model in the data space in two projections from a tour. The data is curved in the <span class="math inline">10\text{-}D</span> space, and the fitted model captures this curve. The small clump of points in the <span class="math inline">2\text{-}D</span> layout is highlighted in both displays. These are almost all inside the curve of the bulk of points and are sparsely located. The fact that they are packed together in the <span class="math inline">2\text{-}D</span> layout is likely due to the handling of density differences by the NLDR.</p>
+<p>An interesting aside is that the rather strange layout e, which has what looks like a single point far from the remaining observations is actually similar to this one. That point is actually a clump of points corresponding to some of the diffuse points interior to the curve of the bulk of points. This is easy to see using the linked brushing tool.</p>
+<p>The next step is to investigate the <span class="math inline">2\text{-}D</span> layout to understand what information is learned from this representation. <a href="#fig-model-error-mnist" class="quarto-xref">Figure&nbsp;<span>2.14</span></a> summarizes this investigation. Plot a shows the layout with points colored by their residual value - darker color indicates larger residual and poor fit. The plots b, c, d, e show samples of hand-written digits taken from inside the colored boxes. Going from top to bottom around the curve shape we can see that the “1”s are drawn with from right slant to a left slant. The “1”s in d (black box) tend to have the extra up stroke but are quite varied in appearance. The “1”s shown in the plots labelled e correspond to points with big residuals. They can be seen to be more strangely drawn than the others. Overall, this <span class="math inline">2\text{-}D</span> layout shows a useful way to summarize the variation in way “1”s are drawn.</p>
+<!--PaCMAP param: n_components=2, n_neighbors=10, init=random, MN_ratio=0.9, FP_ratio=2.0-->
+<!-- Fit the model and compute error-->
+<!--mnist/04_gen_model_with_tSNE.R-->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-clust-mnist" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-clust-mnist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-chap2_files/figure-html/fig-clust-mnist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-clust-mnist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.13: Summary from exploring tSNE layout of the MNIST digit 1 data (a in Figure 12) using linked brushing. There is a big nonlinear cluster (grey) and a small cluster (orange) located very close to the one corner of the big cluster in <span class="math inline">2\text{-}D</span> (a). The MNIST digit 1 data has a nonlinear structure in <span class="math inline">10\text{-}D</span>. Two <span class="math inline">2\text{-}D</span> projections from a tour on <span class="math inline">10\text{-}D</span> reveal that the small orange cluster is actually a diffuse set of points wrapped within the grey cluster, which is C-shaped in the high dimensions.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-model-error-mnist" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-model-error-mnist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-chap2_files/figure-html/fig-model-error-mnist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model-error-mnist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.14: Summary of the layout structure, and large errors, relative to the MNIST digit 1 shape: (a) layout colored by residual value, and at right (b-e) are images of samples of observations taken at locations around the layout, showing similarity in how the 1’s were drawn. Set (f) are images corresponding to large residuals in the big cluster (darker orange in plot a). Along the big cluster, the angle of digit 1 changes (b-d). The small cluster has larger residuals, and the images show that these tend to be European style with a flag at the top, and a base at the bottom. The set in (f) show various poorly written digits.
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section></section><section id="sec-discussion-visalgo" class="level2" data-number="2.6"><h2 data-number="2.6" class="anchored" data-anchor-id="sec-discussion-visalgo">
+<span class="header-section-number">2.6</span> Discussion</h2>
+<p>We have developed an approach to help assess and compare NLDR layouts, generated by different methods and hyper-parameter choice(s). It depends on conceptualizing the <span class="math inline">2\text{-}D</span> layout as a model, allowing for the creation of a wireframe representation of the model that can be lifted into <span class="math inline">p\text{-}D</span>. The fit is assessed by viewing the model in the data space, computing residuals and HBE. Different layouts can be compared using the HBE, providing a quantitative metric to decide on the most suitable NLDR layout to represent the <span class="math inline">p\text{-}D</span> data. Global and local preservation of structure is assessed by examining the HBE across a range of binwidths. It also provides a way to predict the values of new <span class="math inline">p\text{-}D</span> observations in the <span class="math inline">2\text{-}D</span>, which could be useful for implementing uncertainty checks, such as using training and testing samples.</p>
+<p>The new methodology is accompanied by an R package called <code>quollr</code>, so that it is readily usable and broadly accessible. The package has methods to fit the model, compute diagnostics and also visualize the results, with interactivity. We have primarily used the <code>langevitour</code> software <span class="citation" data-cites="harisson2024">(<a href="../refs.html#ref-harisson2024" role="doc-biblioref">Harrison 2023</a>)</span> to view the model in the data space, but other tour software such as <code>tourr</code> <span class="citation" data-cites="wickham2011">(<a href="../refs.html#ref-wickham2011" role="doc-biblioref">Wickham et al. 2011</a>)</span> and <code>detourr</code> <span class="citation" data-cites="casper2025">(<a href="../refs.html#ref-casper2025" role="doc-biblioref">Hart and Wang 2025</a>)</span> could also be used.</p>
+<p>Two examples illustrating usage are provided: the PBMC3k data, where the NLDR is summarizing clustering in <span class="math inline">p\text{-}D</span> and hand-written digits illustrating how NLDR represents an intrinsically low-dimensional nonlinear manifold. We examined a typical published usage of UMAP with the PBMC3k dataset <span class="citation" data-cites="chen2024">(<a href="../refs.html#ref-chen2024" role="doc-biblioref">Chen et al. 2024</a>)</span>. As is typical of UMAP layout with default settings, the separation between clusters is grossly exaggerated. The layout even suggests separation where there is none. Our approach provides a way to choose a reasonable layout and avoids the use of misleading layouts in the future. In the hand-written digits <span class="citation" data-cites="lecun1998">(<a href="../refs.html#ref-lecun1998" role="doc-biblioref">LeCun et al. 1998</a>)</span>, we illustrate how our model fit statistics show that a flat disc layout is superior to the curved-shaped layouts, and how to identify oddly written “1”s using the residuals of the fitted model.</p>
+<p>This work can be applied with existing metrics for evaluating NLDR layout, such as ARNX, RTA, SC, and RGS. It provides an additional evaluation metric, and importantly allows any layout to be viewed in the <span class="math inline">p\text{-}D</span> data space. This latter aspect can help to disentangle conflicting suggestions by the different metrics.</p>
+<p>Additional exploration of distance measures to summarize the fit could be a valuable direction for future work. We have used Euclidean distance, but other measures, such as geodesic distances <span class="citation" data-cites="joshua2000">(<a href="../refs.html#ref-joshua2000" role="doc-biblioref">Tenenbaum et al. 2000</a>)</span>, may better capture curved or nonlinear relationships in the data and are worth exploring.</p>
+<p>This work has also revealed some interesting behaviors of NLDR methods, including twisting, flattened “pancake” clusters in <span class="math inline">p\text{-}D</span>, and severe effects of density differences. These are described in more detail in the supplementary materials.</p>
+<p>Researchers usually use <span class="math inline">2\text{-}D</span> layouts, but if a <span class="math inline">k\text{-}D</span> (<span class="math inline">k&gt;2</span>) layout is provided the approach developed here could be extended. Potential approaches include <span class="math inline">3\text{-}D</span> binning, <span class="math inline">k</span>-means clustering, or even special implementations of convex hulls.</p>
+</section><section id="sec-supplementary" class="level2" data-number="2.7"><h2 data-number="2.7" class="anchored" data-anchor-id="sec-supplementary">
+<span class="header-section-number">2.7</span> Supplementary Materials</h2>
+<p>All the materials to reproduce the chapter can be found at <a href="https://github.com/JayaniLakshika/paper-nldr-vis-algorithm">https://github.com/JayaniLakshika/paper-nldr-vis-algorithm</a>.</p>
+<p>The supplementary materials provide additional details on the methods and hyper-parameters used to generate layouts, video links of animated <span class="math inline">p\text{-}D</span> tours, notation summaries, and the R and Python scripts used in the study. They also describe the generation of the 2NC7 data, computation of hexagon grid configurations, and data binning procedures. Further sections highlight interesting NLDR behaviors observed in the data space and compare HBE with existing evaluation metrics for the PBMC3k and MNIST datasets.</p>
+<p>The R package <code>quollr</code>, available on CRAN and at <a href="https://jayanilakshika.github.io/quollr/">https://jayanilakshika.github.io/quollr/</a>, provides software accompaying this chapter to fit the wireframe model representation, compute diagnostics, visualize the model in the data with <code>langevitour</code> and link multiple plots interactively.</p>
+</section><section id="acknowledgments" class="level2" data-number="2.8"><h2 data-number="2.8" class="anchored" data-anchor-id="acknowledgments">
+<span class="header-section-number">2.8</span> Acknowledgments</h2>
+<p>These <code>R</code> packages were used for the work: <code>tidyverse</code> <span class="citation" data-cites="hadley2019">(<a href="../refs.html#ref-hadley2019" role="doc-biblioref">Wickham et al. 2019</a>)</span>, <code>Rtsne</code> <span class="citation" data-cites="jesse2015">(<a href="../refs.html#ref-jesse2015" role="doc-biblioref">Krijthe 2015</a>)</span>, <code>umap</code> <span class="citation" data-cites="tomasz2023">(<a href="../refs.html#ref-tomasz2023" role="doc-biblioref">Konopka 2023</a>)</span>, <code>patchwork</code> <span class="citation" data-cites="thomas2024">(<a href="../refs.html#ref-thomas2024" role="doc-biblioref">Pedersen 2024</a>)</span>, <code>colorspace</code> <span class="citation" data-cites="achim2020">(<a href="../refs.html#ref-achim2020" role="doc-biblioref">Zeileis et al. 2020</a>)</span>, <code>langevitour</code> <span class="citation" data-cites="harisson2024">(<a href="../refs.html#ref-harisson2024" role="doc-biblioref">Harrison 2023</a>)</span>, <code>conflicted</code> <span class="citation" data-cites="hadley2023">(<a href="../refs.html#ref-hadley2023" role="doc-biblioref">Wickham 2023</a>)</span>, <code>reticulate</code> <span class="citation" data-cites="kevin2024">(<a href="../refs.html#ref-kevin2024" role="doc-biblioref">Ushey et al. 2024</a>)</span>, <code>kableExtra</code> <span class="citation" data-cites="hao2024">(<a href="../refs.html#ref-hao2024" role="doc-biblioref">Zhu 2024</a>)</span>. These <code>python</code> packages were used for the work: <code>trimap</code> <span class="citation" data-cites="amid2022">(<a href="../refs.html#ref-amid2022" role="doc-biblioref">Amid and Warmuth 2022</a>)</span> and <code>pacmap</code> <span class="citation" data-cites="yingfan2021">(<a href="../refs.html#ref-yingfan2021" role="doc-biblioref">Wang et al. 2021</a>)</span>. The article was created with <code>R</code> packages <code>quarto</code> <span class="citation" data-cites="jjallaire2024">(<a href="../refs.html#ref-jjallaire2024" role="doc-biblioref">Allaire and Dervieux 2024</a>)</span>.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-jjallaire2024" class="csl-entry" role="listitem">
+Allaire, J., and Dervieux, C. (2024), <em><a href="\url{https://CRAN.R-project.org/package=quarto}."><span class="nocase">quarto: R Interface to Quarto Markdown Publishing System</span></a></em>.
+</div>
+<div id="ref-amid2022" class="csl-entry" role="listitem">
+Amid, E., and Warmuth, M. K. (2022), <span>“<a href="https://arxiv.org/abs/1910.00204">TriMap: Large-scale dimensionality reduction using triplets</a>.”</span>
+</div>
+<div id="ref-As85" class="csl-entry" role="listitem">
+Asimov, D. (1985), <span>“<span>T</span>he <span>G</span>rand <span>T</span>our: <span>A</span> <span>T</span>ool for <span>V</span>iewing <span>M</span>ultidimensional <span>D</span>ata,”</span> <em>SIAM Journal of Scientific and Statistical Computing</em>, 6, 128–143.
+</div>
+<div id="ref-borg2005" class="csl-entry" role="listitem">
+Borg, I., and Groenen, P. J. F. (2005), <em><a href="\url{https://doi.org/10.1007/0-387-28981-X}."><span>Modern Multidimensional Scaling</span></a></em>, New York, NY: Springer.
+</div>
+<div id="ref-brown2015" class="csl-entry" role="listitem">
+Brown, T. A. (2015), <em><span class="nocase">Confirmatory Factor Analysis for Applied Research</span></em>, New York, NY, US: <span>The Guilford Press</span>.
+</div>
+<div id="ref-carr1987" class="csl-entry" role="listitem">
+Carr, D. B., Littlefield, R. J., Nicholson, W. L., and Littlefield, J. S. (1987), <span>“<a href="\url{http://www.jstor.org/stable/2289444}."><span class="nocase">Scatterplot Matrix Techniques for Large N</span></a>,”</span> <em>Journal of the American Statistical Association</em>, 82, 424–436.
+</div>
+<div id="ref-dan2023" class="csl-entry" role="listitem">
+Carr, D., Lewin-Koh, N., Maechler, M., and Sarkar, D. (2023), <em><a href="\url{https://CRAN.R-project.org/package=hexbin}."><span class="nocase">hexbin: Hexagonal Binning Routines</span></a></em>.
+</div>
+<div id="ref-chari2023" class="csl-entry" role="listitem">
+Chari, T., and Pachter, L. (2023), <span>“<a href="https://doi.org/10.1371/journal.pcbi.1011288">The specious art of single-cell genomics</a>,”</span> <em>PLoS Computational Biology</em>, 19, e1011288.
+</div>
+<div id="ref-chen2024" class="csl-entry" role="listitem">
+Chen, Z., Wang, C., Huang, S., Shi, Y., and Xi, R. (2024), <span>“<a href="\url{https://www.sciencedirect.com/science/article/pii/S2667237524001735}."><span class="nocase">Directly Selecting Cell-type Marker Genes for Single-cell Clustering Analyses</span></a>,”</span> <em>Cell Reports Methods</em>, 4, 100810.
+</div>
+<div id="ref-joe2025" class="csl-entry" role="listitem">
+Cheng, J., and Sievert, C. (2025), <em><a href="https://CRAN.R-project.org/package=crosstalk">Crosstalk: Inter-widget interactivity for HTML widgets</a></em>.
+</div>
+<div id="ref-joe2024" class="csl-entry" role="listitem">
+Cheng, J., Sievert, C., Schloerke, B., Chang, W., Xie, Y., and Allen, J. (2024), <em><a href="https://CRAN.R-project.org/package=htmltools">Htmltools: Tools for HTML</a></em>.
+</div>
+<div id="ref-coifman2005" class="csl-entry" role="listitem">
+Coifman, R. R., Lafon, S., Lee, A. B., Maggioni, M., Nadler, B., Warner, F., and Zucker, S. W. (2005), <span>“<a href="\url{https://www.pnas.org/doi/abs/10.1073/pnas.0500334102}."><span class="nocase">Geometric Diffusions as a Tool for Harmonic Analysis and Structure Definition of Data: Diffusion Maps</span></a>,”</span> <em>Proceedings of the National Academy of Sciences of the United States of America</em>, 102, 7426–7431.
+</div>
+<div id="ref-freedman1981" class="csl-entry" role="listitem">
+Freedman, D. A., and Diaconis, P. (1981), <span>“<a href="\url{https://doi.org/10.1007/BF01025868}."><span class="nocase">On the Histogram as a Density Estimator: L2 Theory</span></a>,”</span> <em>Probability Theory and Related Fields</em>, 57, 453–476.
+</div>
+<div id="ref-albrecht2024" class="csl-entry" role="listitem">
+Gebhardt, A., Bivand, R., and Sinclair, D. (2024), <em><a href="https://CRAN.R-project.org/package=interp">Interp: Interpolation methods</a></em>.
+</div>
+<div id="ref-pbmc2019" class="csl-entry" role="listitem">
+Genomics, 10x (2016), <span>“<a href="\url{https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-1-0}."><span class="nocase">3k PBMCs from a Healthy Donor, Universal 3’ Gene Expression dataset analysed using Cell Ranger 1.1.0</span></a>.”</span>
+</div>
+<div id="ref-haque2017" class="csl-entry" role="listitem">
+Haque, A., Engel, J., Teichmann, S. A., and Lönnberg, T. (2017), <span>“<a href="\url{https://doi.org/10.1186/s13073-017-0467-4}."><span class="nocase">A Practical Guide to Single-cell RNA-sequencing for Biomedical Research and Clinical Applications</span></a>,”</span> <em>Genome Medicine</em>, 9, 75.
+</div>
+<div id="ref-harisson2024" class="csl-entry" role="listitem">
+Harrison, P. (2023), <span>“<a href="\url{https://doi.org/10.32614/RJ-2023-046}."><span class="nocase">langevitour: Smooth Interactive Touring of High Dimensions, Demonstrated With scRNA-Seq Data</span></a>,”</span> <em>The R Journal</em>, 15, 206–219.
+</div>
+<div id="ref-casper2025" class="csl-entry" role="listitem">
+Hart, C., and Wang, E. (2025), <em><a href="https://CRAN.R-project.org/package=detourr">Detourr: Portable and performant tour animations</a></em>.
+</div>
+<div id="ref-hinton2006" class="csl-entry" role="listitem">
+Hinton, G. E., and Salakhutdinov, R. R. (2006), <span>“Reducing the dimensionality of data with neural networks,”</span> <em>Science</em>, American Association for the Advancement of Science, 313, 504–507. <a href="https://doi.org/10.1126/science.1127647">https://doi.org/10.1126/science.1127647</a>.
+</div>
+<div id="ref-irizarry2024" class="csl-entry" role="listitem">
+Irizarry, R. (2024), <span>“Biologists, stop putting UMAP plots in your papers,”</span> https://simplystatistics.org/posts/2024-12-23-biologists-stop-including-umap-plots-in-your-papers/.
+</div>
+<div id="ref-johnstone2009" class="csl-entry" role="listitem">
+Johnstone, I. M., and Titterington, D. M. (2009), <span>“<a href="\url{https://royalsocietypublishing.org/doi/abs/10.1098/rsta.2009.0159}."><span class="nocase">Statistical Challenges of High-Dimensional Data</span></a>,”</span> <em>Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences</em>, 367, 4237–4253.
+</div>
+<div id="ref-jolliffe2011" class="csl-entry" role="listitem">
+Jolliffe, I. (2011), <span>“<a href="\url{https://doi.org/10.1007/978-3-642-04898-2_455}."><span>Principal Component Analysis</span></a>,”</span> in <em>International encyclopedia of statistical science</em>, Berlin, Heidelberg: Springer Berlin Heidelberg, pp. 1094–1096.
+</div>
+<div id="ref-joreskog1969" class="csl-entry" role="listitem">
+Jöreskog, K. G. (1969), <span>“<a href="\url{https://doi.org/10.1007/BF02289343}."><span class="nocase">A General Approach to Confirmatory Maximum Likelihood Factor Analysis</span></a>,”</span> <em>Psychometrika</em>, 34, 183–202.
+</div>
+<div id="ref-tomasz2023" class="csl-entry" role="listitem">
+Konopka, T. (2023), <em><a href="\url{https://CRAN.R-project.org/package=umap}."><span class="nocase">umap: Uniform Manifold Approximation and Projection</span></a></em>.
+</div>
+<div id="ref-jesse2015" class="csl-entry" role="listitem">
+Krijthe, J. H. (2015), <em><a href="\url{https://github.com/jkrijthe/Rtsne}."><span>Rtsne: T-Distributed Stochastic Neighbor Embedding Using Barnes-Hut Implementation</span></a></em>.
+</div>
+<div id="ref-kruskal1964" class="csl-entry" role="listitem">
+Kruskal, J. B. (1964), <span>“<a href="\url{https://doi.org/10.1007/BF02289694}."><span>Nonmetric Multidimensional Scaling: A Numerical Method</span></a>,”</span> <em>Psychometrika</em>, 29, 115–129.
+</div>
+<div id="ref-laa2022" class="csl-entry" role="listitem">
+Laa, U., Cook, D., and Lee, S. (2022), <span>“<a href="\url{https://doi.org/10.1080/10618600.2021.1963264}."><span class="nocase">Burning Sage: Reversing the Curse of Dimensionality in the Visualization of High-Dimensional Data</span></a>,”</span> <em>Journal of Computational and Graphical Statistics</em>, 31, 40–49.
+</div>
+<div id="ref-lecun1998" class="csl-entry" role="listitem">
+LeCun, Y., Cortes, C., and Burges, C. J. C. (1998), <span>“<a href="\url{http://yann.lecun.com/exdb/mnist/}."><span class="nocase">The MNIST Database of Handwritten Digits</span></a>.”</span>
+</div>
+<div id="ref-lee1980" class="csl-entry" role="listitem">
+Lee, D. T., and Schachter, B. J. (1980), <span>“<a href="\url{https://doi.org/10.1007/BF00977785}."><span class="nocase">Two Algorithms For Constructing a Delaunay Triangulation</span></a>,”</span> <em>International Journal of Computer &amp; Information Sciences</em>, 9, 219–242.
+</div>
+<div id="ref-john2015" class="csl-entry" role="listitem">
+Lee, J. A., Peluffo-Ordóñez, D. H., and Verleysen, M. (2015), <span>“Multi-scale similarities in stochastic neighbour embedding: Reducing dimensionality while preserving both local and global structure,”</span> <em>Neurocomputing</em>, 169, 246–261. https://doi.org/<a href="https://doi.org/10.1016/j.neucom.2014.12.095">https://doi.org/10.1016/j.neucom.2014.12.095</a>.
+</div>
+<div id="ref-lee2021" class="csl-entry" role="listitem">
+Lee, S., Cook, D., Silva, N. da, Laa, U., Wang, E., Spyrison, N., and Zhang, H. S. (2021), <span>“<span class="nocase">A Review of the State-of-the-Art on Tours for Dynamic Visualization of High-Dimensional Data</span>,”</span> <em>arXiv preprint arXiv:2104.08016</em>.
+</div>
+<div id="ref-laurens2008" class="csl-entry" role="listitem">
+Maaten, L. V. D., and Hinton, G. E. (2008), <span>“<a href="\url{https://api.semanticscholar.org/CorpusID:5855042}."><span class="nocase">Visualizing Data Using t-SNE</span></a>,”</span> <em>Journal of Machine Learning Research</em>, 9, 2579–2605.
+</div>
+<div id="ref-van2009" class="csl-entry" role="listitem">
+Maaten, L. van der (2009), <span>“Learning a parametric embedding by preserving local structure,”</span> in <em>Artificial intelligence and statistics</em>, PMLR, pp. 384–391.
+</div>
+<div id="ref-leland2018" class="csl-entry" role="listitem">
+McInnes, L., Healy, J., Saul, N., and Großberger, L. (2018), <span>“<a href="\url{https://doi.org/10.21105/joss.00861}."><span class="nocase">UMAP: Uniform Manifold Approximation and Projection</span></a>,”</span> <em>Journal of Open Source Software</em>, 3, 861.
+</div>
+<div id="ref-moon2019" class="csl-entry" role="listitem">
+Moon, K. R., Dijk, D. van, Wang, Z., Gigante, S. A., Burkhardt, D. B., Chen, W. S., Yim, K., Elzen, A. van den, Hirn, M. J., Coifman, R. R., Ivanova, N. B., Wolf, G., and Krishnaswamy, S. (2019), <span>“<a href="\url{https://doi.org/10.1038/s41587-019-0336-3}."><span class="nocase">Visualizing Structure and Transitions in High-Dimensional Biological Data</span></a>,”</span> <em>Nature Biotechnology</em>, 37, 1482–1492.
+</div>
+<div id="ref-thomas2024" class="csl-entry" role="listitem">
+Pedersen, T. L. (2024), <em><a href="\url{https://CRAN.R-project.org/package=patchwork}."><span class="nocase">patchwork: The Composer of Plots</span></a></em>.
+</div>
+<div id="ref-saeed2018" class="csl-entry" role="listitem">
+Saeed, N., Nam, H., Haq, M. I. U., and Muhammad Saqib, D. B. (2018), <span>“<a href="\url{https://doi.org/10.1145/3178155}."><span class="nocase">A Survey on Multidimensional Scaling</span></a>,”</span> <em>ACM Comput. Surv.</em>, 51.
+</div>
+<div id="ref-shepard1962" class="csl-entry" role="listitem">
+Shepard, R. N. (1962), <span>“The analysis of proximities: Multidimensional scaling with an unknown distance function. i.”</span> <em>Psychometrika</em>, 27, 125–140. <a href="https://doi.org/10.1007/BF02289630">https://doi.org/10.1007/BF02289630</a>.
+</div>
+<div id="ref-chapman2020" class="csl-entry" role="listitem">
+Sievert, C. (2020), <em><a href="https://plotly-r.com">Interactive web-based data visualization with r, plotly, and shiny</a></em>, Chapman; Hall/CRC.
+</div>
+<div id="ref-silva2002" class="csl-entry" role="listitem">
+Silva, V., and Tenenbaum, J. (2002), <span>“<a href="\url{https://proceedings.neurips.cc/paper_files/paper/2002/file/5d6646aad9bcc0be55b2c82f69750387-Paper.pdf}."><span class="nocase">Global Versus Local Methods in Nonlinear Dimensionality Reduction</span></a>,”</span> <em>Advances in Neural Information Processing Systems</em>, 15, 721–728.
+</div>
+<div id="ref-spearman1961" class="csl-entry" role="listitem">
+Spearman, C. (1961), <span>“The proof and measurement of association between two things.”</span> Appleton-Century-Crofts.
+</div>
+<div id="ref-joshua2000" class="csl-entry" role="listitem">
+Tenenbaum, J. B., Silva, V. de, and Langford, J. C. (2000), <span>“A global geometric framework for nonlinear dimensionality reduction,”</span> <em>Science</em>, 290, 2319–2323. <a href="https://doi.org/10.1126/science.290.5500.2319">https://doi.org/10.1126/science.290.5500.2319</a>.
+</div>
+<div id="ref-kevin2024" class="csl-entry" role="listitem">
+Ushey, K., Allaire, J., and Tang, Y. (2024), <em><a href="\url{https://CRAN.R-project.org/package=reticulate}."><span class="nocase">reticulate: Interface to Python</span></a></em>.
+</div>
+<div id="ref-yingfan2021" class="csl-entry" role="listitem">
+Wang, Y., Huang, H., Rudin, C., and Shaposhnik, Y. (2021), <span>“<a href="\url{http://jmlr.org/papers/v22/20-1061.html}."><span class="nocase">Understanding How Dimension Reduction Tools Work: An Empirical Approach to Deciphering t-SNE, UMAP, TriMap, and PaCMAP for Data Visualization</span></a>,”</span> <em>Journal of Machine Learning Research</em>, 22, 1–73.
+</div>
+<div id="ref-hadley2023" class="csl-entry" role="listitem">
+Wickham, H. (2023), <em><a href="\url{https://CRAN.R-project.org/package=conflicted}."><span class="nocase">conflicted: An Alternative Conflict Resolution Strategy</span></a></em>.
+</div>
+<div id="ref-hadley2019" class="csl-entry" role="listitem">
+Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J., Robinson, D., Seidel, D. P., Spinu, V., Takahashi, K., Vaughan, D., Wilke, C., Woo, K., and Yutani, H. (2019), <span>“<a href="\url{https://doi.org/10.21105/joss.01686}."><span class="nocase">Welcome to the Tidyverse</span></a>,”</span> <em>Journal of Open Source Software</em>, 4, 1686.
+</div>
+<div id="ref-wickham2015" class="csl-entry" role="listitem">
+Wickham, H., Cook, D., and Hofmann, H. (2015), <span>“<a href="\url{https://onlinelibrary.wiley.com/doi/abs/10.1002/sam.11271}."><span class="nocase">Visualizing Statistical Models: Removing the Blindfold</span></a>,”</span> <em>Statistical Analysis and Data Mining: The ASA Data Science Journal</em>, 8, 203–225.
+</div>
+<div id="ref-wickham2011" class="csl-entry" role="listitem">
+Wickham, H., Cook, D., Hofmann, H., and Buja, A. (2011), <span>“<a href="\url{http://www.jstatsoft.org/v40/i02/}."><span class="nocase">tourr: An R Package For Exploring Multivariate Data With Projections</span></a>,”</span> <em>Journal of Statistical Software</em>, 40, 1–18.
+</div>
+<div id="ref-achim2020" class="csl-entry" role="listitem">
+Zeileis, A., Fisher, J. C., Hornik, K., Ihaka, R., McWhite, C. D., Murrell, P., Stauffer, R., and Wilke, C. O. (2020), <span>“<a href="\url{https://www.jstatsoft.org/index.php/jss/article/view/v096i01}."><span class="nocase">colorspace: A Toolbox for Manipulating and Assessing Colors and Palettes</span></a>,”</span> <em>Journal of Statistical Software</em>, 96, 1–49.
+</div>
+<div id="ref-hao2024" class="csl-entry" role="listitem">
+Zhu, H. (2024), <em><a href="\url{https://CRAN.R-project.org/package=kableExtra}."><span class="nocase">kableExtra: Construct Complex Table with kable and Pipe Syntax</span></a></em>.
+</div>
+</div>
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../chapters/01-chap1.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/03-chap3.html" class="pagination-link" aria-label="quollr: An R Package for Visualizing $2\text{-}D$ Models from Nonlinear Dimension Reductions in High-Dimensional Space">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">quollr: An R Package for Visualizing <span class="math inline">2\text{-}D</span> Models from Nonlinear Dimension Reductions in High-Dimensional Space</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/chapters/02-chap2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

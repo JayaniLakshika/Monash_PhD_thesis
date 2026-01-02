@@ -613,6 +613,7 @@ algofig <- bscols(
       align-items: center;          /* optional: centers vertically if space allows */
       margin: 0 auto;
       padding: 0;
+      width: 100%; overflow: hidden;
     ",
     htmltools::div(
       style = "
@@ -1046,9 +1047,9 @@ nldrdt_link <- show_link_plots(
 
 nldrdt_link <- crosstalk::bscols(
     htmltools::div(
-        style = "display: grid; grid-template-columns: 1fr 1fr;
+        style = "display: grid; grid-template-columns: 1fr;
     gap: 0px; align-items: start; justify-items: center; margin: 0; padding: 0;
-    height: 380px; width: 500px",
+    height: 420px; width: 100%; overflow: hidden;",
         nldrdt_link
     ),
     device = "xs"
@@ -1319,6 +1320,16 @@ errornldrdt_link <- show_error_link_plots(
   point_data = df_exe, 
   edge_data = trimesh, 
   point_colour = clr_choice
+)
+
+errornldrdt_link <- crosstalk::bscols(
+    htmltools::div(
+        style = "display: grid; grid-template-columns: 1fr;
+    gap: 0px; align-items: start; justify-items: center; margin: 0; padding: 0;
+    height: 360px; width: 100%; overflow: hidden;",
+        errornldrdt_link
+    ),
+    device = "xs"
 )
 
 class(errornldrdt_link) <- c(class(errornldrdt_link), "htmlwidget")
@@ -2038,12 +2049,40 @@ trimesh_limb + limb_proj_tsne_model1 +
 
 ```{r fig-tsne-link-limb, eval=knitr::is_html_output(), fig.cap="Interactively linked plots connecting layout a (left) and the fitted model overlaid with the limb muscle data in $10\\text{-}D$ (right). Each color represents a different muscle group, with triangulated hexagon centroids on the NLDR layout connected to their corresponding regions in the high-dimensional projection using `langevitour`. Brushing in either view highlights the same subset of points across both panels, enabling exploration of how clusters in the low-dimensional embedding align with structures in the original high-dimensional space. Double-clicking clears the selection and removes highlights.", fig.alt = "The figure shows two interactively linked panels. The left panel displays a 2-D NLDR layout of the Limb muscle dataset (n=1067), with each point representing an observation and colored according to its muscle group. The right panel shows a 2-D projection of the 10-D data and fitted model using langevitour, where each axis represents a linear combination of the original dimensions. Triangulated hexagon centroids on the NLDR layout are connected to their corresponding regions in the high-dimensional projection. Brushing a subset of points in either panel highlights the corresponding points in both panels using a distinct color, and double-clicking clears all selections. Both panels maintain roughly square aspect ratios and consistent visual encodings for selected and unselected points throughout the interactive view."}
 
+linked_plt_int <- bscols(
+  htmltools::div(
+    style = "display: grid; grid-template-columns: 1fr;
+    gap: 0px;
+    align-items: start;
+    justify-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%; overflow: hidden;",
+    linked_plt_int
+  ),
+  device = "xs"
+)
+
 class(linked_plt_int) <- c(class(linked_plt_int), "htmlwidget")
 
 linked_plt_int
 ```
 
 ```{r fig-tsne-link-limb-best, eval=knitr::is_html_output(), fig.cap="Interactively linked plots connecting layout f (left) and the fitted model overlaid with the limb muscle data in $10\\text{-}D$ (right). Each color represents a different muscle group, with triangulated hexagon centroids on the NLDR layout connected to their corresponding regions in the high-dimensional projection using `langevitour`. Brushing in either view highlights the same subset of points across both panels, enabling exploration of how clusters in the low-dimensional embedding align with structures in the original high-dimensional space. Double-clicking clears the selection and removes highlights.", fig.alt = "The figure shows two interactively linked panels. The left panel displays a 2-D NLDR layout (layout f) of the Limb muscle dataset (n=1067), with each point representing an observation and colored by muscle group. The right panel shows a 2-D projection of the 10-D data and fitted model using langevitour, where each axis represents a linear combination of the original dimensions. Triangulated hexagon centroids on the NLDR layout are connected to their corresponding regions in the high-dimensional projection. Brushing a subset of points in either panel highlights the same points in both panels using a distinct color, and double-clicking clears all selections. Both panels maintain roughly square aspect ratios and consistent visual encodings for selected and unselected points throughout the interactive view."}
+
+linked_plt_best <- bscols(
+  htmltools::div(
+    style = "display: grid; grid-template-columns: 1fr;
+    gap: 0px;
+    align-items: start;
+    justify-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%; overflow: hidden;",
+    linked_plt_best
+  ),
+  device = "xs"
+)
 
 class(linked_plt_best) <- c(class(linked_plt_best), "htmlwidget")
 
