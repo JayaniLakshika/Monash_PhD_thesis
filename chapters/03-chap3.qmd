@@ -28,6 +28,8 @@ library(plotly)
 library(crosstalk)
 library(htmltools)
 library(detourr)
+library(grid)
+library(gridExtra)
 
 set.seed(20240110)
 ```
@@ -991,8 +993,11 @@ As an alternative to `langevitour`, users can explore the fitted $p\text{-}D$ mo
 
 ```{r fig-scurve-highd-model-detourrpdf, out.width=c("50%", "50%"), fig.cap="Screenshots of the lifted high-dimensional wireframe model from the \\texttt{scurve} UMAP layout using \\texttt{detourr}. Regions with sparse or no data in the UMAP layout are also visible in the lifted model.", fig.alt = "The figure shows several screenshots of 2-D projections of the lifted high-dimensional wireframe model derived from the scurve UMAP layout using detourr. In each screenshot, the horizontal and vertical axes represent projected coordinates with continuous numeric ranges. The wireframe model is displayed as a set of connected line segments, and the scurve data points are shown as individual markers overlaid on the wireframe. The orientation and shape of the wireframe and point cloud differ across screenshots as different projections are shown. In some views, parts of the wireframe extend into areas with few or no data points, leaving visible gaps between the model and the data. All screenshots use consistent color and line styles and have similar aspect ratios.", fig.pos="H", fig.show='hold', eval=knitr::is_latex_output()}
 
-knitr::include_graphics(c(here::here("figures/quollr/model_proj1_detourr.png"),
-                          here::here("figures/quollr/model_proj2_detourr.png")))
+detourr_prj1 <- rasterGrob(png::readPNG(here::here("figures/quollr/model_proj1_detourr.png")), interpolate=TRUE)
+
+detourr_prj2 <- rasterGrob(png::readPNG(here::here("figures/quollr/model_proj2_detourr.png")), interpolate=TRUE)
+
+grid.arrange(detourr_prj1, detourr_prj2, ncol = 1)
 ```
 
 ```{r fig-scurve-highd-model-detourrhtml, echo=TRUE, eval=knitr::is_html_output(), fig.cap="`detourr` output of the lifted high-dimensional wireframe model from the `scurve` UMAP layout. These views illustrate how the lifted wireframe model captures the structure of the `scurve` data. Regions with sparse or no data in the UMAP layout are also visible in the lifted model.", fig.alt = "The figure shows an animated detourr tour of the lifted high-dimensional wireframe model derived from the scurve UMAP layout. The display presents a sequence of changing 2-D projections, where the horizontal and vertical axes represent linear combinations of the original high-dimensional coordinates with continuous numeric ranges. The wireframe model appears as a network of connected line segments, and the scurve data points are overlaid as individual markers. As the tour progresses, the orientation and shape of the wireframe and point cloud change smoothly, revealing different alignments between the model and the data. In some views, sections of the wireframe extend into regions with few or no data points, leaving visible gaps. The visualization maintains a roughly square aspect ratio and consistent visual encodings throughout the tour."}
