@@ -312,7 +312,7 @@ Once the participant records their answers, a new row is added to the "result_df
 
 ### Data cleaning
 
-The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty-three trials, including the demographics and the attention check trial. Participants who exceeded the average time of $5-10$ minutes were excluded, as determined from the pilot study. Following this, individuals who didn't accurately detect the attention check trial were also removed. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set is further refined by filtering out all the responses, which showed the same data structures in $2\text{-}D$ static and motion plots.
+The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty-three trials, including the demographics and the attention check trial. Participants who exceeded the average time of $5-10$ minutes were excluded, as determined from the pilot study. Following this, individuals who didn't accurately detect the attention check trial were also removed. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set is further refined by filtering out all the responses, which showed the same data structures in $2\text{-}D$ NLDR plot and tour.
 
 ### Demographics
 
@@ -400,7 +400,7 @@ Most participants have completed an undergraduate degree ($44.9\%$) or a postgra
 
 
 
-::: {#tbl-nldr .cell layout-align="center" tbl-cap='Summary of the previous experience in Non-linear dimension reduction techniques of participants recruited for this study.'}
+::: {#tbl-nldr .cell layout-align="center" tbl-cap='Summary of the previous experience in Nonlinear dimension reduction techniques of participants recruited for this study.'}
 ::: {.cell-output-display}
 
 
