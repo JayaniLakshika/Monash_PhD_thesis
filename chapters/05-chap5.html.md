@@ -76,7 +76,7 @@ Nonlinear dimension reduction (NLDR) is popular for making a suitable $2\text{-}
 
 The dilemma for the analyst is then understanding **why viewers misidentify the data displayed in the $2\text{-}D$ NLDR layout and high-dimensional view when the inter-cluster distance vary**. The research described here provides evidence through a cognitive perception experiment.
 
-The paper is organized as follows. @sec-background provides a summary of the literature on NLDR, high-dimensional data, and visualization methods. @sec-experiment describes the experiment designed to examine people's perception to assess how viewers recognize structure differently from a $2\text{-}D$ NLDR layout and the tour view. @sec-results discusses the collected data, results, and reasons for misperception. Limitations are provided in @sec-limitations. A discussion of the presented work, and ideas for future directions are described in @sec-exp-conclusion.
+The chapter is organized as follows. @sec-background provides a summary of the literature on NLDR, high-dimensional data, and visualization methods. @sec-experiment describes the experiment designed to examine people's perception to assess how viewers recognize structure differently from a $2\text{-}D$ NLDR layout and the tour view. @sec-results discusses the collected data, results, and reasons for misperception. Limitations are provided in @sec-limitations. A discussion of the presented work, and ideas for future directions are described in @sec-exp-conclusion.
 
 ## Background {#sec-background}
 
@@ -435,7 +435,7 @@ Future work should extend these analyses to a wider range of experimental condit
 
 ## Supplementary Materials
 
-All the materials to reproduce the paper can be found at [github.com/JayaniLakshika/paper-vis-experiment](https://github.com/JayaniLakshika/paper-vis-experiment).
+All the materials to reproduce the chapter can be found at [github.com/JayaniLakshika/paper-vis-experiment](https://github.com/JayaniLakshika/paper-vis-experiment).
 
 The appendix provides additional details on the experimental materials and process, including the three-cluster data structures, $2\text{-}D$ NLDR layouts, inter-cluster distance metrics, and the data collection and analysis processes, along with links to videos, and scripts.
 

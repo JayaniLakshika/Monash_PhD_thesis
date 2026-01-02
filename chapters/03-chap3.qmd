@@ -75,7 +75,7 @@ source(here::here("scripts/quollr/additional_functions.R"))
 
 Nonlinear dimension reduction (NLDR) techniques, such as t-distributed stochastic neighbor embedding (tSNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction Using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021], can create hugely different representations depending on the selected method and hyper-parameter choices. It is difficult to determine whether any of these representations are accurate, which one is the best, or whether they have missed important structures. 
 
-This paper presents the R package, `quollr`, which is useful for understanding how NLDR warps high-dimensional space and fits the data. Starting with an NLDR layout, our approach is to create a $2\text{-}D$ wireframe model representation, that can be lifted and displayed in the high-dimensional ($p\text{-}D$) space (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-overviewhtml"} else { "@fig-overview"})`).
+This chapter presents the R package, `quollr`, which is useful for understanding how NLDR warps high-dimensional space and fits the data. Starting with an NLDR layout, our approach is to create a $2\text{-}D$ wireframe model representation, that can be lifted and displayed in the high-dimensional ($p\text{-}D$) space (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-overviewhtml"} else { "@fig-overview"})`).
 
 ```{r}
 clr_choice <- "#66B2CC"
@@ -505,7 +505,7 @@ hex_grid_scurve + wrap_plots(
   ncol = 2)
 ```
 
-The paper is organized as follows. The usage section explains how users can fit a complete model pipeline from hexagonal binning of a $2\text{-}D$ layout to lifting the representation back into $p\text{-}D$ and how the resulting objects can be explored interactively using tour. The next section introduces the implementation of the `quollr` package on CRAN, including a demonstration of the package's key functions and visualization capabilities. In the application section, we illustrate the algorithm's functionality for studying a clustering data structure. Finally, we conclude the paper with a brief summary and discuss potential opportunities for using our algorithm.
+The chapter is organized as follows. The usage section explains how users can fit a complete model pipeline from hexagonal binning of a $2\text{-}D$ layout to lifting the representation back into $p\text{-}D$ and how the resulting objects can be explored interactively using tour. The next section introduces the implementation of the `quollr` package on CRAN, including a demonstration of the package's key functions and visualization capabilities. In the application section, we illustrate the algorithm's functionality for studying a clustering data structure. Finally, we conclude the chapter with a brief summary and discuss potential opportunities for using our algorithm.
 
 ## Usage
 
@@ -2059,4 +2059,4 @@ There are several avenues for future development. While hexagonal binning provid
 
 ## Acknowledgements
 
-The source code for reproducing this paper can be found at: [github.com/JayaniLakshika/paper-quollr](https://github.com/JayaniLakshika/paper-quollr). This article is created using `knitr` [@yihui2015] and `rmarkdown` [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `dplyr` [@hadley2023], `ggplot2` [@hadley2016], `interp` (>= 1.1-6) [@albrecht2024], `langevitour` [@harisson2024], `detourr` [@casper2025], `proxy`[@david2022], `stats` [@core2025], `tibble` [@kirill2023], `tidyselect` [@lionel2024], `crosstalk` [@joe2023], `plotly` [@chapman2020], `htmltools` [@joe2024], `kableExtra` [@hao2024], `patchwork` [@thomas2024], and `readr` [@hadley2024].
+The source code for reproducing this chapter can be found at: [github.com/JayaniLakshika/paper-quollr](https://github.com/JayaniLakshika/paper-quollr). This article is created using `knitr` [@yihui2015] and `rmarkdown` [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `dplyr` [@hadley2023], `ggplot2` [@hadley2016], `interp` (>= 1.1-6) [@albrecht2024], `langevitour` [@harisson2024], `detourr` [@casper2025], `proxy`[@david2022], `stats` [@core2025], `tibble` [@kirill2023], `tidyselect` [@lionel2024], `crosstalk` [@joe2023], `plotly` [@chapman2020], `htmltools` [@joe2024], `kableExtra` [@hao2024], `patchwork` [@thomas2024], and `readr` [@hadley2024].

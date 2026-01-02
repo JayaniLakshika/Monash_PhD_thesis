@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>6&nbsp; menuraR: An R Shiny App to Help Select the Best Nonlinear Dimension Reduction Representation – New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Nonlinear Dimension Reduction Layouts of High-dimensional Data</title>
+<title>6&nbsp; menuraR: An R Shiny App to Help Select the Best Nonlinear Dimension Reduction Representation – New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Nonlinear Dimension Reduction Layouts of High-Dimensional Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -146,10 +146,10 @@ window.Quarto = {
       <a href="../index.html" class="sidebar-logo-link">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Nonlinear Dimension Reduction Layouts of High-dimensional Data</a> 
+      <a href="../">New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Nonlinear Dimension Reduction Layouts of High-Dimensional Data</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/tree/master/Thesis/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="../New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Nonlinear-Dimension-Reduction-Layouts-of-High-dimensional-Data.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="../New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Nonlinear-Dimension-Reduction-Layouts-of-High-Dimensional-Data.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
 </div>
     </div>
       </div>
@@ -187,7 +187,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/02-chap2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Choosing Better NLDR Layouts by Evaluating the Model in the High-Dimensional Data Space</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -199,7 +199,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/04-chap4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">cardinalR: cardinalR: Generating Interesting High-Dimensional Data Structures</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">cardinalR: Generating Interesting High-Dimensional Data Structures</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -299,7 +299,7 @@ window.Quarto = {
 <p>To address these challenges, we introduce <code>menuraR</code> (<strong>m</strong>onitoring <strong>e</strong>mbeddings of <strong>n</strong>onlinear <strong>u</strong>nfoldings for <strong>r</strong>epresentation and <strong>a</strong>nalysis in <strong>R</strong>), an interactive Shiny application created to facilitate the evaluation of NLDR layouts. Building on the functionality of the <code>quollr</code> package <span class="citation" data-cites="jayani2025a">(<a href="../refs.html#ref-jayani2025a" role="doc-biblioref">Gamage et al. 2025a</a>)</span>, <code>menuraR</code> provides a graphical user interface that enables users to compare multiple NLDR layouts, explore the effects of different hyper-parameter settings, and apply diagnostic tools for evaluating NLDR layout(s). The <code>quollr</code> package is useful for understanding how NLDR warps high-dimensional space and fits the data. Starting from a two-dimensional NLDR layout, <code>quollr</code> constructs a wireframe representation that is lifted back into the high dimensions (see <span class="citation" data-cites="gamage2025c">Gamage et al. (<a href="../refs.html#ref-gamage2025c" role="doc-biblioref">2025b</a>)</span> for algorithmic details) and viewed using a tour (<span class="citation" data-cites="As85">Asimov (<a href="../refs.html#ref-As85" role="doc-biblioref">1985</a>)</span>, a continuous sequence of linear projections. This model-based view helps reveal how NLDR methods warp high-dimensional geometry, where the embedding fits the data well, and where distortions or mismatches occur.</p>
 <p>These capabilities are delivered through an intuitive interface that eliminates the need for programming, thereby lowering the technical barrier for researchers and students.</p>
 <p>A key advantage of <code>menuraR</code> is its accessibility. The application is fully web-based, and does not require a local installation of R or package management. Centralized hosting ensures that users always access the most up-to-date version, while reproducibility is supported through logging and open availability of the underlying code. In this way, <code>menuraR</code> enhances transparency in NLDR evaluation and fosters broader adoption of rigorous visualization practices.</p>
-<p>This paper introduces the version <span class="math inline">1.0.2</span> of <code>menuraR</code>, describing its implementation, core features, and intended use cases. We demonstrate how the application can inform NLDR choices, highlight key visual diagnostics, and support exploratory data analysis and teaching.</p>
+<p>This chapter introduces the version <span class="math inline">1.0.2</span> of <code>menuraR</code>, describing its implementation, core features, and intended use cases. We demonstrate how the application can inform NLDR choices, highlight key visual diagnostics, and support exploratory data analysis and teaching.</p>
 </section><section id="methods" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="methods">
 <span class="header-section-number">6.2</span> Methods</h2>
 <p>The <code>menuraR</code> application is implemented in R using the <code>shiny</code> package <span class="citation" data-cites="winston2025a">(<a href="../refs.html#ref-winston2025a" role="doc-biblioref">Chang et al. 2025</a>)</span>, which provides the reactive framework required for interactive web applications. Supporting packages, including <code>shinycssloaders</code> <span class="citation" data-cites="dean2024">(<a href="../refs.html#ref-dean2024" role="doc-biblioref">Attali and Sali 2024</a>)</span>, are used to indicate progress during computationally intensive tasks.</p>
@@ -375,7 +375,7 @@ Figure&nbsp;6.3: Interactive Model Diagnostics in . The interface provides inter
 <p>The data used in the survey are available at <a href="https://github.com/JayaniLakshika/paper-menuraR/tree/main/data">github.com/JayaniLakshika/paper-menuraR/data</a>, and the example data used in the app are available at <a href="https://github.com/JayaniLakshika/menuraR/tree/main/data">github.com/JayaniLakshika/menuraR/data</a>.</p>
 </section><section id="conclusions" class="level2" data-number="6.8"><h2 data-number="6.8" class="anchored" data-anchor-id="conclusions">
 <span class="header-section-number">6.8</span> Conclusions</h2>
-<p>This paper introduces <code>menuraR</code>, a web-based interface designed to assist in the evaluation and selection of the most reasonable NLDR layout(s). Although NLDR methods such as tSNE, and, UMAP are widely used for visualizing high-dimensional data, interpreting and selecting the most representative layout can be complex. <code>menuraR</code> addresses this challenge by providing an accessible, intuitive, and interactive environment that encapsulates the diagnostic features of the <code>quollr</code> package, making assistant in NLDR selection feasible for users with varying levels of technical expertise.</p>
+<p>This chapter introduces <code>menuraR</code>, a web-based interface designed to assist in the evaluation and selection of the most reasonable NLDR layout(s). Although NLDR methods such as tSNE, and, UMAP are widely used for visualizing high-dimensional data, interpreting and selecting the most representative layout can be complex. <code>menuraR</code> addresses this challenge by providing an accessible, intuitive, and interactive environment that encapsulates the diagnostic features of the <code>quollr</code> package, making assistant in NLDR selection feasible for users with varying levels of technical expertise.</p>
 <p>Developed using the R Shiny framework, <code>menuraR</code> eliminates many of the technical barriers traditionally associated with advanced statistical software. Users do not need to install additional packages or configure language-specific environments, which is particularly valuable for interdisciplinary research teams and educational settings. The platform helps users to compare NLDR layouts, select the ones that most accurately represent the high-dimensional data structure, and assess NLDR results.”</p>
 </section><section id="competing-interests" class="level2" data-number="6.9"><h2 data-number="6.9" class="anchored" data-anchor-id="competing-interests">
 <span class="header-section-number">6.9</span> Competing interests</h2>
