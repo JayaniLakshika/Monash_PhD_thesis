@@ -768,7 +768,7 @@
     "href": "appendix/C-appC.html#text-d-nldr-layouts",
     "title": "Appendix C — Appendix to “Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study”",
     "section": "\nC.3 2\\text{-}D NLDR layouts",
-    "text": "C.3 2\\text{-}D NLDR layouts\nAll 2\\text{-}D NLDR layouts used in the experiment are available in the supplementary repository: github.com/JayaniLakshika/paper-vis-experiment/figures/layouts. These include all 2\\text{-}D embeddings generated under different NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) with default hyper-parameter settings for the simulated 4\\text{-}D data structures.",
+    "text": "C.3 2\\text{-}D NLDR layouts\nAll 2\\text{-}D NLDR layouts used in the experiment are available in the supplementary repository: github.com/JayaniLakshika/Monash_PhD_thesis/figures/vis-exp/layouts. These include all 2\\text{-}D embeddings generated under different NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) with default hyper-parameter settings for the simulated 4\\text{-}D data structures.",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>C</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study\"</span>"

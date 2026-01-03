@@ -235,7 +235,7 @@ Animations of the $4\text{-}D$ tours that used for the study are available on Yo
 
 ## $2\text{-}D$ NLDR layouts
 
-All $2\text{-}D$ NLDR layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/paper-vis-experiment/figures/layouts](https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) with default hyper-parameter settings for the simulated $4\text{-}D$ data structures.
+All $2\text{-}D$ NLDR layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/Monash_PhD_thesis/figures/vis-exp/layouts](https://github.com/JayaniLakshika/Monash_PhD_thesis/tree/main/figures/vis-exp/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) with default hyper-parameter settings for the simulated $4\text{-}D$ data structures.
 
 ## Distance metrics
 
