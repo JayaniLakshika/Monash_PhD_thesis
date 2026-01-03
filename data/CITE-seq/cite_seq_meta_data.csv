@@ -1,0 +1,2 @@
+name_of_the_layout,nldr_method,hyper_parameters
+1,UMAP,"n_neighbors = 30, min_dist = 0.3"
