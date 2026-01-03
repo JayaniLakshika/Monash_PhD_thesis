@@ -12,6 +12,16 @@ This thesis presents five key contributions that collectively advance the unders
 
 The primary contributions of this research are fivefold. First, we introduce a novel method for visualizing how NLDR warps data, thereby improving the diagnostics of NLDR techniques. Second, we develop an R package, `quollr`, which implements the proposed diagnostic method. Third, we create `cardinalR`, a package that generates high-dimensional clustering data structures with enhanced features such as added noise dimensions and background noise. Fourth, we conduct a human-subject experiment to investigate the perception and misperception of NLDR representations, providing evidence on how data structures are identified in NLDR layouts compared to tours. Finally, we develop a Shiny application that offers analysts a user-friendly interface for selecting the most accurate NLDR representation.
 
+## Using a published $2\text{-}D$ NLDR layout as a case study
+
+In the Introduction, a published UMAP layout (*n_neighbors = 30* and *min_dist = 0.3*) of a human PBMC CITE-seq dataset [@hao2021] is used as a motivating example. The visualization suggests several clusters with different shapes, including tight, well-separated groups as well as longer, partially overlapping structures. At first glance, it looks convincing. But this immediately raises an important question: *is this really the best way to represent the structure in the high-dimensional PBMC CITE-seq data?*
+
+Looking more closely, the data contain six clusters that sit fairly close to one another. Three of these clusters have nonlinear shapes, two are roughly Gaussian, and one is elliptical, with some background noise mixed in. These kinds of features are common in high-dimensional data and can be difficult to capture accurately in a two-dimensional view. Using the `cardinalR` package, data with this mix of cluster shapes and noise can be generated deliberately, making it easier to explore how different layouts respond to such structure.
+
+To check how well the UMAP layout reflects the original data, the `quollr` framework is used to examine how the layout distorts the high-dimensional space. In this case, a model fitted with a bin width of 0.06 shows that the layout does a reasonably good job overall, but also hints that it may not be the best possible representation.
+
+This naturally leads to the idea of comparing several NLDR layouts rather than relying on just one. The Shiny app `menuraR` makes this comparison easier by allowing different layouts and parameter settings to be explored side by side. Together, these tools highlight the core motivation of this thesis: helping analysts move beyond default settings and visually appealing plots to make more informed decisions about which NLDR layouts can be trusted.
+
 
 ::: {.cell}
 
