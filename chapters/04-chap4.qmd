@@ -1086,18 +1086,11 @@ Pyramid structures mimic tapering or layered geometries seen in architecture, cr
 
 ```{r fig-pyr, eval=knitr::is_html_output(), fig.cap="Viewing the $4\\text{-}D$  `pyrrect`, `pyrtri`, `pyrstar`, and `pyrholes` data. The `pyrrrect` structure forms a dense rectangular base tapering to a narrow tip, while `pytri` shows a more triangular spread with sharper edges. `Pyrstar` extends into multiple pointed branches radiating from a common core, and `pyrholes` reveals hollow or open regions within an otherwise compact shape.", fig.alt="The figure shows an interactive tour of the 4‑D pyrrrect, pyrtri, pyrstar, and pyrholes datasets. Points are displayed in continuously changing 2‑D projections, with each axis representing a linear combination of the four original dimensions. Points are plotted individually as small, uniformly colored markers with no additional visual encodings. In pyrrrect, points form a dense rectangular base tapering to a narrow tip; in pyrtri, points form a triangular distribution with sharper edges; in pyrstar, points extend into multiple pointed branches radiating from a central region; and in pyrholes, points cluster in a compact shape but leave hollow or open regions within it. The projections rotate smoothly, showing the 4‑D structures from multiple viewing angles and maintaining roughly square aspect ratios throughout.", fig.pos="!ht"}
 
-pyrfig <- bscols(
+pyrfig <- bscols( 
   htmltools::div(
-    style = "display: grid; grid-template-columns: 1fr 1fr;
-    gap: 0px;
-    align-items: start;
-    justify-items: center;
-    margin: 0;
-    padding: 0;",
-    pyrrect_lang, pyrtri_lang, pyrstar_lang, pyrholes_lang
-  ),
-  device = "xs"
-)
+  style = "display: grid; grid-template-columns: 1fr 1fr; gap: 0px; align-items: start; justify-items: center; margin: 0; padding: 0;", pyrrect_lang, pyrtri_lang, pyrstar_lang, pyrholes_lang
+  ), 
+  device = "xs" )
 
 class(pyrfig) <- c(class(pyrfig), "htmlwidget")
 
@@ -1662,7 +1655,7 @@ trefoilfig <- bscols(
     style = "display: grid; grid-template-columns: 1fr 1fr;
     gap: 0px;
     align-items: start;
-    justify-items: center;
+    justify-items: stretch;
     margin: 0;
     padding: 0;",
     trefoil4d_lang, trefoil3d_lang
