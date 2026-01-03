@@ -202,7 +202,7 @@ plot_data_structures <- function(structure, ds_factor,
       y = emb2
     )
   ) +
-    geom_point(alpha=0.2, size=1, colour = clr_choice) +
+    geom_point(alpha=0.2, size=1, colour = "black") +
     facet_wrap(~method, scales = "free") +
     theme(aspect.ratio = 1,
           strip.text = element_text(size = 20))
@@ -218,220 +218,105 @@ plot_data_structures <- function(structure, ds_factor,
 
   # Apply the scaling
 
-  scaled_three_clust_01_data <- scale_data_manual(three_clust_01_data) |>
+  centered_three_clust_01_data <- center_data(three_clust_01_data) |>
     as_tibble()
 
   ## First projection
-  projection <- cbind(
+  prj1 <- cbind(
     c(0.13547,-0.08077,-0.14494,-0.06269),
     c(-0.02681,-0.20528,0.06918,0.04658))
 
-  projection_scaled <- projection * 3
 
-  projected <- as.matrix(scaled_three_clust_01_data) %*% projection_scaled
+  projected_df <- get_projection(projection = prj1,
+                                 centered_data = centered_three_clust_01_data,
+                                 axis_param = list(limits = 0.5,
+                                                   axis_scaled = 3,
+                                                   axis_pos_x = -0.4,
+                                                   axis_pos_y = -0.4,
+                                                   threshold = 0.03))
 
-  projected_df <- projected |>
-    tibble::as_tibble(.name_repair = "unique") |>
-    dplyr::rename(c("proj1" = "...1",
-                    "proj2" = "...2")) |>
-    #dplyr::mutate(type = df_exe$type) |>
-    dplyr::mutate(ID = dplyr::row_number())
 
-  axes_obj <- gen_axes(
-    proj = projection * 3,
-    limits = 1.3,
-    axis_pos_x = -0.7,
-    axis_pos_y = -0.7,
-    axis_labels = names(scaled_three_clust_01_data),
-    threshold = 0)
-
-  axes <- axes_obj$axes
-  circle <- axes_obj$circle
-
-  three_clust01_proj1 <- projected_df |>
-    ggplot(
-      aes(
-        x = proj1,
-        y = proj2)) +
-    geom_point(alpha=0.1,
-               size=0.2,
-               colour = clr_choice) +
-    geom_segment(
-      data=axes,
-      aes(x=x1, y=y1, xend=x2, yend=y2),
-      colour="grey70") +
-    geom_text(
-      data=axes,
-      aes(x=x2, y=y2, label=rownames(axes)),
-      colour="grey50",
-      size = 4) +
-    geom_path(
-      data=circle,
-      aes(x=c1, y=c2), colour="grey70") +
-    coord_fixed() +
-    xlim(c(-1, 1)) +
-    ylim(c(-1, 1)) +
-    interior_annotation("a1", c(0.08, 0.94), 2)
+  three_clust01_proj1 <- plot_proj(
+    proj_obj = projected_df,
+    point_param = c(1, 0.05, "#000000"), # size, alpha, color
+    plot_limits = c(-0.5, 0.5),
+    title = "a1",
+    cex = 2,
+    axis_text_size = 4,
+    is_color = FALSE)
 
   ## Second projection
-  projection <- cbind(
+  prj2 <- cbind(
     c(-0.13993,0.00179,-0.15287,-0.08282),
     c(0.01124,0.16552,-0.07749,0.12761))
 
-  projection_scaled <- projection * 3
+  projected_df <- get_projection(projection = prj2,
+                                 centered_data = centered_three_clust_01_data,
+                                 axis_param = list(limits = 0.5,
+                                                   axis_scaled = 4,
+                                                   axis_pos_x = -0.45,
+                                                   axis_pos_y = -0.45,
+                                                   threshold = 0.055))
 
-  projected <- as.matrix(scaled_three_clust_01_data) %*% projection_scaled
-
-  projected_df <- projected |>
-    tibble::as_tibble(.name_repair = "unique") |>
-    dplyr::rename(c("proj1" = "...1",
-                    "proj2" = "...2")) |>
-    #dplyr::mutate(type = df_exe$type) |>
-    dplyr::mutate(ID = dplyr::row_number())
-
-  axes_obj <- gen_axes(
-    proj = projection * 3,
-    limits = 1.3,
-    axis_pos_x = -0.7,
-    axis_pos_y = -0.7,
-    axis_labels = names(scaled_three_clust_01_data),
-    threshold = 0)
-
-  axes <- axes_obj$axes
-  circle <- axes_obj$circle
-
-  three_clust01_proj2 <- projected_df |>
-    ggplot(
-      aes(
-        x = proj1,
-        y = proj2)) +
-    geom_point(alpha=0.1,
-               size=0.2,
-               colour = clr_choice) +
-    geom_segment(
-      data=axes,
-      aes(x=x1, y=y1, xend=x2, yend=y2),
-      colour="grey70") +
-    geom_text(
-      data=axes,
-      aes(x=x2, y=y2, label=rownames(axes)),
-      colour="grey50",
-      size = 4) +
-    geom_path(
-      data=circle,
-      aes(x=c1, y=c2), colour="grey70") +
-    coord_fixed() +
-    xlim(c(-1, 1)) +
-    ylim(c(-1, 1)) +
-    interior_annotation("a2", c(0.08, 0.94), 2)
+  three_clust01_proj2 <- plot_proj(
+    proj_obj = projected_df,
+    point_param = c(1, 0.05, "#000000"), # size, alpha, color
+    plot_limits = c(-0.55, 0.55),
+    title = "a2",
+    cex = 2,
+    axis_text_size = 4,
+    is_color = FALSE)
 
   ## Third projection
-  projection <- cbind(
+  prj3 <- cbind(
     c(-0.09101,0.05539,0.18359,0.06896),
     c(-0.13489,0.06141,-0.12634,0.10901))
 
-  projection_scaled <- projection * 3
+  projected_df <- get_projection(projection = prj3,
+                                 centered_data = centered_three_clust_01_data,
+                                 axis_param = list(limits = 0.5,
+                                                   axis_scaled = 3.7,
+                                                   axis_pos_x = -0.4,
+                                                   axis_pos_y = -0.4,
+                                                   threshold = 0.04))
 
-  projected <- as.matrix(scaled_three_clust_01_data) %*% projection_scaled
-
-  projected_df <- projected |>
-    tibble::as_tibble(.name_repair = "unique") |>
-    dplyr::rename(c("proj1" = "...1",
-                    "proj2" = "...2")) |>
-    #dplyr::mutate(type = df_exe$type) |>
-    dplyr::mutate(ID = dplyr::row_number())
-
-  axes_obj <- gen_axes(
-    proj = projection * 3,
-    limits = 1.3,
-    axis_pos_x = -0.7,
-    axis_pos_y = -0.7,
-    axis_labels = names(scaled_three_clust_01_data),
-    threshold = 0)
-
-  axes <- axes_obj$axes
-  circle <- axes_obj$circle
-
-  three_clust01_proj3 <- projected_df |>
-    ggplot(
-      aes(
-        x = proj1,
-        y = proj2)) +
-    geom_point(alpha=0.1,
-               size=0.2,
-               colour = clr_choice) +
-    geom_segment(
-      data=axes,
-      aes(x=x1, y=y1, xend=x2, yend=y2),
-      colour="grey70") +
-    geom_text(
-      data=axes,
-      aes(x=x2, y=y2, label=rownames(axes)),
-      colour="grey50",
-      size = 4) +
-    geom_path(
-      data=circle,
-      aes(x=c1, y=c2), colour="grey70") +
-    coord_fixed() +
-    xlim(c(-1, 1)) +
-    ylim(c(-1, 1)) +
-    interior_annotation("a3", c(0.08, 0.94), 2)
+  three_clust01_proj3 <- plot_proj(
+    proj_obj = projected_df,
+    point_param = c(1, 0.05, "#000000"), # size, alpha, color
+    plot_limits = c(-0.5, 0.5),
+    title = "a3",
+    cex = 2,
+    axis_text_size = 4,
+    is_color = FALSE)
 
   ## Fourth projection
-  projection <- cbind(
+  prj4 <- cbind(
     c(-0.11690,-0.04468,-0.02008,-0.18371),
     c(-0.15317,0.11424,-0.08414,0.07888))
 
-  projection_scaled <- projection * 3
 
-  projected <- as.matrix(scaled_three_clust_01_data) %*% projection_scaled
+  projected_df <- get_projection(projection = prj4,
+                                 centered_data = centered_three_clust_01_data,
+                                 axis_param = list(limits = 0.5,
+                                                   axis_scaled = 4,
+                                                   axis_pos_x = -0.45,
+                                                   axis_pos_y = -0.45,
+                                                   threshold = 0.06))
 
-  projected_df <- projected |>
-    tibble::as_tibble(.name_repair = "unique") |>
-    dplyr::rename(c("proj1" = "...1",
-                    "proj2" = "...2")) |>
-    #dplyr::mutate(type = df_exe$type) |>
-    dplyr::mutate(ID = dplyr::row_number())
-
-  axes_obj <- gen_axes(
-    proj = projection * 3,
-    limits = 1.3,
-    axis_pos_x = -0.7,
-    axis_pos_y = -0.7,
-    axis_labels = names(scaled_three_clust_01_data),
-    threshold = 0)
-
-  axes <- axes_obj$axes
-  circle <- axes_obj$circle
-
-  three_clust01_proj4 <- projected_df |>
-    ggplot(
-      aes(
-        x = proj1,
-        y = proj2)) +
-    geom_point(alpha=0.1,
-               size=0.2,
-               colour = clr_choice) +
-    geom_segment(
-      data=axes,
-      aes(x=x1, y=y1, xend=x2, yend=y2),
-      colour="grey70") +
-    geom_text(
-      data=axes,
-      aes(x=x2, y=y2, label=rownames(axes)),
-      colour="grey50",
-      size = 4) +
-    geom_path(
-      data=circle,
-      aes(x=c1, y=c2), colour="grey70") +
-    coord_fixed() +
-    xlim(c(-1, 1)) +
-    ylim(c(-1, 1)) +
-    interior_annotation("a4", c(0.08, 0.94), 2)
+  three_clust01_proj4 <- plot_proj(
+    proj_obj = projected_df,
+    point_param = c(1, 0.05, "#000000"), # size, alpha, color
+    plot_limits = c(-0.55, 0.55),
+    title = "a4",
+    cex = 2,
+    axis_text_size = 4,
+    is_color = FALSE)
 
   if (num_proj == 4) {
 
-    nld_plt1 | (three_clust01_proj1 + three_clust01_proj2 + three_clust01_proj3 + three_clust01_proj4) + plot_layout(ncol = 2)
+    nld_plt1 | (three_clust01_proj1 | three_clust01_proj2) /
+      (three_clust01_proj3 | three_clust01_proj4) +
+      plot_layout(widths = c(1, 2))
 
   } else if (num_proj == 3) {
 
