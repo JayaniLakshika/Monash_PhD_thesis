@@ -143,7 +143,7 @@ By comparing how users interpret and misinterpret PCA layouts versus NLDR genera
 
 ### Extension for `quollr`
 
-A potential extension of the current implementation would be to synchronize cluster selections between the tour view and the linked $2\text{-}D$ layout, enabling more direct cluster-specific comparisons across views.
+A useful extension to `quollr` would be to link cluster selections between the tour view and the $2\text{-}D$ NLDR layout. This would let users select a cluster in one view and immediately see how it appears in the other, making it easier to compare cluster structure across views.
 
 ## Reproducibility and availability
 
