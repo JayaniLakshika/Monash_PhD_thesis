@@ -7,6 +7,8 @@ library(gridExtra)
 library(png)
 library(grid)
 library(quollr)
+library(plotly)
+library(crosstalk)
 ```
 
 # Conclusion and future plans {#sec-conclusion}
@@ -17,31 +19,117 @@ This thesis presents five key contributions that collectively advance the unders
 
 The primary contributions of this research are fivefold. First, we introduce a novel method for visualizing how NLDR warps data, thereby improving the diagnostics of NLDR techniques. Second, we develop an R package, `quollr`, which implements the proposed diagnostic method. Third, we create `cardinalR`, a package that generates high-dimensional clustering data structures with enhanced features such as added noise dimensions and background noise. Fourth, we conduct a human-subject experiment to investigate the perception and misperception of NLDR representations, providing evidence on how data structures are identified in NLDR layouts compared to tours. Finally, we develop a Shiny application that offers analysts a user-friendly interface for selecting the most accurate NLDR representation.
 
-```{r, eval=knitr::is_html_output()}
+```{r}
 pbmc_data <- read_rds(here::here("data/CITE-seq/cite_seq_pbmc.rds")) 
 
 umap_pbmc <- read_rds(here::here("data/CITE-seq/CITE-seq_umap_n-neigbors_30_min-dist_0.3.rds"))
 
 model_obj <- fit_highd_model(
-    highd_data = pbmc_data, 
-    nldr_data = umap_pbmc, 
-    b1 = 40, 
-    q = 0.1, 
-    hd_thresh = 0)
+  highd_data = pbmc_data, 
+  nldr_data = umap_pbmc, 
+  b1 = 40, 
+  q = 0.1, 
+  hd_thresh = 0)
 
-combined_data <- comb_data_model(
+pbmc_umap_scaled <- model_obj$nldr_scaled_obj$scaled_nldr
+hex_grid_pbmc <- model_obj$hb_obj$hex_poly
+counts_df_pbmc <- model_obj$hb_obj$std_cts
+tr_from_to_df_pbmc <- model_obj$trimesh_data
+df_bin_centroids_pbmc <- model_obj$model_2d
+df_bin_pbmc <- model_obj$model_highd
+
+hex_grid_with_counts_pbmc <- left_join(
+  hex_grid_pbmc, counts_df_pbmc, 
+  by = c("h" = "h"))
+
+## 2-d vis model
+hex_grid_pbmc <- ggplot(
+  data = hex_grid_with_counts_pbmc, 
+  aes(x = x, y = y)) +
+  geom_point(data = pbmc_umap_scaled, 
+             aes(x = emb1, y = emb2), 
+             alpha = 0.03, color = "#66B2CC") +
+  geom_segment(data = tr_from_to_df_pbmc,
+               aes(
+                 x = x_from,
+                 y = y_from,
+                 xend = x_to,
+                 yend = y_to),
+               colour = "#000000") +
+  geom_point(data = df_bin_centroids_pbmc, 
+             aes(x = c_x, y = c_y), 
+             size = 0.5, color = "#FF7755")
+
+hex_grid_pbmc_int <- ggplotly(hex_grid_pbmc, 
+                                width = "350", 
+                                height = "380", 
+                                tooltip = "none") |>
+  config(
+    staticPlot = TRUE,        # Disables all interactivity (no hover, zoom, pan)
+    displayModeBar = FALSE,   # Hides the plotly toolbar
+    editable = FALSE,         # Disables annotations and editing
+    showTips = FALSE,         # Removes tooltip on hover
+    displaylogo = FALSE,      # Hides plotly logo
+    responsive = FALSE        # Disables responsive resizing
+  )
+
+df_exe <- comb_data_model(
     highd_data = pbmc_data,
-    model_highd = model_obj$model_highd,
-    model_2d = model_obj$model_2d
+    model_highd = df_bin_pbmc,
+    model_2d = df_bin_centroids_pbmc
 )
 
-tour_view <- show_langevitour(
-    point_data = combined_data,
-    edge_data = model_obj$trimesh_data
-)
+df <- df_exe |>
+  dplyr::filter(type == "data") ## original dataset
 
-tour_view
+df_b <- df_exe |>
+  dplyr::filter(type == "model") ## High-d model
+
+pbmc_umap_model_vis <- langevitour::langevitour(df_exe[1:(length(df_exe)-1)],
+                                                  lineFrom = tr_from_to_df_pbmc$from_reindexed,
+                                                  lineTo = tr_from_to_df_pbmc$to_reindexed,
+                                                  group = df_exe$type,
+                                                  pointSize = append(rep(2, NROW(df_b)), rep(1, NROW(df))),
+                                                  levelColors = c("#66B2CC", "#FF7755"),
+                                                  enableControls = TRUE,
+                                                  width = "400px", height = "380px")
+
+
 ```
+
+```{r fig-overviewhtml, eval=knitr::is_html_output(), fig.cap="Wireframe model representation of the NLDR layout, lifted and displayed in high-dimensional space. The left panel shows the UMAP layout with a triangular mesh overlay, forming the wireframe structure. This mesh can be lifted into higher dimensions and projected to examine how the geometric structure of the data is preserved. The tour view of the lifted wireframe, where the underlying curved sheet structure of the data is more clearly visible. The triangulated mesh highlights how local neighborhoods in the layout correspond to relationships in the high-dimensional space, enabling diagnostics of distortion and preservation across dimensions.", fig.pos="!ht", fig.alt="The UMAP layout with a triangular mesh on the left and 2-D projections of the lifted wireframe overlaying the data on the right. The mesh illustrates how local neighborhoods in the 2-D embedding correspond to curved sheet structures in the original high-dimensional S-curve data."}
+
+overviewfig <- bscols(
+  htmltools::div(
+    style = "
+      display: flex;
+      justify-content: center;  /* centers the whole grid */
+      margin: 0 auto;
+      padding: 0;
+    ",
+    htmltools::div(
+      style = "
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0px;
+        align-items: start;
+        justify-items: center;
+        margin: 0;
+        padding: 0;
+      ",
+      htmltools::div(style = "margin: 0; padding: 0;", hex_grid_pbmc_int),
+      htmltools::div(style = "margin: 0; margin-top: 13px; padding: 0;", pbmc_umap_model_vis)
+    )
+  ),
+  device = "xs"
+)
+
+# Ensure it's treated as a widget
+class(overviewfig) <- c(class(overviewfig), "htmlwidget")
+
+overviewfig
+```
+
 
 ## Future work
 
