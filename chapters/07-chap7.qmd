@@ -296,8 +296,6 @@ These layouts can be saved as a single CSV file, following `menuraR`’s naming 
 
 Once the data and layouts are loaded in the *Data Upload* tab, all three embeddings appear in the "Your Loaded NLDR Layouts" panel (@fig-menuraR_ui1). From there, they can be selected together and passed into the *Compare NLDR Layouts* tab.
 
-Here’s an updated figure caption that matches the example you describe, keeps the flow, and stays in a **clear but less formal** tone:
-
 ```{r}
 #| label: fig-menuraR_ui1
 #| out-width: 100%
@@ -307,6 +305,8 @@ knitr::include_graphics(here::here("figures/CITE-seq/menuraR_ui1_CITE-seq.png"))
 ```
 
 This allows the layouts to be viewed side by side, overlaid with hexagonal grids, and evaluated using the hexbin error across different bin widths. At binwidth of $0.03$, the most reasonable layout is tSNE with *perplexity = 84* (@fig-menuraR_ui2).
+
+TriMAP layout is universally poor. tSNE layout with little separation performs well at tiny binwidth (where most points are in their own bin) and poorly as binwidth increases. The choice of best is between UMAP layout and PaCMAP layout, that have small separations between oddly shaped clusters. UMAP layout is chosen as the best.
 
 ```{r}
 #| label: fig-menuraR_ui2
