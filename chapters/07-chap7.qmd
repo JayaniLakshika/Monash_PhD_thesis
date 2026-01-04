@@ -295,18 +295,18 @@ proj_obj1 <- quollr::get_projection(projection = projection1,
                             highd_data = scaled_pbmc_data, 
                             model_highd = scaled_pbmc_data_model, 
                             trimesh_data = tr_from_to_df_pbmc, 
-                            axis_param = list(limits = 0.8, 
+                            axis_param = list(limits = 1.5, 
                                               axis_scaled = 80,
-                                              axis_pos_x = -0.85, 
-                                              axis_pos_y = -0.85, 
-                                              threshold = 0))
+                                              axis_pos_x = -0.75, 
+                                              axis_pos_y = -0.75, 
+                                              threshold = 0.15))
 
 pbmc_proj_umap_model1 <- quollr::plot_proj(
   proj_obj = proj_obj1,
   point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
   line_param = c(0.5, 0.3, "#000000"),
   plot_limits = c(-1, 1.2), 
-  axis_text_size = 2,
+  axis_text_size = 3,
   is_category = FALSE) +
   interior_annotation(label = "a1", cex = 1) +
   theme_linedraw() +
@@ -341,7 +341,7 @@ proj_obj2 <- quollr::get_projection(projection = projection2,
                                     highd_data = scaled_pbmc_data, 
                                     model_highd = scaled_pbmc_data_model, 
                                     trimesh_data = tr_from_to_df_pbmc, 
-                                    axis_param = list(limits = 0.8, 
+                                    axis_param = list(limits = 1.5, 
                                                       axis_scaled = 80,
                                                       axis_pos_x = -0.85, 
                                                       axis_pos_y = -0.85, 
@@ -351,7 +351,7 @@ pbmc_proj_umap_model2 <- quollr::plot_proj(
   proj_obj = proj_obj2,
   point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
   line_param = c(0.5, 0.3, "#000000"),
-  plot_limits = c(-1, 0.8), 
+  plot_limits = c(-1.1, 0.8), 
   axis_text_size = 2,
   is_category = FALSE) +
   interior_annotation(label = "a2", cex = 1) +
@@ -387,10 +387,10 @@ proj_obj3 <- quollr::get_projection(projection = projection3,
                                     highd_data = scaled_pbmc_data, 
                                     model_highd = scaled_pbmc_data_model, 
                                     trimesh_data = tr_from_to_df_pbmc, 
-                                    axis_param = list(limits = 0.8, 
+                                    axis_param = list(limits = 1.5, 
                                                       axis_scaled = 80,
-                                                      axis_pos_x = -1.1, 
-                                                      axis_pos_y = -1.1, 
+                                                      axis_pos_x = -1, 
+                                                      axis_pos_y = -1, 
                                                       threshold = 0))
 
 pbmc_proj_umap_model3 <- quollr::plot_proj(
@@ -433,10 +433,10 @@ proj_obj4 <- quollr::get_projection(projection = projection4,
                                     highd_data = scaled_pbmc_data, 
                                     model_highd = scaled_pbmc_data_model, 
                                     trimesh_data = tr_from_to_df_pbmc, 
-                                    axis_param = list(limits = 0.8, 
+                                    axis_param = list(limits = 1, 
                                                       axis_scaled = 80,
-                                                      axis_pos_x = -0.65, 
-                                                      axis_pos_y = -0.65, 
+                                                      axis_pos_x = -0.6, 
+                                                      axis_pos_y = -0.6, 
                                                       threshold = 0))
 
 pbmc_proj_umap_model4 <- quollr::plot_proj(
