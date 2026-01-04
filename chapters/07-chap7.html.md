@@ -20,7 +20,22 @@ Looking more closely, the data contain six clusters that sit fairly close to one
 
 To assess how well the UMAP layout reflects the structure of the $10\text{-}D$ PBMC CITE-seq data, we use the `quollr` framework. With a model fitted using a binwidth of $0.06$, the layout appears reasonable overall, but some limitations become clear. In particular, the roughly Gaussian clusters look more squeezed than expected, and background noise seems to form a separate cluster that likely does not represent a true group in the data. In addition, the nonlinear shaped clusters could benefit from being more spread out to better reflect their underlying structure. These observations suggest that, while the current layout is informative, there is good potential to find an alternative layout that represents the data structure even more clearly.
 
-This naturally leads to the idea of comparing several NLDR layouts rather than relying on just one. The Shiny app `menuraR` makes this comparison easier by allowing different layouts and parameter settings to be explored side by side. Together, these tools highlight the core motivation of this thesis: helping analysts move beyond default settings and visually appealing plots to make more informed decisions about which NLDR layouts can be trusted.
+This naturally leads to the idea of comparing several NLDR layouts rather than relying on just one. The Shiny app `menuraR` makes this comparison easier by allowing different layouts and parameter settings.
+
+Because the PBMC dataset is fairly large, a sensible first step is to work with a **random subsample** of the cells. This keeps the app responsive and makes interactive exploration much smoother, while still preserving the main structure of the data. For example, a few thousand cells are usually enough to see cluster shapes, overlap, and noise patterns clearly.
+
+Rather than computing embeddings on the fly, it is also helpful to **precompute the NLDR layouts** you want to compare. In this case, three layouts are of interest:
+
+* the published UMAP layout (*n-neighbors_30_min_dist_0.3*),
+* a TriMAP layout (*n-inliers_12_n-outliers_4_n-random_3*), and
+* a PaCMAP layout (*n-neighbors_10_init_random_MN-ratio_0.5_FP-ratio_2*).
+
+These layouts can be saved as a single CSV file, following `menuraR`’s naming conventions (`emb1`, `emb2`, or prefixed versions for multiple layouts), along with a small metadata file describing the method and hyper-parameters used. Uploading precomputed layouts avoids long computation times and makes it easy to focus on comparison rather than setup.
+
+Once the data and layouts are loaded in the *Data Upload* tab, all three embeddings appear in the “Your Loaded NLDR Layouts” panel. From there, they can be selected together and passed into the *Compare NLDR Layouts* tab. This allows the layouts to be viewed side by side, overlaid with hexagonal grids, and evaluated using the hexbin error across different bin widths.
+
+Finally, the *Model Diagnostics* tab can be used to dig deeper into where each layout works well and where it struggles. Linked views between the 2D layout and the high-dimensional model make it easier to see, for example, whether squeezed Gaussian clusters, stretched nonlinear clusters, or background noise are being handled differently across UMAP, TriMAP, and PaCMAP.
+
 
 
 ::: {.cell}
