@@ -10,6 +10,8 @@ library(quollr)
 library(cardinalR)
 library(plotly)
 library(crosstalk)
+
+set.seed(20240110)
 ```
 
 # Conclusion and future plans {#sec-conclusion}
@@ -126,20 +128,103 @@ hex_grid_pbmc <- ggplot(
                colour = "#000000") +
   geom_point(data = df_bin_centroids_pbmc, 
              aes(x = c_x, y = c_y), 
-             size = 0.5, color = "#FF7755")
+             size = 0.3, color = "#FF7755") +
+  theme_linedraw() +
+              theme(
+                  aspect.ratio = 1,
+                  plot.background = element_rect(fill = 'transparent', colour = NA),
+                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
+                  panel.background = element_rect(fill = 'transparent', 
+                                                  colour = NA),
+                  panel.grid.major = element_blank(), 
+                  panel.grid.minor = element_blank(), 
+                  axis.title.x = element_blank(), axis.title.y = element_blank(),
+                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+                  legend.background = element_rect(fill = 'transparent', 
+                                                   colour = NA),
+                  legend.key = element_rect(fill = 'transparent', 
+                                            colour = NA),
+                  legend.position = "none", 
+                  legend.title = element_text(size=5), 
+                  legend.text = element_text(size=4),
+                  legend.key.height = unit(0.25, 'cm'),
+                  legend.key.width = unit(0.25, 'cm'),
+                  plot.margin = margin(0, 0, 0, 0)
+              )
 
-hex_grid_pbmc_int <- ggplotly(hex_grid_pbmc, 
-                                width = "350", 
-                                height = "380", 
-                                tooltip = "none") |>
-  config(
-    staticPlot = TRUE,        # Disables all interactivity (no hover, zoom, pan)
-    displayModeBar = FALSE,   # Hides the plotly toolbar
-    editable = FALSE,         # Disables annotations and editing
-    showTips = FALSE,         # Removes tooltip on hover
-    displaylogo = FALSE,      # Hides plotly logo
-    responsive = FALSE        # Disables responsive resizing
-  )
+hex_grid_pbmc_int <- plot_ly() |>
+  # Background points (pbmc_umap_scaled)
+  add_trace(
+    data = pbmc_umap_scaled,
+    x = ~emb1,
+    y = ~emb2,
+    type = 'scatter',
+    mode = 'markers',
+    marker = list(color = '#66B2CC', size = 5, opacity = 0.03),
+    hoverinfo = 'none',
+    showlegend = FALSE
+  ) |>
+  # Segments (tr_from_to_df_pbmc)
+  add_segments(
+    data = tr_from_to_df_pbmc,
+    x = ~x_from,
+    xend = ~x_to,
+    y = ~y_from,
+    yend = ~y_to,
+    line = list(color = '#000000'),
+    hoverinfo = 'none',
+    showlegend = FALSE
+  ) |>
+  # Centroids (df_bin_centroids_pbmc)
+  add_trace(
+    data = df_bin_centroids_pbmc,
+    x = ~c_x,
+    y = ~c_y,
+    type = 'scatter',
+    mode = 'markers',
+    marker = list(color = '#FF7755', size = 3),
+    hoverinfo = 'none',
+    showlegend = FALSE
+  ) |>
+    # Layout with border
+    layout(
+        width = 400,
+        height = 400,
+        xaxis = list(
+            showgrid = FALSE,
+            zeroline = FALSE,
+            showticklabels = FALSE,
+            ticks = "",
+            title = ""
+        ),
+        yaxis = list(
+            showgrid = FALSE,
+            zeroline = FALSE,
+            showticklabels = FALSE,
+            ticks = "",
+            title = ""
+        ),
+        
+        # ADD A BOX AROUND THE ENTIRE PLOT PANEL
+        shapes = list(
+            list(
+                type = "rect",
+                xref = "paper", yref = "paper",
+                x0 = 0, y0 = 0,
+                x1 = 1, y1 = 1,
+                line = list(color = "black", width = 1)
+            )
+        )
+    ) |>
+    config(
+        staticPlot = TRUE,
+        displayModeBar = FALSE,
+        editable = FALSE,
+        showTips = FALSE,
+        displaylogo = FALSE,
+        responsive = FALSE
+    )
 
 df_exe <- comb_data_model(
     highd_data = pbmc_data,
@@ -165,7 +250,7 @@ pbmc_umap_model_vis <- langevitour::langevitour(df_exe[1:(length(df_exe)-1)],
 
 ```
 
-```{r fig-overviewhtml, eval=knitr::is_html_output(), fig.cap="Wireframe model representation of the NLDR layout, lifted and displayed in high-dimensional space. The left panel shows the UMAP layout with a triangular mesh overlay, forming the wireframe structure. This mesh can be lifted into higher dimensions and projected to examine how the geometric structure of the data is preserved. The tour view of the lifted wireframe, where the underlying curved sheet structure of the data is more clearly visible. The triangulated mesh highlights how local neighborhoods in the layout correspond to relationships in the high-dimensional space, enabling diagnostics of distortion and preservation across dimensions.", fig.pos="!ht", fig.alt="The UMAP layout with a triangular mesh on the left and 2-D projections of the lifted wireframe overlaying the data on the right. The mesh illustrates how local neighborhoods in the 2-D embedding correspond to curved sheet structures in the original high-dimensional S-curve data.", eval=FALSE}
+```{r fig-overviewhtml, eval=knitr::is_html_output(), fig.cap="Wireframe model representation of the NLDR layout, lifted and displayed in high-dimensional space. The left panel shows the UMAP layout with a triangular mesh overlay, forming the wireframe structure. This mesh can be lifted into higher dimensions and projected to examine how the geometric structure of the data is preserved. The tour view of the lifted wireframe, where the underlying curved sheet structure of the data is more clearly visible. The triangulated mesh highlights how local neighborhoods in the layout correspond to relationships in the high-dimensional space, enabling diagnostics of distortion and preservation across dimensions.", fig.pos="!ht", fig.alt="The UMAP layout with a triangular mesh on the left and 2-D projections of the lifted wireframe overlaying the data on the right. The mesh illustrates how local neighborhoods in the 2-D embedding correspond to curved sheet structures in the original high-dimensional S-curve data."}
 
 overviewfig <- bscols(
   htmltools::div(
