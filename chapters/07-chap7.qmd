@@ -25,47 +25,24 @@ In the Introduction, a published UMAP layout (*n_neighbors = 30* and *min_dist =
 
 Looking more closely, the data contain six clusters that sit fairly close to one another. Three of them have clearly nonlinear shapes, two look more like Gaussian blobs, and one is closer to an ellipse, with a bit of background noise scattered around. These kinds of data structures are common in bioinformatics data. Using the `cardinalR` package, data with this different cluster shapes and background noise can be generated.
 
-To assess how well the UMAP layout reflects the structure of the $10\text{-}D$ PBMC CITE-seq data, we use the `quollr` framework. With a model fitted using a binwidth of $0.03$, the layout appears reasonable overall, but some limitations become clear. In particular, the roughly Gaussian clusters look more squeezed than expected, and background noise seems to form a separate cluster that likely does not represent a true group in the data. In addition, the nonlinear shaped clusters could benefit from being more spread out to better reflect their underlying structure. Also, clusters should be more close. These observations suggest that, while the current layout is informative, there is good potential to find an alternative layout that represents the data structure even more clearly.
-
-This leads to the idea of comparing several NLDR layouts rather than relying on just one. The Shiny app `menuraR` makes this comparison easier by allowing different layouts and parameter settings.
-
-Rather than computing embeddings on the fly, it is also helpful to precompute the NLDR layouts. In this case, four layouts are of interest:
-
-- the published UMAP layout (*n-neighbors = 30, min_dist = 0.3*),
-- a tSNE layout (*perplexity = 84*),
-- a TriMAP layout (*n-inliers = 12, n-outliers = 4, n-random = 3*), and
-- a PaCMAP layout (*n-neighbors = 10, init = random, MN-ratio = 0.5, FP-ratio = 2*).
-
-These layouts can be saved as a single CSV file, following `menuraR`’s naming conventions (`emb1`, `emb2`, or prefixed versions for multiple layouts), along with a small metadata file describing the method and hyper-parameters used. Uploading precomputed layouts avoids long computation times and makes it easy to focus on comparison rather than setup.
-
-Once the data and layouts are loaded in the *Data Upload* tab, all three embeddings appear in the "Your Loaded NLDR Layouts" panel (@fig-menuraR_ui1). From there, they can be selected together and passed into the *Compare NLDR Layouts* tab.
-
-Here’s an updated figure caption that matches the example you describe, keeps the flow, and stays in a **clear but less formal** tone:
-
-```{r}
-#| label: fig-menuraR_ui1
-#| out-width: 100%
-#| fig-cap: "Data upload and NLDR layout configuration in `menuraR`. The *Data Upload* tab shows the PBMC CITE-seq dataset together with several precomputed NLDR layouts, including the published UMAP layout and alternative embeddings generated using tSNE, TriMAP, and PaCMAP with different hyper-parameter settings. Uploaded layouts appear in the *Your Loaded NLDR Layouts* panel."
-
-knitr::include_graphics(here::here("figures/CITE-seq/menuraR_ui1_CITE-seq.png"))
-```
-
-This allows the layouts to be viewed side by side, overlaid with hexagonal grids, and evaluated using the hexbin error across different bin widths. At binwidth of $0.03$, the most reasonable layout is tSNE with *perplexity = 84* (@fig-menuraR_ui2).
-
-```{r}
-#| label: fig-menuraR_ui2
-#| out-width: 100%
-#| fig-cap: "Data Upload and NLDR layout Configuration in `menuraR`. The *Data Input* tab enables users to upload high-dimensional datasets or use built-in examples, and generate or upload NLDR layouts. Users can create additional layouts with custom hyper-parameters, and manage loaded embeddings for downstream comparison."
-
-knitr::include_graphics(here::here("figures/CITE-seq/menuraR_ui2_CITE-seq.png"))
-```
-
-<!-- Finally, the *Model Diagnostics* tab can be used to dig deeper into where each layout works well and where it struggles. Linked views between the 2D layout and the high-dimensional model make it easier to see, for example, whether squeezed Gaussian clusters, stretched nonlinear clusters, or background noise are being handled differently across UMAP, TriMAP, and PaCMAP. -->
-
-
 ```{r}
 pbmc_data <- read_rds(here::here("data/CITE-seq/cite_seq_pbmc.rds")) 
 
+pbmc_data_tour <- langevitour::langevitour(
+  pbmc_data |> select(-ID),
+  enableControls = FALSE,
+  width = "400px", height = "380px",
+  levelColors = "#66B2CC"
+)
+```
+
+```{r, eval=knitr::is_html_output()}
+pbmc_data_tour
+```
+
+To assess how well the UMAP layout reflects the structure of the $10\text{-}D$ PBMC CITE-seq data, we use the `quollr` framework. With a model fitted using a binwidth of $0.03$, the layout appears reasonable overall, but some limitations become clear. In particular, the roughly Gaussian clusters look more squeezed than expected, and background noise seems to form a separate cluster that likely does not represent a true group in the data. In addition, the nonlinear shaped clusters could benefit from being more spread out to better reflect their underlying structure. Also, clusters should be more close. These observations suggest that, while the current layout is informative, there is good potential to find an alternative layout that represents the data structure even more clearly.
+
+```{r}
 umap_pbmc <- read_rds(here::here("data/CITE-seq/CITE-seq_umap_n-neigbors_30_min-dist_0.3.rds"))
 
 model_obj <- fit_highd_model(
@@ -174,6 +151,40 @@ class(overviewfig) <- c(class(overviewfig), "htmlwidget")
 overviewfig
 ```
 
+This leads to the idea of comparing several NLDR layouts rather than relying on just one. The Shiny app `menuraR` makes this comparison easier by allowing different layouts and parameter settings.
+
+Rather than computing embeddings on the fly, it is also helpful to precompute the NLDR layouts. In this case, four layouts are of interest:
+
+- the published UMAP layout (*n-neighbors = 30, min_dist = 0.3*),
+- a tSNE layout (*perplexity = 84*),
+- a TriMAP layout (*n-inliers = 12, n-outliers = 4, n-random = 3*), and
+- a PaCMAP layout (*n-neighbors = 10, init = random, MN-ratio = 0.5, FP-ratio = 2*).
+
+These layouts can be saved as a single CSV file, following `menuraR`’s naming conventions (`emb1`, `emb2`, or prefixed versions for multiple layouts), along with a small metadata file describing the method and hyper-parameters used. Uploading precomputed layouts avoids long computation times and makes it easy to focus on comparison rather than setup.
+
+Once the data and layouts are loaded in the *Data Upload* tab, all three embeddings appear in the "Your Loaded NLDR Layouts" panel (@fig-menuraR_ui1). From there, they can be selected together and passed into the *Compare NLDR Layouts* tab.
+
+Here’s an updated figure caption that matches the example you describe, keeps the flow, and stays in a **clear but less formal** tone:
+
+```{r}
+#| label: fig-menuraR_ui1
+#| out-width: 100%
+#| fig-cap: "Data upload and NLDR layout configuration in `menuraR`. The *Data Upload* tab shows the PBMC CITE-seq dataset together with several precomputed NLDR layouts, including the published UMAP layout and alternative embeddings generated using tSNE, TriMAP, and PaCMAP with different hyper-parameter settings. Uploaded layouts appear in the *Your Loaded NLDR Layouts* panel."
+
+knitr::include_graphics(here::here("figures/CITE-seq/menuraR_ui1_CITE-seq.png"))
+```
+
+This allows the layouts to be viewed side by side, overlaid with hexagonal grids, and evaluated using the hexbin error across different bin widths. At binwidth of $0.03$, the most reasonable layout is tSNE with *perplexity = 84* (@fig-menuraR_ui2).
+
+```{r}
+#| label: fig-menuraR_ui2
+#| out-width: 100%
+#| fig-cap: "Data Upload and NLDR layout Configuration in `menuraR`. The *Data Input* tab enables users to upload high-dimensional datasets or use built-in examples, and generate or upload NLDR layouts. Users can create additional layouts with custom hyper-parameters, and manage loaded embeddings for downstream comparison."
+
+knitr::include_graphics(here::here("figures/CITE-seq/menuraR_ui2_CITE-seq.png"))
+```
+
+<!-- Finally, the *Model Diagnostics* tab can be used to dig deeper into where each layout works well and where it struggles. Linked views between the 2D layout and the high-dimensional model make it easier to see, for example, whether squeezed Gaussian clusters, stretched nonlinear clusters, or background noise are being handled differently across UMAP, TriMAP, and PaCMAP. -->
 
 ## Future work
 
