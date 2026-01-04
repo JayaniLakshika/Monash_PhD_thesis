@@ -14,16 +14,15 @@ glossary_df <- read_csv(here::here("misc/glossary.csv")) |>
   arrange(Term)
 
 if (knitr::is_latex_output()) {
-  kable(glossary_df,
-        format = "latex",
-        booktabs = TRUE,
-        escape = FALSE,
-        linesep = "") |>
-    kable_styling(position = "center",
-                  full_width = FALSE,
-                  font_size = 12) |>
+  kable(glossary_df, 
+      format = "latex", 
+      booktabs = TRUE, escape = FALSE, longtable = TRUE, linesep = "") |>
+    kable_styling(position = "center", 
+                full_width = FALSE, 
+                font_size = 12,
+                latex_options = c("repeat_header")) |>
     row_spec(0, bold = TRUE) |>
-    column_spec(1:2, width = c("3cm", "12cm"))
+    column_spec(1:2, width = c("4cm", "11cm"))
 } else {
   kable(glossary_df, escape = FALSE) 
 }

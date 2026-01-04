@@ -37,20 +37,32 @@ pbmc_data_tour <- langevitour::langevitour(
 )
 
 clust_data <- gen_multicluster(
-  n = c(200, 300, 500),
-  k = 3,
+  n = c(500, 700, 700, 500, 700, 700),
+  k = 6,
   loc = matrix(c(
     0, 0, 0, 0,
     5, 9, 0, 0,
+    3, 4, 10, 7,
+    0, 0, 10, 0,
+    5, 9, 6, 8,
     3, 4, 10, 7
-  ) * 0.1, nrow = 3, byrow = TRUE),
-  scale = c(0.3, 1, 0.5),
-  shape = c("gaussian", "cone", "quadratic"),
-  is_bkg = TRUE
+  ) * 0.3, nrow = 6, byrow = TRUE),
+  scale = c(0.3, 0.5, 0.8, 1, 1, 1),
+  shape = c("gaussian", "gaussian", "gaussian", "quadratic", "sphericalspiral", "conicspiral"),
+  is_bkg = FALSE
 )
 
+## Add noise dimensions
+noise_df <- gen_noisedims(n = sum(c(500, 700, 700, 500, 700, 700)), 
+              p = 6, m = rep(0.9, 6), 
+              s = rep(0.01, 6))
+names(noise_df) <- c("x", 5:10)
 
-clust_data_tour <- langevitour::langevitour(clust_data |> select(-cluster),
+clust_data <- clust_data |> select(-cluster) |>
+  bind_cols(noise_df)
+
+
+clust_data_tour <- langevitour::langevitour(clust_data,
                          enableControls = TRUE,
                          width = "400px", height = "380px",
                          levelColors = "#66B2CC")

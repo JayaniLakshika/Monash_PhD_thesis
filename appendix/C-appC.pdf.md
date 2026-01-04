@@ -122,129 +122,44 @@ Animations of the $4\text{-}D$ tours that used for the study are available on Yo
 
 ::: {#tbl-links-html .cell layout-align="center" tbl-pos='H' tbl-cap='Videos'}
 ::: {.cell-output-display}
-`````{=html}
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> data structure </th>
-   <th style="text-align:left;"> small </th>
-   <th style="text-align:left;"> small-medium </th>
-   <th style="text-align:left;"> medium-large </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> three_clust_01 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/kZyZxujDz58">youtu.be/kZyZxujDz58</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/Jz3k4uIAiRo">youtu.be/Jz3k4uIAiRo</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/E9msE_XX0KA">youtu.be/E9msE_XX0KA</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_02 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/CLMlOU4Fb2w">youtu.be/CLMlOU4Fb2w</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/TFj0satlBBE">youtu.be/TFj0satlBBE</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/_f2WvtD2xog">youtu.be/f2WvtD2xog</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_03 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/K2oKM4mUBXM">youtu.be/K2oKM4mUBXM</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/b-43HKN30ws">youtu.be/b-43HKN30ws</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/7NwNcD4qlLc">youtu.be/7NwNcD4qlLc</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_04 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/7yvvpPgiWNw">youtu.be/7yvvpPgiWNw</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/1PhZO7cUEaI">youtu.be/1PhZO7cUEaI</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/XO61YVXAdr8">youtu.be/XO61YVXAdr8</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_05 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/pbI7UXFgc0k">youtu.be/pbI7UXFgc0k</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/G-TvOIBj-14">youtu.be/G-TvOIBj-14</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/ardE0G7zevk">youtu.be/ardE0G7zevk</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_06 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/Mxylk4M67iA">youtu.be/Mxylk4M67iA</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/ABrxozu8F-A">youtu.be/ABrxozu8F-A</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/soFQR9UwNsg">youtu.be/soFQR9UwNsg</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_07 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/2a89BQGK_iU">youtu.be/2a89BQGK_iU</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/Wt4NwZSACmo">youtu.be/Wt4NwZSACmo</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/hVwIjSxACoo">youtu.be/hVwIjSxACoo</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_08 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/eID-dwpgU44">youtu.be/eID-dwpgU44</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/ILwnlZUMj_U">youtu.be/ILwnlZUMj_U</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/oSBaMH9HJZ4">youtu.be/oSBaMH9HJZ4</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_09 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/6uGCDUSL60Q">youtu.be/6uGCDUSL60Q</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/RvlSY3drV5I">youtu.be/RvlSY3drV5I</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/mh_rG2qy2Pc">youtu.be/mh_rG2qy2Pc</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_10 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/CX5O4eNZW5o">youtu.be/CX5O4eNZW5o</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/fHxflXa9i-s">youtu.be/fHxflXa9i-s</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/R6vD1xJH21w">youtu.be/R6vD1xJH21w</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_11 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/1f8S7HiZ8dc">youtu.be/1f8S7HiZ8dc</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/Fki5vIuPupE">youtu.be/Fki5vIuPupE</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/ciVOD8_sWR0">youtu.be/ciVOD8_sWR0</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_12 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/AZv45NGkuC4">youtu.be/AZv45NGkuC4</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/qQ4LqHYH_c4">youtu.be/qQ4LqHYH_c4</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/Y2sfVoemVZo">youtu.be/Y2sfVoemVZo</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_13 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/U-bbZjzvaiE">youtu.be/U-bbZjzvaiE</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/0MznMYr5gfo">youtu.be/0MznMYr5gfo</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/E7ge3kw5Q0Q">youtu.be/E7ge3kw5Q0Q</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_14 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/ynu2oUxv08I">youtu.be/ynu2oUxv08I</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/gHDLMn5AG-8">youtu.be/gHDLMn5AG-8</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/HyCJEiwCVv0">youtu.be/HyCJEiwCVv0</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_15 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/xsdWsBek0eQ">youtu.be/xsdWsBek0eQ</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/SDY64MrcWQg">youtu.be/SDY64MrcWQg</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/CFIyW7ftF9M">youtu.be/CFIyW7ftF9M</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_16 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/VyYyYOqhOVs">youtu.be/VyYyYOqhOVs</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/zi-TvgVR8a4">youtu.be/zi-TvgVR8a4</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/hdQmD499yo8">youtu.be/hdQmD499yo8</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_17 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/yojgjcf2NQk">youtu.be/yojgjcf2NQk</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/UJPMJ5irRbQ">youtu.be/UJPMJ5irRbQ</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/zdQYQvqTyGA">youtu.be/zdQYQvqTyGA</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_18 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/r-Z1Yyf2c4s">youtu.be/r-Z1Yyf2c4s</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/2Rf2L8iey2w">youtu.be/2Rf2L8iey2w</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/e_-IQycglVE">youtu.be/e_-IQycglVE</a> </td>
-  </tr>
-</tbody>
-</table>
+\begingroup\fontsize{12}{14}\selectfont
 
-`````
+\begin{longtable}{>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{2.5cm}}
+\toprule
+\textbf{data structure} & \textbf{small} & \textbf{small-medium} & \textbf{medium} & \textbf{medium-large} & \textbf{large}\\
+\midrule
+\endfirsthead
+\multicolumn{6}{@{}l}{\textit{(continued)}}\\
+\toprule
+\textbf{data structure} & \textbf{small} & \textbf{small-medium} & \textbf{medium} & \textbf{medium-large} & \textbf{large}\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+three\_clust\_01 & \href{https://youtu.be/kZyZxujDz58}{\url{youtu.be/kZyZxujDz58}} & \href{https://youtu.be/Jz3k4uIAiRo}{\url{youtu.be/Jz3k4uIAiRo}} & \href{https://youtube.com/shorts/QqMDQxShke0}{\url{youtube.com/shorts/QqMDQxShke0}} & \href{https://youtu.be/E9msE_XX0KA}{\url{youtu.be/E9msE_XX0KA}} & \href{https://youtu.be/E9msE_XX0KA}{\url{youtu.be/E9msE_XX0KA}}\\
+three\_clust\_02 & \href{https://youtu.be/CLMlOU4Fb2w}{\url{youtu.be/CLMlOU4Fb2w}} & \href{https://youtu.be/TFj0satlBBE}{\url{youtu.be/TFj0satlBBE}} & \href{https://youtube.com/shorts/jKarI60euSw}{\url{youtube.com/shorts/jKarI60euSw}} & \href{https://youtu.be/_f2WvtD2xog}{\url{youtu.be/f2WvtD2xog}} & \href{https://youtu.be/_f2WvtD2xog}{\url{youtu.be/f2WvtD2xog}}\\
+three\_clust\_03 & \href{https://youtu.be/K2oKM4mUBXM}{\url{youtu.be/K2oKM4mUBXM}} & \href{https://youtu.be/b-43HKN30ws}{\url{youtu.be/b-43HKN30ws}} & \href{https://youtube.com/shorts/edCnIfgfoU0}{\url{youtube.com/shorts/edCnIfgfoU0}} & \href{https://youtu.be/7NwNcD4qlLc}{\url{youtu.be/7NwNcD4qlLc}} & \href{https://youtu.be/7NwNcD4qlLc}{\url{youtu.be/7NwNcD4qlLc}}\\
+three\_clust\_04 & \href{https://youtu.be/7yvvpPgiWNw}{\url{youtu.be/7yvvpPgiWNw}} & \href{https://youtu.be/1PhZO7cUEaI}{\url{youtu.be/1PhZO7cUEaI}} & \href{https://youtu.be/XO61YVXAdr8}{\url{youtu.be/XO61YVXAdr8}} & \href{https://youtu.be/XO61YVXAdr8}{\url{youtu.be/XO61YVXAdr8}} & \href{https://youtu.be/XO61YVXAdr8}{\url{youtu.be/XO61YVXAdr8}}\\
+three\_clust\_05 & \href{https://youtu.be/pbI7UXFgc0k}{\url{youtu.be/pbI7UXFgc0k}} & \href{https://youtu.be/G-TvOIBj-14}{\url{youtu.be/G-TvOIBj-14}} & \href{https://youtube.com/shorts/I9xxCinW4Ec}{\url{youtube.com/shorts/I9xxCinW4Ec}} & \href{https://youtu.be/ardE0G7zevk}{\url{youtu.be/ardE0G7zevk}} & \href{https://youtu.be/ardE0G7zevk}{\url{youtu.be/ardE0G7zevk}}\\
+three\_clust\_06 & \href{https://youtu.be/Mxylk4M67iA}{\url{youtu.be/Mxylk4M67iA}} & \href{https://youtu.be/ABrxozu8F-A}{\url{youtu.be/ABrxozu8F-A}} & \href{https://youtube.com/shorts/FISgM4T2xEI}{\url{youtube.com/shorts/FISgM4T2xEI}} & \href{https://youtu.be/soFQR9UwNsg}{\url{youtu.be/soFQR9UwNsg}} & \href{https://youtu.be/soFQR9UwNsg}{\url{youtu.be/soFQR9UwNsg}}\\
+three\_clust\_07 & \href{https://youtu.be/2a89BQGK_iU}{\url{youtu.be/2a89BQGK_iU}} & \href{https://youtu.be/Wt4NwZSACmo}{\url{youtu.be/Wt4NwZSACmo}} & \href{https://youtube.com/shorts/MbGOoTrvVXk}{\url{youtube.com/shorts/MbGOoTrvVXk}} & \href{https://youtu.be/hVwIjSxACoo}{\url{youtu.be/hVwIjSxACoo}} & \href{https://youtu.be/hVwIjSxACoo}{\url{youtu.be/hVwIjSxACoo}}\\
+three\_clust\_08 & \href{https://youtu.be/eID-dwpgU44}{\url{youtu.be/eID-dwpgU44}} & \href{https://youtu.be/ILwnlZUMj_U}{\url{youtu.be/ILwnlZUMj_U}} & \href{https://youtube.com/shorts/6k20OE3Fkcg}{\url{youtube.com/shorts/6k20OE3Fkcg}} & \href{https://youtu.be/oSBaMH9HJZ4}{\url{youtu.be/oSBaMH9HJZ4}} & \href{https://youtu.be/oSBaMH9HJZ4}{\url{youtu.be/oSBaMH9HJZ4}}\\
+three\_clust\_09 & \href{https://youtu.be/6uGCDUSL60Q}{\url{youtu.be/6uGCDUSL60Q}} & \href{https://youtu.be/RvlSY3drV5I}{\url{youtu.be/RvlSY3drV5I}} & \href{https://youtube.com/shorts/TIyP-a75YmQ}{\url{youtube.com/shorts/TIyP-a75YmQ}} & \href{https://youtu.be/mh_rG2qy2Pc}{\url{youtu.be/mh_rG2qy2Pc}} & \href{https://youtu.be/mh_rG2qy2Pc}{\url{youtu.be/mh_rG2qy2Pc}}\\
+three\_clust\_10 & \href{https://youtu.be/CX5O4eNZW5o}{\url{youtu.be/CX5O4eNZW5o}} & \href{https://youtu.be/fHxflXa9i-s}{\url{youtu.be/fHxflXa9i-s}} & \href{https://youtube.com/shorts/hUzYOFS8o4M}{\url{youtube.com/shorts/hUzYOFS8o4M}} & \href{https://youtu.be/R6vD1xJH21w}{\url{youtu.be/R6vD1xJH21w}} & \href{https://youtu.be/R6vD1xJH21w}{\url{youtu.be/R6vD1xJH21w}}\\
+three\_clust\_11 & \href{https://youtu.be/1f8S7HiZ8dc}{\url{youtu.be/1f8S7HiZ8dc}} & \href{https://youtu.be/Fki5vIuPupE}{\url{youtu.be/Fki5vIuPupE}} & \href{https://youtube.com/shorts/Ar0gbKEfzQk}{\url{youtube.com/shorts/Ar0gbKEfzQk}} & \href{https://youtu.be/ciVOD8_sWR0}{\url{youtu.be/ciVOD8_sWR0}} & \href{https://youtu.be/ciVOD8_sWR0}{\url{youtu.be/ciVOD8_sWR0}}\\
+three\_clust\_12 & \href{https://youtu.be/AZv45NGkuC4}{\url{youtu.be/AZv45NGkuC4}} & \href{https://youtu.be/qQ4LqHYH_c4}{\url{youtu.be/qQ4LqHYH_c4}} & \href{https://youtube.com/shorts/-WtgmbfY_Qo}{\url{youtube.com/shorts/-WtgmbfY_Qo}} & \href{https://youtu.be/Y2sfVoemVZo}{\url{youtu.be/Y2sfVoemVZo}} & \href{https://youtu.be/Y2sfVoemVZo}{\url{youtu.be/Y2sfVoemVZo}}\\
+three\_clust\_13 & \href{https://youtu.be/U-bbZjzvaiE}{\url{youtu.be/U-bbZjzvaiE}} & \href{https://youtu.be/0MznMYr5gfo}{\url{youtu.be/0MznMYr5gfo}} & \href{https://youtube.com/shorts/PtAWhAz8bz8}{\url{youtube.com/shorts/PtAWhAz8bz8}} & \href{https://youtu.be/E7ge3kw5Q0Q}{\url{youtu.be/E7ge3kw5Q0Q}} & \href{https://youtu.be/E7ge3kw5Q0Q}{\url{youtu.be/E7ge3kw5Q0Q}}\\
+three\_clust\_14 & \href{https://youtu.be/ynu2oUxv08I}{\url{youtu.be/ynu2oUxv08I}} & \href{https://youtu.be/gHDLMn5AG-8}{\url{youtu.be/gHDLMn5AG-8}} & \href{https://youtu.be/HyCJEiwCVv0}{\url{youtu.be/HyCJEiwCVv0}} & \href{https://youtu.be/HyCJEiwCVv0}{\url{youtu.be/HyCJEiwCVv0}} & \href{https://youtu.be/HyCJEiwCVv0}{\url{youtu.be/HyCJEiwCVv0}}\\
+three\_clust\_15 & \href{https://youtu.be/xsdWsBek0eQ}{\url{youtu.be/xsdWsBek0eQ}} & \href{https://youtu.be/SDY64MrcWQg}{\url{youtu.be/SDY64MrcWQg}} & \href{https://youtu.be/CFIyW7ftF9M}{\url{youtu.be/CFIyW7ftF9M}} & \href{https://youtu.be/CFIyW7ftF9M}{\url{youtu.be/CFIyW7ftF9M}} & \href{https://youtu.be/CFIyW7ftF9M}{\url{youtu.be/CFIyW7ftF9M}}\\
+three\_clust\_16 & \href{https://youtu.be/VyYyYOqhOVs}{\url{youtu.be/VyYyYOqhOVs}} & \href{https://youtu.be/zi-TvgVR8a4}{\url{youtu.be/zi-TvgVR8a4}} & \href{https://youtu.be/hdQmD499yo8}{\url{youtu.be/hdQmD499yo8}} & \href{https://youtu.be/hdQmD499yo8}{\url{youtu.be/hdQmD499yo8}} & \href{https://youtu.be/hdQmD499yo8}{\url{youtu.be/hdQmD499yo8}}\\
+three\_clust\_17 & \href{https://youtu.be/yojgjcf2NQk}{\url{youtu.be/yojgjcf2NQk}} & \href{https://youtu.be/UJPMJ5irRbQ}{\url{youtu.be/UJPMJ5irRbQ}} & \href{https://youtu.be/zdQYQvqTyGA}{\url{youtu.be/zdQYQvqTyGA}} & \href{https://youtu.be/zdQYQvqTyGA}{\url{youtu.be/zdQYQvqTyGA}} & \href{https://youtu.be/zdQYQvqTyGA}{\url{youtu.be/zdQYQvqTyGA}}\\
+three\_clust\_18 & \href{https://youtu.be/r-Z1Yyf2c4s}{\url{youtu.be/r-Z1Yyf2c4s}} & \href{https://youtu.be/2Rf2L8iey2w}{\url{youtu.be/2Rf2L8iey2w}} & \href{https://youtu.be/e_-IQycglVE}{\url{youtu.be/e_-IQycglVE}} & \href{https://youtu.be/e_-IQycglVE}{\url{youtu.be/e_-IQycglVE}} & \href{https://youtu.be/e_-IQycglVE}{\url{youtu.be/e_-IQycglVE}}\\*
+\end{longtable}
+\endgroup{}
+
+
 :::
 :::
 

@@ -9,31 +9,46 @@
 
 ::: {#tbl-glossary .cell tbl-pos='H' tbl-cap='Glossary.'}
 ::: {.cell-output-display}
-\begin{table}
-\centering\begingroup\fontsize{12}{14}\selectfont
+\begingroup\fontsize{12}{14}\selectfont
 
-\begin{tabular}{>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{12cm}}
+\begin{longtable}{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{11cm}}
 \toprule
 \textbf{Term} & \textbf{Description}\\
 \midrule
-Dimension reduction & NA\\
-Embedding & NA\\
-High dimensional data & NA\\
-Interactive graphics & NA\\
-Layout/ representation & NA\\
-Linear dimension reduction & NA\\
-NLDR model & NA\\
-Nonlinear dimension reduction (NLDR) techniques/ methods & NA\\
-Uniform Manifold Approximation and Projection (UMAP) & A manifold learning based NLDR technique preserving both local and some global structures efficiently.\\
-large-scale dimensionality reduction using triplets (TriMAP) & NA\\
-pairwise controlled manifold approximation (PaCMAP) & NA\\
-potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm & NA\\
-t-distributed stochastic neighbor embedding (tSNE) & NA\\
-tour & NA\\
+\endfirsthead
+\multicolumn{2}{@{}l}{\textit{(continued)}}\\
+\toprule
+\textbf{Term} & \textbf{Description}\\
+\midrule
+\endhead
+
+\endfoot
 \bottomrule
-\end{tabular}
+\endlastfoot
+Background noise & Data points that do not belong to any meaningful cluster and may obscure or distort perceived structure in visualizations.\\
+CITE-seq data & A type of single-cell dataset that combines gene expression and protein measurements, commonly used to study cellular heterogeneity.\\
+Clustering structure & Data points that do not belong to any meaningful cluster and may obscure or distort perceived structure in visualizations.\\
+Diagnostic framework & A set of visual and quantitative tools designed to assess the reliability and faithfulness of dimension reduction outputs.\\
+Diffusion process & A mathematical process describing how information spreads over a graph or manifold, often used in NLDR methods to capture underlying geometric structure.\\
+Dimension reduction & A set of techniques used to transform high-dimensional data into a lower-dimensional representation, typically for visualization or interpretation, while attempting to preserve important structure in the data.\\
+Hallucinated structure & Apparent patterns or clusters in a low-dimensional representation that do not correspond to true structure in the original high-dimensional data, often introduced by NLDR methods.\\
+Hexagonal binning & A spatial aggregation technique that divides a two-dimensional space into hexagonal cells and summarizes point density within each cell.\\
+Hexbin Error (HBE) & A quantitative measure used to assess how well a low-dimensional layout represents high-dimensional structure based on binned comparisons.\\
+High-dimensional data & Data in which each observation is described by a large number of variables or features.\\
+Hyper-parameters & User-specified settings that control the behavior of an NLDR algorithm (e.g., number of neighbors, perplexity, minimum distance), which can strongly influence the resulting layout.\\
+Linear projection & A dimension reduction approach where high-dimensional observations are mapped into a lower-dimensional space using linear combinations of the original variables.\\
+Nonlinear dimension reduction (NLDR) techniques/ methods & A class of dimension reduction methods that use nonlinear mappings to represent high-dimensional data in low dimensions, often emphasizing local structure or neighborhood relationships.\\
+Perception and misperception & How users visually interpret structure in data displays, including both correct recognition of patterns and systematic misunderstandings caused by visual distortion.\\
+Piling & A phenomenon in linear projections where many points overlap or concentrate near the center of the display, potentially hiding important variation.\\
+Principal Component Analysis (PCA) & A widely used linear dimension reduction method that identifies orthogonal directions (principal components) capturing the maximum variance in the data.\\
+Uniform Manifold Approximation and Projection (UMAP) & An NLDR technique that aims to preserve both local and some global structure by modeling the data as a fuzzy topological graph.\\
+large-scale dimensionality reduction using triplets (TriMAP) & An NLDR method that preserves global structure by enforcing constraints based on triplets of points representing relative distances.\\
+pairwise controlled manifold approximation (PaCMAP) & An NLDR technique that balances local and global structure preservation using different types of point pairs during optimization.\\
+potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm & An NLDR method based on diffusion processes, designed to capture both local and global geometric structure, particularly for trajectory-like data.\\
+t-distributed stochastic neighbor embedding (tSNE) & An NLDR method that focuses on preserving local neighborhood relationships by minimizing divergence between distance distributions in high- and low-dimensional spaces.\\
+tour & A dynamic visualization technique that shows a sequence of linear projections through high-dimensional space, allowing users to explore the data structure from many different viewpoints.\\*
+\end{longtable}
 \endgroup{}
-\end{table}
 
 
 :::
