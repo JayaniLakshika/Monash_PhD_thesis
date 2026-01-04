@@ -25,23 +25,70 @@
 \endfoot
 \bottomrule
 \endlastfoot
+Aspect ratio (NLDR aspect ratio) & The ratio of scales between components of a low-dimensional layout, used to preserve the relative geometry of an NLDR embedding when rescaling or binning.\\
+Aspect-ratioconstrained binning & A binning strategy where the number of bins in each direction is chosen to respect the aspect ratio of the NLDR layout, helping preserve geometric relationships.\\
+Average bin count & The mean number of observations per non-empty hexagonal bin, used to summarize how densely the data are distributed across bins.\\
 Background noise & Data points that do not belong to any meaningful cluster and may obscure or distort perceived structure in visualizations.\\
+Bin centroid & The representative point of a bin, typically defined as the geometric center of a hexagon or the mean of observations assigned to that bin.\\
+Bin removal (low-count bin removal) & The process of excluding bins containing very few observations in order to simplify the model representation and reduce noise in the fitted wireframe.\\
+Binwidth & A tuning parameter that controls the size of bins used in spatial aggregation methods such as hexagonal binning, affecting the resolution of summaries and error measures.\\
+Browsable HTML widget & An interactive web-based visualization component that allows linked selection, brushing, and coordinated views across multiple plots.\\
+Brushing & An interactive selection technique where users select a subset of points in one visualization to highlight corresponding points in linked views.\\
+Buffer parameter & A proportional extension added beyond the data range to ensure the binning grid fully covers the layout space and avoids boundary artifacts.\\
 CITE-seq data & A type of single-cell dataset that combines gene expression and protein measurements, commonly used to study cellular heterogeneity.\\
 Clustering structure & Data points that do not belong to any meaningful cluster and may obscure or distort perceived structure in visualizations.\\
+Confirmatory factor analysis analogy & A conceptual interpretation where the NLDR layout is treated as a fitted low-dimensional model and deviations in high-dimensional space are treated as residuals.\\
+Delaunay triangulation & A method for connecting points to define neighborhood relationships by forming triangles such that no point lies inside the circumcircle of any triangle.\\
+DiaconisFreedman rule & A rule-of-thumb for choosing histogram or binning resolution based on sample size, here adapted to determine the number of bins in the hexagonal grid.\\
 Diagnostic framework & A set of visual and quantitative tools designed to assess the reliability and faithfulness of dimension reduction outputs.\\
 Diffusion process & A mathematical process describing how information spreads over a graph or manifold, often used in NLDR methods to capture underlying geometric structure.\\
 Dimension reduction & A set of techniques used to transform high-dimensional data into a lower-dimensional representation, typically for visualization or interpretation, while attempting to preserve important structure in the data.\\
+Embedding & A mapping that places observations from a high-dimensional space into a lower-dimensional space, producing a layout intended to reflect relationships present in the original data.\\
+Embedding prediction & The process of assigning a new high-dimensional observation to a position in a low-dimensional layout, based on proximity to existing model components.\\
+Fitted model representation & The structured surface or graph derived from a low-dimensional layout and lifted into high-dimensional space to visualize model fit.\\
+Fitted values & The positions implied by a model for each observation, which in the context of NLDR correspond to locations in the low-dimensional layout that can be lifted back into high-dimensional space for comparison.\\
+Global structure & Large-scale patterns in the data, such as cluster separation or overall geometry, that describe relationships across distant observations.\\
 Hallucinated structure & Apparent patterns or clusters in a low-dimensional representation that do not correspond to true structure in the original high-dimensional data, often introduced by NLDR methods.\\
+Hexagon bin start position & The location of the bottom-left hexagon centroid that anchors the hexagonal grid relative to the layout space.\\
+Hexagon width and height & The horizontal and vertical spacing parameters defining the size and shape of regular hexagonal bins.\\
 Hexagonal binning & A spatial aggregation technique that divides a two-dimensional space into hexagonal cells and summarizes point density within each cell.\\
+Hexagonal grid & A tessellation of the plane into hexagon-shaped cells used for binning two-dimensional data, chosen for its compactness and reduced directional bias compared to rectangular grids.\\
 Hexbin Error (HBE) & A quantitative measure used to assess how well a low-dimensional layout represents high-dimensional structure based on binned comparisons.\\
+Hexbin centroid mapping & The association between a centroid in the low-dimensional layout and its corresponding representative point in high-dimensional space.\\
+Hexbin residual & The distance between an individual observation and its assigned bin centroid in high-dimensional space, used to quantify local model error.\\
 High-dimensional data & Data in which each observation is described by a large number of variables or features.\\
 Hyper-parameters & User-specified settings that control the behavior of an NLDR algorithm (e.g., number of neighbors, perplexity, minimum distance), which can strongly influence the resulting layout.\\
+Inter-point distances & Distances computed between pairs of observations in either the high-dimensional data space or the low-dimensional layout, often used to assess how well structure is preserved.\\
+Interactive tuning & The process of adjusting model parameters while visually inspecting their effects on both the low-dimensional layout and the high-dimensional data representation.\\
+Layout & The configuration of points in a low-dimensional space produced by a dimension reduction or embedding method, typically used for visualization and interpretation.\\
+Linear optimization problem & An optimization task where constraints and objectives are linear, here used to determine the number of bins required to cover the layout space.\\
 Linear projection & A dimension reduction approach where high-dimensional observations are mapped into a lower-dimensional space using linear combinations of the original variables.\\
+Linked views & Multiple coordinated visualizations where interactions in one view (such as selection or brushing) are reflected in the others.\\
+Local structure & Small-scale relationships among nearby observations, often reflecting neighborhood continuity or manifold structure.\\
+Low-count bins & Hexagonal bins that contain a small proportion of the total observations and may be removed during model tuning.\\
+Model-in-the-data-space & A visualization principle in which a fitted model is overlaid on the original data and examined directly in the data space, rather than only through model summaries or diagnostics.\\
+Neighborhood preservation & The extent to which local relationships between points in the low-dimensional layout reflect those in the original high-dimensional data.\\
+Non-empty bins & Bins that contain at least one observation after the binning process and are therefore used in constructing the model representation.\\
 Nonlinear dimension reduction (NLDR) techniques/ methods & A class of dimension reduction methods that use nonlinear mappings to represent high-dimensional data in low dimensions, often emphasizing local structure or neighborhood relationships.\\
+Normalized score & A rescaled metric value that allows different evaluation measures to be compared on a common scale.\\
+Out-of-sample prediction & The ability of a method to assign new, unseen observations to positions in an existing low-dimensional representation.\\
+Parallel coordinate plot & A multivariate visualization technique where each variable is shown as a vertical axis and observations are represented as lines crossing these axes.\\
 Perception and misperception & How users visually interpret structure in data displays, including both correct recognition of patterns and systematic misunderstandings caused by visual distortion.\\
 Piling & A phenomenon in linear projections where many points overlap or concentrate near the center of the display, potentially hiding important variation.\\
+Pretty but wrong representation & A visually appealing low-dimensional layout that exaggerates or fabricates structure not supported by the high-dimensional data.\\
 Principal Component Analysis (PCA) & A widely used linear dimension reduction method that identifies orthogonal directions (principal components) capturing the maximum variance in the data.\\
+Random seed & An initial value used to control stochastic elements of an algorithm, where different seeds can lead to different NLDR layouts even with the same method and parameters.\\
+Residual surface & The spatial pattern formed by residual magnitudes when errors are mapped back onto the low-dimensional layout or visualized through projections.\\
+Scaling to unit range & The transformation of data so that values lie within a fixed interval, commonly used to standardize distances prior to binning or optimization.\\
+Standardized bin count & The proportion of observations in a bin relative to the total sample size, used to assess bin importance and guide bin removal.\\
+Stress function & An objective function used in multidimensional scaling and related methods that quantifies the mismatch between distances in the high-dimensional space and distances in the low-dimensional representation.\\
+Triplet-based accuracy metrics (reversed) & Evaluation measures based on relative distances between triplets of points, transformed so that lower values indicate better agreement with high-dimensional structure.\\
+True model & The underlying geometric or structural pattern assumed to generate the observed data, which dimension reduction methods aim to recover or approximate.\\
+Tuning parameters & User-controlled settings that affect the binning configuration and model representation, such as bin counts, bin positions, and removal thresholds.\\
 Uniform Manifold Approximation and Projection (UMAP) & An NLDR technique that aims to preserve both local and some global structure by modeling the data as a fuzzy topological graph.\\
+Wireframe lifting & The process of projecting a low-dimensional grid or graph structure into high-dimensional space using representative points such as bin means.\\
+Wireframe representation & A graphical structure composed of connected edges (often derived from a grid or neighborhood graph) used to represent a fitted low-dimensional model when lifted into high-dimensional space.\\
+Wireframe sharpening & The visual effect of removing sparse bins to produce a cleaner and more interpretable wireframe representation of the fitted model.\\
 large-scale dimensionality reduction using triplets (TriMAP) & An NLDR method that preserves global structure by enforcing constraints based on triplets of points representing relative distances.\\
 pairwise controlled manifold approximation (PaCMAP) & An NLDR technique that balances local and global structure preservation using different types of point pairs during optimization.\\
 potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm & An NLDR method based on diffusion processes, designed to capture both local and global geometric structure, particularly for trajectory-like data.\\

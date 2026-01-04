@@ -13,6 +13,14 @@ source(here::here("scripts/software.R"))
 glossary_df <- read_csv(here::here("misc/glossary.csv")) |>
   arrange(Term)
 
+glossary_df[] <- lapply(glossary_df, function(x) {
+  if (is.character(x)) {
+    iconv(x, from = "", to = "UTF-8", sub = "")
+  } else {
+    x
+  }
+})
+
 if (knitr::is_latex_output()) {
   kable(glossary_df, 
       format = "latex", 

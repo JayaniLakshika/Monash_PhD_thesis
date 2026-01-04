@@ -21,3 +21,50 @@ Hexbin Error (HBE),A quantitative measure used to assess how well a low-dimensio
 Diagnostic framework,A set of visual and quantitative tools designed to assess the reliability and faithfulness of dimension reduction outputs.
 Perception and misperception,"How users visually interpret structure in data displays, including both correct recognition of patterns and systematic misunderstandings caused by visual distortion."
 CITE-seq data,"A type of single-cell dataset that combines gene expression and protein measurements, commonly used to study cellular heterogeneity."
+Embedding,"A mapping that places observations from a high-dimensional space into a lower-dimensional space, producing a layout intended to reflect relationships present in the original data."
+Layout,"The configuration of points in a low-dimensional space produced by a dimension reduction or embedding method, typically used for visualization and interpretation."
+Inter-point distances,"Distances computed between pairs of observations in either the high-dimensional data space or the low-dimensional layout, often used to assess how well structure is preserved."
+Stress function,An objective function used in multidimensional scaling and related methods that quantifies the mismatch between distances in the high-dimensional space and distances in the low-dimensional representation.
+Wireframe representation,A graphical structure composed of connected edges (often derived from a grid or neighborhood graph) used to represent a fitted low-dimensional model when lifted into high-dimensional space.
+Model-in-the-data-space,"A visualization principle in which a fitted model is overlaid on the original data and examined directly in the data space, rather than only through model summaries or diagnostics."
+Binwidth,"A tuning parameter that controls the size of bins used in spatial aggregation methods such as hexagonal binning, affecting the resolution of summaries and error measures."
+Hexagonal grid,"A tessellation of the plane into hexagon-shaped cells used for binning two-dimensional data, chosen for its compactness and reduced directional bias compared to rectangular grids."
+True model,"The underlying geometric or structural pattern assumed to generate the observed data, which dimension reduction methods aim to recover or approximate."
+Fitted values,"The positions implied by a model for each observation, which in the context of NLDR correspond to locations in the low-dimensional layout that can be lifted back into high-dimensional space for comparison."
+Global structure,"Large-scale patterns in the data, such as cluster separation or overall geometry, that describe relationships across distant observations."
+Local structure,"Small-scale relationships among nearby observations, often reflecting neighborhood continuity or manifold structure."
+Random seed,"An initial value used to control stochastic elements of an algorithm, where different seeds can lead to different NLDR layouts even with the same method and parameters."
+Aspect ratio (NLDR aspect ratio),"The ratio of scales between components of a low-dimensional layout, used to preserve the relative geometry of an NLDR embedding when rescaling or binning."
+Bin centroid,"The representative point of a bin, typically defined as the geometric center of a hexagon or the mean of observations assigned to that bin."
+Buffer parameter,A proportional extension added beyond the data range to ensure the binning grid fully covers the layout space and avoids boundary artifacts.
+Confirmatory factor analysis analogy,A conceptual interpretation where the NLDR layout is treated as a fitted low-dimensional model and deviations in high-dimensional space are treated as residuals.
+Delaunay triangulation,A method for connecting points to define neighborhood relationships by forming triangles such that no point lies inside the circumcircle of any triangle.
+Embedding prediction,"The process of assigning a new high-dimensional observation to a position in a low-dimensional layout, based on proximity to existing model components."
+Fitted model representation,The structured surface or graph derived from a low-dimensional layout and lifted into high-dimensional space to visualize model fit.
+Hexagon width and height,The horizontal and vertical spacing parameters defining the size and shape of regular hexagonal bins.
+Hexbin centroid mapping,The association between a centroid in the low-dimensional layout and its corresponding representative point in high-dimensional space.
+Hexbin residual,"The distance between an individual observation and its assigned bin centroid in high-dimensional space, used to quantify local model error."
+Linear optimization problem,"An optimization task where constraints and objectives are linear, here used to determine the number of bins required to cover the layout space."
+Neighborhood preservation,The extent to which local relationships between points in the low-dimensional layout reflect those in the original high-dimensional data.
+Non-empty bins,Bins that contain at least one observation after the binning process and are therefore used in constructing the model representation.
+Out-of-sample prediction,"The ability of a method to assign new, unseen observations to positions in an existing low-dimensional representation."
+Residual surface,The spatial pattern formed by residual magnitudes when errors are mapped back onto the low-dimensional layout or visualized through projections.
+Scaling to unit range,"The transformation of data so that values lie within a fixed interval, commonly used to standardize distances prior to binning or optimization."
+Triplet-based accuracy metrics (reversed),"Evaluation measures based on relative distances between triplets of points, transformed so that lower values indicate better agreement with high-dimensional structure."
+Wireframe lifting,The process of projecting a low-dimensional grid or graph structure into high-dimensional space using representative points such as bin means.
+Average bin count,"The mean number of observations per non-empty hexagonal bin, used to summarize how densely the data are distributed across bins."
+Aspect-ratio–constrained binning,"A binning strategy where the number of bins in each direction is chosen to respect the aspect ratio of the NLDR layout, helping preserve geometric relationships."
+Bin removal (low-count bin removal),The process of excluding bins containing very few observations in order to simplify the model representation and reduce noise in the fitted wireframe.
+Browsable HTML widget,"An interactive web-based visualization component that allows linked selection, brushing, and coordinated views across multiple plots."
+Brushing,An interactive selection technique where users select a subset of points in one visualization to highlight corresponding points in linked views.
+Diaconis–Freedman rule,"A rule-of-thumb for choosing histogram or binning resolution based on sample size, here adapted to determine the number of bins in the hexagonal grid."
+Hexagon bin start position,The location of the bottom-left hexagon centroid that anchors the hexagonal grid relative to the layout space.
+Interactive tuning,The process of adjusting model parameters while visually inspecting their effects on both the low-dimensional layout and the high-dimensional data representation.
+Linked views,Multiple coordinated visualizations where interactions in one view (such as selection or brushing) are reflected in the others.
+Low-count bins,Hexagonal bins that contain a small proportion of the total observations and may be removed during model tuning.
+Normalized score,A rescaled metric value that allows different evaluation measures to be compared on a common scale.
+Parallel coordinate plot,A multivariate visualization technique where each variable is shown as a vertical axis and observations are represented as lines crossing these axes.
+Pretty but wrong representation,A visually appealing low-dimensional layout that exaggerates or fabricates structure not supported by the high-dimensional data.
+Standardized bin count,"The proportion of observations in a bin relative to the total sample size, used to assess bin importance and guide bin removal."
+Tuning parameters,"User-controlled settings that affect the binning configuration and model representation, such as bin counts, bin positions, and removal thresholds."
+Wireframe sharpening,The visual effect of removing sparse bins to produce a cleaner and more interpretable wireframe representation of the fitted model.
