@@ -1,5 +1,5 @@
 name_of_the_layout,nldr_method,hyper_parameters
 1,UMAP,"n_neighbors = 30, min_dist = 0.3"
-2,UMAP,"n_neighbors = 15, min_dist = 0.1"
+2,tSNE,"perplexity = 84"
 3,TriMAP,"n_inliers = 12, n_outliers = 4, n_random = 3"
 4,PaCMAP,"n_neighbors = 10, MN_ratio = 0.5, FP_ratio = 2, init = random"

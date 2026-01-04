@@ -115,10 +115,21 @@ error_pbmc_umap <- gen_diffbin1_errors(highd_data = data, nldr_data = umap_pbmc,
 write_rds(error_pbmc_umap, here::here("data/CITE-seq/error_CITE-seq_umap_n-neigbors_54_min-dist_0.5.rds"))
 
 
+## For tsne
+tsne_pbmc <- read_rds(here::here("data/CITE-seq/CITE-seq_tsne_perplexity_84.rds"))
+
+error_pbmc_tsne <- gen_diffbin1_errors(highd_data = data, nldr_data = tsne_pbmc,
+                                       hd_thresh = 0, bin1_vec = 5:50) |>
+  dplyr::mutate(method = "tSNE_perplexity_84")
+
+write_rds(error_pbmc_tsne, here::here("data/CITE-seq/error_CITE-seq_tsne_perplexity_84.rds"))
+
+
 error_pbmc <- bind_rows(error_pbmc_umap, #UMAP_30_min_dist_0.3
                         error_pbmc_umap2, #UMAP_15_min_dist_0.1
                         error_pbmc_trimap,
-                        error_pbmc_pacmap)
+                        error_pbmc_pacmap,
+                        error_pbmc_tsne)
 
 error_pbmc <- error_pbmc |>
   mutate(a1 = round(a1, 2)) |>
@@ -130,7 +141,7 @@ error_pbmc <- error_pbmc |>
 
 error_pbmc <- error_pbmc |>
   mutate(method = factor(method,
-                         levels = c("UMAP_30_min_dist_0.3", "UMAP_15_min_dist_0.1", "trimap_n-inliers_12_n-outliers_4_n-random_3", "pacmap_n-neighbors_10_init_random_MN-ratio_0.5_FP-ratio_2")))
+                         levels = c("UMAP_30_min_dist_0.3", "UMAP_15_min_dist_0.1", "tSNE_perplexity_84", "trimap_n-inliers_12_n-outliers_4_n-random_3", "pacmap_n-neighbors_10_init_random_MN-ratio_0.5_FP-ratio_2")))
 
 
 error_plot_limb <- plot_hbe(error_pbmc) +
