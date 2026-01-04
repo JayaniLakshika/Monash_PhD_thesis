@@ -879,9 +879,9 @@ nldrdt_link <- show_link_plots(
 
 nldrdt_link <- crosstalk::bscols(
     htmltools::div(
-        style = "display: grid; grid-template-columns: 1fr 1fr;
+        style = "display: grid; grid-template-columns: 1fr;
     gap: 0px; align-items: start; justify-items: center; margin: 0; padding: 0;
-    height: 380px; width: 500px",
+    height: 420px; width: 100%; overflow: hidden;",
         nldrdt_link
     ),
     device = "xs"
@@ -936,6 +936,16 @@ errornldrdt_link <- show_error_link_plots(
   point_data = df_exe, 
   edge_data = trimesh, 
   point_colour = clr_choice
+)
+
+errornldrdt_link <- crosstalk::bscols(
+    htmltools::div(
+        style = "display: grid; grid-template-columns: 1fr;
+    gap: 0px; align-items: start; justify-items: center; margin: 0; padding: 0;
+    height: 360px; width: 100%; overflow: hidden;",
+        errornldrdt_link
+    ),
+    device = "xs"
 )
 
 class(errornldrdt_link) <- c(class(errornldrdt_link), "htmlwidget")

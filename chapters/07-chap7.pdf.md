@@ -12,19 +12,76 @@ This thesis presents five key contributions that collectively advance the unders
 
 The primary contributions of this research are fivefold. First, we introduce a novel method for visualizing how NLDR warps data, thereby improving the diagnostics of NLDR techniques. Second, we develop an R package, `quollr`, which implements the proposed diagnostic method. Third, we create `cardinalR`, a package that generates high-dimensional clustering data structures with enhanced features such as added noise dimensions and background noise. Fourth, we conduct a human-subject experiment to investigate the perception and misperception of NLDR representations, providing evidence on how data structures are identified in NLDR layouts compared to tours. Finally, we develop a Shiny application that offers analysts a user-friendly interface for selecting the most accurate NLDR representation.
 
+## Using a published $2\text{-}D$ NLDR layout as a case study
+
+In the Introduction, a published UMAP layout (*n_neighbors = 30* and *min_dist = 0.3*) of a human PBMC CITE-seq dataset [@hao2021] is used as a motivating example. The UMAP layout shows several visually distinct clusters with different shapes. Some clusters appear compact and well separated, while others are elongated, curved, or partially overlapping. In total, six clusters can be seen, including three with nonlinear shapes, two roughly Gaussian clusters, and one elliptical cluster, along with a small amount of background noise scattered between clusters. At first glance, it looks convincing. But this immediately raises an important question: *is this really the best way to represent the structure in the $10\text{-}D$ PBMC CITE-seq data?*
+
+Looking more closely, the data contain six clusters that sit fairly close to one another. Three of them have clearly nonlinear shapes, two look more like Gaussian blobs, and one is closer to an ellipse, with a bit of background noise scattered around. These kinds of data structures are common in bioinformatics data. Using the `cardinalR` package, data with this different cluster shapes and background noise can be generated.
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+To assess how well the UMAP layout reflects the structure of the $10\text{-}D$ PBMC CITE-seq data, we use the `quollr` framework. With a model fitted using a binwidth of $0.03$, the layout appears reasonable overall, but some limitations become clear. In particular, the roughly Gaussian clusters look more squeezed than expected, and background noise seems to form a separate cluster that likely does not represent a true group in the data. In addition, the nonlinear shaped clusters could benefit from being more spread out to better reflect their underlying structure. Also, clusters should be more close. These observations suggest that, while the current layout is informative, there is good potential to find an alternative layout that represents the data structure even more clearly.
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+This leads to the idea of comparing several NLDR layouts rather than relying on just one. The Shiny app `menuraR` makes this comparison easier by allowing different layouts and parameter settings.
+
+Rather than computing embeddings on the fly, it is also helpful to precompute the NLDR layouts. In this case, four layouts are of interest:
+
+- the published UMAP layout (*n-neighbors = 30, min_dist = 0.3*),
+- a tSNE layout (*perplexity = 84*),
+- a TriMAP layout (*n-inliers = 12, n-outliers = 4, n-random = 3*), and
+- a PaCMAP layout (*n-neighbors = 10, init = random, MN-ratio = 0.5, FP-ratio = 2*).
+
+These layouts can be saved as a single CSV file, following `menuraR`’s naming conventions (`emb1`, `emb2`, or prefixed versions for multiple layouts), along with a small metadata file describing the method and hyper-parameters used. Uploading precomputed layouts avoids long computation times and makes it easy to focus on comparison rather than setup.
+
+Once the data and layouts are loaded in the *Data Upload* tab, all three embeddings appear in the "Your Loaded NLDR Layouts" panel (@fig-menuraR_ui1). From there, they can be selected together and passed into the *Compare NLDR Layouts* tab.
+
+Here’s an updated figure caption that matches the example you describe, keeps the flow, and stays in a **clear but less formal** tone:
+
+
+::: {.cell}
+::: {.cell-output-display}
+![Data upload and NLDR layout configuration in `menuraR`. The *Data Upload* tab shows the PBMC CITE-seq dataset together with several precomputed NLDR layouts, including the published UMAP layout and alternative embeddings generated using tSNE, TriMAP, and PaCMAP with different hyper-parameter settings. Uploaded layouts appear in the *Your Loaded NLDR Layouts* panel.](../figures/CITE-seq/menuraR_ui1_CITE-seq.png){#fig-menuraR_ui1 width=100%}
+:::
+:::
+
+
+This allows the layouts to be viewed side by side, overlaid with hexagonal grids, and evaluated using the hexbin error across different bin widths. At binwidth of $0.03$, the most reasonable layout is tSNE with *perplexity = 84* (@fig-menuraR_ui2).
+
+
+::: {.cell}
+::: {.cell-output-display}
+![NLDR layout comparison and hexbin error evaluation in `menuraR`. The *Compare NLDR Layouts* tab displays multiple $2\text{-}D$ NLDR embeddings side by side, overlaid with hexagonal grids and corresponding wireframe representations. Users can explore how the hexbin error (HBE) changes with the binwidth parameter ($a_1$) and compare layouts directly. For this example, at a binwidth of $0.03$, the tSNE layout with *perplexity = 84* is identified as the most reasonable representation. Layouts, HBE plots, and summary tables can be downloaded for further analysis.](../figures/CITE-seq/menuraR_ui2_CITE-seq.png){#fig-menuraR_ui2 width=100%}
+:::
+:::
+
+
+<!-- Finally, the *Model Diagnostics* tab can be used to dig deeper into where each layout works well and where it struggles. Linked views between the 2D layout and the high-dimensional model make it easier to see, for example, whether squeezed Gaussian clusters, stretched nonlinear clusters, or background noise are being handled differently across UMAP, TriMAP, and PaCMAP. -->
+
 ## Future work
 
 There are several directions that this work can be developed.
-
-<!-- - Scagnostics to evaluate NLDR -->
-<!-- - 3D NLDR investigation (rather than using hexbin centroids, use kmeans to investigate the model in 3D) -->
-<!-- - Prediction with model built (UMAP has already develped prediction function, can compare that with ours) -->
-<!-- - More diagnostics for NLDR (diadem app) -->
-<!-- - Visualizations to validate experiment design/results -->
-<!-- - Investigate perception and misperception happening with background noise, number of clusters, noise dimensions, sample size, seed. -->
-<!-- - lineup for NLDR (preservation of the data struture, sensitivity of hyperparameters) -->
-<!-- - With different sample sizes how scagnostics change for specific data structures -->
-
 
 <!--add section on Do you have any plans/ideas to extend this to NDR results that project into more than 2D / do you think that would even be possible (say, for up to 5D projections or so)?. You’ve got one bullet point for your thesis future work section now! You could point Fabian to your paper conclusions where some ideas are suggested.-->
 
@@ -39,12 +96,6 @@ Binning into cubes ($3\text{-}D$ or higher) could be performed relatively easily
 One promising direction for future work is the integration of scagnostics [@leland2008; @dang2014] as an additional tool for evaluating NLDR results. Scagnostics provide a set of quantitative shape-based metrics (e.g., convexity, skewness, stringiness, clumpiness) that describe the geometric characteristics of scatterplots. By applying these metrics to $2\text{-}D$ scatterplots generated by NLDR methods, we could obtain an objective assessment of how well these methods preserve or distort data structures, particularly in relation to their characteristics (eg: nonlinearity).
 
 Moreover, investigating how scagnostic profiles vary with different sample sizes for specific underlying data structures would provide valuable insight into the stability and robustness of NLDR methods. This could help identify which methods are more resilient to changes in sample size and which structures are more prone to distortion under small sample sizes.
-
-<!-- ### Extend our algorithm to $3-\text{D}$ -->
-
-<!-- A natural extension of this work is to explore and evaluate NLDR methods in $3-\text{D}$ space, as $3-\text{D}$ can also be considered a low-dimensional space. While the current framework relies on hexagonal binning to model structure in the $2\text{-}D$ space, adapting this approach to $3-\text{D}$ requires alternative strategies for spatial partitioning. One promising idea is to use k-means clustering in $3-\text{D}$ embeddings to define neighborhood structures and centroids for model fitting. This would enable diagnostic assessment of NLDR performance in $3-\text{D}$ layouts, which may better preserve complex structures in high-dimensional data. -->
-
-<!-- Following this, a comparative evaluation can be conducted to assess whether $2\text{-}D$ or $3-\text{D}$ representations are more appropriate for preserving the underlying structure of the high-dimensional data. -->
 
 ### Compare prediction approaches
 
@@ -110,11 +161,15 @@ Another valuable direction for future work is to investigate how PCA compares to
 
 By comparing how users interpret and misinterpret PCA layouts versus NLDR generated layouts, we can gain insights into whether linear techniques are inherently easier to understand or whether they may lead to different types of visual distortions. This work would help clarify when PCA is sufficient for visual analysis and when the added complexity of NLDR is warranted, particularly for exploratory tasks that rely on visual intuition.
 
+### Extension for `quollr`
+
+A useful extension to `quollr` would be to link cluster selections between the tour view and the $2\text{-}D$ NLDR layout. This would let users select a cluster in one view and immediately see how it appears in the other, making it easier to compare cluster structure across views.
+
 ## Reproducibility and availability
 
 All materials associated with this thesis are openly available to support transparency and reproducible research. The thesis is written in Quarto [@jjallaire2024] and is available in both **HTML** and **PDF** formats. The **HTML version**, which includes interactive figures and linked visualizations, is published at
 [jayani-lakshika-phd-thesis.netlify](https://jayani-lakshika-phd-thesis.netlify.app). The **PDF version** of the thesis is available at
-[github.com/JayaniLakshika/Monash_PhD_thesis/_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-dimensional-Data.pdf](https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-dimensional-Data.pdf). All source code, data, and software used to generate the analyzes, figures, and results are maintained in a public GitHub repository at
+[github.com/JayaniLakshika/Monash_PhD_thesis/_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-Dimensional-Data.pdf](https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-Dimensional-Data.pdf). All source code, data, and software used to generate the analyzes, figures, and results are maintained in a public GitHub repository at
 [github.com/JayaniLakshika/Monash_PhD_thesis](https://github.com/JayaniLakshika/Monash_PhD_thesis), enabling full reproduction of this work.
 
 <!--scripts/pkg_cran_info.R-->
@@ -134,7 +189,9 @@ A Shiny application for `quollr` is accessible via one of the mirror sites at [m
 ## Supporting R packages
 
 <!--need to update at the end of writing-->
-In addition, a number of R packages were essential in the development of this work, including (Final package list to be confirmed upon completion of writing.)
+In addition, a number of R packages were essential in the development of this work, including `tidyverse` [@hadley2019], `ggbeeswarm` [@erik2023], `ggrepel` [@kamil2024], `GGally` [@barret2025], `colorspace` [@achim2020], `scales` [@hadley2025], `patchwork` [@thomas2024], `plotly` [@chapman2020], `crosstalk` [@joe2023], `htmltools` [@joe2024], `quollr` [@jayani2025a], `cardinalR` [@jayani2025b], `detourr` [@casper2025], `geozoo` [@barret2016], `knitr` [@yihui2015], `kableExtra` [@hao2024], `lme4` [@douglas2015], `broom.mixed` [@ben2024], `emmeans` [@russell2025], `mclust` [@scrucca2023], `fpc` [@christian2024], `binom` [@sundar2022], `conflicted` [@hadley2023], `ggforce` [@thomas2025], `here` [@kirill2025], `grid` [@core2025], `gridExtra` [@baptiste2017], and `png` [@simon2022].
+
+To generate alt-text for figures, the [autoAlt](https://github.com/numbats/autoAlt) package is used as an initial guide.
 
 ## Research workflow and project organization
 

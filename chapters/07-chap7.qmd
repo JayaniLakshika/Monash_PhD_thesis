@@ -7,6 +7,7 @@ library(gridExtra)
 library(png)
 library(grid)
 library(quollr)
+library(cardinalR)
 library(plotly)
 library(crosstalk)
 ```
@@ -34,10 +35,44 @@ pbmc_data_tour <- langevitour::langevitour(
   width = "400px", height = "380px",
   levelColors = "#66B2CC"
 )
+
+clust_data <- gen_multicluster(
+  n = c(200, 300, 500),
+  k = 3,
+  loc = matrix(c(
+    0, 0, 0, 0,
+    5, 9, 0, 0,
+    3, 4, 10, 7
+  ) * 0.1, nrow = 3, byrow = TRUE),
+  scale = c(0.3, 1, 0.5),
+  shape = c("gaussian", "cone", "quadratic"),
+  is_bkg = TRUE
+)
+
+
+clust_data_tour <- langevitour::langevitour(clust_data |> select(-cluster),
+                         enableControls = TRUE,
+                         width = "400px", height = "380px",
+                         levelColors = "#66B2CC")
 ```
 
 ```{r, eval=knitr::is_html_output()}
-pbmc_data_tour
+simdatafig <- bscols(
+  htmltools::div(
+    style = "display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0px;
+    align-items: start;
+    justify-items: stretch;
+    margin: 0;
+    padding: 0;",
+    pbmc_data_tour, clust_data_tour
+  ),
+  device = "xs"
+)
+
+class(simdatafig) <- c(class(simdatafig), "htmlwidget")
+
+simdatafig
 ```
 
 To assess how well the UMAP layout reflects the structure of the $10\text{-}D$ PBMC CITE-seq data, we use the `quollr` framework. With a model fitted using a binwidth of $0.03$, the layout appears reasonable overall, but some limitations become clear. In particular, the roughly Gaussian clusters look more squeezed than expected, and background noise seems to form a separate cluster that likely does not represent a true group in the data. In addition, the nonlinear shaped clusters could benefit from being more spread out to better reflect their underlying structure. Also, clusters should be more close. These observations suggest that, while the current layout is informative, there is good potential to find an alternative layout that represents the data structure even more clearly.

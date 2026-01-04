@@ -60,8 +60,8 @@ additional\_functions.R & Helper functions to render the main paper.\\
 10\_gen\_embeddings.R & Computes multiple NLDR embeddings for specific distance scale factor.\\
 11\_comb\_emb\_default\_data.R & Combines NLDR embeddings for all distance scale factors.\\
 12\_comb\_data.R & Merge all NLDR embeddings generated for attention and non-attention check.\\
-13\_data\_processing\_method\_ds\_factor\_missings.R & Processes collected experimental data and generates the `result\_method\_ds\_factor\_missings.rds` file, containing all relevant details for the same data structure shown in both displays.\\
-13\_data\_processing\_method\_ds\_factor.R & Processes collected experimental data and generates the `result\_method\_ds\_factor.rds` file, containing all relevant details for the same data structure shown in both displays.\\
+13\_data\_processing\_method\_ds\_factor\_missings.R & Processes collected experimental data and generates the file, containing all relevant details for the same data structure shown in both displays.\\
+13\_data\_processing\_method\_ds\_factor.R & Processes collected experimental data and generates the  file, containing all relevant details for the same data structure shown in both displays.\\
 17\_compute\_distance\_btw\_centroids.R & Computes different distance metrics between cluster in the high-dimensional space.\\
 19\_find\_which\_replicates\_missing.R & Identifies missing responses across experimental conditions.\\*
 \end{longtable}
@@ -252,7 +252,7 @@ Animations of the $4\text{-}D$ tours that used for the study are available on Yo
 
 ## $2\text{-}D$ NLDR layouts
 
-All $2\text{-}D$ NLDR layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/paper-vis-experiment/figures/layouts](https://github.com/JayaniLakshika/paper-vis-experiment/tree/main/figures/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) with default hyper-parameter settings for the simulated $4\text{-}D$ data structures.
+All $2\text{-}D$ NLDR layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/Monash_PhD_thesis/figures/vis-exp/layouts](https://github.com/JayaniLakshika/Monash_PhD_thesis/tree/main/figures/vis-exp/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) with default hyper-parameter settings for the simulated $4\text{-}D$ data structures.
 
 ## Distance metrics
 
