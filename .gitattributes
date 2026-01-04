@@ -1,6 +1,7 @@
 data/**/*.rds filter=lfs diff=lfs merge=lfs -text
 data/**/*.csv filter=lfs diff=lfs merge=lfs -text
 _book/*.pdf filter=lfs diff=lfs merge=lfs -text
+chapters/*.html filter=lfs diff=lfs merge=lfs -text
 _book/appendix/A-appA.html !text !filter !merge !diff
 _book/appendix/A-appA_files/figure-pdf/fig-assign-data-1.pdf !text !filter !merge !diff
 _book/appendix/A-appA_files/figure-pdf/fig-comp-metric-mnist-1.pdf !text !filter !merge !diff
