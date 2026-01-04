@@ -4,6 +4,12 @@
 :::
 
 
+
+::: {.cell}
+
+:::
+
+
 # Conclusion and future plans {#sec-conclusion}
 
 This thesis presents five key contributions that collectively advance the understanding and evaluation of NLDR methods. The work introduces a new method and software for NLDR diagnostics, provides insights into how people identify data structures when NLDR layouts and tour views are shown together, develops methods for generating clustering data structures, and implements user-friendly tools that support exploratory analysis and visualization.
@@ -44,6 +50,20 @@ To assess how well the UMAP layout reflects the structure of the $10\text{-}D$ P
 :::
 
 
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+::: {.cell-output-display}
+![](07-chap7_files/figure-pdf/fig-overviewpdf-1.pdf){#fig-overviewpdf}
+:::
+:::
+
+
 This leads to the idea of comparing several NLDR layouts rather than relying on just one. The Shiny app `menuraR` makes this comparison easier by allowing different layouts and parameter settings.
 
 Rather than computing embeddings on the fly, it is also helpful to precompute the NLDR layouts. In this case, four layouts are of interest:
@@ -57,8 +77,6 @@ These layouts can be saved as a single CSV file, following `menuraR`’s naming 
 
 Once the data and layouts are loaded in the *Data Upload* tab, all three embeddings appear in the "Your Loaded NLDR Layouts" panel (@fig-menuraR_ui1). From there, they can be selected together and passed into the *Compare NLDR Layouts* tab.
 
-Here’s an updated figure caption that matches the example you describe, keeps the flow, and stays in a **clear but less formal** tone:
-
 
 ::: {.cell}
 ::: {.cell-output-display}
@@ -68,6 +86,8 @@ Here’s an updated figure caption that matches the example you describe, keeps 
 
 
 This allows the layouts to be viewed side by side, overlaid with hexagonal grids, and evaluated using the hexbin error across different bin widths. At binwidth of $0.03$, the most reasonable layout is tSNE with *perplexity = 84* (@fig-menuraR_ui2).
+
+TriMAP layout is universally poor. tSNE layout with little separation performs well at tiny binwidth (where most points are in their own bin) and poorly as binwidth increases. The choice of best is between UMAP layout and PaCMAP layout, that have small separations between oddly shaped clusters. UMAP layout is chosen as the best.
 
 
 ::: {.cell}
