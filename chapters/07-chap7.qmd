@@ -159,15 +159,36 @@ hex_grid_pbmc <- ggplot(
                   plot.margin = margin(0, 0, 0, 0)
               )
 
-hex_grid_pbmc_int <- plot_ly() |>
+df <- inner_join(pbmc_data, pbmc_umap_scaled, by = "ID")
+
+### Define type column
+df <- df |>
+  select(starts_with("x"), starts_with("emb")) |>
+  mutate(type = "data") ## original dataset
+
+df_b <- df_bin_pbmc |>
+  filter(h %in% df_bin_centroids_pbmc$h) |>
+  mutate(type = "model") ## Data with summarized mean
+
+## Reorder the rows of df_b according to the h order in model_2d
+df_b <- df_b[match(df_bin_centroids_pbmc$h, df_b$h),] |>
+  tidyr::drop_na() |>
+  select(-h)
+
+df_exe_pbmc_int <- bind_rows(df_b, df)
+
+shared_df <- crosstalk::SharedData$new(df_exe_pbmc_int)
+
+# Scatter points
+nldr_plt <- plot_ly() |>
   # Background points (pbmc_umap_scaled)
   add_trace(
-    data = pbmc_umap_scaled,
+    data = shared_df,
     x = ~emb1,
     y = ~emb2,
     type = 'scatter',
     mode = 'markers',
-    marker = list(color = '#66B2CC', size = 5, opacity = 0.03),
+    marker = list(color = '#66B2CC', size = 5, opacity = 0.1),
     hoverinfo = 'none',
     showlegend = FALSE
   ) |>
@@ -182,17 +203,17 @@ hex_grid_pbmc_int <- plot_ly() |>
     hoverinfo = 'none',
     showlegend = FALSE
   ) |>
-  # Centroids (df_bin_centroids_pbmc)
-  add_trace(
-    data = df_bin_centroids_pbmc,
-    x = ~c_x,
-    y = ~c_y,
-    type = 'scatter',
-    mode = 'markers',
-    marker = list(color = '#FF7755', size = 3),
-    hoverinfo = 'none',
-    showlegend = FALSE
-  ) |>
+  # # Centroids (df_bin_centroids_pbmc)
+  # add_trace(
+  #   data = df_bin_centroids_pbmc,
+  #   x = ~c_x,
+  #   y = ~c_y,
+  #   type = 'scatter',
+  #   mode = 'markers',
+  #   marker = list(color = '#FF7755', size = 3),
+  #   hoverinfo = 'none',
+  #   showlegend = FALSE
+  # ) |>
     # Layout with border
     layout(
         width = 400,
@@ -211,7 +232,7 @@ hex_grid_pbmc_int <- plot_ly() |>
             ticks = "",
             title = ""
         ),
-        
+
         # ADD A BOX AROUND THE ENTIRE PLOT PANEL
         shapes = list(
             list(
@@ -219,40 +240,29 @@ hex_grid_pbmc_int <- plot_ly() |>
                 xref = "paper", yref = "paper",
                 x0 = 0, y0 = 0,
                 x1 = 1, y1 = 1,
-                line = list(color = "black", width = 1)
+                line = list(color = "black", width = 0.5)
             )
         )
     ) |>
-    config(
-        staticPlot = TRUE,
-        displayModeBar = FALSE,
-        editable = FALSE,
-        showTips = FALSE,
-        displaylogo = FALSE,
-        responsive = FALSE
-    )
+    style(
+        selected = list(marker = list(opacity = 1)),
+        unselected = list(marker = list(opacity = 1))
+    ) |>
+    highlight(
+        on = "plotly_selected",
+        off = "plotly_deselect"
+    ) |>
+    config(displayModeBar = FALSE)
 
-df_exe <- comb_data_model(
-    highd_data = pbmc_data,
-    model_highd = df_bin_pbmc,
-    model_2d = df_bin_centroids_pbmc
-)
-
-df <- df_exe |>
-  dplyr::filter(type == "data") ## original dataset
-
-df_b <- df_exe |>
-  dplyr::filter(type == "model") ## High-d model
-
-pbmc_umap_model_vis <- langevitour::langevitour(df_exe[1:(length(df_exe)-1)],
-                                                  lineFrom = tr_from_to_df_pbmc$from_reindexed,
-                                                  lineTo = tr_from_to_df_pbmc$to_reindexed,
-                                                  group = df_exe$type,
-                                                  pointSize = append(rep(2, NROW(df_b)), rep(1, NROW(df))),
-                                                  levelColors = c("#66B2CC", "#FF7755"),
-                                                  enableControls = TRUE,
-                                                  width = "400px", height = "380px")
-
+langevitour_output <- langevitour::langevitour(df_exe_pbmc_int[1:10],
+                                               lineFrom = tr_from_to_df_pbmc$from_reindexed,
+                                               lineTo = tr_from_to_df_pbmc$to_reindexed,
+                                               group = df_exe_pbmc_int$type,
+                                               pointSize = append(rep(0, NROW(df_b)), rep(1, NROW(df))),
+                                               levelColors = c("#66B2CC", "#FF7755"),
+                                               link=shared_df,
+                                               linkFilter=FALSE,
+                                               width = "400px", height = "380px")
 
 ```
 
@@ -475,35 +485,26 @@ pbmc_proj_umap_model4 <- quollr::plot_proj(
 
 ```{r fig-overviewhtml, eval=knitr::is_html_output(), fig.cap="Wireframe model representation of the NLDR layout, lifted and displayed in high-dimensional space. The left panel shows the UMAP layout with a triangular mesh overlay, forming the wireframe structure. This mesh can be lifted into higher dimensions and projected to examine how the geometric structure of the data is preserved. The tour view of the lifted wireframe, where the underlying curved sheet structure of the data is more clearly visible. The triangulated mesh highlights how local neighborhoods in the layout correspond to relationships in the high-dimensional space, enabling diagnostics of distortion and preservation across dimensions.", fig.pos="!ht", fig.alt="The UMAP layout with a triangular mesh on the left and 2-D projections of the lifted wireframe overlaying the data on the right. The mesh illustrates how local neighborhoods in the 2-D embedding correspond to curved sheet structures in the original high-dimensional S-curve data."}
 
-overviewfig <- bscols(
-  htmltools::div(
-    style = "
-      display: flex;
-      justify-content: center;  /* centers the whole grid */
-      margin: 0 auto;
-      padding: 0;
-    ",
+linked_plt_int <- crosstalk::bscols(
     htmltools::div(
-      style = "
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0px;
-        align-items: start;
-        justify-items: center;
-        margin: 0;
-        padding: 0;
-      ",
-      htmltools::div(style = "margin: 0; padding: 0;", hex_grid_pbmc_int),
-      htmltools::div(style = "margin: 0; margin-top: 13px; padding: 0;", pbmc_umap_model_vis)
-    )
-  ),
-  device = "xs"
+        style = "display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0px;
+    align-items: start;
+    justify-items: center;
+    margin: 0;
+    padding: 0;
+    height: 420px;
+    width: 500px",
+        nldr_plt, 
+        htmltools::div(style = "margin-top: 20px;", langevitour_output)
+    ),
+    device = "xs"
 )
 
 # Ensure it's treated as a widget
-class(overviewfig) <- c(class(overviewfig), "htmlwidget")
+class(linked_plt_int) <- c(class(linked_plt_int), "htmlwidget")
 
-overviewfig
+linked_plt_int
 ```
 
 ```{r fig-overviewpdf, eval=knitr::is_latex_output()}
