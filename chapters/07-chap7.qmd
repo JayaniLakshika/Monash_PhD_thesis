@@ -534,9 +534,9 @@ Once the data and layouts are loaded in the *Data Upload* tab, all three embeddi
 knitr::include_graphics(here::here("figures/CITE-seq/menuraR_ui1_CITE-seq.png"))
 ```
 
-This allows the layouts to be viewed side by side, overlaid with hexagonal grids, and evaluated using the hexbin error across different bin widths. At binwidth of $0.03$, the most reasonable layout is tSNE with *perplexity = 84* (@fig-menuraR_ui2).
+This allows the layouts to be viewed side by side, overlaid with hexagonal grids, and evaluated using the hexbin error across different bin widths. With `menuraR`, at binwidth of $0.03$, the most reasonable layout is tSNE with *perplexity = 84* (@fig-menuraR_ui2).
 
-TriMAP layout is universally poor. tSNE layout with little separation performs well at tiny binwidth (where most points are in their own bin) and poorly as binwidth increases. The choice of best is between UMAP layout and PaCMAP layout, that have small separations between oddly shaped clusters. UMAP layout is chosen as the best.
+The TriMAP layout is universally poor. The tSNE layout with little separation performs well at tiny binwidth (where most points are in their own bin) and poorly as binwidth increases. Also, the layout shows more clusters than it should. Both UMAP and PaCMAP perform better in this case because they produce more clearly separated clusters. However, PaCMAP spreads the Gaussian clusters too far apart, with some clusters even overlapping, which makes the structure harder to interpret. In contrast, UMAP provides well-separated clusters without introducing these issues, making it the most reasonable choice here.
 
 ```{r}
 #| label: fig-menuraR_ui2
