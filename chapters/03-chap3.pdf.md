@@ -838,7 +838,7 @@ detour(
   show_scatter(axes = TRUE, size = 1.5, alpha = 0.5, 
                edges = as.matrix(trimesh[, c("from_reindexed", "to_reindexed")]),
                palette = c("#66B2CC", "#FF7755"),
-               width = "600px", height = "600px")
+               width = "600px", height = "600px") 
 ```
 :::
 

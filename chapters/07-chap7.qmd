@@ -32,9 +32,11 @@ The primary contributions of this research are fivefold. First, we introduce a n
 
 In the Introduction, a published UMAP layout (*n_neighbors = 30* and *min_dist = 0.3*) of a human PBMC CITE-seq dataset [@hao2021] is used as a motivating example. The UMAP layout shows several visually distinct clusters with different shapes. Some clusters appear compact and well separated, while others are elongated, curved, or partially overlapping. In total, six clusters can be seen, including three with nonlinear shapes, two roughly Gaussian clusters, and one elliptical cluster, along with a small amount of background noise scattered between clusters. At first glance, it looks convincing. But this immediately raises an important question: *is this really the best way to represent the structure in the $10\text{-}D$ PBMC CITE-seq data?*
 
-Looking more closely, the data contain six clusters that sit fairly close to one another. Three of them have clearly nonlinear shapes, two look more like Gaussian blobs, and one is closer to an ellipse, with a bit of background noise scattered around. These kinds of data structures are common in bioinformatics data. Using the `cardinalR` package, data with this different cluster shapes and background noise can be generated.
+Looking more closely, the data contain six clusters that are fairly close to one another (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-dt-tourr"} else { "@fig-dt-prj"})`). Three of them have clearly nonlinear shapes, two look more like Gaussian blobs, and one is closer to an ellipse, with a bit of background noise scattered around. These kinds of data structures are common in bioinformatics data. Using the `cardinalR` package, data with this different cluster shapes and background noise can be generated.
 
 ```{r}
+#| label: sim-data-cardilanR
+
 pbmc_data <- read_rds(here::here("data/CITE-seq/cite_seq_pbmc.rds")) 
 
 pbmc_data_tour <- langevitour::langevitour(
@@ -90,6 +92,7 @@ clust_data_tour <- langevitour::langevitour(clust_data,
 ```
 
 ```{r}
+#| label: clust-data-prj
 
 centered_clust_data <- center_data(clust_data)
 
@@ -229,7 +232,8 @@ clust_data_proj3 <- plot_proj(
               )
 ```
 
-```{r, eval=knitr::is_html_output()}
+```{r fig-dt-tourr, eval=knitr::is_html_output(), fig.cap="Comparison of a $10\\text{-}D$ PBMC CITE-seq dataset (left) and a simulated dataset generated using `cardinalR` (right). The PBMC CITE-seq data shows six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\\text{-}D$ dataset with similar structural characteristics.", fig.pos="!ht"}
+
 simdatafig <- bscols(
   htmltools::div(
     style = "display: grid; grid-template-columns: 1fr 1fr;
@@ -249,6 +253,7 @@ simdatafig
 ```
 
 ```{r}
+#| label: pbmc_data-prj
 centered_pbmc_data <- center_data(pbmc_data |> select(-ID))
 
 ## First projection
@@ -391,6 +396,8 @@ pbmc_data_proj3 <- plot_proj(
 ```{r, eval=knitr::is_latex_output()}
 #| fig-width: 15
 #| fig-height: 10
+#| label: fig-dt-prj
+#| fig-cap: "Three $2\\text{-}D$ projections from $10\\text{-}D$, for the PBMC CITE-seq (a1-a3) and a simulated dataset generated using \\texttt{cardinalR} (b1-b3) data. The PBMC CITE-seq data shows six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\\text{-}D$ dataset with similar structural characteristics."
 
 pbmc_data_proj1 + pbmc_data_proj2 +
   pbmc_data_proj3 + clust_data_proj1 +
@@ -398,7 +405,7 @@ pbmc_data_proj1 + pbmc_data_proj2 +
   plot_layout(ncol = 3)
 ```
 
-To assess how well the UMAP layout reflects the structure of the $10\text{-}D$ PBMC CITE-seq data, we use the `quollr` framework. With a model fitted using a binwidth of $0.03$, the layout appears reasonable overall, but some limitations become clear. In particular, the roughly Gaussian clusters look more squeezed than expected, and background noise seems to form a separate cluster that likely does not represent a true group in the data. In addition, the nonlinear shaped clusters could benefit from being more spread out to better reflect their underlying structure. Also, clusters should be more close. These observations suggest that, while the current layout is informative, there is good potential to find an alternative layout that represents the data structure even more clearly.
+To assess how well the UMAP layout reflects the structure of the $10\text{-}D$ PBMC CITE-seq data, we use the `quollr` framework (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-model-html"} else { "@fig-model-pdf"})`). With a model fitted using a binwidth of $0.03$, the layout appears reasonable overall, but some limitations become clear. In particular, the roughly Gaussian clusters look more squeezed than expected, and background noise seems to form a separate cluster that likely does not represent a true group in the data. In addition, the nonlinear shaped clusters could benefit from being more spread out to better reflect their underlying structure. Also, clusters should be more close. These observations suggest that, while the current layout is informative, there is good potential to find an alternative layout that represents the data structure even more clearly.
 
 ```{r}
 umap_pbmc <- read_rds(here::here("data/CITE-seq/CITE-seq_umap_n-neigbors_30_min-dist_0.3.rds"))
@@ -435,9 +442,9 @@ hex_grid_pbmc <- ggplot(
                  xend = x_to,
                  yend = y_to),
                colour = "#000000") +
-  geom_point(data = df_bin_centroids_pbmc, 
-             aes(x = c_x, y = c_y), 
-             size = 0.3, color = "#FF7755") +
+  # geom_point(data = df_bin_centroids_pbmc, 
+  #            aes(x = c_x, y = c_y), 
+  #            size = 0.3, color = "#FF7755") +
   theme_linedraw() +
               theme(
                   aspect.ratio = 1,
@@ -786,7 +793,7 @@ pbmc_proj_umap_model4 <- quollr::plot_proj(
 
 ```
 
-```{r fig-overviewhtml, eval=knitr::is_html_output(), fig.cap="Wireframe model representation of the NLDR layout, lifted and displayed in high-dimensional space. The left panel shows the UMAP layout with a triangular mesh overlay, forming the wireframe structure. This mesh can be lifted into higher dimensions and projected to examine how the geometric structure of the data is preserved. The tour view of the lifted wireframe, where the underlying curved sheet structure of the data is more clearly visible. The triangulated mesh highlights how local neighborhoods in the layout correspond to relationships in the high-dimensional space, enabling diagnostics of distortion and preservation across dimensions.", fig.pos="!ht", fig.alt="The UMAP layout with a triangular mesh on the left and 2-D projections of the lifted wireframe overlaying the data on the right. The mesh illustrates how local neighborhoods in the 2-D embedding correspond to curved sheet structures in the original high-dimensional S-curve data."}
+```{r fig-model-html, eval=knitr::is_html_output(), fig.cap="Wireframe model representation of the UMAP layout, lifted and displayed in $10\\text{-}D$. The left panel shows the UMAP layout with a triangular mesh overlay, forming the wireframe structure. This mesh can be lifted into higher dimensions and projected to examine how the geometric structure of the data is preserved. The model fits well. We can also observe different densities along the nonlinear shaped clusters.", fig.pos="!ht"}
 
 linked_plt_int <- crosstalk::bscols(
     htmltools::div(
@@ -810,7 +817,8 @@ class(linked_plt_int) <- c(class(linked_plt_int), "htmlwidget")
 linked_plt_int
 ```
 
-```{r fig-overviewpdf, eval=knitr::is_latex_output()}
+```{r fig-model-pdf, eval=knitr::is_latex_output(), fig.cap="Wireframe model representation of the UMAP layout, lifted and displayed in $10\\text{-}D$ space. The left panel shows the UMAP layout with a triangular mesh overlay, forming the wireframe structure. This mesh can be lifted into higher dimensions and projected to examine how the geometric structure of the data is preserved. Panels (a1–a4) display different $2\\text{-}D$ projections of the lifted wireframe. The model fits well. We can also observe different densities along the nonlinear shaped clusters.", fig.pos="!ht"}
+
 hex_grid_pbmc + wrap_plots(
   pbmc_proj_umap_model1, pbmc_proj_umap_model2, 
   pbmc_proj_umap_model3, pbmc_proj_umap_model4, ncol = 2)

@@ -22,7 +22,7 @@ The primary contributions of this research are fivefold. First, we introduce a n
 
 In the Introduction, a published UMAP layout (*n_neighbors = 30* and *min_dist = 0.3*) of a human PBMC CITE-seq dataset [@hao2021] is used as a motivating example. The UMAP layout shows several visually distinct clusters with different shapes. Some clusters appear compact and well separated, while others are elongated, curved, or partially overlapping. In total, six clusters can be seen, including three with nonlinear shapes, two roughly Gaussian clusters, and one elliptical cluster, along with a small amount of background noise scattered between clusters. At first glance, it looks convincing. But this immediately raises an important question: *is this really the best way to represent the structure in the $10\text{-}D$ PBMC CITE-seq data?*
 
-Looking more closely, the data contain six clusters that sit fairly close to one another. Three of them have clearly nonlinear shapes, two look more like Gaussian blobs, and one is closer to an ellipse, with a bit of background noise scattered around. These kinds of data structures are common in bioinformatics data. Using the `cardinalR` package, data with this different cluster shapes and background noise can be generated.
+Looking more closely, the data contain six clusters that are fairly close to one another (@fig-dt-prj). Three of them have clearly nonlinear shapes, two look more like Gaussian blobs, and one is closer to an ellipse, with a bit of background noise scattered around. These kinds of data structures are common in bioinformatics data. Using the `cardinalR` package, data with this different cluster shapes and background noise can be generated.
 
 
 ::: {.cell}
@@ -51,12 +51,12 @@ Looking more closely, the data contain six clusters that sit fairly close to one
 
 ::: {.cell}
 ::: {.cell-output-display}
-![](07-chap7_files/figure-pdf/unnamed-chunk-6-1.pdf)
+![Three $2\text{-}D$ projections from $10\text{-}D$, for the PBMC CITE-seq (a1-a3) and a simulated dataset generated using \texttt{cardinalR} (b1-b3) data. The PBMC CITE-seq data shows six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\text{-}D$ dataset with similar structural characteristics.](07-chap7_files/figure-pdf/fig-dt-prj-1.pdf){#fig-dt-prj}
 :::
 :::
 
 
-To assess how well the UMAP layout reflects the structure of the $10\text{-}D$ PBMC CITE-seq data, we use the `quollr` framework. With a model fitted using a binwidth of $0.03$, the layout appears reasonable overall, but some limitations become clear. In particular, the roughly Gaussian clusters look more squeezed than expected, and background noise seems to form a separate cluster that likely does not represent a true group in the data. In addition, the nonlinear shaped clusters could benefit from being more spread out to better reflect their underlying structure. Also, clusters should be more close. These observations suggest that, while the current layout is informative, there is good potential to find an alternative layout that represents the data structure even more clearly.
+To assess how well the UMAP layout reflects the structure of the $10\text{-}D$ PBMC CITE-seq data, we use the `quollr` framework (@fig-model-pdf). With a model fitted using a binwidth of $0.03$, the layout appears reasonable overall, but some limitations become clear. In particular, the roughly Gaussian clusters look more squeezed than expected, and background noise seems to form a separate cluster that likely does not represent a true group in the data. In addition, the nonlinear shaped clusters could benefit from being more spread out to better reflect their underlying structure. Also, clusters should be more close. These observations suggest that, while the current layout is informative, there is good potential to find an alternative layout that represents the data structure even more clearly.
 
 
 ::: {.cell}
@@ -79,7 +79,7 @@ To assess how well the UMAP layout reflects the structure of the $10\text{-}D$ P
 
 ::: {.cell}
 ::: {.cell-output-display}
-![](07-chap7_files/figure-pdf/fig-overviewpdf-1.pdf){#fig-overviewpdf}
+![Wireframe model representation of the UMAP layout, lifted and displayed in $10\text{-}D$ space. The left panel shows the UMAP layout with a triangular mesh overlay, forming the wireframe structure. This mesh can be lifted into higher dimensions and projected to examine how the geometric structure of the data is preserved. Panels (a1–a4) display different $2\text{-}D$ projections of the lifted wireframe. The model fits well. We can also observe different densities along the nonlinear shaped clusters.](07-chap7_files/figure-pdf/fig-model-pdf-1.pdf){#fig-model-pdf fig-pos='!ht'}
 :::
 :::
 
