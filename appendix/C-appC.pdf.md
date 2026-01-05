@@ -191,7 +191,6 @@ Scaling of NLDR data & Rescaling the $2\text{-}D$ embedding to a standardized ra
 Server-side computation & A computational model in which data processing and analysis are performed on a remote server rather than on the users local machine. In menuraR, NLDR generation and diagnostics are executed on the Shiny server.\\
 Shape generator & A function that produces synthetic data points according to a specified geometric form and set of parameters.\\
 Shepard diagram & A scatterplot comparing pairwise distances in the original space to distances in the embedded space.\\
-Shiny & An R framework for building interactive web applications directly from R code.\\
 Single-cell RNA sequencing (scRNA-seq) & A technology that measures gene expression at the level of individual cells, producing extremely high-dimensional datasets.\\
 Sparse sampling & Uneven sampling density across different regions of a manifold, which can distort NLDR layouts by contracting low-density regions.\\
 Spearman correlation (SC) & A rank-based correlation used to assess monotonic agreement between high- and low-dimensional distances.\\
@@ -234,6 +233,7 @@ Wrapper function & A helper function that calls another function but simplifies 
 \texttt{langevitour} & An R package used to generate smooth, continuous tours for exploring high-dimensional data and fitted models.\\
 \texttt{menuraR} & A Shiny web application for comparing, diagnosing, and selecting the most reasonable NLDR layouts.\\
 \texttt{quollr} & An R package developed to diagnose and evaluate NLDR layouts using visual and quantitative methods.\\
+\texttt{shiny} & An R framework for building interactive web applications directly from R code.\\
 autoAlt & An R package developed by the NUMBATs group that provides automated suggestions for generating alt-text for data visualizations.\\
 scDEED & A method for evaluating NLDR embeddings by assigning reliability scores based on neighborhood preservation before and after embedding.\\
 shinyapps.io & A cloud-based hosting platform for R Shiny applications that allows users to access interactive tools such as menuraR through a web browser without local installation.\\
