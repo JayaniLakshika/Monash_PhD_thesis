@@ -68,3 +68,73 @@ Pretty but wrong representation,A visually appealing low-dimensional layout that
 Standardized bin count,"The proportion of observations in a bin relative to the total sample size, used to assess bin importance and guide bin removal."
 Tuning parameters,"User-controlled settings that affect the binning configuration and model representation, such as bin counts, bin positions, and removal thresholds."
 Wireframe sharpening,The visual effect of removing sparse bins to produce a cleaner and more interpretable wireframe representation of the fitted model.
+,
+Background noise,"Additional points drawn from a distribution that do not belong to any specific geometric structure or cluster, used to simulate unstructured variation in the data."
+Benchmark datasets,"Standard or reference datasets used to evaluate, compare, and validate the performance of analytical algorithms."
+Branching structure,"A connected geometric structure consisting of multiple arms or trajectories that diverge from a common origin, often used to represent bifurcation or developmental processes."
+Cluster,"A group of data points generated from the same underlying geometric shape or distribution, representing a coherent structure in the dataset."
+Clustering algorithms,Methods used to group observations into clusters based on similarity or distance in high-dimensional space.
+Geometric shape,"A mathematically defined structure (e.g., Gaussian, cone, sphere, cube, spiral) used as a building block for generating synthetic data."
+Manifold structure,A low-dimensional geometric structure embedded within a higher-dimensional space.
+Multicluster dataset,"A dataset composed of multiple clusters, each potentially generated from a different geometric shape or distribution."
+Noise dimensions,"Additional variables added to a dataset, typically drawn from random distributions, to increase dimensionality without adding structure."
+Rotation,A transformation applied to data that changes its orientation in space while preserving distances and geometric relationships.
+Scaling,A transformation that adjusts the spread or magnitude of a geometric shape along one or more dimensions.
+Shape generator,A function that produces synthetic data points according to a specified geometric form and set of parameters.
+Synthetic dataset,An artificially generated dataset designed to exhibit specific structural or statistical properties.
+Unsupervised learning,A class of methods that identify patterns or structures in data without using labeled outcomes.
+Visualization technique,"A method for graphically representing data to aid interpretation, exploration, or comparison of structures."
+Apex,"The tip or pointy end of a shape (like the top of a cone or pyramid) where many points can be concentrated.	"
+Ball,"A filled-in sphere. Points occupy the whole volume, not just the surface."
+Barycentric coordinates,A way of picking points uniformly inside a triangle by mixing the triangle’s corners with random weights.
+Benchmark structure,A synthetic data shape used to test and compare algorithms (e.g. clustering or dimension reduction).
+Blunted apex,A tip that’s flattened or rounded instead of sharp.
+Clustered spheres,"A structure made of one large sphere plus several smaller spheres placed around it, each treated as a separate group."
+Cone,"A shape that narrows toward one end. In high dimensions, it’s formed by shrinking hyperspherical cross-sections along one axis."
+Cube / Hypercube,"Points filling a square (2D), cube (3D), or higher-dimensional box, either on a grid or randomly."
+Curvy cycle,"A closed loop that isn’t a simple circle, with extra folds or oscillations."
+Exponential distribution (truncated),"A distribution that produces many small values and few large ones, here limited to a fixed range."
+Fractal (Sierpinski-like),"A self-similar pattern with repeating holes or gaps, created using a recursive rule."
+Gaussian cloud,"A cluster of points generated from a multivariate normal distribution, typically dense in the center and sparse at the edges."
+Grid-based structure,"Points placed in a regular, evenly spaced pattern instead of randomly."
+Hemisphere,"Half of a sphere, created by restricting angles so points lie on only one side."
+Hypersphere,The high-dimensional version of a circle (2D) or sphere (3D).
+Latent variable,An underlying variable (like an angle or time index) that drives the observed structure but isn’t directly observed.
+Linear structure,"Points arranged roughly along a straight line, possibly with noise and different scales across dimensions."
+Manifold,A low-dimensional shape (curve or surface) embedded inside a higher-dimensional space.
+Möbius strip,"A twisted surface with only one side and one edge, often used to test how algorithms handle non-orientable geometry."
+Polynomial structure,A curved pattern (quadratic or cubic) defined by polynomial relationships between variables.
+Pyramid,"A shape with a broad base that narrows toward an apex, with different possible base shapes (rectangular, triangular, star-shaped)."
+Radius scaling,Changing the size of a cross-section as you move along an axis (e.g. shrinking toward a tip).
+S-curve,"A smooth, bent surface in 3D often used to test whether algorithms can “unfold” nonlinear structure."
+Sphere,"The surface of a ball. Points lie only on the boundary, not inside."
+Swiss roll,"A flat surface rolled up into a spiral in 3D, commonly used as a nonlinear manifold example."
+Trefoil knot,"A closed loop with self-crossings, forming a nontrivial knot used to test preservation of topology."
+Uniform distribution,All values in a given range are equally likely.
+Wrapper function,A helper function that calls another function but simplifies inputs or outputs.
+Anchor point,"The center of a hole that is removed from a dataset. Often the data mean, but can be user-defined."
+Archimedean spiral,A spiral where the distance from the center increases steadily as it winds outward.
+Azimuthal angle,The angle that controls rotation around an axis (like longitude on a globe).
+Crescent,"A curved, moon-shaped arc formed by points along part of a circle."
+Cylinder (curvy),"A cylindrical shape with circular cross-sections, extended with a nonlinear bending dimension."
+Conic spiral,"A spiral that expands outward and upward, forming a cone-like helix."
+Gaussian noise,"Random variation drawn from a normal distribution, often added to make data more realistic."
+Helical spiral,A corkscrew-like structure that wraps around an axis while moving forward.
+High-dimensional noise,Extra dimensions added to data that introduce variability without changing the main structure.
+Hole (spherical / hyperspherical),"A region removed from the data in the shape of a circle, sphere, or higher-dimensional sphere."
+Hypersphere,The higher-dimensional equivalent of a circle (2D) or sphere (3D).
+Inverse transformation,A nonlinear operation involving division (e.g. 1/x1/x1/x) that creates sharp curvature.
+Latent parameter,An underlying variable (like an angle or index) that drives the shape of the data.
+Manifold (trigonometric),"A smooth curved structure created using sine, cosine, or other trigonometric functions."
+Nonlinear surface,"A warped 2D surface embedded in higher dimensions, showing bends, waves, or sharp changes."
+Orthogonal rotation,A transformation that rotates data while preserving distances and overall shape.
+Polar angle,The angle controlling vertical position on a sphere (like latitude).
+Rotation matrix,A matrix that changes the orientation of data without changing distances or variance.
+S-curve with hole,"An S-shaped manifold with a missing spherical region, creating topological complexity."
+Spherical spiral,A spiral path that wraps around the surface of a sphere.
+Spins,The number of turns or revolutions in a spiral structure.
+Structured noise,Noise that follows smooth or patterned trends instead of being purely random.
+Topological complexity,"Features like holes, loops, or twists that affect connectivity but not local smoothness."
+Trigonometric structure,A geometric pattern generated using sine and cosine functions.
+Uniform distribution,All values within a range are equally likely.
+Wavy noise dimensions,"Noise variables that oscillate smoothly, often following sine or polynomial patterns."
