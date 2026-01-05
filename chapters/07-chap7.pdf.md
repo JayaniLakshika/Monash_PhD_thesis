@@ -44,8 +44,14 @@ Looking more closely, the data contain six clusters that sit fairly close to one
 
 
 ::: {.cell}
+
+:::
+
+
+
+::: {.cell}
 ::: {.cell-output-display}
-![](07-chap7_files/figure-pdf/unnamed-chunk-5-1.pdf)
+![](07-chap7_files/figure-pdf/unnamed-chunk-6-1.pdf)
 :::
 :::
 
