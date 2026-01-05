@@ -1,6 +1,4 @@
-# Appendix to "Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space" {#sec-appendix-a}
-
-
+# Appendix to "Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study" {#sec-appendix-b}
 
 
 
@@ -25,258 +23,47 @@
 
 ::: {.cell layout-align="center"}
 
-:::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-## Methods and hyper-parameters used to generate layouts
-
-@tbl-fig-param contains the list of methods and hyper-parameters used for each of the layouts shown in the paper. 
-
-
-::: {#tbl-fig-param .cell layout-align="center" tbl-pos='H' tbl-cap='NLDR methods and hyper-parameters used for each Figure in the main paper.'}
-::: {.cell-output-display}
-\begingroup\fontsize{12}{14}\selectfont
-
-\begin{longtable}{>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{10cm}}
-\toprule
-\textbf{Figure} & \textbf{NLDR method} & \textbf{Hyper-parameter(s)}\\
-\midrule
-\endfirsthead
-\multicolumn{3}{@{}l}{\textit{(continued)}}\\
-\toprule
-\textbf{Figure} & \textbf{NLDR method} & \textbf{Hyper-parameter(s)}\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-$1$a & UMAP & n\_neighbors = 30, min\_dist = 0.3\\
-$1$b & UMAP & n\_neighbors = 5, min\_dist = 0.8\\
-$1$c & UMAP & n\_neighbors = 5, min\_dist = 0.01\\
-$1$d & tSNE & perplexity = 5\\
-$1$e & tSNE & perplexity = 30\\
-$1$f & PHATE & knn = 5\\
-$1$g & TriMAP & n\_inliers = 12, n\_outliers = 4, n\_random = 3\\
-$1$h & PaCMAP & n\_neighbors = 30, init = random, MN\_ratio = 0.9, FP\_ratio = 5\\
-\midrule
-$2$ & tSNE & perplexity = 47\\
-$4$a & tSNE & perplexity = 47\\
-$5$b & tSNE & perplexity = 47\\
-$6$ & tSNE & perplexity = 47\\
-\midrule
-$8$a & tSNE & perplexity = 47\\
-$8$b & tSNE & perplexity = 62\\
-$8$c & UMAP & n\_neighbors = 15, min\_dist = 0.1\\
-$8$d & PHATE & knn = 5\\
-$8$e & TriMAP & n\_inliers = 12, n\_outliers = 4, n\_random = 3\\
-$8$f & PaCMAP & n\_neighbors = 10, init = random, MN\_ratio = 0.5, FP\_ratio = 2\\
-\midrule
-$10$a & UMAP & n\_neighbors = 30, min\_dist = 0.3\\
-$10$b & UMAP & n\_neighbors = 5, min\_dist = 0.8\\
-$10$c & UMAP & n\_neighbors = 5, min\_dist = 0.01\\
-$10$d & tSNE & perplexity = 5\\
-$10$e & tSNE & perplexity = 30\\
-$10$f & PHATE & knn = 5\\
-$10$g & TriMAP & n\_inliers = 12, n\_outliers = 4, n\_random = 3\\
-$10$h & PaCMAP & n\_neighbors = 30, init = random, MN\_ratio = 0.9, FP\_ratio = 5\\
-\midrule
-$11$a & UMAP & n\_neighbors = 30, min\_dist = 0.3\\
-$11$e & tSNE & perplexity = 30\\
-\midrule
-$12$a & tSNE & perplexity = 30\\
-$12$b & tSNE & perplexity = 89\\
-$12$c & UMAP & n\_neighbors = 15, min\_dist = 0.1\\
-$12$d & PHATE & knn = 5\\
-$12$e & TriMAP & n\_inliers = 12, n\_outliers = 4, n\_random = 3\\
-$12$f & PaCMAP & n\_neighbors = 10, init = random, MN\_ratio = 0.5, FP\_ratio = 2\\
-\midrule
-$13$a & tSNE & perplexity = 30\\
-\midrule
-$14$a & tSNE & perplexity = 30\\
-\midrule
-$A4$a & tSNE & perplexity = 71\\
-$A4$b & UMAP & n\_neighbors = 15, min\_dist = 0.1\\
-$A4$c & PaCMAP & n\_neighbors = 10, init = random, MN\_ratio = 0.5, FP\_ratio = 2\\
-\midrule
-$A5$ & tSNE & perplexity = 52\\
-\midrule
-$A6$a & UMAP & n\_neighbors = 30, min\_dist = 0.3\\
-$A6$b & tSNE & perplexity = 30\\
-\midrule
-$A7$a & UMAP & n\_neighbors = 30, min\_dist = 0.3\\
-$A7$b & tSNE & perplexity = 30\\
-\midrule
-$A8$a & UMAP & n\_neighbors = 30, min\_dist = 0.3\\
-$A8$b & tSNE & perplexity = 30\\
-\midrule
-$A9$a & UMAP & n\_neighbors = 30, min\_dist = 0.3\\
-$A9$b & UMAP & n\_neighbors = 5, min\_dist = 0.8\\
-$A9$c & UMAP & n\_neighbors = 5, min\_dist = 0.01\\
-$A9$d & tSNE & perplexity = 5\\
-$A9$e & tSNE & perplexity = 30\\
-$A9$f & PHATE & knn = 5\\
-$A9$g & TriMAP & n\_inliers = 12, n\_outliers = 4, n\_random = 3\\
-$A9$h & PaCMAP & n\_neighbors = 30, init = random, MN\_ratio = 0.9, FP\_ratio = 5\\
-\midrule
-$A10$a & tSNE & perplexity = 30\\
-$A10$b & tSNE & perplexity = 89\\
-$A10$c & UMAP & n\_neighbors = 15, min\_dist = 0.1\\
-$A10$d & PHATE & knn = 5\\
-$A10$e & TriMAP & n\_inliers = 12, n\_outliers = 4, n\_random = 3\\
-$A10$f & PaCMAP & n\_neighbors = 10, init = random, MN\_ratio = 0.5, FP\_ratio = 2\\*
-\end{longtable}
-\endgroup{}
-
-
-:::
-:::
-
-
-## Videos links
-
-Animations of the \pD{} tours that produced specific projections shown in some figures in the main paper are available on YouTube at the links given in @tbl-links.
-
-
-::: {#tbl-links .cell layout-align="center" tbl-pos='H' tbl-cap='Videos of the langevitour animations and the linked plots.'}
-::: {.cell-output-display}
-\begin{table}
-\centering\begingroup\fontsize{12}{14}\selectfont
-
-\begin{tabular}{>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{14cm}}
-\toprule
-\textbf{Figure} & \textbf{URL}\\
-\midrule
-$4$ & \href{https://youtu.be/yHKTHK4UBiU}{\texttt{youtu.be/yHKTHK4UBiU}}\\
-$5$ & \href{https://youtu.be/FukiminrO90}{\texttt{youtu.be/FukiminrO90}}\\
-$11$ & \href{https://youtu.be/3VfK3M2gnZM}{\texttt{youtu.be/3VfK3M2gnZM}}, \href{https://youtu.be/Es84bwQcndU}{\texttt{youtu.be/Es84bwQcndU}}\\
-$13$ & \href{https://youtu.be/sUcGd57Swdg}{\texttt{youtu.be/sUcGd57Swdg}}, \href{https://youtu.be/QiklCjELUxo}{\texttt{youtu.be/QiklCjELUxo}}\\
-\bottomrule
-\end{tabular}
-\endgroup{}
-\end{table}
-
-
-:::
-:::
-
-
-## Notation
-
-
-::: {#tbl-notation .cell layout-align="center" tbl-pos='H' tbl-cap='Summary of notation for describing new methodology.'}
-::: {.cell-output-display}
-\begin{table}
-\centering\begingroup\fontsize{12}{14}\selectfont
-
-\begin{tabular}{>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{12cm}}
-\toprule
-\textbf{Notation} & \textbf{Description}\\
-\midrule
-$n, p, k$ & number of observations, variables, embedding dimension, respectively\\
-$\bm{X}, \bm{x}$ & $p$-dimensional data (population, sample)\\
-$\bm{y}$ & $k$-dimensional layout\\
-$P$ & orthonormal basis, generating a $d\text{-}dimensional$ linear projection of $p$-dimensional data\\
-$T$ & true  model\\
-$g$ & functional mapping from \pD{} to \kD{}, especially as prescribed by NLDR\\
-$\bm{\theta}$ & (Hyper-) parameters for NLDR method\\
-$r$ & ranges of the embedding components\\
-$C^{(j)}$ & $j$-dimensional bin centers\\
-$(b_1, b_2)$ & number of bins in each direction\\
-$(a_1, a_2)$ & binwidths, distance between centroids in each direction\\
-$(s_1, \ s_2)$ & starting coordinates of the hexagonal grid\\
-$q$ & buffer to ensure hexgrid covers data, proportion of data range, 0-1\\
-$m$ & number of non-empty bins\\
-$b$ & number of  hexagons in the grid\\
-$h$ & hexagonal id\\
-$l$ & side length\\
-$A$ & area\\
-$n_h$ & number of points in hexagon $h$ (bin count)\\
-$w_h$ & standardized number of points in hexagon $h$ (standardized bin counts)\\
-\bottomrule
-\end{tabular}
-\endgroup{}
-\end{table}
-
-
-:::
 :::
 
 
 ## Scripts
 
 
-::: {#tbl-script-desc .cell layout-align="center" tbl-pos='H' tbl-cap='R and Python script files used to generate outputs in the main paper.'}
+::: {#tbl-script-desc .cell layout-align="center" tbl-pos='H' tbl-cap='R script files used to generate outputs in the main paper.'}
 ::: {.cell-output-display}
 \begingroup\fontsize{12}{14}\selectfont
 
-\begin{longtable}{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{6.5cm}>{\raggedright\arraybackslash}p{3cm}}
+\begin{longtable}{>{\raggedright\arraybackslash}p{8.7cm}>{\raggedright\arraybackslash}p{6cm}>{\raggedright\arraybackslash}p{8.7cm}}
 \toprule
-\textbf{Folder} & \textbf{Script} & \textbf{Description}\\
+\textbf{Script} & \textbf{Description}\\
 \midrule
 \endfirsthead
-\multicolumn{3}{@{}l}{\textit{(continued)}}\\
+\multicolumn{2}{@{}l}{\textit{(continued)}}\\
 \toprule
-\textbf{Folder} & \textbf{Script} & \textbf{Description}\\
+\textbf{Script} & \textbf{Description}\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-script & additional\_functions.R & Helper functions to render the main paper.\\
-script & evaluation.py & Python script implementing additional evaluation metrics such as RTA and GS.\\
-script & nldr\_code.R & Wrapper functions for running multiple NLDR methods (UMAP, tSNE, PHATE, PaCMAP, TriMAP) with different parameters.\\
-\midrule
-two\_nonlinear & 01\_gen\_data.R & Generates the 2NC7 dataset.\\
-two\_nonlinear & 02\_gen\_true\_model.R & Creates the true structure of 2NC7 data.\\
-two\_nonlinear & 03\_gen\_embeddings.R & Computes multiple NLDR embeddings for the 2NC7 data.\\
-two\_nonlinear & 04\_gen\_mse\_for\_diff\_methods.R & Computes HBE with varying bin widths ($a_1$) for all NLDR embeddings.\\
-two\_nonlinear & 05\_gen\_rm\_lwd\_mse.R & Computes HBE with varying low density bin cutoff for all three binwidth ($a_1$) choices.\\
-two\_nonlinear & 06\_gen\_model\_with\_tSNE.R & Fits the model for the layout a.\\
-two\_nonlinear & 07\_example\_evaluation\_metrics.R & Calculates evaluation metrics for all NLDR layouts.\\
-two\_nonlinear & 08\_gen\_model\_with\_PHATE.R & Fits the model for the layout c.\\
-\midrule
-five\_gau\_clusters & 01\_five\_gaussian\_cluster\_data\_emb.R & Generates data and multiple NLDR embeddings.\\
-five\_gau\_clusters & 02\_gen\_model\_with\_tSNE.R & Fits the model for the layout a.\\
-five\_gau\_clusters & 03\_gen\_model\_with\_UMAP.R & Fits the model for the layout b.\\
-five\_gau\_clusters & 04\_gen\_model\_with\_PaCMAP.R & Fits the model for the layout c.\\
-\midrule
-c\_shaped\_dens\_str & 01\_gen\_data.R & Generates the $2\text{-}D$ curved sheet dataset.\\
-c\_shaped\_dens\_str & 02\_gen\_embeddings\_uni\_dens.R & Generates multiple NLDR embeddings.\\
-c\_shaped\_dens\_str & 03\_gen\_model\_with\_tSNE.R & Fits the model for the tSNE layout.\\
-\midrule
-pbmc3k & 01\_obtain\_pca\_author.R & Obtains  author\'s PCA results.\\
-pbmc3k & 02\_obtain\_umap\_authors.R & Obtains  author\'s UMAP embeddings.\\
-pbmc3k & 03\_gen\_umap\_diff\_param.R & Generates multiple UMAP embeddings with different hyper\-parameter values.\\
-pbmc3k & 04\_gen\_tsne\_diff\_param.R & Generates multiple tSNE embeddings with different hyper\-parameter values.\\
-pbmc3k & 05\_gen\_phate.R & Generates a PHATE embeddings with default hyper\-parameters.\\
-pbmc3k & 06\_gen\_trimap.R & Generates a TriMAP embeddings with default hyper\-parameters.\\
-pbmc3k & 07\_gen\_pacmap.R & Generates a PaCMAP embeddings with default hyper\-parameters.\\
-pbmc3k & 08\_gen\_mse\_for\_diff\_methods.R & Computes HBE with varying bin widths ($a_1$) for all NLDR embeddings.\\
-pbmc3k & 09\_gen\_scDEED.R & Generates UMAP embeddings from scDEED results.\\
-pbmc3k & 10\_pre\_process\_for\_embedding.R & Generates PBMC3k data used for scDEED results.\\
-pbmc3k & 11\_gen\_mse\_for\_diff\_tsne\_scD.R & Computes HBE with varying bin widths ($a_1$) for tSNE embeddings.\\
-pbmc3k & 12\_gen\_mse\_for\_diff\_umap\_scD.R & Computes HBE with varying bin widths ($a_1$) for UMAP embeddings.\\
-pbmc3k & 13\_gen\_model\_with\_UMAP.R & Fits the model for the layout a.\\
-pbmc3k & 14\_gen\_model\_with\_tSNE.R & Fits the model for the layout e.\\
-pbmc3k & 15\_gen\_model\_with\_UMAP\_scD.R & Fits the model for the layout a.\\
-pbmc3k & 16\_gen\_model\_with\_tSNE\_scD.R & Fits the model for the layout b.\\
-pbmc3k & 17\_evaluation\_metrics.R & Calculates evaluation metrics for all NLDR layouts.\\
-pbmc3k & 18\_evaluation\_metrics\_scD.R & Calculates evaluation metrics for all NLDR layouts.\\
-\midrule
-mnist & 01\_data\_preprocessing.R & Computes first $10$ principal components and save data.\\
-mnist & 02\_gen\_diff\_embeddings.R & Generates multiple NLDR embeddings.\\
-mnist & 03\_gen\_mse\_for\_diff\_methods.R & Computes HBE with varying bin widths ($a_1$) for all NLDR embeddings.\\
-mnist & 04\_gen\_model\_with\_tSNE.R & Fits the model for the layout a.\\
-mnist & 05\_evaluation\_metrics.R & Calculates evaluation metrics for all NLDR layouts.\\
-mnist & 06\_link\_brush\_layout\_e.R & Creates interactive linked brushing with layout e.\\*
+additional\_functions.R & Helper functions to render the main paper.\\
+01\_attention\_check\_data\_structures.R & Function to generate three- and four- Gaussian clusters data  for attention check.\\
+01\_data\_structure\_components.R & Functions to generate data structure components for non-attention check.\\
+02\_data\_structures.R & Functions to generate three clusters data structure for non-attention check.\\
+03\_exp\_design\_with\_method\_and\_distance\_factor.R & Creates the experimental design, varying NLDR method and distance scale factors.\\
+04\_exp\_design\_with\_new\_ds\_factors.R & Extends the experimental design to include additional distance scale factor.\\
+05\_gen\_clust3\_attention\_check\_data.R & Generates three-cluster data for attention check.\\
+05\_gen\_cluster3\_high\_d\_data.R & Generates three-cluster data with medium-large distance scale factor.\\
+06\_gen\_clusters3\_with\_diff\_dist.R & Generates three-cluster data with varying inter-cluster distance scale factors.\\
+09\_gen\_clusters\_merge\_all\_data.R & Merges all generated cluster data (attention and non-attention check) into a single combined dataset.\\
+10\_gen\_embeddings.R & Computes multiple NLDR embeddings for specific distance scale factor.\\
+11\_comb\_emb\_default\_data.R & Combines NLDR embeddings for all distance scale factors.\\
+12\_comb\_data.R & Merge all NLDR embeddings generated for attention and non-attention check.\\
+13\_data\_processing\_method\_ds\_factor\_missings.R & Processes collected experimental data and generates the file, containing all relevant details for the same data structure shown in both displays.\\
+13\_data\_processing\_method\_ds\_factor.R & Processes collected experimental data and generates the  file, containing all relevant details for the same data structure shown in both displays.\\
+17\_compute\_distance\_btw\_centroids.R & Computes different distance metrics between cluster in the high-dimensional space.\\
+19\_find\_which\_replicates\_missing.R & Identifies missing responses across experimental conditions.\\*
 \end{longtable}
 \endgroup{}
 
@@ -285,9 +72,106 @@ mnist & 06\_link\_brush\_layout\_e.R & Creates interactive linked brushing with 
 :::
 
 
-## Generating the 2NC7 data
 
-This data is constructed by simulating two clusters, each consisting of $1000$ observations. The C-shaped cluster is generated from $\theta \sim U(\text{-}3\pi/2, 0)$, $X_1 = \sin(\theta)$, $X_2 \sim U(0, 2)$ (adding thickness to the C), $X_3 = \text{sign}(\theta) \times (\cos(\theta) - 1)$, $X_4 = \cos(\theta)$. Observations lie on a \gD{} manifold in \sD{}. The other cluster is from $X_1 \sim U(0, 2)$, $X_2 \sim U(0, 3)$, $X_3 = \text{-}(X_1^3 + X_2)$, and $X_4 \sim U(0, 2)$. It is also curved, but observations lie on a \tD{} manifold in \sD{}. Three more variables, $X_5, X_6, X_7$, that are small amounts of pure noise are added. We would consider $T=(X_1, X_2, X_3, X_4)$ to be the geometric structure (true model) that we hope to capture (@fig-true-data).
+## Data structures
+
+@tbl-dt-str summarizes the three-cluster data structures used in the experiment. Each data structure was generated using the `cardinalR` package [@jayani2025b] and comprises three clusters with distinct geometric forms. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in $4\text{-}D$ space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods.
+
+
+::: {#tbl-dt-str .cell layout-align="center" tbl-cap='Description of the simulated three-cluster data structures. Each data structure consists of three clusters with different geometric shapes.'}
+::: {.cell-output-display}
+
+\begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{3cm}}
+\toprule
+Data structure & Cluster1 & Cluster2 & Cluster3\\
+\midrule
+three\_clust\_01 & curv & elliptical & blunted\_cone\\
+three\_clust\_02 & s\_curve & cube & pyramid\_rectangular\_base\\
+three\_clust\_03 & curvy\_cylinder & hemisphere & pyramid\_triangular\_base\\
+three\_clust\_04 & curv2 & gaussian & filled\_hexagonal\_pyramid\\
+three\_clust\_05 & nonlinear\_hyperbola & elliptical & blunted\_cone\\
+three\_clust\_06 & crescent & cube & pyramid\_rectangular\_base\\
+three\_clust\_07 & nonlinear\_hyperbola2 & hemisphere & pyramid\_triangular\_base\\
+three\_clust\_08 & conic\_spiral & gaussian & filled\_hexagonal\_pyramid\\
+three\_clust\_09 & helical\_hyper\_spiral & cube & blunted\_cone\\
+three\_clust\_10 & spherical\_spiral & gaussian & pyramid\_triangular\_base\\
+three\_clust\_11 & curv & elliptical & pyramid\_rectangular\_base\\
+three\_clust\_12 & s\_curve & hemisphere & filled\_hexagonal\_pyramid\\
+three\_clust\_13 & curvy\_cylinder & cube & blunted\_cone\\
+three\_clust\_14 & curv2 & gaussian & pyramid\_triangular\_base\\
+three\_clust\_15 & nonlinear\_hyperbola & elliptical & pyramid\_rectangular\_base\\
+three\_clust\_16 & crescent & hemisphere & filled\_hexagonal\_pyramid\\
+three\_clust\_17 & nonlinear\_hyperbola2 & cube & blunted\_cone\\
+three\_clust\_18 & conic\_spiral & gaussian & pyramid\_triangular\_base\\
+\bottomrule
+\end{tabular}
+
+
+:::
+:::
+
+
+Animations of the $4\text{-}D$ tours that used for the study are available on YouTube at the links given in @tbl-links-html.
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {#tbl-links-html .cell layout-align="center" tbl-pos='H' tbl-cap='Videos'}
+::: {.cell-output-display}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{2.5cm}}
+\toprule
+\textbf{data structure} & \textbf{small} & \textbf{small-medium} & \textbf{medium} & \textbf{medium-large} & \textbf{large}\\
+\midrule
+\endfirsthead
+\multicolumn{6}{@{}l}{\textit{(continued)}}\\
+\toprule
+\textbf{data structure} & \textbf{small} & \textbf{small-medium} & \textbf{medium} & \textbf{medium-large} & \textbf{large}\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+three\_clust\_01 & \href{https://youtu.be/kZyZxujDz58}{\url{youtu.be/kZyZxujDz58}} & \href{https://youtu.be/Jz3k4uIAiRo}{\url{youtu.be/Jz3k4uIAiRo}} & \href{https://youtube.com/shorts/QqMDQxShke0}{\url{youtube.com/shorts/QqMDQxShke0}} & \href{https://youtu.be/E9msE_XX0KA}{\url{youtu.be/E9msE_XX0KA}} & \href{https://youtu.be/E9msE_XX0KA}{\url{youtu.be/E9msE_XX0KA}}\\
+three\_clust\_02 & \href{https://youtu.be/CLMlOU4Fb2w}{\url{youtu.be/CLMlOU4Fb2w}} & \href{https://youtu.be/TFj0satlBBE}{\url{youtu.be/TFj0satlBBE}} & \href{https://youtube.com/shorts/jKarI60euSw}{\url{youtube.com/shorts/jKarI60euSw}} & \href{https://youtu.be/_f2WvtD2xog}{\url{youtu.be/f2WvtD2xog}} & \href{https://youtu.be/_f2WvtD2xog}{\url{youtu.be/f2WvtD2xog}}\\
+three\_clust\_03 & \href{https://youtu.be/K2oKM4mUBXM}{\url{youtu.be/K2oKM4mUBXM}} & \href{https://youtu.be/b-43HKN30ws}{\url{youtu.be/b-43HKN30ws}} & \href{https://youtube.com/shorts/edCnIfgfoU0}{\url{youtube.com/shorts/edCnIfgfoU0}} & \href{https://youtu.be/7NwNcD4qlLc}{\url{youtu.be/7NwNcD4qlLc}} & \href{https://youtu.be/7NwNcD4qlLc}{\url{youtu.be/7NwNcD4qlLc}}\\
+three\_clust\_04 & \href{https://youtu.be/7yvvpPgiWNw}{\url{youtu.be/7yvvpPgiWNw}} & \href{https://youtu.be/1PhZO7cUEaI}{\url{youtu.be/1PhZO7cUEaI}} & \href{https://youtu.be/XO61YVXAdr8}{\url{youtu.be/XO61YVXAdr8}} & \href{https://youtu.be/XO61YVXAdr8}{\url{youtu.be/XO61YVXAdr8}} & \href{https://youtu.be/XO61YVXAdr8}{\url{youtu.be/XO61YVXAdr8}}\\
+three\_clust\_05 & \href{https://youtu.be/pbI7UXFgc0k}{\url{youtu.be/pbI7UXFgc0k}} & \href{https://youtu.be/G-TvOIBj-14}{\url{youtu.be/G-TvOIBj-14}} & \href{https://youtube.com/shorts/I9xxCinW4Ec}{\url{youtube.com/shorts/I9xxCinW4Ec}} & \href{https://youtu.be/ardE0G7zevk}{\url{youtu.be/ardE0G7zevk}} & \href{https://youtu.be/ardE0G7zevk}{\url{youtu.be/ardE0G7zevk}}\\
+three\_clust\_06 & \href{https://youtu.be/Mxylk4M67iA}{\url{youtu.be/Mxylk4M67iA}} & \href{https://youtu.be/ABrxozu8F-A}{\url{youtu.be/ABrxozu8F-A}} & \href{https://youtube.com/shorts/FISgM4T2xEI}{\url{youtube.com/shorts/FISgM4T2xEI}} & \href{https://youtu.be/soFQR9UwNsg}{\url{youtu.be/soFQR9UwNsg}} & \href{https://youtu.be/soFQR9UwNsg}{\url{youtu.be/soFQR9UwNsg}}\\
+three\_clust\_07 & \href{https://youtu.be/2a89BQGK_iU}{\url{youtu.be/2a89BQGK_iU}} & \href{https://youtu.be/Wt4NwZSACmo}{\url{youtu.be/Wt4NwZSACmo}} & \href{https://youtube.com/shorts/MbGOoTrvVXk}{\url{youtube.com/shorts/MbGOoTrvVXk}} & \href{https://youtu.be/hVwIjSxACoo}{\url{youtu.be/hVwIjSxACoo}} & \href{https://youtu.be/hVwIjSxACoo}{\url{youtu.be/hVwIjSxACoo}}\\
+three\_clust\_08 & \href{https://youtu.be/eID-dwpgU44}{\url{youtu.be/eID-dwpgU44}} & \href{https://youtu.be/ILwnlZUMj_U}{\url{youtu.be/ILwnlZUMj_U}} & \href{https://youtube.com/shorts/6k20OE3Fkcg}{\url{youtube.com/shorts/6k20OE3Fkcg}} & \href{https://youtu.be/oSBaMH9HJZ4}{\url{youtu.be/oSBaMH9HJZ4}} & \href{https://youtu.be/oSBaMH9HJZ4}{\url{youtu.be/oSBaMH9HJZ4}}\\
+three\_clust\_09 & \href{https://youtu.be/6uGCDUSL60Q}{\url{youtu.be/6uGCDUSL60Q}} & \href{https://youtu.be/RvlSY3drV5I}{\url{youtu.be/RvlSY3drV5I}} & \href{https://youtube.com/shorts/TIyP-a75YmQ}{\url{youtube.com/shorts/TIyP-a75YmQ}} & \href{https://youtu.be/mh_rG2qy2Pc}{\url{youtu.be/mh_rG2qy2Pc}} & \href{https://youtu.be/mh_rG2qy2Pc}{\url{youtu.be/mh_rG2qy2Pc}}\\
+three\_clust\_10 & \href{https://youtu.be/CX5O4eNZW5o}{\url{youtu.be/CX5O4eNZW5o}} & \href{https://youtu.be/fHxflXa9i-s}{\url{youtu.be/fHxflXa9i-s}} & \href{https://youtube.com/shorts/hUzYOFS8o4M}{\url{youtube.com/shorts/hUzYOFS8o4M}} & \href{https://youtu.be/R6vD1xJH21w}{\url{youtu.be/R6vD1xJH21w}} & \href{https://youtu.be/R6vD1xJH21w}{\url{youtu.be/R6vD1xJH21w}}\\
+three\_clust\_11 & \href{https://youtu.be/1f8S7HiZ8dc}{\url{youtu.be/1f8S7HiZ8dc}} & \href{https://youtu.be/Fki5vIuPupE}{\url{youtu.be/Fki5vIuPupE}} & \href{https://youtube.com/shorts/Ar0gbKEfzQk}{\url{youtube.com/shorts/Ar0gbKEfzQk}} & \href{https://youtu.be/ciVOD8_sWR0}{\url{youtu.be/ciVOD8_sWR0}} & \href{https://youtu.be/ciVOD8_sWR0}{\url{youtu.be/ciVOD8_sWR0}}\\
+three\_clust\_12 & \href{https://youtu.be/AZv45NGkuC4}{\url{youtu.be/AZv45NGkuC4}} & \href{https://youtu.be/qQ4LqHYH_c4}{\url{youtu.be/qQ4LqHYH_c4}} & \href{https://youtube.com/shorts/-WtgmbfY_Qo}{\url{youtube.com/shorts/-WtgmbfY_Qo}} & \href{https://youtu.be/Y2sfVoemVZo}{\url{youtu.be/Y2sfVoemVZo}} & \href{https://youtu.be/Y2sfVoemVZo}{\url{youtu.be/Y2sfVoemVZo}}\\
+three\_clust\_13 & \href{https://youtu.be/U-bbZjzvaiE}{\url{youtu.be/U-bbZjzvaiE}} & \href{https://youtu.be/0MznMYr5gfo}{\url{youtu.be/0MznMYr5gfo}} & \href{https://youtube.com/shorts/PtAWhAz8bz8}{\url{youtube.com/shorts/PtAWhAz8bz8}} & \href{https://youtu.be/E7ge3kw5Q0Q}{\url{youtu.be/E7ge3kw5Q0Q}} & \href{https://youtu.be/E7ge3kw5Q0Q}{\url{youtu.be/E7ge3kw5Q0Q}}\\
+three\_clust\_14 & \href{https://youtu.be/ynu2oUxv08I}{\url{youtu.be/ynu2oUxv08I}} & \href{https://youtu.be/gHDLMn5AG-8}{\url{youtu.be/gHDLMn5AG-8}} & \href{https://youtube.com/shorts/OSakdYTdbmU}{\url{youtube.com/shorts/OSakdYTdbmU}} & \href{https://youtu.be/HyCJEiwCVv0}{\url{youtu.be/HyCJEiwCVv0}} & \href{https://youtu.be/HyCJEiwCVv0}{\url{youtu.be/HyCJEiwCVv0}}\\
+three\_clust\_15 & \href{https://youtu.be/xsdWsBek0eQ}{\url{youtu.be/xsdWsBek0eQ}} & \href{https://youtu.be/SDY64MrcWQg}{\url{youtu.be/SDY64MrcWQg}} & \href{https://youtube.com/shorts/w7V49k4GkEI}{\url{youtube.com/shorts/w7V49k4GkEI}} & \href{https://youtu.be/CFIyW7ftF9M}{\url{youtu.be/CFIyW7ftF9M}} & \href{https://youtu.be/CFIyW7ftF9M}{\url{youtu.be/CFIyW7ftF9M}}\\
+three\_clust\_16 & \href{https://youtu.be/VyYyYOqhOVs}{\url{youtu.be/VyYyYOqhOVs}} & \href{https://youtu.be/zi-TvgVR8a4}{\url{youtu.be/zi-TvgVR8a4}} & \href{https://youtube.com/shorts/bRVl9y0JT8k}{\url{youtube.com/shorts/bRVl9y0JT8k}} & \href{https://youtu.be/hdQmD499yo8}{\url{youtu.be/hdQmD499yo8}} & \href{https://youtu.be/hdQmD499yo8}{\url{youtu.be/hdQmD499yo8}}\\
+three\_clust\_17 & \href{https://youtu.be/yojgjcf2NQk}{\url{youtu.be/yojgjcf2NQk}} & \href{https://youtu.be/UJPMJ5irRbQ}{\url{youtu.be/UJPMJ5irRbQ}} & \href{https://youtube.com/shorts/zI-JNpMRYxY}{\url{youtube.com/shorts/zI-JNpMRYxY}} & \href{https://youtu.be/zdQYQvqTyGA}{\url{youtu.be/zdQYQvqTyGA}} & \href{https://youtu.be/zdQYQvqTyGA}{\url{youtu.be/zdQYQvqTyGA}}\\
+three\_clust\_18 & \href{https://youtu.be/r-Z1Yyf2c4s}{\url{youtu.be/r-Z1Yyf2c4s}} & \href{https://youtu.be/2Rf2L8iey2w}{\url{youtu.be/2Rf2L8iey2w}} & \href{https://youtube.com/shorts/_x7kGF4xRz4}{\url{youtube.com/shorts/_x7kGF4xRz4}} & \href{https://youtu.be/e_-IQycglVE}{\url{youtu.be/e_-IQycglVE}} & \href{https://youtu.be/e_-IQycglVE}{\url{youtu.be/e_-IQycglVE}}\\*
+\end{longtable}
+\endgroup{}
+
+
+:::
+:::
+
+
+
+## $2\text{-}D$ NLDR layouts
+
+All $2\text{-}D$ NLDR layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/Monash_PhD_thesis/figures/vis-exp/layouts](https://github.com/JayaniLakshika/Monash_PhD_thesis/tree/main/figures/vis-exp/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) with default hyper-parameter settings for the simulated $4\text{-}D$ data structures.
+
+## Distance metrics
+
+To quantify cluster separation in the high-dimensional space, we considered several inter-cluster distance metrics that capture different aspects of separability (@fig-distance-metrics). Together, these metrics reflect both global separation between clusters and more local boundary proximity.
 
 
 ::: {.cell layout-align="center"}
@@ -298,388 +182,110 @@ This data is constructed by simulating two clusters, each consisting of $1000$ o
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Two projections of the \pD{} true model overlaying the data are shown in a, b. Video of the langevitour animations is available at <https://youtu.be/35TrnYJsUUI>.](B-appB_files/figure-pdf/fig-true-data-1.pdf){#fig-true-data fig-align='center' width=100%}
+![Pairwise relationships among six distance metrics used to quantify cluster separation in the high-dimensional space: between–within (BW) ratio, exponentiated scaled minimum distance, quantile-ranked average between-cluster distance, Pearson–Gamma coefficient, average silhouette distance, and square-root–transformed Dunn and Dunn2 indices. The diagonal panels show the distribution of each metric, while the lower panels show scatterplots colored by distance scaling factor (S, SM, M, ML, L). Upper panels report Pearson correlation coefficients for all pairs, with significance indicated by asterisks ($p < 0.001$ '`***`'). Metrics show high positive correlation, confirming that they capture consistent structural variation. The BW ratio and exponentiated minimum distance were chosen for the main analysis because they provide complementary summaries of global cluster separation and local boundary distance.](B-appB_files/figure-pdf/fig-distance-metrics-1.pdf){#fig-distance-metrics fig-align='center' width=100%}
 :::
 :::
 
 
-## Computing hexagon grid configurations
+As shown in @fig-distance-metrics, most metric pairs are strongly positively correlated, indicating that they respond similarly as cluster separation increases. This suggests that the distance scaling used in the simulations effectively controls separability and that the metrics capture related structural changes. The scatterplots also show differences in sensitivity across scaling levels, with some metrics responding more clearly at smaller separations and others providing better discrimination at larger separations.
 
-Given range of embedding component, $r_2$, number of bins along the x-axis, $b_1$, and buffer proportion, $q$, hexagonal starting point coordinates, $s_1 = \text{-}q$, and $s_2 = \text{-}qr_2$. The purpose is to find width of the hexagon, $a_1$ and number of bins along the y-axis, $b_2$.
+Based on these patterns, we selected the BW ratio and the exponentiated scaled minimum distance for the main analyses. The BW ratio captures overall separation by contrasting between- and within-cluster dispersion, while the exponentiated minimum distance focuses on the closest boundaries between clusters. Both measures are strongly correlated with the other metrics (upper panels of @fig-distance-metrics) but reflect complementary aspects of separability, allowing us to assess whether perceptual accuracy is driven more by global structure, local proximity, or both.
 
-Geometric arguments give rise to the following constraints.
+## Data collection process
 
-$\text{min }a_1 \text{ s.t.}$
+### Recruite participants
 
-$$
-s_1 - \frac{a_1}{2} < 0,
-$$ {#eq-equation1}
+Subjects were recruited from Prolific [@palan2018], an online platform, to evaluate the trials. The study expects that the participants are uninvolved judges with no prior knowledge of the data to avoid inadvertently affecting results. Potential subjects needed with fluent in English and have completed at least $10$ Prolific studies with a $98\%$ approval rate. The Prolific server only considers participants who are age $18$ and older.
 
-$$
-s_1 + (b_1 - 1) \times a_1 \geq 1,
-$$ {#eq-equation2}
+All subjects were trained using three example displays to orient them to the evaluation trials and provided [introductory materials](https://drive.google.com/file/d/14o-nSjy50Qw2eoQArK5AhjowLIOe6m14/view). All subjects who completed the task were compensated $9.96$ GBP per hour for their time via the Prolific payment system.
 
-$$
-s_2 - \frac{a_2}{2} < 0,
-$$ {#eq-equation4}
+### Web application to collect responses
 
-$$
-s_2 + (b_2 - 1) \times a_2 \geq r_2.
-$$ {#eq-equation5}
+The survey web application, [Match-a-roo](https://ebsmonash.shinyapps.io/web_game/), is designed to collect survey responses and demographics using the `shiny` [@winston2025a] package in R. Each subject had access to the survey via the [shiny.io server](https://www.shinyapps.io/). The first interface of the survey app contained an introduction, instructions for the survey (@fig-intro-page), a consent form (@fig-consent), and buttons to access, for example, actual trials. Participants can try three examples prior to the study where the answers were not recorded (@fig-example). The subjects were first asked for their consent to the responses being used for analysis.
 
+A total of $1905$ evaluations from $127$ participants has been collected.
 
+After giving consent, the participant can start the trials. Two visual displays of data are shown where the data may be the same or different (@fig-act). One of the visual displays is a $2\text{-}D$ static plot, and the other is a motion plot made of many $2\text{-}D$ plots. The participants were asked to decide whether that data was the same in both displays and to report their confidence about their choice and any comments about the answer.
 
+When the participants completed the twenty-three evaluations, they were asked for their demographics which included preferred pronoun, the highest level of education achieved, their age category, whether they used principal component analysis in their work, and whether they applied NLDR techniques such as tSNE and UMAP (@fig-demo). Finally, the participants need to click on prolific URL ([https://app.prolific.co/submissions/](https://app.prolific.co/submissions/complete?cc=CLDDOZ10)) to redirect back to the Prolific app (@fig-end). 
 
 
 ::: {.cell layout-align="center"}
-
+::: {.cell-output-display}
+![Diagram of online experiment setup.](../figures/vis-exp/experiment.png){#fig-exp-setup fig-align='center' width=100%}
 :::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-Since $a_1$ and $a_2$ are distances,
-
-$$
-a_1, a_2 > 0.
-$$ Also, $(s_1, s_2) \in (\text{-}0.1, \text{-}0.05)$ as these are multiplicative offsets in the negative direction.
-
-@eq-equation1 can be rearranged as,
-
-$$
-a_1 > 2s_1
-$$
-
-which given $s_1 < 0$ and $a_1 > 0$ will *always* be true. The same logic follows for @eq-equation4 and substituting $a_2 = \sqrt{3}a_1/{2}$, and $s_2 = \text{-}qr_2$ to @eq-equation4 can be written as,
-
-$$
-a_1 > -\frac{4}{\sqrt{3}}qr_2
-$$
-
-Also, substituting $a_2 = \sqrt{3}a_1/{2}$, $s_2 = \text{-}qr_2$ and rearranging @eq-equation5 gives:
-
-$$
-a_1 \geq \frac{2(r_2 + qr_2)}{\sqrt{3}(b_2 - 1)}.
-$$ {#eq-equation6}
-
-Similarly, substituting $s_1 = \text{-}q$ @eq-equation2 becomes,
-
-$$
-a_1 \geq \frac{(1 + q)}{(b_1 - 1)}.
-$$ {#eq-equation7}
-
-This is a linear optimization problem. Therefore, the optimal solution must occur on a vertex. So, by setting @eq-equation6 equals to @eq-equation7 gives,
-
-$$
-\frac{2(r_2 + qr_2)}{\sqrt{3}(b_2 - 1)} = \frac{(1 + q)}{(b_1 - 1)}.
-$$ 
-
-After rearranging this,
-
-$$
-b_2 = 1 + \frac{2r_2(b_1 - 1)}{\sqrt{3}}
-$$
-
-and since $b_2$ should be an integer,
-
-$$
-b_2 = \Big\lceil1 +\frac{2r_2(b_1 - 1)}{\sqrt{3}}\Big\rceil.
-$$ {#eq-equation8}
-
-Furthermore, with known $b_1$ and $b_2$, by considering @eq-equation2 or @eq-equation5 as the *binding* or *active constraint*, can compute $a_1$.
-
-If @eq-equation2 is active, then,
-
-$$
-\frac{(1 + q)}{(b_1 - 1)} < \frac{2(r_2 + qr_2)}{\sqrt{3}(b_2 - 1)}.
-$$
-
-Rearranging this gives,
-
-$$
-r_2 > \frac{\sqrt{3}(b_2 - 1)}{2(b_1 - 1)}.
-$$
-
-Therefore, if this equality is true, then 
-$$
-a_1 = \frac{(1+q)}{(b_1 - 1)},
-$$
-otherwise, 
-$$
-a_1 = \frac{2r_2(1+q)}{\sqrt{3}(b_2 - 1)}.
-$$
-
-## Binning the data
-
-Points are assigned to the bin they fall into based on the nearest centroid. If a point is equidistant from multiple centroids, it is assigned to the centroid with the smallest bin ID.
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
 :::
 
 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Binning the data. Points are assigned to the nearest centroid. If a point is equidistant from multiple centroids, assigned to the centroid with the smallest bin ID.](B-appB_files/figure-pdf/fig-assign-data-1.pdf){#fig-assign-data fig-align='center' fig-pos='!ht' width=100%}
+![The introduction page of the study app.](../figures/vis-exp/introduction.png){#fig-intro-page fig-align='center' width=100%}
 :::
-:::
-
-
-## Area of a hexagon
-
-The area of a hexagon is defined as $A = 3\sqrt{3}l^2/2$, where $l$ is the side length of the hexagon. $l$ can be computed using $a_1$ and $a_2$.
-
-
-
-::: {.cell layout-align="center"}
-
 :::
 
 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![The components of the right triangle illustrating notation.](B-appB_files/figure-pdf/fig-tri-param-1.pdf){#fig-tri-param fig-align='center' fig-pos='!ht' width=30%}
+![The consent form provided in the study app.](../figures/vis-exp/consent.png){#fig-consent fig-align='center' width=100%}
 :::
-:::
-
-
-By applying the Pythagorean theorem, we obtain,
-
-$$
-l^2 = \left(\frac{a_1}{2}\right)^2 + \left(\frac{a_2 - l}{2}\right)^2.
-$$
-Next, rearranging the terms, we get,
-
-$$
-l^2 - \left(\frac{a_2 - l}{2}\right)^2 = \left(\frac{a_1}{2}\right)^2,
-$$
-
-$$
-\left[l - \left(\frac{a_2 - l}{2}\right)\right]\left[l + \left(\frac{a_2 - l}{2}\right)\right] = \left(\frac{a_1}{2}\right)^2,
-$$
-
-$$
-3l^2 + 2a_2l - (a_1^2 + a_2^2) = 0.
-$$
-
-Finally, by solving the quadratic equation, we compute,
-
-$$
-l = \frac{-2a_2 \pm \sqrt{4a_2^2 - 24[-(a_1^2 + a_2^2)]}}{6},
-$$
-
-$$
-l = \frac{-a_2 \pm \sqrt{a_2^2 - 6[-(a_1^2 + a_2^2)]}}{3},
-$$
-
-where $l > 0$.
-
-## Curiosities about NLDR results discovered by examining the model in the data space {#sec-curiosities}
-
-With the drawing of the model in the data, several interesting differences between NLDR methods can be observed.
-
-### Some methods appear to order points in the layout
-
-The \gD{} model representations generated from some NLDR methods, especially PaCMAP, are unreasonably flat or like a pancake. A simple example of this can be seen with data simulated to contain five \fD{} Gaussian clusters. Each cluster is essentially a ball in \fD{}, so there is no \gD{} representation, rather the model in each cluster should resemble a crumpled sheet of paper that fills out \fD{}.
-
-@fig-five-gau-projs a1, b1, c1 show the \gD{} layouts for (a) tSNE, (b) UMAP, and (c) PaCMAP, respectively. The default hyper-parameters for each method are used. In each layout we can see an accurate representation where all five clusters are visible, although with varying degrees of separation.
-
-The models are fitted to each these layouts. @fig-five-gau-projs a2, b2, c2 show the fitted models in a projection of the \fD{} space, taken from a tour. These clusters are fully \fD{} in nature, so we would expect the model to be a *crumpled sheet* that stretches in all four dimensions. This is what is mostly observed for tSNE and UMAP. The curious detail is that the model for PaCMAP is closer to a *pancake* in shape in every cluster! This single projection only shows this in three of the five clusters but if we examine a different projection the other clusters exhibit the pancake also. While we don't know what exactly causes this, it is likely due to some ordering of points in the \gD{} PaCMAP layout that induces the flat model. One could imagine that if the method used principal components on all the data, that it might induce some ordering that would produce the flat model. If this were the reason, the pancaking would be the same in all clusters, but it is not: The pancake is visible in some clusters in some projections but in other clusters it is visible in different projections. It might be due to some ordering by nearest neighbors in a cluster. The PaCMAP documentation doesn't provide any helpful clues. That this happens, though, makes the PaCMAP layout inadequate for representing the high-dimensional data. 
-
-<!--Projections-->
-<!--five_gau_clusters/02_gen_model_with_tSNE.R-->
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-<!--five_gau_clusters/03_gen_model_with_UMAP.R-->
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-<!--five_gau_clusters/04_gen_model_with_PaCMAP.R-->
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
 :::
 
 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![NLDR's organize points in the \gD{} layout in different ways, possibly misleadingly, illustrated using three layouts: (a) tSNE, (b) UMAP, (c) PaCMAP. The data has five Gaussian clusters in \fD{}. The bottom row of plots shows a \gD{} projection from a tour on \fD{} revealing the differences generated by the layouts on the model fits.  We would expect the model fit to be like that in (a2) where it is distinctly is separate for each cluster but like a hairball in each. This would indicate the distinct clusters, each being fully \fD{}. With (c2), the curiousity is that the model is a \gD{} pancake shape in \fD{}, indicating that there is some ordering of points done by PaCMAP, posisbly along some principal component axes. Videos of the langevitour animations are available at <https://youtu.be/I-kxCwVfqiQ>, <https://youtu.be/gD1P01FUPyU>, and <https://youtu.be/MxJ_srOFQNk> respectively.](B-appB_files/figure-pdf/fig-five-gau-projs-1.pdf){#fig-five-gau-projs fig-align='center' fig-pos='!ht' width=100%}
+![The example trial page of the study app.](../figures/vis-exp/example.png){#fig-example fig-align='center' width=100%}
 :::
-:::
-
-
-### Sparseness creates a contracted \gD{} layout {#sec-effect-dens}
-
-Differences in density can arise by sampling at different rates in different subspaces of \pD{}. For example, the data shown in @fig-one-dens_clust-error all lies on a \gD{} curved sheet in \fD{}, but one end of the sheet is sampled densely and the other very sparsely. It was simulated to illustrate the effect of the density difference on layout generated by an NLDR, illustrated using the tSNE results, but it happens with all methods. 
-
-@fig-one-dens_clust-error (a2, b2) shows a \gD{} layout for tSNE created using the default hyper-parameters. One would expect to see a rectangular shape if the curved sheet is flattened, but the layout is triangular. The other two displays show the residuals as a dot density plot (a1, b1), and a \gD{} projection of the data and the model from \fD{} (a3, b3). Using linked brushing between the plots, we can highlight points in the tSNE layout, and examine where they fall in the original \fD{}. The darker (maroon) points indicate points that have been highlighted by linking. In row a, the points at the top of the triangle are highlighted, and we can see these correspond to higher residuals, and also to all points at the low density end of the curved sheet. In row b, points at the lower left side of the triangle are highlighted which corresponds to smaller residuals and one corner of the sheet at the high density end of the curved sheet. 
-
-The tSNE behaviour is to squeeze the low density area of the data together into the layout. This is common in other NLDR methods also, which means analysts need to be aware that if their data is not sampled relatively uniformly, apparent closeness in the \gD{} may correspond to sparseness in \pD{}.
-
-<!--c_shaped_dens_str/03_gen_model_with_tSNE.R-->
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
 :::
 
 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Exploring the effect of density on the NLDR layout using a \gD{} curved sheet in \fD{} with different density at each end. Three plots are linked: density plot of residuals (a1, b1), NLDR layout (a2, b2), projection of \fD{} model and data (a3, b3). The brown points indicate the selected set, which are different in each row. In (a2), the top part of the triangular shape is selected which corresponds to higher residuals (a1) and the sparse end of the structure (a3). In (b2) one of other corners is highlighted, which can be seen to correspond to low residuals (b1) and one side of the dense end of the data (b3). While the tSNE layout represents the dense end of the sheet correctly as two corners in the layout, it contracts the sparse end of the sheet into a single corner. Video of the langevitour animation is available at <https://youtu.be/-KsQH0rII2A>.](B-appB_files/figure-pdf/fig-one-dens_clust-error-1.pdf){#fig-one-dens_clust-error fig-align='center' fig-pos='!ht' width=100%}
+![The actual trial page of the study app.](../figures/vis-exp/attempt.png){#fig-act fig-align='center' width=100%}
 :::
-:::
-
-
-
-## PBMC3k: comparison with results of scDEED recommendations
-
-<!-- ### Comparison with results of scDEED recommendations -->
-
-<!-- XXX What this section needs: -->
-
-<!-- - connect this with previous section, not make it seem like a completely new. connections are: nldr used to show clustering, scDEED provides a different approach to decide which is best. -->
-<!-- - why these two? assume one is the published figure, and second is one recommended by scDEED, which our results confirm is better. -->
-<!-- - Refer to figure in text -->
-<!-- - Fig 16 not necessary -->
-
-<!-- CHANGES WERE MADE BASED ON THIS THINKING -->
-
-
-
-<!-- <!-- In the field of single-cell studies, clustering is a common analytical task used to identify groups of cells with similar expression profiles. Non-linear dimensional reduction (NLDR) methods are frequently employed to visualize these clusters and help validate the results. However, it is well known that the 2D embeddings produced by t-SNE and UMAP may not accurately reflect the similarities among cell clusters. ALREADY STATED IN PREVIOUS SECTION -->  
-
-As we were writing this paper @xia2023 appeared proposing a new method called scDEED helping to assess the validity of a \gD{} embedding. scDEED calculates a reliability score for each cell embedding based on the similarity between the cell’s \gD{} embedding neighbors and its neighbors prior to embedding. A low reliability score suggests a dubious embedding. It can help in the deciding on optimal hyper-parameters. Here we illustrate how our method compares with the results from scDEED.
-
-Note that @xia2023 uses a different PBMC dataset than that used by @chen2024, shown by us in the main paper example, which is why this comparison is shown here and not in the main paper. Their data contains $31,021$ cells including cell type labels, and the gene expression levels were in the unit of log-transformed UMI count per $10,000$. They focused on three sequencing methods (inDrops, DropSeq, and SeqWell) and four common cell types Cytotoxic T cell, CD4+T cell, CD14+ Monocyte, and B cell. Pre-processing follows the process in @xia2023 again using the Human Peripheral Blood Mononuclear Cells (PBMC) data. 
-
-For illustration purposes, we only selected cells generated with inDrops ($n=5858$ cells). Also, @xia2023 used first $9$ principal components to generate the UMAP and tSNE with default hyper-parameters. The objective is to what scDEED suggests is the best layout with what HBE would choose. Layout a (@fig-pbmc-mse-umap) is generated from the hyper-parameters suggested by @chen2024, and layout b (@fig-pbmc-mse-umap) is with suggested hyper-parameters by scDEED to be more accurate. <!--Layouts a and b contain $46$ and $83$ dubious cells respectively.--> The HBE vs binwidth ($a_1$) plot (@fig-pbmc-mse-umap) illustrates that our approach would suggest that scDEED is correct here, that layout b is more accurately reflecting the cluster structure in the PBMC data. This is also supported by examining the models in the data space as shown in @fig-model-pbmc-author-proj.
-
-<!-- @fig-pbmc-mse-umap compares the metrics rARNX, rRTA, rSC, rGS, along with HBE computed on $a_1=0.04$. This is a parallel coordinate plot where the y-axis shows a normalized score to ensure the metrics are on the same scale. Each line corresponds to one layout. Most metrics (rSC, rARNX, and HBE) consistently indicate that the optimized layout (b) provides a better representation, while rRTA, and rGS slightly favor the published layout. -->
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-<!--pbmc3k/11_gen_mse_for_diff_tsne_scD.R-->
-<!--pbmc3k/11_gen_mse_for_diff_umap_scD.R-->
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
 :::
 
 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Comparing the published layout (a) with what would be suggested to be optimal by scDEED (b), using HBE for varying (i) binwidth ($a_1$), and (ii) average bin count ($\bar{n}_h$), on a subset of PBMC3k data. Color represents NLDR layouts. HBE would corroborate that the scDEED optimized layout is better than what was originally published. Plot (ii), which accounts for the density within clusters by using average bin count, shows reduced differences between layouts, indicating that part of the variation in (i) is driven by cluster density rather than true structural differences. Comparison of scaled evaluation metrics (iii) (rRTA, rSC, rGS, rARNX, and HBE using $a_1=0.04$) for two NLDR layouts of the PBMC3k data the originally published layout (a) and the scDEED optimized layout (b). Each line represents a layout, with color matching the corresponding scatterplots. Most metrics (rSC, rARNX, and HBE) consistently indicate that the optimized layout (b) provides a better representation, while rRTA, and rGS slightly favor the published layout.](B-appB_files/figure-pdf/fig-pbmc-mse-umap-1.pdf){#fig-pbmc-mse-umap fig-align='center' fig-pos='!ht' width=100%}
+![The demographics page of the study app.](../figures/vis-exp/demographics.png){#fig-demo fig-align='center' width=100%}
 :::
-:::
-
-
-<!--pbmc3k/15_gen_model_with_UMAP_scD.R-->
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-<!--pbmc3k/16_gen_model_with_tSNE_scD.R-->
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
 :::
 
 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Compare the published \gD{} layout (@fig-pbmc-mse-umap a) made with UMAP and the \gD{} layout made with tSNE selected as optimal by scDEED (@fig-pbmc-mse-umap b) and also HBE (@fig-pbmc-mse-umap). The two plots on the right show projections from a tour, with the models overlaid. The published layout a suggested three separated clusters with two of them are close, but this is not present in the data. While there may be three clusters they are not well-separated. The difference in model fit also indicates this: the published layout a does not capture the nonlinear structure of the clusters like the model generated from layout b. This supports the choice that layout b is the better representation of the data, because it shows close clusters. Videos of the langevitour animations are available at <https://youtu.be/ffiB4MGWyn8> and <https://youtu.be/e7XNL18co1c> respectively.](B-appB_files/figure-pdf/fig-model-pbmc-author-proj-1.pdf){#fig-model-pbmc-author-proj fig-align='center' fig-pos='!ht' width=90%}
+![The end page of the study app.](../figures/vis-exp/end_page.png){#fig-end fig-align='center' width=100%}
 :::
 :::
 
 
-## Compare HBE with existing evaluation metrics
+Once a participant starts the study (@fig-exp-setup), the "eligibility_subject_IDs" Google Sheet is connected and read in the Shiny app to identify which subject IDs have not yet been assigned to anyone, as indicated by the "used" column. If the "used" column is marked as NA, it means that the subject ID has not been assigned. 
 
-@fig-comp-metric-pbmc and @fig-comp-metric-mnist compare HBE with commonly used evaluation metrics such as rRTA, rARNX, rSC, and rGS across multiple NLDR layouts. These visual comparisons highlight that HBE behaves differently from these existing metrics due to the different settings involved.
+After identifying the eligible subject IDs, one is randomly assigned to the participant, and "1" is recorded in the "used" column corresponding to that subject ID. This subject ID will later assist in connecting the experiment design, high-dimensional data, and embedding data.
+
+Once a subject ID is allocated to a participant, the experiment design data is loaded, and the relevant attempts, data structure, and methods are presented to the participant. This process continues until the participant completes all attempts. After determining the data structure and methods, the relevant high-dimensional and embedding data is loaded from "high_d_data_three_clust_all.rds" and "embedding_data_three_clust_all.rds," respectively, and displayed in both motion and $2\text{-}D$ static plots. 
+
+Once the participant records their answers, a new row is added to the "result_df" Google Sheet with their responses. This continues until the participant finishes the study. Finally, after completing the evaluations, participants are asked to fill out a demographics questionnaire. Their responses are then recorded in a new row of the "demographic_details" Google Sheet.
+
+## Analysis of results relative to data collection process
+
+### Data cleaning
+
+The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty-three trials, including the demographics and the attention check trial. Participants who exceeded the average time of $5-10$ minutes were excluded, as determined from the pilot study. Following this, individuals who didn't accurately detect the attention check trial were also removed. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set is further refined by filtering out all the responses, which showed the same data structures in $2\text{-}D$ NLDR plot and tour.
+
+### Demographics
+
+Along with the responses to the trials, we have collected a series of demographic information including preferred pronoun, age range category, education background, and previous experience in PCA and Non-linear dimension reduction techniques. @tbl-pronoun, @tbl-age, @tbl-education, @tbl-pca, and @tbl-nldr provide summaries of the demographic data.  
+
+The participants are fairly balanced in terms of pronouns, with similar proportions identifying as *she/her* ($50.4\%$) and *he/him* ($48.0\%$), and a small number identifying as *they/them* ($1.6\%$). Participants cover a wide age range, with most between $25$ and $34$ years old ($35.4\%$), followed by those aged $18–24$ ($20.5\%$) and $35–44$ ($19.7\%$). The sample has more younger and mid-adult age groups, while still including representation from older participants.
+
+Most participants have completed an undergraduate degree ($44.9\%$) or a postgraduate qualification ($26.8\%$), with others reporting some undergraduate study ($21.3\%$). Only a small proportion did not complete high school. Prior experience with dimension reduction methods is limited: the majority report no previous experience with PCA ($84.2\%$) or nonlinear dimension reduction techniques ($86.6\%$). This suggests that most participants approached the task without strong prior familiarity, allowing the results to reflect general perceptual interpretation rather than expert knowledge.
 
 
 ::: {.cell layout-align="center"}
@@ -688,50 +294,105 @@ For illustration purposes, we only selected cells generated with inDrops ($n=585
 
 
 
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
+::: {#tbl-pronoun .cell layout-align="center" tbl-cap='Summary of the pronoun distribution of participants recruited for this study.'}
 ::: {.cell-output-display}
-![Comparison of scaled evaluation metrics (rRTA, rSC, rGS, rARNX, and HBE with $a_1 = 0.06$) for the eight NLDR layouts computed on the PBMC3k data, shown as a parallel coordinate plot. The color of each line corresponds to a NLDR layout. All, except rGS and rARNX agree that layout e is best or very close to best. Layout d is best according to HBE and rARNX but considered to be much less optimal by rRTA, rSC and rGS. Layout f is considered poor by rARNX and HBE. Layout a is cosidered close to the best by rGS and rSC.](B-appB_files/figure-pdf/fig-comp-metric-pbmc-1.pdf){#fig-comp-metric-pbmc fig-align='center' fig-pos='!ht' width=100%}
+
+\begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}}
+\toprule
+Pronoun & Period I & Period II & Total & \%\\
+\midrule
+he/him & 7 & 54 & 61 & 48.03\\
+she/her & 11 & 53 & 64 & 50.39\\
+they/them & 0 & 2 & 2 & 1.57\\
+Total & 18 & 109 & 127 & 100.00\\
+\bottomrule
+\end{tabular}
+
+
 :::
 :::
 
 
 
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
+::: {#tbl-age .cell layout-align="center" tbl-cap='Summary of the age distribution of participants recruited for this study.'}
 ::: {.cell-output-display}
-![Comparison of scaled evaluation metrics (rARNX, rRTA, rSC, rGS, and HBE using $a_1=0.04$) for six NLDR layouts computed on the MNIST digit 1 data using a parallel coordinate plot. Each line represents a layout (a–f), with colors corresponding to the scatterplots shown on the right. The metrics display different ranking patterns, indicating that no single measure fully captures embedding quality. Layout a is identified as the best according to HBE and rRTA, but is considered much less optimal by rARNX, rSC, and rGS. Layout e is considered the worst, or close to the poorest, by all metrics. Layouts a and f show similar patterns of agreement across metrics, except for rRTA, where layout a performs the best and layout f the worst. Layout c is the worst in rARNX, rSC, and HBE.](B-appB_files/figure-pdf/fig-comp-metric-mnist-1.pdf){#fig-comp-metric-mnist fig-align='center' fig-pos='!ht' width=100%}
+
+\begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}}
+\toprule
+Age group & Period I & Period II & Total & \%\\
+\midrule
+18 - 24 & 3 & 23 & 26 & 20.47\\
+25 - 34 & 9 & 36 & 45 & 35.43\\
+35 - 44 & 3 & 22 & 25 & 19.69\\
+45 - 54 & 1 & 12 & 13 & 10.24\\
+Over 55 & 2 & 16 & 18 & 14.17\\
+Total & 18 & 109 & 127 & 100.00\\
+\bottomrule
+\end{tabular}
+
+
 :::
 :::
+
+
+
+::: {#tbl-education .cell layout-align="center" tbl-cap='Summary of the educational distribution of participants recruited for this study.'}
+::: {.cell-output-display}
+
+\begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}}
+\toprule
+Education & Period I & Period II & Total & \%\\
+\midrule
+Completed some undergraduate courses & 4 & 23 & 27 & 21.26\\
+Did not complete high school & 0 & 4 & 4 & 3.15\\
+Higher degree master or doctorate & 3 & 31 & 34 & 26.77\\
+Prefer not to answer & 3 & 2 & 5 & 3.94\\
+Undergraduate degree (A bachelor) & 8 & 49 & 57 & 44.88\\
+Total & 18 & 109 & 127 & 100.00\\
+\bottomrule
+\end{tabular}
+
+
+:::
+:::
+
+
+
+::: {#tbl-pca .cell layout-align="center" tbl-cap='Summary of the previous experience in PCA of participants recruited for this study.'}
+::: {.cell-output-display}
+
+\begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}}
+\toprule
+Experience with PCA & Period I & Period II & Total & \%\\
+\midrule
+No & 15 & 92 & 107 & 84.25\\
+Yes & 3 & 17 & 20 & 15.75\\
+Total & 18 & 109 & 127 & 100.00\\
+\bottomrule
+\end{tabular}
+
+
+:::
+:::
+
+
+
+::: {#tbl-nldr .cell layout-align="center" tbl-cap='Summary of the previous experience in Nonlinear dimension reduction techniques of participants recruited for this study.'}
+::: {.cell-output-display}
+
+\begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}}
+\toprule
+Experience with NLDR & Period I & Period II & Total & \%\\
+\midrule
+No & 15 & 95 & 110 & 86.61\\
+Yes & 3 & 14 & 17 & 13.39\\
+Total & 18 & 109 & 127 & 100.00\\
+\bottomrule
+\end{tabular}
+
+
+:::
+:::
+
+
 

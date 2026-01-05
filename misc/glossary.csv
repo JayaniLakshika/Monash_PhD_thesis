@@ -138,3 +138,219 @@ Topological complexity,"Features like holes, loops, or twists that affect connec
 Trigonometric structure,A geometric pattern generated using sine and cosine functions.
 Uniform distribution,All values within a range are equally likely.
 Wavy noise dimensions,"Noise variables that oscillate smoothly, often following sine or polynomial patterns."
+Application (example study),"A worked example demonstrating how cardinalR can be used to generate data, apply dimension reduction and clustering methods, and evaluate their performance."
+Bin width,The size of hexagonal bins used when aggregating points for hexbin-based error calculations.
+cardinalR,"An R package for generating interpretable, high-dimensional datasets with controlled geometric structure, noise, and clustering properties."
+Clustering algorithm,"A method that groups observations into clusters based on similarity, without using class labels."
+Cluster validity statistic,"A numerical measure used to assess the quality of a clustering solution, often balancing within-cluster compactness and between-cluster separation."
+Cone cluster,"A cluster whose density varies along one axis, typically denser near the apex and more diffuse toward the base."
+Covariance structure (EII),"A model-based clustering assumption where clusters are spherical, have equal volume, equal shape, and no orientation differences."
+Dimension reduction (DR),A technique that maps high-dimensional data into a lower-dimensional space while attempting to preserve important structure.
+Gaussian cluster,"A compact, roughly spherical cluster generated from a multivariate normal distribution."
+Helical spiral,"A twisted, elongated structure that winds around an axis while progressing forward."
+Hemisphere,"A curved surface representing half of a sphere, used to test how algorithms handle nonlinear manifolds."
+Hexagonal binning (hexbin),A method for aggregating points into hexagonal cells to summarize density and structure.
+Hexbin error (HBE),"A metric measuring the discrepancy between high-dimensional data and its low-dimensional embedding, based on hexagonal bin centroids. Lower values indicate better structure preservation."
+Hierarchical clustering,A clustering method that builds a tree of nested clusters by successively merging or splitting groups.
+Isotropic distribution,"A distribution with equal variability in all directions, such as points uniformly sampled in a cube."
+k-means clustering,A clustering algorithm that partitions data into a fixed number of clusters by minimizing within-cluster variance.
+Low-dimensional embedding,"The result of applying a dimension reduction method, typically visualized in two dimensions."
+Model-based clustering,A probabilistic clustering approach that assumes data are generated from a mixture of distributions.
+Nonlinear geometry,"Data structures that cannot be adequately represented by linear projections, such as spirals or curved surfaces."
+PCA (Principal Component Analysis),A linear dimension reduction method that projects data onto directions of maximum variance.
+Scaling factor,A parameter controlling the spread or size of a cluster in space.
+Attention check,A trial included to verify that participants are paying attention. These trials use very clear data structures where the correct answer should be obvious.
+Between-to-within (BW) ratio,A measure of cluster separability comparing how far clusters are from each other (between-cluster variation) relative to how spread out points are within clusters. Higher values indicate better-separated clusters.
+Centroid,The mean position of all points in a cluster. Centroids are used to control and measure distances between clusters in the simulations.
+Cluster separation,"The degree to which clusters are spaced apart in high-dimensional space. In this study, separation is systematically varied using distance scale factors."
+Clustering,The task of grouping observations so that points within the same group are more similar to each other than to points in other groups.
+Distance scale factor,"A multiplier applied to centroid distances to control how close or far apart clusters are. Levels include small, small–medium, medium, medium–large, and large."
+Exponential scaled minimum inter-cluster distance,"A transformed version of the smallest distance between any two points from different clusters, used to emphasize differences in close cluster proximity."
+Generalized linear mixed-effects model (GLMM),"A statistical model that accounts for both fixed effects (e.g., NLDR method, distance) and random effects (e.g., participant variability). Used here to model correct identification probabilities."
+Hexbin error (HBE),A metric used to evaluate how well a low-dimensional embedding preserves high-dimensional structure by comparing bin centroids before and after dimension reduction.
+Local structure,"Relationships among nearby points in high-dimensional space, such as nearest neighbors within a cluster."
+Global structure,"Large-scale relationships in the data, such as relative positions and distances between clusters."
+Minimum inter-cluster distance,The smallest distance between any point in one cluster and any point in another cluster. It captures the closest approach of clusters.
+Misidentification,"A participant response indicating that two displays show different data when they actually show the same data, or vice versa."
+Multidimensional scaling (MDS),A family of methods that create low-dimensional representations by preserving pairwise distances from high-dimensional space.
+Participant-level random effect,A model component capturing individual differences in accuracy or response behavior across participants.
+Perceptual identification,The task performed by participants: deciding whether a $2$-D NLDR plot and a tour represent the same underlying data.
+Prolific,An online crowd-sourcing platform used to recruit participants for the experiment.
+Same / Different trials,Experimental conditions where the $2$-D NLDR plot and the tour either come from the same dataset (SAME) or from different datasets (DIFFERENT).
+Scaling (data scaling),Standardizing data before analysis so that variables have comparable ranges.
+Within-cluster dispersion,A measure of how spread out points are within each cluster.
+Binwidth ($a_1$),The width of hexagons used in the hexagonal binning of a $2$-D NLDR layout. It controls the resolution of the diagnostic grid and directly affects the hexbin error (HBE).
+Brushing / Linked brushing,"An interactive technique where selecting points or regions in one view (e.g., a $2$-D layout) highlights the corresponding points in another view (e.g., high-dimensional model or tour)."
+Embedding,A low-dimensional representation (typically $2$-D) of high-dimensional data produced by an NLDR method such as tSNE or UMAP.
+Hexagonal binning,A spatial aggregation method that partitions a $2$-D layout into hexagonal cells to summarize local structure and density.
+Hexbin Error (HBE),A diagnostic metric that measures how well a $2$-D NLDR layout represents the underlying high-dimensional data by comparing bin centroids lifted back into high-dimensional space. Lower HBE indicates a better representation.
+Linked views,"Multiple coordinated visual displays where interactions in one view update the others, supporting exploratory analysis and comparison."
+menuraR,"An interactive R Shiny web application for comparing, diagnosing, and selecting nonlinear dimension reduction representations without programming."
+Model diagnostics,"Visual and quantitative tools used to assess how well an NLDR-based model fits the high-dimensional data, including error views, tours, and linked brushing."
+PBMC dataset,A single-cell RNA-seq dataset of peripheral blood mononuclear cells commonly used to benchmark dimension reduction and clustering methods.
+quollr,"An R package underlying menuraR that constructs model-based representations of NLDR layouts, lifts them back into high-dimensional space, and computes diagnostic metrics such as HBE."
+Shiny,"An R framework for building interactive web applications, used to implement the menuraR user interface."
+Wireframe model,A grid-based representation constructed from a $2$-D NLDR layout and lifted into high-dimensional space to evaluate how the embedding warps the original geometry.
+Local–global trade-off,"The balance between preserving small-scale neighborhood structure and large-scale relationships in NLDR embeddings, controlled by hyper-parameters."
+Reproducibility,"The ability to recreate analysis results under consistent computational settings, supported in menuraR through centralized deployment and logged workflows."
+Browser memory limits,"Constraints imposed by web browsers on the amount of memory available for client-side rendering and interaction, which can affect performance when visualizing large datasets in web-based applications."
+Server-side computation,"A computational model in which data processing and analysis are performed on a remote server rather than on the user’s local machine. In menuraR, NLDR generation and diagnostics are executed on the Shiny server."
+shinyapps.io,A cloud-based hosting platform for R Shiny applications that allows users to access interactive tools such as menuraR through a web browser without local installation.
+Usability survey,"A structured evaluation method used to assess how easily users can learn, navigate, and complete tasks within an application. In this study, it was used to inform interface design and feature refinement in menuraR."
+Run sheets,Step-by-step task instructions provided to participants during a usability study to ensure consistency in task execution and to facilitate systematic feedback collection.
+User interaction logs,"Records of user actions within an application, such as layout generation and comparison steps, used to evaluate usability and identify design improvements."
+Data availability,"The practice of making datasets publicly accessible to support transparency, reproducibility, and independent validation of results."
+Reproducible workflow,"An analysis process that can be consistently repeated using the same data, methods, and computational environment, producing identical results."
+Web-based interface,A graphical user interface accessed through a web browser that enables interaction with computational tools without requiring local software installation.
+Interdisciplinary users,Researchers or students from diverse disciplinary backgrounds who may have varying levels of programming or statistical expertise.
+Technical barrier,"Practical or knowledge-based obstacles (e.g., software installation, programming requirements) that can limit access to advanced analytical tools."
+NLDR selection,"The process of choosing one or more nonlinear dimension reduction layouts that best represent the structure of high-dimensional data, based on visual and quantitative diagnostics."
+Alt-text,"Textual descriptions of figures and visual content that support accessibility, particularly for screen readers and users with visual impairments."
+autoAlt,An R package developed by the NUMBATs group that provides automated suggestions for generating alt-text for data visualizations.
+Community engagement,"Activities that support interaction, inclusion, and knowledge exchange within academic and professional communities, such as organizing seminars, workshops, and outreach programs."
+detourr,"An R package for dynamic visualization of high-dimensional data using tour methods, supporting interactive exploration through projection sequences."
+Dynamic visualization,"Visualization techniques that use motion or interaction (e.g., tours, brushing, animation) to explore high-dimensional or complex data structures."
+Exploratory planning,"Early-stage conceptual work involving sketches, diagrams, and working notes that guide the development of methods and software."
+Git,"A distributed version control system used to track changes in code, documents, and research materials."
+GitHub,"A web-based platform for hosting Git repositories, enabling collaboration, version control, and public dissemination of software and research materials."
+Knitr,"An R package that supports dynamic report generation by integrating R code with documents written in LaTeX, Markdown, or Quarto."
+MenuraR,A Shiny application developed in this thesis that provides an interactive interface for comparing and selecting the most reasonable NLDR layouts.
+Open-source software,"Software that is publicly available with a license allowing users to view, modify, and redistribute the source code."
+Quarto,"A scientific and technical publishing system used to create reproducible documents, presentations, and websites combining text, code, and visualizations."
+quollr,An R package developed in this thesis that implements diagnostic methods for evaluating how NLDR techniques warp high-dimensional data.
+Reproducible research,"A research practice in which data, code, and documentation are organized and shared to allow others to reproduce analyses and results."
+Research workflow,"The structured process of conducting research, including data generation, analysis, visualization, writing, and dissemination."
+Shiny,An R framework for building interactive web applications directly from R code.
+Software design,"The process of planning, structuring, and implementing software tools, including interface design, functionality, and usability considerations."
+Supporting R packages,"Additional R packages used to assist with data manipulation, visualization, modeling, reporting, and workflow management."
+Tour methods,Dynamic projection techniques that display a sequence of low-dimensional views of high-dimensional data to reveal structure over time.
+Version control,"A system for tracking and managing changes to files, enabling collaboration, rollback, and transparent development history."
+Workshops,"Structured training sessions designed to teach specific skills, such as reproducible reporting, software use, or data visualization techniques."
+$a_1$ (Hexagon width),The horizontal distance between adjacent hexagon centroids in the hexagonal grid used for binning a 2D NLDR layout.
+$a_2$ (Hexagon height),"The vertical distance between rows of hexagon centroids in the hexagonal grid, related to $a_1$ by $a_2 = \sqrt{3}a_1/2$."
+Active (binding) constraint,"In optimization, a constraint that holds with equality at the optimal solution and determines the final parameter values."
+Bin,A spatial region in a hexagonal grid used to aggregate points from a 2D NLDR embedding.
+Binwidth,"A parameter controlling the size of hexagonal bins in the embedding space, directly affecting resolution and aggregation."
+$b_1$ (Number of bins along x-axis),The number of hexagon columns spanning the horizontal range of a 2D embedding.
+$b_2$ (Number of bins along y-axis),The number of hexagon rows spanning the vertical range of a 2D embedding.
+Buffer proportion ($q$),A small negative offset used to extend the hexagonal grid slightly beyond the embedding range to ensure full coverage of points.
+Centroid,"The geometric center of a bin or cluster, used for assigning points to bins based on nearest distance."
+Convex hull,The smallest convex set that contains all points in a dataset; referenced as inspiration for extending binning to higher dimensions.
+C-shaped cluster,A nonlinear cluster with observations arranged along a curved manifold resembling the letter “C”.
+Embedding,A low-dimensional representation of high-dimensional data produced by an NLDR method.
+Gaussian cluster,"A cluster of points generated from a multivariate normal distribution, typically forming spherical or ellipsoidal shapes in feature space."
+Hexagon grid,A tessellation of the 2D embedding space into regular hexagons used for binning and model fitting.
+Hexbin Error (HBE),A diagnostic metric measuring how well a 2D NLDR layout aligns with a model fitted in the high-dimensional data space.
+Hyper-parameters,"Method-specific tuning parameters (e.g., perplexity in tSNE, number of neighbors in UMAP) that influence NLDR embeddings."
+Linear optimization problem,"An optimization problem where the objective and constraints are linear functions, implying solutions occur at vertices of the feasible region."
+Manifold,A lower-dimensional structure embedded within a higher-dimensional space on which the data lie.
+Nearest-neighbor ordering,A possible effect of NLDR methods where points are arranged in a way that preserves local neighborhoods but may impose unintended global ordering.
+Pancake effect,"An observed artifact where a fitted model collapses into a near-flat structure in high-dimensional space, indicating loss of intrinsic dimensionality."
+Residuals,"Differences between observed data points and the fitted high-dimensional model, used to assess model quality."
+ScDEED,A method for evaluating NLDR embeddings by assigning reliability scores based on neighborhood preservation before and after embedding.
+Sparse sampling,"Uneven sampling density across different regions of a manifold, which can distort NLDR layouts by contracting low-density regions."
+True model (geometric structure),"The subset of variables and relationships that define the underlying data-generating manifold, which NLDR aims to capture."
+Wireframe model,A geometric representation constructed from binned centroids in 2D and lifted back into high-dimensional space to diagnose NLDR behavior.
+$2\text{-}D$ NLDR layout,A two-dimensional embedding of high-dimensional data produced using a nonlinear dimension reduction (NLDR) method for visualization purposes.
+$4\text{-}D$ space,"The original feature space in which the simulated data structures are generated, consisting of four variables."
+Animation (tour),"A dynamic visualization showing a sequence of 2D projections of high-dimensional data, allowing viewers to perceive structure across multiple views."
+Attention check trial,A control trial included in the experiment to assess whether participants are paying attention and responding reliably.
+Between-cluster distance,"A measure of separation between clusters, typically based on distances between cluster centroids or boundaries."
+BW ratio (Between–Within ratio),"A cluster separation metric defined as the ratio of between-cluster dispersion to within-cluster dispersion, capturing overall separability in high-dimensional space."
+CardinalR,"An R package developed to generate controlled, high-dimensional data structures with specified geometric and clustering properties."
+Cluster,"A group of observations that are more similar to each other than to observations in other groups, based on spatial or geometric structure."
+Cluster separability,"The degree to which clusters are distinct from one another in the data space, quantified using distance-based metrics."
+Confidence rating,A self-reported measure indicating how confident a participant is in their judgment for a given trial.
+Data structure,"A simulated configuration of points in high-dimensional space with predefined geometric shapes, densities, and cluster arrangements."
+Demographics questionnaire,"A set of questions collecting background information about participants, such as age range, education level, and prior experience with dimension reduction methods."
+Embedding,A low-dimensional representation of high-dimensional data created by a dimension reduction method.
+Exponentiated scaled minimum distance,"A distance-based metric derived from the smallest distance between points on different cluster boundaries, scaled and exponentiated to emphasize small separations."
+High-dimensional data,"Data represented in a space with more than three dimensions, making direct visualization difficult."
+Hyper-parameter,"A method-specific tuning parameter (e.g., perplexity in tSNE, number of neighbors in UMAP) that influences the resulting NLDR embedding."
+Match-a-roo,"A Shiny-based web application developed to collect participant responses, confidence ratings, and demographic information for the user study."
+Motion plot,"A visualization composed of a sequence of 2D projections, creating an animated representation of high-dimensional data."
+NLDR (Nonlinear Dimension Reduction),A class of methods that project high-dimensional data into lower dimensions while preserving nonlinear structure.
+PaCMAP,A nonlinear dimension reduction method designed to preserve both local and global structure using pairwise constraints.
+Participant (subject),An individual recruited to take part in the user study and complete the evaluation trials.
+Perceptual accuracy,The extent to which participants’ judgments align with the true underlying structure of the data.
+PHATE,A nonlinear dimension reduction method that emphasizes manifold structure and gradual transitions between data points.
+Prolific,An online recruitment platform used to source participants for behavioral and perception studies.
+Scaled distance,A distance measure adjusted to account for differences in scale across simulated data structures.
+Static plot,"A single, fixed 2D visualization of an NLDR embedding."
+tSNE (t-distributed Stochastic Neighbor Embedding),"An NLDR method that prioritizes preservation of local neighborhoods, often at the expense of global structure."
+Trial,A single evaluation task in which a participant compares two visual displays and judges whether they represent the same data.
+TriMAP,A nonlinear dimension reduction method that preserves relative distances among triplets of points.
+UMAP (Uniform Manifold Approximation and Projection),An NLDR method that balances local and global structure preservation using manifold learning principles.
+Within-cluster distance,A measure of how spread out points are within a single cluster.
+High-dimensional data,"Data in which each observation is described by a large number of features (dimensions), often making direct visualization and interpretation difficult."
+Dimension reduction,A class of techniques that transform high-dimensional data into a lower-dimensional representation while attempting to preserve important structural properties.
+Linear projection,A dimension reduction approach where data points are mapped to lower dimensions using linear combinations of the original variables.
+Principal Component Analysis (PCA),A linear dimension reduction method that identifies orthogonal directions (principal components) capturing the maximum variance in the data.
+Tour,"A dynamic visualization technique that presents a continuous sequence of linear projections of high-dimensional data, allowing structure to be explored from multiple viewing angles."
+Tour methods,"Algorithms used to generate tours, implemented in R packages such as tourr, langevitour, and detourr."
+Geometric relationships,Spatial relationships among data points (such as distances and angles) in the original high-dimensional space.
+Piling,"A phenomenon in linear projections where many points overlap or concentrate near the center of the display, potentially obscuring important structure."
+Nonlinear dimension reduction (NLDR),A class of dimension reduction methods that use nonlinear mappings to reveal complex structures not visible through linear projections.
+t-SNE (t-distributed Stochastic Neighbor Embedding),An NLDR method that emphasizes preservation of local neighborhoods by matching pairwise similarity distributions between high- and low-dimensional spaces.
+UMAP (Uniform Manifold Approximation and Projection),An NLDR method that models data as a manifold and aims to preserve both local and global structure in a low-dimensional embedding.
+PHATE (Potential of Heat-diffusion for Affinity-based Trajectory Embedding),"An NLDR method based on diffusion processes, designed to capture both global geometry and continuous transitions in the data."
+TriMAP,An NLDR method that preserves relative distances among triplets of points to balance local and global structure.
+PaCMAP (Pairwise Controlled Manifold Approximation),"An NLDR method that uses different types of point pairs to control local, mid-range, and global structure preservation."
+Diffusion process,"A mathematical process modeling how information spreads across a graph or manifold, used in NLDR to capture intrinsic geometry."
+Low-dimensional representation,A reduced-dimensional embedding (typically 2D or 3D) of high-dimensional data used for visualization and interpretation.
+Hyper-parameters,"User-defined parameters that control the behavior of an NLDR algorithm (e.g., perplexity in t-SNE, number of neighbors in UMAP)."
+Structure exaggeration,"The tendency of NLDR methods to amplify apparent patterns, such as clusters or separations, in low-dimensional embeddings."
+Hallucinated structure,Patterns observed in an NLDR layout that do not correspond to true structure in the original high-dimensional data.
+Reliability of NLDR representations,The degree to which a low-dimensional embedding faithfully reflects the structure present in the high-dimensional data.
+Benchmark datasets,Standardized datasets designed to evaluate and compare the performance of analytical methods under controlled conditions.
+Perception and misperception,The ways in which viewers correctly or incorrectly interpret visual patterns in data visualizations.
+User study,"An empirical experiment involving human participants, designed to assess how people interact with and interpret visual representations."
+Cluster,"A group of observations that are more similar to each other than to observations in other groups, based on spatial or geometric properties."
+Cluster separation,"The degree of distinctness between clusters in a data space, often quantified using distance-based measures."
+Background noise,"Additional data points or dimensions that do not belong to any meaningful cluster, introduced to increase realism or difficulty."
+Quollr,An R package developed to diagnose and evaluate NLDR layouts using visual and quantitative methods.
+CardinalR,An R package designed to generate high-dimensional clustering data structures with controlled geometric and noise properties.
+MenuraR,"A Shiny web application for comparing, diagnosing, and selecting the most reasonable NLDR layouts."
+Shiny,An R framework for building interactive web applications directly from R code.
+Nonlinear dimension reduction (NLDR),"A class of methods that map high-dimensional data into a lower-dimensional space using nonlinear transformations, often to reveal structure not visible through linear projections."
+High-dimensional space ($p$-D),The original data space where each observation is represented by $p$ variables.
+Low-dimensional representation ($k$-D),"A reduced-dimensional embedding of the data, typically with $k=2$, used for visualization and interpretation."
+NLDR layout,The spatial arrangement of observations in the low-dimensional space produced by an NLDR method.
+Hyper-parameters,"User-defined parameters that control the behavior of an NLDR algorithm, such as perplexity in tSNE or the number of neighbors in UMAP."
+Hallucinated structure,Apparent patterns in an NLDR layout that do not correspond to genuine structure in the high-dimensional data.
+Multidimensional scaling (MDS),A family of dimension reduction methods that construct a low-dimensional layout by minimizing discrepancies between inter-point distances in high- and low-dimensional spaces.
+Stress function,An objective function used in MDS to quantify the mismatch between distances in the original space and the embedded space.
+Principal Component Analysis (PCA),A linear dimension reduction technique that projects data onto orthogonal directions of maximum variance.
+Linear projection,A mapping from high- to low-dimensional space using linear combinations of the original variables.
+Tour,"A dynamic visualization technique that displays a continuous sequence of linear projections, enabling exploration of high-dimensional structure from multiple perspectives."
+Model-in-the-data-space,A visualization principle in which a fitted model is overlaid directly on the observed data in the original high-dimensional space to assess model fit.
+Wireframe model,"A geometric representation of an NLDR model formed by connecting neighboring bin centroids, used to visualize the model structure in high-dimensional space."
+Aspect ratio,"The ratio of the ranges of the NLDR axes, preserved when constructing hexagonal binning grids."
+Hexagon binning (hexbinning),A spatial aggregation method that partitions the low-dimensional layout into regular hexagonal cells to reduce noise and stabilize neighborhood structure.
+Hexagon grid,A structured arrangement of hexagonal bins defined by centroids and spacing parameters used for binning NLDR layouts.
+Bin centroid,"The center point representing a hexagonal bin, either defined geometrically or computed as the mean of observations within the bin."
+Non-empty bin,A hexagonal bin containing at least one observation.
+Buffer parameter ($q$),A proportional margin added around the data range to ensure the hexagon grid fully covers the NLDR layout.
+Binning function,A mapping that assigns each observation in the $2$-D layout to its nearest hexagon centroid.
+Delaunay triangulation,"A geometric method used to connect neighboring bin centroids, preserving neighborhood relationships in both low- and high-dimensional representations."
+Neighborhood preservation,The extent to which local proximity relationships among observations are maintained between high- and low-dimensional spaces.
+Fitted values,"The high-dimensional bin centroids associated with observations, treated as model-predicted values."
+Residual,The Euclidean distance between an observation and its corresponding fitted bin centroid in high-dimensional space.
+Hexbin Error (HBE),A model-fit metric defined as the root mean squared Euclidean distance between observations and their associated bin centroids in high-dimensional space.
+Global structure,"Large-scale relationships in the data, such as overall cluster separation."
+Local structure,"Fine-scale relationships among nearby observations, such as neighborhood continuity or manifold curvature."
+Random Neighborhood Preservation (RNX) curve,A metric that quantifies neighborhood agreement across scales between high- and low-dimensional spaces.
+Area under the RNX curve (ARNX),"A summary measure of neighborhood preservation, balancing local and global structure."
+Random Triplet Accuracy (RTA),A metric assessing how well relative distances among random triplets of points are preserved in the embedding.
+Shepard diagram,A scatterplot comparing pairwise distances in the original space to distances in the embedded space.
+Spearman correlation (SC),A rank-based correlation used to assess monotonic agreement between high- and low-dimensional distances.
+Global Score (GS),A metric measuring preservation of overall geometry relative to a PCA baseline.
+Residual-based evaluation,An approach to assessing NLDR quality by examining differences between fitted model values and observed high-dimensional data.
+Prediction into $2$-D,The process of assigning new high-dimensional observations to locations in the low-dimensional layout based on nearest bin centroids.
+Low-count bin removal,The process of excluding bins with few observations to sharpen the wireframe representation.
+Standardized bin count,"The proportion of total observations contained in a bin, used to identify low-density regions."
+2NC7 data,A simulated $7$-D dataset consisting of two nonlinear clusters with different intrinsic dimensions and added noise variables.
+Intrinsic dimensionality,"The effective dimensionality of a data structure, independent of the ambient number of variables."
+Twisting,A distortion in NLDR where the fitted manifold rotates or bends excessively in high-dimensional space.
+Pancake effect,Flattening of high-dimensional structure into a thin region when visualized or modeled.
+Linked brushing,An interactive visualization technique where selecting points in one view highlights corresponding points in another.
