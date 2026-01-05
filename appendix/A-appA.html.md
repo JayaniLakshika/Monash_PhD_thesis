@@ -1,159 +1,695 @@
-# Glossary
+# Appendix to "Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space" {#sec-appendix-a}
 
 
-::: {.cell}
+
+
+
+
+::: {.cell layout-align="center"}
 
 :::
 
 
 
-::: {#tbl-glossary .cell tbl-pos='H' tbl-cap='Glossary.'}
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+## Methods and hyper-parameters used to generate layouts
+
+@tbl-fig-param contains the list of methods and hyper-parameters used for each of the layouts shown in the paper. 
+
+
+::: {#tbl-fig-param .cell layout-align="center" tbl-pos='H' tbl-cap='NLDR methods and hyper-parameters used for each Figure in the main paper.'}
 ::: {.cell-output-display}
 
 
-|Term                                                                                  |Description                                                                                                                                                                                                       |
-|:-------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|Anchor point                                                                          |The center of a hole that is removed from a dataset. Often the data mean, but can be user-defined.                                                                                                                |
-|Apex                                                                                  |The tip or pointy end of a shape (like the top of a cone or pyramid) where many points can be concentrated.                                                                                                       |
-|Archimedean spiral                                                                    |A spiral where the distance from the center increases steadily as it winds outward.                                                                                                                               |
-|Aspect ratio (NLDR aspect ratio)                                                      |The ratio of scales between components of a low-dimensional layout, used to preserve the relative geometry of an NLDR embedding when rescaling or binning.                                                        |
-|Aspect-ratioconstrained binning                                                       |A binning strategy where the number of bins in each direction is chosen to respect the aspect ratio of the NLDR layout, helping preserve geometric relationships.                                                 |
-|Average bin count                                                                     |The mean number of observations per non-empty hexagonal bin, used to summarize how densely the data are distributed across bins.                                                                                  |
-|Azimuthal angle                                                                       |The angle that controls rotation around an axis (like longitude on a globe).                                                                                                                                      |
-|Background noise                                                                      |Data points that do not belong to any meaningful cluster and may obscure or distort perceived structure in visualizations.                                                                                        |
-|Background noise                                                                      |Additional points drawn from a distribution that do not belong to any specific geometric structure or cluster, used to simulate unstructured variation in the data.                                               |
-|Ball                                                                                  |A filled-in sphere. Points occupy the whole volume, not just the surface.                                                                                                                                         |
-|Barycentric coordinates                                                               |A way of picking points uniformly inside a triangle by mixing the triangles corners with random weights.                                                                                                          |
-|Benchmark datasets                                                                    |Standard or reference datasets used to evaluate, compare, and validate the performance of analytical algorithms.                                                                                                  |
-|Benchmark structure                                                                   |A synthetic data shape used to test and compare algorithms (e.g. clustering or dimension reduction).                                                                                                              |
-|Bin centroid                                                                          |The representative point of a bin, typically defined as the geometric center of a hexagon or the mean of observations assigned to that bin.                                                                       |
-|Bin removal (low-count bin removal)                                                   |The process of excluding bins containing very few observations in order to simplify the model representation and reduce noise in the fitted wireframe.                                                            |
-|Binwidth                                                                              |A tuning parameter that controls the size of bins used in spatial aggregation methods such as hexagonal binning, affecting the resolution of summaries and error measures.                                        |
-|Blunted apex                                                                          |A tip thats flattened or rounded instead of sharp.                                                                                                                                                                |
-|Branching structure                                                                   |A connected geometric structure consisting of multiple arms or trajectories that diverge from a common origin, often used to represent bifurcation or developmental processes.                                    |
-|Browsable HTML widget                                                                 |An interactive web-based visualization component that allows linked selection, brushing, and coordinated views across multiple plots.                                                                             |
-|Brushing                                                                              |An interactive selection technique where users select a subset of points in one visualization to highlight corresponding points in linked views.                                                                  |
-|Buffer parameter                                                                      |A proportional extension added beyond the data range to ensure the binning grid fully covers the layout space and avoids boundary artifacts.                                                                      |
-|CITE-seq data                                                                         |A type of single-cell dataset that combines gene expression and protein measurements, commonly used to study cellular heterogeneity.                                                                              |
-|Cluster                                                                               |A group of data points generated from the same underlying geometric shape or distribution, representing a coherent structure in the dataset.                                                                      |
-|Clustered spheres                                                                     |A structure made of one large sphere plus several smaller spheres placed around it, each treated as a separate group.                                                                                             |
-|Clustering algorithms                                                                 |Methods used to group observations into clusters based on similarity or distance in high-dimensional space.                                                                                                       |
-|Clustering structure                                                                  |Data points that do not belong to any meaningful cluster and may obscure or distort perceived structure in visualizations.                                                                                        |
-|Cone                                                                                  |A shape that narrows toward one end. In high dimensions, its formed by shrinking hyperspherical cross-sections along one axis.                                                                                    |
-|Confirmatory factor analysis analogy                                                  |A conceptual interpretation where the NLDR layout is treated as a fitted low-dimensional model and deviations in high-dimensional space are treated as residuals.                                                 |
-|Conic spiral                                                                          |A spiral that expands outward and upward, forming a cone-like helix.                                                                                                                                              |
-|Crescent                                                                              |A curved, moon-shaped arc formed by points along part of a circle.                                                                                                                                                |
-|Cube / Hypercube                                                                      |Points filling a square (2D), cube (3D), or higher-dimensional box, either on a grid or randomly.                                                                                                                 |
-|Curvy cycle                                                                           |A closed loop that isnt a simple circle, with extra folds or oscillations.                                                                                                                                        |
-|Cylinder (curvy)                                                                      |A cylindrical shape with circular cross-sections, extended with a nonlinear bending dimension.                                                                                                                    |
-|Delaunay triangulation                                                                |A method for connecting points to define neighborhood relationships by forming triangles such that no point lies inside the circumcircle of any triangle.                                                         |
-|DiaconisFreedman rule                                                                 |A rule-of-thumb for choosing histogram or binning resolution based on sample size, here adapted to determine the number of bins in the hexagonal grid.                                                            |
-|Diagnostic framework                                                                  |A set of visual and quantitative tools designed to assess the reliability and faithfulness of dimension reduction outputs.                                                                                        |
-|Diffusion process                                                                     |A mathematical process describing how information spreads over a graph or manifold, often used in NLDR methods to capture underlying geometric structure.                                                         |
-|Dimension reduction                                                                   |A set of techniques used to transform high-dimensional data into a lower-dimensional representation, typically for visualization or interpretation, while attempting to preserve important structure in the data. |
-|Embedding                                                                             |A mapping that places observations from a high-dimensional space into a lower-dimensional space, producing a layout intended to reflect relationships present in the original data.                               |
-|Embedding prediction                                                                  |The process of assigning a new high-dimensional observation to a position in a low-dimensional layout, based on proximity to existing model components.                                                           |
-|Exponential distribution (truncated)                                                  |A distribution that produces many small values and few large ones, here limited to a fixed range.                                                                                                                 |
-|Fitted model representation                                                           |The structured surface or graph derived from a low-dimensional layout and lifted into high-dimensional space to visualize model fit.                                                                              |
-|Fitted values                                                                         |The positions implied by a model for each observation, which in the context of NLDR correspond to locations in the low-dimensional layout that can be lifted back into high-dimensional space for comparison.     |
-|Fractal (Sierpinski-like)                                                             |A self-similar pattern with repeating holes or gaps, created using a recursive rule.                                                                                                                              |
-|Gaussian cloud                                                                        |A cluster of points generated from a multivariate normal distribution, typically dense in the center and sparse at the edges.                                                                                     |
-|Gaussian noise                                                                        |Random variation drawn from a normal distribution, often added to make data more realistic.                                                                                                                       |
-|Geometric shape                                                                       |A mathematically defined structure (e.g., Gaussian, cone, sphere, cube, spiral) used as a building block for generating synthetic data.                                                                           |
-|Global structure                                                                      |Large-scale patterns in the data, such as cluster separation or overall geometry, that describe relationships across distant observations.                                                                        |
-|Grid-based structure                                                                  |Points placed in a regular, evenly spaced pattern instead of randomly.                                                                                                                                            |
-|Hallucinated structure                                                                |Apparent patterns or clusters in a low-dimensional representation that do not correspond to true structure in the original high-dimensional data, often introduced by NLDR methods.                               |
-|Helical spiral                                                                        |A corkscrew-like structure that wraps around an axis while moving forward.                                                                                                                                        |
-|Hemisphere                                                                            |Half of a sphere, created by restricting angles so points lie on only one side.                                                                                                                                   |
-|Hexagon bin start position                                                            |The location of the bottom-left hexagon centroid that anchors the hexagonal grid relative to the layout space.                                                                                                    |
-|Hexagon width and height                                                              |The horizontal and vertical spacing parameters defining the size and shape of regular hexagonal bins.                                                                                                             |
-|Hexagonal binning                                                                     |A spatial aggregation technique that divides a two-dimensional space into hexagonal cells and summarizes point density within each cell.                                                                          |
-|Hexagonal grid                                                                        |A tessellation of the plane into hexagon-shaped cells used for binning two-dimensional data, chosen for its compactness and reduced directional bias compared to rectangular grids.                               |
-|Hexbin Error (HBE)                                                                    |A quantitative measure used to assess how well a low-dimensional layout represents high-dimensional structure based on binned comparisons.                                                                        |
-|Hexbin centroid mapping                                                               |The association between a centroid in the low-dimensional layout and its corresponding representative point in high-dimensional space.                                                                            |
-|Hexbin residual                                                                       |The distance between an individual observation and its assigned bin centroid in high-dimensional space, used to quantify local model error.                                                                       |
-|High-dimensional data                                                                 |Data in which each observation is described by a large number of variables or features.                                                                                                                           |
-|High-dimensional noise                                                                |Extra dimensions added to data that introduce variability without changing the main structure.                                                                                                                    |
-|Hole (spherical / hyperspherical)                                                     |A region removed from the data in the shape of a circle, sphere, or higher-dimensional sphere.                                                                                                                    |
-|Hyper-parameters                                                                      |User-specified settings that control the behavior of an NLDR algorithm (e.g., number of neighbors, perplexity, minimum distance), which can strongly influence the resulting layout.                              |
-|Hypersphere                                                                           |The high-dimensional version of a circle (2D) or sphere (3D).                                                                                                                                                     |
-|Hypersphere                                                                           |The higher-dimensional equivalent of a circle (2D) or sphere (3D).                                                                                                                                                |
-|Inter-point distances                                                                 |Distances computed between pairs of observations in either the high-dimensional data space or the low-dimensional layout, often used to assess how well structure is preserved.                                   |
-|Interactive tuning                                                                    |The process of adjusting model parameters while visually inspecting their effects on both the low-dimensional layout and the high-dimensional data representation.                                                |
-|Inverse transformation                                                                |A nonlinear operation involving division (e.g. 1/x1/x1/x) that creates sharp curvature.                                                                                                                           |
-|Latent parameter                                                                      |An underlying variable (like an angle or index) that drives the shape of the data.                                                                                                                                |
-|Latent variable                                                                       |An underlying variable (like an angle or time index) that drives the observed structure but isnt directly observed.                                                                                               |
-|Layout                                                                                |The configuration of points in a low-dimensional space produced by a dimension reduction or embedding method, typically used for visualization and interpretation.                                                |
-|Linear optimization problem                                                           |An optimization task where constraints and objectives are linear, here used to determine the number of bins required to cover the layout space.                                                                   |
-|Linear projection                                                                     |A dimension reduction approach where high-dimensional observations are mapped into a lower-dimensional space using linear combinations of the original variables.                                                 |
-|Linear structure                                                                      |Points arranged roughly along a straight line, possibly with noise and different scales across dimensions.                                                                                                        |
-|Linked views                                                                          |Multiple coordinated visualizations where interactions in one view (such as selection or brushing) are reflected in the others.                                                                                   |
-|Local structure                                                                       |Small-scale relationships among nearby observations, often reflecting neighborhood continuity or manifold structure.                                                                                              |
-|Low-count bins                                                                        |Hexagonal bins that contain a small proportion of the total observations and may be removed during model tuning.                                                                                                  |
-|Manifold                                                                              |A low-dimensional shape (curve or surface) embedded inside a higher-dimensional space.                                                                                                                            |
-|Manifold (trigonometric)                                                              |A smooth curved structure created using sine, cosine, or other trigonometric functions.                                                                                                                           |
-|Manifold structure                                                                    |A low-dimensional geometric structure embedded within a higher-dimensional space.                                                                                                                                 |
-|Model-in-the-data-space                                                               |A visualization principle in which a fitted model is overlaid on the original data and examined directly in the data space, rather than only through model summaries or diagnostics.                              |
-|Multicluster dataset                                                                  |A dataset composed of multiple clusters, each potentially generated from a different geometric shape or distribution.                                                                                             |
-|Mbius strip                                                                           |A twisted surface with only one side and one edge, often used to test how algorithms handle non-orientable geometry.                                                                                              |
-|Neighborhood preservation                                                             |The extent to which local relationships between points in the low-dimensional layout reflect those in the original high-dimensional data.                                                                         |
-|Noise dimensions                                                                      |Additional variables added to a dataset, typically drawn from random distributions, to increase dimensionality without adding structure.                                                                          |
-|Non-empty bins                                                                        |Bins that contain at least one observation after the binning process and are therefore used in constructing the model representation.                                                                             |
-|Nonlinear dimension reduction (NLDR) techniques/ methods                              |A class of dimension reduction methods that use nonlinear mappings to represent high-dimensional data in low dimensions, often emphasizing local structure or neighborhood relationships.                         |
-|Nonlinear surface                                                                     |A warped 2D surface embedded in higher dimensions, showing bends, waves, or sharp changes.                                                                                                                        |
-|Normalized score                                                                      |A rescaled metric value that allows different evaluation measures to be compared on a common scale.                                                                                                               |
-|Orthogonal rotation                                                                   |A transformation that rotates data while preserving distances and overall shape.                                                                                                                                  |
-|Out-of-sample prediction                                                              |The ability of a method to assign new, unseen observations to positions in an existing low-dimensional representation.                                                                                            |
-|Parallel coordinate plot                                                              |A multivariate visualization technique where each variable is shown as a vertical axis and observations are represented as lines crossing these axes.                                                             |
-|Perception and misperception                                                          |How users visually interpret structure in data displays, including both correct recognition of patterns and systematic misunderstandings caused by visual distortion.                                             |
-|Piling                                                                                |A phenomenon in linear projections where many points overlap or concentrate near the center of the display, potentially hiding important variation.                                                               |
-|Polar angle                                                                           |The angle controlling vertical position on a sphere (like latitude).                                                                                                                                              |
-|Polynomial structure                                                                  |A curved pattern (quadratic or cubic) defined by polynomial relationships between variables.                                                                                                                      |
-|Pretty but wrong representation                                                       |A visually appealing low-dimensional layout that exaggerates or fabricates structure not supported by the high-dimensional data.                                                                                  |
-|Principal Component Analysis (PCA)                                                    |A widely used linear dimension reduction method that identifies orthogonal directions (principal components) capturing the maximum variance in the data.                                                          |
-|Pyramid                                                                               |A shape with a broad base that narrows toward an apex, with different possible base shapes (rectangular, triangular, star-shaped).                                                                                |
-|Radius scaling                                                                        |Changing the size of a cross-section as you move along an axis (e.g. shrinking toward a tip).                                                                                                                     |
-|Random seed                                                                           |An initial value used to control stochastic elements of an algorithm, where different seeds can lead to different NLDR layouts even with the same method and parameters.                                          |
-|Residual surface                                                                      |The spatial pattern formed by residual magnitudes when errors are mapped back onto the low-dimensional layout or visualized through projections.                                                                  |
-|Rotation                                                                              |A transformation applied to data that changes its orientation in space while preserving distances and geometric relationships.                                                                                    |
-|Rotation matrix                                                                       |A matrix that changes the orientation of data without changing distances or variance.                                                                                                                             |
-|S-curve                                                                               |A smooth, bent surface in 3D often used to test whether algorithms can unfold nonlinear structure.                                                                                                                |
-|S-curve with hole                                                                     |An S-shaped manifold with a missing spherical region, creating topological complexity.                                                                                                                            |
-|Scaling                                                                               |A transformation that adjusts the spread or magnitude of a geometric shape along one or more dimensions.                                                                                                          |
-|Scaling to unit range                                                                 |The transformation of data so that values lie within a fixed interval, commonly used to standardize distances prior to binning or optimization.                                                                   |
-|Shape generator                                                                       |A function that produces synthetic data points according to a specified geometric form and set of parameters.                                                                                                     |
-|Sphere                                                                                |The surface of a ball. Points lie only on the boundary, not inside.                                                                                                                                               |
-|Spherical spiral                                                                      |A spiral path that wraps around the surface of a sphere.                                                                                                                                                          |
-|Spins                                                                                 |The number of turns or revolutions in a spiral structure.                                                                                                                                                         |
-|Standardized bin count                                                                |The proportion of observations in a bin relative to the total sample size, used to assess bin importance and guide bin removal.                                                                                   |
-|Stress function                                                                       |An objective function used in multidimensional scaling and related methods that quantifies the mismatch between distances in the high-dimensional space and distances in the low-dimensional representation.      |
-|Structured noise                                                                      |Noise that follows smooth or patterned trends instead of being purely random.                                                                                                                                     |
-|Swiss roll                                                                            |A flat surface rolled up into a spiral in 3D, commonly used as a nonlinear manifold example.                                                                                                                      |
-|Synthetic dataset                                                                     |An artificially generated dataset designed to exhibit specific structural or statistical properties.                                                                                                              |
-|Topological complexity                                                                |Features like holes, loops, or twists that affect connectivity but not local smoothness.                                                                                                                          |
-|Trefoil knot                                                                          |A closed loop with self-crossings, forming a nontrivial knot used to test preservation of topology.                                                                                                               |
-|Trigonometric structure                                                               |A geometric pattern generated using sine and cosine functions.                                                                                                                                                    |
-|Triplet-based accuracy metrics (reversed)                                             |Evaluation measures based on relative distances between triplets of points, transformed so that lower values indicate better agreement with high-dimensional structure.                                           |
-|True model                                                                            |The underlying geometric or structural pattern assumed to generate the observed data, which dimension reduction methods aim to recover or approximate.                                                            |
-|Tuning parameters                                                                     |User-controlled settings that affect the binning configuration and model representation, such as bin counts, bin positions, and removal thresholds.                                                               |
-|Uniform Manifold Approximation and Projection (UMAP)                                  |An NLDR technique that aims to preserve both local and some global structure by modeling the data as a fuzzy topological graph.                                                                                   |
-|Uniform distribution                                                                  |All values in a given range are equally likely.                                                                                                                                                                   |
-|Uniform distribution                                                                  |All values within a range are equally likely.                                                                                                                                                                     |
-|Unsupervised learning                                                                 |A class of methods that identify patterns or structures in data without using labeled outcomes.                                                                                                                   |
-|Visualization technique                                                               |A method for graphically representing data to aid interpretation, exploration, or comparison of structures.                                                                                                       |
-|Wavy noise dimensions                                                                 |Noise variables that oscillate smoothly, often following sine or polynomial patterns.                                                                                                                             |
-|Wireframe lifting                                                                     |The process of projecting a low-dimensional grid or graph structure into high-dimensional space using representative points such as bin means.                                                                    |
-|Wireframe representation                                                              |A graphical structure composed of connected edges (often derived from a grid or neighborhood graph) used to represent a fitted low-dimensional model when lifted into high-dimensional space.                     |
-|Wireframe sharpening                                                                  |The visual effect of removing sparse bins to produce a cleaner and more interpretable wireframe representation of the fitted model.                                                                               |
-|Wrapper function                                                                      |A helper function that calls another function but simplifies inputs or outputs.                                                                                                                                   |
-|large-scale dimensionality reduction using triplets (TriMAP)                          |An NLDR method that preserves global structure by enforcing constraints based on triplets of points representing relative distances.                                                                              |
-|pairwise controlled manifold approximation (PaCMAP)                                   |An NLDR technique that balances local and global structure preservation using different types of point pairs during optimization.                                                                                 |
-|potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm |An NLDR method based on diffusion processes, designed to capture both local and global geometric structure, particularly for trajectory-like data.                                                                |
-|t-distributed stochastic neighbor embedding (tSNE)                                    |An NLDR method that focuses on preserving local neighborhood relationships by minimizing divergence between distance distributions in high- and low-dimensional spaces.                                           |
-|tour                                                                                  |A dynamic visualization technique that shows a sequence of linear projections through high-dimensional space, allowing users to explore the data structure from many different viewpoints.                        |
-|NA                                                                                    |NA                                                                                                                                                                                                                |
+|Figure |NLDR method |Hyper-parameter(s)                                               |
+|:------|:-----------|:----------------------------------------------------------------|
+|$1$a   |UMAP        |n\_neighbors = 30, min\_dist = 0.3                               |
+|$1$b   |UMAP        |n\_neighbors = 5, min\_dist = 0.8                                |
+|$1$c   |UMAP        |n\_neighbors = 5, min\_dist = 0.01                               |
+|$1$d   |tSNE        |perplexity = 5                                                   |
+|$1$e   |tSNE        |perplexity = 30                                                  |
+|$1$f   |PHATE       |knn = 5                                                          |
+|$1$g   |TriMAP      |n\_inliers = 12, n\_outliers = 4, n\_random = 3                  |
+|$1$h   |PaCMAP      |n\_neighbors = 30, init = random, MN\_ratio = 0.9, FP\_ratio = 5 |
+|$2$    |tSNE        |perplexity = 47                                                  |
+|$4$a   |tSNE        |perplexity = 47                                                  |
+|$5$b   |tSNE        |perplexity = 47                                                  |
+|$6$    |tSNE        |perplexity = 47                                                  |
+|$8$a   |tSNE        |perplexity = 47                                                  |
+|$8$b   |tSNE        |perplexity = 62                                                  |
+|$8$c   |UMAP        |n\_neighbors = 15, min\_dist = 0.1                               |
+|$8$d   |PHATE       |knn = 5                                                          |
+|$8$e   |TriMAP      |n\_inliers = 12, n\_outliers = 4, n\_random = 3                  |
+|$8$f   |PaCMAP      |n\_neighbors = 10, init = random, MN\_ratio = 0.5, FP\_ratio = 2 |
+|$10$a  |UMAP        |n\_neighbors = 30, min\_dist = 0.3                               |
+|$10$b  |UMAP        |n\_neighbors = 5, min\_dist = 0.8                                |
+|$10$c  |UMAP        |n\_neighbors = 5, min\_dist = 0.01                               |
+|$10$d  |tSNE        |perplexity = 5                                                   |
+|$10$e  |tSNE        |perplexity = 30                                                  |
+|$10$f  |PHATE       |knn = 5                                                          |
+|$10$g  |TriMAP      |n\_inliers = 12, n\_outliers = 4, n\_random = 3                  |
+|$10$h  |PaCMAP      |n\_neighbors = 30, init = random, MN\_ratio = 0.9, FP\_ratio = 5 |
+|$11$a  |UMAP        |n\_neighbors = 30, min\_dist = 0.3                               |
+|$11$e  |tSNE        |perplexity = 30                                                  |
+|$12$a  |tSNE        |perplexity = 30                                                  |
+|$12$b  |tSNE        |perplexity = 89                                                  |
+|$12$c  |UMAP        |n\_neighbors = 15, min\_dist = 0.1                               |
+|$12$d  |PHATE       |knn = 5                                                          |
+|$12$e  |TriMAP      |n\_inliers = 12, n\_outliers = 4, n\_random = 3                  |
+|$12$f  |PaCMAP      |n\_neighbors = 10, init = random, MN\_ratio = 0.5, FP\_ratio = 2 |
+|$13$a  |tSNE        |perplexity = 30                                                  |
+|$14$a  |tSNE        |perplexity = 30                                                  |
+|$A4$a  |tSNE        |perplexity = 71                                                  |
+|$A4$b  |UMAP        |n\_neighbors = 15, min\_dist = 0.1                               |
+|$A4$c  |PaCMAP      |n\_neighbors = 10, init = random, MN\_ratio = 0.5, FP\_ratio = 2 |
+|$A5$   |tSNE        |perplexity = 52                                                  |
+|$A6$a  |UMAP        |n\_neighbors = 30, min\_dist = 0.3                               |
+|$A6$b  |tSNE        |perplexity = 30                                                  |
+|$A7$a  |UMAP        |n\_neighbors = 30, min\_dist = 0.3                               |
+|$A7$b  |tSNE        |perplexity = 30                                                  |
+|$A8$a  |UMAP        |n\_neighbors = 30, min\_dist = 0.3                               |
+|$A8$b  |tSNE        |perplexity = 30                                                  |
+|$A9$a  |UMAP        |n\_neighbors = 30, min\_dist = 0.3                               |
+|$A9$b  |UMAP        |n\_neighbors = 5, min\_dist = 0.8                                |
+|$A9$c  |UMAP        |n\_neighbors = 5, min\_dist = 0.01                               |
+|$A9$d  |tSNE        |perplexity = 5                                                   |
+|$A9$e  |tSNE        |perplexity = 30                                                  |
+|$A9$f  |PHATE       |knn = 5                                                          |
+|$A9$g  |TriMAP      |n\_inliers = 12, n\_outliers = 4, n\_random = 3                  |
+|$A9$h  |PaCMAP      |n\_neighbors = 30, init = random, MN\_ratio = 0.9, FP\_ratio = 5 |
+|$A10$a |tSNE        |perplexity = 30                                                  |
+|$A10$b |tSNE        |perplexity = 89                                                  |
+|$A10$c |UMAP        |n\_neighbors = 15, min\_dist = 0.1                               |
+|$A10$d |PHATE       |knn = 5                                                          |
+|$A10$e |TriMAP      |n\_inliers = 12, n\_outliers = 4, n\_random = 3                  |
+|$A10$f |PaCMAP      |n\_neighbors = 10, init = random, MN\_ratio = 0.5, FP\_ratio = 2 |
 
 
+:::
+:::
+
+
+## Videos links
+
+Animations of the \pD{} tours that produced specific projections shown in some figures in the main paper are available on YouTube at the links given in @tbl-links.
+
+
+::: {#tbl-links .cell layout-align="center" tbl-pos='H' tbl-cap='Videos of the langevitour animations and the linked plots.'}
+::: {.cell-output-display}
+`````{=html}
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Figure </th>
+   <th style="text-align:left;"> URL </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> <a href="https://youtu.be/yHKTHK4UBiU">youtu.be/yHKTHK4UBiU</a> </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> <a href="https://youtu.be/FukiminrO90">youtu.be/FukiminrO90</a> </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> <a href="https://youtu.be/3VfK3M2gnZM">youtu.be/3VfK3M2gnZM</a>, <a href="https://youtu.be/Es84bwQcndU">youtu.be/Es84bwQcndU</a> </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:left;"> <a href="https://youtu.be/sUcGd57Swdg">youtu.be/sUcGd57Swdg</a>, <a href="https://youtu.be/QiklCjELUxo">youtu.be/QiklCjELUxo</a> </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+:::
+:::
+
+
+## Notation
+
+
+::: {#tbl-notation .cell layout-align="center" tbl-pos='H' tbl-cap='Summary of notation for describing new methodology.'}
+::: {.cell-output-display}
+
+
+|Notation         |Description                                                                                      |
+|:----------------|:------------------------------------------------------------------------------------------------|
+|$n, p, k$        |number of observations, variables, embedding dimension, respectively                             |
+|$\bm{X}, \bm{x}$ |$p$-dimensional data (population, sample)                                                        |
+|$\bm{y}$         |$k$-dimensional layout                                                                           |
+|$P$              |orthonormal basis, generating a $d\text{-}dimensional$ linear projection of $p$-dimensional data |
+|$T$              |true  model                                                                                      |
+|$g$              |functional mapping from \pD{} to \kD{}, especially as prescribed by NLDR                         |
+|$\bm{\theta}$    |(Hyper-) parameters for NLDR method                                                              |
+|$r$              |ranges of the embedding components                                                               |
+|$C^{(j)}$        |$j$-dimensional bin centers                                                                      |
+|$(b_1, b_2)$     |number of bins in each direction                                                                 |
+|$(a_1, a_2)$     |binwidths, distance between centroids in each direction                                          |
+|$(s_1, \ s_2)$   |starting coordinates of the hexagonal grid                                                       |
+|$q$              |buffer to ensure hexgrid covers data, proportion of data range, 0-1                              |
+|$m$              |number of non-empty bins                                                                         |
+|$b$              |number of  hexagons in the grid                                                                  |
+|$h$              |hexagonal id                                                                                     |
+|$l$              |side length                                                                                      |
+|$A$              |area                                                                                             |
+|$n_h$            |number of points in hexagon $h$ (bin count)                                                      |
+|$w_h$            |standardized number of points in hexagon $h$ (standardized bin counts)                           |
+
+
+:::
+:::
+
+
+## Scripts
+
+
+::: {#tbl-script-desc .cell layout-align="center" tbl-pos='H' tbl-cap='R and Python script files used to generate outputs in the main paper.'}
+::: {.cell-output-display}
+
+
+|Folder               |Script                                   |Description                                                                                                        |
+|:--------------------|:----------------------------------------|:------------------------------------------------------------------------------------------------------------------|
+|script               |additional\_functions.R                  |Helper functions to render the main paper.                                                                         |
+|script               |evaluation.py                            |Python script implementing additional evaluation metrics such as RTA and GS.                                       |
+|script               |nldr\_code.R                             |Wrapper functions for running multiple NLDR methods (UMAP, tSNE, PHATE, PaCMAP, TriMAP) with different parameters. |
+|two\_nonlinear       |01\_gen\_data.R                          |Generates the 2NC7 dataset.                                                                                        |
+|two\_nonlinear       |02\_gen\_true\_model.R                   |Creates the true structure of 2NC7 data.                                                                           |
+|two\_nonlinear       |03\_gen\_embeddings.R                    |Computes multiple NLDR embeddings for the 2NC7 data.                                                               |
+|two\_nonlinear       |04\_gen\_mse\_for\_diff\_methods.R       |Computes HBE with varying bin widths ($a_1$) for all NLDR embeddings.                                              |
+|two\_nonlinear       |05\_gen\_rm\_lwd\_mse.R                  |Computes HBE with varying low density bin cutoff for all three binwidth ($a_1$) choices.                           |
+|two\_nonlinear       |06\_gen\_model\_with\_tSNE.R             |Fits the model for the layout a.                                                                                   |
+|two\_nonlinear       |07\_example\_evaluation\_metrics.R       |Calculates evaluation metrics for all NLDR layouts.                                                                |
+|two\_nonlinear       |08\_gen\_model\_with\_PHATE.R            |Fits the model for the layout c.                                                                                   |
+|five\_gau\_clusters  |01\_five\_gaussian\_cluster\_data\_emb.R |Generates data and multiple NLDR embeddings.                                                                       |
+|five\_gau\_clusters  |02\_gen\_model\_with\_tSNE.R             |Fits the model for the layout a.                                                                                   |
+|five\_gau\_clusters  |03\_gen\_model\_with\_UMAP.R             |Fits the model for the layout b.                                                                                   |
+|five\_gau\_clusters  |04\_gen\_model\_with\_PaCMAP.R           |Fits the model for the layout c.                                                                                   |
+|c\_shaped\_dens\_str |01\_gen\_data.R                          |Generates the $2\text{-}D$ curved sheet dataset.                                                                   |
+|c\_shaped\_dens\_str |02\_gen\_embeddings\_uni\_dens.R         |Generates multiple NLDR embeddings.                                                                                |
+|c\_shaped\_dens\_str |03\_gen\_model\_with\_tSNE.R             |Fits the model for the tSNE layout.                                                                                |
+|pbmc3k               |01\_obtain\_pca\_author.R                |Obtains  author\'s PCA results.                                                                                    |
+|pbmc3k               |02\_obtain\_umap\_authors.R              |Obtains  author\'s UMAP embeddings.                                                                                |
+|pbmc3k               |03\_gen\_umap\_diff\_param.R             |Generates multiple UMAP embeddings with different hyper\-parameter values.                                         |
+|pbmc3k               |04\_gen\_tsne\_diff\_param.R             |Generates multiple tSNE embeddings with different hyper\-parameter values.                                         |
+|pbmc3k               |05\_gen\_phate.R                         |Generates a PHATE embeddings with default hyper\-parameters.                                                       |
+|pbmc3k               |06\_gen\_trimap.R                        |Generates a TriMAP embeddings with default hyper\-parameters.                                                      |
+|pbmc3k               |07\_gen\_pacmap.R                        |Generates a PaCMAP embeddings with default hyper\-parameters.                                                      |
+|pbmc3k               |08\_gen\_mse\_for\_diff\_methods.R       |Computes HBE with varying bin widths ($a_1$) for all NLDR embeddings.                                              |
+|pbmc3k               |09\_gen\_scDEED.R                        |Generates UMAP embeddings from scDEED results.                                                                     |
+|pbmc3k               |10\_pre\_process\_for\_embedding.R       |Generates PBMC3k data used for scDEED results.                                                                     |
+|pbmc3k               |11\_gen\_mse\_for\_diff\_tsne\_scD.R     |Computes HBE with varying bin widths ($a_1$) for tSNE embeddings.                                                  |
+|pbmc3k               |12\_gen\_mse\_for\_diff\_umap\_scD.R     |Computes HBE with varying bin widths ($a_1$) for UMAP embeddings.                                                  |
+|pbmc3k               |13\_gen\_model\_with\_UMAP.R             |Fits the model for the layout a.                                                                                   |
+|pbmc3k               |14\_gen\_model\_with\_tSNE.R             |Fits the model for the layout e.                                                                                   |
+|pbmc3k               |15\_gen\_model\_with\_UMAP\_scD.R        |Fits the model for the layout a.                                                                                   |
+|pbmc3k               |16\_gen\_model\_with\_tSNE\_scD.R        |Fits the model for the layout b.                                                                                   |
+|pbmc3k               |17\_evaluation\_metrics.R                |Calculates evaluation metrics for all NLDR layouts.                                                                |
+|pbmc3k               |18\_evaluation\_metrics\_scD.R           |Calculates evaluation metrics for all NLDR layouts.                                                                |
+|mnist                |01\_data\_preprocessing.R                |Computes first $10$ principal components and save data.                                                            |
+|mnist                |02\_gen\_diff\_embeddings.R              |Generates multiple NLDR embeddings.                                                                                |
+|mnist                |03\_gen\_mse\_for\_diff\_methods.R       |Computes HBE with varying bin widths ($a_1$) for all NLDR embeddings.                                              |
+|mnist                |04\_gen\_model\_with\_tSNE.R             |Fits the model for the layout a.                                                                                   |
+|mnist                |05\_evaluation\_metrics.R                |Calculates evaluation metrics for all NLDR layouts.                                                                |
+|mnist                |06\_link\_brush\_layout\_e.R             |Creates interactive linked brushing with layout e.                                                                 |
+
+
+:::
+:::
+
+
+## Generating the 2NC7 data
+
+This data is constructed by simulating two clusters, each consisting of $1000$ observations. The C-shaped cluster is generated from $\theta \sim U(\text{-}3\pi/2, 0)$, $X_1 = \sin(\theta)$, $X_2 \sim U(0, 2)$ (adding thickness to the C), $X_3 = \text{sign}(\theta) \times (\cos(\theta) - 1)$, $X_4 = \cos(\theta)$. Observations lie on a \gD{} manifold in \sD{}. The other cluster is from $X_1 \sim U(0, 2)$, $X_2 \sim U(0, 3)$, $X_3 = \text{-}(X_1^3 + X_2)$, and $X_4 \sim U(0, 2)$. It is also curved, but observations lie on a \tD{} manifold in \sD{}. Three more variables, $X_5, X_6, X_7$, that are small amounts of pure noise are added. We would consider $T=(X_1, X_2, X_3, X_4)$ to be the geometric structure (true model) that we hope to capture (@fig-true-data).
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![Two projections of the \pD{} true model overlaying the data are shown in a, b. Video of the langevitour animations is available at <https://youtu.be/35TrnYJsUUI>.](A-appA_files/figure-html/fig-true-data-1.png){#fig-true-data fig-align='center' width=100%}
+:::
+:::
+
+
+## Computing hexagon grid configurations
+
+Given range of embedding component, $r_2$, number of bins along the x-axis, $b_1$, and buffer proportion, $q$, hexagonal starting point coordinates, $s_1 = \text{-}q$, and $s_2 = \text{-}qr_2$. The purpose is to find width of the hexagon, $a_1$ and number of bins along the y-axis, $b_2$.
+
+Geometric arguments give rise to the following constraints.
+
+$\text{min }a_1 \text{ s.t.}$
+
+$$
+s_1 - \frac{a_1}{2} < 0,
+$$ {#eq-equation1}
+
+$$
+s_1 + (b_1 - 1) \times a_1 \geq 1,
+$$ {#eq-equation2}
+
+$$
+s_2 - \frac{a_2}{2} < 0,
+$$ {#eq-equation4}
+
+$$
+s_2 + (b_2 - 1) \times a_2 \geq r_2.
+$$ {#eq-equation5}
+
+
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+Since $a_1$ and $a_2$ are distances,
+
+$$
+a_1, a_2 > 0.
+$$ Also, $(s_1, s_2) \in (\text{-}0.1, \text{-}0.05)$ as these are multiplicative offsets in the negative direction.
+
+@eq-equation1 can be rearranged as,
+
+$$
+a_1 > 2s_1
+$$
+
+which given $s_1 < 0$ and $a_1 > 0$ will *always* be true. The same logic follows for @eq-equation4 and substituting $a_2 = \sqrt{3}a_1/{2}$, and $s_2 = \text{-}qr_2$ to @eq-equation4 can be written as,
+
+$$
+a_1 > -\frac{4}{\sqrt{3}}qr_2
+$$
+
+Also, substituting $a_2 = \sqrt{3}a_1/{2}$, $s_2 = \text{-}qr_2$ and rearranging @eq-equation5 gives:
+
+$$
+a_1 \geq \frac{2(r_2 + qr_2)}{\sqrt{3}(b_2 - 1)}.
+$$ {#eq-equation6}
+
+Similarly, substituting $s_1 = \text{-}q$ @eq-equation2 becomes,
+
+$$
+a_1 \geq \frac{(1 + q)}{(b_1 - 1)}.
+$$ {#eq-equation7}
+
+This is a linear optimization problem. Therefore, the optimal solution must occur on a vertex. So, by setting @eq-equation6 equals to @eq-equation7 gives,
+
+$$
+\frac{2(r_2 + qr_2)}{\sqrt{3}(b_2 - 1)} = \frac{(1 + q)}{(b_1 - 1)}.
+$$ 
+
+After rearranging this,
+
+$$
+b_2 = 1 + \frac{2r_2(b_1 - 1)}{\sqrt{3}}
+$$
+
+and since $b_2$ should be an integer,
+
+$$
+b_2 = \Big\lceil1 +\frac{2r_2(b_1 - 1)}{\sqrt{3}}\Big\rceil.
+$$ {#eq-equation8}
+
+Furthermore, with known $b_1$ and $b_2$, by considering @eq-equation2 or @eq-equation5 as the *binding* or *active constraint*, can compute $a_1$.
+
+If @eq-equation2 is active, then,
+
+$$
+\frac{(1 + q)}{(b_1 - 1)} < \frac{2(r_2 + qr_2)}{\sqrt{3}(b_2 - 1)}.
+$$
+
+Rearranging this gives,
+
+$$
+r_2 > \frac{\sqrt{3}(b_2 - 1)}{2(b_1 - 1)}.
+$$
+
+Therefore, if this equality is true, then 
+$$
+a_1 = \frac{(1+q)}{(b_1 - 1)},
+$$
+otherwise, 
+$$
+a_1 = \frac{2r_2(1+q)}{\sqrt{3}(b_2 - 1)}.
+$$
+
+## Binning the data
+
+Points are assigned to the bin they fall into based on the nearest centroid. If a point is equidistant from multiple centroids, it is assigned to the centroid with the smallest bin ID.
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![Binning the data. Points are assigned to the nearest centroid. If a point is equidistant from multiple centroids, assigned to the centroid with the smallest bin ID.](A-appA_files/figure-html/fig-assign-data-1.png){#fig-assign-data fig-align='center' fig-pos='!ht' width=100%}
+:::
+:::
+
+
+## Area of a hexagon
+
+The area of a hexagon is defined as $A = 3\sqrt{3}l^2/2$, where $l$ is the side length of the hexagon. $l$ can be computed using $a_1$ and $a_2$.
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![The components of the right triangle illustrating notation.](A-appA_files/figure-html/fig-tri-param-1.png){#fig-tri-param fig-align='center' fig-pos='!ht' width=30%}
+:::
+:::
+
+
+By applying the Pythagorean theorem, we obtain,
+
+$$
+l^2 = \left(\frac{a_1}{2}\right)^2 + \left(\frac{a_2 - l}{2}\right)^2.
+$$
+Next, rearranging the terms, we get,
+
+$$
+l^2 - \left(\frac{a_2 - l}{2}\right)^2 = \left(\frac{a_1}{2}\right)^2,
+$$
+
+$$
+\left[l - \left(\frac{a_2 - l}{2}\right)\right]\left[l + \left(\frac{a_2 - l}{2}\right)\right] = \left(\frac{a_1}{2}\right)^2,
+$$
+
+$$
+3l^2 + 2a_2l - (a_1^2 + a_2^2) = 0.
+$$
+
+Finally, by solving the quadratic equation, we compute,
+
+$$
+l = \frac{-2a_2 \pm \sqrt{4a_2^2 - 24[-(a_1^2 + a_2^2)]}}{6},
+$$
+
+$$
+l = \frac{-a_2 \pm \sqrt{a_2^2 - 6[-(a_1^2 + a_2^2)]}}{3},
+$$
+
+where $l > 0$.
+
+## Curiosities about NLDR results discovered by examining the model in the data space {#sec-curiosities}
+
+With the drawing of the model in the data, several interesting differences between NLDR methods can be observed.
+
+### Some methods appear to order points in the layout
+
+The \gD{} model representations generated from some NLDR methods, especially PaCMAP, are unreasonably flat or like a pancake. A simple example of this can be seen with data simulated to contain five \fD{} Gaussian clusters. Each cluster is essentially a ball in \fD{}, so there is no \gD{} representation, rather the model in each cluster should resemble a crumpled sheet of paper that fills out \fD{}.
+
+@fig-five-gau-projs a1, b1, c1 show the \gD{} layouts for (a) tSNE, (b) UMAP, and (c) PaCMAP, respectively. The default hyper-parameters for each method are used. In each layout we can see an accurate representation where all five clusters are visible, although with varying degrees of separation.
+
+The models are fitted to each these layouts. @fig-five-gau-projs a2, b2, c2 show the fitted models in a projection of the \fD{} space, taken from a tour. These clusters are fully \fD{} in nature, so we would expect the model to be a *crumpled sheet* that stretches in all four dimensions. This is what is mostly observed for tSNE and UMAP. The curious detail is that the model for PaCMAP is closer to a *pancake* in shape in every cluster! This single projection only shows this in three of the five clusters but if we examine a different projection the other clusters exhibit the pancake also. While we don't know what exactly causes this, it is likely due to some ordering of points in the \gD{} PaCMAP layout that induces the flat model. One could imagine that if the method used principal components on all the data, that it might induce some ordering that would produce the flat model. If this were the reason, the pancaking would be the same in all clusters, but it is not: The pancake is visible in some clusters in some projections but in other clusters it is visible in different projections. It might be due to some ordering by nearest neighbors in a cluster. The PaCMAP documentation doesn't provide any helpful clues. That this happens, though, makes the PaCMAP layout inadequate for representing the high-dimensional data. 
+
+<!--Projections-->
+<!--five_gau_clusters/02_gen_model_with_tSNE.R-->
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+<!--five_gau_clusters/03_gen_model_with_UMAP.R-->
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+<!--five_gau_clusters/04_gen_model_with_PaCMAP.R-->
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![NLDR's organize points in the \gD{} layout in different ways, possibly misleadingly, illustrated using three layouts: (a) tSNE, (b) UMAP, (c) PaCMAP. The data has five Gaussian clusters in \fD{}. The bottom row of plots shows a \gD{} projection from a tour on \fD{} revealing the differences generated by the layouts on the model fits.  We would expect the model fit to be like that in (a2) where it is distinctly is separate for each cluster but like a hairball in each. This would indicate the distinct clusters, each being fully \fD{}. With (c2), the curiousity is that the model is a \gD{} pancake shape in \fD{}, indicating that there is some ordering of points done by PaCMAP, posisbly along some principal component axes. Videos of the langevitour animations are available at <https://youtu.be/I-kxCwVfqiQ>, <https://youtu.be/gD1P01FUPyU>, and <https://youtu.be/MxJ_srOFQNk> respectively.](A-appA_files/figure-html/fig-five-gau-projs-1.png){#fig-five-gau-projs fig-align='center' fig-pos='!ht' width=100%}
+:::
+:::
+
+
+### Sparseness creates a contracted \gD{} layout {#sec-effect-dens}
+
+Differences in density can arise by sampling at different rates in different subspaces of \pD{}. For example, the data shown in @fig-one-dens_clust-error all lies on a \gD{} curved sheet in \fD{}, but one end of the sheet is sampled densely and the other very sparsely. It was simulated to illustrate the effect of the density difference on layout generated by an NLDR, illustrated using the tSNE results, but it happens with all methods. 
+
+@fig-one-dens_clust-error (a2, b2) shows a \gD{} layout for tSNE created using the default hyper-parameters. One would expect to see a rectangular shape if the curved sheet is flattened, but the layout is triangular. The other two displays show the residuals as a dot density plot (a1, b1), and a \gD{} projection of the data and the model from \fD{} (a3, b3). Using linked brushing between the plots, we can highlight points in the tSNE layout, and examine where they fall in the original \fD{}. The darker (maroon) points indicate points that have been highlighted by linking. In row a, the points at the top of the triangle are highlighted, and we can see these correspond to higher residuals, and also to all points at the low density end of the curved sheet. In row b, points at the lower left side of the triangle are highlighted which corresponds to smaller residuals and one corner of the sheet at the high density end of the curved sheet. 
+
+The tSNE behaviour is to squeeze the low density area of the data together into the layout. This is common in other NLDR methods also, which means analysts need to be aware that if their data is not sampled relatively uniformly, apparent closeness in the \gD{} may correspond to sparseness in \pD{}.
+
+<!--c_shaped_dens_str/03_gen_model_with_tSNE.R-->
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![Exploring the effect of density on the NLDR layout using a \gD{} curved sheet in \fD{} with different density at each end. Three plots are linked: density plot of residuals (a1, b1), NLDR layout (a2, b2), projection of \fD{} model and data (a3, b3). The brown points indicate the selected set, which are different in each row. In (a2), the top part of the triangular shape is selected which corresponds to higher residuals (a1) and the sparse end of the structure (a3). In (b2) one of other corners is highlighted, which can be seen to correspond to low residuals (b1) and one side of the dense end of the data (b3). While the tSNE layout represents the dense end of the sheet correctly as two corners in the layout, it contracts the sparse end of the sheet into a single corner. Video of the langevitour animation is available at <https://youtu.be/-KsQH0rII2A>.](A-appA_files/figure-html/fig-one-dens_clust-error-1.png){#fig-one-dens_clust-error fig-align='center' fig-pos='!ht' width=100%}
+:::
+:::
+
+
+
+## PBMC3k: comparison with results of scDEED recommendations
+
+<!-- ### Comparison with results of scDEED recommendations -->
+
+<!-- XXX What this section needs: -->
+
+<!-- - connect this with previous section, not make it seem like a completely new. connections are: nldr used to show clustering, scDEED provides a different approach to decide which is best. -->
+<!-- - why these two? assume one is the published figure, and second is one recommended by scDEED, which our results confirm is better. -->
+<!-- - Refer to figure in text -->
+<!-- - Fig 16 not necessary -->
+
+<!-- CHANGES WERE MADE BASED ON THIS THINKING -->
+
+
+
+<!-- <!-- In the field of single-cell studies, clustering is a common analytical task used to identify groups of cells with similar expression profiles. Non-linear dimensional reduction (NLDR) methods are frequently employed to visualize these clusters and help validate the results. However, it is well known that the 2D embeddings produced by t-SNE and UMAP may not accurately reflect the similarities among cell clusters. ALREADY STATED IN PREVIOUS SECTION -->  
+
+As we were writing this paper @xia2023 appeared proposing a new method called scDEED helping to assess the validity of a \gD{} embedding. scDEED calculates a reliability score for each cell embedding based on the similarity between the cell’s \gD{} embedding neighbors and its neighbors prior to embedding. A low reliability score suggests a dubious embedding. It can help in the deciding on optimal hyper-parameters. Here we illustrate how our method compares with the results from scDEED.
+
+Note that @xia2023 uses a different PBMC dataset than that used by @chen2024, shown by us in the main paper example, which is why this comparison is shown here and not in the main paper. Their data contains $31,021$ cells including cell type labels, and the gene expression levels were in the unit of log-transformed UMI count per $10,000$. They focused on three sequencing methods (inDrops, DropSeq, and SeqWell) and four common cell types Cytotoxic T cell, CD4+T cell, CD14+ Monocyte, and B cell. Pre-processing follows the process in @xia2023 again using the Human Peripheral Blood Mononuclear Cells (PBMC) data. 
+
+For illustration purposes, we only selected cells generated with inDrops ($n=5858$ cells). Also, @xia2023 used first $9$ principal components to generate the UMAP and tSNE with default hyper-parameters. The objective is to what scDEED suggests is the best layout with what HBE would choose. Layout a (@fig-pbmc-mse-umap) is generated from the hyper-parameters suggested by @chen2024, and layout b (@fig-pbmc-mse-umap) is with suggested hyper-parameters by scDEED to be more accurate. <!--Layouts a and b contain $46$ and $83$ dubious cells respectively.--> The HBE vs binwidth ($a_1$) plot (@fig-pbmc-mse-umap) illustrates that our approach would suggest that scDEED is correct here, that layout b is more accurately reflecting the cluster structure in the PBMC data. This is also supported by examining the models in the data space as shown in @fig-model-pbmc-author-proj.
+
+<!-- @fig-pbmc-mse-umap compares the metrics rARNX, rRTA, rSC, rGS, along with HBE computed on $a_1=0.04$. This is a parallel coordinate plot where the y-axis shows a normalized score to ensure the metrics are on the same scale. Each line corresponds to one layout. Most metrics (rSC, rARNX, and HBE) consistently indicate that the optimized layout (b) provides a better representation, while rRTA, and rGS slightly favor the published layout. -->
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+<!--pbmc3k/11_gen_mse_for_diff_tsne_scD.R-->
+<!--pbmc3k/11_gen_mse_for_diff_umap_scD.R-->
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![Comparing the published layout (a) with what would be suggested to be optimal by scDEED (b), using HBE for varying (i) binwidth ($a_1$), and (ii) average bin count ($\bar{n}_h$), on a subset of PBMC3k data. Color represents NLDR layouts. HBE would corroborate that the scDEED optimized layout is better than what was originally published. Plot (ii), which accounts for the density within clusters by using average bin count, shows reduced differences between layouts, indicating that part of the variation in (i) is driven by cluster density rather than true structural differences. Comparison of scaled evaluation metrics (iii) (rRTA, rSC, rGS, rARNX, and HBE using $a_1=0.04$) for two NLDR layouts of the PBMC3k data the originally published layout (a) and the scDEED optimized layout (b). Each line represents a layout, with color matching the corresponding scatterplots. Most metrics (rSC, rARNX, and HBE) consistently indicate that the optimized layout (b) provides a better representation, while rRTA, and rGS slightly favor the published layout.](A-appA_files/figure-html/fig-pbmc-mse-umap-1.png){#fig-pbmc-mse-umap fig-align='center' fig-pos='!ht' width=100%}
+:::
+:::
+
+
+<!--pbmc3k/15_gen_model_with_UMAP_scD.R-->
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+<!--pbmc3k/16_gen_model_with_tSNE_scD.R-->
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![Compare the published \gD{} layout (@fig-pbmc-mse-umap a) made with UMAP and the \gD{} layout made with tSNE selected as optimal by scDEED (@fig-pbmc-mse-umap b) and also HBE (@fig-pbmc-mse-umap). The two plots on the right show projections from a tour, with the models overlaid. The published layout a suggested three separated clusters with two of them are close, but this is not present in the data. While there may be three clusters they are not well-separated. The difference in model fit also indicates this: the published layout a does not capture the nonlinear structure of the clusters like the model generated from layout b. This supports the choice that layout b is the better representation of the data, because it shows close clusters. Videos of the langevitour animations are available at <https://youtu.be/ffiB4MGWyn8> and <https://youtu.be/e7XNL18co1c> respectively.](A-appA_files/figure-html/fig-model-pbmc-author-proj-1.png){#fig-model-pbmc-author-proj fig-align='center' fig-pos='!ht' width=90%}
+:::
+:::
+
+
+## Compare HBE with existing evaluation metrics
+
+@fig-comp-metric-pbmc and @fig-comp-metric-mnist compare HBE with commonly used evaluation metrics such as rRTA, rARNX, rSC, and rGS across multiple NLDR layouts. These visual comparisons highlight that HBE behaves differently from these existing metrics due to the different settings involved.
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![Comparison of scaled evaluation metrics (rRTA, rSC, rGS, rARNX, and HBE with $a_1 = 0.06$) for the eight NLDR layouts computed on the PBMC3k data, shown as a parallel coordinate plot. The color of each line corresponds to a NLDR layout. All, except rGS and rARNX agree that layout e is best or very close to best. Layout d is best according to HBE and rARNX but considered to be much less optimal by rRTA, rSC and rGS. Layout f is considered poor by rARNX and HBE. Layout a is cosidered close to the best by rGS and rSC.](A-appA_files/figure-html/fig-comp-metric-pbmc-1.png){#fig-comp-metric-pbmc fig-align='center' fig-pos='!ht' width=100%}
+:::
+:::
+
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![Comparison of scaled evaluation metrics (rARNX, rRTA, rSC, rGS, and HBE using $a_1=0.04$) for six NLDR layouts computed on the MNIST digit 1 data using a parallel coordinate plot. Each line represents a layout (a–f), with colors corresponding to the scatterplots shown on the right. The metrics display different ranking patterns, indicating that no single measure fully captures embedding quality. Layout a is identified as the best according to HBE and rRTA, but is considered much less optimal by rARNX, rSC, and rGS. Layout e is considered the worst, or close to the poorest, by all metrics. Layouts a and f show similar patterns of agreement across metrics, except for rRTA, where layout a performs the best and layout f the worst. Layout c is the worst in rARNX, rSC, and HBE.](A-appA_files/figure-html/fig-comp-metric-mnist-1.png){#fig-comp-metric-mnist fig-align='center' fig-pos='!ht' width=100%}
 :::
 :::
 

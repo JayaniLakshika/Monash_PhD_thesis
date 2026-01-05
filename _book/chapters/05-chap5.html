@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>5&nbsp; Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study – New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Nonlinear Dimension Reduction Layouts of High-Dimensional Data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/06-chap6.html" rel="next">
+<link href="../chapters/04-chap4.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7d60fad984a4391ca7fd423b65835770.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6bfa1c4240d960a1d3852aa95d00af59.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link href="https://fonts.googleapis.com/css?family=Fira+Sans|Merriweather|Source%20Code%20Pro" rel="stylesheet">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+</head>
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/05-chap5.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Nonlinear Dimension Reduction Layouts of High-Dimensional Data</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/tree/master/Thesis/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Nonlinear-Dimension-Reduction-Layouts-of-High-Dimensional-Data.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Front matter</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../preliminaries/abstract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Abstract</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../preliminaries/acknowledgements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/01-chap1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/02-chap2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Choosing Better NLDR Layouts by Evaluating the Model in the High-Dimensional Data Space</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/03-chap3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">quollr: An R Package for Visualizing <span class="math inline">2\text{-}D</span> Models from Nonlinear Dimension Reductions in High-Dimensional Space</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/04-chap4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">cardinalR: Generating Interesting High-Dimensional Data Structures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/05-chap5.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/06-chap6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">menuraR: An R Shiny App to Help Select the Best Nonlinear Dimension Reduction Representation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/07-chap7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Conclusion and future plans</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../refs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/A-appA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Appendix to “Choosing Better NLDR Layouts by Evaluating the Model in the High-dimensional Data Space”</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/B-appB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Appendix to “Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study”</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/C-appC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Glossary</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title"><b>Sections</b></h2>
+   
+  <ul class="collapse">
+<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">5.1</span> Introduction</a></li>
+  <li><a href="#sec-background" id="toc-sec-background" class="nav-link" data-scroll-target="#sec-background"><span class="header-section-number">5.2</span> Background</a></li>
+  <li><a href="#sec-experiment" id="toc-sec-experiment" class="nav-link" data-scroll-target="#sec-experiment"><span class="header-section-number">5.3</span> Method</a></li>
+  <li><a href="#sec-results" id="toc-sec-results" class="nav-link" data-scroll-target="#sec-results"><span class="header-section-number">5.4</span> Results</a></li>
+  <li><a href="#sec-limitations" id="toc-sec-limitations" class="nav-link" data-scroll-target="#sec-limitations"><span class="header-section-number">5.5</span> Limitations</a></li>
+  <li><a href="#sec-exp-conclusion" id="toc-sec-exp-conclusion" class="nav-link" data-scroll-target="#sec-exp-conclusion"><span class="header-section-number">5.6</span> Conclusions</a></li>
+  <li><a href="#supplementary-materials" id="toc-supplementary-materials" class="nav-link" data-scroll-target="#supplementary-materials"><span class="header-section-number">5.7</span> Supplementary Materials</a></li>
+  <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments"><span class="header-section-number">5.8</span> Acknowledgments</a></li>
+  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/chapters/05-chap5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-second-paper" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><p>Nonlinear dimension reduction (NLDR) methods such as tSNE, UMAP, PHATE, TriMAP, and PaCMAP are commonly used to visualize high-dimensional data, yet their effectiveness for human perception of structure remains unclear. In particular, <span class="math inline">2\text{-}D</span> NLDR layouts can be difficult to interpret when clusters differ in shape, number of points, and separation. This study evaluates how well NLDR methods preserve perceptually meaningful cluster structure using a controlled simulation and a human recognition experiment. We generated three-cluster data with distinct geometries and unequal sizes using the <code>cardinalR</code> package, varying inter-cluster separation. Participants decided whether a <span class="math inline">2\text{-}D</span> NLDR layout and a tour represented the same high-dimensional data. Cluster separability was quantified using both global and local measures, including the between-to-within (BW) ratio and the exponential scaled minimum inter-cluster distance. The results show clear differences across methods. UMAP and PaCMAP benefit from increased separation, leading to higher identification accuracy, while TriMAP shows a weaker trend. In contrast, tSNE and PHATE often distort global structure, resulting in persistent misidentification. These findings highlight the need to assess NLDR methods based on how effectively their visualizations support human perception of high-dimensional structure.</p>
+<section id="introduction" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="introduction">
+<span class="header-section-number">5.1</span> Introduction</h2>
+<p>Nonlinear dimension reduction (NLDR) is popular for making a suitable <span class="math inline">2\text{-}D</span> representation of high-dimensional (<span class="math inline">p\text{-}D</span>) data by applying nonlinear transformations. Recently developed methods include t-distributed stochastic neighbor embedding (tSNE) <span class="citation" data-cites="laurens2008">(<a href="../refs.html#ref-laurens2008" role="doc-biblioref">Maaten and Hinton 2008</a>)</span>, uniform manifold approximation and projection (UMAP) <span class="citation" data-cites="leland2018">(<a href="../refs.html#ref-leland2018" role="doc-biblioref">McInnes et al. 2018</a>)</span>, potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm <span class="citation" data-cites="moon2019">(<a href="../refs.html#ref-moon2019" role="doc-biblioref">Moon et al. 2019</a>)</span>, large-scale dimensionality reduction Using triplets (TriMAP) <span class="citation" data-cites="amid2022">(<a href="../refs.html#ref-amid2022" role="doc-biblioref">Amid and Warmuth 2022</a>)</span>, and pairwise controlled manifold approximation (PaCMAP) <span class="citation" data-cites="yingfan2021">(<a href="../refs.html#ref-yingfan2021" role="doc-biblioref">Wang et al. 2021</a>)</span>. However, in different data structures, the <span class="math inline">2\text{-}D</span> representation generated can vary dramatically from what is observed in <span class="math inline">p\text{-}D</span> (<a href="#fig-nldr-layouts" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>).</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-nldr-layouts" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-nldr-layouts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-chap5_files/figure-html/fig-nldr-layouts-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nldr-layouts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: A <span class="math inline">2\text{-}D</span> tSNE layout (left) and four <span class="math inline">2\text{-}D</span> projections (a1–a4) of the same <span class="math inline">4\text{-}D</span> data. The data consist of three main structures: a star-shaped, a curvilinear, and a Gaussian-shaped clusters. While the tour consistently show the star-shaped cluster as a single coherent group, the <span class="math inline">2\text{-}D</span> tSNE layout fragments this structure into several smaller clusters. This illustrates how NLDR may distort global structure, making the same <span class="math inline">4\text{-}D</span> cluster appear as multiple clusters in the <span class="math inline">2\text{-}D</span> layout.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>The dilemma for the analyst is then understanding <strong>why viewers misidentify the data displayed in the <span class="math inline">2\text{-}D</span> NLDR layout and high-dimensional view when the inter-cluster distance vary</strong>. The research described here provides evidence through a cognitive perception experiment.</p>
+<p>The chapter is organized as follows. <a href="#sec-background" class="quarto-xref"><span>Section 5.2</span></a> provides a summary of the literature on NLDR, high-dimensional data, and visualization methods. <a href="#sec-experiment" class="quarto-xref"><span>Section 5.3</span></a> describes the experiment designed to examine people’s perception to assess how viewers recognize structure differently from a <span class="math inline">2\text{-}D</span> NLDR layout and the tour view. <a href="#sec-results" class="quarto-xref"><span>Section 5.4</span></a> discusses the collected data, results, and reasons for misperception. Limitations are provided in <a href="#sec-limitations" class="quarto-xref"><span>Section 5.5</span></a>. A discussion of the presented work, and ideas for future directions are described in <a href="#sec-exp-conclusion" class="quarto-xref"><span>Section 5.6</span></a>.</p>
+</section><section id="sec-background" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="sec-background">
+<span class="header-section-number">5.2</span> Background</h2>
+<p>Historically, <span class="math inline">2\text{-}D</span> representations of <span class="math inline">p\text{-}D</span> data have been obtained through techniques based on multidimensional scaling (MDS) <span class="citation" data-cites="kruskal1964">(<a href="../refs.html#ref-kruskal1964" role="doc-biblioref">Kruskal 1964</a>)</span>, including principal component analysis (PCA) (for an overview see <span class="citation" data-cites="jolliffe2011">Jolliffe (<a href="../refs.html#ref-jolliffe2011" role="doc-biblioref">2011</a>)</span>). These methods aim to construct a <span class="math inline">2\text{-}D</span> layout that preserves pairwise distances between observations in the original space by minimizing a stress function. Variants such as non-metric scaling <span class="citation" data-cites="saeed2018">(<a href="../refs.html#ref-saeed2018" role="doc-biblioref">Saeed et al. 2018</a>)</span> and isomap <span class="citation" data-cites="silva2002">(<a href="../refs.html#ref-silva2002" role="doc-biblioref">Silva and Tenenbaum 2002</a>)</span> extend this approach to capture nonlinear relationships. Challenges inherent to high-dimensional data visualization such as distance concentration and interpretability are well recognized <span class="citation" data-cites="johnstone2009">(<a href="../refs.html#ref-johnstone2009" role="doc-biblioref">Johnstone and Titterington 2009</a>)</span>.</p>
+<p>Several NLDR methods have since become popular for generating <span class="math inline">2\text{-}D</span> representations that aim to preserve either local or global structures of <span class="math inline">p\text{-}D</span> data. Examples include tSNE, UMAP, PHATE, TriMAP, and PaCMAP. Each method uses different underlying principles. For example, tSNE and PHATE emphasize local relationships, while TriMAP and PaCMAP are designed to better capture global structure. As a result, these methods can produce very different <span class="math inline">2\text{-}D</span> layouts of the same data, potentially leading to misinterpretation of structures such as cluster separation.</p>
+<p>An alternative to NLDR for visualizing <span class="math inline">p\text{-}D</span> data is to use linear projections. PCA is the classical approach, producing new variables as linear combinations of the original dimensions. While PCA provides a single static projection that maximizes variance, tours introduced by <span class="citation" data-cites="As85">Asimov (<a href="../refs.html#ref-As85" role="doc-biblioref">1985</a>)</span> extend this idea by generating smooth sequences of linear projections, effectively creating a movie of the data viewed from multiple directions. Tours can reveal structure that may be hidden in any single projection by continuously changing the viewing angle through high-dimensional space. Many tour algorithms have since been developed and are implemented in the R package <code>tourr</code> <span class="citation" data-cites="wickham2011">(<a href="../refs.html#ref-wickham2011" role="doc-biblioref">Wickham et al. 2011</a>)</span>, with interactive variants available in <code>langevitour</code> <span class="citation" data-cites="harisson2024">(<a href="../refs.html#ref-harisson2024" role="doc-biblioref">Harrison 2023</a>)</span> and <code>detourr</code> <span class="citation" data-cites="casper2025">(<a href="../refs.html#ref-casper2025" role="doc-biblioref">Hart and Wang 2025</a>)</span>. Tours are valuable because they preserve the true linear geometry of the data unlike NLDR methods, they do not warp distances or angles. This makes them faithful but sometimes visually cluttered representations: global structure can obscure local detail, and the phenomenon of piling <span class="citation" data-cites="laa2022">(<a href="../refs.html#ref-laa2022" role="doc-biblioref">Laa et al. 2022</a>)</span>, where high-dimensional points project toward the center, can make clusters harder to distinguish.</p>
+<p>To assess how well NLDR methods preserve structures such as cluster separation, it is important to quantify inter-cluster distances. A variety of distance-based metrics have been proposed in the clustering and visualization literature <span class="citation" data-cites="tadeusz1974 peter1987 david1979">(<a href="../refs.html#ref-tadeusz1974" role="doc-biblioref">Calinski and Harabasz 1974</a>; <a href="../refs.html#ref-david1979" role="doc-biblioref">Davies and Bouldin 1979</a>; <a href="../refs.html#ref-peter1987" role="doc-biblioref">Rousseeuw 1987</a>)</span>, including minimum, maximum, and average distances between clusters, centroid distances, and ratios that combine between- and within-cluster variation. In this study, we focus on two distance measures: the between-to-within (BW) ratio, which captures global separability, and the minimum distance between clusters, which reflects the closest approach of any two clusters. Together, these provide interpretable summaries of both overall and local cluster separation while accounting for within-cluster variability.</p>
+<p>The objective of this research is to study how users perceive and sometimes misperceive clustering structure when viewing a <span class="math inline">2\text{-}D</span> NLDR layout alongside a tour of the same high-dimensional data, generated using <code>langevitour</code>. We focus on how perceived structure changes as cluster separation increases, quantified through the BW ratio and the minimum inter-cluster distance. These findings will help identify common misperceptions that can arise when analysts rely solely on <span class="math inline">2\text{-}D</span> NLDR layouts, highlighting the need for careful diagnostics to verify whether perceived structures reflect the true high-dimensional patterns. This can help guide better ways to interpret and report what these visualizations are showing.</p>
+</section><section id="sec-experiment" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="sec-experiment">
+<span class="header-section-number">5.3</span> Method</h2>
+<section id="what-is-a-2text-d-nldr-plot" class="level3"><h3 class="anchored" data-anchor-id="what-is-a-2text-d-nldr-plot">What is a <span class="math inline">2\text{-}D</span> NLDR plot?</h3>
+<p>The <span class="math inline">2\text{-}D</span> representation of the <span class="math inline">p\text{-}D</span> data constructed to preserve as much information, like clustering and nonlinear relationships, as possible. There are various commonly used techniques for creating this <span class="math inline">2\text{-}D</span> representation, including tSNE, and UMAP. These methods aim to identify a low-dimensional structure that captures the most important patterns or relationships in the data, allowing for visualization and easier interpretation. However, it is important to note that <span class="math inline">2\text{-}D</span> embeddings can lose some information from the <span class="math inline">p\text{-}D</span> data, as they necessarily involve a loss of dimensionality.</p>
+</section><section id="what-is-a-tour" class="level3"><h3 class="anchored" data-anchor-id="what-is-a-tour">What is a tour?</h3>
+<p>The tour shows a sequence of two-dimensional linear projections of the <span class="math inline">p\text{-}D</span> data. It is similar to looking at shadows of a <span class="math inline">3\text{-}D</span> object, and trying to infer the shape of the <span class="math inline">3\text{-}D</span> object. Looking at linear projections of <span class="math inline">p\text{-}D</span> data is like looking at the shadows, and one hopes to gain a sense of what shapes exist in the data. For example, if the data separates into clusters in any of the projections, it means that there are clusters in the data in the high dimensions. If the data shows a nonlinear or curvilinear shape it means that there are nonlinear associations between some variables. If the data collapses to roughly a line it means that it lives in a lower dimensional space than the number of high dimensions. If the points moving differently from others, there are outliers or unusual observations in the high dimensions.</p>
+</section><section id="what-is-being-tested" class="level3"><h3 class="anchored" data-anchor-id="what-is-being-tested">What is being tested?</h3>
+<p>We are generally interested in testing whether “The two plots displays the same data” (<span class="math inline">H_0</span>) against the broad alternative “The two plots do not display the same data” (<span class="math inline">H_a</span>).</p>
+<p>Testing this broad null hypothesis (<span class="math inline">H_0</span>) is practically challenging due to the variety of data structures involved. It can be both time-consuming and computationally intensive. Therefore, we focused on one data structure that is particularly useful for investigation: three clusters where two clusters are close together, while one is more distant. Three clusters have different shapes and each cluster contain different number of points. The sample size is <span class="math inline">7500</span>.</p>
+<p>Our hypothesis is as follows:</p>
+<p><span class="math inline">H_{0m1}</span>: The distance between the clusters has no effect on the probability of correctly identifying the <span class="math inline">2\text{-}D</span> NLDR plot generated by NLDR method <span class="math inline">m</span> and the tour from the same data. Vs <span class="math inline">H_{1m1}</span>: The distance between the clusters does have an effect on the probability of correctly identifying the <span class="math inline">2\text{-}D</span> NLDR plot generated by NLDR method <span class="math inline">m</span> and the tour from the same data.</p>
+<p>This study aims to answer which NLDR methods are more accurate in identifying the same data structure in the <span class="math inline">2\text{-}D</span> NLDR plot and the tour, as the distance increases, and to identify which types of data structure components are more prone to misidentification across methods.</p>
+</section><section id="data-generation" class="level3"><h3 class="anchored" data-anchor-id="data-generation">Data generation</h3>
+<p>For non-attention check attempts, <span class="math inline">28</span> data structures are generated, while only two data structures are generated for attention check attempts. Before being presented to participants, the data is <em>scaled</em>.</p>
+<section id="non-attention-check-data" class="level4"><h4 class="anchored" data-anchor-id="non-attention-check-data">Non-attention check data</h4>
+<p>For the experiment, three cluster data are generated. The three clusters contain different number of points and shapes. Let <span class="math inline">C_1, C_2,</span> and <span class="math inline">C_3</span> denote the centroids of three clusters. The pairwise distances between these centroids are calculated as: <span class="math inline">d(C_1, C_2) = c_{12} \approx 2.17, \quad d(C_1, C_3) = c_{13} \approx 4, \quad d(C_2, C_3) \approx c_{23} = 3.6</span>. These results indicate that clusters <span class="math inline">C_1</span> and <span class="math inline">C_2</span> are in close proximity, whereas cluster <span class="math inline">C_3</span> is positioned further away from the other two clusters, suggesting a spatial separation within the data. The reason for using the distance between centroids is that it can be easily controlled.</p>
+<p>In total, there are <span class="math inline">28</span> data structures used for the experiment. Out of these, <span class="math inline">18</span> data structures show the same structure in both the <span class="math inline">2\text{-}D</span> NLDR plot and tour for each experiment, while the remaining <span class="math inline">10</span> data structures display different structures in the <span class="math inline">2\text{-}D</span> NLDR plot and tour. This means that when data structure <span class="math inline">19</span> is displayed in the NLDR plot, data structure <span class="math inline">20</span> appears in the tour.</p>
+<p>To systematically vary the degree of separation in the SAME trials, the original (medium large) centroid distances are scaled by four different factors: <span class="math inline">0.1</span> (small), <span class="math inline">0.6</span> (small-medium), <span class="math inline">0.9</span> (medium), and <span class="math inline">1.1</span> (large). In contrast, data structures used for the DIFFERENT trials retained the original (medium-large) centroid distances.</p>
+</section><section id="attention-check-data" class="level4"><h4 class="anchored" data-anchor-id="attention-check-data">Attention check data</h4>
+<p>There are two sets of attention check data; one consisting of three Gaussian clusters and the other consisting of four Gaussian clusters. Each cluster is generated using a multivariate normal distribution where the mean vectors and variances were predefined. Specifically, for the three-cluster case, the mean vectors were set as <span class="math inline">[1, 0, 0, 0]</span>, <span class="math inline">[0, 1, 0, 0]</span>, and <span class="math inline">[0, 0, 1, 1]</span>, with a common variance of <span class="math inline">0.1</span> for all clusters. For the four-cluster case, the mean vectors were defined as <span class="math inline">[1, 0, 0, 1]</span>, <span class="math inline">[0, 1, 1, 0]</span>, <span class="math inline">[1, 0, 1, 0]</span>, and <span class="math inline">[0, 1, 0, 1]</span>, also using a variance of <span class="math inline">0.1</span>. This approach ensures that data points are normally distributed around the specified centroids, with the spread controlled by the variance parameter. Each Gaussian cluster dataset consists of <span class="math inline">4\text{-}D</span> data with a sample size of <span class="math inline">7500</span>, and each cluster contains an equal number of data points.</p>
+</section></section><section id="experiment-design" class="level3"><h3 class="anchored" data-anchor-id="experiment-design">Experiment design</h3>
+<p>The visual layout of the experiment for one participant is shown in <a href="#fig-exp-design" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>. Each participant completed <span class="math inline">20</span> trials: <span class="math inline">15</span> SAME trials, in which the same data structure was shown in both the <span class="math inline">2\text{-}D</span> NLDR plot and the tour; <span class="math inline">4</span> DIFFERENT trials, showing DIFFERENT data structures; and one attention check trial that could be either SAME or DIFFERENT. For the SAME, five NLDR methods (<em>tSNE, UMAP, PHATE, PaCMAP, and TriMAP</em>) were each paired with three of five distance scale factors (<em>small, small-medium, medium, medium-large, and large</em>), giving <span class="math inline">15</span> balanced combinations. In the DIFFERENT, four NLDR methods were randomly selected, with the remaining method assigned to the attention check trial. All DIFFERENT and attention check trials used a distance scale factor of <em>medium-large</em>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-exp-design" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-exp-design-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/vis-exp/exp_design.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%" data-fig-pos="!ht">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exp-design-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: Experiment design for one participant. Shapes represent distance scale factors, and fill colors denote NLDR methods. Each participant completed <span class="math inline">20</span> trials: <span class="math inline">15</span> SAME trials showing the same data structure in both the <span class="math inline">2\text{-}D</span> plot and tour (purple), <span class="math inline">4</span> DIFFERENT trials showing different structures (light blue), and one attention check (SAME or DIFFERENT) (red). In SAME trials, five NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) were combined with three of five distance scale factors (small, small-medium, medium, medium-large, and large). For DIFFERENT trials, four NLDR methods were randomly selected, and the remaining method was used in the attention check. All DIFFERENT and attention check trials used a distance scale factor of <em>medium-large</em>.
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="treatments" class="level3"><h3 class="anchored" data-anchor-id="treatments">Treatments</h3>
+<p>Two primary treatments were considered in the experiment: the NLDR method and the distance scale factor.</p>
+<p>The first treatment consisted of five NLDR methods: <em>tSNE, UMAP, PHATE, PaCMAP, and TriMAP</em> each producing a <span class="math inline">2\text{-}D</span> representation.</p>
+<p>The second treatment, the distance scale factor, controlled the degree of cluster separation in the high-dimensional space. Five categorical levels: <em>small, small–medium, medium, medium–large, and large</em> were defined to represent increasing degrees of separability. This categorical design enhances interpretability and perceptual distinctness, allowing participants to discern meaningful structural differences while maintaining robustness against minor data variations.</p>
+<p>Cluster separability was quantified using two complementary measures: the <em>between-to-within (BW) ratio</em> and the <em>minimum inter-cluster distance</em>. A higher value of either metric indicates greater separation among clusters (<a href="#fig-dist-metrics" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>).</p>
+<p>The BW ratio, defined as</p>
+<p><span class="math display">
+\text{BW Ratio} = \frac{B}{W} = \frac{ \sum_{i=1}^{3} n_i \cdot \|\bar{\mathbf{x}}_i - \bar{\mathbf{x}}\|^2 }{ \sum_{i=1}^{3} \sum_{\mathbf{x}_j \in C_i} \|\mathbf{x}_j - \bar{\mathbf{x}}_i\|^2 },
+</span></p>
+<p>where (B) and (W) denote between- and within-cluster dispersion, respectively; <span class="math inline">\bar{\mathbf{x}}_i</span> is the centroid of cluster <span class="math inline">C_i</span>; <span class="math inline">\bar{\mathbf{x}}</span> is the overall centroid; and <span class="math inline">n_i</span> is the number of observations in cluster <span class="math inline">C_i</span>.</p>
+<p>In addition, the minimum distance was used as a complementary measure of global separation:</p>
+<p><span class="math display">
+\text{minimum distance} = \min_{k \neq \ell} \min_{x \in C_k, , y \in C_\ell} d(x, y),
+</span></p>
+<p>which captures the closest proximity between any two clusters.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-dist-metrics" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-dist-metrics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-chap5_files/figure-html/fig-dist-metrics-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dist-metrics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: Distribution of distance metric values across distance scale factors used as treatments in the experiment. (a) Between-to-within (BW) ratio and (b) minimum inter-cluster distance, each plotted against five categorical distance scale factors: small (S), small–medium (SM), medium (M), medium–large (ML), and large (L). Both metrics increase systematically with the scale factor, confirming that the distance scale treatment effectively controls cluster separability in the high-dimensional space.
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="participant-recruitment" class="level3"><h3 class="anchored" data-anchor-id="participant-recruitment">Participant recruitment</h3>
+<p>Participants were recruited from the Prolific crowd-sourcing platform <span class="citation" data-cites="palan2018">(<a href="../refs.html#ref-palan2018" role="doc-biblioref">Palan and Schitter 2018</a>)</span>. The study expects that the participants are uninvolved judges with no prior knowledge of the data to avoid inadvertently affecting results. Pre-screening procedures were applied the recruitment: potential participants needed with fluent in English and have completed at least <span class="math inline">10</span> Prolific studies with a <span class="math inline">98\%</span> approval rate.</p>
+</section><section id="data-collection" class="level3"><h3 class="anchored" data-anchor-id="data-collection">Data collection</h3>
+<p>The survey web application, <a href="https://ebsmonash.shinyapps.io/web_game/">Match-a-roo</a> was used for data collection. Participants provided introduction and instructions for the survey. Before start the survey, the participants can lead to the “example” page which allow them to experiment with the data collection interface and practice deciding whether the two displays shown the same data or not. The main purpose of using the “example” was merely intended to familiarize the participants with the questions which would be asked as well as the process of deciding whether the two displays shown the same data or not. The interface did not provide any numeric feedback as to participant correctness.</p>
+<p>The participants were asked to provide their Prolific ID and their consent to the responses being used for analysis. After giving consent, the participant can start the trials. Two visual displays of data were shown where the data may be the SAME or DIFFERENT. One of the visual displays is a <span class="math inline">2\text{-}D</span> NLDR plot, and the other is a tour. The participants were asked to decide whether that data was the same in both displays and to report their confidence about their choice and any comments about the answer.</p>
+<p>After completing <span class="math inline">20</span> evaluations, they were asked for their demographics which included preferred pronoun, the highest level of education achieved, their age category, whether they used principal component analysis in their work, and whether they applied NLDR techniques such as tSNE and UMAP.</p>
+</section><section id="generalized-linear-mixed-effects-models" class="level3"><h3 class="anchored" data-anchor-id="generalized-linear-mixed-effects-models">Generalized Linear Mixed-Effects Models</h3>
+<p>Two generalized linear mixed effects models <span class="citation" data-cites="mcculloch2001">(<a href="../refs.html#ref-mcculloch2001" role="doc-biblioref">McCulloch et al. 2001</a>)</span> were fitted to model the likelihood of detecting the data structure in both the <span class="math inline">2\text{-}D</span> NLDR layout and the tour (<a href="../appendix/A-appA.html#eq-equation1" class="quarto-xref">Equation&nbsp;<span>A.1</span></a>). Both models accounted for participant-level variability and the effect of distance measures under different NLDR methods. The general form of the model is given by:</p>
+<p><span id="eq-equation1"><span class="math display">\text{logit}(P(y_{ijm} = 1)) = \mu_{m} + \beta_{m} d_{i} + \gamma_{j} \tag{5.1}</span></span></p>
+<p>where <span class="math inline">\mu_{m}</span> is the overall mean for NLDR method <span class="math inline">m</span>, <span class="math inline">d_i</span> is the distance measure for the data structure <span class="math inline">i = 1, \dots, 18</span>, <span class="math inline">\beta_m</span> is the fixed effect of BW ratio under NLDR method <span class="math inline">m</span>, <span class="math inline">\gamma_j</span> is the random effect of the participant <span class="math inline">j = 1, 2, \dots, 127</span>, where <span class="math inline">\gamma_j \sim N(0, \sigma_\gamma^2)</span>. Separate models were fitted using <span class="math inline">d_i</span> as either the scaled BW ratio or the exp(scaled minimum distance). The NLDR methods denoted by <span class="math inline">m</span> can include TriMAP, UMAP, PaCMAP, tSNE, and PHATE.</p>
+</section></section><section id="sec-results" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="sec-results">
+<span class="header-section-number">5.4</span> Results</h2>
+<p>The data was collected from <span class="math inline">127</span> participants, resulting in <span class="math inline">127 \times 15 = 1905</span> evaluations, excluding the attention check trials and the trials shows the different data in two displays.</p>
+<section id="correct-proportions" class="level3"><h3 class="anchored" data-anchor-id="correct-proportions">Correct proportions</h3>
+<p>The proportion of correct identifications across NLDR methods and distance conditions was analysed to evaluate how effectively each method preserves cluster separation. Results are summarized using two generalized linear mixed-effects models, with either the scaled BW ratio (<a href="#fig-glmm" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>, <a href="#tbl-glmm" class="quarto-xref">Table&nbsp;<span>5.1</span></a>) or the exp(scaled minimum distance) (<a href="#fig-glmm-min" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>, <a href="#tbl-glmm-min" class="quarto-xref">Table&nbsp;<span>5.2</span></a>) as the distance predictor. Both models accounted for participant-level variability through random effects and included NLDR method as a fixed factor interacting with the distance measure.</p>
+<p>Results from the model using the scaled BW ratio (<a href="#tbl-glmm" class="quarto-xref">Table&nbsp;<span>5.1</span></a>) indicate that cluster separability positively influences correct identification for some NLDR methods. As shown in <a href="#fig-glmm" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>, UMAP exhibits a clear increase in accuracy as the scaled BW ratio increases, suggesting that this method benefits from greater between-cluster separation. PaCMAP shows a positive but weaker trend, while TriMAP maintains stable performance across the range of separations. In contrast, tSNE and PHATE display declining accuracy at higher BW ratios, indicating that increased separation may distort or obscure structural cues for these methods.</p>
+<div class="cell" data-layout-align="center">
+<div id="tbl-glmm" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-glmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.1: Estimated trends of correct identification probability with respect to scaled BW ratio by NLDR method.The table shows method-specific slope estimates (log-odds scale) for the effect of the scaled BW ratio on the probability of correct identification, obtained from a generalized linear mixed-effects model. Estimates represent the change in log-odds of correct identification per unit increase in scaled BW ratio for each NLDR method, along with standard errors (SE), asymptotic 95% confidence intervals (LCL, UCL), Wald z-statistics, and corresponding p-values. Positive estimates indicate improved identification accuracy with increasing cluster separation, while negative estimates indicate declining accuracy. Significance codes: (<span class="math inline">\emph{p}\leq 0.001</span> ‘<code>***</code>’, <span class="math inline">\emph{p}\leq 0.01</span> ‘<code>**</code>’, <span class="math inline">\emph{p}\leq 0.05</span> ‘<code>*</code>’, <span class="math inline">\emph{p}\leq 0.1</span> ‘<code>.</code>’).
+</figcaption><div aria-describedby="tbl-glmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 13%">
+<col style="width: 7%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 14%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">method</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">asymp.LCL</th>
+<th style="text-align: right;">asymp.UCL</th>
+<th style="text-align: right;">z.ratio</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: left;">p_val_sig</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">TriMAP</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">-0.92</td>
+<td style="text-align: right;">0.99</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">UMAP</td>
+<td style="text-align: right;">1.15</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.19</td>
+<td style="text-align: right;">2.11</td>
+<td style="text-align: right;">2.35</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: left;">*</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PaCMAP</td>
+<td style="text-align: right;">0.51</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">-0.43</td>
+<td style="text-align: right;">1.45</td>
+<td style="text-align: right;">1.06</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tSNE</td>
+<td style="text-align: right;">-2.61</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">-3.83</td>
+<td style="text-align: right;">-1.40</td>
+<td style="text-align: right;">-4.20</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: left;">***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PHATE</td>
+<td style="text-align: right;">-0.92</td>
+<td style="text-align: right;">0.54</td>
+<td style="text-align: right;">-1.97</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">-1.71</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: left;">.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-glmm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-glmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-chap5_files/figure-html/fig-glmm-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-glmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.4: Estimated probability of correct identification as a function of the scaled BW ratio for five NLDR methods. The left panel shows model-based estimated probabilities with 95% confidence intervals across values of the scaled BW ratio. The right panels show observed proportions of correct identification (black points) and fitted logistic regression curves for each method. The scaled BW ratio measures relative cluster separation, with larger values indicating greater separability. Performance trends differ across methods, with UMAP showing increasing accuracy, tSNE and PHATE decreasing accuracy, and TriMAP exhibiting relatively stable performance.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>To assess whether these patterns depend on how separation is quantified, we fitted a second model using the exp(scaled minimum distance) as an alternative measure of cluster separability (<a href="#tbl-glmm-min" class="quarto-xref">Table&nbsp;<span>5.2</span></a>). The results closely mirror those obtained with the BW ratio (<a href="#fig-glmm-min" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>). In particular, UMAP again shows a significant positive association between separation and correct identification probability, confirming that greater spatial distance between clusters enhances its ability to reveal the underlying structure. Conversely, tSNE demonstrates a strong negative association, with performance deteriorating as minimum distance increases, while PHATE exhibits a weaker but consistent negative trend. The effects for PaCMAP and TriMAP are not statistically significant, indicating comparatively stable performance across varying levels of separation.</p>
+<div class="cell" data-layout-align="center">
+<div id="tbl-glmm-min" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-glmm-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.2: Estimated trends of correct identification probability with respect to exp(scaled minimum distance) by NLDR method.The table shows method-specific slope estimates (log-odds scale) for the effect of the exp(scaled minimum distance) on the probability of correct identification, obtained from a generalized linear mixed-effects model. Estimates represent the change in log-odds of correct identification per unit increase in exp(scaled minimum distance) for each NLDR method, along with standard errors (SE), asymptotic 95% confidence intervals (LCL, UCL), Wald z-statistics, and corresponding p-values. Positive estimates indicate improved identification accuracy with increasing cluster separation, while negative estimates indicate declining accuracy. Significance codes: (<span class="math inline">\emph{p}\leq 0.001</span> ‘<code>***</code>’, <span class="math inline">\emph{p}\leq 0.01</span> ‘<code>**</code>’, <span class="math inline">\emph{p}\leq 0.05</span> ‘<code>*</code>’, <span class="math inline">\emph{p}\leq 0.1</span> ‘<code>.</code>’).
+</figcaption><div aria-describedby="tbl-glmm-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 13%">
+<col style="width: 7%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 14%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">method</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">asymp.LCL</th>
+<th style="text-align: right;">asymp.UCL</th>
+<th style="text-align: right;">z.ratio</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: left;">p_val_sig</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">TriMAP</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">-0.20</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">0.97</td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">UMAP</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.98</td>
+<td style="text-align: right;">2.99</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: left;">***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PaCMAP</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.19</td>
+<td style="text-align: right;">-0.16</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">1.12</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tSNE</td>
+<td style="text-align: right;">-0.78</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">-1.20</td>
+<td style="text-align: right;">-0.35</td>
+<td style="text-align: right;">-3.60</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: left;">***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PHATE</td>
+<td style="text-align: right;">-0.35</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">-0.76</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">-1.68</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: left;">.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-glmm-min" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-glmm-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-chap5_files/figure-html/fig-glmm-min-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-glmm-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.5: Estimated probability of correct identification as a function of the exp(scaled minimum distance) for five NLDR methods. The left panel shows model-based estimated probabilities with 95% confidence intervals across values of the exp(scaled minimum distance). The right panels show observed proportions of correct identification (black points) and fitted logistic regression curves for each method. Larger values correspond to greater spatial separation between clusters. UMAP shows increasing accuracy with increasing separation, whereas tSNE and PHATE show declining trends, and TriMAP exhibits relatively stable performance.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>Taken together, these results demonstrate that the impact of cluster separability on correct identification is robust to the choice of distance measure but varies substantially across NLDR methods. Methods such as UMAP benefit from increased separation, whereas tSNE and PHATE appear sensitive to over-separation, potentially leading to distortions in the low-dimensional representation. TriMAP, by contrast, shows little sensitivity to changes in separation, suggesting robustness across a wide range of cluster configurations.</p>
+</section><section id="patterns-for-misidentification" class="level3"><h3 class="anchored" data-anchor-id="patterns-for-misidentification">Patterns for misidentification</h3>
+<p>To better understand why misidentification occurs, we examine patterns of correct identification across different high-dimensional data structures and across subjects. Rather than viewing errors as random noise, this analysis highlights how the geometry of the data and the behavior of the dimension reduction methods together lead to systematic confusion between structures.</p>
+<p><a href="#fig-var-sum" class="quarto-xref">Figure&nbsp;<span>5.6</span></a> shows correct identification proportions summarized by high-dimensional data structure (<a href="#fig-var-sum" class="quarto-xref">Figure&nbsp;<span>5.6</span></a> a) and by participant (<a href="#fig-var-sum" class="quarto-xref">Figure&nbsp;<span>5.6</span></a> b). There is clear variability at both levels. Across data structures, the proportion of correct identification ranges from about <span class="math inline">0.31</span> to approximately <span class="math inline">0.70</span>, indicating large differences in how easily different geometric configurations can be recognized from their NLDR representations. Some structures are identified reliably, while others remain difficult even when cluster separation increases. This suggests that misidentification is largely driven by the underlying geometry of the data and by how well those features are represented in <span class="math inline">2\text{-}D</span> layouts.</p>
+<p>The participant-level distribution of correct identification proportions (<a href="#fig-var-sum" class="quarto-xref">Figure&nbsp;<span>5.6</span></a> b) shows clear variability in performance, with most participants achieving moderate accuracy rather than clustering at chance or near-perfect levels. This pattern suggests that misidentification is not driven by a small number of poorly performing individuals, but reflects broader differences in how participants interpret and identify structure from the <span class="math inline">2\text{-}D</span> NLDR layouts and the corresponding tour views generated from the same <span class="math inline">p\text{-}D</span> data.</p>
+<!-- #### Summary -->
+<!-- data structure wise analysis-->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-var-sum" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-var-sum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-chap5_files/figure-html/fig-var-sum-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-var-sum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.6: Correct identification proportions by (a) data structure and (b) participant. The plot a shows aggregated proportions with <span class="math inline">95\%</span> Wilson binomial confidence intervals, illustrating differences in identification difficulty across three-cluster structures. The plot b displays participant-level proportions and highlight between-subject variability.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>To better understand the visual sources of these misidentifications, we examine tSNE and UMAP layouts for data structures that are commonly confused. <a href="#fig-three07-miss" class="quarto-xref">Figure&nbsp;<span>5.7</span></a> and <a href="#fig-three12-miss" class="quarto-xref">Figure&nbsp;<span>5.8</span></a> present <span class="math inline">2\text{-}D</span> projections alongside tSNE and UMAP layouts for <code>three_clust_12</code> and <code>three_clust_07</code> under both small and large cluster separation. These examples demonstrate that increasing separation does not necessarily lead to clearer or more interpretable low-dimensional representations.</p>
+<p>For <code>three_clust_12</code> (<a href="#fig-three12-miss" class="quarto-xref">Figure&nbsp;<span>5.8</span></a>), increased separation leads to improved visual clarity in UMAP, which more effectively preserves the distinct geometric characteristics of the S-curve, hemisphere, and pyramidal component. Nevertheless, even at larger separations, residual distortions and partial proximity between components remain, allowing perceptual ambiguity to persist. In contrast, tSNE introduces fragmentation and compression of curved and volumetric components, disrupting global shape cues and causing visually distinct structures to appear more similar.</p>
+<p>A similar pattern is observed for <code>three_clust_07</code> (<a href="#fig-three07-miss" class="quarto-xref">Figure&nbsp;<span>5.7</span></a>). While greater separation improves cluster spacing in UMAP and supports a smoother representation of the hyperbolic component, some ambiguity remains. For tSNE, increasing separation does not consistently enhance interpretability: the hyperbolic structure is distorted and fragmented, and irregular gaps are introduced, weakening global geometric cues essential for recognition.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-three07-miss" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-three07-miss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-chap5_files/figure-html/fig-three07-miss-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-three07-miss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.7: tSNE and UMAP layouts and <span class="math inline">2\text{-}D</span> projections for the data structure <code>three_clust_07</code>, composed of a nonlinear hyperbola, a hemisphere, and a triangular pyramid, shown under small and large cluster separation. Panels (a1–a2) show two fixed <span class="math inline">2\text{-}D</span> projections at small separation, and panels (b1–b2) show the same projections at large separation; the corresponding tSNE and UMAP layouts are shown in the right panels. At small separation, curved and rounded components overlap substantially in both methods, making the structure difficult to distinguish. With increased separation, UMAP yields smoother, more continuous representations that retain the curvature of the hyperbolic component and improve spacing between clusters. In contrast, tSNE bends and breaks the hyperbolic structure and introduces irregular gaps between points, weakening global shape cues.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-three12-miss" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-three12-miss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-chap5_files/figure-html/fig-three12-miss-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-three12-miss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.8: tSNE and UMAP layouts and <span class="math inline">2\text{-}D</span> projections for the data structure <code>three_clust_12</code>, composed of an S-curve, a hemisphere, and a filled hexagonal pyramid, shown under small and large cluster separation. Panels (a1–a2) show two fixed <span class="math inline">2\text{-}D</span> projections at small separation, and panels (b1–b2) show the same projections at large separation; the corresponding tSNE and UMAP layouts are shown in the right panels. At small separation, curved and rounded components overlap substantially in both methods, making the structure difficult to distinguish. With increased separation, UMAP preserves the distinct geometric character of each component, maintaining an elongated S-curve, a compact hemisphere, and a coherent pyramidal structure. In contrast, tSNE fragments curved and volumetric components into irregular, disconnected pieces, obscuring global shape cues.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>Taken together, these examples indicate that misidentification is not resolved solely by increasing cluster separation. Although UMAP generally benefits more from larger separations than tSNE, both methods may still produce layouts that obscure key geometric features. This helps explain why certain data structures remain difficult to identify in the experiment even under strong separation and underscores that misidentification reflects systematic limitations in how NLDR methods represent complex geometry rather than random perceptual error.</p>
+</section></section><section id="sec-limitations" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="sec-limitations">
+<span class="header-section-number">5.5</span> Limitations</h2>
+<p>One of the main drawbacks of visual experiments is their reliance on human judgments. In this context, the effectiveness of identifying the <span class="math inline">2\text{-}D</span> NLDR plot and the tour from the same data can be dependent on the perceptual ability and visual skills of the individual. However, when the results from multiple individuals are combined, the overall quality and robustness of the outcome is considerably high.</p>
+<p>It is important to remove HTML widget elements such as controls, interactivity, and <span class="math inline">2\text{-}D</span> plot elements such as axis labels and text that might introduce bias. We recommend using a crowd-sourcing service like Prolific <span class="citation" data-cites="palan2018">(<a href="../refs.html#ref-palan2018" role="doc-biblioref">Palan and Schitter 2018</a>)</span> to access high-quality data, as it is a time- and cost-effective way.</p>
+<p>In this study, we used a specific data structure consisting of three distinct clusters, each with unique shapes. Two of the clusters are in close proximity to one another, while the third cluster is located farther away. Each cluster varies in the number of points it contains. We selected this data structure because it is simple.</p>
+<p>To keep the experiment fair and consistent across trials, we approximately fixed the distance between the clusters in each data structure. We also used five distance scale factors to gradually change how far apart the clusters were. While this controlled setup makes it easier to interpret the results, it does limit how well the findings apply to more complex data structures with uneven or irregular cluster arrangements.</p>
+</section><section id="sec-exp-conclusion" class="level2" data-number="5.6"><h2 data-number="5.6" class="anchored" data-anchor-id="sec-exp-conclusion">
+<span class="header-section-number">5.6</span> Conclusions</h2>
+<p>This study examined whether people can correctly identify that a static <span class="math inline">2\text{-}D</span> NLDR layout and a dynamic tour represent the same high-dimensional data, and how this ability depends on both cluster separation and the NLDR method used. Using three clusters with different shapes, number of points, and unequal separation, we were able to directly test whether increasing high-dimensional separation improves perceptual identification, and whether this effect varies across methods.</p>
+<p>The results show that cluster separation does matter, but its impact is strongly method dependent. For UMAP and PaCMAP, increasing separation led to higher probabilities of correct identification, indicating that these methods more reliably preserve data structures that support visual matching between the NLDR layout and the tour. TriMAP showed a weaker but generally consistent trend. In contrast, tSNE often showed the opposite pattern: greater separation did not improve, and in some cases reduced, correct identification, suggesting that its emphasis on local structure can distort global relationships in ways that hinder perceptual alignment. PHATE showed little systematic relationship between separation and identification accuracy, consistent with its focus on smooth manifold structure rather than discrete cluster separation.</p>
+<p>Importantly, misidentification was not random. Some data structure components, particularly curved or dense shapes were consistently more difficult to recognize across methods, even at larger separations. This indicates that perceptual errors arise from systematic interactions between data structure and method-specific distortions, rather than from participant variability alone. These findings support the need to evaluate NLDR layouts not only by algorithmic criteria, but also by how well they function as visual models in high-dimension space.</p>
+<p>Future work could extend this framework by considering additional data structures, including overlapping clusters, hierarchical manifolds, and continuous gradients, as well as varying noise levels, dimensionality, and sample size. Comparisons with linear methods such as PCA, or with supervised embeddings, would help clarify whether the observed effects are specific to nonlinear techniques. Incorporating automated visual similarity measures alongside human judgments, and exploring interactive or user-centered evaluations, could further strengthen this approach. Overall, this work highlights the need for systematic, perceptually grounded methods to assess <span class="math inline">2\text{-}D</span> NLDR layouts as representations of high-dimensional data space.</p>
+</section><section id="supplementary-materials" class="level2" data-number="5.7"><h2 data-number="5.7" class="anchored" data-anchor-id="supplementary-materials">
+<span class="header-section-number">5.7</span> Supplementary Materials</h2>
+<p>All the materials to reproduce the chapter can be found at <a href="https://github.com/JayaniLakshika/paper-vis-experiment">github.com/JayaniLakshika/paper-vis-experiment</a>.</p>
+<p>The appendix provides additional details on the experimental materials and process, including the three-cluster data structures, <span class="math inline">2\text{-}D</span> NLDR layouts, inter-cluster distance metrics, and the data collection and analysis processes, along with links to videos, and scripts.</p>
+</section><section id="acknowledgments" class="level2" data-number="5.8"><h2 data-number="5.8" class="anchored" data-anchor-id="acknowledgments">
+<span class="header-section-number">5.8</span> Acknowledgments</h2>
+<p>A pilot study was conducted with sample subjects from the working group of the Department of Econometrics and Business Statistics, Monash University. This pilot study allowed us to estimate the study’s completion time and the effect size and fine-tune the application.</p>
+<p>These R packages were used for the work: <code>tidyverse</code> <span class="citation" data-cites="hadley2019">(<a href="../refs.html#ref-hadley2019" role="doc-biblioref">Wickham et al. 2019</a>)</span>, <code>lme4</code> <span class="citation" data-cites="douglas2015">(<a href="../refs.html#ref-douglas2015" role="doc-biblioref">Bates et al. 2015</a>)</span>, <code>broom.mixed</code> <span class="citation" data-cites="ben2024">(<a href="../refs.html#ref-ben2024" role="doc-biblioref">Bolker and Robinson 2024</a>)</span>, <code>ggbeeswarm</code> <span class="citation" data-cites="erik2023">(<a href="../refs.html#ref-erik2023" role="doc-biblioref">Clarke et al. 2023</a>)</span>, <code>emmeans</code> <span class="citation" data-cites="russell2025">(<a href="../refs.html#ref-russell2025" role="doc-biblioref">Lenth 2025</a>)</span>, <code>patchwork</code> <span class="citation" data-cites="thomas2024">(<a href="../refs.html#ref-thomas2024" role="doc-biblioref">Pedersen 2024</a>)</span>, <code>colorspace</code> <span class="citation" data-cites="achim2020">(<a href="../refs.html#ref-achim2020" role="doc-biblioref">Zeileis et al. 2020</a>)</span>, <code>kableExtra</code> <span class="citation" data-cites="hao2024">(<a href="../refs.html#ref-hao2024" role="doc-biblioref">Zhu 2024</a>)</span>, <code>conflicted</code> <span class="citation" data-cites="hadley2023">(<a href="../refs.html#ref-hadley2023" role="doc-biblioref">Wickham 2023</a>)</span>, <code>Rtsne</code> <span class="citation" data-cites="jesse2015">(<a href="../refs.html#ref-jesse2015" role="doc-biblioref">Krijthe 2015</a>)</span>, <code>umap</code> <span class="citation" data-cites="tomasz2023">(<a href="../refs.html#ref-tomasz2023" role="doc-biblioref">Konopka 2023</a>)</span>, <code>phateR</code><span class="citation" data-cites="moon2019">(<a href="../refs.html#ref-moon2019" role="doc-biblioref">Moon et al. 2019</a>)</span>, <code>reticulate</code> <span class="citation" data-cites="kevin2024">(<a href="../refs.html#ref-kevin2024" role="doc-biblioref">Ushey et al. 2024</a>)</span>, <code>langevitour</code> <span class="citation" data-cites="harisson2024">(<a href="../refs.html#ref-harisson2024" role="doc-biblioref">Harrison 2023</a>)</span>, <code>binom</code> <span class="citation" data-cites="sundar2022">(<a href="../refs.html#ref-sundar2022" role="doc-biblioref">Dorai-Raj 2022</a>)</span>, <code>gridExtra</code> <span class="citation" data-cites="baptiste2017">(<a href="../refs.html#ref-baptiste2017" role="doc-biblioref">Auguie 2017</a>)</span>, <code>shiny</code> <span class="citation" data-cites="winston2025a">(<a href="../refs.html#ref-winston2025a" role="doc-biblioref">Chang et al. 2025</a>)</span>, <code>shinydashboard</code> <span class="citation" data-cites="winston2025b">(<a href="../refs.html#ref-winston2025b" role="doc-biblioref">Chang and Borges Ribeiro 2025</a>)</span>, <code>shinythemes</code> <span class="citation" data-cites="winston2021">(<a href="../refs.html#ref-winston2021" role="doc-biblioref">Chang 2021</a>)</span>, <code>bslib</code> <span class="citation" data-cites="carson2025">(<a href="../refs.html#ref-carson2025" role="doc-biblioref">Sievert et al. 2025</a>)</span>, <code>shinyjs</code> <span class="citation" data-cites="dean2021">(<a href="../refs.html#ref-dean2021" role="doc-biblioref">Attali 2021</a>)</span>, <code>DT</code> <span class="citation" data-cites="yihui2016">(<a href="../refs.html#ref-yihui2016" role="doc-biblioref">Xie 2016</a>)</span>, <code>googledrive</code> <span class="citation" data-cites="lucy2025">(<a href="../refs.html#ref-lucy2025" role="doc-biblioref">D’Agostino McGowan and Bryan 2025</a>)</span>, <code>googleAuthR</code> <span class="citation" data-cites="mark2024">(<a href="../refs.html#ref-mark2024" role="doc-biblioref">Edmondson 2024</a>)</span>, <code>googlesheets4</code> <span class="citation" data-cites="jennifer2025">(<a href="../refs.html#ref-jennifer2025" role="doc-biblioref">Bryan 2025</a>)</span>, <code>shinyalert</code> <span class="citation" data-cites="dean2024a">(<a href="../refs.html#ref-dean2024a" role="doc-biblioref">Attali and Edwards 2024</a>)</span>, <code>shinypop</code> <span class="citation" data-cites="fanny2024">(<a href="../refs.html#ref-fanny2024" role="doc-biblioref">Meyer and Perrier 2024</a>)</span>, <code>randomNames</code> <span class="citation" data-cites="damian2024">(<a href="../refs.html#ref-damian2024" role="doc-biblioref">Betebenner 2024</a>)</span>, <code>shinyfullscreen</code> <span class="citation" data-cites="etienne2021">(<a href="../refs.html#ref-etienne2021" role="doc-biblioref">Bacher 2021</a>)</span>, <code>shinyWidgets</code> <span class="citation" data-cites="victor2025">(<a href="../refs.html#ref-victor2025" role="doc-biblioref">Perrier et al. 2025</a>)</span>, <code>hms</code> <span class="citation" data-cites="kirill2025">(<a href="../refs.html#ref-kirill2025" role="doc-biblioref">Müller 2025</a>)</span>, <code>shinythemes</code> <span class="citation" data-cites="winston2021">(<a href="../refs.html#ref-winston2021" role="doc-biblioref">Chang 2021</a>)</span>, and <code>shinycssloaders</code> <span class="citation" data-cites="dean2024b">(<a href="../refs.html#ref-dean2024b" role="doc-biblioref">Attali and Sali 2024</a>)</span>. These <code>python</code> packages were used for the work: <code>trimap</code> <span class="citation" data-cites="amid2022">(<a href="../refs.html#ref-amid2022" role="doc-biblioref">Amid and Warmuth 2022</a>)</span> and <code>pacmap</code> <span class="citation" data-cites="yingfan2021">(<a href="../refs.html#ref-yingfan2021" role="doc-biblioref">Wang et al. 2021</a>)</span>.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-amid2022" class="csl-entry" role="listitem">
+Amid, E., and Warmuth, M. K. (2022), <span>“<a href="https://arxiv.org/abs/1910.00204">TriMap: Large-scale dimensionality reduction using triplets</a>.”</span>
+</div>
+<div id="ref-As85" class="csl-entry" role="listitem">
+Asimov, D. (1985), <span>“<span>T</span>he <span>G</span>rand <span>T</span>our: <span>A</span> <span>T</span>ool for <span>V</span>iewing <span>M</span>ultidimensional <span>D</span>ata,”</span> <em>SIAM Journal of Scientific and Statistical Computing</em>, 6, 128–143.
+</div>
+<div id="ref-dean2021" class="csl-entry" role="listitem">
+Attali, D. (2021), <em><a href="https://CRAN.R-project.org/package=shinyjs">Shinyjs: Easily improve the user experience of your shiny apps in seconds</a></em>.
+</div>
+<div id="ref-dean2024a" class="csl-entry" role="listitem">
+Attali, D., and Edwards, T. (2024), <em><a href="https://CRAN.R-project.org/package=shinyalert">Shinyalert: Easily create pretty popup messages (modals) in ’shiny’</a></em>.
+</div>
+<div id="ref-dean2024b" class="csl-entry" role="listitem">
+Attali, D., and Sali, A. (2024), <em><a href="https://CRAN.R-project.org/package=shinycssloaders">Shinycssloaders: Add loading animations to a ’shiny’ output while it’s recalculating</a></em>.
+</div>
+<div id="ref-baptiste2017" class="csl-entry" role="listitem">
+Auguie, B. (2017), <em><a href="https://CRAN.R-project.org/package=gridExtra">gridExtra: Miscellaneous functions for "grid" graphics</a></em>.
+</div>
+<div id="ref-etienne2021" class="csl-entry" role="listitem">
+Bacher, E. (2021), <em><a href="https://CRAN.R-project.org/package=shinyfullscreen">Shinyfullscreen: Display ’HTML’ elements on full screen in ’shiny’ apps</a></em>.
+</div>
+<div id="ref-douglas2015" class="csl-entry" role="listitem">
+Bates, D., Mächler, M., Bolker, B., and Walker, S. (2015), <span>“Fitting linear mixed-effects models using <span class="nocase">lme4</span>,”</span> <em>Journal of Statistical Software</em>, 67, 1–48. <a href="https://doi.org/10.18637/jss.v067.i01">https://doi.org/10.18637/jss.v067.i01</a>.
+</div>
+<div id="ref-damian2024" class="csl-entry" role="listitem">
+Betebenner, D. W. (2024), <em><a href="https://cran.r-project.org/package=randomNames"><span class="nocase">randomNames</span>: Function for generating random names and a dataset</a></em>.
+</div>
+<div id="ref-ben2024" class="csl-entry" role="listitem">
+Bolker, B., and Robinson, D. (2024), <em><a href="https://CRAN.R-project.org/package=broom.mixed">Broom.mixed: Tidying methods for mixed models</a></em>.
+</div>
+<div id="ref-jennifer2025" class="csl-entry" role="listitem">
+Bryan, J. (2025), <em><a href="https://CRAN.R-project.org/package=googlesheets4">googlesheets4: Access google sheets using the sheets API V4</a></em>.
+</div>
+<div id="ref-tadeusz1974" class="csl-entry" role="listitem">
+Calinski, T., and Harabasz, J. (1974), <span>“A dendrite method for cluster analysis,”</span> <em>Communications in Statistics</em>, 3, 1–27.
+</div>
+<div id="ref-winston2021" class="csl-entry" role="listitem">
+Chang, W. (2021), <em><a href="https://CRAN.R-project.org/package=shinythemes">Shinythemes: Themes for shiny</a></em>.
+</div>
+<div id="ref-winston2025b" class="csl-entry" role="listitem">
+Chang, W., and Borges Ribeiro, B. (2025), <em><a href="https://CRAN.R-project.org/package=shinydashboard">Shinydashboard: Create dashboards with ’shiny’</a></em>.
+</div>
+<div id="ref-winston2025a" class="csl-entry" role="listitem">
+Chang, W., Cheng, J., Allaire, J., Sievert, C., Schloerke, B., Xie, Y., Allen, J., McPherson, J., Dipert, A., and Borges, B. (2025), <em><a href="https://CRAN.R-project.org/package=shiny">Shiny: Web application framework for r</a></em>.
+</div>
+<div id="ref-erik2023" class="csl-entry" role="listitem">
+Clarke, E., Sherrill-Mix, S., and Dawson, C. (2023), <em><a href="https://CRAN.R-project.org/package=ggbeeswarm">Ggbeeswarm: Categorical scatter (violin point) plots</a></em>.
+</div>
+<div id="ref-lucy2025" class="csl-entry" role="listitem">
+D’Agostino McGowan, L., and Bryan, J. (2025), <em><a href="https://CRAN.R-project.org/package=googledrive">Googledrive: An interface to google drive</a></em>.
+</div>
+<div id="ref-david1979" class="csl-entry" role="listitem">
+Davies, D. L., and Bouldin, D. W. (1979), <span>“A cluster separation measure,”</span> <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em>, PAMI-1, 224–227.
+</div>
+<div id="ref-sundar2022" class="csl-entry" role="listitem">
+Dorai-Raj, S. (2022), <em>Binom: Binomial confidence intervals for several parameterizations</em>.
+</div>
+<div id="ref-mark2024" class="csl-entry" role="listitem">
+Edmondson, M. (2024), <em><a href="https://CRAN.R-project.org/package=googleAuthR">googleAuthR: Authenticate and create google APIs</a></em>.
+</div>
+<div id="ref-harisson2024" class="csl-entry" role="listitem">
+Harrison, P. (2023), <span>“<a href="\url{https://doi.org/10.32614/RJ-2023-046}."><span class="nocase">langevitour: Smooth Interactive Touring of High Dimensions, Demonstrated With scRNA-Seq Data</span></a>,”</span> <em>The R Journal</em>, 15, 206–219.
+</div>
+<div id="ref-casper2025" class="csl-entry" role="listitem">
+Hart, C., and Wang, E. (2025), <em><a href="https://CRAN.R-project.org/package=detourr">Detourr: Portable and performant tour animations</a></em>.
+</div>
+<div id="ref-johnstone2009" class="csl-entry" role="listitem">
+Johnstone, I. M., and Titterington, D. M. (2009), <span>“<a href="\url{https://royalsocietypublishing.org/doi/abs/10.1098/rsta.2009.0159}."><span class="nocase">Statistical Challenges of High-Dimensional Data</span></a>,”</span> <em>Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences</em>, 367, 4237–4253.
+</div>
+<div id="ref-jolliffe2011" class="csl-entry" role="listitem">
+Jolliffe, I. (2011), <span>“<a href="\url{https://doi.org/10.1007/978-3-642-04898-2_455}."><span>Principal Component Analysis</span></a>,”</span> in <em>International encyclopedia of statistical science</em>, Berlin, Heidelberg: Springer Berlin Heidelberg, pp. 1094–1096.
+</div>
+<div id="ref-tomasz2023" class="csl-entry" role="listitem">
+Konopka, T. (2023), <em><a href="\url{https://CRAN.R-project.org/package=umap}."><span class="nocase">umap: Uniform Manifold Approximation and Projection</span></a></em>.
+</div>
+<div id="ref-jesse2015" class="csl-entry" role="listitem">
+Krijthe, J. H. (2015), <em><a href="\url{https://github.com/jkrijthe/Rtsne}."><span>Rtsne: T-Distributed Stochastic Neighbor Embedding Using Barnes-Hut Implementation</span></a></em>.
+</div>
+<div id="ref-kruskal1964" class="csl-entry" role="listitem">
+Kruskal, J. B. (1964), <span>“<a href="\url{https://doi.org/10.1007/BF02289694}."><span>Nonmetric Multidimensional Scaling: A Numerical Method</span></a>,”</span> <em>Psychometrika</em>, 29, 115–129.
+</div>
+<div id="ref-laa2022" class="csl-entry" role="listitem">
+Laa, U., Cook, D., and Lee, S. (2022), <span>“<a href="\url{https://doi.org/10.1080/10618600.2021.1963264}."><span class="nocase">Burning Sage: Reversing the Curse of Dimensionality in the Visualization of High-Dimensional Data</span></a>,”</span> <em>Journal of Computational and Graphical Statistics</em>, 31, 40–49.
+</div>
+<div id="ref-russell2025" class="csl-entry" role="listitem">
+Lenth, R. V. (2025), <em><a href="https://CRAN.R-project.org/package=emmeans">Emmeans: Estimated marginal means, aka least-squares means</a></em>.
+</div>
+<div id="ref-laurens2008" class="csl-entry" role="listitem">
+Maaten, L. V. D., and Hinton, G. E. (2008), <span>“<a href="\url{https://api.semanticscholar.org/CorpusID:5855042}."><span class="nocase">Visualizing Data Using t-SNE</span></a>,”</span> <em>Journal of Machine Learning Research</em>, 9, 2579–2605.
+</div>
+<div id="ref-mcculloch2001" class="csl-entry" role="listitem">
+McCulloch, C. E., Searle, S. R., and Neuhaus, J. M. (2001), <em>Generalized, linear, and mixed models</em>, Wiley Online Library.
+</div>
+<div id="ref-leland2018" class="csl-entry" role="listitem">
+McInnes, L., Healy, J., Saul, N., and Großberger, L. (2018), <span>“<a href="\url{https://doi.org/10.21105/joss.00861}."><span class="nocase">UMAP: Uniform Manifold Approximation and Projection</span></a>,”</span> <em>Journal of Open Source Software</em>, 3, 861.
+</div>
+<div id="ref-fanny2024" class="csl-entry" role="listitem">
+Meyer, F., and Perrier, V. (2024), <em><a href="https://github.com/dreamRs/shinypop">Shinypop: Collection of notifications for ’shiny’ applications</a></em>.
+</div>
+<div id="ref-moon2019" class="csl-entry" role="listitem">
+Moon, K. R., Dijk, D. van, Wang, Z., Gigante, S. A., Burkhardt, D. B., Chen, W. S., Yim, K., Elzen, A. van den, Hirn, M. J., Coifman, R. R., Ivanova, N. B., Wolf, G., and Krishnaswamy, S. (2019), <span>“<a href="\url{https://doi.org/10.1038/s41587-019-0336-3}."><span class="nocase">Visualizing Structure and Transitions in High-Dimensional Biological Data</span></a>,”</span> <em>Nature Biotechnology</em>, 37, 1482–1492.
+</div>
+<div id="ref-kirill2025" class="csl-entry" role="listitem">
+Müller, K. (2025), <em><a href="https://here.r-lib.org/">Here: A simpler way to find your files</a></em>.
+</div>
+<div id="ref-palan2018" class="csl-entry" role="listitem">
+Palan, S., and Schitter, C. (2018), <span>“Prolific. Ac—a subject pool for online experiments,”</span> <em>Journal of Behavioral and Experimental Finance</em>, Elsevier, 17, 22–27.
+</div>
+<div id="ref-thomas2024" class="csl-entry" role="listitem">
+Pedersen, T. L. (2024), <em><a href="\url{https://CRAN.R-project.org/package=patchwork}."><span class="nocase">patchwork: The Composer of Plots</span></a></em>.
+</div>
+<div id="ref-victor2025" class="csl-entry" role="listitem">
+Perrier, V., Meyer, F., and Granjon, D. (2025), <em><a href="https://CRAN.R-project.org/package=shinyWidgets">shinyWidgets: Custom inputs widgets for shiny</a></em>.
+</div>
+<div id="ref-peter1987" class="csl-entry" role="listitem">
+Rousseeuw, P. J. (1987), <span>“Silhouettes: A graphical aid to the interpretation and validation of cluster analysis,”</span> <em>Journal of Computational and Applied Mathematics</em>, 20, 53–65.
+</div>
+<div id="ref-saeed2018" class="csl-entry" role="listitem">
+Saeed, N., Nam, H., Haq, M. I. U., and Muhammad Saqib, D. B. (2018), <span>“<a href="\url{https://doi.org/10.1145/3178155}."><span class="nocase">A Survey on Multidimensional Scaling</span></a>,”</span> <em>ACM Comput. Surv.</em>, 51.
+</div>
+<div id="ref-carson2025" class="csl-entry" role="listitem">
+Sievert, C., Cheng, J., and Aden-Buie, G. (2025), <em><a href="https://CRAN.R-project.org/package=bslib">Bslib: Custom ’bootstrap’ ’sass’ themes for ’shiny’ and ’rmarkdown’</a></em>.
+</div>
+<div id="ref-silva2002" class="csl-entry" role="listitem">
+Silva, V., and Tenenbaum, J. (2002), <span>“<a href="\url{https://proceedings.neurips.cc/paper_files/paper/2002/file/5d6646aad9bcc0be55b2c82f69750387-Paper.pdf}."><span class="nocase">Global Versus Local Methods in Nonlinear Dimensionality Reduction</span></a>,”</span> <em>Advances in Neural Information Processing Systems</em>, 15, 721–728.
+</div>
+<div id="ref-kevin2024" class="csl-entry" role="listitem">
+Ushey, K., Allaire, J., and Tang, Y. (2024), <em><a href="\url{https://CRAN.R-project.org/package=reticulate}."><span class="nocase">reticulate: Interface to Python</span></a></em>.
+</div>
+<div id="ref-yingfan2021" class="csl-entry" role="listitem">
+Wang, Y., Huang, H., Rudin, C., and Shaposhnik, Y. (2021), <span>“<a href="\url{http://jmlr.org/papers/v22/20-1061.html}."><span class="nocase">Understanding How Dimension Reduction Tools Work: An Empirical Approach to Deciphering t-SNE, UMAP, TriMap, and PaCMAP for Data Visualization</span></a>,”</span> <em>Journal of Machine Learning Research</em>, 22, 1–73.
+</div>
+<div id="ref-hadley2023" class="csl-entry" role="listitem">
+Wickham, H. (2023), <em><a href="\url{https://CRAN.R-project.org/package=conflicted}."><span class="nocase">conflicted: An Alternative Conflict Resolution Strategy</span></a></em>.
+</div>
+<div id="ref-hadley2019" class="csl-entry" role="listitem">
+Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J., Robinson, D., Seidel, D. P., Spinu, V., Takahashi, K., Vaughan, D., Wilke, C., Woo, K., and Yutani, H. (2019), <span>“<a href="\url{https://doi.org/10.21105/joss.01686}."><span class="nocase">Welcome to the Tidyverse</span></a>,”</span> <em>Journal of Open Source Software</em>, 4, 1686.
+</div>
+<div id="ref-wickham2011" class="csl-entry" role="listitem">
+Wickham, H., Cook, D., Hofmann, H., and Buja, A. (2011), <span>“<a href="\url{http://www.jstatsoft.org/v40/i02/}."><span class="nocase">tourr: An R Package For Exploring Multivariate Data With Projections</span></a>,”</span> <em>Journal of Statistical Software</em>, 40, 1–18.
+</div>
+<div id="ref-yihui2016" class="csl-entry" role="listitem">
+Xie, Y. (2016), <em><a href="https://github.com/rstudio/DT">DT: A wrapper of the JavaScript library ’DataTables’</a></em>.
+</div>
+<div id="ref-achim2020" class="csl-entry" role="listitem">
+Zeileis, A., Fisher, J. C., Hornik, K., Ihaka, R., McWhite, C. D., Murrell, P., Stauffer, R., and Wilke, C. O. (2020), <span>“<a href="\url{https://www.jstatsoft.org/index.php/jss/article/view/v096i01}."><span class="nocase">colorspace: A Toolbox for Manipulating and Assessing Colors and Palettes</span></a>,”</span> <em>Journal of Statistical Software</em>, 96, 1–49.
+</div>
+<div id="ref-hao2024" class="csl-entry" role="listitem">
+Zhu, H. (2024), <em><a href="\url{https://CRAN.R-project.org/package=kableExtra}."><span class="nocase">kableExtra: Construct Complex Table with kable and Pipe Syntax</span></a></em>.
+</div>
+</div>
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../chapters/04-chap4.html" class="pagination-link" aria-label="cardinalR: Generating Interesting High-Dimensional Data Structures">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">cardinalR: Generating Interesting High-Dimensional Data Structures</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/06-chap6.html" class="pagination-link" aria-label="menuraR: An R Shiny App to Help Select the Best Nonlinear Dimension Reduction Representation">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">menuraR: An R Shiny App to Help Select the Best Nonlinear Dimension Reduction Representation</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/chapters/05-chap5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

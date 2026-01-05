@@ -1,489 +1,233 @@
-# Appendix to "Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study" {#sec-appendix-b}
+# Glossary
 
 
-
-
-::: {.cell layout-align="center"}
+::: {.cell}
 
 :::
 
 
 
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-## Scripts
-
-
-::: {#tbl-script-desc .cell layout-align="center" tbl-pos='H' tbl-cap='R script files used to generate outputs in the main paper.'}
+::: {#tbl-glossary .cell tbl-pos='H' tbl-cap='Glossary.'}
 ::: {.cell-output-display}
 
 
-|Script                                                 |Description                                                                                                                                        |
-|:------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------|
-|additional\_functions.R                                |Helper functions to render the main paper.                                                                                                         |
-|01\_attention\_check\_data\_structures.R               |Function to generate three- and four- Gaussian clusters data  for attention check.                                                                 |
-|01\_data\_structure\_components.R                      |Functions to generate data structure components for non-attention check.                                                                           |
-|02\_data\_structures.R                                 |Functions to generate three clusters data structure for non-attention check.                                                                       |
-|03\_exp\_design\_with\_method\_and\_distance\_factor.R |Creates the experimental design, varying NLDR method and distance scale factors.                                                                   |
-|04\_exp\_design\_with\_new\_ds\_factors.R              |Extends the experimental design to include additional distance scale factor.                                                                       |
-|05\_gen\_clust3\_attention\_check\_data.R              |Generates three-cluster data for attention check.                                                                                                  |
-|05\_gen\_cluster3\_high\_d\_data.R                     |Generates three-cluster data with medium-large distance scale factor.                                                                              |
-|06\_gen\_clusters3\_with\_diff\_dist.R                 |Generates three-cluster data with varying inter-cluster distance scale factors.                                                                    |
-|09\_gen\_clusters\_merge\_all\_data.R                  |Merges all generated cluster data (attention and non-attention check) into a single combined dataset.                                              |
-|10\_gen\_embeddings.R                                  |Computes multiple NLDR embeddings for specific distance scale factor.                                                                              |
-|11\_comb\_emb\_default\_data.R                         |Combines NLDR embeddings for all distance scale factors.                                                                                           |
-|12\_comb\_data.R                                       |Merge all NLDR embeddings generated for attention and non-attention check.                                                                         |
-|13\_data\_processing\_method\_ds\_factor\_missings.R   |Processes collected experimental data and generates the file, containing all relevant details for the same data structure shown in both displays.  |
-|13\_data\_processing\_method\_ds\_factor.R             |Processes collected experimental data and generates the  file, containing all relevant details for the same data structure shown in both displays. |
-|17\_compute\_distance\_btw\_centroids.R                |Computes different distance metrics between cluster in the high-dimensional space.                                                                 |
-|19\_find\_which\_replicates\_missing.R                 |Identifies missing responses across experimental conditions.                                                                                       |
+|Term                                                                        |Description                                                                                                                                                                                                                            |
+|:---------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|$2\text{-}D$ model                                                          |The fitted representation of the NLDR layout obtained after hexagonal binning and centroid aggregation, used as the basis for lifting into high-dimensional space.                                                                     |
+|$a_1$ (Hexagon width)                                                       |The horizontal distance between adjacent hexagon centroids in the hexagonal grid used for binning a $2\text{-}D$ NLDR layout.                                                                                                          |
+|$a_2$ (Hexagon height)                                                      |The vertical distance between rows of hexagon centroids in the hexagonal grid, related to $a_1$ by $a_2 = \sqrt{3}a_1/2$.                                                                                                              |
+|$b_1$ (Number of bins along x-axis)                                         |The number of hexagon columns spanning the horizontal range of a $2\text{-}D$ embedding.                                                                                                                                               |
+|$b_2$ (Number of bins along y-axis)                                         |The number of hexagon rows spanning the vertical range of a $2\text{-}D$ embedding.                                                                                                                                                    |
+|$k$-means clustering                                                        |A clustering algorithm that partitions data into a fixed number of clusters by minimizing within-cluster variance.                                                                                                                     |
+|2NC7 data                                                                   |A simulated $7\text{-}D$ dataset consisting of two nonlinear clusters with different intrinsic dimensions and added noise variables.                                                                                                   |
+|Active (binding) constraint                                                 |In optimization, a constraint that holds with equality at the optimal solution and determines the final parameter values.                                                                                                              |
+|Alt-text                                                                    |Textual descriptions of figures and visual content that support accessibility, particularly for screen readers and users with visual impairments.                                                                                      |
+|Anchor point                                                                |The center of a hole that is removed from a dataset. Often the data mean, but can be user-defined.                                                                                                                                     |
+|Apex                                                                        |The tip or pointy end of a shape (like the top of a cone or pyramid) where many points can be concentrated.                                                                                                                            |
+|Application (example study)                                                 |A worked example demonstrating how cardinalR can be used to generate data, apply dimension reduction and clustering methods, and evaluate their performance.                                                                           |
+|Archimedean spiral                                                          |A spiral where the distance from the center increases steadily as it winds outward.                                                                                                                                                    |
+|Area under the RNX curve (ARNX)                                             |A summary measure of neighborhood preservation, balancing local and global structure.                                                                                                                                                  |
+|Aspect ratio                                                                |The ratio of the ranges of the NLDR axes, preserved when constructing hexagonal binning grids.                                                                                                                                         |
+|Attention check/ trial                                                      |A trial included to verify that participants are paying attention. These trials use very clear data structures where the correct answer should be obvious.                                                                             |
+|Azimuthal angle                                                             |The angle that controls rotation around an axis (like longitude on a globe).                                                                                                                                                           |
+|Background noise                                                            |Additional points drawn from a distribution that do not belong to any specific geometric structure or cluster, used to simulate unstructured variation in the data.                                                                    |
+|Ball                                                                        |A filled-in sphere. Points occupy the whole volume, not just the surface.                                                                                                                                                              |
+|Barycentric coordinates                                                     |A way of picking points uniformly inside a triangle by mixing the triangles corners with random weights.                                                                                                                               |
+|Benchmark datasets/ structure                                               |Standard or reference datasets used to evaluate, compare, and validate the performance of analytical algorithms (e.g. clustering or dimension reduction).                                                                              |
+|Between-cluster distance                                                    |A measure of separation between clusters, typically based on distances between cluster centroids or boundaries.                                                                                                                        |
+|Between-to-within (BW) ratio                                                |A measure of cluster separability comparing how far clusters are from each other (between-cluster variation) relative to how spread out points are within clusters. Higher values indicate better-separated clusters.                  |
+|Bin (hexagon)                                                               |A spatial region in a hexagonal grid used to aggregate points from a $2\text{-}D$ NLDR embedding.                                                                                                                                      |
+|Bin centroid                                                                |The center point representing a hexagonal bin, either defined geometrically or computed as the mean of observations within the bin.                                                                                                    |
+|Binheight ($a_2$)                                                           |The vertical height of a hexagon, determined by the geometry of hexagonal tiling.                                                                                                                                                      |
+|Binning function                                                            |A mapping that assigns each observation in the $2\text{-}D$ layout to its nearest hexagon centroid.                                                                                                                                    |
+|Binwidth/ Bin width ($a_1$)                                                 |The horizontal width of a hexagon, controlling the resolution of the hexagonal grid.                                                                                                                                                   |
+|Blunted apex                                                                |A tip thats flattened or rounded instead of sharp.                                                                                                                                                                                     |
+|Branching structure                                                         |A connected geometric structure consisting of multiple arms or trajectories that diverge from a common origin, often used to represent bifurcation or developmental processes.                                                         |
+|Browser memory limits                                                       |Constraints imposed by web browsers on the amount of memory available for client-side rendering and interaction, which can affect performance when visualizing large datasets in web-based applications.                               |
+|Brushing / Linked brushing                                                  |An interactive technique where selecting points or regions in one view (e.g., a $2\text{-}D$ layout) highlights the corresponding points in another view (e.g., high-dimensional model or tour).                                       |
+|Buffer parameter ($q$)                                                      |A proportional margin added around the data range to ensure the hexagon grid fully covers the NLDR layout.                                                                                                                             |
+|C-shaped cluster                                                            |A nonlinear cluster with observations arranged along a curved manifold resembling the letter C.                                                                                                                                        |
+|Centroid                                                                    |The mean position of all points in a cluster. Centroids are used to control and measure distances between clusters in the simulations.                                                                                                 |
+|Cluster                                                                     |A group of data points generated from the same underlying geometric shape or distribution, representing a coherent structure in the dataset.                                                                                           |
+|Cluster separability/ separation                                            |The degree to which clusters are distinct from one another in the data space, quantified using distance-based metrics.                                                                                                                 |
+|Cluster validity statistic                                                  |A numerical measure used to assess the quality of a clustering solution, often balancing within-cluster compactness and between-cluster separation.                                                                                    |
+|Clustered spheres                                                           |A structure made of one large sphere plus several smaller spheres placed around it, each treated as a separate group.                                                                                                                  |
+|Clustering                                                                  |The task of grouping observations so that points within the same group are more similar to each other than to points in other groups.                                                                                                  |
+|Clustering algorithm                                                        |A method that groups observations into clusters based on similarity, without using class labels.                                                                                                                                       |
+|Cone                                                                        |A shape that narrows toward one end. In high dimensions, its formed by shrinking hyperspherical cross-sections along one axis.                                                                                                         |
+|Cone cluster                                                                |A cluster whose density varies along one axis, typically denser near the apex and more diffuse toward the base.                                                                                                                        |
+|Confidence rating                                                           |A self-reported measure indicating how confident a participant is in their judgment for a given trial.                                                                                                                                 |
+|Conic spiral                                                                |A spiral that expands outward and upward, forming a cone-like helix.                                                                                                                                                                   |
+|Convex hull                                                                 |The smallest convex set that contains all points in a dataset; referenced as inspiration for extending binning to higher dimensions.                                                                                                   |
+|Covariance structure (EII)                                                  |A model-based clustering assumption where clusters are spherical, have equal volume, equal shape, and no orientation differences.                                                                                                      |
+|Crescent                                                                    |A curved, moon-shaped arc formed by points along part of a circle.                                                                                                                                                                     |
+|Cube / Hypercube                                                            |Points filling a square ($2\text{-}D$), cube ($3\text{-}D$), or higher-dimensional box, either on a grid or randomly.                                                                                                                  |
+|Curvy cycle                                                                 |A closed loop that isnt a simple circle, with extra folds or oscillations.                                                                                                                                                             |
+|Cylinder (curvy)                                                            |A cylindrical shape with circular cross-sections, extended with a nonlinear bending dimension.                                                                                                                                         |
+|Data availability                                                           |The practice of making datasets publicly accessible to support transparency, reproducibility, and independent validation of results.                                                                                                   |
+|Data structure                                                              |A simulated configuration of points in high-dimensional space with predefined geometric shapes, densities, and cluster arrangements.                                                                                                   |
+|Delaunay triangulation                                                      |A geometric method that connects points into triangles such that no point lies inside the circumcircle of any triangle, used to define neighborhood structure.                                                                         |
+|Demographics questionnaire                                                  |A set of questions collecting background information about participants, such as age range, education level, and prior experience with dimension reduction methods.                                                                    |
+|Diffusion process                                                           |A mathematical process modeling how information spreads across a graph or manifold, used in NLDR to capture intrinsic geometry.                                                                                                        |
+|Dimension reduction (DR)                                                    |A technique that maps high-dimensional data into a lower-dimensional space while attempting to preserve important structure.                                                                                                           |
+|Distance scale factor                                                       |A multiplier applied to centroid distances to control how close or far apart clusters are. Levels include small, smallmedium, medium, mediumlarge, and large.                                                                          |
+|Dynamic visualization                                                       |Visualization techniques that use motion or interaction (e.g., tours, brushing, animation) to explore high-dimensional or complex data structures.                                                                                     |
+|Embedding                                                                   |A low-dimensional representation (typically $2\text{-}D$) of high-dimensional data produced by an NLDR method such as tSNE or UMAP.                                                                                                    |
+|Exploratory planning                                                        |Early-stage conceptual work involving sketches, diagrams, and working notes that guide the development of methods and software.                                                                                                        |
+|Exponential distribution (truncated)                                        |A distribution that produces many small values and few large ones, here limited to a fixed range.                                                                                                                                      |
+|Exponential scaled minimum inter-cluster distance                           |A transformed version of the smallest distance between any two points from different clusters, used to emphasize differences in close cluster proximity.                                                                               |
+|Fitted values                                                               |The high-dimensional bin centroids associated with observations, treated as model-predicted values.                                                                                                                                    |
+|Fractal (Sierpinski-like)                                                   |A self-similar pattern with repeating holes or gaps, created using a recursive rule.                                                                                                                                                   |
+|Gaussian cloud/ cluster                                                     |A cluster of points generated from a multivariate normal distribution, typically dense in the center and sparse at the edges.                                                                                                          |
+|Gaussian noise                                                              |Random variation drawn from a normal distribution, often added to make data more realistic.                                                                                                                                            |
+|Generalized linear mixed-effects model (GLMM)                               |A statistical model that accounts for both fixed effects (e.g., NLDR method, distance) and random effects (e.g., participant variability). Used here to model correct identification probabilities.                                    |
+|Geometric relationships                                                     |Spatial relationships among data points (such as distances and angles) in the original high-dimensional space.                                                                                                                         |
+|Geometric shape                                                             |A mathematically defined structure (e.g., Gaussian, cone, sphere, cube, spiral) used as a building block for generating synthetic data.                                                                                                |
+|Git                                                                         |A distributed version control system used to track changes in code, documents, and research materials.                                                                                                                                 |
+|GitHub                                                                      |A web-based platform for hosting Git repositories, enabling collaboration, version control, and public dissemination of software and research materials.                                                                               |
+|Global Score (GS)                                                           |A metric measuring preservation of overall geometry relative to a PCA baseline.                                                                                                                                                        |
+|Global structure                                                            |Large-scale relationships in the data, such as relative positions and distances between clusters.                                                                                                                                      |
+|Grid-based structure                                                        |Points placed in a regular, evenly spaced pattern instead of randomly.                                                                                                                                                                 |
+|Hallucinated structure                                                      |Patterns observed in an NLDR layout that do not correspond to true structure in the original high-dimensional data.                                                                                                                    |
+|Helical spiral                                                              |A twisted, elongated structure that winds around an axis while progressing forward.                                                                                                                                                    |
+|Hemisphere                                                                  |Half of a sphere, created by restricting angles so points lie on only one side.                                                                                                                                                        |
+|Hexagon (bin)                                                               |A single hexagonal cell in the tessellation of the $2$-D NLDR layout.                                                                                                                                                                  |
+|Hexagon grid                                                                |A tessellation of the $2\text{-}D$ embedding space into regular hexagons used for binning and model fitting.                                                                                                                           |
+|Hexagonal binning (hexbin/ hexbinning)                                      |A spatial aggregation method that partitions a $2-D$ layout into hexagonal cells to summarize local structure and density.                                                                                                             |
+|Hexbin Error (HBE)                                                          |A diagnostic metric that measures how well a $2\text{-}D$ NLDR layout represents the underlying high-dimensional data by comparing bin centroids lifted back into high-dimensional space. Lower HBE indicates a better representation. |
+|Hierarchical clustering                                                     |A clustering method that builds a tree of nested clusters by successively merging or splitting groups.                                                                                                                                 |
+|High-dimensional centroid                                                   |The mean of the high-dimensional observations assigned to a given hexagonal bin.                                                                                                                                                       |
+|High-dimensional data ($p\text{-}D$ data)                                   |Data in which each observation is described by a large number of features (dimensions), often making direct visualization and interpretation difficult.                                                                                |
+|High-dimensional noise                                                      |Extra dimensions added to data that introduce variability without changing the main structure.                                                                                                                                         |
+|High-dimensional space ($p\text{-}D$)                                       |The original data space where each observation is represented by $p$ variables.                                                                                                                                                        |
+|Hole (spherical / hyperspherical)                                           |A region removed from the data in the shape of a circle, sphere, or higher-dimensional sphere.                                                                                                                                         |
+|Hyper-parameter(s)                                                          |A method-specific tuning parameter (e.g., perplexity in tSNE, number of neighbors in UMAP) that influences the resulting NLDR embedding.                                                                                               |
+|Hypersphere                                                                 |The higher-dimensional equivalent of a circle ($2\text{-}D$) or sphere ($3\text{-}D$).                                                                                                                                                 |
+|Interdisciplinary users                                                     |Researchers or students from diverse disciplinary backgrounds who may have varying levels of programming or statistical expertise.                                                                                                     |
+|Intrinsic dimensionality                                                    |The effective dimensionality of a data structure, independent of the ambient number of variables.                                                                                                                                      |
+|Inverse transformation                                                      |A nonlinear operation involving division (e.g. 1/x1/x1/x) that creates sharp curvature.                                                                                                                                                |
+|Isotropic distribution                                                      |A distribution with equal variability in all directions, such as points uniformly sampled in a cube.                                                                                                                                   |
+|Latent parameter                                                            |An underlying variable (like an angle or index) that drives the shape of the data.                                                                                                                                                     |
+|Latent variable                                                             |An underlying variable (like an angle or time index) that drives the observed structure but isnt directly observed.                                                                                                                    |
+|Lifted model ($p\text{-}D$ model)                                           |The representation of the $2$-D wireframe model mapped back into the original high-dimensional space by averaging observations within each bin.                                                                                        |
+|Linear optimization problem                                                 |An optimization problem where the objective and constraints are linear functions, implying solutions occur at vertices of the feasible region.                                                                                         |
+|Linear projection                                                           |A mapping from high- to low-dimensional space using linear combinations of the original variables.                                                                                                                                     |
+|Linear structure                                                            |Points arranged roughly along a straight line, possibly with noise and different scales across dimensions.                                                                                                                             |
+|Linked plots/views                                                          |Interactive visualizations where selections in one view (e.g., $2$-D layout) are reflected in other views (e.g., tours or error plots).                                                                                                |
+|Local structure                                                             |Relationships among nearby points in high-dimensional space, such as nearest neighbors within a cluster.                                                                                                                               |
+|Localglobal trade-off                                                       |The balance between preserving small-scale neighborhood structure and large-scale relationships in NLDR embeddings, controlled by hyper-parameters.                                                                                    |
+|Low-count bin removal                                                       |The process of excluding bins with few observations to sharpen the wireframe representation.                                                                                                                                           |
+|Low-density hexagon                                                         |A bin containing few points and whose neighboring bins also have low density, indicating weak local support for structure.                                                                                                             |
+|Low-dimensional representation/ embedding                                   |A reduced-dimensional embedding (typically $2\text{-}D$) of high-dimensional data used for visualization and interpretation.                                                                                                           |
+|Manifold                                                                    |A low-dimensional shape (curve or surface) embedded inside a higher-dimensional space.                                                                                                                                                 |
+|Match-a-roo                                                                 |A Shiny-based web application developed to collect participant responses, confidence ratings, and demographic information for the user study.                                                                                          |
+|Minimum inter-cluster distance                                              |The smallest distance between any point in one cluster and any point in another cluster. It captures the closest approach of clusters.                                                                                                 |
+|Misidentification                                                           |A participant response indicating that two displays show different data when they actually show the same data, or vice versa.                                                                                                          |
+|Model diagnostics                                                           |Visual and quantitative tools used to assess how well an NLDR-based model fits the high-dimensional data, including error views, tours, and linked brushing.                                                                           |
+|Model fitting pipeline                                                      |The sequence of steps in quollr, including scaling, hexagonal binning, centroid extraction, triangulation, lifting into $p$-D, and diagnostic computation.                                                                             |
+|Model-based clustering                                                      |A probabilistic clustering approach that assumes data are generated from a mixture of distributions.                                                                                                                                   |
+|Model-in-the-data-space                                                     |A visualization principle in which a fitted model is overlaid directly on the observed data in the original high-dimensional space to assess model fit.                                                                                |
+|Multicluster dataset                                                        |A dataset composed of multiple clusters, each potentially generated from a different geometric shape or distribution.                                                                                                                  |
+|Multidimensional scaling (MDS)                                              |A family of methods that create low-dimensional representations by preserving pairwise distances from high-dimensional space.                                                                                                          |
+|Mbius strip                                                                 |A twisted surface with only one side and one edge, often used to test how algorithms handle non-orientable geometry.                                                                                                                   |
+|NLDR (Nonlinear Dimension Reduction)                                        |A class of methods that project high-dimensional data into lower dimensions while preserving nonlinear structure.                                                                                                                      |
+|NLDR layout                                                                 |The two-dimensional embedding produced by an NLDR method (e.g., tSNE, UMAP), where each point represents a high-dimensional observation.                                                                                               |
+|NLDR selection                                                              |The process of choosing one or more nonlinear dimension reduction layouts that best represent the structure of high-dimensional data, based on visual and quantitative diagnostics.                                                    |
+|Nearest-neighbor ordering                                                   |A possible effect of NLDR methods where points are arranged in a way that preserves local neighborhoods but may impose unintended global ordering.                                                                                     |
+|Neighborhood preservation                                                   |The extent to which local proximity relationships among observations are maintained between high- and low-dimensional spaces.                                                                                                          |
+|Neighborhood structure                                                      |The pattern of local adjacency relationships among bins or points in the $2\text{-}D$ layout.                                                                                                                                          |
+|Noise dimensions                                                            |Additional variables added to a dataset, typically drawn from random distributions, to increase dimensionality without adding structure.                                                                                               |
+|Non-empty bin                                                               |A hexagonal bin containing at least one observation.                                                                                                                                                                                   |
+|Nonlinear dimension reduction (NLDR)                                        |A class of methods that map high-dimensional data into a lower-dimensional space using nonlinear transformations, often to reveal structure not visible through linear projections.                                                    |
+|Nonlinear geometry                                                          |Data structures that cannot be adequately represented by linear projections, such as spirals or curved surfaces.                                                                                                                       |
+|Nonlinear surface                                                           |A warped $2\text{-}D$ surface embedded in higher dimensions, showing bends, waves, or sharp changes.                                                                                                                                   |
+|Orthogonal rotation                                                         |A transformation that rotates data while preserving distances and overall shape.                                                                                                                                                       |
+|PBMC dataset                                                                |A single-cell RNA-seq dataset of peripheral blood mononuclear cells commonly used to benchmark dimension reduction and clustering methods.                                                                                             |
+|PHATE (Potential of Heat-diffusion for Affinity-based Trajectory Embedding) |An NLDR method based on diffusion processes, designed to capture both global geometry and continuous transitions in the data.                                                                                                          |
+|PaCMAP (Pairwise Controlled Manifold Approximation)                         |An NLDR method that uses different types of point pairs to control local, mid-range, and global structure preservation.                                                                                                                |
+|Pancake effect                                                              |An observed artifact where a fitted model collapses into a near-flat structure in high-dimensional space, indicating loss of intrinsic dimensionality.                                                                                 |
+|Participant (subject)                                                       |An individual recruited to take part in the user study and complete the evaluation trials.                                                                                                                                             |
+|Participant-level random effect                                             |A model component capturing individual differences in accuracy or response behavior across participants.                                                                                                                               |
+|Perception and misperception                                                |The ways in which viewers correctly or incorrectly interpret visual patterns in data visualizations.                                                                                                                                   |
+|Perceptual identification/ accuracy                                         |The task performed by participants: deciding whether a $2\text{-}D$ NLDR plot and a tour represent the same underlying data.                                                                                                           |
+|Piling                                                                      |A phenomenon in linear projections where many points overlap or concentrate near the center of the display, potentially obscuring important structure.                                                                                 |
+|Point-level diagnostics                                                     |Residual and error measures computed for individual observations to identify local regions of poor model fit.                                                                                                                          |
+|Polar angle                                                                 |The angle controlling vertical position on a sphere (like latitude).                                                                                                                                                                   |
+|Polynomial structure                                                        |A curved pattern (quadratic or cubic) defined by polynomial relationships between variables.                                                                                                                                           |
+|Prediction                                                                  |The process of assigning a new high-dimensional observation to a location in the $2$-D layout based on nearest neighbors in the lifted model.                                                                                          |
+|Principal Component Analysis (PCA)                                          |A linear dimension reduction method that identifies orthogonal directions (principal components) capturing the maximum variance in the data.                                                                                           |
+|Prolific                                                                    |An online crowd-sourcing platform used to recruit participants for the experiment.                                                                                                                                                     |
+|Pyramid                                                                     |A shape with a broad base that narrows toward an apex, with different possible base shapes (rectangular, triangular, star-shaped).                                                                                                     |
+|Quarto                                                                      |A scientific and technical publishing system used to create reproducible documents, presentations, and websites combining text, code, and visualizations.                                                                              |
+|Radius scaling                                                              |Changing the size of a cross-section as you move along an axis (e.g. shrinking toward a tip).                                                                                                                                          |
+|Random Neighborhood Preservation (RNX) curve                                |A metric that quantifies neighborhood agreement across scales between high- and low-dimensional spaces.                                                                                                                                |
+|Random Triplet Accuracy (RTA)                                               |A metric assessing how well relative distances among random triplets of points are preserved in the embedding.                                                                                                                         |
+|Reliability of NLDR representations                                         |The degree to which a low-dimensional embedding faithfully reflects the structure present in the high-dimensional data.                                                                                                                |
+|Residual                                                                    |The Euclidean distance between an observation and its corresponding fitted bin centroid in high-dimensional space.                                                                                                                     |
+|Residual-based evaluation                                                   |An approach to assessing NLDR quality by examining differences between fitted model values and observed high-dimensional data.                                                                                                         |
+|Resolution parameter                                                        |Any parameter (such as binwidth or neighborhood size) that controls the granularity at which structure is modeled or visualized.                                                                                                       |
+|Rotation                                                                    |A transformation applied to data that changes its orientation in space while preserving distances and geometric relationships.                                                                                                         |
+|Rotation matrix                                                             |A matrix that changes the orientation of data without changing distances or variance.                                                                                                                                                  |
+|Run sheets                                                                  |Step-by-step task instructions provided to participants during a usability study to ensure consistency in task execution and to facilitate systematic feedback collection.                                                             |
+|S-curve                                                                     |A smooth, bent surface in 3D often used to test whether algorithms can unfold nonlinear structure.                                                                                                                                     |
+|S-curve with hole                                                           |An S-shaped manifold with a missing spherical region, creating topological complexity.                                                                                                                                                 |
+|Same / Different trials                                                     |Experimental conditions where the $2$-D NLDR plot and the tour either come from the same dataset (SAME) or from different datasets (DIFFERENT).                                                                                        |
+|Scaled distance                                                             |A distance measure adjusted to account for differences in scale across simulated data structures.                                                                                                                                      |
+|Scaling                                                                     |A transformation that adjusts the spread or magnitude of a geometric shape along one or more dimensions.                                                                                                                               |
+|Scaling (data scaling)                                                      |Standardizing data before analysis so that variables have comparable ranges.                                                                                                                                                           |
+|Scaling of NLDR data                                                        |Rescaling the $2\text{-}D$ embedding to a standardized range to preserve aspect ratio and ensure consistent binning.                                                                                                                   |
+|Server-side computation                                                     |A computational model in which data processing and analysis are performed on a remote server rather than on the users local machine. In menuraR, NLDR generation and diagnostics are executed on the Shiny server.                     |
+|Shape generator                                                             |A function that produces synthetic data points according to a specified geometric form and set of parameters.                                                                                                                          |
+|Shepard diagram                                                             |A scatterplot comparing pairwise distances in the original space to distances in the embedded space.                                                                                                                                   |
+|Single-cell RNA sequencing (scRNA-seq)                                      |A technology that measures gene expression at the level of individual cells, producing extremely high-dimensional datasets.                                                                                                            |
+|Sparse sampling                                                             |Uneven sampling density across different regions of a manifold, which can distort NLDR layouts by contracting low-density regions.                                                                                                     |
+|Spearman correlation (SC)                                                   |A rank-based correlation used to assess monotonic agreement between high- and low-dimensional distances.                                                                                                                               |
+|Sphere                                                                      |The surface of a ball. Points lie only on the boundary, not inside.                                                                                                                                                                    |
+|Spherical spiral                                                            |A spiral path that wraps around the surface of a sphere.                                                                                                                                                                               |
+|Spins                                                                       |The number of turns or revolutions in a spiral structure.                                                                                                                                                                              |
+|Standardized bin count ($w_h$)                                              |The proportion of total observations contained in a bin, used to identify low-density regions.                                                                                                                                         |
+|Static plot                                                                 |A single, fixed 2D visualization of an NLDR embedding.                                                                                                                                                                                 |
+|Stress function                                                             |An objective function used in MDS to quantify the mismatch between distances in the original space and the embedded space.                                                                                                             |
+|Structure exaggeration                                                      |The tendency of NLDR methods to amplify apparent patterns, such as clusters or separations, in low-dimensional embeddings.                                                                                                             |
+|Structured noise                                                            |Noise that follows smooth or patterned trends instead of being purely random.                                                                                                                                                          |
+|Swiss roll                                                                  |A flat surface rolled up into a spiral in 3D, commonly used as a nonlinear manifold example.                                                                                                                                           |
+|Synthetic dataset                                                           |An artificially generated dataset designed to exhibit specific structural or statistical properties.                                                                                                                                   |
+|Technical barrier                                                           |Practical or knowledge-based obstacles (e.g., software installation, programming requirements) that can limit access to advanced analytical tools.                                                                                     |
+|Topological complexity                                                      |Features like holes, loops, or twists that affect connectivity but not local smoothness.                                                                                                                                               |
+|Tour                                                                        |A dynamic visualization technique that presents a continuous sequence of $2\text{-}D$ linear projections of high-dimensional data, allowing structure to be explored from multiple viewing angles.                                     |
+|Trefoil knot                                                                |A closed loop with self-crossings, forming a nontrivial knot used to test preservation of topology.                                                                                                                                    |
+|TriMAP                                                                      |An NLDR method that preserves relative distances among triplets of points to balance local and global structure.                                                                                                                       |
+|Trial                                                                       |A single evaluation task in which a participant compares two visual displays and judges whether they represent the same data.                                                                                                          |
+|Triangular mesh (triangulation)                                             |A network of edges connecting neighboring bin centroids, derived using Delaunay triangulation to encode local neighborhood relationships.                                                                                              |
+|Trigonometric structure                                                     |A geometric pattern generated using sine and cosine functions.                                                                                                                                                                         |
+|True model (geometric structure)                                            |The subset of variables and relationships that define the underlying data-generating manifold, which NLDR aims to capture.                                                                                                             |
+|Twisting                                                                    |A distortion in NLDR where the fitted manifold rotates or bends excessively in high-dimensional space.                                                                                                                                 |
+|UMAP (Uniform Manifold Approximation and Projection)                        |An NLDR method that balances local and global structure preservation using manifold learning principles.                                                                                                                               |
+|Uniform distribution                                                        |All values within a range are equally likely.                                                                                                                                                                                          |
+|Unsupervised learning                                                       |A class of methods that identify patterns or structures in data without using labeled outcomes.                                                                                                                                        |
+|Usability survey                                                            |A structured evaluation method used to assess how easily users can learn, navigate, and complete tasks within an application. In this study, it was used to inform interface design and feature refinement in menuraR.                 |
+|User interaction logs                                                       |Records of user actions within an application, such as layout generation and comparison steps, used to evaluate usability and identify design improvements.                                                                            |
+|User study                                                                  |An empirical experiment involving human participants, designed to assess how people interact with and interpret visual representations.                                                                                                |
+|Version control                                                             |A system for tracking and managing changes to files, enabling collaboration, rollback, and transparent development history.                                                                                                            |
+|Visualization technique                                                     |A method for graphically representing data to aid interpretation, exploration, or comparison of structures.                                                                                                                            |
+|Wavy noise dimensions                                                       |Noise variables that oscillate smoothly, often following sine or polynomial patterns.                                                                                                                                                  |
+|Web-based interface                                                         |A graphical user interface accessed through a web browser that enables interaction with computational tools without requiring local software installation.                                                                             |
+|Wireframe model                                                             |A geometric representation of an NLDR layout constructed by connecting neighboring bin centroids with line segments, forming a mesh that approximates the layouts structure.                                                           |
+|Within-cluster dispersion/ distance                                         |A measure of how spread out points are within each cluster.                                                                                                                                                                            |
+|Wrapper function                                                            |A helper function that calls another function but simplifies inputs or outputs.                                                                                                                                                        |
+|`cardinalR`                                                                 |An R package designed to generate high-dimensional clustering data structures with controlled geometric and noise properties.                                                                                                          |
+|`detourr`                                                                   |An R package for dynamic visualization of high-dimensional data using tour methods, supporting interactive exploration through projection sequences.                                                                                   |
+|`knitr`                                                                     |An R package that supports dynamic report generation by integrating R code with documents written in LaTeX, Markdown, or Quarto.                                                                                                       |
+|`langevitour`                                                               |An R package used to generate smooth, continuous tours for exploring high-dimensional data and fitted models.                                                                                                                          |
+|`menuraR`                                                                   |A Shiny web application for comparing, diagnosing, and selecting the most reasonable NLDR layouts.                                                                                                                                     |
+|`quollr`                                                                    |An R package developed to diagnose and evaluate NLDR layouts using visual and quantitative methods.                                                                                                                                    |
+|`shiny`                                                                     |An R framework for building interactive web applications directly from R code.                                                                                                                                                         |
+|autoAlt                                                                     |An R package developed by the NUMBATs group that provides automated suggestions for generating alt-text for data visualizations.                                                                                                       |
+|scDEED                                                                      |A method for evaluating NLDR embeddings by assigning reliability scores based on neighborhood preservation before and after embedding.                                                                                                 |
+|shinyapps.io                                                                |A cloud-based hosting platform for R Shiny applications that allows users to access interactive tools such as menuraR through a web browser without local installation.                                                                |
+|tSNE (t-distributed Stochastic Neighbor Embedding)                          |An NLDR method that prioritizes preservation of local neighborhoods, often at the expense of global structure.                                                                                                                         |
 
 
 :::
 :::
-
-
-
-## Data structures
-
-@tbl-dt-str summarizes the three-cluster data structures used in the experiment. Each data structure was generated using the `cardinalR` package [@jayani2025b] and comprises three clusters with distinct geometric forms. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in $4\text{-}D$ space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods.
-
-
-::: {#tbl-dt-str .cell layout-align="center" tbl-cap='Description of the simulated three-cluster data structures. Each data structure consists of three clusters with different geometric shapes.'}
-::: {.cell-output-display}
-
-
-|Data structure |Cluster1             |Cluster2   |Cluster3                 |
-|:--------------|:--------------------|:----------|:------------------------|
-|three_clust_01 |curv                 |elliptical |blunted_cone             |
-|three_clust_02 |s_curve              |cube       |pyramid_rectangular_base |
-|three_clust_03 |curvy_cylinder       |hemisphere |pyramid_triangular_base  |
-|three_clust_04 |curv2                |gaussian   |filled_hexagonal_pyramid |
-|three_clust_05 |nonlinear_hyperbola  |elliptical |blunted_cone             |
-|three_clust_06 |crescent             |cube       |pyramid_rectangular_base |
-|three_clust_07 |nonlinear_hyperbola2 |hemisphere |pyramid_triangular_base  |
-|three_clust_08 |conic_spiral         |gaussian   |filled_hexagonal_pyramid |
-|three_clust_09 |helical_hyper_spiral |cube       |blunted_cone             |
-|three_clust_10 |spherical_spiral     |gaussian   |pyramid_triangular_base  |
-|three_clust_11 |curv                 |elliptical |pyramid_rectangular_base |
-|three_clust_12 |s_curve              |hemisphere |filled_hexagonal_pyramid |
-|three_clust_13 |curvy_cylinder       |cube       |blunted_cone             |
-|three_clust_14 |curv2                |gaussian   |pyramid_triangular_base  |
-|three_clust_15 |nonlinear_hyperbola  |elliptical |pyramid_rectangular_base |
-|three_clust_16 |crescent             |hemisphere |filled_hexagonal_pyramid |
-|three_clust_17 |nonlinear_hyperbola2 |cube       |blunted_cone             |
-|three_clust_18 |conic_spiral         |gaussian   |pyramid_triangular_base  |
-
-
-:::
-:::
-
-
-Animations of the $4\text{-}D$ tours that used for the study are available on YouTube at the links given in @tbl-links-html.
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {#tbl-links-html .cell layout-align="center" tbl-pos='H' tbl-cap='Videos'}
-::: {.cell-output-display}
-`````{=html}
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> data structure </th>
-   <th style="text-align:left;"> small </th>
-   <th style="text-align:left;"> small-medium </th>
-   <th style="text-align:left;"> medium </th>
-   <th style="text-align:left;"> medium-large </th>
-   <th style="text-align:left;"> large </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> three_clust_01 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/kZyZxujDz58">youtu.be/kZyZxujDz58</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/Jz3k4uIAiRo">youtu.be/Jz3k4uIAiRo</a> </td>
-   <td style="text-align:left;"> <a href="https://youtube.com/shorts/QqMDQxShke0">youtube.com/shorts/QqMDQxShke0</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/E9msE_XX0KA">youtu.be/E9msE_XX0KA</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/E9msE_XX0KA">youtu.be/E9msE_XX0KA</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_02 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/CLMlOU4Fb2w">youtu.be/CLMlOU4Fb2w</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/TFj0satlBBE">youtu.be/TFj0satlBBE</a> </td>
-   <td style="text-align:left;"> <a href="https://youtube.com/shorts/jKarI60euSw">youtube.com/shorts/jKarI60euSw</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/_f2WvtD2xog">youtu.be/f2WvtD2xog</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/_f2WvtD2xog">youtu.be/f2WvtD2xog</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_03 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/K2oKM4mUBXM">youtu.be/K2oKM4mUBXM</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/b-43HKN30ws">youtu.be/b-43HKN30ws</a> </td>
-   <td style="text-align:left;"> <a href="https://youtube.com/shorts/edCnIfgfoU0">youtube.com/shorts/edCnIfgfoU0</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/7NwNcD4qlLc">youtu.be/7NwNcD4qlLc</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/7NwNcD4qlLc">youtu.be/7NwNcD4qlLc</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_04 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/7yvvpPgiWNw">youtu.be/7yvvpPgiWNw</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/1PhZO7cUEaI">youtu.be/1PhZO7cUEaI</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/XO61YVXAdr8">youtu.be/XO61YVXAdr8</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/XO61YVXAdr8">youtu.be/XO61YVXAdr8</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/XO61YVXAdr8">youtu.be/XO61YVXAdr8</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_05 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/pbI7UXFgc0k">youtu.be/pbI7UXFgc0k</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/G-TvOIBj-14">youtu.be/G-TvOIBj-14</a> </td>
-   <td style="text-align:left;"> <a href="https://youtube.com/shorts/I9xxCinW4Ec">youtube.com/shorts/I9xxCinW4Ec</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/ardE0G7zevk">youtu.be/ardE0G7zevk</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/ardE0G7zevk">youtu.be/ardE0G7zevk</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_06 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/Mxylk4M67iA">youtu.be/Mxylk4M67iA</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/ABrxozu8F-A">youtu.be/ABrxozu8F-A</a> </td>
-   <td style="text-align:left;"> <a href="https://youtube.com/shorts/FISgM4T2xEI">youtube.com/shorts/FISgM4T2xEI</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/soFQR9UwNsg">youtu.be/soFQR9UwNsg</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/soFQR9UwNsg">youtu.be/soFQR9UwNsg</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_07 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/2a89BQGK_iU">youtu.be/2a89BQGK_iU</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/Wt4NwZSACmo">youtu.be/Wt4NwZSACmo</a> </td>
-   <td style="text-align:left;"> <a href="https://youtube.com/shorts/MbGOoTrvVXk">youtube.com/shorts/MbGOoTrvVXk</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/hVwIjSxACoo">youtu.be/hVwIjSxACoo</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/hVwIjSxACoo">youtu.be/hVwIjSxACoo</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_08 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/eID-dwpgU44">youtu.be/eID-dwpgU44</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/ILwnlZUMj_U">youtu.be/ILwnlZUMj_U</a> </td>
-   <td style="text-align:left;"> <a href="https://youtube.com/shorts/6k20OE3Fkcg">youtube.com/shorts/6k20OE3Fkcg</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/oSBaMH9HJZ4">youtu.be/oSBaMH9HJZ4</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/oSBaMH9HJZ4">youtu.be/oSBaMH9HJZ4</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_09 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/6uGCDUSL60Q">youtu.be/6uGCDUSL60Q</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/RvlSY3drV5I">youtu.be/RvlSY3drV5I</a> </td>
-   <td style="text-align:left;"> <a href="https://youtube.com/shorts/TIyP-a75YmQ">youtube.com/shorts/TIyP-a75YmQ</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/mh_rG2qy2Pc">youtu.be/mh_rG2qy2Pc</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/mh_rG2qy2Pc">youtu.be/mh_rG2qy2Pc</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_10 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/CX5O4eNZW5o">youtu.be/CX5O4eNZW5o</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/fHxflXa9i-s">youtu.be/fHxflXa9i-s</a> </td>
-   <td style="text-align:left;"> <a href="https://youtube.com/shorts/hUzYOFS8o4M">youtube.com/shorts/hUzYOFS8o4M</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/R6vD1xJH21w">youtu.be/R6vD1xJH21w</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/R6vD1xJH21w">youtu.be/R6vD1xJH21w</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_11 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/1f8S7HiZ8dc">youtu.be/1f8S7HiZ8dc</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/Fki5vIuPupE">youtu.be/Fki5vIuPupE</a> </td>
-   <td style="text-align:left;"> <a href="https://youtube.com/shorts/Ar0gbKEfzQk">youtube.com/shorts/Ar0gbKEfzQk</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/ciVOD8_sWR0">youtu.be/ciVOD8_sWR0</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/ciVOD8_sWR0">youtu.be/ciVOD8_sWR0</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_12 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/AZv45NGkuC4">youtu.be/AZv45NGkuC4</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/qQ4LqHYH_c4">youtu.be/qQ4LqHYH_c4</a> </td>
-   <td style="text-align:left;"> <a href="https://youtube.com/shorts/-WtgmbfY_Qo">youtube.com/shorts/-WtgmbfY_Qo</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/Y2sfVoemVZo">youtu.be/Y2sfVoemVZo</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/Y2sfVoemVZo">youtu.be/Y2sfVoemVZo</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_13 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/U-bbZjzvaiE">youtu.be/U-bbZjzvaiE</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/0MznMYr5gfo">youtu.be/0MznMYr5gfo</a> </td>
-   <td style="text-align:left;"> <a href="https://youtube.com/shorts/PtAWhAz8bz8">youtube.com/shorts/PtAWhAz8bz8</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/E7ge3kw5Q0Q">youtu.be/E7ge3kw5Q0Q</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/E7ge3kw5Q0Q">youtu.be/E7ge3kw5Q0Q</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_14 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/ynu2oUxv08I">youtu.be/ynu2oUxv08I</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/gHDLMn5AG-8">youtu.be/gHDLMn5AG-8</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/HyCJEiwCVv0">youtu.be/HyCJEiwCVv0</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/HyCJEiwCVv0">youtu.be/HyCJEiwCVv0</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/HyCJEiwCVv0">youtu.be/HyCJEiwCVv0</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_15 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/xsdWsBek0eQ">youtu.be/xsdWsBek0eQ</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/SDY64MrcWQg">youtu.be/SDY64MrcWQg</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/CFIyW7ftF9M">youtu.be/CFIyW7ftF9M</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/CFIyW7ftF9M">youtu.be/CFIyW7ftF9M</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/CFIyW7ftF9M">youtu.be/CFIyW7ftF9M</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_16 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/VyYyYOqhOVs">youtu.be/VyYyYOqhOVs</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/zi-TvgVR8a4">youtu.be/zi-TvgVR8a4</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/hdQmD499yo8">youtu.be/hdQmD499yo8</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/hdQmD499yo8">youtu.be/hdQmD499yo8</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/hdQmD499yo8">youtu.be/hdQmD499yo8</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_17 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/yojgjcf2NQk">youtu.be/yojgjcf2NQk</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/UJPMJ5irRbQ">youtu.be/UJPMJ5irRbQ</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/zdQYQvqTyGA">youtu.be/zdQYQvqTyGA</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/zdQYQvqTyGA">youtu.be/zdQYQvqTyGA</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/zdQYQvqTyGA">youtu.be/zdQYQvqTyGA</a> </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> three_clust_18 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/r-Z1Yyf2c4s">youtu.be/r-Z1Yyf2c4s</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/2Rf2L8iey2w">youtu.be/2Rf2L8iey2w</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/e_-IQycglVE">youtu.be/e_-IQycglVE</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/e_-IQycglVE">youtu.be/e_-IQycglVE</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/e_-IQycglVE">youtu.be/e_-IQycglVE</a> </td>
-  </tr>
-</tbody>
-</table>
-
-`````
-:::
-:::
-
-
-
-## $2\text{-}D$ NLDR layouts
-
-All $2\text{-}D$ NLDR layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/Monash_PhD_thesis/figures/vis-exp/layouts](https://github.com/JayaniLakshika/Monash_PhD_thesis/tree/main/figures/vis-exp/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) with default hyper-parameter settings for the simulated $4\text{-}D$ data structures.
-
-## Distance metrics
-
-To quantify cluster separation in the high-dimensional space, we considered several inter-cluster distance metrics that capture different aspects of separability (@fig-distance-metrics). Together, these metrics reflect both global separation between clusters and more local boundary proximity.
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![Pairwise relationships among six distance metrics used to quantify cluster separation in the high-dimensional space: between–within (BW) ratio, exponentiated scaled minimum distance, quantile-ranked average between-cluster distance, Pearson–Gamma coefficient, average silhouette distance, and square-root–transformed Dunn and Dunn2 indices. The diagonal panels show the distribution of each metric, while the lower panels show scatterplots colored by distance scaling factor (S, SM, M, ML, L). Upper panels report Pearson correlation coefficients for all pairs, with significance indicated by asterisks ($p < 0.001$ '`***`'). Metrics show high positive correlation, confirming that they capture consistent structural variation. The BW ratio and exponentiated minimum distance were chosen for the main analysis because they provide complementary summaries of global cluster separation and local boundary distance.](C-appC_files/figure-html/fig-distance-metrics-1.png){#fig-distance-metrics fig-align='center' width=100%}
-:::
-:::
-
-
-As shown in @fig-distance-metrics, most metric pairs are strongly positively correlated, indicating that they respond similarly as cluster separation increases. This suggests that the distance scaling used in the simulations effectively controls separability and that the metrics capture related structural changes. The scatterplots also show differences in sensitivity across scaling levels, with some metrics responding more clearly at smaller separations and others providing better discrimination at larger separations.
-
-Based on these patterns, we selected the BW ratio and the exponentiated scaled minimum distance for the main analyses. The BW ratio captures overall separation by contrasting between- and within-cluster dispersion, while the exponentiated minimum distance focuses on the closest boundaries between clusters. Both measures are strongly correlated with the other metrics (upper panels of @fig-distance-metrics) but reflect complementary aspects of separability, allowing us to assess whether perceptual accuracy is driven more by global structure, local proximity, or both.
-
-## Data collection process
-
-### Recruite participants
-
-Subjects were recruited from Prolific [@palan2018], an online platform, to evaluate the trials. The study expects that the participants are uninvolved judges with no prior knowledge of the data to avoid inadvertently affecting results. Potential subjects needed with fluent in English and have completed at least $10$ Prolific studies with a $98\%$ approval rate. The Prolific server only considers participants who are age $18$ and older.
-
-All subjects were trained using three example displays to orient them to the evaluation trials and provided [introductory materials](https://drive.google.com/file/d/14o-nSjy50Qw2eoQArK5AhjowLIOe6m14/view). All subjects who completed the task were compensated $9.96$ GBP per hour for their time via the Prolific payment system.
-
-### Web application to collect responses
-
-The survey web application, [Match-a-roo](https://ebsmonash.shinyapps.io/web_game/), is designed to collect survey responses and demographics using the `shiny` [@winston2025a] package in R. Each subject had access to the survey via the [shiny.io server](https://www.shinyapps.io/). The first interface of the survey app contained an introduction, instructions for the survey (@fig-intro-page), a consent form (@fig-consent), and buttons to access, for example, actual trials. Participants can try three examples prior to the study where the answers were not recorded (@fig-example). The subjects were first asked for their consent to the responses being used for analysis.
-
-A total of $1905$ evaluations from $127$ participants has been collected.
-
-After giving consent, the participant can start the trials. Two visual displays of data are shown where the data may be the same or different (@fig-act). One of the visual displays is a $2\text{-}D$ static plot, and the other is a motion plot made of many $2\text{-}D$ plots. The participants were asked to decide whether that data was the same in both displays and to report their confidence about their choice and any comments about the answer.
-
-When the participants completed the twenty-three evaluations, they were asked for their demographics which included preferred pronoun, the highest level of education achieved, their age category, whether they used principal component analysis in their work, and whether they applied NLDR techniques such as tSNE and UMAP (@fig-demo). Finally, the participants need to click on prolific URL ([https://app.prolific.co/submissions/](https://app.prolific.co/submissions/complete?cc=CLDDOZ10)) to redirect back to the Prolific app (@fig-end). 
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![Diagram of online experiment setup.](../figures/vis-exp/experiment.png){#fig-exp-setup fig-align='center' width=100%}
-:::
-:::
-
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![The introduction page of the study app.](../figures/vis-exp/introduction.png){#fig-intro-page fig-align='center' width=100%}
-:::
-:::
-
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![The consent form provided in the study app.](../figures/vis-exp/consent.png){#fig-consent fig-align='center' width=100%}
-:::
-:::
-
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![The example trial page of the study app.](../figures/vis-exp/example.png){#fig-example fig-align='center' width=100%}
-:::
-:::
-
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![The actual trial page of the study app.](../figures/vis-exp/attempt.png){#fig-act fig-align='center' width=100%}
-:::
-:::
-
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![The demographics page of the study app.](../figures/vis-exp/demographics.png){#fig-demo fig-align='center' width=100%}
-:::
-:::
-
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![The end page of the study app.](../figures/vis-exp/end_page.png){#fig-end fig-align='center' width=100%}
-:::
-:::
-
-
-Once a participant starts the study (@fig-exp-setup), the "eligibility_subject_IDs" Google Sheet is connected and read in the Shiny app to identify which subject IDs have not yet been assigned to anyone, as indicated by the "used" column. If the "used" column is marked as NA, it means that the subject ID has not been assigned. 
-
-After identifying the eligible subject IDs, one is randomly assigned to the participant, and "1" is recorded in the "used" column corresponding to that subject ID. This subject ID will later assist in connecting the experiment design, high-dimensional data, and embedding data.
-
-Once a subject ID is allocated to a participant, the experiment design data is loaded, and the relevant attempts, data structure, and methods are presented to the participant. This process continues until the participant completes all attempts. After determining the data structure and methods, the relevant high-dimensional and embedding data is loaded from "high_d_data_three_clust_all.rds" and "embedding_data_three_clust_all.rds," respectively, and displayed in both motion and $2\text{-}D$ static plots. 
-
-Once the participant records their answers, a new row is added to the "result_df" Google Sheet with their responses. This continues until the participant finishes the study. Finally, after completing the evaluations, participants are asked to fill out a demographics questionnaire. Their responses are then recorded in a new row of the "demographic_details" Google Sheet.
-
-## Analysis of results relative to data collection process
-
-### Data cleaning
-
-The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty-three trials, including the demographics and the attention check trial. Participants who exceeded the average time of $5-10$ minutes were excluded, as determined from the pilot study. Following this, individuals who didn't accurately detect the attention check trial were also removed. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set is further refined by filtering out all the responses, which showed the same data structures in $2\text{-}D$ NLDR plot and tour.
-
-### Demographics
-
-Along with the responses to the trials, we have collected a series of demographic information including preferred pronoun, age range category, education background, and previous experience in PCA and Non-linear dimension reduction techniques. @tbl-pronoun, @tbl-age, @tbl-education, @tbl-pca, and @tbl-nldr provide summaries of the demographic data.  
-
-The participants are fairly balanced in terms of pronouns, with similar proportions identifying as *she/her* ($50.4\%$) and *he/him* ($48.0\%$), and a small number identifying as *they/them* ($1.6\%$). Participants cover a wide age range, with most between $25$ and $34$ years old ($35.4\%$), followed by those aged $18–24$ ($20.5\%$) and $35–44$ ($19.7\%$). The sample has more younger and mid-adult age groups, while still including representation from older participants.
-
-Most participants have completed an undergraduate degree ($44.9\%$) or a postgraduate qualification ($26.8\%$), with others reporting some undergraduate study ($21.3\%$). Only a small proportion did not complete high school. Prior experience with dimension reduction methods is limited: the majority report no previous experience with PCA ($84.2\%$) or nonlinear dimension reduction techniques ($86.6\%$). This suggests that most participants approached the task without strong prior familiarity, allowing the results to reflect general perceptual interpretation rather than expert knowledge.
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {#tbl-pronoun .cell layout-align="center" tbl-cap='Summary of the pronoun distribution of participants recruited for this study.'}
-::: {.cell-output-display}
-
-
-|Pronoun   | Period I| Period II| Total|      %|
-|:---------|--------:|---------:|-----:|------:|
-|he/him    |        7|        54|    61|  48.03|
-|she/her   |       11|        53|    64|  50.39|
-|they/them |        0|         2|     2|   1.57|
-|Total     |       18|       109|   127| 100.00|
-
-
-:::
-:::
-
-
-
-::: {#tbl-age .cell layout-align="center" tbl-cap='Summary of the age distribution of participants recruited for this study.'}
-::: {.cell-output-display}
-
-
-|Age group | Period I| Period II| Total|      %|
-|:---------|--------:|---------:|-----:|------:|
-|18 - 24   |        3|        23|    26|  20.47|
-|25 - 34   |        9|        36|    45|  35.43|
-|35 - 44   |        3|        22|    25|  19.69|
-|45 - 54   |        1|        12|    13|  10.24|
-|Over 55   |        2|        16|    18|  14.17|
-|Total     |       18|       109|   127| 100.00|
-
-
-:::
-:::
-
-
-
-::: {#tbl-education .cell layout-align="center" tbl-cap='Summary of the educational distribution of participants recruited for this study.'}
-::: {.cell-output-display}
-
-
-|Education                            | Period I| Period II| Total|      %|
-|:------------------------------------|--------:|---------:|-----:|------:|
-|Completed some undergraduate courses |        4|        23|    27|  21.26|
-|Did not complete high school         |        0|         4|     4|   3.15|
-|Higher degree master or doctorate    |        3|        31|    34|  26.77|
-|Prefer not to answer                 |        3|         2|     5|   3.94|
-|Undergraduate degree (A bachelor)    |        8|        49|    57|  44.88|
-|Total                                |       18|       109|   127| 100.00|
-
-
-:::
-:::
-
-
-
-::: {#tbl-pca .cell layout-align="center" tbl-cap='Summary of the previous experience in PCA of participants recruited for this study.'}
-::: {.cell-output-display}
-
-
-|Experience with PCA | Period I| Period II| Total|      %|
-|:-------------------|--------:|---------:|-----:|------:|
-|No                  |       15|        92|   107|  84.25|
-|Yes                 |        3|        17|    20|  15.75|
-|Total               |       18|       109|   127| 100.00|
-
-
-:::
-:::
-
-
-
-::: {#tbl-nldr .cell layout-align="center" tbl-cap='Summary of the previous experience in Nonlinear dimension reduction techniques of participants recruited for this study.'}
-::: {.cell-output-display}
-
-
-|Experience with NLDR | Period I| Period II| Total|      %|
-|:--------------------|--------:|---------:|-----:|------:|
-|No                   |       15|        95|   110|  86.61|
-|Yes                  |        3|        14|    17|  13.39|
-|Total                |       18|       109|   127| 100.00|
-
-
-:::
-:::
-
-
 

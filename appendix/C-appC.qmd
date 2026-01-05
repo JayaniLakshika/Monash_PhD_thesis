@@ -22,6 +22,16 @@ glossary_df[] <- lapply(glossary_df, function(x) {
 })
 
 if (knitr::is_latex_output()) {
+  
+  glossary_df$Term[glossary_df$Term == "`autoAlt`"] <- "\\texttt{autoAlt}"
+  glossary_df$Term[glossary_df$Term == "`cardinalR`"] <- "\\texttt{cardinalR}"
+  glossary_df$Term[glossary_df$Term == "`detourr`"] <- "\\texttt{detourr}"
+  glossary_df$Term[glossary_df$Term == "`knitr`"] <- "\\texttt{knitr}"
+  glossary_df$Term[glossary_df$Term == "`langevitour`"] <- "\\texttt{langevitour}"
+  glossary_df$Term[glossary_df$Term == "`menuraR`"] <- "\\texttt{menuraR}"
+  glossary_df$Term[glossary_df$Term == "`quollr`"] <- "\\texttt{quollr}"
+  glossary_df$Term[glossary_df$Term == "`shiny`"] <- "\\texttt{shiny}"
+  
   kable(glossary_df, 
       format = "latex", 
       booktabs = TRUE, escape = FALSE, longtable = TRUE, linesep = "") |>
@@ -32,6 +42,7 @@ if (knitr::is_latex_output()) {
     row_spec(0, bold = TRUE) |>
     column_spec(1:2, width = c("4cm", "11cm"))
 } else {
+
   kable(glossary_df, escape = FALSE) 
 }
 ```
