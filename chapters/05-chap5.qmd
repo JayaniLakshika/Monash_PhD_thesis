@@ -801,6 +801,22 @@ dt_ci <- dt_acc_struct |>
   ) |>
   select(-ci)
 
+dt_attempt_dist <- results_df_method_ds |>
+  count(structure_high_d, distance_factor) |>
+  rename(tot_attempt = n)
+
+dt_acc_struct_dist <- results_df_method_ds |>
+  count(structure_high_d, distance_factor, result) |>
+  inner_join(dt_attempt_dist,
+             by = c("structure_high_d", "distance_factor")) |>
+  mutate(prop_correct = n / tot_attempt) |>
+  filter(result == 1) |>
+  mutate(
+    structure_high_d = str_split(structure_high_d, "_",
+                                 simplify = TRUE)[, 3]
+  )
+
+
 sbj_attempt <- results_df_method_ds |> 
   count(subject) |>
   rename("tot_attempt" = "n")
@@ -821,20 +837,34 @@ subj_ci <- subj_acc |>
   ) |>
   select(-ci)
 
-dt_acc_plt <- ggplot(dt_ci,
-       aes(x = prop_correct,
-           y = fct_reorder(structure_high_d, prop_correct))) +
+dt_acc_plt <- ggplot(
+  dt_ci,
+  aes(x = prop_correct,
+      y = fct_reorder(structure_high_d, prop_correct))
+) +
+  geom_point(
+    data = dt_acc_struct_dist,
+    aes(x = prop_correct,
+        y = structure_high_d,
+        colour = factor(distance_factor)),
+    size = 1.6,
+    position = position_jitter(height = 0.12),
+    alpha = 0.8
+  ) +
   geom_errorbarh(
-        aes(xmin = LCL, xmax = UCL),
-        width = 0.2,
-        colour = "grey50"
-    ) +
+    aes(xmin = LCL, xmax = UCL),
+    width = 0.2,
+    colour = "grey50"
+  ) +
   geom_point(size = 2, colour = "black") +
   interior_annotation("a", c(0.08, 0.94), 2) +
   scale_x_continuous(limits = c(0, 1)) +
+  scale_color_manual(values = c("#fef0d9", "#fdcc8a", 
+                                "#fc8d59", "#e34a33", "#b30000")) +
   labs(
     x = "Correct proportion",
-    y = "Data set"
+    y = "Data set",
+    colour = "Distance factor"
   ) +
   theme_minimal() +
   theme(
@@ -846,8 +876,10 @@ dt_acc_plt <- ggplot(dt_ci,
     ),
     axis.text.y = element_text(size = 7),
     axis.title = element_text(size = 8),
-    axis.ticks = element_line(colour = "black", linewidth = 0.3)
+    axis.ticks = element_line(colour = "black", linewidth = 0.3),
+    legend.position = "none"
   )
+
 
 subj_acc_plt <- ggplot(subj_ci,
        aes(x = "", y = prop_correct)) +
