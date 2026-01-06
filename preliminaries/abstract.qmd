@@ -10,37 +10,7 @@ I hereby declare that this thesis contains no material which has been accepted f
 
 This thesis includes one original papers published in a peer reviewed journal and four unpublished papers. The core theme of the thesis is to "develop methods and software to evaluate and understand non-linear dimension reduction methods". The ideas, development and writing up of all the papers in the thesis were the principal responsibility of myself, the student, working within the Department of Econometrics and Business Statistics under the supervision of Professor Dianne Cook, Dr Paul Harrison (MGBP, BDInstitute), Dr Michael Lydeamore, and Dr Thiyanga S. Talagala (University of Sri Jayewardenepura).
 
-The inclusion of co-authors reflects the fact that the work came from active collaboration between researchers and acknowledges input into team-based research. In the case of [Chapter 2](#sec-first-paper), [Chapter 3](#sec-third-paper), [Chapter 4](#sec-fourth-paper), and, [Chapter 6](#sec-fifth-paper), my contribution to the work involved the following:
-
-```{r}
-#| message: false
-#| echo: false
-library(tidyverse)
-library(knitr)
-library(kableExtra)
-dt <- tribble(
-  ~`Chapter`, ~`Publication title`, ~Status, ~`Student contribution`, ~`Co-authors contribution`, ~`Coauthors are Monash students`,
-  2, "", "Revised and resubmitted in the Journal of Computational and Graphical Statistics", "77%  Concept, Analysis, Software, Writing", "D Cook 10%, P Harrison 5%, M Lydeamore 5%, TS Talagala 3%", "No",
-  3, "", "Submitted in the R Journal", "77%  Concept, Analysis, Software, Writing", "D Cook 10%, P Harrison 5%, M Lydeamore 5%, TS Talagala 3%", "No",
-  4, "", "Submitted in the R Journal", "77%  Concept, Analysis, Software, Writing", "D Cook 10%, P Harrison 5%, M Lydeamore 5%, TS Talagala 3%", "No",
-  6, "", "Submitted in the Oxford Academic (Bioinformatics Advances)", "77%  Concept, Analysis, Software, Writing", "D Cook 10%, P Harrison 5%, M Lydeamore 5%, TS Talagala 3%", "No"
-)  
-
-dt |>
-  kable(booktabs = TRUE) |>
-  kable_styling(font_size = 10,
-                latex_options = c("hold_position", "repeat_header")) |>
-  column_spec(1, width = "1.2cm") |>
-  column_spec(2, width = "3cm") |>
-  column_spec(3, width = "3.5cm") |>
-  column_spec(4, width = "2.5cm") |>
-  column_spec(5, width = "2.4cm") |>
-  column_spec(6, width = "1.3cm") |>
-  row_spec(0, align = "l", bold = TRUE)
-```
-
-
-Chapters $5$ is planned for submission to peer-reviewed journal.
+[Chapter 2](#sec-first-paper) has been revised and resubmitted to the *Journal of Computational and Graphical Statistic*. [Chapter 3](#sec-third-paper) and [chapter 4](#sec-fourth-paper) have been submitted to *The R Journal*. [Chapter 5](#sec-second-paper) and [chapter 6](#sec-fifth-paper) are planned for submission to peer-reviewed journals.
 
 \clearpage
 

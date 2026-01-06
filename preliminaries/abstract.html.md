@@ -10,66 +10,7 @@ I hereby declare that this thesis contains no material which has been accepted f
 
 This thesis includes one original papers published in a peer reviewed journal and four unpublished papers. The core theme of the thesis is to "develop methods and software to evaluate and understand non-linear dimension reduction methods". The ideas, development and writing up of all the papers in the thesis were the principal responsibility of myself, the student, working within the Department of Econometrics and Business Statistics under the supervision of Professor Dianne Cook, Dr Paul Harrison (MGBP, BDInstitute), Dr Michael Lydeamore, and Dr Thiyanga S. Talagala (University of Sri Jayewardenepura).
 
-The inclusion of co-authors reflects the fact that the work came from active collaboration between researchers and acknowledges input into team-based research. In the case of [Chapter 2](#sec-first-paper), [Chapter 3](#sec-third-paper), [Chapter 4](#sec-fourth-paper), and, [Chapter 6](#sec-fifth-paper), my contribution to the work involved the following:
-
-
-::: {.cell}
-::: {.cell-output-display}
-`````{=html}
-<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:right;font-weight: bold;text-align: left;"> Chapter </th>
-   <th style="text-align:left;font-weight: bold;text-align: left;"> Publication title </th>
-   <th style="text-align:left;font-weight: bold;text-align: left;"> Status </th>
-   <th style="text-align:left;font-weight: bold;text-align: left;"> Student contribution </th>
-   <th style="text-align:left;font-weight: bold;text-align: left;"> Co-authors contribution </th>
-   <th style="text-align:left;font-weight: bold;text-align: left;"> Coauthors are Monash students </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;width: 1.2cm; "> 2 </td>
-   <td style="text-align:left;width: 3cm; ">  </td>
-   <td style="text-align:left;width: 3.5cm; "> Revised and resubmitted in the Journal of Computational and Graphical Statistics </td>
-   <td style="text-align:left;width: 2.5cm; "> 77%  Concept, Analysis, Software, Writing </td>
-   <td style="text-align:left;width: 2.4cm; "> D Cook 10%, P Harrison 5%, M Lydeamore 5%, TS Talagala 3% </td>
-   <td style="text-align:left;width: 1.3cm; "> No </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;width: 1.2cm; "> 3 </td>
-   <td style="text-align:left;width: 3cm; ">  </td>
-   <td style="text-align:left;width: 3.5cm; "> Submitted in the R Journal </td>
-   <td style="text-align:left;width: 2.5cm; "> 77%  Concept, Analysis, Software, Writing </td>
-   <td style="text-align:left;width: 2.4cm; "> D Cook 10%, P Harrison 5%, M Lydeamore 5%, TS Talagala 3% </td>
-   <td style="text-align:left;width: 1.3cm; "> No </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;width: 1.2cm; "> 4 </td>
-   <td style="text-align:left;width: 3cm; ">  </td>
-   <td style="text-align:left;width: 3.5cm; "> Submitted in the R Journal </td>
-   <td style="text-align:left;width: 2.5cm; "> 77%  Concept, Analysis, Software, Writing </td>
-   <td style="text-align:left;width: 2.4cm; "> D Cook 10%, P Harrison 5%, M Lydeamore 5%, TS Talagala 3% </td>
-   <td style="text-align:left;width: 1.3cm; "> No </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;width: 1.2cm; "> 6 </td>
-   <td style="text-align:left;width: 3cm; ">  </td>
-   <td style="text-align:left;width: 3.5cm; "> Submitted in the Oxford Academic (Bioinformatics Advances) </td>
-   <td style="text-align:left;width: 2.5cm; "> 77%  Concept, Analysis, Software, Writing </td>
-   <td style="text-align:left;width: 2.4cm; "> D Cook 10%, P Harrison 5%, M Lydeamore 5%, TS Talagala 3% </td>
-   <td style="text-align:left;width: 1.3cm; "> No </td>
-  </tr>
-</tbody>
-</table>
-
-`````
-:::
-:::
-
-
-
-Chapters $5$ is planned for submission to peer-reviewed journal.
+[Chapter 2](#sec-first-paper) has been revised and resubmitted to the *Journal of Computational and Graphical Statistic*. [Chapter 3](#sec-third-paper) and [chapter 4](#sec-fourth-paper) have been submitted to *The R Journal*. [Chapter 5](#sec-second-paper) and [chapter 6](#sec-fifth-paper) are planned for submission to peer-reviewed journals.
 
 \clearpage
 
