@@ -334,7 +334,7 @@ To assess whether these patterns depend on how separation is quantified, we fitt
 
 Taken together, these results demonstrate that the impact of cluster separability on correct identification is robust to the choice of distance measure but varies substantially across NLDR methods. Methods such as UMAP benefit from increased separation, whereas tSNE and PHATE appear sensitive to over-separation, potentially leading to distortions in the low-dimensional representation. TriMAP, by contrast, shows little sensitivity to changes in separation, suggesting robustness across a wide range of cluster configurations.
 
-### Patterns for misidentification
+### Nuisance factors
 
 To better understand why misidentification occurs, we examine patterns of correct identification across different high-dimensional data structures and across subjects. Rather than viewing errors as random noise, this analysis highlights how the geometry of the data and the behavior of the dimension reduction methods together lead to systematic confusion between structures.
 
@@ -355,10 +355,12 @@ The participant-level distribution of correct identification proportions (@fig-v
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Correct identification proportions by (a) data structure and (b) participant. The plot a shows aggregated proportions with $95\%$ Wilson binomial confidence intervals, illustrating differences in identification difficulty across three-cluster structures. The plot b displays participant-level proportions and highlight between-subject variability.](05-chap5_files/figure-html/fig-var-sum-1.png){#fig-var-sum fig-align='center' width=100%}
+![Correct identification proportions by (a) data set and (b) participant. The plot a shows aggregated proportions with $95\%$ Wilson binomial confidence intervals, illustrating differences in identification difficulty across three-cluster structures. The plot b displays participant-level proportions and highlight between-subject variability.](05-chap5_files/figure-html/fig-var-sum-1.png){#fig-var-sum fig-align='center' width=100%}
 :::
 :::
 
+
+### Patterns for misidentification
 
 To better understand the visual sources of these misidentifications, we examine tSNE and UMAP layouts for data structures that are commonly confused. @fig-three07-miss and @fig-three12-miss present $2\text{-}D$ projections alongside tSNE and UMAP layouts for `three_clust_12` and `three_clust_07` under both small and large cluster separation. These examples demonstrate that increasing separation does not necessarily lead to clearer or more interpretable low-dimensional representations.
 

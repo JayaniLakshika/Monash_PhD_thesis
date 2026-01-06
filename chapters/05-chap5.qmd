@@ -765,7 +765,7 @@ trend_plt_min + wrap_plots(method_plots_min[[3]], method_plots_min[[2]], method_
 
 Taken together, these results demonstrate that the impact of cluster separability on correct identification is robust to the choice of distance measure but varies substantially across NLDR methods. Methods such as UMAP benefit from increased separation, whereas tSNE and PHATE appear sensitive to over-separation, potentially leading to distortions in the low-dimensional representation. TriMAP, by contrast, shows little sensitivity to changes in separation, suggesting robustness across a wide range of cluster configurations.
 
-### Patterns for misidentification
+### Nuisance factors
 
 To better understand why misidentification occurs, we examine patterns of correct identification across different high-dimensional data structures and across subjects. Rather than viewing errors as random noise, this analysis highlights how the geometry of the data and the behavior of the dimension reduction methods together lead to systematic confusion between structures.
 
@@ -833,11 +833,16 @@ dt_acc_plt <- ggplot(dt_ci,
   scale_x_continuous(limits = c(0, 1)) +
   labs(
     x = "Correct proportion",
-    y = "Data structure"
+    y = "Data set"
   ) +
   theme_minimal() +
   theme(
     panel.grid.minor = element_blank(),
+    panel.border = element_rect(
+      colour = "black",
+      fill = NA,
+      linewidth = 0.4
+    ),
     axis.text.y = element_text(size = 7),
     axis.title = element_text(size = 8)
   )
@@ -857,7 +862,12 @@ subj_acc_plt <- ggplot(subj_ci,
   theme_minimal() +
   theme(
     panel.grid.minor = element_blank(),
-    axis.text.y = element_text(size = 3),
+    panel.border = element_rect(
+      colour = "black",
+      fill = NA,
+      linewidth = 0.4
+    ),
+    axis.text.y = element_text(size = 7),
     axis.title = element_text(size = 8)
   )
 ```
@@ -866,11 +876,13 @@ subj_acc_plt <- ggplot(subj_ci,
 #| fig-height: 6
 #| fig-width: 12
 #| label: fig-var-sum
-#| fig-cap: "Correct identification proportions by (a) data structure and (b) participant. The plot a shows aggregated proportions with $95\\%$ Wilson binomial confidence intervals, illustrating differences in identification difficulty across three-cluster structures. The plot b displays participant-level proportions and highlight between-subject variability."
+#| fig-cap: "Correct identification proportions by (a) data set and (b) participant. The plot a shows aggregated proportions with $95\\%$ Wilson binomial confidence intervals, illustrating differences in identification difficulty across three-cluster structures. The plot b displays participant-level proportions and highlight between-subject variability."
 
 dt_acc_plt + subj_acc_plt +
   plot_layout(ncol = 2)
 ```
+
+### Patterns for misidentification
 
 To better understand the visual sources of these misidentifications, we examine tSNE and UMAP layouts for data structures that are commonly confused. @fig-three07-miss and @fig-three12-miss present $2\text{-}D$ projections alongside tSNE and UMAP layouts for `three_clust_12` and `three_clust_07` under both small and large cluster separation. These examples demonstrate that increasing separation does not necessarily lead to clearer or more interpretable low-dimensional representations.
 
