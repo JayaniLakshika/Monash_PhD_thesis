@@ -383,7 +383,7 @@ Figure&nbsp;2.3: The components of the hexagon grid illustrating notation.
 <p><span class="math display">C_{hj}^{(p)} = \frac{1}{n_h}\sum_{i =1}^{n_h} x_{hij}, ~~~h = 1, \dots, b;~ j=1, \dots, p; ~ n_h &gt; 0.</span></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-best-fit-tsne" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-best-fit-tsne" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-best-fit-tsne-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="02-chap2_files/figure-html/fig-best-fit-tsne-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
@@ -498,7 +498,7 @@ Figure&nbsp;2.9: Three <span class="math inline">2\text{-}D</span> projections f
 <span class="header-section-number">2.5</span> Applications</h2>
 <p>To illustrate the approach we use two examples: PBMC3k data (single cell gene expression) where an NLDR layout is used to represent cluster structure present in the <span class="math inline">p\text{-}D</span> data, and MNIST hand-written digits where NLDR is used to represent essentially a low-dimensional nonlinear manifold in <span class="math inline">p\text{-}D</span>.</p>
 <section id="sec-pbmc" class="level3"><h3 class="anchored" data-anchor-id="sec-pbmc">PBMC3k</h3>
-<p>This is a benchmark single-cell RNA-Seq data set collected on Human Peripheral Blood Mononuclear Cells (PBMC3k) as used in <span class="citation" data-cites="pbmc2019">Genomics (<a href="../refs.html#ref-pbmc2019" role="doc-biblioref">2016</a>)</span>. Single-cell data measures the gene expression of individual cells in a sample of tissue (see for example, <span class="citation" data-cites="haque2017">Haque et al. (<a href="../refs.html#ref-haque2017" role="doc-biblioref">2017</a>)</span>). This type of data is used to obtain an understanding of cellular level behavior and heterogeneity in their activity. Clustering of single-cell data is used to identify groups of cells with similar expression profiles. NLDR is often used to summarize the cluster structure. Usually, NLDR does not use the cluster labels to compute the layout, but uses color to represent the cluster labels when it is plotted.</p>
+<p>This is a benchmark single-cell RNA-Seq data set collected on Human Peripheral Blood Mononuclear Cells (PBMC3k) as used in <span class="citation" data-cites="pbmc2016">10x Genomics (<a href="../refs.html#ref-pbmc2016" role="doc-biblioref">2016</a>)</span>. Single-cell data measures the gene expression of individual cells in a sample of tissue (see for example, <span class="citation" data-cites="haque2017">Haque et al. (<a href="../refs.html#ref-haque2017" role="doc-biblioref">2017</a>)</span>). This type of data is used to obtain an understanding of cellular level behavior and heterogeneity in their activity. Clustering of single-cell data is used to identify groups of cells with similar expression profiles. NLDR is often used to summarize the cluster structure. Usually, NLDR does not use the cluster labels to compute the layout, but uses color to represent the cluster labels when it is plotted.</p>
 <p>In this data there are <span class="math inline">2622</span> single cells and <span class="math inline">1000</span> gene expressions (variables). Following the same pre-processing as <span class="citation" data-cites="chen2024">Chen et al. (<a href="../refs.html#ref-chen2024" role="doc-biblioref">2024</a>)</span>, different NLDR techniques were performed on the first nine principal components. <a href="#fig-NLDR-variety" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> shows this data using a variety of methods, and different hyper-parameters. You can see that the result is wildly different depending on the choices. Layout a is a reproduction of the layout that was published in <span class="citation" data-cites="chen2024">Chen et al. (<a href="../refs.html#ref-chen2024" role="doc-biblioref">2024</a>)</span>. This layout suggests that the data has three very well separated clusters, each with an odd shape. The question is whether this accurately represents the cluster structure in the data, or whether they should have chosen b or c or d or e or f or g or h. This is what our new method can help with – to decide which is the more accurate <span class="math inline">2\text{-}D</span> representation of the cluster structure in the <span class="math inline">p\text{-}D</span> data.</p>
 <p><a href="#fig-pbmc-rmse" class="quarto-xref">Figure&nbsp;<span>2.10</span></a> shows HBE across a range of binwidths (<span class="math inline">a_1</span>) for each of the layouts in <a href="#fig-NLDR-variety" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>. The layouts were generated using tSNE and UMAP with various hyper-parameter settings, while PHATE, PaCMAP, and TriMAP were applied using their default settings. Lines are color coded to match the color of the layouts shown on the right. Lower HBE indicates the better fit. Using a range of binwidths shows how the model changes, with possibly the best model being one that is universally low HBE across all binwidths. It can be seen that layout f is sub-optimal with universally higher HBE. Layout a, the published one, is better but it is not as good as layouts b, d, or e. With some imagination layout d perhaps shows three barely distinguishable clusters. Layout e shows three, possibly four, clusters that are more separated. The choice reduces from eight to these two. Layout d has slightly better HBE when the <span class="math inline">a_1</span> is small, but layout e beats it at larger values. Thus we could argue that layout e is the most accurate representation of the cluster structure, of these eight.</p>
 <p>To further assess the choices, we need to look at the model in the data space, by using a tour to show the wireframe model overlaid on the data in the <span class="math inline">9\text{-}D</span> space (<a href="../appendix/A-appA.html#fig-model-pbmc-author-proj" class="quarto-xref">Figure&nbsp;<span>A.7</span></a>). Here we compare the published layout (a) versus what we argue is the best layout (e). The top row (a1, a2, a3) correspond to the published layout and the bottom row (e1, e2, e3) correspond to the optimal choice according to our procedure. The middle and right plots show two projections. The primary difference between the two models is that the model of layout e does not fill out to the extent of the data but concentrates in the center of each point cloud. Both suggest that three clusters is a reasonable interpretation of the structure, but layout e more accurately reflects the separation between them, which is small.</p>
@@ -522,7 +522,7 @@ Figure&nbsp;2.10: Assessing which of the 8 NLDR layouts on the PBMC3k data (show
 <!--pbmc3k/14_gen_model_with_tSNE.R-->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-model-pbmc-author-proj" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-model-pbmc-author-proj" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-model-pbmc-author-proj-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="02-chap2_files/figure-html/fig-model-pbmc-author-proj-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" data-fig-pos="!ht">
 </div>
@@ -537,7 +537,7 @@ Figure&nbsp;2.11: Compare the published <span class="math inline">2\text{-}D</sp
 <!--mnist/03_gen_mse_for_diff_methods.R-->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-mnist-rmse" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-mnist-rmse" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mnist-rmse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="02-chap2_files/figure-html/fig-mnist-rmse-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
@@ -556,7 +556,7 @@ Figure&nbsp;2.12: Assessing which of the 6 NLDR layouts of the MNIST digit 1 dat
 <!--mnist/04_gen_model_with_tSNE.R-->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-clust-mnist" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-clust-mnist" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-clust-mnist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="02-chap2_files/figure-html/fig-clust-mnist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
@@ -568,7 +568,7 @@ Figure&nbsp;2.13: Summary from exploring tSNE layout of the MNIST digit 1 data (
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-model-error-mnist" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-model-error-mnist" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-model-error-mnist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="02-chap2_files/figure-html/fig-model-error-mnist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
@@ -598,38 +598,41 @@ Figure&nbsp;2.14: Summary of the layout structure, and large errors, relative to
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-pbmc2016" class="csl-entry" role="listitem">
+10x Genomics (2016), <span>“<a href="https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-1-0"><span class="nocase">3k PBMCs from a Healthy Donor: Universal 3’ Gene Expression Dataset</span></a>,”</span> 10x Genomics, Accessed: 2025-06-09.
+</div>
 <div id="ref-jjallaire2024" class="csl-entry" role="listitem">
-Allaire, J., and Dervieux, C. (2024), <em><a href="\url{https://CRAN.R-project.org/package=quarto}."><span class="nocase">quarto: R Interface to Quarto Markdown Publishing System</span></a></em>.
+Allaire, J., and Dervieux, C. (2024), <em><a href="\url{https://CRAN.R-project.org/package=quarto}."><span class="nocase">quarto: R Interface to Quarto Markdown Publishing System</span></a></em>, R package version 1.4.4.
 </div>
 <div id="ref-amid2022" class="csl-entry" role="listitem">
 Amid, E., and Warmuth, M. K. (2019), <span>“<a href="https://api.semanticscholar.org/CorpusID:203610264"><span class="nocase">TriMap: Large-scale Dimensionality Reduction Using Triplets</span></a>,”</span> <em>ArXiv</em>, abs/1910.00204.
 </div>
 <div id="ref-As85" class="csl-entry" role="listitem">
-Asimov, D. (1985), <span>“<span>T</span>he <span>G</span>rand <span>T</span>our: <span>A</span> <span>T</span>ool for <span>V</span>iewing <span>M</span>ultidimensional <span>D</span>ata,”</span> <em>SIAM Journal of Scientific and Statistical Computing</em>, 6, 128–143.
+Asimov, D. (1985), <span>“<span>T</span>he <span>G</span>rand <span>T</span>our: <span>A</span> <span>T</span>ool for <span>V</span>iewing <span>M</span>ultidimensional <span>D</span>ata,”</span> <em>SIAM Journal of Scientific and Statistical Computing</em>, 6, 128–143. <a href="https://doi.org/10.1137/0906011">https://doi.org/10.1137/0906011</a>.
 </div>
 <div id="ref-borg2005" class="csl-entry" role="listitem">
-Borg, I., and Groenen, P. J. F. (2005), <em><a href="\url{https://doi.org/10.1007/0-387-28981-X}."><span>Modern Multidimensional Scaling</span></a></em>, New York, NY: Springer.
+Borg, I., and Groenen, P. J. F. (2005), <em><a href="\url{https://doi.org/10.1007/0-387-28981-X}."><span>Modern Multidimensional Scaling</span></a></em>, 2nd ed., New York, NY: Springer.
 </div>
 <div id="ref-brown2015" class="csl-entry" role="listitem">
-Brown, T. A. (2015), <em><span class="nocase">Confirmatory Factor Analysis for Applied Research</span></em>, New York, NY, US: <span>The Guilford Press</span>.
+Brown, T. A. (2015), <em><span class="nocase">Confirmatory Factor Analysis for Applied Research</span></em>, 2nd ed., New York, NY, US: <span>The Guilford Press</span>.
 </div>
 <div id="ref-carr1987" class="csl-entry" role="listitem">
 Carr, D. B., Littlefield, R. J., Nicholson, W. L., and Littlefield, J. S. (1987), <span>“<a href="\url{http://www.jstor.org/stable/2289444}."><span class="nocase">Scatterplot Matrix Techniques for Large N</span></a>,”</span> <em>Journal of the American Statistical Association</em>, 82, 424–436.
 </div>
 <div id="ref-dan2023" class="csl-entry" role="listitem">
-Carr, D., Lewin-Koh, N., Maechler, M., and Sarkar, D. (2023), <em><a href="\url{https://CRAN.R-project.org/package=hexbin}."><span class="nocase">hexbin: Hexagonal Binning Routines</span></a></em>.
+Carr, D., Lewin-Koh, N., Maechler, M., and Sarkar, D. (2023), <em><a href="\url{https://CRAN.R-project.org/package=hexbin}."><span class="nocase">hexbin: Hexagonal Binning Routines</span></a></em>, R package version 1.28.3.
 </div>
 <div id="ref-chari2023" class="csl-entry" role="listitem">
-Chari, T., and Pachter, L. (2023), <span>“<a href="https://doi.org/10.1371/journal.pcbi.1011288">The specious art of single-cell genomics</a>,”</span> <em>PLoS Computational Biology</em>, 19, e1011288.
+Chari, T., and Pachter, L. (2023), <span>“<a href="https://doi.org/10.1371/journal.pcbi.1011288"><span class="nocase">The Specious Art of Single-Cell Genomics</span></a>,”</span> <em>PLoS Computational Biology</em>, 19, e1011288.
 </div>
 <div id="ref-chen2024" class="csl-entry" role="listitem">
 Chen, Z., Wang, C., Huang, S., Shi, Y., and Xi, R. (2024), <span>“<a href="\url{https://www.sciencedirect.com/science/article/pii/S2667237524001735}."><span class="nocase">Directly Selecting Cell-type Marker Genes for Single-cell Clustering Analyses</span></a>,”</span> <em>Cell Reports Methods</em>, 4, 100810.
 </div>
 <div id="ref-joe2025" class="csl-entry" role="listitem">
-Cheng, J., and Sievert, C. (2025), <em><a href="https://CRAN.R-project.org/package=crosstalk"><span class="nocase">crosstalk: Inter-Widget Interactivity for HTML Widgets</span></a></em>.
+Cheng, J., and Sievert, C. (2025), <em><a href="https://CRAN.R-project.org/package=crosstalk"><span class="nocase">crosstalk: Inter-Widget Interactivity for HTML Widgets</span></a></em>, R package version 1.2.2.
 </div>
 <div id="ref-joe2024" class="csl-entry" role="listitem">
-Cheng, J., Sievert, C., Schloerke, B., Chang, W., Xie, Y., and Allen, J. (2024), <em><a href="https://CRAN.R-project.org/package=htmltools"><span class="nocase">htmltools</span>: Tools for HTML</a></em>.
+Cheng, J., Sievert, C., Schloerke, B., Chang, W., Xie, Y., and Allen, J. (2024), <em><a href="https://CRAN.R-project.org/package=htmltools"><span class="nocase">htmltools: Tools for HTML</span></a></em>, R package version 0.5.8.1.
 </div>
 <div id="ref-coifman2005" class="csl-entry" role="listitem">
 Coifman, R. R., Lafon, S., Lee, A. B., Maggioni, M., Nadler, B., Warner, F., and Zucker, S. W. (2005), <span>“<a href="\url{https://www.pnas.org/doi/abs/10.1073/pnas.0500334102}."><span class="nocase">Geometric Diffusions as a Tool for Harmonic Analysis and Structure Definition of Data: Diffusion Maps</span></a>,”</span> <em>Proceedings of the National Academy of Sciences of the United States of America</em>, 102, 7426–7431.
@@ -638,10 +641,7 @@ Coifman, R. R., Lafon, S., Lee, A. B., Maggioni, M., Nadler, B., Warner, F., and
 Freedman, D. A., and Diaconis, P. (1981), <span>“<a href="\url{https://doi.org/10.1007/BF01025868}."><span class="nocase">On the Histogram as a Density Estimator: L2 Theory</span></a>,”</span> <em>Probability Theory and Related Fields</em>, 57, 453–476.
 </div>
 <div id="ref-albrecht2024" class="csl-entry" role="listitem">
-Gebhardt, A., Bivand, R., and Sinclair, D. (2024), <em><a href="https://CRAN.R-project.org/package=interp"><span class="nocase">interp: Interpolation Methods</span></a></em>.
-</div>
-<div id="ref-pbmc2019" class="csl-entry" role="listitem">
-Genomics, 10x (2016), <span>“<a href="\url{https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-1-0}."><span class="nocase">3k PBMCs from a Healthy Donor, Universal 3’ Gene Expression dataset analysed using Cell Ranger 1.1.0</span></a>.”</span>
+Gebhardt, A., Bivand, R., and Sinclair, D. (2024), <em><a href="https://CRAN.R-project.org/package=interp"><span class="nocase">interp: Interpolation Methods</span></a></em>, R package version 1.1-6.
 </div>
 <div id="ref-haque2017" class="csl-entry" role="listitem">
 Haque, A., Engel, J., Teichmann, S. A., and Lönnberg, T. (2017), <span>“<a href="\url{https://doi.org/10.1186/s13073-017-0467-4}."><span class="nocase">A Practical Guide to Single-cell RNA-sequencing for Biomedical Research and Clinical Applications</span></a>,”</span> <em>Genome Medicine</em>, 9, 75.
@@ -650,13 +650,13 @@ Haque, A., Engel, J., Teichmann, S. A., and Lönnberg, T. (2017), <span>“<a hr
 Harrison, P. (2023), <span>“<a href="\url{https://doi.org/10.32614/RJ-2023-046}."><span class="nocase">langevitour: Smooth Interactive Touring of High Dimensions, Demonstrated With scRNA-Seq Data</span></a>,”</span> <em>The R Journal</em>, 15, 206–219.
 </div>
 <div id="ref-casper2025" class="csl-entry" role="listitem">
-Hart, C., and Wang, E. (2025), <em><a href="https://CRAN.R-project.org/package=detourr"><span class="nocase">detourr: Portable and Performant Tour Animations</span></a></em>.
+Hart, C., and Wang, E. (2025), <em><a href="https://CRAN.R-project.org/package=detourr"><span class="nocase">detourr: Portable and Performant Tour Animations</span></a></em>, R package version 0.2.0.
 </div>
 <div id="ref-hinton2006" class="csl-entry" role="listitem">
-Hinton, G. E., and Salakhutdinov, R. R. (2006), <span>“Reducing the dimensionality of data with neural networks,”</span> <em>Science</em>, American Association for the Advancement of Science, 313, 504–507. <a href="https://doi.org/10.1126/science.1127647">https://doi.org/10.1126/science.1127647</a>.
+Hinton, G. E., and Salakhutdinov, R. R. (2006), <span>“<span class="nocase">Reducing the Dimensionality of Data With Neural Networks</span>,”</span> <em>Science</em>, American Association for the Advancement of Science, 313, 504–507. <a href="https://doi.org/10.1126/science.1127647">https://doi.org/10.1126/science.1127647</a>.
 </div>
 <div id="ref-irizarry2024" class="csl-entry" role="listitem">
-Irizarry, R. (2024), <span>“Biologists, stop putting UMAP plots in your papers,”</span> https://simplystatistics.org/posts/2024-12-23-biologists-stop-including-umap-plots-in-your-papers/.
+Irizarry, R. (2024), <span>“<span class="nocase">Biologists, Stop Putting UMAP Plots in Your Papers</span>,”</span> Simply Statistics blog, Available at <a href="https://simplystatistics.org/posts/2024-12-23-biologists-stop-including-umap-plots-in-your-papers/">https://simplystatistics.org/posts/2024-12-23-biologists-stop-including-umap-plots-in-your-papers/</a>.
 </div>
 <div id="ref-johnstone2009" class="csl-entry" role="listitem">
 Johnstone, I. M., and Titterington, D. M. (2009), <span>“<a href="\url{https://royalsocietypublishing.org/doi/abs/10.1098/rsta.2009.0159}."><span class="nocase">Statistical Challenges of High-Dimensional Data</span></a>,”</span> <em>Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences</em>, 367, 4237–4253.
@@ -668,10 +668,10 @@ Jolliffe, I. (2011), <span>“<a href="\url{https://doi.org/10.1007/978-3-642-04
 Jöreskog, K. G. (1969), <span>“<a href="\url{https://doi.org/10.1007/BF02289343}."><span class="nocase">A General Approach to Confirmatory Maximum Likelihood Factor Analysis</span></a>,”</span> <em>Psychometrika</em>, 34, 183–202.
 </div>
 <div id="ref-tomasz2023" class="csl-entry" role="listitem">
-Konopka, T. (2023), <em><a href="\url{https://CRAN.R-project.org/package=umap}."><span class="nocase">umap: Uniform Manifold Approximation and Projection</span></a></em>.
+Konopka, T. (2023), <em><a href="\url{https://CRAN.R-project.org/package=umap}."><span class="nocase">umap: Uniform Manifold Approximation and Projection</span></a></em>, R package version 0.2.10.0.
 </div>
 <div id="ref-jesse2015" class="csl-entry" role="listitem">
-Krijthe, J. H. (2015), <em><a href="\url{https://github.com/jkrijthe/Rtsne}."><span>Rtsne: T-Distributed Stochastic Neighbor Embedding Using Barnes-Hut Implementation</span></a></em>.
+Krijthe, J. H. (2015), <em><a href="\url{https://github.com/jkrijthe/Rtsne}."><span class="nocase">Rtsne: t-Distributed Stochastic Neighbor Embedding Using Barnes-Hut Implementation</span></a></em>, R package version 0.16.
 </div>
 <div id="ref-kruskal1964" class="csl-entry" role="listitem">
 Kruskal, J. B. (1964), <span>“<a href="\url{https://doi.org/10.1007/BF02289694}."><span>Nonmetric Multidimensional Scaling: A Numerical Method</span></a>,”</span> <em>Psychometrika</em>, 29, 115–129.
@@ -680,22 +680,22 @@ Kruskal, J. B. (1964), <span>“<a href="\url{https://doi.org/10.1007/BF02289694
 Laa, U., Cook, D., and Lee, S. (2022), <span>“<a href="\url{https://doi.org/10.1080/10618600.2021.1963264}."><span class="nocase">Burning Sage: Reversing the Curse of Dimensionality in the Visualization of High-Dimensional Data</span></a>,”</span> <em>Journal of Computational and Graphical Statistics</em>, 31, 40–49.
 </div>
 <div id="ref-lecun1998" class="csl-entry" role="listitem">
-LeCun, Y., Cortes, C., and Burges, C. J. C. (1998), <span>“<a href="\url{http://yann.lecun.com/exdb/mnist/}."><span class="nocase">The MNIST Database of Handwritten Digits</span></a>.”</span>
+LeCun, Y., Cortes, C., and Burges, C. J. C. (1998), <span>“<a href="\url{http://yann.lecun.com/exdb/mnist/}."><span class="nocase">The MNIST Database of Handwritten Digits</span></a>,”</span> Accessed: 2025-06-09.
 </div>
 <div id="ref-lee1980" class="csl-entry" role="listitem">
 Lee, D. T., and Schachter, B. J. (1980), <span>“<a href="\url{https://doi.org/10.1007/BF00977785}."><span class="nocase">Two Algorithms For Constructing a Delaunay Triangulation</span></a>,”</span> <em>International Journal of Computer &amp; Information Sciences</em>, 9, 219–242.
 </div>
 <div id="ref-john2015" class="csl-entry" role="listitem">
-Lee, J. A., Peluffo-Ordóñez, D. H., and Verleysen, M. (2015), <span>“Multi-scale similarities in stochastic neighbour embedding: Reducing dimensionality while preserving both local and global structure,”</span> <em>Neurocomputing</em>, 169, 246–261. https://doi.org/<a href="https://doi.org/10.1016/j.neucom.2014.12.095">https://doi.org/10.1016/j.neucom.2014.12.095</a>.
+Lee, J. A., Peluffo-Ordóñez, D. H., and Verleysen, M. (2015), <span>“<span class="nocase">Multi-Scale Similarities in Stochastic Neighbour Embedding: Reducing Dimensionality While Preserving Both Local and Global Structure</span>,”</span> <em>Neurocomputing</em>, 169, 246–261. <a href="https://doi.org/10.1016/j.neucom.2014.12.095">https://doi.org/10.1016/j.neucom.2014.12.095</a>.
 </div>
 <div id="ref-lee2021" class="csl-entry" role="listitem">
-Lee, S., Cook, D., Silva, N. da, Laa, U., Wang, E., Spyrison, N., and Zhang, H. S. (2021), <span>“<span class="nocase">A Review of the State-of-the-Art on Tours for Dynamic Visualization of High-Dimensional Data</span>,”</span> <em>arXiv preprint arXiv:2104.08016</em>.
+Lee, S., Cook, D., Silva, N. da, Laa, U., Wang, E., Spyrison, N., and Zhang, H. S. (2021), <span>“<a href="https://arxiv.org/abs/2104.08016"><span class="nocase">A Review of the State-of-the-Art on Tours for Dynamic Visualization of High-Dimensional Data</span></a>,”</span> <em>arXiv preprint</em>, arXiv:2104.08016.
 </div>
 <div id="ref-laurens2008" class="csl-entry" role="listitem">
 Maaten, L. V. D., and Hinton, G. E. (2008), <span>“<a href="\url{https://api.semanticscholar.org/CorpusID:5855042}."><span class="nocase">Visualizing Data Using t-SNE</span></a>,”</span> <em>Journal of Machine Learning Research</em>, 9, 2579–2605.
 </div>
 <div id="ref-van2009" class="csl-entry" role="listitem">
-Maaten, L. van der (2009), <span>“Learning a parametric embedding by preserving local structure,”</span> in <em>Artificial intelligence and statistics</em>, PMLR, pp. 384–391.
+Maaten, L. van der (2009), <span>“<a href="https://proceedings.mlr.press/v5/maaten09a.html"><span class="nocase">Learning a Parametric Embedding by Preserving Local Structure</span></a>,”</span> in <em>Artificial intelligence and statistics</em>, PMLR, pp. 384–391.
 </div>
 <div id="ref-leland2018" class="csl-entry" role="listitem">
 McInnes, L., Healy, J., Saul, N., and Großberger, L. (2018), <span>“<a href="\url{https://doi.org/10.21105/joss.00861}."><span class="nocase">UMAP: Uniform Manifold Approximation and Projection</span></a>,”</span> <em>Journal of Open Source Software</em>, 3, 861.
@@ -704,34 +704,34 @@ McInnes, L., Healy, J., Saul, N., and Großberger, L. (2018), <span>“<a href="
 Moon, K. R., Dijk, D. van, Wang, Z., Gigante, S. A., Burkhardt, D. B., Chen, W. S., Yim, K., Elzen, A. van den, Hirn, M. J., Coifman, R. R., Ivanova, N. B., Wolf, G., and Krishnaswamy, S. (2019), <span>“<a href="\url{https://doi.org/10.1038/s41587-019-0336-3}."><span class="nocase">Visualizing Structure and Transitions in High-Dimensional Biological Data</span></a>,”</span> <em>Nature Biotechnology</em>, 37, 1482–1492.
 </div>
 <div id="ref-thomas2024" class="csl-entry" role="listitem">
-Pedersen, T. L. (2024), <em><a href="\url{https://CRAN.R-project.org/package=patchwork}."><span class="nocase">patchwork: The Composer of Plots</span></a></em>.
+Pedersen, T. L. (2024), <em><a href="\url{https://CRAN.R-project.org/package=patchwork}."><span class="nocase">patchwork: The Composer of Plots</span></a></em>, R package version 1.2.0.
 </div>
 <div id="ref-saeed2018" class="csl-entry" role="listitem">
 Saeed, N., Nam, H., Haq, M. I. U., and Muhammad Saqib, D. B. (2018), <span>“<a href="\url{https://doi.org/10.1145/3178155}."><span class="nocase">A Survey on Multidimensional Scaling</span></a>,”</span> <em>ACM Comput. Surv.</em>, 51.
 </div>
 <div id="ref-shepard1962" class="csl-entry" role="listitem">
-Shepard, R. N. (1962), <span>“The analysis of proximities: Multidimensional scaling with an unknown distance function. i.”</span> <em>Psychometrika</em>, 27, 125–140. <a href="https://doi.org/10.1007/BF02289630">https://doi.org/10.1007/BF02289630</a>.
+Shepard, R. N. (1962), <span>“<span class="nocase">The Analysis of Proximities: Multidimensional Scaling with an Unknown Distance Function. I.</span>”</span> <em>Psychometrika</em>, 27, 125–140. <a href="https://doi.org/10.1007/BF02289630">https://doi.org/10.1007/BF02289630</a>.
 </div>
 <div id="ref-chapman2020" class="csl-entry" role="listitem">
-Sievert, C. (2020), <em><a href="https://plotly-r.com">Interactive web-based data visualization with r, plotly, and shiny</a></em>, Chapman; Hall/CRC.
+Sievert, C. (2020), <em><span class="nocase">Interactive Web-Based Data Visualization with R, plotly, and shiny</span></em>, 1st ed., Chapman; Hall/CRC. <a href="https://doi.org/doi.org/10.1201/9780429447273">https://doi.org/doi.org/10.1201/9780429447273</a>.
 </div>
 <div id="ref-silva2002" class="csl-entry" role="listitem">
 Silva, V., and Tenenbaum, J. (2002), <span>“<a href="\url{https://proceedings.neurips.cc/paper_files/paper/2002/file/5d6646aad9bcc0be55b2c82f69750387-Paper.pdf}."><span class="nocase">Global Versus Local Methods in Nonlinear Dimensionality Reduction</span></a>,”</span> <em>Advances in Neural Information Processing Systems</em>, 15, 721–728.
 </div>
 <div id="ref-spearman1961" class="csl-entry" role="listitem">
-Spearman, C. (1961), <span>“The proof and measurement of association between two things.”</span> Appleton-Century-Crofts.
+Spearman, C. (1961), <span>“<span class="nocase">The Proof and Measurement of Association Between Two Things</span>,”</span> Appleton-Century-Crofts.
 </div>
 <div id="ref-joshua2000" class="csl-entry" role="listitem">
-Tenenbaum, J. B., Silva, V. de, and Langford, J. C. (2000), <span>“A global geometric framework for nonlinear dimensionality reduction,”</span> <em>Science</em>, 290, 2319–2323. <a href="https://doi.org/10.1126/science.290.5500.2319">https://doi.org/10.1126/science.290.5500.2319</a>.
+Tenenbaum, J. B., Silva, V. de, and Langford, J. C. (2000), <span>“<span class="nocase">A Global Geometric Framework for Nonlinear Dimensionality Reduction</span>,”</span> <em>Science</em>, 290, 2319–2323. <a href="https://doi.org/10.1126/science.290.5500.2319">https://doi.org/10.1126/science.290.5500.2319</a>.
 </div>
 <div id="ref-kevin2024" class="csl-entry" role="listitem">
-Ushey, K., Allaire, J., and Tang, Y. (2024), <em><a href="\url{https://CRAN.R-project.org/package=reticulate}."><span class="nocase">reticulate: Interface to Python</span></a></em>.
+Ushey, K., Allaire, J., and Tang, Y. (2024), <em><a href="\url{https://CRAN.R-project.org/package=reticulate}."><span class="nocase">reticulate: Interface to Python</span></a></em>, R package version 1.38.0.
 </div>
 <div id="ref-yingfan2021" class="csl-entry" role="listitem">
 Wang, Y., Huang, H., Rudin, C., and Shaposhnik, Y. (2021), <span>“<a href="\url{http://jmlr.org/papers/v22/20-1061.html}."><span class="nocase">Understanding How Dimension Reduction Tools Work: An Empirical Approach to Deciphering t-SNE, UMAP, TriMap, and PaCMAP for Data Visualization</span></a>,”</span> <em>Journal of Machine Learning Research</em>, 22, 1–73.
 </div>
 <div id="ref-hadley2023" class="csl-entry" role="listitem">
-Wickham, H. (2023), <em><a href="\url{https://CRAN.R-project.org/package=conflicted}."><span class="nocase">conflicted: An Alternative Conflict Resolution Strategy</span></a></em>.
+Wickham, H. (2023), <em><a href="\url{https://CRAN.R-project.org/package=conflicted}."><span class="nocase">conflicted: An Alternative Conflict Resolution Strategy</span></a></em>, R package version 1.2.0.
 </div>
 <div id="ref-hadley2019" class="csl-entry" role="listitem">
 Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J., Robinson, D., Seidel, D. P., Spinu, V., Takahashi, K., Vaughan, D., Wilke, C., Woo, K., and Yutani, H. (2019), <span>“<a href="\url{https://doi.org/10.21105/joss.01686}."><span class="nocase">Welcome to the Tidyverse</span></a>,”</span> <em>Journal of Open Source Software</em>, 4, 1686.
@@ -746,7 +746,7 @@ Wickham, H., Cook, D., Hofmann, H., and Buja, A. (2011), <span>“<a href="\url{
 Zeileis, A., Fisher, J. C., Hornik, K., Ihaka, R., McWhite, C. D., Murrell, P., Stauffer, R., and Wilke, C. O. (2020), <span>“<a href="\url{https://www.jstatsoft.org/index.php/jss/article/view/v096i01}."><span class="nocase">colorspace: A Toolbox for Manipulating and Assessing Colors and Palettes</span></a>,”</span> <em>Journal of Statistical Software</em>, 96, 1–49.
 </div>
 <div id="ref-hao2024" class="csl-entry" role="listitem">
-Zhu, H. (2024), <em><a href="\url{https://CRAN.R-project.org/package=kableExtra}."><span class="nocase">kableExtra: Construct Complex Table with kable and Pipe Syntax</span></a></em>.
+Zhu, H. (2024), <em><a href="\url{https://CRAN.R-project.org/package=kableExtra}."><span class="nocase">kableExtra: Construct Complex Table with kable and Pipe Syntax</span></a></em>, R package version 1.4.0.
 </div>
 </div>
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

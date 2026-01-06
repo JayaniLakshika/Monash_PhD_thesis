@@ -107,6 +107,19 @@
       </else>
     </choose>
   </macro>
+  <macro name="note">
+    <text variable="note"/>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if variable="edition">
+        <group>
+          <text variable="edition"/>
+          <text term="edition" form="short" prefix=" "/>
+        </group>
+      </if>
+    </choose>
+  </macro>
   <macro name="locators">
     <choose>
       <if type="article-journal article-magazine article-newspaper" match="any">
@@ -123,7 +136,7 @@
       </else-if>
       <else-if type="webpage">
         <group>
-          <text term="available at" text-case="capitalize-first"/>
+          <text term="available at" text-case="capitalize-first" suffix=" "/>
           <text variable="URL"/>
         </group>
       </else-if>
@@ -179,7 +192,13 @@
           <text variable="collection-title"/>
           <text macro="container-contributors"/>
           <text macro="secondary-contributors"/>
+            <choose>
+            <if type="book">
+              <text macro="edition"/>
+            </if>
+          </choose>
           <text macro="publisher"/>
+          <text macro="note"/>
           <text macro="locators"/>
         </group>
       </group>
