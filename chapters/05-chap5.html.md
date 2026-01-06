@@ -371,15 +371,9 @@ Another strong source of misidentification is the tendency of NLDR methods to br
 
 Linear or smoothly varying structures in high dimensions often appear nonlinear after dimension reduction. This change can strongly affect how a structure is perceived. In our examples, the hemispherical cluster provides a clear case: although it varies smoothly and has a relatively simple structure in high dimensions, both tSNE and UMAP frequently bend or warp it into curved or irregular shapes in the NLDR layout (@fig-three12-miss and @fig-three07-miss). As a result, the hemisphere can resemble a curved manifold rather than a smooth surface, making it harder to distinguish from genuinely nonlinear structures. This effect becomes more pronounced when the hemisphere appears alongside strongly curved components, as the projected shapes start to look visually similar.
 
+Across multiple examples, including `three_clust_12` and `three_clust_07` (@fig-three12-miss and @fig-three07-miss), increasing high-dimensional separation does not reliably lead to more interpretable layouts. UMAP often benefits more from increased separation, preserving overall geometry and making components easier to distinguish. However, partial proximity between clusters can still remain, allowing perceptual ambiguity to persist. For tSNE, greater separation may even worsen interpretability by increasing fragmentation or compressing global structure, weakening the participants rely on to identify cluster relationships.
 
-
-
-
-To better understand the patterns of these misidentifications, we examine tSNE and UMAP layouts for data structures that are commonly confused. Rather than viewing errors as random noise, this analysis highlights how the geometry of the data and the behavior of the dimension reduction methods together lead to systematic confusion between structures. @fig-three07-miss and @fig-three12-miss present $2\text{-}D$ projections alongside tSNE and UMAP layouts for `three_clust_12` and `three_clust_07` under both small and large cluster separation. These examples demonstrate that increasing separation does not necessarily lead to clearer or more interpretable low-dimensional representations.
-
-For `three_clust_12` (@fig-three12-miss), increased separation leads to improved visual clarity in UMAP, which more effectively preserves the distinct geometric characteristics of the S-curve, hemisphere, and pyramidal component. Nevertheless, even at larger separations, residual distortions and partial proximity between components remain, allowing perceptual ambiguity to persist. In contrast, tSNE introduces fragmentation and compression of curved and volumetric components, disrupting global shape cues and causing visually distinct structures to appear more similar.
-
-A similar pattern is observed for `three_clust_07` (@fig-three07-miss). While greater separation improves cluster spacing in UMAP and supports a smoother representation of the hyperbolic component, some ambiguity remains. For tSNE, increasing separation does not consistently enhance interpretability: the hyperbolic structure is distorted and fragmented, and irregular gaps are introduced, weakening global geometric cues essential for recognition.
+Another common source of misidentification comes from uneven point density. In some of our data structures, density is an important feature of the shape in high dimensions, but it is not reliably preserved in the NLDR layouts. For example, in the nonlinear hyperbolic structure (@fig-three12-miss), one corner is clearly denser in high dimensions, yet this feature is not easy to identify in either tSNE or UMAP layouts. Similarly, the tip of the star-shaped pyramid is densely populated in high dimensions (@fig-three07-miss), but this density cue is often lost in the projections; especially in tSNE, where the structure is further distorted or fragmented. When these density cues are weakened or misplaced, participants lose important visual signals needed to recognize the underlying structure, increasing the chance of misidentification.
 
 
 ::: {.cell layout-align="center"}
@@ -434,8 +428,6 @@ A similar pattern is observed for `three_clust_07` (@fig-three07-miss). While gr
 :::
 :::
 
-
-Taken together, these examples indicate that misidentification is not resolved solely by increasing cluster separation. Although UMAP generally benefits more from larger separations than tSNE, both methods may still produce layouts that obscure key geometric features. This helps explain why certain data structures remain difficult to identify in the experiment even under strong separation and underscores that misidentification reflects systematic limitations in how NLDR methods represent complex geometry rather than random perceptual error.
 
 ## Limitations {#sec-limitations}
 
