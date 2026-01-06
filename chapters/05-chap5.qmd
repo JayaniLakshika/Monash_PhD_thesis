@@ -788,7 +788,8 @@ dt_acc_struct <- results_df_method_ds |>
   count(structure_high_d, result) |>
   inner_join(dt_attempt, by = "structure_high_d") |>
   mutate(prop_correct = n/tot_attempt) |> 
-  filter(result == 1)
+  filter(result == 1) |>
+  mutate(structure_high_d = str_split(structure_high_d, "_", simplify = TRUE)[, 3])
 
 dt_ci <- dt_acc_struct |>
   mutate(
@@ -844,7 +845,8 @@ dt_acc_plt <- ggplot(dt_ci,
       linewidth = 0.4
     ),
     axis.text.y = element_text(size = 7),
-    axis.title = element_text(size = 8)
+    axis.title = element_text(size = 8),
+    axis.ticks = element_line(colour = "black", linewidth = 0.3)
   )
 
 subj_acc_plt <- ggplot(subj_ci,
@@ -868,7 +870,8 @@ subj_acc_plt <- ggplot(subj_ci,
       linewidth = 0.4
     ),
     axis.text.y = element_text(size = 7),
-    axis.title = element_text(size = 8)
+    axis.title = element_text(size = 8),
+    axis.ticks = element_line(colour = "black", linewidth = 0.3)
   )
 ```
 
