@@ -59,7 +59,7 @@
 
 
 
-## Data structures
+## Data sets
 
 @tbl-dt-str summarizes the three-cluster data structures used in the experiment. Each data structure was generated using the `cardinalR` package [@jayani2025b] and comprises three clusters with distinct geometric forms. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in $4\text{-}D$ space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods.
 
@@ -236,7 +236,7 @@ Animations of the $4\text{-}D$ tours that used for the study are available on Yo
    <td style="text-align:left;"> <a href="https://youtu.be/SDY64MrcWQg">youtu.be/SDY64MrcWQg</a> </td>
    <td style="text-align:left;"> <a href="https://youtube.com/shorts/w7V49k4GkEI">youtube.com/shorts/w7V49k4GkEI</a> </td>
    <td style="text-align:left;"> <a href="https://youtu.be/CFIyW7ftF9M">youtu.be/CFIyW7ftF9M</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/CFIyW7ftF9M">youtu.be/CFIyW7ftF9M</a> </td>
+   <td style="text-align:left;"> <a href="https://youtube.com/shorts/SsyhvN6L7ks">youtube.com/shorts/SsyhvN6L7ks</a> </td>
   </tr>
   <tr>
    <td style="text-align:left;"> three_clust_16 </td>
