@@ -224,11 +224,13 @@ After completing $20$ evaluations, they were asked for their demographics which 
 
 ### Generalized Linear Mixed-Effects Models
 
-Two generalized linear mixed effects models [@mcculloch2001] were fitted to model the likelihood of detecting the data structure in both the $2\text{-}D$ NLDR layout and the tour (@eq-equation1). Both models accounted for subject-level variability and the effect of distance measures under different NLDR methods. The general form of the model is given by:
+Two generalized linear mixed effects models [@mcculloch2001] were fitted to model the likelihood of detecting the data structure in both the $2\text{-}D$ NLDR layout and the tour (@eq-glmm1). Both models accounted for subject-level variability and the effect of distance measures under different NLDR methods. The general form of the model is given by:
 
-$$\text{logit}(P(y_{ijm} = 1)) = \mu_{m} + \beta_{m} d_{i} + \gamma_{j}$$ {#eq-equation1}
+$$
+\text{logit}(P(y_{ijm} = 1)) = \mu_{m} + \beta_{m} d_{i} + \gamma_{j}
+$$ {#eq-glmm1}
 
-where $\mu_{m}$ is the overall mean for NLDR method $m$, $d_i$ is the distance measure for the data structure $i = 1, \dots, 18$, $\beta_m$ is the fixed effect of BW ratio under NLDR method $m$, $\gamma_j$ is the random effect of the subject $j = 1, 2, \dots, 127$, where $\gamma_j \sim N(0, \sigma_\gamma^2)$. Separate models were fitted using $d_i$ as either the scaled BW ratio or the exp(scaled minimum distance). The NLDR methods denoted by $m$ can include TriMAP, UMAP, PaCMAP, tSNE, and PHATE.
+where $\mu_{m}$ is the overall mean for NLDR method $m$, $d_i$ is the distance measure for the data structure $i = 1, \dots, 18$, $\beta_m$ is the fixed effect of distance metric under NLDR method $m$, $\gamma_j$ is the random effect of the subject $j = 1, 2, \dots, 127$, where $\gamma_j \sim N(0, \sigma_\gamma^2)$. Separate models were fitted using $d_i$ as either the scaled BW ratio or the exp(scaled minimum distance). The NLDR methods denoted by $m$ can include TriMAP, UMAP, PaCMAP, tSNE, and PHATE.
 
 ## Results {#sec-results}
 
