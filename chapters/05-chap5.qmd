@@ -493,7 +493,7 @@ where $\mu_{m}$ is the overall mean for NLDR method $m$, $d_i$ is the distance m
 
 ## Results {#sec-results}
 
-The data was collected from $127$ subjects, resulting in $127 \times 15 = 1905$ evaluations, excluding the attention check trials and the trials shows the different data in two displays.
+The data was collected from $127$ subjects, resulting in $127 \times 15 = 1905$ evaluations, excluding the attention check trials and the trials showing the different data in two displays.
 
 ### Effect of method and distance between clusters
 
