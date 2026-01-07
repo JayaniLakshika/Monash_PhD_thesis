@@ -1,0 +1,16 @@
+# Chunk label: fig-NLDR-variety-intro --------------------
+## Alt-text: A 2D scatterplot shows a UMAP embedding of a high-dimensional CITE‑seq dataset, with each point representing a single cell. The horizontal and vertical axes are UMAP dimension 1 and UMAP dimension 2, each spanning an arbitrary, roughly symmetric range around zero (for example, from about –10 to +10), with no explicit biological units. Points are coloured (or shaded) by cluster or cell type, producing several visually distinct groups: some compact, roughly circular clusters, others elongated or curved, and a few smaller, more scattered groups at the periphery of the layout. The clusters appear well separated with clear gaps between them, suggesting strong structure and possible subpopulations; however, the figure is used to emphasize that these apparent shapes and separations may reflect the chosen NLDR method and hyper‑parameters rather than true structure in the original high‑dimensional data.
+
+Assumptions: The exact axis limits are not provided; values and symmetry around zero are inferred from typical UMAP outputs. The mapping of colour to cluster or cell type is inferred from standard practice in CITE‑seq visualizations, as the legend and specific labels are not described in the prompt.
+
+Checklist:
+1. Identified chart type. YES  
+2. Named axes and variables. YES  
+3. Mentioned approximate ranges or scales (where meaningful). YES  
+4. Described data mappings (e.g. colour/shape/size/facets). YES  
+5. Described main patterns, trends, or clusters. YES  
+6. Explicitly noted any assumptions. YES
+
+## Caption (for reference): Yet this strength also introduces a critical risk: **NLDR can hallucinate structure**, creating patterns in the low-dimensional space that do not exist in the high-dimensional data. This is illustrated in @fig-NLDR-variety-intro, where a UMAP layout of a CITE-seq dataset appears to show several distinct clusters with different shapes. While these patterns are visually appealing and easy to interpret, it is not obvious whether they reflect true structure in the high-dimensional data or arise from the choice of method and hyper-parameters. This naturally leads to key questions: *Can this layout be trusted? Is it a reasonable representation of the structure(s) present in the high-dimensional data?*
+
+## Usage: BrailleR, Cummulated cost: NA, Cummulated token usage: 0
