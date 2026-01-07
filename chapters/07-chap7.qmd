@@ -232,7 +232,7 @@ clust_data_proj3 <- plot_proj(
               )
 ```
 
-```{r fig-dt-tourr, eval=knitr::is_html_output(), fig.cap="Comparison of a $10\\text{-}D$ PBMC CITE-seq dataset (left) and a simulated dataset generated using `cardinalR` (right). The PBMC CITE-seq data shows six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\\text{-}D$ dataset with similar structural characteristics.", fig.pos="!ht"}
+```{r fig-dt-tourr, eval=knitr::is_html_output(), fig.cap="Comparison of a $10\\text{-}D$ PBMC CITE-seq dataset (left) and a simulated dataset generated using `cardinalR` (right). The PBMC CITE-seq data shows six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\\text{-}D$ dataset with similar structural characteristics.", fig.pos="!ht", fig.alt="A two-panel interactive figure compares linear projection tours of two ten-dimensional datasets. The left panel shows a tour of the PBMC CITE-seq data, where points move smoothly as the projection rotates through different two-dimensional views. Across the tour, six clusters remain consistently visible: three exhibit nonlinear geometric structure, appearing as curved or twisted shapes that change orientation across projections, while three appear more compact and approximately Gaussian. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise. The right panel shows a corresponding tour of a simulated ten-dimensional dataset generated using cardinalR. As the projection changes, six clusters with diverse geometric forms are revealed: three approximately Gaussian clusters, one quadratic structure, one spherical spiral, and one conic spiral, along with sparse background noise. Although individual projections vary in appearance over time, the tour demonstrates that the simulated data reproduces the mixture of nonlinear and Gaussian structures seen in the PBMC CITE-seq data. The side-by-side tours allow comparison of how similar high-dimensional structure is expressed across multiple linear projections."}
 
 simdatafig <- bscols(
   htmltools::div(
@@ -398,6 +398,7 @@ pbmc_data_proj3 <- plot_proj(
 #| fig-height: 10
 #| label: fig-dt-prj
 #| fig-cap: "Three $2\\text{-}D$ projections from $10\\text{-}D$, for the PBMC CITE-seq (a1-a3) and a simulated dataset generated using \\texttt{cardinalR} (b1-b3) data. The PBMC CITE-seq data shows six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\\text{-}D$ dataset with similar structural characteristics."
+#| fig-alt: "A six-panel figure shows three two-dimensional projections of two different ten-dimensional datasets. The top row (panels a1–a3) displays three distinct 2-D projections of the PBMC CITE-seq data, each using abstract horizontal and vertical projection axes. Across these projections, six clusters are visible: three clusters exhibit nonlinear geometric shapes such as curved arcs or bent ribbons, while three appear approximately Gaussian and compact. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise. The bottom row (panels b1–b3) shows three corresponding 2-D projections of a simulated dataset generated using cardinalR. These projections display six clusters with analogous structural diversity: three approximately Gaussian clusters, one quadratic-shaped cluster, one spherical spiral, and one conic spiral, again with sparse background noise. Although the exact shapes and relative positions vary across projections, the simulated data reproduces the mixture of nonlinear and Gaussian cluster structures observed in the PBMC CITE-seq data, illustrating structural similarity between the real and synthetic high-dimensional datasets."
 
 pbmc_data_proj1 + pbmc_data_proj2 +
   pbmc_data_proj3 + clust_data_proj1 +
@@ -793,7 +794,7 @@ pbmc_proj_umap_model4 <- quollr::plot_proj(
 
 ```
 
-```{r fig-model-html, eval=knitr::is_html_output(), fig.cap="Wireframe model representation of the UMAP layout, lifted and displayed in $10\\text{-}D$. The left panel shows the UMAP layout with a triangular mesh overlay, forming the wireframe structure. This mesh can be lifted into higher dimensions and projected to examine how the geometric structure of the data is preserved. The model fits well. We can also observe different densities along the nonlinear shaped clusters.", fig.pos="!ht"}
+```{r fig-model-html, eval=knitr::is_html_output(), fig.cap="Wireframe model representation of the UMAP layout, lifted and displayed in $10\\text{-}D$. The left panel shows the UMAP layout with a triangular mesh overlay, forming the wireframe structure. This mesh can be lifted into higher dimensions and projected to examine how the geometric structure of the data is preserved. The model fits well. We can also observe different densities along the nonlinear shaped clusters.", fig.pos="!ht", fig.alt="An interactive tour view shows a wireframe model constructed on a UMAP layout and lifted into ten-dimensional space. In the initial view, the two-dimensional UMAP embedding is displayed with a triangular mesh connecting neighboring points, forming a wireframe that captures the local geometric structure of the data. As the tour progresses, this lifted wireframe is continuously projected into different two-dimensional views, smoothly changing orientation to reveal how the high-dimensional structure appears under varying linear projections. Across the tour, the mesh remains coherent and closely aligned with the data, indicating that the lifted model fits the ten-dimensional structure well. Curved, nonlinear clusters appear as bent or twisted mesh surfaces whose apparent shape changes with projection, and variations in mesh density highlight differences in point density along these nonlinear clusters."}
 
 linked_plt_int <- crosstalk::bscols(
     htmltools::div(
@@ -817,7 +818,7 @@ class(linked_plt_int) <- c(class(linked_plt_int), "htmlwidget")
 linked_plt_int
 ```
 
-```{r fig-model-pdf, eval=knitr::is_latex_output(), fig.cap="Wireframe model representation of the UMAP layout, lifted and displayed in $10\\text{-}D$ space. The left panel shows the UMAP layout with a triangular mesh overlay, forming the wireframe structure. This mesh can be lifted into higher dimensions and projected to examine how the geometric structure of the data is preserved. Panels (a1–a4) display different $2\\text{-}D$ projections of the lifted wireframe. The model fits well. We can also observe different densities along the nonlinear shaped clusters.", fig.pos="!ht"}
+```{r fig-model-pdf, eval=knitr::is_latex_output(), fig.cap="Wireframe model representation of the UMAP layout, lifted and displayed in $10\\text{-}D$ space. The left panel shows the UMAP layout with a triangular mesh overlay, forming the wireframe structure. This mesh can be lifted into higher dimensions and projected to examine how the geometric structure of the data is preserved. Panels (a1–a4) display different $2\\text{-}D$ projections of the lifted wireframe. The model fits well. We can also observe different densities along the nonlinear shaped clusters.", fig.pos="!ht", fig.alt="A multi-panel figure illustrates a wireframe model constructed from a UMAP layout and examined in higher-dimensional space. In the left panel, a two-dimensional UMAP embedding of the PBMC CITE-seq data is shown with a triangular mesh overlaid on the points, forming a wireframe representation of the local neighborhood structure. The axes represent abstract UMAP dimensions. The mesh connects nearby points, outlining the geometric shape of clusters rather than emphasizing individual observations. Panels (a1–a4) show different two-dimensional linear projections of this wireframe after it has been lifted into the original ten-dimensional space. Across these projections, the mesh remains coherent and closely follows the data, indicating that the lifted model fits the high-dimensional structure well. Nonlinear clusters appear as curved or twisted mesh surfaces whose orientation changes across projections, and variations in mesh density reveal differences in point density along these nonlinear structures."}
 
 hex_grid_pbmc + wrap_plots(
   pbmc_proj_umap_model1, pbmc_proj_umap_model2, 
@@ -841,6 +842,7 @@ Once the data and layouts are loaded in the *Data Upload* tab, all three embeddi
 #| label: fig-menuraR_ui1
 #| out-width: 100%
 #| fig-cap: "Data upload and NLDR layout configuration in `menuraR`. The *Data Upload* tab shows the PBMC CITE-seq dataset together with several precomputed NLDR layouts, including the published UMAP layout and alternative embeddings generated using tSNE, TriMAP, and PaCMAP with different hyper-parameter settings. Uploaded layouts appear in the *Your Loaded NLDR Layouts* panel."
+#| fig-alt: "A screenshot of the Data Upload tab in the menuraR interface. The main panel displays the PBMC CITE-seq dataset alongside a list or grid of available nonlinear dimensionality reduction (NLDR) layouts. These include a published UMAP layout and several alternative embeddings generated using tSNE, TriMAP, and PaCMAP with different hyper-parameter settings. A side panel titled Your Loaded NLDR Layouts shows the layouts that have been uploaded or selected by the user. The interface allows users to view, compare, and manage multiple NLDR layouts for the same dataset within a single workspace."
 
 knitr::include_graphics(here::here("figures/CITE-seq/menuraR_ui1_CITE-seq.png"))
 ```
@@ -853,6 +855,7 @@ The TriMAP layout is universally poor. The tSNE layout with little separation pe
 #| label: fig-menuraR_ui2
 #| out-width: 100%
 #| fig-cap: "NLDR layout comparison and hexbin error evaluation in `menuraR`. The *Compare NLDR Layouts* tab displays multiple $2\\text{-}D$ NLDR embeddings side by side, overlaid with hexagonal grids and corresponding wireframe representations. Users can explore how the hexbin error (HBE) changes with the binwidth parameter ($a_1$) and compare layouts directly. For this example, at a binwidth of $0.03$, the tSNE layout with *perplexity = 84* is identified as the most reasonable representation. Layouts, HBE plots, and summary tables can be downloaded for further analysis."
+#| fig-alt: "A screenshot of the Compare NLDR Layouts tab in the menuraR interface. Multiple two-dimensional NLDR embeddings are shown side by side, allowing direct visual comparison of different layouts. Each embedding is overlaid with a hexagonal binning grid and an associated wireframe representation, highlighting local neighborhood structure. Adjacent plots display how the hexbin error (HBE) varies as the binwidth parameter a1 hanges. Controls allow the user to adjust the binwidth and explore its effect on each layout. In this example, at a binwidth of 0.03, the tSNE layout with perplexity set to 84 shows the lowest HBE and is identified as the most reasonable representation. Options are provided to download the layouts, HBE plots, and summary tables for further analysis."
 
 knitr::include_graphics(here::here("figures/CITE-seq/menuraR_ui2_CITE-seq.png"))
 ```
@@ -1039,6 +1042,7 @@ In addition to the completed methods and software presented in this thesis, a la
 #| fig-pos: H
 #| out-width: "80%"
 #| label: fig-workquollr
+#| fig-alt: "Photographs of handwritten and sketched working sheets used during the early planning of the quollr R package. The pages contain rough notes that explore diagnostic ideas and evaluation strategies, illustrating the progression from initial conceptual sketches to a structured software design."
 
 knitr::include_graphics(here::here("figures/quollr.png"))
 ```
@@ -1048,6 +1052,7 @@ knitr::include_graphics(here::here("figures/quollr.png"))
 #| fig-pos: H
 #| out-width: "80%"
 #| label: fig-workcardinalR
+#| fig-alt: "Working sheet documenting the development of the cardinalR package. The sheets include hand-drawn cluster diagrams, mathematical notes, parameter tables, and pseudocode outlining data generation strategies. These materials show how exploratory ideas were iteratively refined into a coherent framework for simulating high-dimensional data."
 
 knitr::include_graphics(here::here("figures/cardinalR.png"))
 ```
@@ -1057,6 +1062,7 @@ knitr::include_graphics(here::here("figures/cardinalR.png"))
 #| fig-pos: H
 #| out-width: "80%"
 #| label: fig-workmenuraR
+#| fig-alt: "Working sheet from the planning and design phase of the menuraR Shiny application. The pages show hand-drawn interface layouts, workflow diagrams, and notes linking user interactions to analytical outputs, illustrating how early conceptual designs were developed into a functional interactive visualization tool."
 
 knitr::include_graphics(here::here("figures/menuraR.png"))
 ```
@@ -1090,6 +1096,7 @@ I have been part of delivering and preparing materials for [workshops](https://j
 #| fig-pos: H
 #| out-width: "30%"
 #| label: fig-workshop
+#| fig-alt: "A set of photographs from the Reproducible Reporting and Research with Quarto workshop held in September 2025. Images show the presenter leading sessions, participants working on laptops, and slides or screens displaying code and documents, illustrating an interactive, hands-on training environment focused on reproducible research and academic writing."
 
 knitr::include_graphics(here::here("figures/workshop.png"))
 ```
@@ -1103,6 +1110,7 @@ In July $2025$, I had the privilege of serving as a coach in the Monash Innovati
 #| fig-pos: H
 #| out-width: "30%"
 #| label: fig-migp
+#| fig-alt: "Photographs capturing mentoring activities with master’s students in the Monash Innovation Guarantee Postgraduate (MIG-P) program in July 2025. The images show small groups of students engaged in discussion, collaborative problem solving, and creative planning around tables or whiteboards, reflecting team-based project work."
 
 knitr::include_graphics(here::here("figures/mig2025.png"))
 ```
@@ -1125,6 +1133,7 @@ This journey has been as much about exploring the unknown as it has been about d
 #| fig-align: "center"
 #| fig-cap: "Geographic footprint of the PhD journey, highlighting research visits, conferences, and academic engagements across Australia, Austria, and the United States. Locations include Salzburg and Vienna (Austria), Nebraska and Tennessee (USA), and Melbourne, Sydney, Canberra, and Perth (Australia), alongside moments from conferences, collaborations, and software dissemination."
 #| label: fig-mem
+#| fig-alt: "A world map highlighting locations associated with the PhD journey. Markers indicate research visits, conferences, and academic engagements across Australia, Austria, and the United States, including Melbourne, Sydney, Canberra, and Perth; Salzburg and Vienna; and sites in Nebraska and Tennessee. Additional images or insets show moments from conferences, collaborations, and software dissemination activities at these locations."
 
 # Read images
 austria_img <- rasterGrob(png::readPNG(here::here("figures/austria.png")), interpolate=TRUE)
