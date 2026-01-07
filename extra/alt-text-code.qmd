@@ -5,485 +5,349 @@ format: html
 
 <!--autoalt::generate_alt_text("~/Desktop/PhD Monash research files/Monash_PhD_thesis/extra/alt-text-code.qmd", "~/Desktop/PhD Monash research files/Monash_PhD_thesis/extra/alt-text-code.txt", api = "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")-->
 
-# Choosing Better NLDR Layouts by Evaluating the Model in the High-Dimensional Data Space {#sec-first-paper}
+# Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study {#sec-second-paper}
 
-Nonlinear dimension reduction (NLDR) techniques such as tSNE, and UMAP provide a low-dimensional representation of high-dimensional data ($p\text{-}D$) by applying a nonlinear transformation. NLDR often exaggerates random patterns. But NLDR views have an important role in data analysis because, if done well, they provide a concise visual (and conceptual) summary of $p\text{-}D$ distributions. The NLDR methods and hyper-parameter choices can create wildly different representations, making it difficult to decide which is best, or whether any or all are accurate or misleading. To help assess the NLDR and decide on which, if any, is the most reasonable representation of the structure(s) present in the $p\text{-}D$ data, we have developed an algorithm to show the $2\text{-}D$ NLDR model in the $p\text{-}D$ space, viewed with a tour, a movie of linear projections. From this, one can see if the model fits everywhere, or better in some subspaces, or completely mismatches the data. Also, we can see how different methods may have similar summaries or quirks.
+Nonlinear dimension reduction (NLDR) methods such as tSNE, UMAP, PHATE, TriMAP, and PaCMAP are popular ways to visualize high-dimensional data, yet their effectiveness for conveying structure remains mysterious. Many factors might contribute to perceptual miscommunication, which for cluster structure may include how their shapes are represented, or the degree of separation, or even number of clusters. This study evaluates how well NLDR methods preserve perceptually meaningful cluster structure using a human subject experiment with simulated data having three clusters with distinct geometries, unequal sizes, and varying inter-cluster separation. Subjects were asked whether a $2\text{-}D$ NLDR layout and a tour of linear projections showed the same high-dimensional data. Cluster separation was controlled for the study to be distance between means, but for analysing the results two additional measures, between-to-within (BW) ratio and the exponential scaled minimum inter-cluster distance, were used to account for highly nonlinear shapes. The results suggest interesting differences across methods. For example, UMAP and tSNE represent distance between clusters distinctly differently resulting in data being interpreted differently. These findings highlight the need for more studies to assess NLDR methods based on how effectively their visualizations support human perception of high-dimensional structure.
 
-## Introduction
+## Results {#sec-results}
 
-Nonlinear dimension reduction (NLDR) is popular for making a convenient low-dimensional ($k\text{-}D$) representation of high-dimensional ($p\text{-}D$) data ($k < p$). Recently developed methods include t-distributed stochastic neighbor embedding (tSNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. 
+The data was collected from $127$ subjects, resulting in $127 \times 15 = 1905$ evaluations, excluding the attention check trials and the trials shows the different data in two displays.
 
-However, the representation generated can vary dramatically from method to method, choice of hyper-parameter or even random seed, as illustrated by @fig-NLDR-variety. The specific method and hyper-parameters used to produce each layout (see Supplementary Materials) is not essential for the discussion. The dilemma for the analyst is which representation to use. The choice might result in different procedures used in the downstream analysis, or different inferential conclusions. Various academics have expressed concerns with current practices and procedures for choosing (e.g.  @irizarry2024, @chari2023). The research described here provides new numerical and visual tools to aid with this decision. 
+### Correct proportions
 
-The chapter is organized as follows. @sec-background-visalgo provides a summary of the literature on NLDR, and high-dimensional data visualization methods. @sec-method-visalgo contains the details of the new methodology, including a simulated data example. In @sec-bestfit-visalgo, we describe how to assess the best fit and identify the most accurate $2\text{-}D$ layout based on the proposed model diagnostics.  Two applications illustrating the use of the new methodology for bioinformatics and image classification are in @sec-applications-visalgo. Limitations and future directions are provided in @sec-discussion-visalgo.
+The proportion of correct identifications across NLDR methods and distance conditions was analysed to evaluate how effectively each method preserves cluster separation. Results are summarized using two generalized linear mixed-effects models, with either the scaled BW ratio (@fig-glmm, @tbl-glmm) or the exp(scaled minimum distance) (@fig-glmm-min, @tbl-glmm-min) as the distance predictor. Both models accounted for subject-level variability through random effects and included NLDR method as a fixed factor interacting with the distance measure.
 
-## Method {#sec-method-visalgo}
+Results from the model using the scaled BW ratio (@tbl-glmm) indicate that cluster separability positively influences correct identification for some NLDR methods. As shown in @fig-glmm, UMAP exhibits a clear increase in accuracy as the scaled BW ratio increases, suggesting that this method benefits from greater between-cluster separation. PaCMAP shows a positive but weaker trend, while TriMAP maintains stable performance across the range of separations. In contrast, tSNE and PHATE display declining accuracy at higher BW ratios, indicating that increased separation may distort or obscure structural cues for these methods.
 
-### What is the NLDR model?
+To assess whether these patterns depend on how separation is quantified, we fitted a second model using the exp(scaled minimum distance) as an alternative measure of cluster separability (@tbl-glmm-min). The results closely mirror those obtained with the BW ratio (@fig-glmm-min). In particular, UMAP again shows a significant positive association between separation and correct identification probability, confirming that greater spatial distance between clusters enhances its ability to reveal the underlying structure. Conversely, tSNE demonstrates a strong negative association, with performance deteriorating as minimum distance increases, while PHATE exhibits a weaker but consistent negative trend. The effects for PaCMAP and TriMAP are not statistically significant, indicating comparatively stable performance across varying levels of separation.
 
-At first glance, thinking of NLDR as a modeling technique might seem strange. It is a simplified representation or abstraction of a system, process, or phenomenon in the real world. The $p\text{-}D$   observations are the realization of the phenomenon, and the $k\text{-}D$ NLDR layout is the simplified representation. Typically, $k=2$, which is used for the rest of this chapter. From a statistical perspective we can consider the distances between points in the $2\text{-}D$   layout to be variance that the model explains, and the (relative) difference with their distances in $p\text{-}D$   is the error, or unexplained variance. We can also imagine that the positioning of points in $2\text{-}D$    represent the fitted values, that will have some prescribed position in $p\text{-}D$   that can be compared with their observed values. This is the conceptual framework underlying the more formal versions of factor analysis [@joreskog1969] and MDS. (Note that, for this thinking the full $p\text{-}D$   data needs to be available, not just the interpoint distances.)
+### Variability across data sets and subjects
 
-We define the NLDR as a function $g\text{:}~ \mathbb{R}^{n\times p} \rightarrow \mathbb{R}^{n\times 2}$, with hyper-parameters $\bm{\theta}$. These parameters, $\bm{\theta}$, depend on the choice of $g$, and can be considered part of model fitting in the traditional sense. Common choices for $g$ include functions used in tSNE, UMAP, PHATE, TriMAP, PaCMAP, or MDS, although in theory any function that does this mapping is suitable. 
+Two sources of variability in the experimental design that are important to assess relative to the fitted model: data sets and subjects. Data sets are effectively treated as replicates in the experiment, providing random samples of a range of types of clusters. Humans have different perceptual skills which is why it is important to include a subject random effect in the model. 
 
-With our goal being to make a representation of this $2\text{-}D$ layout that can be lifted into high-dimensional space, the layout needs to be augmented to include neighbor information. A simple approach would be to triangulate the points and add edges. A more stable approach is to first bin the data, reducing it from $n$ to $m\leq n$ observations, and connect the bin centroids. We recommend using a hexagon grid because it better reflects the data distribution and has less artifacts than a rectangular grid. This process serves to reduce some noisiness in the resulting surface shown in $p\text{-}D$. The steps in this process are shown in @fig-NLDR-two-curvy, and documented below.
+Across the data sets used in the experiment, the proportion of correct responses ranges from approximately $0.3$ to $0.7$ (@fig-var-sum a). While this spread indicates that some data sets are easier to identify than others, the overall pattern is fairly consistent. Many data sets behave similarly, which is not surprising given that they are constructed from a shared set of underlying data structures. Because the data sets exhibit comparable levels of difficulty rather than forming distinct groups, treating data set as a separate experimental factor is unlikely to add explanatory power. Instead, variation across data sets reflects structural differences already captured by the design of the simulation.
 
-### Algorithm to represent the model in $2\text{-}D$  
+In contrast, subject-level performance shows natural but well-behaved variability. Most subjects achieve moderate accuracy, centred around a correct proportion of roughly $0.5$ (@fig-var-sum b), with fewer subjects at the lower and higher ends. Importantly, this distribution is balanced rather than polarized. High-accuracy subjects do not succeed simply by always choosing "SAME"; they still make occasional errors. Similarly, subjects with lower accuracy are not consistently choosing "DIFFERENT" and do show some correct responses. As a result, no subject has a correct proportion of exactly $0$ or $1$.
 
-#### Scale the data
+This pattern suggests that subjects differ in overall sensitivity to visual structure, but not in a way that reflects systematic bias or disengagement. These individual differences are therefore well-represented as random effects, allowing us to account for baseline variation in performance without attributing it to the experimental conditions themselves. Modeling subjects as a random effect captures this heterogeneity while preserving the focus on how NLDR methods and cluster separation influence perceptual accuracy.
 
-Because we are working with distances between points, starting with data having a standard scale, e.g. [0, 1], is recommended. The default should take the aspect ratio produced by the NLDR $(r_1, r_2, ..., r_k)$ into account. When $k=2$, as in hexagon binning, the default range is $[0, y_{i,\text{max}}], i=1,2$, where $y_{1,\text{max}}=1$ and $y_{2,\text{max}} = r_2/r_1$ (@fig-NLDR-two-curvy). If the NLDR aspect ratio is ignored then set $y_ {2,\text{max}} = 1.$ 
+### Patterns for misidentification
 
+To better understand the patterns of misidentification, we examine tSNE and UMAP layouts for data structures that are commonly confused by participants. Rather than treating errors as random noise, this analysis shows that misidentification often arises from a combination of the underlying structure of the data and the way NLDR methods transform that structure. In particular, several recurring visual patterns appear to drive perceptual confusion.
 
-#### Binning the data
+One common pattern is that, regardless of the distance between clusters in high-dimensional space, tSNE often places clusters very close together in the NLDR layout. This compression reduces visual separation and makes distinct clusters appear really close or overlapping, even when they are well separated in the original space. For example, in both `three_clust_12` and `three_clust_07` (@fig-three12-miss and @fig-three07-miss), increasing the distance between clusters does not consistently improve separation in tSNE. As a result, subjects may perceive these clusters as belonging to a single cluster or as weakly separated clusters, leading to confusion between clearly distinct high-dimensional configurations.
 
-Observations are grouped into bins based on their nearest centroid. This produces a reduction in size of the data from $n$ to $m$, where $m\leq b$ (total number of bins). This can be defined using the function $u: \mathbb{R}^{n\times 2} \rightarrow \mathbb{R}^{m\times 2}$, where
-$$u(i) = \arg\min_{j = 1, \dots, b} \sqrt{(y_{i1} - C^{(2)}_{j1})^2 + (y_{i2} - C^{(2)}_{j2})^2},$$ maps observation $i$ into $H_h = \{i| u(i) = h\}$. 
+Another strong source of misidentification is the tendency of NLDR methods to break a single cluster into multiple small clusters. This is especially common for nonlinear and star-shaped structures. In tSNE layouts, continuous shapes such as S-curves, hyperbolic structures (@fig-three07-miss), and star-shaped clusters are frequently fragmented into disconnected pieces, creating the impression of several separate clusters where only one exists in high dimensions. For example, star-shaped clusters in particular (@fig-three12-miss), the individual arms are often pulled far apart, making them appear as independent clusters and obscuring the fact that they belong to a single structure. UMAP shows a similar tendency to split star-shaped clusters into multiple groups; however, compared to tSNE, the overall star-like arrangement is often still visible. This partial preservation of global structure makes the cluster more identifiable in UMAP, even though misinterpretation can still occur.
 
-By default, the bin centroid is used for describing a hexagon (as done in @fig-NLDR-two-curvy (c)), but any measure of center, such as a mean or weighted mean of the points within each hexagon, could be used. The bin centers, and the binned data, are the two important components needed to render the model representation in high dimensions.  
+Linear or smoothly varying structures in high dimensions often appear nonlinear after dimension reduction. This change can strongly affect how a structure is perceived. In our examples, the hemispherical cluster provides a clear case: although it varies smoothly and has a relatively simple structure in high dimensions, both tSNE and UMAP frequently bend or warp it into curved or irregular shapes in the NLDR layout (@fig-three12-miss and @fig-three07-miss). As a result, the hemisphere can resemble a curved manifold rather than a smooth surface, making it harder to distinguish from genuinely nonlinear structures. This effect becomes more pronounced when the hemisphere appears alongside strongly curved components, as the projected shapes start to look visually similar.
 
-#### Indicating neighborhood
+Across multiple examples, including `three_clust_12` and `three_clust_07` (@fig-three12-miss and @fig-three07-miss), increasing high-dimensional separation does not reliably lead to more interpretable layouts. UMAP often benefits more from increased separation, preserving overall geometry and making components easier to distinguish. However, partial proximity between clusters can still remain, allowing perceptual ambiguity to persist. For tSNE, greater separation may even worsen interpretability by increasing fragmentation or compressing global structure, weakening the participants rely on to identify cluster relationships.
 
-Delaunay triangulation [@lee1980;@albrecht2024] is used to connect points so that edges indicate neighboring observations, in both the NLDR layout (@fig-NLDR-two-curvy (d)) and the $p\text{-}D$ model representation. When the data has been binned the triangulation connects centroids. The edges preserve the neighborhood information from the $2\text{-}D$ representation when the model is lifted into $p\text{-}D$. 
+Another common source of misidentification comes from uneven point density. In some of our data structures, density is an important feature of the shape in high dimensions, but it is not reliably preserved in the NLDR layouts. For example, in the nonlinear hyperbolic structure (@fig-three12-miss), one corner is clearly denser in high dimensions, yet this feature is not easy to identify in either tSNE or UMAP layouts. Similarly, the tip of the star-shaped pyramid is densely populated in high dimensions (@fig-three07-miss), but this density cue is often lost in the projections; especially in tSNE, where the structure is further distorted or fragmented. When these density cues are weakened or misplaced, participants lose important visual signals needed to recognize the underlying structure, increasing the chance of misidentification.
+
 
 ```{r}
-#| label: fig-NLDR-two-curvy
-#| echo: false
-#| fig-cap: "Key steps for constructing the model on the tSNE layout ($k=2$) of 2NC7: (a) data, (b) hexagon bins, (c) bin centroids, and (d) triangulated centroids. The 2NC7 data is shown."
-#| fig-width: 12
-#| fig-height: 4
-#| out-width: 100%
+#| fig-height: 3.5
+#| fig-width: 6.7
+#| label: fig-three12-miss
+#| fig-cap: "tSNE and UMAP layouts and $2\\text{-}D$ projections for the data structure `three_clust_12`, composed of an S-curve, a hemisphere, and a filled hexagonal pyramid, shown under small and large cluster separation. Panels (a1–a2) show two fixed $2\\text{-}D$ projections at small separation, and panels (b1–b2) show the same projections at large separation; the corresponding tSNE and UMAP layouts are shown in the right panels. At small separation, curved and rounded components overlap substantially in both methods, making the structure difficult to distinguish. With increased separation, UMAP preserves the distinct geometric character of each component, maintaining an elongated S-curve, a compact hemisphere, and a coherent pyramidal structure. In contrast, tSNE fragments curved and volumetric components into irregular, disconnected pieces, obscuring global shape cues."
+
+set.seed(20240110)
+
+theme_set(theme_linedraw() +
+   theme(
+     #aspect.ratio = 1,
+     plot.background = element_rect(fill = 'transparent', colour = NA),
+     plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
+     panel.background = element_rect(fill = 'transparent', 
+                                     colour = NA),
+     panel.grid.major = element_blank(), 
+     panel.grid.minor = element_blank(), 
+     axis.title.x = element_blank(), axis.title.y = element_blank(),
+     axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+     axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+     legend.background = element_rect(fill = 'transparent', 
+                                      colour = NA),
+     legend.key = element_rect(fill = 'transparent', 
+                               colour = NA),
+     legend.position = "bottom", 
+     legend.title = element_blank(), 
+     legend.text = element_text(size=4),
+     legend.key.height = unit(0.25, 'cm'),
+     legend.key.width = unit(0.25, 'cm')
+   )
+)
+
+clr_choice <- "#000000"
+
+results_df_method_ds <- read_rds(here::here("data/vis-exp/result_method_ds_factor.rds"))
+
+results_df_method_ds <- results_df_method_ds |>
+  filter(method != "pca") |>
+  mutate(type = "old")
+
+results_df_method_ds_missings <- read_rds(here::here("data/vis-exp/result_method_ds_factor_missings.rds")) |>
+  mutate(type = "new")
+
+results_df_method_ds <- bind_rows(
+  results_df_method_ds, results_df_method_ds_missings)
+
+## To reformat the response variable
+results_df_method_ds <- results_df_method_ds |>
+  mutate(result = if_else(result == "Correct", 1, 0))
+
+## To change the type of distance factor
+results_df_method_ds <- results_df_method_ds |>
+  mutate(distance_factor = as.factor(distance_factor)) 
+
+#Set PCA as base
+results_df_method_ds <- results_df_method_ds |>
+  mutate(method = factor(method,
+      levels = c("trimap", "umap", "pacmap", "tsne", "phate"))) |>
+  mutate(method = recode(method,
+                         tsne = "tSNE",
+                         umap = "UMAP",
+                         phate = "PHATE",
+                         trimap = "TriMAP",
+                         pacmap = "PaCMAP"))
+
+## To change the type of distance time_taken_in_seconds
+results_df_method_ds <- results_df_method_ds |>
+  mutate(time_taken_in_minutes = as.numeric(time_taken_in_minutes)) 
+
+metrics <- c("min_dist", "avg_btw_dist", "bw_ratio", "dunn", "dunn2",
+             "pearsongamma", "sindex", "avg_silwidth_dist")
+
+## To join the distance
+distance_df <- read_rds(here::here("data/vis-exp/three_clust_min_avg_dist_df.rds")) |>
+  filter(distance_sf != 0.8) |>
+  mutate(distance_sf = as.factor(distance_sf)) |>
+  mutate(bw_ratio = 1/wb_ratio) |>
+  mutate(across(
+    all_of(metrics),
+    ~ (. - min(.)) / (max(.) - min(.)),
+    .names = "{.col}_scaled"
+  )) |>
+  mutate(exp_min_dist_scaled = exp(min_dist_scaled)) |>
+  mutate(distance_sf = recode(distance_sf,
+                           `0.1` = "S",
+                           `0.6` = "SM",
+                           `0.9` = "M",
+                           `1` = "ML",
+                           `1.1` = "L")) 
+
+results_df_method_ds <- results_df_method_ds |>
+  mutate(distance_factor = recode(distance_factor,
+                           `0.1` = "S",
+                           `0.6` = "SM",
+                           `0.9` = "M",
+                           `1` = "ML",
+                           `1.1` = "L")) 
+
+results_df_method_ds <- left_join(results_df_method_ds, distance_df,
+                                  by = c("structure_high_d" = "data_structure",
+                                         "distance_factor" = "distance_sf")) 
+
+nldr1_three_clust_12 <- get_embeddings(dt_structutre = "three_clust_12") |>
+  filter(scale_factor == c(0.1, 1.1)) |>
+  filter(method %in% c("tsne", "umap")) |>
+    mutate(scale_factor = recode(scale_factor,
+                             `0.1` = "S",
+                             `1.1` = "L")) |>
+    mutate(scale_factor = factor(scale_factor,
+                           c("S", "L"))) |>
+    mutate(method = recode(method,
+                             "tsne" = "tSNE",
+                             "umap" = "UMAP")) 
+
+nld_plt1_three_clust_12 <- ggplot(
+  data = nldr1_three_clust_12,
+  aes(
+    x = emb1,
+    y = emb2
+  )
+) +
+  geom_point(alpha=0.05, size=1, colour = "black") +
+  facet_grid(scale_factor~method, scales = "free") +
+  theme(aspect.ratio = 1,
+        strip.text = element_text(size = 10))
 
 
-# Add plot label
+three_clust_12_data <- high_d_data |> 
+  filter(dataset == "three_clust_12") |> 
+  filter(scale_factor == 0.1) |> 
+  filter(sample_size == 7500) |>
+  pull(high_d_data)
 
-interior_annotation <- function(label, position = c(0.9, 0.9), cex = 1, col="grey70") {
-  annotation_custom(grid::textGrob(label = label,
-                                   x = unit(position[1], "npc"), y = unit(position[2], "npc"),
-                                   gp = grid::gpar(cex = cex, col=col)))
-}
+three_clust_12_data <- three_clust_12_data[[1]] |> 
+  select(-cluster)
 
-# Scale high-d data
+# Apply the scaling
 
-# Center the data by subtracting the mean of each column
-center_data <- function(data) {
-  apply(data, 2, function(col) col - mean(col))
-}
-
-# Function to scale data manually
-scale_data_manual <- function(data, type_col) {
-  # Step 1: Center the data (mean 0)
-  data_centered <- center_data(data |> select(-all_of(type_col)))
-
-  # Step 2: Calculate the standard deviation of each dimension
-  sds <- apply(data_centered, 2, sd)
-
-  # Step 3: Scale each dimension to have the range [0, 1]
-  data_scaled <- apply(data_centered, 2, function(col) col / max(abs(col)))
-
-  # Step 4: Scale dimensions according to their variation
-  # The dimension with the highest standard deviation is scaled to [-1, 1]
-  # Other dimensions are scaled to smaller ranges based on their standard deviations
-  max_sd <- max(sds)
-
-  # Normalize the standard deviations to get scaling factors
-  scaling_factors <- sds / max_sd
-
-  for (i in seq_along(scaling_factors)) {
-    data_scaled[, i] <- data_scaled[, i] * scaling_factors[i]
-  }
-
-  # Combine the scaled data with the 'type' column and return as a tibble
-  data_scaled <- as_tibble(data_scaled) |>
-    mutate(!!type_col := data[[type_col]])
-
-  return(data_scaled)
-}
-
-# Plot MSE
-
-plot_hbe <- function(error_df) {
-
-  ggplot(error_df,
-         aes(x = a1,
-             y = HBE,
-             colour = method)) +
-    geom_point(size = 0.8) +
-    geom_line(linewidth = 0.3) +
-    ylab("HBE") +
-    xlab(expression(paste("binwidth (", a[1], ")"))) +
-    interior_annotation("i", position = c(0.07, 0.9)) +
-    theme_minimal() +
-    theme(panel.border = element_rect(fill = 'transparent'),
-          plot.title = element_text(size = 12, hjust = 0.5, vjust = -0.5),
-          axis.ticks.x = element_line(),
-          axis.ticks.y = element_line(),
-          legend.position = "none",
-          axis.text.x = element_text(size = 7),
-          axis.text.y = element_text(size = 7),
-          axis.title.x = element_text(size = 7),
-          axis.title.y = element_text(size = 7),
-          plot.margin = margin(0, 0, 0, 0))
-
-}
-
-plot_hbe_nbar <- function(error_df) {
-
-  ggplot(error_df,
-         aes(x = n_bar,
-             y = HBE,
-             colour = method)) +
-    geom_point(size = 0.8) +
-    geom_line(linewidth = 0.3) +
-    scale_x_log10() +
-    ylab("HBE") +
-    xlab(expression(paste("average bin count (", bar(n)[h], ") (log scale)"))) +
-    theme_minimal() +
-    theme(panel.border = element_rect(fill = 'transparent'),
-          plot.title = element_text(size = 12, hjust = 0.5, vjust = -0.5),
-          axis.ticks.x = element_line(),
-          axis.ticks.y = element_line(),
-          legend.position = "none",
-          axis.text.x = element_text(size = 7),
-          axis.text.y = element_text(size = 7),
-          axis.title.x = element_text(size = 7),
-          axis.title.y = element_text(size = 7),
-          plot.margin = margin(0, 0, 0, 0))
-
-}
-
-plot_comp_metrics <- function(nldr_metrics){
-
-  ggparcoord(
-    data = nldr_metrics,
-    columns = c(9,10,11,8,7), #c(5,8,3,2,7),           # numeric columns to plot
-    groupColumn = 1,         # color by method
-    scale = "uniminmax"      # normalize between 0 and 1 for fair comparison
-  ) +
-    scale_color_manual(values=c('#377eb8', '#e41a1c')) +
-    theme_minimal() +
-    labs(
-      y = "scaled metric value",
-      x = ""
-    ) +
-    theme(
-      aspect.ratio = 0.5,
-      legend.position = "none",
-      legend.title = element_blank(),
-      panel.grid.minor = element_blank(),
-      axis.title.y = element_text(size = 7),
-      axis.text.y = element_text(size = 7),
-      panel.border = element_rect(color="black", fill=NA),
-      axis.text.x = element_text(size = 7),
-      axis.title.x = element_text(size = 7)
-    )
-
-}
-
-# creating Standardization function
-standardize = function(x){
-  z <- (x - mean(x)) / sd(x)
-  return( z)
-}
-
-# Plot digits in MNIST
-
-plot_digit_img <- function(
-    digit_df,
-    title_text,
-    ncol = 5,
-    threshold = 100, # Added as a parameter
-    color_off = "white", # Added as a parameter
-    color_on = "darkblue" # Added as a parameter
-) {
-
-  # --- Data Processing: Binarize and prepare for plotting ---
-  digit_df_processed <- digit_df |>
-    # Add a label column only to the first instance if title_text is provided
-    # (The original code had `mutate(label = ifelse(instance == unique(instance)[1], title_text, NA))`)
-    # If digit_df already has a 'label' column, you might want to adjust this.
-    # For now, I'll keep your original label logic.
-    mutate(label = ifelse(instance == unique(instance)[1], title_text, NA_character_)) |>
-
-    # Binarize the 'value' column based on the threshold
-    mutate(
-      binary_value = ifelse(value <= threshold, 0, 1),
-      # Convert to factor for discrete manual scaling and controlled order
-      binary_value = factor(binary_value, levels = c(0, 1))
-    )
-
-  ggplot(data = digit_df_processed, aes(x = x, y = y, fill = binary_value)) +
-    geom_tile() +
-    geom_text(data = digit_df_processed |> filter(!is.na(label)),
-              aes(label = label),
-              x = min(digit_df_processed$x, na.rm = TRUE), # Use na.rm=TRUE for robustness
-              y = max(digit_df_processed$y, na.rm = TRUE), # Use na.rm=TRUE for robustness
-              inherit.aes = FALSE,
-              hjust = -0.3, vjust = 1.3, size = 7, color = "grey70") +
-    facet_wrap(~ instance, ncol = ncol) +
-    coord_fixed() +
-    scale_fill_manual(values = c("0" = color_off, "1" = color_on)) +
-    theme(
-      strip.background = element_blank(),
-      strip.text.x = element_blank(),
-      legend.position = "none",
-      plot.margin = margin(0, 0, 0, 0),
-      panel.background = element_rect(fill = color_off, colour = NA),
-      plot.background = element_rect(fill = color_off, colour = NA)
-    )
-}
-
-# Solve quadratic function
-
-quad <- function(a = 3, b = 2 * a2, c = -(a2^2 + a1^2))
-{
-  a <- as.complex(a)
-  answer <- c((-b + sqrt(b^2 - 4 * a * c)) / (2 * a),
-              (-b - sqrt(b^2 - 4 * a * c)) / (2 * a))
-  if(all(Im(answer) == 0)) answer <- Re(answer)
-  if(answer[1] == answer[2]) return(answer[1])
-  answer[answer>0] ## only positive
-}
-
-plot_proj <- function(proj_obj,
-                      point_param = c(1.5, 0.5, "#000000"), # size, alpha, color
-                      line_param = c(0.5, 0.5, "#000000"), #linewidth, alpha
-                      plot_limits,
-                      axis_text_size = 3,
-                      is_category = FALSE) {
-
-  projected_df <- proj_obj$projected_df
-  model_df <- proj_obj$model_df
-  axes <- proj_obj$axes
-  circle <- proj_obj$circle
-
-  if(is_category == FALSE) {
-
-    initial_plot <- projected_df |>
-      ggplot(
-        aes(
-          x = proj1,
-          y = proj2)) +
-      geom_point(
-        size = as.numeric(point_param[1]),
-        alpha = as.numeric(point_param[2]),
-        color = point_param[3]) +
-      geom_segment(
-        data = model_df,
-        aes(
-          x = proj1_from,
-          y = proj2_from,
-          xend = proj1_to,
-          yend = proj2_to),
-        color = line_param[3],
-        linewidth = as.numeric(line_param[1]),
-        alpha = as.numeric(line_param[2]))
-
-  } else {
-
-    projected_df <- projected_df |>
-      dplyr::mutate(cluster = proj_obj$cluster)
-
-    initial_plot <- projected_df |>
-      ggplot(
-        aes(
-          x = proj1,
-          y = proj2,
-          colour = cluster)) +
-      geom_point(
-        size = as.numeric(point_param[1]),
-        alpha = as.numeric(point_param[2])) +
-      geom_segment(
-        data = model_df,
-        aes(
-          x = proj1_from,
-          y = proj2_from,
-          xend = proj1_to,
-          yend = proj2_to),
-        color = line_param[3],
-        linewidth = as.numeric(line_param[1]),
-        alpha = as.numeric(line_param[2]))
-
-  }
-
-  initial_plot <- initial_plot +
-    geom_segment(
-      data=axes,
-      aes(x=x1, y=y1, xend=x2, yend=y2),
-      colour="grey70") +
-    geom_text(
-      data=axes,
-      aes(x=x2, y=y2),
-      label=rownames(axes),
-      colour="grey50",
-      size = axis_text_size) +
-    geom_path(
-      data=circle,
-      aes(x=c1, y=c2), colour="grey70") +
-    xlim(plot_limits) +
-    ylim(plot_limits)
-
-  initial_plot
-
-}
-
-######################
-clr_choice <- "#0077A3"
-
-tsne_two_curvy_scaled <- read_rds(here::here("data/vis-algo/two_nonlinear/tsne_two_curvy_scaled.rds"))
-hex_grid_with_counts <- read_rds(here::here("data/vis-algo/two_nonlinear/hex_grid_with_counts.rds"))
-hex_grid_nonempty <- read_rds(here::here("data/vis-algo/two_nonlinear/hex_grid_nonempty.rds"))
-tr_from_to_df_two_curvy <- read_rds(here::here("data/vis-algo/two_nonlinear/tr_from_to_df_two_curvy.rds"))
-df_bin_centroids_two_curvy <- read_rds(here::here("data/vis-algo/two_nonlinear/df_bin_centroids_two_curvy.rds"))
-
-sc_ltr_pos <- c(0.08, 0.9)
-sc_xlims <- c(-0.3, 1.2)
-sc_ylims <- c(-0.17, 1.25)
-
-
-# First plot with xlim and ylim
-nldr_two_curvy <- nldr_two_curvy_original +
-  interior_annotation("a", sc_ltr_pos, cex = 2) +
-  xlim(sc_xlims) +
-  ylim(sc_ylims)
-
-nldr_two_curvy_original <- ggplot(tsne_two_curvy_scaled, 
-                                  aes(x = emb1, y = emb2)) +
-  geom_point(alpha = 0.5, colour = clr_choice, size = 0.5) 
-
-hex_grid_two_curvy <- ggplot(
-  data = hex_grid_with_counts, 
-  aes(x = x, y = y)) +
-  geom_polygon(colour = "grey70", 
-               aes(group = h), 
-               fill = "#ffffff") +
-  geom_point(data = tsne_two_curvy_scaled, 
-             aes(x = emb1, y = emb2), 
-             alpha = 0.5, size = 0.5, colour = clr_choice) +
-  xlim(sc_xlims) + ylim(sc_ylims) +
-  interior_annotation("b", sc_ltr_pos, cex = 2)
-
-hex_grid_coloured_two_curvy1 <- ggplot() + 
-  geom_polygon(
-    data = hex_grid_with_counts, 
-    aes(x = x, y = y,
-        group = h, 
-        fill = w_h), colour = "grey70", linewidth=0.2) +
-  geom_point(data = tsne_two_curvy_scaled,
-             aes(x = emb1, y = emb2),
-             colour = clr_choice,
-             alpha = 0.3,
-             size = 0.5) +
-  scale_fill_viridis_c(direction = -1, 
-                       na.value = "#ffffff", option = "E") +
-  interior_annotation("b", sc_ltr_pos, cex = 2) + 
-  xlim(sc_xlims) + ylim(sc_ylims) 
-
+centered_three_clust_12_data <- center_data(three_clust_12_data) |>
+  as_tibble()
 
 ## First projection
-proj_obj1 <- read_rds(here::here("data/vis-algo/two_nonlinear/two_nonlinear_proj_obj1.rds"))
-
-two_curvy_proj_tsne_first_model1 <- plot_proj(
-  proj_obj = proj_obj1, 
-  point_param = c(0.5, 0.2, clr_choice), # size, alpha, color
-  line_param = c(0.5, 0.5, "#000000"), # linewidth, alpha
-  plot_limits = c(-0.75, 0.75), 
-  axis_text_size = 2, 
-  is_category = FALSE) +
-  interior_annotation(label = "b", cex = 1.2) +
-  theme(aspect.ratio = 1,
-        legend.position = "none") 
+prj1 <- cbind(
+  c(0.13547,-0.08127,-0.14494,-0.06269),
+  c(-0.02681,-0.20528,0.06918,0.04658))
 
 
-projected_df <- proj_obj1$projected_df
-axes <- proj_obj1$axes
-circle <- proj_obj1$circle
-cluster <- proj_obj1$cluster
+projected_df <- get_projection(projection = prj1, 
+                               centered_data = centered_three_clust_12_data, 
+                               axis_param = list(limits = 1,
+                                                 axis_scaled = 3, 
+                                                 axis_pos_x = -0.7, 
+                                                 axis_pos_y = -0.7, 
+                                                 threshold = 0.06))
 
-projected_df <- projected_df |>
-  dplyr::mutate(cluster = proj_obj1$cluster)
+cluster_means <- projected_df$projected_df |>
+  mutate(cluster = cluster) |>
+  group_by(cluster) |>
+  summarise(mean_proj1 = mean(proj1),
+            mean_proj2 = mean(proj2))
+
+three_clust12_proj1 <- plot_proj(
+  proj_obj = projected_df, 
+  point_param = c(1, 0.05, "#000000"), # size, alpha, color
+  plot_limits = c(-0.9, 0.8), 
+  title = "a1", 
+  cex = 1, 
+  axis_text_size = 2,
+  is_color = FALSE) + 
+  geom_point(
+    data = cluster_means,
+    aes(x = mean_proj1, y = mean_proj2),
+    colour = "#de2d26",
+    fill = "#de2d26",
+    shape = 21,
+    size = 0.1,
+    stroke = 1) 
 
 ## Second projection
+prj2 <- cbind(
+  c(-0.13993,0.00179,-0.15287,-0.08282),
+  c(0.01124,0.16552,-0.12749,0.12761))
 
-proj_obj2 <- read_rds(here::here("data/vis-algo/two_nonlinear/two_nonlinear_proj_obj2.rds"))
+projected_df <- get_projection(projection = prj2, 
+                               centered_data = centered_three_clust_12_data, 
+                               axis_param = list(limits = 0.8,
+                                                 axis_scaled = 4, 
+                                                 axis_pos_x = -0.65, 
+                                                 axis_pos_y = -0.65, 
+                                                 threshold = 0.088))
 
-two_curvy_proj_tsne_all_model1 <- plot_proj(
-  proj_obj = proj_obj2, 
-  point_param = c(0.1, 0.5, clr_choice), # size, alpha, color
-  line_param = c(0.5, 0.5, "black"), # linewidth, alpha
-  plot_limits = c(-0.5, 0.5), 
-  axis_text_size = 2, 
-  is_category = FALSE) +
-  interior_annotation(label = "c", cex = 1.2) +
-  theme(aspect.ratio = 1)
+cluster_means <- projected_df$projected_df |>
+  mutate(cluster = cluster) |>
+  group_by(cluster) |>
+  summarise(mean_proj1 = mean(proj1),
+            mean_proj2 = mean(proj2))
 
-hex_grid_nonempty_two_curvy <- ggplot(
-  data = hex_grid_nonempty, 
-  aes(x = x, y = y)) +
-  geom_polygon(colour = "grey70", 
-               aes(group = h), 
-               fill = "#ffffff") +
-  geom_point(data = df_bin_centroids_two_curvy, 
-             aes(x = c_x, y = c_y), 
-             colour = "#000000",
-             size = 1) +
-  xlim(sc_xlims) + ylim(sc_ylims) +
-  interior_annotation("c", sc_ltr_pos, cex = 2) 
+three_clust12_proj2 <- plot_proj(
+  proj_obj = projected_df, 
+  point_param = c(1, 0.05, "#000000"), # size, alpha, color
+  plot_limits = c(-0.8, 0.7), 
+  title = "a2", 
+  cex = 1, 
+  axis_text_size = 2,
+  is_color = FALSE) + 
+  geom_point(
+    data = cluster_means,
+    aes(x = mean_proj1, y = mean_proj2),
+    colour = "#de2d26",
+    fill = "#de2d26",
+    shape = 21,
+    size = 0.1,
+    stroke = 1) 
 
-trimesh_two_curvy <- ggplot() +
-  geom_segment(data = tr_from_to_df_two_curvy,
-               aes(
-                 x = x_from,
-                 y = y_from,
-                 xend = x_to,
-                 yend = y_to),
-               colour = "#000000") +
-  geom_point(data = tsne_two_curvy_scaled,
-             aes(
-               x = emb1,
-               y = emb2
-             ),
-             colour = "#636363",
-             alpha = 0.5,
-             size = 0.5
-  ) +
-  coord_equal() +
-  interior_annotation("a1", sc_ltr_pos)
+three_clust_12_data <- high_d_data |> 
+  filter(dataset == "three_clust_12") |> 
+  filter(scale_factor == 1.1) |> 
+  filter(sample_size == 7500) |>
+  pull(high_d_data)
 
-trimesh_removed_two_curvy <- ggplot() +
-  geom_segment(data = tr_from_to_df_two_curvy,
-               aes(
-                 x = x_from,
-                 y = y_from,
-                 xend = x_to,
-                 yend = y_to),
-               colour = "#000000") +
-  coord_equal() +
-  xlim(sc_xlims) + ylim(sc_ylims) +
-  interior_annotation("d", sc_ltr_pos, cex = 2)
+three_clust_12_data <- three_clust_12_data[[1]] |> 
+  select(-cluster)
 
-trimesh_two_curvy_removed1_tsne_with_data <- ggplot() +
-  geom_point(data = tsne_two_curvy_scaled,
-             aes(
-               x = emb1,
-               y = emb2
-             ),
-             colour = clr_choice,
-             alpha = 0.5,
-             size = 0.5) +
-  geom_segment(data = tr_from_to_df_two_curvy,
-               aes(
-                 x = x_from,
-                 y = y_from,
-                 xend = x_to,
-                 yend = y_to),
-               colour = "#000000") +
-  interior_annotation("a", cex = 1.2) +
-  theme(aspect.ratio = 1)
+# Apply the scaling
 
- 
-nldr_two_curvy + hex_grid_two_curvy + 
-  hex_grid_nonempty_two_curvy + 
-  trimesh_removed_two_curvy +
-  plot_layout(ncol = 4)
+centered_three_clust_12_data <- center_data(three_clust_12_data) |>
+  as_tibble()
+
+## First projection
+prj1 <- cbind(
+  c(0.13547,-0.08127,-0.14494,-0.06269),
+  c(-0.02681,-0.20528,0.06918,0.04658))
+
+
+projected_df <- get_projection(projection = prj1, 
+                               centered_data = centered_three_clust_12_data, 
+                               axis_param = list(limits = 0.5,
+                                                 axis_scaled = 3, 
+                                                 axis_pos_x = -0.2, 
+                                                 axis_pos_y = -0.2, 
+                                                 threshold = 0.03))
+
+cluster_means <- projected_df$projected_df |>
+  mutate(cluster = cluster) |>
+  group_by(cluster) |>
+  summarise(mean_proj1 = mean(proj1),
+            mean_proj2 = mean(proj2))
+
+three_clust12_proj1_1 <- plot_proj(
+  proj_obj = projected_df, 
+  point_param = c(1, 0.05, "#000000"), # size, alpha, color
+  plot_limits = c(-0.3, 0.55), 
+  title = "b1", 
+  cex = 1, 
+  axis_text_size = 2,
+  is_color = FALSE) + 
+  geom_point(
+    data = cluster_means,
+    aes(x = mean_proj1, y = mean_proj2),
+    colour = "#de2d26",
+    fill = "#de2d26",
+    shape = 21,
+    size = 0.1,
+    stroke = 1) 
+
+## Second projection
+prj2 <- cbind(
+  c(-0.13993,0.00179,-0.15287,-0.08282),
+  c(0.01124,0.16552,-0.12749,0.12761))
+
+projected_df <- get_projection(projection = prj2, 
+                               centered_data = centered_three_clust_12_data, 
+                               axis_param = list(limits = 0.5,
+                                                 axis_scaled = 4, 
+                                                 axis_pos_x = -0.45, 
+                                                 axis_pos_y = -0.45, 
+                                                 threshold = 0.055))
+
+cluster_means <- projected_df$projected_df |>
+  mutate(cluster = cluster) |>
+  group_by(cluster) |>
+  summarise(mean_proj1 = mean(proj1),
+            mean_proj2 = mean(proj2))
+
+three_clust12_proj2_1 <- plot_proj(
+  proj_obj = projected_df, 
+  point_param = c(1, 0.05, "#000000"), # size, alpha, color
+  plot_limits = c(-0.55, 0.4), 
+  title = "b2", 
+  cex = 1, 
+  axis_text_size = 2,
+  is_color = FALSE) + 
+  geom_point(
+    data = cluster_means,
+    aes(x = mean_proj1, y = mean_proj2),
+    colour = "#de2d26",
+    fill = "#de2d26",
+    shape = 21,
+    size = 0.1,
+    stroke = 1) 
+
+(three_clust12_proj1 + three_clust12_proj2) / (three_clust12_proj1_1 + three_clust12_proj2_1) | nld_plt1_three_clust_12
+
 ```
 
