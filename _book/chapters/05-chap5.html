@@ -296,7 +296,7 @@ window.Quarto = {
 <p>Nonlinear transformations allow for multiple shape-varying clusters to be represented in a single <span class="math inline">2\text{-}D</span> layout. In contrast, classical linear projection will often require multiple projections to show multiple clusters. <a href="#fig-nldr-layouts" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> illustrates this: a1-a4 show linear projections revealing three well-separated clusters, one spherical, one ribbon-like and one like a star-shaped pyramid. The NLDR layout (left) is generated using tSNE has a mostly reasonable display of the three clusters in a single view, although it struggles with the star pyramid. It does place the clusters very close to each other which does not reflect the large separation in the high-dimensional space.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-nldr-layouts" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-nldr-layouts" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-nldr-layouts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-chap5_files/figure-html/fig-nldr-layouts-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
@@ -357,7 +357,7 @@ This study aims to answer which NLDR methods are more accurate in identifying th
 <p>The visual layout of the experiment for one subject is shown in <a href="#fig-exp-design" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>. Each subject completed <span class="math inline">20</span> trials: <span class="math inline">15</span> SAME trials, in which the same data structure was shown in both the <span class="math inline">2\text{-}D</span> NLDR plot and the tour; <span class="math inline">4</span> DIFFERENT trials, showing DIFFERENT data structures; and one attention check trial that could be either SAME or DIFFERENT. The purpose of the DIFFERENT trials was to ensure that subjects didn’t get too familiar with the task, which might happen if the data is always the same in both graphics. For the SAME, five NLDR methods (<em>tSNE, UMAP, PHATE, PaCMAP, and TriMAP</em>) were each paired with three of five distance scale factors (<em>small, small-medium, medium, medium-large, and large</em>), giving <span class="math inline">15</span> balanced combinations. In the DIFFERENT, four NLDR methods were randomly selected, with the remaining method assigned to the attention check trial. All DIFFERENT and attention check trials used a distance scale factor of <em>medium-large</em>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-exp-design" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-exp-design" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-exp-design-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../figures/vis-exp/exp_design.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%" data-fig-pos="!ht">
 </div>
@@ -497,7 +497,7 @@ Table&nbsp;5.1: Estimated trends of correct identification probability with resp
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-glmm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-glmm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-glmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-chap5_files/figure-html/fig-glmm-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
@@ -595,7 +595,7 @@ Table&nbsp;5.2: Estimated trends of correct identification probability with resp
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-glmm-min" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-glmm-min" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-glmm-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-chap5_files/figure-html/fig-glmm-min-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
@@ -620,7 +620,7 @@ Figure&nbsp;5.5: Estimated probability of correct identification as a function o
 <img src="05-chap5_files/figure-html/fig-var-sum-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-var-sum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.6: Examining the correct proportions across data sets used in the experiment and across subjects. Panel (a) shows the proportion of correct responses for each data set. Black points indicate the overall correct proportion, with horizontal error bars showing binomial confidence intervals, while coloured points represent correct proportions at different distance-scaling conditions within each data set. Accuracy varies across data sets, ranging from approximately <span class="math inline">0.31</span> to <span class="math inline">0.70</span>, but remains broadly comparable across conditions, suggesting no single data set dominates performance. Panel (b) shows the distribution of correct identification proportions across subjects. Most subjects achieve moderate accuracy, with performance spread across lower and higher values rather than clustering at extremes. No subjects exhibit perfect accuracy or consistently incorrect responses, indicating meaningful engagement with the task. Variability in performance is shared across both data sets and subjects, supporting the use of subject-level random effects and indicating that misidentification reflects structured difficulty rather than random error or bias.
+Figure&nbsp;5.6: Examining the variability of proportion correct across data sets and subjects. Panel (a) shows the proportion of correct responses for each data set. Black indicates the correct proportion and binomial confidence intervals, with colour representing correct proportion across different distance-scaling within each data set (low to high matching light to dark). The variability ranges from <span class="math inline">0.3</span> to <span class="math inline">0.7</span> and is consistent with considering the data sets as replication variability due to random sampling. Panel (b) shows the distribution of proportion correct across subjects. It is relatively Gaussian with a few participants performing exceptionally well and some poorly. This is consistent with other human subject experiments and reflects individual visual skills, illustrating the need to include subject-specific random effects in the model.
 </figcaption></figure>
 </div>
 </div>
