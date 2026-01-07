@@ -296,7 +296,7 @@ window.Quarto = {
 <p>Nonlinear transformations allow for multiple shape-varying clusters to be represented in a single <span class="math inline">2\text{-}D</span> layout. In contrast, classical linear projection will often require multiple projections to show multiple clusters. <a href="#fig-nldr-layouts" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> illustrates this: a1-a4 show linear projections revealing three well-separated clusters, one spherical, one ribbon-like and one like a star-shaped pyramid. The NLDR layout (left) is generated using tSNE has a mostly reasonable display of the three clusters in a single view, although it struggles with the star pyramid. It does place the clusters very close to each other which does not reflect the large separation in the high-dimensional space.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-nldr-layouts" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-nldr-layouts" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-nldr-layouts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-chap5_files/figure-html/fig-nldr-layouts-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
@@ -354,15 +354,15 @@ This study aims to answer which NLDR methods are more accurate in identifying th
 <p>In addition, two clearly separable Gaussian cluster data sets were included as attention checks. These appear as both SAME and DIFFERENT trials and are used to verify that participants are paying attention and are able to perform the task under easy conditions.</p>
 <p>To avoid learning and familiarity effects, each participant sees each data structure only once. Data sets were therefore assigned to subjects randomly but without replacement at the subject level. This ensures that participants cannot rely on memory from earlier trials and that each judgment is based solely on the visual information presented.</p>
 </section><section id="experiment-design" class="level3"><h3 class="anchored" data-anchor-id="experiment-design">Experiment design</h3>
-<p>The visual layout of the experiment for one subject is shown in <a href="#fig-exp-design" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>. Each subject completed <span class="math inline">20</span> trials: <span class="math inline">15</span> SAME trials, in which the same data structure was shown in both the <span class="math inline">2\text{-}D</span> NLDR plot and the tour; <span class="math inline">4</span> DIFFERENT trials, showing DIFFERENT data structures; and one attention check trial that could be either SAME or DIFFERENT. The purpose of the DIFFERENT trials was to ensure that subjects didn’t get too familiar with the task, which might happen if the data is always the same in both graphics. For the SAME, five NLDR methods (<em>tSNE, UMAP, PHATE, PaCMAP, and TriMAP</em>) were each paired with three of five distance scale factors (<em>small, small-medium, medium, medium-large, and large</em>), giving <span class="math inline">15</span> balanced combinations. In the DIFFERENT, four NLDR methods were randomly selected, with the remaining method assigned to the attention check trial. All DIFFERENT and attention check trials used a distance scale factor of <em>medium-large</em>.</p>
+<p>The visual layout of the experiment for five subjects is shown in <a href="#fig-exp-design" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>. Each subject completed <span class="math inline">20</span> trials: <span class="math inline">15</span> SAME trials, in which the same data structure was shown in both the <span class="math inline">2\text{-}D</span> NLDR plot and the tour; <span class="math inline">4</span> DIFFERENT trials, showing DIFFERENT data structures; and one attention check trial that could be either SAME or DIFFERENT. The purpose of the DIFFERENT trials was to ensure that subjects didn’t get too familiar with the task, which might happen if the data is always the same in both graphics. For the SAME, five NLDR methods (<em>tSNE, UMAP, PHATE, PaCMAP, and TriMAP</em>) were each paired with three of five distance scale factors (<em>small, small-medium, medium, medium-large, and large</em>), giving <span class="math inline">15</span> balanced combinations. In the DIFFERENT, four NLDR methods were randomly selected, with the remaining method assigned to the attention check trial. All DIFFERENT and attention check trials used a distance scale factor of <em>medium-large</em>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-exp-design" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-exp-design" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-exp-design-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../figures/vis-exp/exp_design.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exp-design-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.2: Experiment design for one subject. Shapes represent distance scale factors, and fill colors denote NLDR methods. Each subject completed <span class="math inline">20</span> trials: <span class="math inline">15</span> SAME trials showing the same data structure in both the <span class="math inline">2\text{-}D</span> plot and tour (purple), <span class="math inline">4</span> DIFFERENT trials showing different structures (light blue), and one attention check (SAME or DIFFERENT) (red). In SAME trials, five NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) were combined with three of five distance scale factors (small, small-medium, medium, medium-large, and large). For DIFFERENT trials, four NLDR methods were randomly selected, and the remaining method was used in the attention check. All DIFFERENT and attention check trials used a distance scale factor of <em>medium-large</em>.
+Figure&nbsp;5.2: Experiment design for five subjects. Shapes represent NLDR methods, and fill colors denote distance scale factors (from low to high, mapped from light to dark). Solid shapes indicate SAME trials, unfilled shapes indicate DIFFERENT trials, and thicker outlines denote attention checks. Each subject completed <span class="math inline">20</span> trials: <span class="math inline">15</span> SAME trials showing the same data structure in both the <span class="math inline">2\text{-}D</span> plot and tour, <span class="math inline">4</span> DIFFERENT trials showing different structures, and one attention check (SAME or DIFFERENT). In SAME trials, five NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) were combined with three of five distance scale factors (small, small-medium, medium, medium-large, and large). For DIFFERENT trials, four NLDR methods were randomly selected, and the remaining method was used in the attention check. All DIFFERENT and attention check trials used a distance scale factor of <em>medium-large</em>.
 </figcaption></figure>
 </div>
 </div>
@@ -497,7 +497,7 @@ Table&nbsp;5.1: Estimated trends of correct identification probability with resp
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-glmm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-glmm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-glmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-chap5_files/figure-html/fig-glmm-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
@@ -595,7 +595,7 @@ Table&nbsp;5.2: Estimated trends of correct identification probability with resp
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-glmm-min" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-glmm-min" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-glmm-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-chap5_files/figure-html/fig-glmm-min-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht">
 </div>
