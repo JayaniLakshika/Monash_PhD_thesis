@@ -62,13 +62,13 @@ In addition to technical gaps, **little is known about how people perceive and m
 
 This thesis aims to achieve the key challenges in understanding and evaluating NLDR methods through four main objectives:
 
-1. **Develop a new approach and software to evaluate NLDR techniques**, providing tools to assess whether low-dimensional representations accurately capture the high-dimensional data structures, using visual and quantitative diagnostics.
+1. Develop a new approach and software to evaluate NLDR techniques, providing tools to assess whether low-dimensional representations accurately capture the high-dimensional data structures, using visual and quantitative diagnostics.
 
-2. **Conduct a large-scale user study to explore perception and misperception in NLDR representations**, assessing how participants recognize the data structure similarly in NLDR layout compared to tour views. This cognitive perception experiment provides common mistakes made when choosing and reporting structure from NLDR representations, and will inform best practices for using these methods in data analysis.
+2. Design and conduct a user study to explore perception and misperception in NLDR representations, assessing whether participants conceptualize the data structure similarly in NLDR layout compared to tours of linear combinations. This will guide development of further cognitive perception experiments for assessing NLDR.
 
-3. **Generate benchmark clustering data structures in high dimensions with some additional properties like background noise**, using the `cardinalR` package, to evaluate the performance of the algorithms like clustering, NLDR.
+3. Generate benchmark clustering data structures in high dimensions with some additional properties like background noise, using the `cardinalR` package, to evaluate the performance of the algorithms like clustering, NLDR.
 
-4. **Provide a platform for NLDR users**, comparing multiple NLDR representations and select the most reasonable one. 
+4. Provide a web tool for NLDR users to help select the most reasonable NLDR representation among a selection of possible layouts. 
 
 ## Contribution
 
