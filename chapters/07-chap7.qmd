@@ -963,6 +963,7 @@ A Shiny application for `quollr` is accessible via one of the mirror sites at [m
 ```{r}
 #| fig-cap: "Weekly commit activity for the `cardinalR` and `quollr` packages."
 #| label: fig-pkg-commit
+#| fig-alt: "Two vertically stacked panels show weekly Git commit activity for the R packages cardinalR and quollr. The horizontal axis in each panel represents calendar time, aggregated by week, progressing from earlier to later dates. The vertical axis shows the number of commits made in each week, with scales allowed to differ between panels. Each week is represented by a point, indicating the observed commit count, and a smooth curve overlays the points to show the overall trend in activity over time. Both packages exhibit fluctuating but sustained development, with periods of increased and decreased weekly commits rather than a constant rate. The faceted layout allows comparison of temporal development patterns between the two repositories while preserving their different activity magnitudes."
 
 commits <- read_rds(here::here("data/git_commits.rds"))
 
@@ -992,6 +993,7 @@ Presentations, package development, and writing are the three primary types of a
 #| fig-cap: "Plots of my Git commits split by the activity types during my PhD years, labeled with some milestones."
 #| label: fig-task-commit
 #| out-width: "100%"
+#| fig-alt: "A single-panel quasirandom scatterplot shows Git commits over time during the PhD, grouped by activity type. The horizontal axis represents time (date of commit), progressing from earlier to later PhD years. The vertical axis lists four categorical activity types: Presentation, Analysis & Writing, Package, and Shiny App. Each commit is shown as a small point, with points horizontally jittered using a quasirandom layout to reduce overlap. Points are coloured by activity type, but no legend is shown. Periods of dense point clusters indicate bursts of commits for a given activity, while sparse regions indicate lower activity. Commit timing varies across activity types, showing that different kinds of work peak at different times rather than occurring uniformly. Selected commits are annotated with text labels and arrows, marking key milestones within each activity category."
 
 phd_commits <- read_rds(here::here("data/git_commits_by_tasks.rds"))
 

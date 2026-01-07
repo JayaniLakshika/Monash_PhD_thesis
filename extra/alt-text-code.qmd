@@ -5,349 +5,559 @@ format: html
 
 <!--autoalt::generate_alt_text("~/Desktop/PhD Monash research files/Monash_PhD_thesis/extra/alt-text-code.qmd", "~/Desktop/PhD Monash research files/Monash_PhD_thesis/extra/alt-text-code.txt", api = "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")-->
 
-# Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study {#sec-second-paper}
+## Using a published $2\text{-}D$ NLDR layout as a case study
 
-Nonlinear dimension reduction (NLDR) methods such as tSNE, UMAP, PHATE, TriMAP, and PaCMAP are popular ways to visualize high-dimensional data, yet their effectiveness for conveying structure remains mysterious. Many factors might contribute to perceptual miscommunication, which for cluster structure may include how their shapes are represented, or the degree of separation, or even number of clusters. This study evaluates how well NLDR methods preserve perceptually meaningful cluster structure using a human subject experiment with simulated data having three clusters with distinct geometries, unequal sizes, and varying inter-cluster separation. Subjects were asked whether a $2\text{-}D$ NLDR layout and a tour of linear projections showed the same high-dimensional data. Cluster separation was controlled for the study to be distance between means, but for analysing the results two additional measures, between-to-within (BW) ratio and the exponential scaled minimum inter-cluster distance, were used to account for highly nonlinear shapes. The results suggest interesting differences across methods. For example, UMAP and tSNE represent distance between clusters distinctly differently resulting in data being interpreted differently. These findings highlight the need for more studies to assess NLDR methods based on how effectively their visualizations support human perception of high-dimensional structure.
+In the Introduction, a published UMAP layout (*n_neighbors = 30* and *min_dist = 0.3*) of a human PBMC CITE-seq dataset [@hao2021] is used as a motivating example. The UMAP layout shows several visually distinct clusters with different shapes. Some clusters appear compact and well separated, while others are elongated, curved, or partially overlapping. In total, six clusters can be seen, including three with nonlinear shapes, two roughly Gaussian clusters, and one elliptical cluster, along with a small amount of background noise scattered between clusters. At first glance, it looks convincing. But this immediately raises an important question: *is this really the best way to represent the structure in the $10\text{-}D$ PBMC CITE-seq data?*
 
-## Results {#sec-results}
-
-The data was collected from $127$ subjects, resulting in $127 \times 15 = 1905$ evaluations, excluding the attention check trials and the trials shows the different data in two displays.
-
-### Correct proportions
-
-The proportion of correct identifications across NLDR methods and distance conditions was analysed to evaluate how effectively each method preserves cluster separation. Results are summarized using two generalized linear mixed-effects models, with either the scaled BW ratio (@fig-glmm, @tbl-glmm) or the exp(scaled minimum distance) (@fig-glmm-min, @tbl-glmm-min) as the distance predictor. Both models accounted for subject-level variability through random effects and included NLDR method as a fixed factor interacting with the distance measure.
-
-Results from the model using the scaled BW ratio (@tbl-glmm) indicate that cluster separability positively influences correct identification for some NLDR methods. As shown in @fig-glmm, UMAP exhibits a clear increase in accuracy as the scaled BW ratio increases, suggesting that this method benefits from greater between-cluster separation. PaCMAP shows a positive but weaker trend, while TriMAP maintains stable performance across the range of separations. In contrast, tSNE and PHATE display declining accuracy at higher BW ratios, indicating that increased separation may distort or obscure structural cues for these methods.
-
-To assess whether these patterns depend on how separation is quantified, we fitted a second model using the exp(scaled minimum distance) as an alternative measure of cluster separability (@tbl-glmm-min). The results closely mirror those obtained with the BW ratio (@fig-glmm-min). In particular, UMAP again shows a significant positive association between separation and correct identification probability, confirming that greater spatial distance between clusters enhances its ability to reveal the underlying structure. Conversely, tSNE demonstrates a strong negative association, with performance deteriorating as minimum distance increases, while PHATE exhibits a weaker but consistent negative trend. The effects for PaCMAP and TriMAP are not statistically significant, indicating comparatively stable performance across varying levels of separation.
-
-### Variability across data sets and subjects
-
-Two sources of variability in the experimental design that are important to assess relative to the fitted model: data sets and subjects. Data sets are effectively treated as replicates in the experiment, providing random samples of a range of types of clusters. Humans have different perceptual skills which is why it is important to include a subject random effect in the model. 
-
-Across the data sets used in the experiment, the proportion of correct responses ranges from approximately $0.3$ to $0.7$ (@fig-var-sum a). While this spread indicates that some data sets are easier to identify than others, the overall pattern is fairly consistent. Many data sets behave similarly, which is not surprising given that they are constructed from a shared set of underlying data structures. Because the data sets exhibit comparable levels of difficulty rather than forming distinct groups, treating data set as a separate experimental factor is unlikely to add explanatory power. Instead, variation across data sets reflects structural differences already captured by the design of the simulation.
-
-In contrast, subject-level performance shows natural but well-behaved variability. Most subjects achieve moderate accuracy, centred around a correct proportion of roughly $0.5$ (@fig-var-sum b), with fewer subjects at the lower and higher ends. Importantly, this distribution is balanced rather than polarized. High-accuracy subjects do not succeed simply by always choosing "SAME"; they still make occasional errors. Similarly, subjects with lower accuracy are not consistently choosing "DIFFERENT" and do show some correct responses. As a result, no subject has a correct proportion of exactly $0$ or $1$.
-
-This pattern suggests that subjects differ in overall sensitivity to visual structure, but not in a way that reflects systematic bias or disengagement. These individual differences are therefore well-represented as random effects, allowing us to account for baseline variation in performance without attributing it to the experimental conditions themselves. Modeling subjects as a random effect captures this heterogeneity while preserving the focus on how NLDR methods and cluster separation influence perceptual accuracy.
-
-### Patterns for misidentification
-
-To better understand the patterns of misidentification, we examine tSNE and UMAP layouts for data structures that are commonly confused by participants. Rather than treating errors as random noise, this analysis shows that misidentification often arises from a combination of the underlying structure of the data and the way NLDR methods transform that structure. In particular, several recurring visual patterns appear to drive perceptual confusion.
-
-One common pattern is that, regardless of the distance between clusters in high-dimensional space, tSNE often places clusters very close together in the NLDR layout. This compression reduces visual separation and makes distinct clusters appear really close or overlapping, even when they are well separated in the original space. For example, in both `three_clust_12` and `three_clust_07` (@fig-three12-miss and @fig-three07-miss), increasing the distance between clusters does not consistently improve separation in tSNE. As a result, subjects may perceive these clusters as belonging to a single cluster or as weakly separated clusters, leading to confusion between clearly distinct high-dimensional configurations.
-
-Another strong source of misidentification is the tendency of NLDR methods to break a single cluster into multiple small clusters. This is especially common for nonlinear and star-shaped structures. In tSNE layouts, continuous shapes such as S-curves, hyperbolic structures (@fig-three07-miss), and star-shaped clusters are frequently fragmented into disconnected pieces, creating the impression of several separate clusters where only one exists in high dimensions. For example, star-shaped clusters in particular (@fig-three12-miss), the individual arms are often pulled far apart, making them appear as independent clusters and obscuring the fact that they belong to a single structure. UMAP shows a similar tendency to split star-shaped clusters into multiple groups; however, compared to tSNE, the overall star-like arrangement is often still visible. This partial preservation of global structure makes the cluster more identifiable in UMAP, even though misinterpretation can still occur.
-
-Linear or smoothly varying structures in high dimensions often appear nonlinear after dimension reduction. This change can strongly affect how a structure is perceived. In our examples, the hemispherical cluster provides a clear case: although it varies smoothly and has a relatively simple structure in high dimensions, both tSNE and UMAP frequently bend or warp it into curved or irregular shapes in the NLDR layout (@fig-three12-miss and @fig-three07-miss). As a result, the hemisphere can resemble a curved manifold rather than a smooth surface, making it harder to distinguish from genuinely nonlinear structures. This effect becomes more pronounced when the hemisphere appears alongside strongly curved components, as the projected shapes start to look visually similar.
-
-Across multiple examples, including `three_clust_12` and `three_clust_07` (@fig-three12-miss and @fig-three07-miss), increasing high-dimensional separation does not reliably lead to more interpretable layouts. UMAP often benefits more from increased separation, preserving overall geometry and making components easier to distinguish. However, partial proximity between clusters can still remain, allowing perceptual ambiguity to persist. For tSNE, greater separation may even worsen interpretability by increasing fragmentation or compressing global structure, weakening the participants rely on to identify cluster relationships.
-
-Another common source of misidentification comes from uneven point density. In some of our data structures, density is an important feature of the shape in high dimensions, but it is not reliably preserved in the NLDR layouts. For example, in the nonlinear hyperbolic structure (@fig-three12-miss), one corner is clearly denser in high dimensions, yet this feature is not easy to identify in either tSNE or UMAP layouts. Similarly, the tip of the star-shaped pyramid is densely populated in high dimensions (@fig-three07-miss), but this density cue is often lost in the projections; especially in tSNE, where the structure is further distorted or fragmented. When these density cues are weakened or misplaced, participants lose important visual signals needed to recognize the underlying structure, increasing the chance of misidentification.
-
+Looking more closely, the data contain six clusters that are fairly close to one another (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-dt-tourr"} else { "@fig-dt-prj"})`). Three of them have clearly nonlinear shapes, two look more like Gaussian blobs, and one is closer to an ellipse, with a bit of background noise scattered around. These kinds of data structures are common in bioinformatics data. Using the `cardinalR` package, data with this different cluster shapes and background noise can be generated.
 
 ```{r}
-#| fig-height: 3.5
-#| fig-width: 6.7
-#| label: fig-three12-miss
-#| fig-cap: "tSNE and UMAP layouts and $2\\text{-}D$ projections for the data structure `three_clust_12`, composed of an S-curve, a hemisphere, and a filled hexagonal pyramid, shown under small and large cluster separation. Panels (a1–a2) show two fixed $2\\text{-}D$ projections at small separation, and panels (b1–b2) show the same projections at large separation; the corresponding tSNE and UMAP layouts are shown in the right panels. At small separation, curved and rounded components overlap substantially in both methods, making the structure difficult to distinguish. With increased separation, UMAP preserves the distinct geometric character of each component, maintaining an elongated S-curve, a compact hemisphere, and a coherent pyramidal structure. In contrast, tSNE fragments curved and volumetric components into irregular, disconnected pieces, obscuring global shape cues."
+#| fig-width: 15
+#| fig-height: 10
+#| label: fig-dt-prj
+#| fig-cap: "Three $2\\text{-}D$ projections from $10\\text{-}D$, for the PBMC CITE-seq (a1-a3) and a simulated dataset generated using \\texttt{cardinalR} (b1-b3) data. The PBMC CITE-seq data shows six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\\text{-}D$ dataset with similar structural characteristics."
 
-set.seed(20240110)
+# Add plot label
 
-theme_set(theme_linedraw() +
-   theme(
-     #aspect.ratio = 1,
-     plot.background = element_rect(fill = 'transparent', colour = NA),
-     plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
-     panel.background = element_rect(fill = 'transparent', 
-                                     colour = NA),
-     panel.grid.major = element_blank(), 
-     panel.grid.minor = element_blank(), 
-     axis.title.x = element_blank(), axis.title.y = element_blank(),
-     axis.text.x = element_blank(), axis.ticks.x = element_blank(),
-     axis.text.y = element_blank(), axis.ticks.y = element_blank(),
-     legend.background = element_rect(fill = 'transparent', 
-                                      colour = NA),
-     legend.key = element_rect(fill = 'transparent', 
-                               colour = NA),
-     legend.position = "bottom", 
-     legend.title = element_blank(), 
-     legend.text = element_text(size=4),
-     legend.key.height = unit(0.25, 'cm'),
-     legend.key.width = unit(0.25, 'cm')
-   )
+interior_annotation <- function(label, position = c(0.92, 0.92), cex = 1, col="grey70") {
+  annotation_custom(grid::textGrob(label = label,
+                                   x = unit(position[1], "npc"), y = unit(position[2], "npc"),
+                                   gp = grid::gpar(cex = cex, col=col)))
+}
+
+# Scale high-d data
+
+# Center the data by subtracting the mean of each column
+center_data <- function(data) {
+  center_values <- colMeans(data)
+  data_centered <- sweep(data, 2, center_values, FUN = "-")  # subtract means
+  data_centered
+}
+
+# Function to scale data manually
+# scale_data_manual <- function(data) {
+#   # Step 1: Center the data (mean 0)
+#   data_centered <- center_data(data)
+#
+#   # Step 2: Calculate the standard deviation of each dimension
+#   sds <- apply(data_centered, 2, sd)
+#
+#   # Step 3: Scale each dimension to have the range [0, 1]
+#   data_scaled <- apply(data_centered, 2, function(col) col / max(abs(col)))
+#
+#   # Step 4: Scale dimensions according to their variation
+#   # The dimension with the highest standard deviation is scaled to [-1, 1]
+#   # Other dimensions are scaled to smaller ranges based on their standard deviations
+#   max_sd <- max(sds)
+#
+#   # Normalize the standard deviations to get scaling factors
+#   scaling_factors <- sds / max_sd
+#
+#   for (i in seq_along(scaling_factors)) {
+#     data_scaled[, i] <- data_scaled[, i] * scaling_factors[i]
+#   }
+#
+#   # Combine the scaled data with the 'type' column and return as a tibble
+#   data_scaled <- as_tibble(data_scaled)
+#
+#   return(data_scaled)
+# }
+
+# Get projection
+
+get_projection <- function(projection, centered_data, axis_param) {
+
+  projected <- as.matrix(centered_data) %*% projection
+  projected_df <- projected |>
+    tibble::as_tibble(.name_repair = "unique") |>
+    dplyr::rename(c("proj1" = "...1",
+                    "proj2" = "...2")) |>
+    dplyr::mutate(ID = dplyr::row_number())
+
+  limits <- axis_param$limits
+  axis_scaled <- axis_param$axis_scaled
+  axis_pos_x <- axis_param$axis_pos_x
+  axis_pos_y <- axis_param$axis_pos_y
+  threshold <- axis_param$threshold
+
+  axes_obj <- gen_axes(
+    proj = projection * axis_scaled,
+    limits = limits,
+    axis_pos_x = axis_pos_x,
+    axis_pos_y = axis_pos_y,
+    axis_labels = names(centered_data),
+    threshold = threshold)
+
+  axes <- axes_obj$axes
+  circle <- axes_obj$circle
+
+  return(list(projected_df = projected_df,
+              axes = axes,
+              circle = circle))
+
+}
+
+# Plot projection
+plot_proj <- function(proj_obj,
+                      point_param = c(1.5, 0.5, "#000000"), # size, alpha, color
+                      plot_limits, title, cex = 2,
+                      position = c(0.92, 0.92),
+                      axis_text_size = 3,
+                      is_color = FALSE) {
+
+  projected_df <- proj_obj$projected_df
+  axes <- proj_obj$axes
+  circle <- proj_obj$circle
+
+  if(is_color == FALSE) {
+
+    initial_plot <- ggplot() +
+      geom_point(
+        data = projected_df,
+        aes(
+          x = proj1,
+          y = proj2),
+        size = as.numeric(point_param[1]),
+        alpha = as.numeric(point_param[2]),
+        color = point_param[3])
+
+  } else {
+
+    projected_df <- projected_df |>
+      dplyr::mutate(cluster = proj_obj$cluster)
+
+    initial_plot <- ggplot() +
+      geom_point(
+        data = projected_df,
+        aes(
+          x = proj1,
+          y = proj2,
+          color = cluster),
+        size = as.numeric(point_param[1]),
+        alpha = as.numeric(point_param[2]))
+
+  }
+
+  initial_plot <- initial_plot +
+    geom_segment(
+      data=axes,
+      aes(x=x1, y=y1, xend=x2, yend=y2),
+      colour="grey70") +
+    geom_text(
+      data=axes,
+      aes(x=x2, y=y2),
+      label=rownames(axes),
+      colour="grey50",
+      size = axis_text_size) +
+    geom_path(
+      data=circle,
+      aes(x=c1, y=c2), colour="grey70") +
+    xlim(plot_limits) +
+    ylim(plot_limits) +
+    interior_annotation(title, position, cex = cex)
+
+  initial_plot
+
+}
+
+# Generate axes
+
+gen_axes <- function(proj, limits = 1, axis_pos_x = NULL, axis_pos_y = NULL, axis_labels, threshold) {
+
+  axis_scale <- limits/6
+
+  if (is.null(axis_pos_x)) {
+
+    axis_pos_x <- -2/3 * limits
+
+  }
+
+  if (is.null(axis_pos_y)) {
+
+    axis_pos_y <- -2/3 * limits
+
+  }
+
+  adj <- function(x, axis_pos) axis_pos + x * axis_scale
+  axes <- data.frame(x1 = adj(0, axis_pos_x),
+                     y1 = adj(0, axis_pos_y),
+                     x2 = adj(proj[, 1], axis_pos_x),
+                     y2 = adj(proj[, 2], axis_pos_y))
+
+  rownames(axes) <- axis_labels
+
+  ## To remove axes
+  axes <- axes |>
+    mutate(distance = sqrt((x2 - x1)^2 + (y2 - y1)^2)) |>
+    filter(distance >= threshold)
+
+  theta <- seq(0, 2 * pi, length = 50)
+  circle <- data.frame(c1 = adj(cos(theta), axis_pos_x),
+                       c2 = adj(sin(theta), axis_pos_y))
+
+  return(list(axes = axes, circle = circle))
+
+}
+
+
+plot_hbe <- function(error_df) {
+
+  ggplot(error_df,
+         aes(x = a1,
+             y = HBE,
+             colour = method)) +
+    geom_point(size = 0.8) +
+    geom_line(linewidth = 0.3) +
+    ylab("HBE") +
+    xlab(expression(paste("binwidth (", a[1], ")"))) +
+    theme_minimal() +
+    theme(panel.border = element_rect(fill = 'transparent'),
+          plot.title = element_text(size = 12, hjust = 0.5, vjust = -0.5),
+          axis.ticks.x = element_line(),
+          axis.ticks.y = element_line(),
+          legend.position = "none",
+          axis.text.x = element_text(size = 7),
+          axis.text.y = element_text(size = 7),
+          axis.title.x = element_text(size = 7),
+          axis.title.y = element_text(size = 7),
+          plot.margin = margin(0, 0, 0, 0))
+
+}
+
+
+
+pbmc_data <- read_rds(here::here("data/CITE-seq/cite_seq_pbmc.rds")) 
+
+pbmc_data_tour <- langevitour::langevitour(
+  pbmc_data |> select(-ID),
+  enableControls = TRUE,
+  width = "400px", height = "380px",
+  levelColors = "#66B2CC"
 )
 
-clr_choice <- "#000000"
+n_vec <- c(500, 700, 700, 500, 700, 700)
 
-results_df_method_ds <- read_rds(here::here("data/vis-exp/result_method_ds_factor.rds"))
+dist_mat <- matrix(
+  c(
+    0, 1, 1, 1,
+    1, 0, 0.8, 1,
+    1, 0.8, 0, 1,
+    1, 1, 1, 0,
+    1, 1, 1, 1,
+    1, 1, 1, 1
+  ),
+  nrow = 6
+)
 
-results_df_method_ds <- results_df_method_ds |>
-  filter(method != "pca") |>
-  mutate(type = "old")
+clust_data <- gen_multicluster(
+  n = n_vec,
+  k = 6,
+  loc = dist_mat,
+  scale = c(0.25, 0.4, 0.4, 0.6, 0.7, 0.5),
+  shape = c(
+    "gaussian",
+    "gaussian",
+    "quadratic",
+    "sphericalspiral",
+    "conicspiral",
+    "gaussian"
+  ),
+  add_bkg = TRUE
+)
 
-results_df_method_ds_missings <- read_rds(here::here("data/vis-exp/result_method_ds_factor_missings.rds")) |>
-  mutate(type = "new")
+## Add noise dimensions
+noise_df <- gen_noisedims(n = NROW(clust_data), 
+                          p = 6, m = rep(0.9, 6), 
+                          s = rep(0.01, 6))
+names(noise_df) <- paste0("x", 5:10)
 
-results_df_method_ds <- bind_rows(
-  results_df_method_ds, results_df_method_ds_missings)
+clust_data <- clust_data |> select(-cluster) |>
+  bind_cols(noise_df)
 
-## To reformat the response variable
-results_df_method_ds <- results_df_method_ds |>
-  mutate(result = if_else(result == "Correct", 1, 0))
+clust_data_tour <- langevitour::langevitour(clust_data,
+                         enableControls = TRUE,
+                         width = "400px", height = "380px",
+                         levelColors = "#66B2CC")
 
-## To change the type of distance factor
-results_df_method_ds <- results_df_method_ds |>
-  mutate(distance_factor = as.factor(distance_factor)) 
-
-#Set PCA as base
-results_df_method_ds <- results_df_method_ds |>
-  mutate(method = factor(method,
-      levels = c("trimap", "umap", "pacmap", "tsne", "phate"))) |>
-  mutate(method = recode(method,
-                         tsne = "tSNE",
-                         umap = "UMAP",
-                         phate = "PHATE",
-                         trimap = "TriMAP",
-                         pacmap = "PaCMAP"))
-
-## To change the type of distance time_taken_in_seconds
-results_df_method_ds <- results_df_method_ds |>
-  mutate(time_taken_in_minutes = as.numeric(time_taken_in_minutes)) 
-
-metrics <- c("min_dist", "avg_btw_dist", "bw_ratio", "dunn", "dunn2",
-             "pearsongamma", "sindex", "avg_silwidth_dist")
-
-## To join the distance
-distance_df <- read_rds(here::here("data/vis-exp/three_clust_min_avg_dist_df.rds")) |>
-  filter(distance_sf != 0.8) |>
-  mutate(distance_sf = as.factor(distance_sf)) |>
-  mutate(bw_ratio = 1/wb_ratio) |>
-  mutate(across(
-    all_of(metrics),
-    ~ (. - min(.)) / (max(.) - min(.)),
-    .names = "{.col}_scaled"
-  )) |>
-  mutate(exp_min_dist_scaled = exp(min_dist_scaled)) |>
-  mutate(distance_sf = recode(distance_sf,
-                           `0.1` = "S",
-                           `0.6` = "SM",
-                           `0.9` = "M",
-                           `1` = "ML",
-                           `1.1` = "L")) 
-
-results_df_method_ds <- results_df_method_ds |>
-  mutate(distance_factor = recode(distance_factor,
-                           `0.1` = "S",
-                           `0.6` = "SM",
-                           `0.9` = "M",
-                           `1` = "ML",
-                           `1.1` = "L")) 
-
-results_df_method_ds <- left_join(results_df_method_ds, distance_df,
-                                  by = c("structure_high_d" = "data_structure",
-                                         "distance_factor" = "distance_sf")) 
-
-nldr1_three_clust_12 <- get_embeddings(dt_structutre = "three_clust_12") |>
-  filter(scale_factor == c(0.1, 1.1)) |>
-  filter(method %in% c("tsne", "umap")) |>
-    mutate(scale_factor = recode(scale_factor,
-                             `0.1` = "S",
-                             `1.1` = "L")) |>
-    mutate(scale_factor = factor(scale_factor,
-                           c("S", "L"))) |>
-    mutate(method = recode(method,
-                             "tsne" = "tSNE",
-                             "umap" = "UMAP")) 
-
-nld_plt1_three_clust_12 <- ggplot(
-  data = nldr1_three_clust_12,
-  aes(
-    x = emb1,
-    y = emb2
-  )
-) +
-  geom_point(alpha=0.05, size=1, colour = "black") +
-  facet_grid(scale_factor~method, scales = "free") +
-  theme(aspect.ratio = 1,
-        strip.text = element_text(size = 10))
-
-
-three_clust_12_data <- high_d_data |> 
-  filter(dataset == "three_clust_12") |> 
-  filter(scale_factor == 0.1) |> 
-  filter(sample_size == 7500) |>
-  pull(high_d_data)
-
-three_clust_12_data <- three_clust_12_data[[1]] |> 
-  select(-cluster)
-
-# Apply the scaling
-
-centered_three_clust_12_data <- center_data(three_clust_12_data) |>
-  as_tibble()
+centered_clust_data <- center_data(clust_data)
 
 ## First projection
-prj1 <- cbind(
-  c(0.13547,-0.08127,-0.14494,-0.06269),
-  c(-0.02681,-0.20528,0.06918,0.04658))
+projection1 <- cbind(
+  c(-0.002584,-0.004429,0.000598,-0.008122,0.003990,0.005002,-0.005135,0.003106,0.000766,-0.004760),
+  c(-0.000276,-0.004985,-0.006425,0.004049,0.006375,-0.003721,-0.005586,-0.004404,-0.001809,0.001366))
 
+proj_obj1 <- get_projection(projection = projection1 * 100, 
+                            centered_data = centered_clust_data, 
+                            axis_param = list(limits = 1,
+                                              axis_scaled = 1, 
+                                              axis_pos_x = -0.8, 
+                                              axis_pos_y = -0.8, 
+                                              threshold = 0.12))
 
-projected_df <- get_projection(projection = prj1, 
-                               centered_data = centered_three_clust_12_data, 
-                               axis_param = list(limits = 1,
-                                                 axis_scaled = 3, 
-                                                 axis_pos_x = -0.7, 
-                                                 axis_pos_y = -0.7, 
-                                                 threshold = 0.06))
-
-cluster_means <- projected_df$projected_df |>
-  mutate(cluster = cluster) |>
-  group_by(cluster) |>
-  summarise(mean_proj1 = mean(proj1),
-            mean_proj2 = mean(proj2))
-
-three_clust12_proj1 <- plot_proj(
-  proj_obj = projected_df, 
-  point_param = c(1, 0.05, "#000000"), # size, alpha, color
-  plot_limits = c(-0.9, 0.8), 
-  title = "a1", 
-  cex = 1, 
-  axis_text_size = 2,
-  is_color = FALSE) + 
-  geom_point(
-    data = cluster_means,
-    aes(x = mean_proj1, y = mean_proj2),
-    colour = "#de2d26",
-    fill = "#de2d26",
-    shape = 21,
-    size = 0.1,
-    stroke = 1) 
-
-## Second projection
-prj2 <- cbind(
-  c(-0.13993,0.00179,-0.15287,-0.08282),
-  c(0.01124,0.16552,-0.12749,0.12761))
-
-projected_df <- get_projection(projection = prj2, 
-                               centered_data = centered_three_clust_12_data, 
-                               axis_param = list(limits = 0.8,
-                                                 axis_scaled = 4, 
-                                                 axis_pos_x = -0.65, 
-                                                 axis_pos_y = -0.65, 
-                                                 threshold = 0.088))
-
-cluster_means <- projected_df$projected_df |>
-  mutate(cluster = cluster) |>
-  group_by(cluster) |>
-  summarise(mean_proj1 = mean(proj1),
-            mean_proj2 = mean(proj2))
-
-three_clust12_proj2 <- plot_proj(
-  proj_obj = projected_df, 
-  point_param = c(1, 0.05, "#000000"), # size, alpha, color
-  plot_limits = c(-0.8, 0.7), 
-  title = "a2", 
-  cex = 1, 
-  axis_text_size = 2,
-  is_color = FALSE) + 
-  geom_point(
-    data = cluster_means,
-    aes(x = mean_proj1, y = mean_proj2),
-    colour = "#de2d26",
-    fill = "#de2d26",
-    shape = 21,
-    size = 0.1,
-    stroke = 1) 
-
-three_clust_12_data <- high_d_data |> 
-  filter(dataset == "three_clust_12") |> 
-  filter(scale_factor == 1.1) |> 
-  filter(sample_size == 7500) |>
-  pull(high_d_data)
-
-three_clust_12_data <- three_clust_12_data[[1]] |> 
-  select(-cluster)
-
-# Apply the scaling
-
-centered_three_clust_12_data <- center_data(three_clust_12_data) |>
-  as_tibble()
-
-## First projection
-prj1 <- cbind(
-  c(0.13547,-0.08127,-0.14494,-0.06269),
-  c(-0.02681,-0.20528,0.06918,0.04658))
-
-
-projected_df <- get_projection(projection = prj1, 
-                               centered_data = centered_three_clust_12_data, 
-                               axis_param = list(limits = 0.5,
-                                                 axis_scaled = 3, 
-                                                 axis_pos_x = -0.2, 
-                                                 axis_pos_y = -0.2, 
-                                                 threshold = 0.03))
-
-cluster_means <- projected_df$projected_df |>
-  mutate(cluster = cluster) |>
-  group_by(cluster) |>
-  summarise(mean_proj1 = mean(proj1),
-            mean_proj2 = mean(proj2))
-
-three_clust12_proj1_1 <- plot_proj(
-  proj_obj = projected_df, 
-  point_param = c(1, 0.05, "#000000"), # size, alpha, color
-  plot_limits = c(-0.3, 0.55), 
+clust_data_proj1 <- plot_proj(
+  proj_obj = proj_obj1, 
+  point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
+  plot_limits = c(-1, 1.2), 
   title = "b1", 
-  cex = 1, 
-  axis_text_size = 2,
-  is_color = FALSE) + 
-  geom_point(
-    data = cluster_means,
-    aes(x = mean_proj1, y = mean_proj2),
-    colour = "#de2d26",
-    fill = "#de2d26",
-    shape = 21,
-    size = 0.1,
-    stroke = 1) 
+  cex = 2, 
+  axis_text_size = 4,
+  is_color = FALSE) +
+  theme_linedraw() +
+              theme(
+                  aspect.ratio = 1,
+                  plot.background = element_rect(fill = 'transparent', colour = NA),
+                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
+                  panel.background = element_rect(fill = 'transparent', 
+                                                  colour = NA),
+                  panel.grid.major = element_blank(), 
+                  panel.grid.minor = element_blank(), 
+                  axis.title.x = element_blank(), axis.title.y = element_blank(),
+                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+                  legend.background = element_rect(fill = 'transparent', 
+                                                   colour = NA),
+                  legend.key = element_rect(fill = 'transparent', 
+                                            colour = NA),
+                  legend.position = "none", 
+                  legend.title = element_text(size=5), 
+                  legend.text = element_text(size=4),
+                  legend.key.height = unit(0.25, 'cm'),
+                  legend.key.width = unit(0.25, 'cm'),
+                  plot.margin = margin(0, 0, 0, 0)
+              )
 
 ## Second projection
-prj2 <- cbind(
-  c(-0.13993,0.00179,-0.15287,-0.08282),
-  c(0.01124,0.16552,-0.12749,0.12761))
+projection2 <- cbind(
+  c(-0.007784,0.000224,-0.005620,0.003714,0.000785,0.000783,-0.004530,-0.000969,0.003910,0.006988),
+  c(0.001418,-0.003104,-0.003641,0.004786,-0.000776,0.006803,0.004252,0.007773,0.003565,-0.002629))
 
-projected_df <- get_projection(projection = prj2, 
-                               centered_data = centered_three_clust_12_data, 
-                               axis_param = list(limits = 0.5,
-                                                 axis_scaled = 4, 
-                                                 axis_pos_x = -0.45, 
-                                                 axis_pos_y = -0.45, 
-                                                 threshold = 0.055))
+proj_obj2 <- get_projection(projection = projection2 * 100, 
+                            centered_data = centered_clust_data, 
+                            axis_param = list(limits = 1,
+                                              axis_scaled = 1, 
+                                              axis_pos_x = -1.05, 
+                                              axis_pos_y = -1.05, 
+                                              threshold = 0.12))
 
-cluster_means <- projected_df$projected_df |>
-  mutate(cluster = cluster) |>
-  group_by(cluster) |>
-  summarise(mean_proj1 = mean(proj1),
-            mean_proj2 = mean(proj2))
-
-three_clust12_proj2_1 <- plot_proj(
-  proj_obj = projected_df, 
-  point_param = c(1, 0.05, "#000000"), # size, alpha, color
-  plot_limits = c(-0.55, 0.4), 
+clust_data_proj2 <- plot_proj(
+  proj_obj = proj_obj2, 
+  point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
+  plot_limits = c(-1.25, 1.25), 
   title = "b2", 
-  cex = 1, 
-  axis_text_size = 2,
-  is_color = FALSE) + 
-  geom_point(
-    data = cluster_means,
-    aes(x = mean_proj1, y = mean_proj2),
-    colour = "#de2d26",
-    fill = "#de2d26",
-    shape = 21,
-    size = 0.1,
-    stroke = 1) 
+  cex = 2, 
+  axis_text_size = 4,
+  is_color = FALSE) +
+  theme_linedraw() +
+              theme(
+                  aspect.ratio = 1,
+                  plot.background = element_rect(fill = 'transparent', colour = NA),
+                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
+                  panel.background = element_rect(fill = 'transparent', 
+                                                  colour = NA),
+                  panel.grid.major = element_blank(), 
+                  panel.grid.minor = element_blank(), 
+                  axis.title.x = element_blank(), axis.title.y = element_blank(),
+                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+                  legend.background = element_rect(fill = 'transparent', 
+                                                   colour = NA),
+                  legend.key = element_rect(fill = 'transparent', 
+                                            colour = NA),
+                  legend.position = "none", 
+                  legend.title = element_text(size=5), 
+                  legend.text = element_text(size=4),
+                  legend.key.height = unit(0.25, 'cm'),
+                  legend.key.width = unit(0.25, 'cm'),
+                  plot.margin = margin(0, 0, 0, 0)
+              )
 
-(three_clust12_proj1 + three_clust12_proj2) / (three_clust12_proj1_1 + three_clust12_proj2_1) | nld_plt1_three_clust_12
+## Third projection
+projection3 <- cbind(
+  c(-0.012856,-0.002227,-0.000675,0.000355,-0.001067,0.003746,-0.001626,-0.001175,0.000823,0.001464),
+  c(0.001945,-0.006327,-0.001400,0.008778,0.000065,0.002431,-0.002239,-0.004185,-0.003852,-0.005169))
 
+proj_obj3 <- get_projection(projection = projection3 * 100, 
+                            centered_data = centered_clust_data, 
+                            axis_param = list(limits = 1.3,
+                                              axis_scaled = 0.7, 
+                                              axis_pos_x = -1.2, 
+                                              axis_pos_y = -1.2, 
+                                              threshold = 0.1))
+
+clust_data_proj3 <- plot_proj(
+  proj_obj = proj_obj3, 
+  point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
+  plot_limits = c(-1.5, 1.5), 
+  title = "b3", 
+  cex = 2, 
+  axis_text_size = 4,
+  is_color = FALSE) +
+  theme_linedraw() +
+              theme(
+                  aspect.ratio = 1,
+                  plot.background = element_rect(fill = 'transparent', colour = NA),
+                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
+                  panel.background = element_rect(fill = 'transparent', 
+                                                  colour = NA),
+                  panel.grid.major = element_blank(), 
+                  panel.grid.minor = element_blank(), 
+                  axis.title.x = element_blank(), axis.title.y = element_blank(),
+                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+                  legend.background = element_rect(fill = 'transparent', 
+                                                   colour = NA),
+                  legend.key = element_rect(fill = 'transparent', 
+                                            colour = NA),
+                  legend.position = "none", 
+                  legend.title = element_text(size=5), 
+                  legend.text = element_text(size=4),
+                  legend.key.height = unit(0.25, 'cm'),
+                  legend.key.width = unit(0.25, 'cm'),
+                  plot.margin = margin(0, 0, 0, 0)
+              )
+
+centered_pbmc_data <- center_data(pbmc_data |> select(-ID))
+
+## First projection
+projection1 <- cbind(
+  c(-0.002584,-0.004429,0.000598,-0.008122,0.003990,0.005002,-0.005135,0.003106,0.000766,-0.004760),
+  c(-0.000276,-0.004985,-0.006425,0.004049,0.006375,-0.003721,-0.005586,-0.004404,-0.001809,0.001366))
+
+proj_obj1 <- get_projection(projection = projection1, 
+                            centered_data = centered_pbmc_data, 
+                            axis_param = list(limits = 1,
+                                              axis_scaled = 90, 
+                                              axis_pos_x = -0.8, 
+                                              axis_pos_y = -0.8, 
+                                              threshold = 0.11))
+
+pbmc_data_proj1 <- plot_proj(
+  proj_obj = proj_obj1, 
+  point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
+  plot_limits = c(-1, 1.2), 
+  title = "a1", 
+  cex = 2, 
+  axis_text_size = 4,
+  is_color = FALSE) +
+  theme_linedraw() +
+              theme(
+                  aspect.ratio = 1,
+                  plot.background = element_rect(fill = 'transparent', colour = NA),
+                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
+                  panel.background = element_rect(fill = 'transparent', 
+                                                  colour = NA),
+                  panel.grid.major = element_blank(), 
+                  panel.grid.minor = element_blank(), 
+                  axis.title.x = element_blank(), axis.title.y = element_blank(),
+                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+                  legend.background = element_rect(fill = 'transparent', 
+                                                   colour = NA),
+                  legend.key = element_rect(fill = 'transparent', 
+                                            colour = NA),
+                  legend.position = "none", 
+                  legend.title = element_text(size=5), 
+                  legend.text = element_text(size=4),
+                  legend.key.height = unit(0.25, 'cm'),
+                  legend.key.width = unit(0.25, 'cm'),
+                  plot.margin = margin(0, 0, 0, 0)
+              )
+
+## Second projection
+projection2 <- cbind(
+  c(-0.007784,0.000224,-0.005620,0.003714,0.000785,0.000783,-0.004530,-0.000969,0.003910,0.006988),
+  c(0.001418,-0.003104,-0.003641,0.004786,-0.000776,0.006803,0.004252,0.007773,0.003565,-0.002629))
+
+proj_obj2 <- get_projection(projection = projection2, 
+                            centered_data = centered_pbmc_data, 
+                            axis_param = list(limits = 1,
+                                              axis_scaled = 90, 
+                                              axis_pos_x = -0.8, 
+                                              axis_pos_y = -0.8, 
+                                              threshold = 0.11))
+
+pbmc_data_proj2 <- plot_proj(
+  proj_obj = proj_obj2, 
+  point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
+  plot_limits = c(-1, 0.8), 
+  title = "a2", 
+  cex = 2, 
+  axis_text_size = 4,
+  is_color = FALSE) +
+  theme_linedraw() +
+              theme(
+                  aspect.ratio = 1,
+                  plot.background = element_rect(fill = 'transparent', colour = NA),
+                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
+                  panel.background = element_rect(fill = 'transparent', 
+                                                  colour = NA),
+                  panel.grid.major = element_blank(), 
+                  panel.grid.minor = element_blank(), 
+                  axis.title.x = element_blank(), axis.title.y = element_blank(),
+                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+                  legend.background = element_rect(fill = 'transparent', 
+                                                   colour = NA),
+                  legend.key = element_rect(fill = 'transparent', 
+                                            colour = NA),
+                  legend.position = "none", 
+                  legend.title = element_text(size=5), 
+                  legend.text = element_text(size=4),
+                  legend.key.height = unit(0.25, 'cm'),
+                  legend.key.width = unit(0.25, 'cm'),
+                  plot.margin = margin(0, 0, 0, 0)
+              )
+
+## Third projection
+projection3 <- cbind(
+  c(-0.012856,-0.002227,-0.000675,0.000355,-0.001067,0.003746,-0.001626,-0.001175,0.000823,0.001464),
+  c(0.001945,-0.006327,-0.001400,0.008778,0.000065,0.002431,-0.002239,-0.004185,-0.003852,-0.005169))
+
+proj_obj3 <- get_projection(projection = projection3, 
+                            centered_data = centered_pbmc_data, 
+                            axis_param = list(limits = 1,
+                                              axis_scaled = 70, 
+                                              axis_pos_x = -1.1, 
+                                              axis_pos_y = -1.1, 
+                                              threshold = 0.07))
+
+pbmc_data_proj3 <- plot_proj(
+  proj_obj = proj_obj3, 
+  point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
+  plot_limits = c(-1.3, 0.5), 
+  title = "a3", 
+  cex = 2, 
+  axis_text_size = 4,
+  is_color = FALSE) +
+  theme_linedraw() +
+              theme(
+                  aspect.ratio = 1,
+                  plot.background = element_rect(fill = 'transparent', colour = NA),
+                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
+                  panel.background = element_rect(fill = 'transparent', 
+                                                  colour = NA),
+                  panel.grid.major = element_blank(), 
+                  panel.grid.minor = element_blank(), 
+                  axis.title.x = element_blank(), axis.title.y = element_blank(),
+                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+                  legend.background = element_rect(fill = 'transparent', 
+                                                   colour = NA),
+                  legend.key = element_rect(fill = 'transparent', 
+                                            colour = NA),
+                  legend.position = "none", 
+                  legend.title = element_text(size=5), 
+                  legend.text = element_text(size=4),
+                  legend.key.height = unit(0.25, 'cm'),
+                  legend.key.width = unit(0.25, 'cm'),
+                  plot.margin = margin(0, 0, 0, 0)
+              )
+
+pbmc_data_proj1 + pbmc_data_proj2 +
+  pbmc_data_proj3 + clust_data_proj1 +
+  clust_data_proj2 + clust_data_proj3 +
+  plot_layout(ncol = 3)
 ```
+
+
 
