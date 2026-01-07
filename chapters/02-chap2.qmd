@@ -1348,7 +1348,7 @@ To further assess the choices, we need to look at the model in the data space, b
 <!--pbmc3k/13_gen_model_with_UMAP.R-->
 ```{r}
 #| label: hexbin-pbmc
-#| 
+ 
 umap_pbmc_scaled_with_cluster <- read_rds(here::here("data/vis-algo/pbmc3k/umap_pbmc_scaled_with_cluster.rds"))
 
 umap_tr_from_to_df_pbmc <- read_rds(here::here("data/vis-algo/pbmc3k/umap_tr_from_to_df_pbmc.rds"))
