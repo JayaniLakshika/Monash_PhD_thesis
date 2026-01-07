@@ -1019,6 +1019,7 @@ rmse_two_curvy_lwd <- ggplot(error_rm_two_curvy,
 #| out-width: 100%
 #| fig-width: 12
 #| fig-height: 10
+#| fig-alt: "A multi-panel line plot compares three summary statistics of hexbin results across different binning parameter values. Each panel has the binning parameter (such as number or scale of bins) on the horizontal axis, increasing from left to right; the vertical axes show, respectively, average bin count per hexagon, average standardized bin count, and the proportion of non-empty bins, each on a roughly 0 to 1 or low-to-moderate positive scale. Within each panel, three curves represent different choices of the tuning parameter a1, visually distinguished by line color and/or type. As the binning parameter changes, the curves show how the mean bin count and mean standardized count typically rise and then level or fluctuate, indicating where binning becomes too coarse (few, heavily populated bins) or too fine (many nearly empty bins), while the proportion of non-empty bins generally increases toward a plateau. Differences between the three a1 curves highlight that some parameter settings yield a more even distribution of bin counts and fewer empty bins, suggesting they provide a better match between the hexbin summary and the underlying model fit."
 
 rmse_two_curvy_b + rmse_two_curvy_relcount + a1_m_two_curvy +
   rmse_two_curvy_lwd + 
@@ -1200,6 +1201,7 @@ comp_metrics <- plot_comp_metrics(nldr_metrics) +
 #| out-width: 100%
 #| fig-height: 6
 #| fig-width: 6
+#| fig-alt: "Multi-panel figure comparing six NLDR layouts on the 2NC7 dataset using HBE-based and other evaluation metrics. Panel (i) shows a line plot of HBE values as a function of binwidth a1. The horizontal axis represents binwidth, increasing from left to right, and the vertical axis shows HBE values. Six coloured lines are plotted, one for each NLDR layout (a–f), with colour consistently identifying the layout across all panels. Points along each line mark HBE values at specific binwidth settings. Panel (ii) shows a similar line plot of HBE values against average bin count n_h. The horizontal axis represents average bin count, and the vertical axis again shows HBE values. The same six coloured lines appear, allowing comparison of how HBE changes with bin count for each layout. The overall spread of the lines is visually narrower than in panel (i). Panel (iii) is a parallel coordinates plot comparing five normalized evaluation metrics: rARNX, rRTA, rSC, rGS, and HBE at a1=0.05. Each metric is shown as a vertical axis with a common normalized scale from low to high. Six coloured polylines, one per NLDR layout, connect the corresponding values across the metric axes. The lines overlap and cross, indicating differences in relative metric values across layouts. Across all panels, colour is used consistently to identify the same NLDR layout."
 
 # Stack first two error plots vertically (left column)
 left_column <- error_plot_two_curvy / error_plot_two_curvy_n_bar +
@@ -1326,6 +1328,7 @@ two_curvy_proj3_phate <- plot_proj(
 #| fig-cap: "Three $2\\text{-}D$ projections from a tour showing the fitted models (black lines) for layouts a (top row) and c (bottom row) of the 2NC7 data (blue points). Layout c, which was poorly rated by rARNX and HBE covers less of the width of the data than a. The triangular gridding is less visible in c than layout a, and actually corresponds to extreme twisting."
 #| fig-width: 6
 #| fig-height: 4
+#| fig-alt: "Side‑by‑side pair of 2-D scatterplots showing fitted model projections compared with observed data for two different NLDR layouts (a and c). In each panel, the x‑ and y‑axes are unlabeled 2-D projection coordinates, spanning roughly similar ranges around the origin. Blue points represent the observed high‑dimensional 2NC7 data projected into 2-D, and a continuous black curve or surface‑like trace represents the fitted manifold overlaid on those points. In layout a (rated highly by HBE and rARNX), the black fitted model broadly follows the shape of the blue point cloud, staying relatively smooth and aligned with the main structure of the data, indicating a reasonably good fit. In layout c (rated poorly), the black fitted model twists sharply and repeatedly across the plotted region, bending away from the main concentration of blue points and cutting across the cloud in complex curves, indicating an extreme distortion of the underlying 2D–3D manifold and a poor representation of local structure."
 
 two_curvy_proj1_tsne + two_curvy_proj2_tsne + two_curvy_proj3_tsne + two_curvy_proj1_phate + two_curvy_proj2_phate + two_curvy_proj3_phate +
   plot_layout(ncol = 3)
