@@ -52,7 +52,7 @@ Cube / Hypercube,"Points filling a square ($2\text{-}D$), cube ($3\text{-}D$), o
 Curvy cycle,"A closed loop that isn’t a simple circle, with extra folds or oscillations."
 Cylinder (curvy),"A cylindrical shape with circular cross-sections, extended with a nonlinear bending dimension."
 Data availability,"The practice of making datasets publicly accessible to support transparency, reproducibility, and independent validation of results."
-Data structure,"A simulated configuration of points in high-dimensional space with predefined geometric shapes, densities, and cluster arrangements."
+Data set,"A simulated configuration of points in high-dimensional space with predefined geometric shapes, densities, and cluster arrangements."
 Delaunay triangulation,"A geometric method that connects points into triangles such that no point lies inside the circumcircle of any triangle, used to define neighborhood structure."
 Demographics questionnaire,"A set of questions collecting background information about participants, such as age range, education level, and prior experience with dimension reduction methods."
 `detourr`,"An R package for dynamic visualization of high-dimensional data using tour methods, supporting interactive exploration through projection sequences."
