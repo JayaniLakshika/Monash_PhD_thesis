@@ -495,7 +495,7 @@ where $\mu_{m}$ is the overall mean for NLDR method $m$, $d_i$ is the distance m
 
 The data was collected from $127$ subjects, resulting in $127 \times 15 = 1905$ evaluations, excluding the attention check trials and the trials shows the different data in two displays.
 
-### Correct proportions
+### Effect of method and distance between clusters
 
 The proportion of correct identifications across NLDR methods and distance conditions was analysed to evaluate how effectively each method preserves cluster separation. Results are summarized using two generalized linear mixed-effects models, with either the scaled BW ratio (@fig-glmm, @tbl-glmm) or the exp(scaled minimum distance) (@fig-glmm-min, @tbl-glmm-min) as the distance predictor. Both models accounted for subject-level variability through random effects and included NLDR method as a fixed factor interacting with the distance measure.
 
