@@ -707,6 +707,7 @@ hex_param_vis <- ggplot() +
 #| label: fig-hex-param
 #| fig-cap: "The components of the hexagon grid illustrating notation."
 #| out-width: 30%
+#| fig-alt: "A schematic diagram illustrating the notation for hexagon binning parameters. The horizontal x-axis and vertical y-axis represent generic data coordinates (no specific numeric scales are shown). A central regular hexagon is drawn with its six vertices marked; labeled line segments and arrows indicate key geometric quantities such as hexagon side length, width, height, spacing between adjacent hexagons, and how these relate to the x and y directions. Additional arrows or braces may show how hexagon centers are arranged in a grid pattern. No color or data values are mapped; the figure is purely geometric, focusing on how hexagon dimensions and spacing are defined for use in hexagon binning."
 
 hex_param_vis
 ```
@@ -1471,6 +1472,7 @@ error_plot_pbmc_n_bar <- plot_hbe_nbar(error_pbmc_avg) +
 #| fig-cap: "Assessing which of the 8 NLDR layouts on the PBMC3k data  (shown in @fig-NLDR-variety) is the better representation using HBE for varying (i) binwidth ($a_1$), and (ii) average bin count ($\\bar{n}_h$). Color used for the lines and points in the left plot and in the scatterplots represents NLDR layout (a-h). Layout f is universally poor. Layouts a, c, g, h that show large separations between clusters are universally suboptimal. Layout d with little separation performs well at tiny binwidth (where most points are in their own bin) and poorly as binwidth increases. The choice of best is between layouts b and e, that have small separations between oddly shaped clusters. Layout e is chosen as the best. Plot (ii), which accounts for the density within clusters by using average bin count, shows reduced differences between layouts, indicating that part of the variation in (i) is driven by cluster density rather than true structural differences."
 #| label: fig-pbmc-rmse
 #| out-width: 100%
+#| fig-alt: "Line chart showing HBE versus binwidth (a₁) for eight NLDR layouts of the PBMC data. The horizontal axis is binwidth a₁, increasing from small to larger positive values; the vertical axis is HBE, with lower values indicating better fit. Each layout (a through h) is represented by a separate coloured line that matches the colours used for the corresponding tSNE, UMAP, PHATE, PaCMAP, and TriMAP layouts shown elsewhere. Across almost all binwidths, layout f’s line stays noticeably higher than the others, indicating it is consistently the poorest fit. Layout a is generally lower than f but not among the best. Layouts b, d, and e run among the lowest HBE values overall. Layout d’s line is slightly lower (better) at small binwidths, while layout e’s line dips below d’s at moderate to larger binwidths, making e the best-performing layout when averaging performance across the full range of a₁."
 
 # Stack error plots in one column
 error_plots_pbmc <- error_plot_pbmc / error_plot_pbmc_n_bar
@@ -1557,6 +1559,7 @@ pbmc_proj_tsne_model2_best <- plot_proj(
 #| fig-height: 6
 #| fig-pos: "!ht"
 #| out-width: 90%
+#| fig-alt: "Three pairs of overlaid scatterplots compare two 2‑D NLDR layouts, with points for observed data and a wireframe surface for the fitted model, shown in 2‑D projections. The top row (a1, a2, a3) displays the published layout and the bottom row (e1, e2, e3) displays the proposed optimal layout; within each row, the middle and right panels show two different projections of the same 9‑D structure. Axes in each panel represent different linear combinations of the original variables and are on a common standardized, roughly symmetric scale (for example, about −3 to 3), though not labeled with specific variable names. In all panels, points cluster into three partially overlapping clouds, while the model is drawn as a smooth wireframe surface that passes through or near the clouds. For the published layout (top row), the wireframe tends to extend to the outer edges of the point clouds, suggesting that the model spreads across most of the data extent. For the optimal layout (bottom row), the wireframe is more compact and concentrated toward the center of each cloud, not fully filling the extremes of the data. Across both layouts, three clusters remain visible, but the optimal layout makes clear that the separation between clusters is relatively small and subtle."
 
 free(trimesh_removed_pbmc) + free(trimesh_removed_pbmc_best) +
   pbmc_proj_umap_model1 + pbmc_proj_tsne_model1_best +
@@ -1696,6 +1699,7 @@ error_plot_mnist_n_bar <- plot_hbe_nbar(error_mnist_avg) +
 #| fig-pos: "!ht"
 #| fig-width: 9
 #| fig-height: 7
+#| fig-alt: "Multi-panel figure consisting of six scatterplots and two line plots. The top portion of the figure contains six 2-D scatterplots arranged in two rows and three columns, labeled panels (a) through (f). Each scatterplot shows a NLDR layout of the MNIST digit 1 data, with the first embedding dimension on the horizontal axis and the second embedding dimension on the vertical axis; axes are unlabeled and use similar numeric ranges across panels. Points are shown as small dots, each representing a single observation. Panel (a) shows t-SNE with default settings; panel (f) shows t-SNE with higher perplexity; panels (b), (c), (d), and (e) show UMAP, PHATE, TriMAP, and PaCMAP layouts, respectively. Most points form a single main cluster-like region in each panel. In panels (a) and (f), a smaller group of points appears separated from the main group. Panels (b) and (c) show points arranged in a curved or arched shape, while panel (e) shows a more elongated, roughly linear arrangement with one point or small group far from the main structure. Below or beside the scatterplots are two line plots summarizing HBE values across layouts. In the first line plot, the horizontal axis represents binwidth ($a_1$), and the vertical axis represents HBE. In the second line plot, the horizontal axis represents average bin count ($\\bar{n}_h$), and the vertical axis again represents HBE. Each NLDR layout corresponds to a distinct coloured line with matching coloured points. The colours used for the lines and points in the HBE plots match the colours used to identify the corresponding NLDR scatterplots in panels (a) through (f), visually linking the summary plots to the individual layouts."
 
 # Stack the first two plots
 left_column <- error_plot_mnist / error_plot_mnist_n_bar
@@ -1814,6 +1818,7 @@ mnist_proj_tsne_model2_link <- plot_proj(
 #| fig-width: 15
 #| fig-pos: "!ht"
 #| out-width: 100%
+#| fig-alt: "Multi-panel figure showing linked visualizations of the MNIST digit 1 data. The figure contains two 2-D scatterplots arranged side by side and one accompanying summary plot. Each scatterplot displays a two-dimensional projection from a tour of the original 10-D data, with the horizontal and vertical axes representing linear combinations of the original variables; axis values are approximately centered at zero and span a similar range across panels. Points represent individual observations. In both scatterplots, most points form a broad curved band, while a smaller group of points appears as a compact cluster located near one end of the larger structure. Points are colored to distinguish between two groups, with the larger group shown in grey and the smaller group highlighted in orange. The same observations appear in both panels, allowing comparison of their positions across different projections. A linked summary plot shows HBE values as a function of binwidth for multiple NLDR layouts. The horizontal axis represents binwidth, and the vertical axis represents HBE. Lines and points are coloured by layout, labeled (a) through (f). The colors used in this plot correspond to the layout labels used elsewhere in the figure, providing a visual connection between the scatterplots and the HBE summary."
 
 tsne_plot_mnist_clust + mnist_proj_tsne_model1_link + mnist_proj_tsne_model2_link +
   plot_layout(ncol = 3)
@@ -1859,6 +1864,7 @@ imge_error_sample_inside <- plot_digit_img(
 #| out-width: 100%
 #| fig-width: 10
 #| fig-height: 5
+#| fig-alt: "A 2-D scatterplot shows a NLDR layout of hand‑written digit 1 images, with each point representing one image. The x‑ and y‑axes are abstract coordinates from the 2-D embedding (no explicit units shown), roughly spanning a curved, arc‑shaped band across the plot. Points are colored by their residual error from the model fit, using a light‑to‑dark scale where darker points indicate larger residuals and poorer fits. Along the main curve, the images transition from “1”s slanting to the right at one end, through more upright shapes in the middle, to “1”s slanting to the left further along the curve. A boxed region near the middle (labelled d in the reference) contains “1”s that often have an extra up‑stroke but are otherwise varied, while boxed regions at the darker, high‑residual end of the curve (labelled e) contain unusually or irregularly drawn “1”s. Overall, the layout organizes digits so that gradual changes in writing style follow the curve, and the darkest points highlight atypical or poorly fitted digits."
 
 # Define your current layout
 top_layout <- right_top_img + middle_img + right_bottom_img + imge_error_sample_outside + imge_error_sample_inside + plot_layout(nrow = 5)

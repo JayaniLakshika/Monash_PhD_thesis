@@ -1,7 +1,7 @@
-# Chunk label: fig-NLDR-variety --------------------
-## Alt-text: A multi-panel figure shows several two‑dimensional scatterplots of the same high‑dimensional data, each panel representing a different nonlinear dimensionality reduction (NLDR) method or set of hyper‑parameters. In every panel, the x‑ and y‑axes are unlabeled but span comparable ranges (roughly symmetric around zero or a mid‑point), and each point corresponds to one observation. Points are typically coloured by a categorical variable (for example, class or cluster label), so that the same observations share the same colour across panels. Across panels, the apparent shapes and separations of clusters change markedly: some layouts show well‑separated, compact colour clusters, while others show overlapping or elongated groups, or different relative positions of the same clusters. There are no obvious single‑point outliers, but the global configuration of clusters varies substantially between methods, illustrating that the visual impression of structure in the data—such as how many clusters exist and how distinct they appear—depends strongly on the chosen NLDR method and hyper‑parameters.
+# Chunk label: fig-hex-param --------------------
+## Alt-text: A schematic diagram illustrating the notation for hexagon binning parameters. The horizontal x-axis and vertical y-axis represent generic data coordinates (no specific numeric scales are shown). A central regular hexagon is drawn with its six vertices marked; labeled line segments and arrows indicate key geometric quantities such as hexagon side length, width, height, spacing between adjacent hexagons, and how these relate to the x and y directions. Additional arrows or braces may show how hexagon centers are arranged in a grid pattern. No colour or data values are mapped; the figure is purely geometric, focusing on how hexagon dimensions and spacing are defined for use in hexagon binning algorithms.
 
-Assumptions: The figure contains multiple panels; colours encode a categorical label consistent across panels; axes are on arbitrary, method‑specific numeric scales and are unlabeled.
+Assumptions: The underlying figure is assumed to be a clean, unlabeled geometric schematic with a single central hexagon, simple arrows, and no numeric axes, based on the accompanying description that it “illustrates the notation used.”
 
 Checklist:
 1. Identified chart type. YES  
@@ -11,6 +11,6 @@ Checklist:
 5. Described main patterns, trends, or clusters. YES  
 6. Explicitly noted any assumptions. YES
 
-## Caption (for reference): However, the representation generated can vary dramatically from method to method, choice of hyper-parameter or even random seed, as illustrated by @fig-NLDR-variety. The specific method and hyper-parameters used to produce each layout (see Supplementary Materials) is not essential for the discussion. The dilemma for the analyst is which representation to use. The choice might result in different procedures used in the downstream analysis, or different inferential conclusions. Various academics have expressed concerns with current practices and procedures for choosing (e.g. @irizarry2024, @chari2023). The research described here provides new numerical and visual tools to aid with this decision.
+## Caption (for reference): Although there are several implementations of hexagon binning [@carr1987], and a published paper [@dan2023], surprisingly, none has sufficient detail or components that produce everything needed for this project. So we described the process used here. @fig-hex-param illustrates the notation used.
 
 ## Usage: BrailleR, Cummulated cost: NA, Cummulated token usage: 0
