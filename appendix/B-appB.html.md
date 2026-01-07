@@ -244,7 +244,7 @@ Animations of the $4\text{-}D$ tours that used for the study are available on Yo
    <td style="text-align:left;"> <a href="https://youtu.be/zi-TvgVR8a4">youtu.be/zi-TvgVR8a4</a> </td>
    <td style="text-align:left;"> <a href="https://youtube.com/shorts/bRVl9y0JT8k">youtube.com/shorts/bRVl9y0JT8k</a> </td>
    <td style="text-align:left;"> <a href="https://youtu.be/hdQmD499yo8">youtu.be/hdQmD499yo8</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/hdQmD499yo8">youtu.be/hdQmD499yo8</a> </td>
+   <td style="text-align:left;"> <a href="https://youtube.com/shorts/Uuy8xrnP_HU">youtube.com/shorts/Uuy8xrnP_HU</a> </td>
   </tr>
   <tr>
    <td style="text-align:left;"> three_clust_17 </td>
@@ -252,7 +252,7 @@ Animations of the $4\text{-}D$ tours that used for the study are available on Yo
    <td style="text-align:left;"> <a href="https://youtu.be/UJPMJ5irRbQ">youtu.be/UJPMJ5irRbQ</a> </td>
    <td style="text-align:left;"> <a href="https://youtube.com/shorts/zI-JNpMRYxY">youtube.com/shorts/zI-JNpMRYxY</a> </td>
    <td style="text-align:left;"> <a href="https://youtu.be/zdQYQvqTyGA">youtu.be/zdQYQvqTyGA</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/zdQYQvqTyGA">youtu.be/zdQYQvqTyGA</a> </td>
+   <td style="text-align:left;"> <a href="https://youtube.com/shorts/P4E78ewAEJs">youtube.com/shorts/P4E78ewAEJs</a> </td>
   </tr>
   <tr>
    <td style="text-align:left;"> three_clust_18 </td>
@@ -260,7 +260,7 @@ Animations of the $4\text{-}D$ tours that used for the study are available on Yo
    <td style="text-align:left;"> <a href="https://youtu.be/2Rf2L8iey2w">youtu.be/2Rf2L8iey2w</a> </td>
    <td style="text-align:left;"> <a href="https://youtube.com/shorts/_x7kGF4xRz4">youtube.com/shorts/_x7kGF4xRz4</a> </td>
    <td style="text-align:left;"> <a href="https://youtu.be/e_-IQycglVE">youtu.be/e_-IQycglVE</a> </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/e_-IQycglVE">youtu.be/e_-IQycglVE</a> </td>
+   <td style="text-align:left;"> <a href="https://youtube.com/shorts/rY8hIqDaHKw">youtube.com/shorts/rY8hIqDaHKw</a> </td>
   </tr>
 </tbody>
 </table>
