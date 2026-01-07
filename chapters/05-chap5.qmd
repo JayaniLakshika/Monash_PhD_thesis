@@ -919,10 +919,10 @@ subj_acc_plt <- ggplot(subj_ci,
 ```
 
 ```{r}
-#| fig-height: 6
-#| fig-width: 12
+#| fig-height: 5
+#| fig-width: 10
 #| label: fig-var-sum
-#| fig-cap: "Examining the correct proportions across data sets used in the experiment and across subjects. Panel (a) shows the proportion of correct responses for each data set. Black points indicate the overall correct proportion, with horizontal error bars showing binomial confidence intervals, while coloured points represent correct proportions at different distance-scaling conditions within each data set. Accuracy varies across data sets, ranging from approximately $0.31$ to $0.70$, but remains broadly comparable across conditions, suggesting no single data set dominates performance. Panel (b) shows the distribution of correct identification proportions across subjects. Most subjects achieve moderate accuracy, with performance spread across lower and higher values rather than clustering at extremes. No subjects exhibit perfect accuracy or consistently incorrect responses, indicating meaningful engagement with the task. Variability in performance is shared across both data sets and subjects, supporting the use of subject-level random effects and indicating that misidentification reflects structured difficulty rather than random error or bias."
+#| fig-cap: "Examining the variability of proportion correct across data sets and subjects. Panel (a) shows the proportion of correct responses for each data set. Black indicates the correct proportion and binomial confidence intervals, with colour representing correct proportion across different distance-scaling within each data set (low to high matching light to dark). The variability ranges from $0.3$ to $0.7$ and is consistent with considering the data sets as replication variability due to random sampling. Panel (b) shows the distribution of proportion correct across subjects. It is relatively Gaussian with a few participants performing exceptionally well and some poorly. This is consistent with other human subject experiments and reflects individual visual skills, illustrating the need to include subject-specific random effects in the model."
 
 dt_acc_plt + subj_acc_plt +
   plot_layout(ncol = 2)
