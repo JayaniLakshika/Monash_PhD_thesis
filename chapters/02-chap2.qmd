@@ -545,6 +545,7 @@ To illustrate the method and how to use it to choose a reasonable layout, we use
 #| fig-width: 12
 #| fig-height: 4
 #| out-width: 100%
+#| fig-alt: "Four-panel figure illustrating the steps used to construct a model on a 2-D tSNE layout for the 2NC7 data. Panel (a) shows the original data displayed in a 2-D tSNE layout. Individual observations are plotted as points positioned using two unlabeled tSNE coordinates on the horizontal and vertical axes, which serve as abstract 2-D embedding dimensions. Points form multiple clusters with nonlinear shapes and varying local densities. Panel (b) shows the same 2-D layout overlaid with a hexagonal binning grid. The points are aggregated into hexagon-shaped bins that tile the plane, with denser regions of points filling multiple adjacent hexagons and sparser regions filling fewer bins. Panel (c) displays the centroids of the hexagonal bins. Each bin is represented by a single point located at the center of the hexagon, producing a reduced set of points that summarize the local structure of the original data in the 2-D layout. Panel (d) shows a Delaunay triangulation constructed on the bin centroids. Straight line segments connect neighboring centroids to form a mesh of non-overlapping triangles across the 2-D layout. Regions with closely spaced centroids contain smaller triangles, while regions with more widely spaced centroids contain larger triangles. The axes remain unlabeled throughout and represent abstract 2-D embedding coordinates."
  
 nldr_two_curvy + hex_grid_two_curvy + 
   hex_grid_nonempty_two_curvy + 
@@ -725,7 +726,7 @@ Delaunay triangulation [@lee1980;@albrecht2024] is used to connect points so tha
 
 ### Rendering the model in $p\text{-}D$
 
-The last step is to lift the $2\text{-}D$ model into $p\text{-}D$ by computing $p\text{-}D$ vectors that represent bin centroids. We use the $p\text{-}D$ mean of the points in a given hexagon, $H_h$, denoted $C_{h}^{(p)}$, to map the centroid $C_{h}^{(2)} = (c_{h1}, c_{h2})$ to a point in $p\text{-}D$. Let the $j^{th}$ component of the $p\text{-}D$ mean be
+The last step is to lift the $2\text{-}D$ model into $p\text{-}D$ by computing $p\text{-}D$ vectors that represent bin centroids (@fig-best-fit-tsne). We use the $p\text{-}D$ mean of the points in a given hexagon, $H_h$, denoted $C_{h}^{(p)}$, to map the centroid $C_{h}^{(2)} = (c_{h1}, c_{h2})$ to a point in $p\text{-}D$. Let the $j^{th}$ component of the $p\text{-}D$ mean be
 
 $$C_{hj}^{(p)} = \frac{1}{n_h}\sum_{i =1}^{n_h} x_{hij}, ~~~h = 1, \dots, b;~ j=1, \dots, p; ~ n_h > 0.$$
 
@@ -802,6 +803,7 @@ hex_grid_coloured_two_curvy3 <-  ggplot() +
 #| fig-width: 8
 #| fig-height: 2
 #| fig-pos: "!ht"
+#| fig-alt: "Multi-panel figure illustrating the lifting of a fitted 2-D model into p-D space. Panel (a) shows a 2-D tSNE layout displayed overlaying 2-D wireframe. The horizontal and vertical axes correspond to the two tSNE dimensions. Individual observations are aggregated into hexagonal bins over the 2-D scatterplot. Each hexagon contains a centroid in 2-D. Lines connect each 2-D hexagon centroid to a corresponding centroid in p-D space, defined as the mean of the original p-D observations assigned to that hexagon. Panels (b) and (c) show two different 2-D projections of the fitted p-D model overlaid on the original data. In both panels, the axes represent linear projections of the p-D space. Points from the original data and the fitted model appear together, forming two main clusters in each projection. One cluster appears more compact and closely aligned between data and model, while the other shows slightly greater spread."
 
 trimesh_two_curvy_removed1_tsne_with_data +
   two_curvy_proj_tsne_first_model1 +
@@ -925,8 +927,9 @@ axis.text = element_text(size = 15))
 #| out-width: 100%
 #| fig-width: 8
 #| fig-height: 3
+#| fig-alt: "A small multiple of three plots shows the distribution of residual error values, denoted e, for a 3‑D cluster represented in 2‑D. Panel (a) is a univariate density plot of e on the horizontal axis, with error values increasing from left to right and density on the vertical axis; the curve is unimodal with a long upper tail, indicating a few observations with much larger residuals than most. Panel (b) is a 2‑D scatterplot of an NLDR layout, with two layout coordinates on the axes (roughly symmetric around zero), where each point is colored by its residual e on a continuous scale from low to high; points with the largest residuals form a distinct, compact cluster in one region of the layout. Panel (c) is a 2‑D scatterplot from a tour (two projected dimensions of the original data on the axes), again colored by e in the same continuous scale; the high‑e points remain grouped together, showing that the largest residuals all belong to one intentionally slightly 3‑D cluster that is otherwise well represented in 2‑D. Overall, colour encodes error magnitude, positions encode either layout or tour coordinates, and the main visible pattern is a single cluster of points with much higher residual error than the rest."
 
- error_plot_two_curvy_quasi + error_plot_two_curvy + two_curvy_proj_tsne_first_model1_coloured +
+error_plot_two_curvy_quasi + error_plot_two_curvy + two_curvy_proj_tsne_first_model1_coloured +
   plot_layout(ncol=3)
 ```
 
@@ -951,6 +954,7 @@ Default values are provided for each of these, but deciding on the best model fi
 #| fig-cap: "Hexbin density plots of tSNE layout of the 2NC7 data, using three different $b_1$ specifications yielding different $b_2, b, m$: (a) **15**, 18, 270, 98, (b) **24**, 29, 696, 209, and (c) **35**, 42, 1470, 386. Color indicates standardized counts, dark indicating high count and light indicates low count. At the smallest binwidth, the data structure is discontinuous, suggesting that there are too many bins."
 #| fig-width: 9
 #| fig-height: 3
+#| fig-alt: "A multi-panel figure of three side‑by‑side hexbin heatmaps comparing different bin settings (three values of parameter b1). In each panel, the x- and y-axes represent two continuous variables on similar numeric ranges (roughly spanning the main cloud of points; exact tick labels are not specified). Data are aggregated into hexagonal bins; the color intensity within each hexagon encodes the number of observations in that bin, with darker or more saturated colors indicating higher counts. Across panels, the underlying curved, two‑dimensional structure of the data is broadly similar, but the apparent shapes and local peaks of density shift as the binning parameter b1 changes. Some panels show smoother, broader blobs of high density, whereas others reveal more fragmented or sharply defined ridges and clusters, illustrating how different bin sizes can substantially alter visible bin counts and perceived patterns, even when the underlying data are unchanged."
 
 hex_grid_coloured_two_curvy2 +
   hex_grid_coloured_two_curvy1 +

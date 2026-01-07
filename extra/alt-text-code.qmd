@@ -17,27 +17,42 @@ However, the representation generated can vary dramatically from method to metho
 
 The chapter is organized as follows. @sec-background-visalgo provides a summary of the literature on NLDR, and high-dimensional data visualization methods. @sec-method-visalgo contains the details of the new methodology, including a simulated data example. In @sec-bestfit-visalgo, we describe how to assess the best fit and identify the most accurate $2\text{-}D$ layout based on the proposed model diagnostics.  Two applications illustrating the use of the new methodology for bioinformatics and image classification are in @sec-applications-visalgo. Limitations and future directions are provided in @sec-discussion-visalgo.
 
-### Tuning
+## Method {#sec-method-visalgo}
 
-The model fitting is based on several parameters, including the hexagon bin parameters and the low count bin removal process. The hexagon bin parameters define the bottom-left bin position $(s_1, \ s_2)$, the number of bins in the horizontal direction ($b_1$), which also determines the number of bins in the vertical direction ($b_2$), the total number of bins ($b$), and the total number of non-empty bins ($m$). Low count bins are removed using standardized bin counts, defined as $w_h = n_h/n, ~~h=1, \dots m$.
+### What is the NLDR model?
 
-Default values are provided for each of these, but deciding on the best model fit is assisted by examining a range of values. The default number of bins $b=b_1\times b_2$ is computed based on the sample size, by setting $b_1=n^{1/3}$, consistent with the Diaconis-Freedman rule [@freedman1981]. The value of $b_2$ is determined analytically by $b_1, q, r_2$ (@eq-bin2). Values of $b_1$ between $2$ and $b_1 = \sqrt{n/r_2}$ are recommended, where the dependence on $r_2$ reflects the preservation of aspect ratio in the NLDR layout.
+At first glance, thinking of NLDR as a modeling technique might seem strange. It is a simplified representation or abstraction of a system, process, or phenomenon in the real world. The $p\text{-}D$   observations are the realization of the phenomenon, and the $k\text{-}D$ NLDR layout is the simplified representation. Typically, $k=2$, which is used for the rest of this chapter. From a statistical perspective we can consider the distances between points in the $2\text{-}D$   layout to be variance that the model explains, and the (relative) difference with their distances in $p\text{-}D$   is the error, or unexplained variance. We can also imagine that the positioning of points in $2\text{-}D$    represent the fitted values, that will have some prescribed position in $p\text{-}D$   that can be compared with their observed values. This is the conceptual framework underlying the more formal versions of factor analysis [@joreskog1969] and MDS. (Note that, for this thinking the full $p\text{-}D$   data needs to be available, not just the interpoint distances.)
 
-@fig-bins-two-curvy shows the hexbin grids for three choices of $b_1$. While the number of bins is the common parameter to modify, bin start positions $(s_1, \ s_2)$ can be worth experimenting with also because  it can also change bin counts. 
+We define the NLDR as a function $g\text{:}~ \mathbb{R}^{n\times p} \rightarrow \mathbb{R}^{n\times 2}$, with hyper-parameters $\bm{\theta}$. These parameters, $\bm{\theta}$, depend on the choice of $g$, and can be considered part of model fitting in the traditional sense. Common choices for $g$ include functions used in tSNE, UMAP, PHATE, TriMAP, PaCMAP, or MDS, although in theory any function that does this mapping is suitable. 
 
-It is worthwhile to consider what are desirable aspects of a hexbin result, that maps to summarizing the $p\text{-}D$ fit well. The binning should capture the underlying data distribution closely, with minimum number of necessary bins. An ideal binning might be indicated by a more uniform distribution of bin counts, or having few relatively empty bins. To help with this assessment average bin count ($\bar{n} = \sum{n_h}/m$), average standardized bin count ($\bar{w} = \sum{w_h}/m$) and proportion of non-empty bins ($m/b$), are also computed. @fig-param-two-curvy shows some choices of plots of these quantities for a single NLDR layout, with three choices of $a_1$ indicated. Some expectations and reasoning for these plots is:
+With our goal being to make a representation of this $2\text{-}D$ layout that can be lifted into high-dimensional space, the layout needs to be augmented to include neighbor information. A simple approach would be to triangulate the points and add edges. A more stable approach is to first bin the data, reducing it from $n$ to $m\leq n$ observations, and connect the bin centroids. We recommend using a hexagon grid because it better reflects the data distribution and has less artifacts than a rectangular grid. This process serves to reduce some noisiness in the resulting surface shown in $p\text{-}D$. The steps in this process are shown in @fig-NLDR-two-curvy, and documented below.
 
-- HBE will increase as $a_1$ increases, so good choices will be just before a big increase. In plot a, HBE changes fairly steadily so there is no easy choice to make.
-- HBE can also be examined against average standardized bin count or average bin count (plot b). This is similar to the comparison with $a_1$ but to use when comparing different NLDR layouts. Different layouts might produce different density of points, which will not be captured well by a comparison of HBE vs $a_1$.
-- The proportion of non-empty bins is interesting to examine across different binwidths (plot c). A good binning should have just the right amount of bins to neatly cover the shape of the data, and no more or less. As binwidth gets smaller, $m/b$ should roughly get bigger.
-- Bins with a small number of observations might be removed to sharpen the wireframe model. This can have adverse effects, though - failing to extend the wireframe into sparse areas, or resulting in holes in the wireframe. Plot d shows the relationship between HBE (computed for all observations despite some bin removal) and the standardized bin count cutoff used to remove bins. For all three chosen bin widths a small number of bins can be removed without affecting HBE.
+### Algorithm to represent the model in $2\text{-}D$  
+
+#### Scale the data
+
+Because we are working with distances between points, starting with data having a standard scale, e.g. [0, 1], is recommended. The default should take the aspect ratio produced by the NLDR $(r_1, r_2, ..., r_k)$ into account. When $k=2$, as in hexagon binning, the default range is $[0, y_{i,\text{max}}], i=1,2$, where $y_{1,\text{max}}=1$ and $y_{2,\text{max}} = r_2/r_1$ (@fig-NLDR-two-curvy). If the NLDR aspect ratio is ignored then set $y_ {2,\text{max}} = 1.$ 
+
+
+#### Binning the data
+
+Observations are grouped into bins based on their nearest centroid. This produces a reduction in size of the data from $n$ to $m$, where $m\leq b$ (total number of bins). This can be defined using the function $u: \mathbb{R}^{n\times 2} \rightarrow \mathbb{R}^{m\times 2}$, where
+$$u(i) = \arg\min_{j = 1, \dots, b} \sqrt{(y_{i1} - C^{(2)}_{j1})^2 + (y_{i2} - C^{(2)}_{j2})^2},$$ maps observation $i$ into $H_h = \{i| u(i) = h\}$. 
+
+By default, the bin centroid is used for describing a hexagon (as done in @fig-NLDR-two-curvy (c)), but any measure of center, such as a mean or weighted mean of the points within each hexagon, could be used. The bin centers, and the binned data, are the two important components needed to render the model representation in high dimensions.  
+
+#### Indicating neighborhood
+
+Delaunay triangulation [@lee1980;@albrecht2024] is used to connect points so that edges indicate neighboring observations, in both the NLDR layout (@fig-NLDR-two-curvy (d)) and the $p\text{-}D$ model representation. When the data has been binned the triangulation connects centroids. The edges preserve the neighborhood information from the $2\text{-}D$ representation when the model is lifted into $p\text{-}D$. 
 
 ```{r}
+#| label: fig-NLDR-two-curvy
 #| echo: false
-#| label: fig-bins-two-curvy
-#| fig-cap: "Hexbin density plots of tSNE layout of the 2NC7 data, using three different $b_1$ specifications yielding different $b_2, b, m$: (a) **15**, 18, 270, 98, (b) **24**, 29, 696, 209, and (c) **35**, 42, 1470, 386. Color indicates standardized counts, dark indicating high count and light indicates low count. At the smallest binwidth, the data structure is discontinuous, suggesting that there are too many bins."
-#| fig-width: 9
-#| fig-height: 3
+#| fig-cap: "Key steps for constructing the model on the tSNE layout ($k=2$) of 2NC7: (a) data, (b) hexagon bins, (c) bin centroids, and (d) triangulated centroids. The 2NC7 data is shown."
+#| fig-width: 12
+#| fig-height: 4
+#| out-width: 100%
+
 
 # Add plot label
 
@@ -312,6 +327,7 @@ plot_proj <- function(proj_obj,
 }
 
 ######################
+clr_choice <- "#0077A3"
 
 tsne_two_curvy_scaled <- read_rds(here::here("data/vis-algo/two_nonlinear/tsne_two_curvy_scaled.rds"))
 hex_grid_with_counts <- read_rds(here::here("data/vis-algo/two_nonlinear/hex_grid_with_counts.rds"))
@@ -323,15 +339,16 @@ sc_ltr_pos <- c(0.08, 0.9)
 sc_xlims <- c(-0.3, 1.2)
 sc_ylims <- c(-0.17, 1.25)
 
-nldr_two_curvy_original <- ggplot(tsne_two_curvy_scaled, 
-                                  aes(x = emb1, y = emb2)) +
-  geom_point(alpha = 0.5, colour = clr_choice, size = 0.5) 
 
 # First plot with xlim and ylim
 nldr_two_curvy <- nldr_two_curvy_original +
   interior_annotation("a", sc_ltr_pos, cex = 2) +
   xlim(sc_xlims) +
   ylim(sc_ylims)
+
+nldr_two_curvy_original <- ggplot(tsne_two_curvy_scaled, 
+                                  aes(x = emb1, y = emb2)) +
+  geom_point(alpha = 0.5, colour = clr_choice, size = 0.5) 
 
 hex_grid_two_curvy <- ggplot(
   data = hex_grid_with_counts, 
@@ -349,40 +366,71 @@ hex_grid_coloured_two_curvy1 <- ggplot() +
   geom_polygon(
     data = hex_grid_with_counts, 
     aes(x = x, y = y,
-      group = h, 
-      fill = w_h), colour = "grey70", linewidth=0.2) +
+        group = h, 
+        fill = w_h), colour = "grey70", linewidth=0.2) +
   geom_point(data = tsne_two_curvy_scaled,
              aes(x = emb1, y = emb2),
              colour = clr_choice,
              alpha = 0.3,
              size = 0.5) +
   scale_fill_viridis_c(direction = -1, 
-    na.value = "#ffffff", option = "E") +
+                       na.value = "#ffffff", option = "E") +
   interior_annotation("b", sc_ltr_pos, cex = 2) + 
   xlim(sc_xlims) + ylim(sc_ylims) 
 
-hex_grid_with_counts_two_curvy2 <- read_rds(here::here("data/vis-algo/two_nonlinear/two_nonlinear_hex_grid_with_counts_two_curvy2.rds"))
-tr_from_to_df_two_curvy2 <- read_rds(here::here("data/vis-algo/two_nonlinear/two_nonlinear_tr_from_to_df_two_curvy2.rds"))
 
-hex_grid_coloured_two_curvy2 <- ggplot() + 
-  geom_polygon(
-    data = hex_grid_with_counts_two_curvy2, 
-    aes(x = x, y = y, 
-        group = h, 
-        fill = w_h), 
-        colour = "grey70", 
-        linewidth=0.2) +
-  geom_point(data = tsne_two_curvy_scaled,
-           aes(x = emb1, y = emb2),
-           alpha = 0.3,
-           size = 0.5) +
-  scale_fill_viridis_c(direction = -1, 
-    na.value = "#ffffff", option = "C") +
+## First projection
+proj_obj1 <- read_rds(here::here("data/vis-algo/two_nonlinear/two_nonlinear_proj_obj1.rds"))
+
+two_curvy_proj_tsne_first_model1 <- plot_proj(
+  proj_obj = proj_obj1, 
+  point_param = c(0.5, 0.2, clr_choice), # size, alpha, color
+  line_param = c(0.5, 0.5, "#000000"), # linewidth, alpha
+  plot_limits = c(-0.75, 0.75), 
+  axis_text_size = 2, 
+  is_category = FALSE) +
+  interior_annotation(label = "b", cex = 1.2) +
+  theme(aspect.ratio = 1,
+        legend.position = "none") 
+
+
+projected_df <- proj_obj1$projected_df
+axes <- proj_obj1$axes
+circle <- proj_obj1$circle
+cluster <- proj_obj1$cluster
+
+projected_df <- projected_df |>
+  dplyr::mutate(cluster = proj_obj1$cluster)
+
+## Second projection
+
+proj_obj2 <- read_rds(here::here("data/vis-algo/two_nonlinear/two_nonlinear_proj_obj2.rds"))
+
+two_curvy_proj_tsne_all_model1 <- plot_proj(
+  proj_obj = proj_obj2, 
+  point_param = c(0.1, 0.5, clr_choice), # size, alpha, color
+  line_param = c(0.5, 0.5, "black"), # linewidth, alpha
+  plot_limits = c(-0.5, 0.5), 
+  axis_text_size = 2, 
+  is_category = FALSE) +
+  interior_annotation(label = "c", cex = 1.2) +
+  theme(aspect.ratio = 1)
+
+hex_grid_nonempty_two_curvy <- ggplot(
+  data = hex_grid_nonempty, 
+  aes(x = x, y = y)) +
+  geom_polygon(colour = "grey70", 
+               aes(group = h), 
+               fill = "#ffffff") +
+  geom_point(data = df_bin_centroids_two_curvy, 
+             aes(x = c_x, y = c_y), 
+             colour = "#000000",
+             size = 1) +
   xlim(sc_xlims) + ylim(sc_ylims) +
-  interior_annotation("a", sc_ltr_pos, cex = 2)
+  interior_annotation("c", sc_ltr_pos, cex = 2) 
 
-trimesh_two_curvy2 <- ggplot() +
-  geom_segment(data = tr_from_to_df_two_curvy2,
+trimesh_two_curvy <- ggplot() +
+  geom_segment(data = tr_from_to_df_two_curvy,
                aes(
                  x = x_from,
                  y = y_from,
@@ -391,39 +439,51 @@ trimesh_two_curvy2 <- ggplot() +
                colour = "#000000") +
   geom_point(data = tsne_two_curvy_scaled,
              aes(
-               x = tSNE1,
-               y = tSNE2
+               x = emb1,
+               y = emb2
              ),
              colour = "#636363",
-            alpha = 0.5,
-            size = 0.5
-            ) +
+             alpha = 0.5,
+             size = 0.5
+  ) +
   coord_equal() +
-  interior_annotation("a1", sc_ltr_pos) 
+  interior_annotation("a1", sc_ltr_pos)
 
-
-hex_grid_with_counts_two_curvy3 <- read_rds(here::here("data/vis-algo/two_nonlinear/two_nonlinear_hex_grid_with_counts_two_curvy3.rds"))
-tr_from_to_df_two_curvy3 <- read_rds(here::here("data/vis-algo/two_nonlinear/two_nonlinear_tr_from_to_df_two_curvy3.rds"))
-
-hex_grid_coloured_two_curvy3 <-  ggplot() + 
-  geom_polygon(
-    data = hex_grid_with_counts_two_curvy3, 
-    aes(x = x, y = y, 
-        group = h, 
-        fill = w_h), 
-        colour = "grey70", linewidth=0.2) +
-  geom_point(data = tsne_two_curvy_scaled,
-           aes(x = emb1, y = emb2),
-           alpha = 0.3,
-           size = 0.5) +
-  scale_fill_viridis_c(direction = -1, na.value = "#ffffff", option = "D") +
+trimesh_removed_two_curvy <- ggplot() +
+  geom_segment(data = tr_from_to_df_two_curvy,
+               aes(
+                 x = x_from,
+                 y = y_from,
+                 xend = x_to,
+                 yend = y_to),
+               colour = "#000000") +
+  coord_equal() +
   xlim(sc_xlims) + ylim(sc_ylims) +
-  interior_annotation("c", sc_ltr_pos, cex = 2)
+  interior_annotation("d", sc_ltr_pos, cex = 2)
 
-hex_grid_coloured_two_curvy2 +
-  hex_grid_coloured_two_curvy1 +
-  hex_grid_coloured_two_curvy3 +
-  plot_layout(guides='collect', ncol = 3) &
-  theme(legend.position='none', plot.tag = element_text(size = 12))
+trimesh_two_curvy_removed1_tsne_with_data <- ggplot() +
+  geom_point(data = tsne_two_curvy_scaled,
+             aes(
+               x = emb1,
+               y = emb2
+             ),
+             colour = clr_choice,
+             alpha = 0.5,
+             size = 0.5) +
+  geom_segment(data = tr_from_to_df_two_curvy,
+               aes(
+                 x = x_from,
+                 y = y_from,
+                 xend = x_to,
+                 yend = y_to),
+               colour = "#000000") +
+  interior_annotation("a", cex = 1.2) +
+  theme(aspect.ratio = 1)
+
+ 
+nldr_two_curvy + hex_grid_two_curvy + 
+  hex_grid_nonempty_two_curvy + 
+  trimesh_removed_two_curvy +
+  plot_layout(ncol = 4)
 ```
 
