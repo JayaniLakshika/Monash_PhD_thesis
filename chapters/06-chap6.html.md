@@ -48,7 +48,7 @@ Once the desired layouts are finalized, users click "Start Analysis" to proceed 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Data Upload and NLDR layout Configuration in `menuraR`. The *Data Input* tab enables users to upload high-dimensional datasets or use built-in examples, and generate or upload NLDR layouts. Users can create additional layouts with custom hyper-parameters, and manage loaded embeddings for downstream comparison.](../figures/menuraR/menuraR_ui1.png){#fig-menuraR_ui1 fig-align='center' width=100%}
+![Data Upload and NLDR layout Configuration in `menuraR`. The *Data Input* tab enables users to upload high-dimensional datasets or use built-in examples, and generate or upload NLDR layouts. Users can create additional layouts with custom hyper-parameters, and manage loaded embeddings for downstream comparison.](../figures/menuraR/menuraR_ui1.png){#fig-menuraR_ui1 fig-align='center' fig-alt='A screenshot of the Data Input tab in the menuraR Shiny application. The interface shows controls for uploading a high-dimensional dataset or selecting a built-in example, along with options to generate new nonlinear dimensionality reduction (NLDR) layouts or upload precomputed embeddings. A panel lists the currently loaded layouts, with buttons or controls to adjust hyper-parameters, add new layouts, and manage which embeddings are available for later comparison.' width=100%}
 :::
 :::
 
@@ -62,7 +62,7 @@ Furthermore, users have the option to download the $2\text{-}D$ layouts, corresp
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![NLDR Layout Comparison and Hexbin Error Evaluation in \texttt{menuraR}. The \textit{Compare NLDR Layouts} tab allows users to visualize selected $2\text{-}D$ NLDR embeddings overlaid with hexagonal grids and wireframe representations. Users can explore the effect of the binwidth parameter ($a_1$) on Hexbin Error (HBE), identify the most reasonable layout, and download layouts, HBE plots, and summary tables for further analysis.](../figures/menuraR/menuraR_ui2.png){#fig-menuraR_ui2 fig-align='center' width=100%}
+![NLDR Layout Comparison and Hexbin Error Evaluation in \texttt{menuraR}. The \textit{Compare NLDR Layouts} tab allows users to visualize selected $2\text{-}D$ NLDR embeddings overlaid with hexagonal grids and wireframe representations. Users can explore the effect of the binwidth parameter ($a_1$) on Hexbin Error (HBE), identify the most reasonable layout, and download layouts, HBE plots, and summary tables for further analysis.](../figures/menuraR/menuraR_ui2.png){#fig-menuraR_ui2 fig-align='center' fig-alt='A screenshot of the Compare NLDR Layouts tab in menuraR. Multiple 2D NLDR embeddings are displayed side by side, each shown as a scatterplot overlaid with a hexagonal grid and a wireframe representation. Control panels allow the user to adjust the binwidth parameter ($a_1$), and adjacent plots or tables show Hexbin Error (HBE) values corresponding to the selected layouts. Download buttons for layouts, HBE plots, and summary tables are visible.' width=100%}
 :::
 :::
 
@@ -74,7 +74,7 @@ Once the best representation is selected, interactive plots are generated to dis
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Interactive Model Diagnostics in \texttt{menuraR}. The interface provides interactivity between the distribution of model error, the NLDR layout, and the model overlaid on the high-dimensional data. The best $2\text{-}D$ layout is automatically selected, but users can explore other layouts as well. This helps to identify regions where the model fits well or exhibits distortions and some quirks.](../figures/menuraR/menuraR_ui3.png){#fig-menuraR_ui3 fig-align='center' width=100%}
+![Interactive Model Diagnostics in \texttt{menuraR}. The interface provides interactivity between the distribution of model error, the NLDR layout, and the model overlaid on the high-dimensional data. The best $2\text{-}D$ layout is automatically selected, but users can explore other layouts as well. This helps to identify regions where the model fits well or exhibits distortions and some quirks.](../figures/menuraR/menuraR_ui3.png){#fig-menuraR_ui3 fig-align='center' fig-alt='A screenshot of the Model Diagnostics interface in menuraR. The display includes linked views showing the distribution of model error, a selected 2D NLDR layout, and the fitted model overlaid on projections of the high-dimensional data. Interactions such as selection or brushing link the plots, allowing users to explore how model fit and distortions vary across regions of the layout. Controls indicate which 2D layout is currently selected, with options to switch to alternative embeddings.' width=100%}
 :::
 :::
 
