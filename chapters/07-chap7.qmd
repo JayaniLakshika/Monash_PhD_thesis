@@ -842,6 +842,7 @@ Once the data and layouts are loaded in the *Data Upload* tab, all three embeddi
 #| label: fig-menuraR_ui1
 #| out-width: 100%
 #| fig-cap: "Data upload and NLDR layout configuration in `menuraR`. The *Data Upload* tab shows the PBMC CITE-seq dataset together with several precomputed NLDR layouts, including the published UMAP layout and alternative embeddings generated using tSNE, TriMAP, and PaCMAP with different hyper-parameter settings. Uploaded layouts appear in the *Your Loaded NLDR Layouts* panel."
+#| fig-alt: "A screenshot of the Data Upload tab in the menuraR interface. The main panel displays the PBMC CITE-seq dataset alongside a list or grid of available nonlinear dimensionality reduction (NLDR) layouts. These include a published UMAP layout and several alternative embeddings generated using tSNE, TriMAP, and PaCMAP with different hyper-parameter settings. A side panel titled Your Loaded NLDR Layouts shows the layouts that have been uploaded or selected by the user. The interface allows users to view, compare, and manage multiple NLDR layouts for the same dataset within a single workspace."
 
 knitr::include_graphics(here::here("figures/CITE-seq/menuraR_ui1_CITE-seq.png"))
 ```
@@ -854,6 +855,7 @@ The TriMAP layout is universally poor. The tSNE layout with little separation pe
 #| label: fig-menuraR_ui2
 #| out-width: 100%
 #| fig-cap: "NLDR layout comparison and hexbin error evaluation in `menuraR`. The *Compare NLDR Layouts* tab displays multiple $2\\text{-}D$ NLDR embeddings side by side, overlaid with hexagonal grids and corresponding wireframe representations. Users can explore how the hexbin error (HBE) changes with the binwidth parameter ($a_1$) and compare layouts directly. For this example, at a binwidth of $0.03$, the tSNE layout with *perplexity = 84* is identified as the most reasonable representation. Layouts, HBE plots, and summary tables can be downloaded for further analysis."
+#| fig-alt: "A screenshot of the Compare NLDR Layouts tab in the menuraR interface. Multiple two-dimensional NLDR embeddings are shown side by side, allowing direct visual comparison of different layouts. Each embedding is overlaid with a hexagonal binning grid and an associated wireframe representation, highlighting local neighborhood structure. Adjacent plots display how the hexbin error (HBE) varies as the binwidth parameter a1 hanges. Controls allow the user to adjust the binwidth and explore its effect on each layout. In this example, at a binwidth of 0.03, the tSNE layout with perplexity set to 84 shows the lowest HBE and is identified as the most reasonable representation. Options are provided to download the layouts, HBE plots, and summary tables for further analysis."
 
 knitr::include_graphics(here::here("figures/CITE-seq/menuraR_ui2_CITE-seq.png"))
 ```
@@ -1040,6 +1042,7 @@ In addition to the completed methods and software presented in this thesis, a la
 #| fig-pos: H
 #| out-width: "80%"
 #| label: fig-workquollr
+#| fig-alt: "Photographs of handwritten and sketched working sheets used during the early planning of the quollr R package. The pages contain rough notes that explore diagnostic ideas and evaluation strategies, illustrating the progression from initial conceptual sketches to a structured software design."
 
 knitr::include_graphics(here::here("figures/quollr.png"))
 ```
@@ -1049,6 +1052,7 @@ knitr::include_graphics(here::here("figures/quollr.png"))
 #| fig-pos: H
 #| out-width: "80%"
 #| label: fig-workcardinalR
+#| fig-alt: "Working sheet documenting the development of the cardinalR package. The sheets include hand-drawn cluster diagrams, mathematical notes, parameter tables, and pseudocode outlining data generation strategies. These materials show how exploratory ideas were iteratively refined into a coherent framework for simulating high-dimensional data."
 
 knitr::include_graphics(here::here("figures/cardinalR.png"))
 ```
@@ -1058,6 +1062,7 @@ knitr::include_graphics(here::here("figures/cardinalR.png"))
 #| fig-pos: H
 #| out-width: "80%"
 #| label: fig-workmenuraR
+#| fig-alt: "Working sheet from the planning and design phase of the menuraR Shiny application. The pages show hand-drawn interface layouts, workflow diagrams, and notes linking user interactions to analytical outputs, illustrating how early conceptual designs were developed into a functional interactive visualization tool."
 
 knitr::include_graphics(here::here("figures/menuraR.png"))
 ```
@@ -1091,6 +1096,7 @@ I have been part of delivering and preparing materials for [workshops](https://j
 #| fig-pos: H
 #| out-width: "30%"
 #| label: fig-workshop
+#| fig-alt: "A set of photographs from the Reproducible Reporting and Research with Quarto workshop held in September 2025. Images show the presenter leading sessions, participants working on laptops, and slides or screens displaying code and documents, illustrating an interactive, hands-on training environment focused on reproducible research and academic writing."
 
 knitr::include_graphics(here::here("figures/workshop.png"))
 ```
@@ -1104,6 +1110,7 @@ In July $2025$, I had the privilege of serving as a coach in the Monash Innovati
 #| fig-pos: H
 #| out-width: "30%"
 #| label: fig-migp
+#| fig-alt: "Photographs capturing mentoring activities with master’s students in the Monash Innovation Guarantee Postgraduate (MIG-P) program in July 2025. The images show small groups of students engaged in discussion, collaborative problem solving, and creative planning around tables or whiteboards, reflecting team-based project work."
 
 knitr::include_graphics(here::here("figures/mig2025.png"))
 ```
@@ -1126,6 +1133,7 @@ This journey has been as much about exploring the unknown as it has been about d
 #| fig-align: "center"
 #| fig-cap: "Geographic footprint of the PhD journey, highlighting research visits, conferences, and academic engagements across Australia, Austria, and the United States. Locations include Salzburg and Vienna (Austria), Nebraska and Tennessee (USA), and Melbourne, Sydney, Canberra, and Perth (Australia), alongside moments from conferences, collaborations, and software dissemination."
 #| label: fig-mem
+#| fig-alt: "A world map highlighting locations associated with the PhD journey. Markers indicate research visits, conferences, and academic engagements across Australia, Austria, and the United States, including Melbourne, Sydney, Canberra, and Perth; Salzburg and Vienna; and sites in Nebraska and Tennessee. Additional images or insets show moments from conferences, collaborations, and software dissemination activities at these locations."
 
 # Read images
 austria_img <- rasterGrob(png::readPNG(here::here("figures/austria.png")), interpolate=TRUE)
