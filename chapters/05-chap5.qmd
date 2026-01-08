@@ -324,14 +324,88 @@ The visual layout of the experiment for five subjects is shown in @fig-exp-desig
 
 
 ```{r}
-#| fig-height: 5
-#| fig-width: 5
+#| fig-height: 4
+#| fig-width: 8
 #| label: fig-exp-design
 #| fig-pos: "!ht"
 #| out-width: 100%
 #| fig-cap: "Experiment design for five subjects. Shapes represent NLDR methods, and fill colors denote distance scale factors (from low to high, mapped from light to dark). Solid shapes indicate SAME trials, unfilled shapes indicate DIFFERENT trials, and thicker outlines denote attention checks. Each subject completed $20$ trials: $15$ SAME trials showing the same data structure in both the $2\\text{-}D$ plot and tour, $4$ DIFFERENT trials showing different structures, and one attention check (SAME or DIFFERENT). In SAME trials, five NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) were combined with three of five distance scale factors (small, small-medium, medium, medium-large, and large). For DIFFERENT trials, four NLDR methods were randomly selected, and the remaining method was used in the attention check. All DIFFERENT and attention check trials used a distance scale factor of *medium-large*."
 
-knitr::include_graphics(here::here("figures/vis-exp/exp_design.png"))
+experiment_design01 <- read_rds(here::here("data/vis-exp/experiment_design_with_methods_and_distance_factor_missings_batch04.rds")) |>
+  filter(subject %in% c(paste0("subject", 67:76)))
+
+# Prepare dataset
+plot_data <- experiment_design01 |>
+  select(subject, attempt, method, is_same, is_attention_check, distance_factor) |>
+  mutate(
+    # Recode distance factor
+    distance_sf = recode(as.character(distance_factor),
+                         `0.1` = "S",
+                         `0.6` = "SM",
+                         `0.9` = "M",
+                         `1`   = "ML",
+                         `1.1` = "L"),
+    # Recode method names
+    method = recode(as.character(method),
+                    tsne   = "tSNE",
+                    umap   = "UMAP",
+                    phate  = "PHATE",
+                    trimap = "TriMAP",
+                    pacmap = "PaCMAP"),
+    # Stroke size for attention check
+    stroke_size = ifelse(is_attention_check == "YES", 1.3, 0.5),
+    # Fill color: solid for SAME, hollow for DIFFERENT
+    is_same_fill = ifelse(is_same == "SAME", distance_sf, "white")
+  ) |>
+  # Group by subject to assign horizontal positions
+  group_by(subject) |>
+  arrange(attempt) |>
+  mutate(trial_pos = (row_number() - 1) * 6) |>  # increased spacing
+  ungroup() |>
+  # Reverse factor levels so first subject is on top
+  mutate(subject_id = factor(subject, levels = rev(unique(subject))),
+         method = factor(method, levels = c("tSNE","UMAP","PHATE","TriMAP","PaCMAP")),
+         is_same_fill = factor(is_same_fill, levels = c("S","SM","M","ML","L", "white")))
+
+# Define colors for distance factor
+distance_colors <- c(
+  "S"  = "#fef0d9",
+  "SM" = "#fdcc8a",
+  "M"  = "#fc8d59",
+  "ML" = "#e34a33",
+  "L"  = "#b30000"
+)
+
+# Define shapes for methods
+method_shapes <- c(
+  "tSNE"   = 21,
+  "UMAP"   = 24,
+  "PHATE"  = 22,
+  "TriMAP" = 23,
+  "PaCMAP" = 25
+)
+
+# Plot
+ggplot(plot_data, aes(x = trial_pos, y = subject_id)) +
+  geom_point(aes(
+    shape = method,          # map method to shape (legend appears)
+    fill = is_same_fill,     # distance factor for SAME trials
+    stroke = stroke_size
+  ),
+  size = 5,                 # slightly smaller shapes to avoid overlap
+  color = "black") +
+  scale_shape_manual(values = method_shapes, name = "NLDR Method") +
+scale_fill_manual(values = distance_colors, na.value = "white", name = "Distance Factor",
+                      guide = guide_legend(override.aes = list(color = distance_colors))) +
+  scale_y_discrete(name = "Subject") +
+  scale_x_continuous(name = "Trial", breaks = NULL, expand = expansion(mult = 0.05)) +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.title = element_blank()
+  ) 
 ```
 
 ### Experimental factors
