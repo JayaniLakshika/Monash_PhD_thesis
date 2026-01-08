@@ -426,32 +426,6 @@ dt_acc_struct <- results_df_method_ds |>
   filter(result == 1) |>
   mutate(structure_high_d = str_split(structure_high_d, "_", simplify = TRUE)[, 3])
 
-dt_ci <- dt_acc_struct |>
-  mutate(
-    ci = binom::binom.wilson(n, tot_attempt)
-  ) |>
-  mutate(
-    LCL = ci$lower,
-    UCL = ci$upper
-  ) |>
-  select(-ci)
-
-dt_attempt_dist <- results_df_method_ds |>
-  count(structure_high_d, distance_factor) |>
-  rename(tot_attempt = n)
-
-dt_acc_struct_dist <- results_df_method_ds |>
-  count(structure_high_d, distance_factor, result) |>
-  inner_join(dt_attempt_dist,
-             by = c("structure_high_d", "distance_factor")) |>
-  mutate(prop_correct = n / tot_attempt) |>
-  filter(result == 1) |>
-  mutate(
-    structure_high_d = str_split(structure_high_d, "_",
-                                 simplify = TRUE)[, 3]
-  )
-
-
 sbj_attempt <- results_df_method_ds |> 
   count(subject) |>
   rename("tot_attempt" = "n")
@@ -473,15 +447,13 @@ subj_ci <- subj_acc |>
   select(-ci)
 
 dt_acc_plt <- ggplot(
-  dt_ci,
+  dt_acc_struct,
   aes(x = prop_correct,
       y = fct_reorder(structure_high_d, prop_correct))
 ) +
   geom_point(size = 2, colour = "black") +
   interior_annotation("a", c(0.08, 0.94), 2) +
   scale_x_continuous(limits = c(0, 1)) +
-  scale_color_manual(values = c("#fef0d9", "#fdcc8a", 
-                                "#fc8d59", "#e34a33", "#b30000")) +
   labs(
     x = "Correct proportion",
     y = "Data set",

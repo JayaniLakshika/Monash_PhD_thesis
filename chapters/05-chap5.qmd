@@ -811,6 +811,49 @@ nldr1_three_clust_07 <- get_embeddings(dt_structutre = "three_clust_07") |>
                              "tsne" = "tSNE",
                              "umap" = "UMAP")) 
 
+prop_df_07 <- results_df_method_ds |>
+    filter(structure_high_d == "three_clust_07") |>
+    group_by(method, distance_factor) |>
+    summarise(
+        n_total   = n(),
+        n_correct = sum(result == 1, na.rm = TRUE),
+        prop_correct = n_correct / n_total,
+        .groups = "drop"
+    ) |>
+    filter(method %in% c("tSNE", "UMAP")) |>
+    filter(distance_factor %in% c("S", "L")) |>
+    mutate(
+        label = round(prop_correct, 2)
+    )
+
+corner_df_07 <- nldr1_three_clust_07 |>
+  group_by(method, scale_factor) |>
+  summarise(
+    x = max(emb1, na.rm = TRUE),
+    y = max(emb2, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+annot_df_07 <- corner_df_07 |>
+  left_join(
+    prop_df_07,
+    by = c("method" = "method",
+           "scale_factor" = "distance_factor")
+  )
+
+sf_max_xy_07 <- nldr1_three_clust_07 |>
+  group_by(scale_factor) |>
+  summarise(
+    x = max(emb1, na.rm = TRUE),
+    y = max(emb2, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+annot_df_07 <- annot_df_07 |>
+  select(-x, -y) |>          # remove old per-method values
+  left_join(sf_max_xy_07, by = "scale_factor")
+
+
 nld_plt1_three_clust_07 <- ggplot(
     data = nldr1_three_clust_07,
     aes(
@@ -820,8 +863,20 @@ nld_plt1_three_clust_07 <- ggplot(
   ) +
     geom_point(alpha=0.05, size=1, colour = "black") +
     facet_grid(scale_factor~method, scales = "free") +
-    theme(aspect.ratio = 1,
-          strip.text = element_text(size = 10))
+    geom_text(
+      data = annot_df_07,
+      aes(
+        x = x,
+        y = y,
+        label = label
+      ),
+      hjust = 1.1,   # push slightly inward from top-right
+      vjust = 1.2,
+      size = 3,
+      inherit.aes = FALSE,
+      color = "#a6761d"
+    ) +
+    theme(trip.text = element_text(size = 10))
 
 ```
 
@@ -1033,6 +1088,48 @@ nldr1_three_clust_12 <- get_embeddings(dt_structutre = "three_clust_12") |>
                              "tsne" = "tSNE",
                              "umap" = "UMAP")) 
 
+prop_df_12 <- results_df_method_ds |>
+    filter(structure_high_d == "three_clust_12") |>
+    group_by(method, distance_factor) |>
+    summarise(
+        n_total   = n(),
+        n_correct = sum(result == 1, na.rm = TRUE),
+        prop_correct = n_correct / n_total,
+        .groups = "drop"
+    ) |>
+    filter(method %in% c("tSNE", "UMAP")) |>
+    filter(distance_factor %in% c("S", "L")) |>
+    mutate(
+        label = round(prop_correct, 2)
+    )
+
+corner_df_12 <- nldr1_three_clust_12 |>
+    group_by(method, scale_factor) |>
+    summarise(
+        x = max(emb1, na.rm = TRUE),
+        y = max(emb2, na.rm = TRUE),
+        .groups = "drop"
+    )
+
+annot_df_12 <- corner_df_12 |>
+    left_join(
+        prop_df_07,
+        by = c("method" = "method",
+               "scale_factor" = "distance_factor")
+    )
+
+sf_max_xy_12 <- nldr1_three_clust_12 |>
+  group_by(scale_factor) |>
+  summarise(
+    x = max(emb1, na.rm = TRUE),
+    y = max(emb2, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+annot_df_12 <- annot_df_12 |>
+  select(-x, -y) |>          # remove old per-method values
+  left_join(sf_max_xy_12, by = "scale_factor")
+
 nld_plt1_three_clust_12 <- ggplot(
   data = nldr1_three_clust_12,
   aes(
@@ -1042,6 +1139,19 @@ nld_plt1_three_clust_12 <- ggplot(
 ) +
   geom_point(alpha=0.05, size=1, colour = "black") +
   facet_grid(scale_factor~method, scales = "free") +
+      geom_text(
+      data = annot_df_12,
+      aes(
+        x = x,
+        y = y,
+        label = label
+      ),
+      hjust = 1.1,   # push slightly inward from top-right
+      vjust = 1.2,
+      size = 3,
+      inherit.aes = FALSE,
+      color = "#a6761d"
+    ) +
   theme(aspect.ratio = 1,
         strip.text = element_text(size = 10))
 
