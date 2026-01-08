@@ -179,7 +179,7 @@ In our analysis of the results, we decided to quantify the distances between clu
 The BW ratio, defined as
 
 $$
-  \text{BW}
+  \text{BW ratio}
   =
   \frac{
       \sum_{i=1}^{K} n_i~d(\bar{\mathbf{x}}_i, \bar{\mathbf{x}})
@@ -194,7 +194,7 @@ where $d(\cdot,\cdot)$ denotes the Euclidean distance, $C_i$ is the $i^{th}$ clu
 In addition, the minimum distance was used as a complementary measure of global separation:
 
 $$
-  \text{Minimum distance} =
+  \text{minimum distance} =
   \min_{k \neq \ell}\min_{\mathbf{x}_i \in C_k,\mathbf{x}_j \in C_l}
   d(\mathbf{x}_i, \mathbf{x}_j),
 $$
