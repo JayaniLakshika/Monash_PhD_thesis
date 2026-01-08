@@ -515,11 +515,11 @@ results_df_method_ds <- left_join(results_df_method_ds, distance_df,
 bw_ratio_quasi <- ggplot(data = results_df_method_ds,
        aes(
          x = distance_factor,
-         y = bw_ratio
+         y = bw_ratio_scaled
        )) +
   geom_quasirandom(alpha = 0.5) +
   interior_annotation("a", position = c(0.05, 0.92), cex = 2) +
-  ylab("BW ratio") +
+  ylab("scaled BW ratio") +
   xlab("distance scale factor") +
   theme_minimal() +
   theme(aspect.ratio = 0.4)
@@ -527,11 +527,11 @@ bw_ratio_quasi <- ggplot(data = results_df_method_ds,
 min_dist_quasi <- ggplot(data = results_df_method_ds,
        aes(
          x = distance_factor,
-         y = min_dist
+         y = exp_min_dist_scaled
        )) +
   geom_quasirandom(alpha = 0.5) +
   interior_annotation("b", position = c(0.05, 0.92), cex = 2) +
-  ylab("minimum distance") +
+  ylab("exp(minimum distance scaled)") +
   xlab("distance scale factor") +
   theme_minimal() +
   theme(aspect.ratio = 0.4)
@@ -541,8 +541,8 @@ min_dist_quasi <- ggplot(data = results_df_method_ds,
 #| label: fig-dist-metrics
 #| fig-width: 10
 #| fig-height: 8
-#| fig-cap: "Distribution of distance metric values across distance scale factors used as treatments in the experiment. (a) Between-to-within (BW) ratio and (b) minimum inter-cluster distance, each plotted against five categorical distance scale factors: small (S), small–medium (SM), medium (M), medium–large (ML), and large (L). Both metrics increase systematically with the scale factor, confirming that the distance scale treatment effectively controls cluster separability in the high-dimensional space."
-#| fig-alt: "Two-panel figure showing the distribution of cluster separation metrics across categorical distance scale factors. Panel (a) displays a quasi-random scatter plot of the between-to-within (BW) ratio. The horizontal axis lists five categorical distance scale factors—small (S), small–medium (SM), medium (M), medium–large (ML), and large (L) arranged from left to right. The vertical axis shows BW ratio values on a continuous numeric scale increasing upward. For each scale factor, multiple points are plotted with slight horizontal jitter, forming vertical bands that represent the distribution of BW ratios under that condition. The point clouds shift progressively upward from S to L, indicating larger BW ratios at higher distance scales. Panel (b) shows a similar quasi-random scatter plot for the minimum inter-cluster distance. The horizontal axis again displays the five distance scale factors (S to L), and the vertical axis shows minimum distance values on a continuous scale. Points are jittered horizontally within each category, producing vertical distributions whose central tendency increases from left to right."
+#| fig-cap: "Distribution of distance metric values across distance scale factors used as treatments in the experiment. (a) scaled between-to-within (BW) ratio and (b) exp(scaled minimum inter-cluster distance), each plotted against five categorical distance scale factors: small (S), small–medium (SM), medium (M), medium–large (ML), and large (L). Both metrics increase systematically with the scale factor, confirming that the distance scale treatment effectively controls cluster separability in the high-dimensional space."
+#| fig-alt: "Two-panel figure showing the distribution of cluster separation metrics across categorical distance scale factors. Panel (a) displays a quasi-random scatter plot of the scaled between-to-within (BW) ratio. The horizontal axis lists five categorical distance scale factors—small (S), small–medium (SM), medium (M), medium–large (ML), and large (L) arranged from left to right. The vertical axis shows BW ratio values on a continuous numeric scale increasing upward. For each scale factor, multiple points are plotted with slight horizontal jitter, forming vertical bands that represent the distribution of BW ratios under that condition. The point clouds shift progressively upward from S to L, indicating larger BW ratios at higher distance scales. Panel (b) shows a similar quasi-random scatter plot for the exponential scaled minimum inter-cluster distance. The horizontal axis again displays the five distance scale factors (S to L), and the vertical axis shows minimum distance values on a continuous scale. Points are jittered horizontally within each category, producing vertical distributions whose central tendency increases from left to right."
 
 bw_ratio_quasi + min_dist_quasi +
   plot_layout(nrow = 2)
