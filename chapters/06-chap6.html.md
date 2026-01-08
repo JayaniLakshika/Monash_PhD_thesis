@@ -16,6 +16,10 @@ A key advantage of `menuraR` is its accessibility. The application is fully web-
 
 This chapter introduces the version $1.0.2$ of `menuraR`, describing its implementation, core features, and intended use cases. We demonstrate how the application can inform NLDR choices, highlight key visual diagnostics, and support exploratory data analysis and teaching.
 
+## Usability survey
+
+We conducted a usability survey with the NUMBATs research group at Monash University to inform decisions regarding the app's design. Participants were asked to complete a series of tasks within the application, including uploading data, generating new NLDR layouts, comparing embeddings, and interpreting model diagnostics. The run sheets used to guide the study are openly available at: [github.com/JayaniLakshika/paper-menuraR/run\_sheets](https://github.com/JayaniLakshika/paper-menuraR/tree/main/run_sheets). Their interactions, feedback, and suggestions were used to refine the interface, improve documentation, and identify features that enhance usability or require redesign.
+
 ## Methods
 
 The `menuraR` application is implemented in R using the `shiny` package [@winston2025a], which provides the reactive framework required for interactive web applications. Supporting packages, including `shinycssloaders` [@dean2024], are used to indicate progress during computationally intensive tasks.
@@ -91,33 +95,18 @@ The *Comparison* panel enabled a quantitative comparison of these layouts using 
 
 Linked brushing in the *Model Diagnostics* tab showed that the model fits the data well and highlighted filled-out and dense clusters that are not visible from the NLDR layout (@fig-menuraR_ui3).
 
-## Limitations
-
-Currently, `menuraR` supports two NLDR methods tSNE and UMAP executed within the R environment on shinyapps.io. Performance may vary depending on dataset size and browser memory limits, as computations are handled server-side.
-
-## Usability survey
-
-We conducted a usability survey with the NUMBATs research group at Monash University to inform decisions regarding the app's design. Participants were asked to complete a series of tasks within the application, including uploading data, generating new NLDR layouts, comparing embeddings, and interpreting model diagnostics. The run sheets used to guide the study are openly available at: [github.com/JayaniLakshika/paper-menuraR/run\_sheets](https://github.com/JayaniLakshika/paper-menuraR/tree/main/run_sheets). Their interactions, feedback, and suggestions were used to refine the interface, improve documentation, and identify features that enhance usability or require redesign.
-
-## Data availability
-
-The data used in the survey are available at [github.com/JayaniLakshika/paper-menuraR/data](https://github.com/JayaniLakshika/paper-menuraR/tree/main/data), and the example data used in the app are available at [github.com/JayaniLakshika/menuraR/data](https://github.com/JayaniLakshika/menuraR/tree/main/data).
-
 ## Conclusions
 
 This chapter introduces `menuraR`, a web-based interface designed to assist in the evaluation and selection of the most reasonable NLDR layout(s). Although NLDR methods such as tSNE, and, UMAP are widely used for visualizing high-dimensional data, interpreting and selecting the most representative layout can be complex. `menuraR` addresses this challenge by providing an accessible, intuitive, and interactive environment that encapsulates the diagnostic features of the `quollr` package, making assistant in NLDR selection feasible for users with varying levels of technical expertise.
 
+Currently, `menuraR` supports two NLDR methods tSNE and UMAP executed within the R environment on shinyapps.io. Performance may vary depending on dataset size and browser memory limits, as computations are handled server-side.
+
 Developed using the R Shiny framework, `menuraR` eliminates many of the technical barriers traditionally associated with advanced statistical software. Users do not need to install additional packages or configure language-specific environments, which is particularly valuable for interdisciplinary research teams and educational settings. The platform helps users to compare NLDR layouts, select the ones that most accurately represent the high-dimensional data structure, and assess NLDR results.”
 
-## Competing interests
+## Supplementary Materials
 
-No competing interest is declared.
-
-## Author contributions statement
-
-J.P.G. developed the \texttt{menuraR} Shiny application, developed the \texttt{quollr} package, conducted the analysis, and designed and conducted the usability survey. D.C., P.H., M.L. and T.S.T. provided methodological guidance and contributed to application design, and usability survey. J.P.G. drafted the manuscript, and all authors reviewed and approved the final version.
+The data used in the survey are available at [github.com/JayaniLakshika/paper-menuraR/data](https://github.com/JayaniLakshika/paper-menuraR/tree/main/data), and the example data used in the app are available at [github.com/JayaniLakshika/menuraR/data](https://github.com/JayaniLakshika/menuraR/tree/main/data).
 
 ## Acknowledgments
 
 We thank members of NUMBATs, the working group of the Department of Econometrics and Business Statistics, Monash University, Australia, for their participation in the usability survey and for providing valuable feedback that helped improve this research.
-
