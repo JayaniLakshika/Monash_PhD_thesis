@@ -1069,7 +1069,7 @@ knitr::include_graphics(here::here("figures/menuraR.png"))
 
 ## Software names
 
-Each software name is inspired by an animal. `quollr` is named after the **quoll**, a carnivorous, curious, and endangered marsupial from Australia. `cardinalR` is inspired by the North American **cardinal bird**. `menuraR` comes from Australia’s lyrebirds (**Menura**), famous for their elaborate courtship displays and extraordinary ability to mimic sounds.
+Each software name is inspired by an animal. `quollr` is named after the **quoll**, a carnivorous, curious, and endangered marsupial from Australia. `cardinalR` is inspired by the North American **cardinal** bird. `menuraR` comes from Australia’s lyrebirds (**Menura**), famous for their elaborate courtship displays and extraordinary ability to mimic sounds.
 
 ## Presentations
 
