@@ -28,6 +28,9 @@ library(tidyr)
 library(patchwork)
 library(kableExtra)
 library(colorspace)
+library(stringr)
+library(ggbeeswarm)
+library(forcats)
 ```
 
 ```{r}
@@ -320,6 +323,220 @@ After identifying the eligible subject IDs, one is randomly assigned to the part
 Once a subject ID is allocated to a participant, the experiment design data is loaded, and the relevant attempts, data structure, and methods are presented to the participant. This process continues until the participant completes all attempts. After determining the data structure and methods, the relevant high-dimensional and embedding data is loaded from "high_d_data_three_clust_all.rds" and "embedding_data_three_clust_all.rds," respectively, and displayed in both tour and $2\text{-}D$ NLDR plots. 
 
 Once the participant records their answers, a new row is added to the "result_df" Google Sheet with their responses. This continues until the participant finishes the study. Finally, after completing the evaluations, participants are asked to fill out a demographics questionnaire. Their responses are then recorded in a new row of the "demographic_details" Google Sheet.
+
+## Variability across data sets and subjects
+
+Two sources of variability in the experimental design that are important to assess relative to the fitted model: data sets and subjects. Data sets are effectively treated as replicates in the experiment, providing random samples of a range of types of clusters. Humans have different perceptual skills which is why it is important to include a subject random effect in the model. 
+
+Across the data sets used in the experiment, the proportion of correct responses ranges from approximately $0.3$ to $0.7$ (@fig-var-sum a). The overall pattern is consistent with variability due to random sampling. <!-- Many data sets behave similarly, which is not surprising given that they are constructed from a shared set of underlying data structures. Because the data sets exhibit comparable levels of difficulty rather than forming distinct groups, treating data set as a separate experimental factor is unlikely to add explanatory power. Instead, variation across data sets reflects structural differences already captured by the design of the simulation.-->
+
+The proportion correct across subjects is symmetric and unimodal, reasonably consistent with the assumption that they are normally distributed random effects (@fig-var-sum b). Some subjects performed extremely well, and others poorly. This is similar to what has been observed in other human subjects experiments involving visual tasks. A high score could be obtained by selecting SAME on each trial but this was not the case when all their data was examined. <!-- Most subjects achieve moderate accuracy, centred around a correct proportion of roughly $0.5$ , with fewer subjects at the lower and higher ends. Importantly, this distribution is balanced rather than polarized. High-accuracy subjects do not succeed simply by always choosing "SAME"; they still make occasional errors. Similarly, subjects with lower accuracy are not consistently choosing "DIFFERENT" and do show some correct responses. As a result, no subject has a correct proportion of exactly $0$ or $1$.--> 
+
+<!-- This pattern suggests that subjects differ in overall sensitivity to visual structure, but not in a way that reflects systematic bias or disengagement. These individual differences are therefore well-represented as random effects, allowing us to account for baseline variation in performance without attributing it to the experimental conditions themselves. Modeling subjects as a random effect captures this heterogeneity while preserving the focus on how NLDR methods and cluster separation influence perceptual accuracy.-->
+
+<!-- #### Summary -->
+<!-- data structure wise analysis-->
+
+
+```{r}
+#| label: read-collected-data-method-ds
+
+results_df_method_ds <- read_rds(here::here("data/vis-exp/result_method_ds_factor.rds"))
+
+results_df_method_ds <- results_df_method_ds |>
+  filter(method != "pca") |>
+  mutate(type = "old")
+
+results_df_method_ds_missings <- read_rds(here::here("data/vis-exp/result_method_ds_factor_missings.rds")) |>
+  mutate(type = "new")
+
+results_df_method_ds <- bind_rows(
+  results_df_method_ds, results_df_method_ds_missings)
+
+## To reformat the response variable
+results_df_method_ds <- results_df_method_ds |>
+  mutate(result = if_else(result == "Correct", 1, 0))
+
+## To change the type of distance factor
+results_df_method_ds <- results_df_method_ds |>
+  mutate(distance_factor = as.factor(distance_factor)) 
+
+#Set PCA as base
+results_df_method_ds <- results_df_method_ds |>
+  mutate(method = factor(method,
+      levels = c("trimap", "umap", "pacmap", "tsne", "phate"))) |>
+  mutate(method = recode(method,
+                         tsne = "tSNE",
+                         umap = "UMAP",
+                         phate = "PHATE",
+                         trimap = "TriMAP",
+                         pacmap = "PaCMAP"))
+
+## To change the type of distance time_taken_in_seconds
+results_df_method_ds <- results_df_method_ds |>
+  mutate(time_taken_in_minutes = as.numeric(time_taken_in_minutes)) 
+
+metrics <- c("min_dist", "avg_btw_dist", "bw_ratio", "dunn", "dunn2",
+             "pearsongamma", "sindex", "avg_silwidth_dist")
+
+## To join the distance
+distance_df <- read_rds(here::here("data/vis-exp/three_clust_min_avg_dist_df.rds")) |>
+  filter(distance_sf != 0.8) |>
+  mutate(distance_sf = as.factor(distance_sf)) |>
+  mutate(bw_ratio = 1/wb_ratio) |>
+  mutate(across(
+    all_of(metrics),
+    ~ (. - min(.)) / (max(.) - min(.)),
+    .names = "{.col}_scaled"
+  )) |>
+  mutate(exp_min_dist_scaled = exp(min_dist_scaled)) |>
+  mutate(distance_sf = recode(distance_sf,
+                           `0.1` = "S",
+                           `0.6` = "SM",
+                           `0.9` = "M",
+                           `1` = "ML",
+                           `1.1` = "L")) 
+
+results_df_method_ds <- results_df_method_ds |>
+  mutate(distance_factor = recode(distance_factor,
+                           `0.1` = "S",
+                           `0.6` = "SM",
+                           `0.9` = "M",
+                           `1` = "ML",
+                           `1.1` = "L")) 
+
+results_df_method_ds <- left_join(results_df_method_ds, distance_df,
+                                  by = c("structure_high_d" = "data_structure",
+                                         "distance_factor" = "distance_sf")) 
+
+
+```
+
+```{r}
+## To combine each cluster shapes
+
+dt_attempt <- results_df_method_ds |> 
+  count(structure_high_d) |>
+  rename("tot_attempt" = "n")
+
+dt_acc_struct <- results_df_method_ds |> 
+  count(structure_high_d, result) |>
+  inner_join(dt_attempt, by = "structure_high_d") |>
+  mutate(prop_correct = n/tot_attempt) |> 
+  filter(result == 1) |>
+  mutate(structure_high_d = str_split(structure_high_d, "_", simplify = TRUE)[, 3])
+
+dt_ci <- dt_acc_struct |>
+  mutate(
+    ci = binom::binom.wilson(n, tot_attempt)
+  ) |>
+  mutate(
+    LCL = ci$lower,
+    UCL = ci$upper
+  ) |>
+  select(-ci)
+
+dt_attempt_dist <- results_df_method_ds |>
+  count(structure_high_d, distance_factor) |>
+  rename(tot_attempt = n)
+
+dt_acc_struct_dist <- results_df_method_ds |>
+  count(structure_high_d, distance_factor, result) |>
+  inner_join(dt_attempt_dist,
+             by = c("structure_high_d", "distance_factor")) |>
+  mutate(prop_correct = n / tot_attempt) |>
+  filter(result == 1) |>
+  mutate(
+    structure_high_d = str_split(structure_high_d, "_",
+                                 simplify = TRUE)[, 3]
+  )
+
+
+sbj_attempt <- results_df_method_ds |> 
+  count(subject) |>
+  rename("tot_attempt" = "n")
+
+subj_acc <- results_df_method_ds |> 
+  count(subject, result) |>
+  inner_join(sbj_attempt, by = "subject") |>
+  mutate(prop_correct = n/tot_attempt) |> 
+  filter(result == 1)
+
+subj_ci <- subj_acc |>
+  mutate(
+    ci = binom::binom.wilson(n, tot_attempt)
+  ) |>
+  mutate(
+    LCL = ci$lower,
+    UCL = ci$upper
+  ) |>
+  select(-ci)
+
+dt_acc_plt <- ggplot(
+  dt_ci,
+  aes(x = prop_correct,
+      y = fct_reorder(structure_high_d, prop_correct))
+) +
+  geom_point(size = 2, colour = "black") +
+  interior_annotation("a", c(0.08, 0.94), 2) +
+  scale_x_continuous(limits = c(0, 1)) +
+  scale_color_manual(values = c("#fef0d9", "#fdcc8a", 
+                                "#fc8d59", "#e34a33", "#b30000")) +
+  labs(
+    x = "Correct proportion",
+    y = "Data set",
+    colour = "Distance factor"
+  ) +
+  theme_minimal() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.border = element_rect(
+      colour = "black",
+      fill = NA,
+      linewidth = 0.4
+    ),
+    axis.text.y = element_text(size = 7),
+    axis.title = element_text(size = 8),
+    axis.ticks = element_line(colour = "black", linewidth = 0.3),
+    legend.position = "none"
+  )
+
+
+subj_acc_plt <- ggplot(subj_ci,
+       aes(x = "", y = prop_correct)) +
+  geom_quasirandom(
+      width = 0.25,
+      alpha = 0.4,
+      size = 1.2,
+      colour = "black"
+  ) +
+  coord_flip() +
+  interior_annotation("b", c(0.08, 0.94), 2) +
+  scale_y_continuous(limits = c(0, 1)) +
+  labs(x = NULL, y = "Correct proportion") +
+  theme_minimal() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.border = element_rect(
+      colour = "black",
+      fill = NA,
+      linewidth = 0.4
+    ),
+    axis.text.y = element_text(size = 7),
+    axis.title = element_text(size = 8),
+    axis.ticks = element_line(colour = "black", linewidth = 0.3)
+  )
+```
+
+```{r}
+#| fig-height: 5
+#| fig-width: 10
+#| label: fig-var-sum
+#| fig-cap: "Examining the variability of proportion correct across data sets and subjects. Panel (a) shows the proportion of correct responses for each data set. The variability ranges from $0.3$ to $0.7$ and is consistent with considering the data sets as replication variability due to random sampling. Panel (b) shows the distribution of proportion correct across subjects. It is relatively Gaussian with a few participants performing exceptionally well and some poorly. This is consistent with other human subject experiments and reflects individual visual skills, illustrating the need to include subject-specific random effects in the model."
+
+dt_acc_plt + subj_acc_plt +
+  plot_layout(ncol = 2)
+```
 
 ## Analysis of results relative to data collection process
 

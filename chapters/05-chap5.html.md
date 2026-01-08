@@ -125,15 +125,17 @@ This study aims to answer which NLDR methods are more accurate in identifying th
 
 ### Data generation
 
-A total of $30$ data sets are generated, each containing three clusters. Two of the data sets, that are extremely easy to evaluate are reserved as attention checks, that will be used to determine if the subject conscientiously attempted the task. All data sets were standardized prior to NLDR and showing in the tour. 
+A total of $30$ $4\text{-}D$ data sets are generated. Two are reserved as attention check used to determine if the subject conscientiously attempted the task. All data sets were standardized prior to NLDR and showing in the tour. 
 
 #### Non-attention check data
 
-For the experiment, three cluster data are generated. The three clusters contain different number of points and shapes. Let $C_1, C_2,$ and $C_3$ denote the centroids of three clusters. The pairwise distances between these centroids are calculated as: $d(C_1, C_2) = c_{12} \approx 2.17, \quad d(C_1, C_3) = c_{13} \approx 4, \quad d(C_2, C_3) \approx c_{23} = 3.6$. These results indicate that clusters $C_1$ and $C_2$ are in close proximity, whereas cluster $C_3$ is positioned further away from the other two clusters, suggesting a spatial separation within the data. The reason for using the distance between centroids is that it can be easily controlled. 
+For the experiment, three cluster data are generated. The three clusters contain different number of points and shapes. Let $C_1, C_2,$ and $C_3$ denote the centroids of three clusters. The pairwise distances between these centroids are calculated as: $d(C_1, C_2) = c_{12}, \quad d(C_1, C_3) = c_{13}, \quad d(C_2, C_3) = c_{23}$, where clusters $C_1$ and $C_2$ are in close proximity, whereas cluster $C_3$ is positioned further away from the other two clusters, suggesting a spatial separation within the data. The reason for using the distance between centroids is that it can be easily controlled. 
+
+XXX Shapes for each cluster were selected randomly from a set of XXX. 
 
 <!-- In total, there are $28$ data structures used for the experiment. Out of these, $18$ data structures show the same structure in both the $2\text{-}D$ NLDR plot and tour for each experiment, while the remaining $10$ data structures display different structures in the $2\text{-}D$ NLDR plot and tour. This means that when data structure $19$ is displayed in the NLDR plot, data structure $20$ appears in the tour.  -->
 
-To systematically vary the degree of separation in the SAME trials, the original (medium-large) centroid distances are scaled by four different factors: $0.1$ (small), $0.6$ (small-medium), $0.9$ (medium), and $1.1$ (large). In contrast, data structures used for the DIFFERENT trials retained the original (medium-large) centroid distances.
+The degree of separation between centroids is changed using four scale factors: $0.1$ (small), $0.6$ (small-medium), $0.9$ (medium), and $1.1$ (large),  in the SAME trials. In contrast, data structures used for the DIFFERENT trials retained the original centroid distances (called medium-large).
 
 #### Attention check data
 
@@ -345,33 +347,6 @@ To assess whether these patterns depend on how separation is quantified, we fitt
 
 
 Taken together, these results demonstrate that the impact of cluster separability on correct identification is robust to the choice of distance measure but varies substantially across NLDR methods. Methods such as UMAP benefit from increased separation, whereas tSNE and PHATE appear sensitive to over-separation, potentially leading to distortions in the low-dimensional representation. TriMAP, by contrast, shows little sensitivity to changes in separation, suggesting robustness across a wide range of cluster configurations.
-
-### Variability across data sets and subjects
-
-Two sources of variability in the experimental design that are important to assess relative to the fitted model: data sets and subjects. Data sets are effectively treated as replicates in the experiment, providing random samples of a range of types of clusters. Humans have different perceptual skills which is why it is important to include a subject random effect in the model. 
-
-Across the data sets used in the experiment, the proportion of correct responses ranges from approximately $0.3$ to $0.7$ (@fig-var-sum a). While this spread indicates that some data sets are easier to identify than others, the overall pattern is fairly consistent. Many data sets behave similarly, which is not surprising given that they are constructed from a shared set of underlying data structures. Because the data sets exhibit comparable levels of difficulty rather than forming distinct groups, treating data set as a separate experimental factor is unlikely to add explanatory power. Instead, variation across data sets reflects structural differences already captured by the design of the simulation.
-
-In contrast, subject-level performance shows natural but well-behaved variability. Most subjects achieve moderate accuracy, centred around a correct proportion of roughly $0.5$ (@fig-var-sum b), with fewer subjects at the lower and higher ends. Importantly, this distribution is balanced rather than polarized. High-accuracy subjects do not succeed simply by always choosing "SAME"; they still make occasional errors. Similarly, subjects with lower accuracy are not consistently choosing "DIFFERENT" and do show some correct responses. As a result, no subject has a correct proportion of exactly $0$ or $1$.
-
-This pattern suggests that subjects differ in overall sensitivity to visual structure, but not in a way that reflects systematic bias or disengagement. These individual differences are therefore well-represented as random effects, allowing us to account for baseline variation in performance without attributing it to the experimental conditions themselves. Modeling subjects as a random effect captures this heterogeneity while preserving the focus on how NLDR methods and cluster separation influence perceptual accuracy.
-
-<!-- #### Summary -->
-<!-- data structure wise analysis-->
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![Examining the variability of proportion correct across data sets and subjects. Panel (a) shows the proportion of correct responses for each data set. Black indicates the correct proportion and binomial confidence intervals, with colour representing correct proportion across different distance-scaling within each data set (low to high matching light to dark). The variability ranges from $0.3$ to $0.7$ and is consistent with considering the data sets as replication variability due to random sampling. Panel (b) shows the distribution of proportion correct across subjects. It is relatively Gaussian with a few participants performing exceptionally well and some poorly. This is consistent with other human subject experiments and reflects individual visual skills, illustrating the need to include subject-specific random effects in the model.](05-chap5_files/figure-html/fig-var-sum-1.png){#fig-var-sum fig-align='center' width=100%}
-:::
-:::
-
 
 ### Patterns for misidentification
 

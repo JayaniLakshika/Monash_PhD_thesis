@@ -253,6 +253,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Glossary</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/D-appD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Additional activities</span></span></a>
+  </div>
+</li>
       </ul>
 </li>
     </ul>
@@ -268,7 +274,8 @@ window.Quarto = {
   <li><a href="#text-d-nldr-layouts" id="toc-text-d-nldr-layouts" class="nav-link" data-scroll-target="#text-d-nldr-layouts"><span class="header-section-number">B.3</span> <span class="math inline">2\text{-}D</span> NLDR layouts</a></li>
   <li><a href="#distance-metrics" id="toc-distance-metrics" class="nav-link" data-scroll-target="#distance-metrics"><span class="header-section-number">B.4</span> Distance metrics</a></li>
   <li><a href="#data-collection-process" id="toc-data-collection-process" class="nav-link" data-scroll-target="#data-collection-process"><span class="header-section-number">B.5</span> Data collection process</a></li>
-  <li><a href="#analysis-of-results-relative-to-data-collection-process" id="toc-analysis-of-results-relative-to-data-collection-process" class="nav-link" data-scroll-target="#analysis-of-results-relative-to-data-collection-process"><span class="header-section-number">B.6</span> Analysis of results relative to data collection process</a></li>
+  <li><a href="#variability-across-data-sets-and-subjects" id="toc-variability-across-data-sets-and-subjects" class="nav-link" data-scroll-target="#variability-across-data-sets-and-subjects"><span class="header-section-number">B.6</span> Variability across data sets and subjects</a></li>
+  <li><a href="#analysis-of-results-relative-to-data-collection-process" id="toc-analysis-of-results-relative-to-data-collection-process" class="nav-link" data-scroll-target="#analysis-of-results-relative-to-data-collection-process"><span class="header-section-number">B.7</span> Analysis of results relative to data collection process</a></li>
   </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/appendix/B-appB.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -290,7 +297,7 @@ window.Quarto = {
 </header><section id="scripts" class="level2" data-number="B.1"><h2 data-number="B.1" class="anchored" data-anchor-id="scripts">
 <span class="header-section-number">B.1</span> Scripts</h2>
 <div class="cell" data-layout-align="center" data-tbl-pos="H">
-<div id="tbl-script-desc" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-pos="H" data-layout-align="center">
+<div id="tbl-script-desc" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center" data-tbl-pos="H">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-script-desc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;B.1: R script files used to generate outputs in the main paper.
 </figcaption><div aria-describedby="tbl-script-desc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -520,7 +527,7 @@ Table&nbsp;B.2: Description of the simulated three-cluster data structures. Each
 </div>
 <p>Animations of the <span class="math inline">4\text{-}D</span> tours that used for the study are available on YouTube at the links given in <a href="#tbl-links-html" class="quarto-xref">Table&nbsp;<span>B.3</span></a>.</p>
 <div class="cell" data-layout-align="center" data-tbl-pos="H">
-<div id="tbl-links-html" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-pos="H" data-layout-align="center">
+<div id="tbl-links-html" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center" data-tbl-pos="H">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-links-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;B.3: Videos
 </figcaption><div aria-describedby="tbl-links-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -804,8 +811,28 @@ Figure&nbsp;B.8: The end page of the study app.
 <p>After identifying the eligible subject IDs, one is randomly assigned to the participant, and “1” is recorded in the “used” column corresponding to that subject ID. This subject ID will later assist in connecting the experiment design, high-dimensional data, and embedding data.</p>
 <p>Once a subject ID is allocated to a participant, the experiment design data is loaded, and the relevant attempts, data structure, and methods are presented to the participant. This process continues until the participant completes all attempts. After determining the data structure and methods, the relevant high-dimensional and embedding data is loaded from “high_d_data_three_clust_all.rds” and “embedding_data_three_clust_all.rds,” respectively, and displayed in both tour and <span class="math inline">2\text{-}D</span> NLDR plots.</p>
 <p>Once the participant records their answers, a new row is added to the “result_df” Google Sheet with their responses. This continues until the participant finishes the study. Finally, after completing the evaluations, participants are asked to fill out a demographics questionnaire. Their responses are then recorded in a new row of the “demographic_details” Google Sheet.</p>
-</section></section><section id="analysis-of-results-relative-to-data-collection-process" class="level2" data-number="B.6"><h2 data-number="B.6" class="anchored" data-anchor-id="analysis-of-results-relative-to-data-collection-process">
-<span class="header-section-number">B.6</span> Analysis of results relative to data collection process</h2>
+</section></section><section id="variability-across-data-sets-and-subjects" class="level2" data-number="B.6"><h2 data-number="B.6" class="anchored" data-anchor-id="variability-across-data-sets-and-subjects">
+<span class="header-section-number">B.6</span> Variability across data sets and subjects</h2>
+<p>Two sources of variability in the experimental design that are important to assess relative to the fitted model: data sets and subjects. Data sets are effectively treated as replicates in the experiment, providing random samples of a range of types of clusters. Humans have different perceptual skills which is why it is important to include a subject random effect in the model.</p>
+<p>Across the data sets used in the experiment, the proportion of correct responses ranges from approximately <span class="math inline">0.3</span> to <span class="math inline">0.7</span> (<a href="#fig-var-sum" class="quarto-xref">Figure&nbsp;<span>B.9</span></a> a). The overall pattern is consistent with variability due to random sampling. <!-- Many data sets behave similarly, which is not surprising given that they are constructed from a shared set of underlying data structures. Because the data sets exhibit comparable levels of difficulty rather than forming distinct groups, treating data set as a separate experimental factor is unlikely to add explanatory power. Instead, variation across data sets reflects structural differences already captured by the design of the simulation.--></p>
+<p>The proportion correct across subjects is symmetric and unimodal, reasonably consistent with the assumption that they are normally distributed random effects (<a href="#fig-var-sum" class="quarto-xref">Figure&nbsp;<span>B.9</span></a> b). Some subjects performed extremely well, and others poorly. This is similar to what has been observed in other human subjects experiments involving visual tasks. A high score could be obtained by selecting SAME on each trial but this was not the case when all their data was examined. <!-- Most subjects achieve moderate accuracy, centred around a correct proportion of roughly $0.5$ , with fewer subjects at the lower and higher ends. Importantly, this distribution is balanced rather than polarized. High-accuracy subjects do not succeed simply by always choosing "SAME"; they still make occasional errors. Similarly, subjects with lower accuracy are not consistently choosing "DIFFERENT" and do show some correct responses. As a result, no subject has a correct proportion of exactly $0$ or $1$.--></p>
+<!-- This pattern suggests that subjects differ in overall sensitivity to visual structure, but not in a way that reflects systematic bias or disengagement. These individual differences are therefore well-represented as random effects, allowing us to account for baseline variation in performance without attributing it to the experimental conditions themselves. Modeling subjects as a random effect captures this heterogeneity while preserving the focus on how NLDR methods and cluster separation influence perceptual accuracy.-->
+<!-- #### Summary -->
+<!-- data structure wise analysis-->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-var-sum" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-var-sum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="B-appB_files/figure-html/fig-var-sum-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-var-sum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;B.9: Examining the variability of proportion correct across data sets and subjects. Panel (a) shows the proportion of correct responses for each data set. The variability ranges from <span class="math inline">0.3</span> to <span class="math inline">0.7</span> and is consistent with considering the data sets as replication variability due to random sampling. Panel (b) shows the distribution of proportion correct across subjects. It is relatively Gaussian with a few participants performing exceptionally well and some poorly. This is consistent with other human subject experiments and reflects individual visual skills, illustrating the need to include subject-specific random effects in the model.
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="analysis-of-results-relative-to-data-collection-process" class="level2" data-number="B.7"><h2 data-number="B.7" class="anchored" data-anchor-id="analysis-of-results-relative-to-data-collection-process">
+<span class="header-section-number">B.7</span> Analysis of results relative to data collection process</h2>
 <section id="data-cleaning" class="level3"><h3 class="anchored" data-anchor-id="data-cleaning">Data cleaning</h3>
 <p>The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty-three trials, including the demographics and the attention check trial. Participants who exceeded the average time of <span class="math inline">5-10</span> minutes were excluded, as determined from the pilot study. Following this, individuals who didn’t accurately detect the attention check trial were also removed. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set is further refined by filtering out all the responses, which showed the same data structures in <span class="math inline">2\text{-}D</span> NLDR plot and tour.</p>
 </section><section id="demographics" class="level3"><h3 class="anchored" data-anchor-id="demographics">Demographics</h3>
