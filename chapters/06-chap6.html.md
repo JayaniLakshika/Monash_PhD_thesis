@@ -14,11 +14,36 @@ These capabilities are delivered through an intuitive interface that eliminates 
 
 A key advantage of `menuraR` is its accessibility. The application is fully web-based, and does not require a local installation of R or package management. Centralized hosting ensures that users always access the most up-to-date version, while reproducibility is supported through logging and open availability of the underlying code. In this way, `menuraR` enhances transparency in NLDR evaluation and fosters broader adoption of rigorous visualization practices.
 
-This chapter introduces the version $1.0.2$ of `menuraR`, describing its implementation, core features, and intended use cases. We demonstrate how the application can inform NLDR choices, highlight key visual diagnostics, and support exploratory data analysis and teaching.
+This chapter introduces `menuraR`, describing its implementation, core features, and intended use cases. We demonstrate how the application can inform NLDR choices, highlight key visual diagnostics, and support exploratory data analysis and teaching.
 
 ## User-Informed design
 
-We conducted a usability survey with the NUMBATs research group at Monash University to inform decisions regarding the app's design. Participants were asked to complete a series of tasks within the application, including uploading data, generating new NLDR layouts, comparing embeddings, and interpreting model diagnostics. Their interactions, feedback, and suggestions were used to refine the interface, improve documentation, and identify features that enhance usability or require redesign.
+To make sure `menuraR` is intuitive and practical, we conducted a usability study with members of the NUMBATs research group at Monash University. The goal was to observe how users interact with the app, identify confusing aspects, and gather suggestions for improvement.
+
+We provided **two slightly different runsheets** for two groups of participants:
+
+1. **Generate default layouts group:** Participants in this group were instructed to choose *“Generate default tSNE and UMAP layouts”* as the source of NLDR layouts.
+2. **Upload own layouts group:** Participants in this group were instructed to *“Upload your own NLDR data”*, and we provided the necessary metadata and precomputed NLDR layouts for them to upload.
+
+Both groups were asked to complete tasks that simulate real-world usage: uploading data, generating or uploading NLDR layouts, comparing embeddings using Hexbin Error (HBE), exploring model diagnostics, and downloading results. They also recorded which layouts they used, the binwidth ($a_1$) they selected, the layouts suggested as “best” by the app, and whether they agreed with that suggestion. Background information, such as experience with PCA or NLDR methods and subject area, was also collected.
+
+The feedback we received led to several key improvements:
+
+* **Data Upload Tab Layout and Numbering:** Initially, all upload tiles were in one column, with “Add More Layout” and “Ready to Analyze?” in a separate column, which confused participants. Additionally, the numbering of steps was inconsistent: in the default-layout group, there was no “step 3,” which participants found confusing. We rearranged the tiles and renumbered the steps for a more logical and consistent workflow.
+
+* **Displaying Uploaded NLDR Layouts:** When users uploaded NLDR layouts, the titles showing method and hyper-parameters were being cut off. This was fixed so that all layout titles are fully visible, improving clarity.
+
+* **Understanding Binwidth ($a_1$):** Users were confused about how changing the binwidth affected the analysis. Previously, only the NLDR layout was drawn without any overlay, so changes to $a_1$ were not visually clear. We added a hexagon grid overlay on the NLDR layout, making the effect of the binwidth immediately visible.
+
+* **Seeing the Model in High Dimensions:** Some participants did not understand how the 2D layout relates to the high-dimensional model. To address this, we added a 2D wireframe step, which allows users to see the underlying structure before lifting it into high dimensions.
+
+* **Navigating to Model Diagnostics:** Model Diagnostics was originally accessible only from the sidebar, so users did not naturally explore it from the Compare NLDR Layouts tab. We added a small redirect tile to guide users directly to the diagnostics tab.
+
+* **HBE vs Binwidth Plot:** Participants were confused when the full HBE vs binwidth plot was redrawn each time they selected a new $a_1$. Ideally, we would have liked to show a fixed plot with just a vertical line indicating the chosen binwidth, but this was not feasible due to the way Shiny handles reactivity combined with the loading spinner (`withSpinner`). The plot is generated dynamically from the computed HBE values for the selected layouts, and separating the vertical line from the main plot would require a substantial rewrite of the reactive logic, potentially slowing the app for larger datasets and complicating maintenance. Therefore, the full plot is redrawn each time to ensure the visualization is accurate and the app remains stable and responsive, even though this behavior may appear confusing to users.
+
+Overall, the study confirmed that `menuraR` significantly improves the process of comparing and selecting NLDR layouts, especially for users without programming experience. With clearer workflow, more informative visualizations, and better interactivity, the app is now more intuitive and practical for both research and teaching.
+
+This paper presents `menuraR` version $1.0.2$, which incorporates all these user-informed changes and reflects the latest improvements from the usability study.
 
 ## Methods
 
@@ -39,7 +64,7 @@ The `menuraR` app contains four main three tabs: (1) Data Upload, (2) Compare NL
 Analysis in \texttt{menuraR} begins in two ways: by uploading user-provided high-dimensional data or by using one of the built-in example datasets (@fig-menuraR_ui1). Two datasets are provided within the application: C-shaped Clusters, a synthetic dataset illustrating nonlinear structure, and PBMC, a biological single-cell dataset for real-world exploration [@rahul2025]. If the user uploads their own high-dimensional data, the file should be a CSV and the CSV must have a unique ID column, with data columns prefixed by the letter `x` (e.g., `x1`, `x2`, etc.).
 
 Once the high-dimensional data uploaded, under "Choose the source of NLDR layouts", users select an NLDR layout source: "Upload your own NLDR data", or "Generate default tSNE and UMAP layouts".
-Selecting "Upload your own NLDR data" activates the uploaded NLDR layouts and metadata for comparison. Precomputed NLDR layouts are uploaded as a CSV file. For each layout, the two embedding dimensions are labeled `emb1` and `emb2`. If multiple layouts are included, embedding columns are prefixed with the layout number (e.g., `1_emb1`, `1_emb2`). Also, the meta data CSV file includes the NLDR layout name (e.g., 1, 2, etc.), the method used (like UMAP or tSNE), and any hyper-parameters formatted with the parameter name followed by its value, separated by a dash (e.g., perplexity-30 for tSNE). All uploaded files must be under $100$ MB in size, and it is essential that each dataset follows the variable naming conventions required by the web application. Alternatively, users may choose \emph{Generate default tSNE and UMAP layouts}, in which case the application automatically computes two embeddings using default hyper-parameter settings for tSNE and UMAP.
+Selecting "Upload your own NLDR data" activates the uploaded NLDR layouts and metadata for comparison. Precomputed NLDR layouts are uploaded as a CSV file. For each layout, the two embedding dimensions are labeled `emb1` and `emb2`. If multiple layouts are included, embedding columns are prefixed with the layout number (e.g., `1_emb1`, `1_emb2`). Also, the metadata CSV file includes the NLDR layout name (e.g., 1, 2, etc.), the method used (like UMAP or tSNE), and any hyper-parameters formatted with the parameter name followed by its value, separated by a dash (e.g., perplexity-30 for tSNE). All uploaded files must be under $100$ MB in size, and it is essential that each dataset follows the variable naming conventions required by the web application. Alternatively, users may choose \emph{Generate default tSNE and UMAP layouts}, in which case the application automatically computes two embeddings using default hyper-parameter settings for tSNE and UMAP.
 
 Once loaded, all available NLDR layouts appear in the "Your Loaded NLDR Layouts" box. Users can select or deselect specific layouts to include in the comparison.
 
