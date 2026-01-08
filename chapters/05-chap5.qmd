@@ -288,6 +288,24 @@ $H_{0m1}$: The distance between the clusters has no effect on the probability of
 This study aims to answer which NLDR methods are more accurate in identifying the same data structure in the $2\text{-}D$ NLDR plot and the tour, as the distance increases, and to identify which types of data structure components are more prone to misidentification across methods.
 -->
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Need to work on adding these info:
+
+- In data generation: Why three clusters? How they positioned? Why the data in 4-D? Why different number of points in each cluster? Why different shaped clusters? Why always a combination of nonlinear shaped cluster (capture nonlinear shape), pyramid shapes cluster (capture density), and other shape (hemisphere/cube/Gaussian)?
+
+- Why do we choose these specific distance scale factors?
+
+- Why did we scale the data sets before showing in the tour?
+
+- Why these number of participants enough? 
+
+- Why do we scaled BW ratio and minimum distance?
+
+- Why do we used exponential minimum scaled distance?
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 ### Data generation
 
 A total of $30$ $4\text{-}D$ data sets are generated. Two are reserved as attention check used to determine if the subject conscientiously attempted the task. All data sets were standardized prior to NLDR and showing in the tour. 
