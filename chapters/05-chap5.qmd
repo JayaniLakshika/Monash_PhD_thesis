@@ -306,7 +306,7 @@ The degree of separation between centroids is changed using four scale factors: 
 
 There are two sets of attention check data; one consisting of three Gaussian clusters and the other consisting of four Gaussian clusters. Each cluster is generated using a multivariate normal distribution where the mean vectors and variances were predefined. Specifically, for the three-cluster case, the mean vectors were set as $[1, 0, 0, 0]$, $[0, 1, 0, 0]$, and $[0, 0, 1, 1]$, with a common variance of $0.1$ for all clusters. For the four-cluster case, the mean vectors were defined as $[1, 0, 0, 1]$, $[0, 1, 1, 0]$, $[1, 0, 1, 0]$, and $[0, 1, 0, 1]$, also using a variance of $0.1$. This approach ensures that data points are normally distributed around the specified centroids, with the spread controlled by the variance parameter. Each Gaussian cluster dataset consists of $4\text{-}D$ data with a sample size of $7500$, and each cluster contains an equal number of data points.
 
-### Organisation of SAME and DIFFERENT trials
+### Organization of SAME and DIFFERENT trials
 
 Although the main analysis focuses on trials where the same data are shown in both displays, it is essential to include DIFFERENT trials in the experiment. Without them, participants could rely on a trivial strategy—such as always responding "SAME" and still achieve high accuracy. DIFFERENT trials therefore act as a necessary control, ensuring that correct responses in SAME trials reflect genuine perceptual agreement between the NLDR layout and the tour rather than response bias or guessing.
 
@@ -334,13 +334,13 @@ The visual layout of the experiment for five subjects is shown in @fig-exp-desig
 knitr::include_graphics(here::here("figures/vis-exp/exp_design.png"))
 ```
 
-### Treatments
+### Experimental factors
 
-Two primary treatments were considered in the experiment: the NLDR method and the distance scale factor.
+Two factors of interest were considered in the experiment: the NLDR method and the distance scale factor.
 
-The first treatment consisted of five NLDR methods: *tSNE, UMAP, PHATE, PaCMAP, and TriMAP* each producing a $2\text{-}D$ representation.
+The first factor consisted of five NLDR methods: *tSNE, UMAP, PHATE, PaCMAP, and TriMAP* each producing a $2\text{-}D$ representation.
 
-The second treatment, the distance scale factor, controlled the degree of cluster separation in the high-dimensional space. Five categorical levels: *small, small–medium, medium, medium–large, and large* were defined to represent increasing degrees of separability. This categorical design enhances interpretability and perceptual distinctness, allowing subjects to discern meaningful structural differences while maintaining robustness against minor data variations.
+The second factor, the distance scale factor, controlled the degree of cluster separation in the high-dimensional space. Five categorical levels: *small, small–medium, medium, medium–large, and large* were defined to represent increasing degrees of separability. This categorical design enhances interpretability and perceptual distinctness, allowing subjects to discern meaningful structural differences while maintaining robustness against minor data variations.
 
 Cluster separability was quantified using two complementary measures: the *between-to-within (BW) ratio* and the *minimum inter-cluster distance*. A higher value of either metric indicates greater separation among clusters (@fig-dist-metrics). 
 
@@ -491,7 +491,7 @@ $$
 \text{logit}(P(y_{ijm} = 1)) = \mu_{m} + \beta_{m} d_{i} + \gamma_{j}
 $$ {#eq-glmm1}
 
-where $\mu_{m}$ is the overall mean for NLDR method $m$, $d_i$ is the distance measure for the data structure $i = 1, \dots, 18$, $\beta_m$ is the fixed effect of distance metric under NLDR method $m$, $\gamma_j$ is the random effect of the subject $j = 1, 2, \dots, 127$, where $\gamma_j \sim N(0, \sigma_\gamma^2)$. Separate models were fitted using $d_i$ as either the scaled BW ratio or the exp(scaled minimum distance). The NLDR methods denoted by $m$ can include TriMAP, UMAP, PaCMAP, tSNE, and PHATE.
+where $\mu_{m}$ is the intercept, $d_i$ is the distance measure for the data structure $i = 1, \dots, 18$, $\beta_m$ is the fixed effect of distance metric under NLDR method $m$, $\gamma_j$ is the random effect of the subject $j = 1, 2, \dots, 127$, where $\gamma_j \sim N(0, \sigma_\gamma^2)$. Separate models were fitted using $d_i$ as either the scaled BW ratio or the exp(scaled minimum distance). The NLDR methods denoted by $m$ can include TriMAP, UMAP, PaCMAP, tSNE, and PHATE.
 
 ## Results {#sec-results}
 
