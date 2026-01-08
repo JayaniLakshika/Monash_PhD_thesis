@@ -130,9 +130,9 @@ Currently, `menuraR` supports only two NLDR methods: tSNE and UMAP for computing
 
 ## Supplementary Materials
 
-The data used in the survey are available at [github.com/JayaniLakshika/paper-menuraR/data](https://github.com/JayaniLakshika/paper-menuraR/tree/main/data), and the example data used in the app are available at [github.com/JayaniLakshika/menuraR/data](https://github.com/JayaniLakshika/menuraR/tree/main/data).
+All data and materials used in the study are openly available. The survey data collected from participants can be accessed at [github.com/JayaniLakshika/paper-menuraR/data](https://github.com/JayaniLakshika/paper-menuraR/tree/main/data). The example datasets provided within the menuraR app are available at [github.com/JayaniLakshika/menuraR/data](https://github.com/JayaniLakshika/menuraR/tree/main/data).
 
-The run sheets used to guide the study are openly available at: [github.com/JayaniLakshika/paper-menuraR/run\_sheets](https://github.com/JayaniLakshika/paper-menuraR/tree/main/run_sheets).
+Additionally, the run sheets used to guide participants through the usability study are publicly available at [github.com/JayaniLakshika/paper-menuraR/run\_sheets](https://github.com/JayaniLakshika/paper-menuraR/tree/main/run_sheets).
 
 ## Acknowledgments
 
