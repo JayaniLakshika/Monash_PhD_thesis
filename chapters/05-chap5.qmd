@@ -329,10 +329,13 @@ The visual layout of the experiment for five subjects is shown in @fig-exp-desig
 #| label: fig-exp-design
 #| fig-pos: "!ht"
 #| out-width: 100%
-#| fig-cap: "Experiment design for five subjects. Shapes represent NLDR methods, and fill colors denote distance scale factors (from low to high, mapped from light to dark). Solid shapes indicate SAME trials, unfilled shapes indicate DIFFERENT trials, and thicker outlines denote attention checks. Each subject completed $20$ trials: $15$ SAME trials showing the same data structure in both the $2\\text{-}D$ plot and tour, $4$ DIFFERENT trials showing different structures, and one attention check (SAME or DIFFERENT). In SAME trials, five NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) were combined with three of five distance scale factors (small, small-medium, medium, medium-large, and large). For DIFFERENT trials, four NLDR methods were randomly selected, and the remaining method was used in the attention check. All DIFFERENT and attention check trials used a distance scale factor of *medium-large*."
+#| fig-cap: "Experiment design for ten subjects. Shapes represent NLDR methods, and fill colors denote distance scale factors (from low to high, mapped from light to dark). Solid shapes indicate SAME trials, unfilled shapes indicate DIFFERENT trials, and thicker outlines denote attention checks. Each subject completed $20$ trials: $15$ SAME trials showing the same data structure in both the $2\\text{-}D$ plot and tour, $4$ DIFFERENT trials showing different structures, and one attention check (SAME or DIFFERENT). In SAME trials, five NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) were combined with three of five distance scale factors (small, small-medium, medium, medium-large, and large). For DIFFERENT trials, four NLDR methods were randomly selected, and the remaining method was used in the attention check. All DIFFERENT and attention check trials used a distance scale factor of *medium-large*."
 
 experiment_design01 <- read_rds(here::here("data/vis-exp/experiment_design_with_methods_and_distance_factor_missings_batch04.rds")) |>
-  filter(subject %in% c(paste0("subject", 67:76)))
+  filter(subject %in% c(paste0("subject", 67:76))) |>
+  mutate(
+    subject = as.integer(factor(subject))  # 1–10
+  )
 
 # Prepare dataset
 plot_data <- experiment_design01 |>
