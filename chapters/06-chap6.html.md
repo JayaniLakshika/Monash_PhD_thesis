@@ -124,9 +124,9 @@ Linked brushing in the *Model Diagnostics* tab showed that the model fits the da
 
 This chapter introduces `menuraR`, a web-based interface designed to assist in the evaluation and selection of the most reasonable NLDR layout(s). Although NLDR methods such as tSNE, and, UMAP are widely used for visualizing high-dimensional data, interpreting and selecting the most representative layout can be complex. `menuraR` addresses this challenge by providing an accessible, intuitive, and interactive environment that encapsulates the diagnostic features of the `quollr` package, making assistant in NLDR selection feasible for users with varying levels of technical expertise.
 
-Currently, `menuraR` supports two NLDR methods tSNE and UMAP executed within the R environment on shinyapps.io. Performance may vary depending on dataset size and browser memory limits, as computations are handled server-side.
+Developed using the R Shiny framework, `menuraR` eliminates many of the technical barriers traditionally associated with advanced statistical software. Users do not need to install additional packages or configure language-specific environments, which is particularly valuable for interdisciplinary research teams and educational settings. The platform helps users to compare NLDR layouts, select the ones that most accurately represent the high-dimensional data structure, and assess NLDR results.
 
-Developed using the R Shiny framework, `menuraR` eliminates many of the technical barriers traditionally associated with advanced statistical software. Users do not need to install additional packages or configure language-specific environments, which is particularly valuable for interdisciplinary research teams and educational settings. The platform helps users to compare NLDR layouts, select the ones that most accurately represent the high-dimensional data structure, and assess NLDR results.”
+Currently, `menuraR` supports only two NLDR methods: tSNE and UMAP for computing additional layouts within the app. Performance may vary depending on dataset size and browser memory limits, as all computations are handled server-side. Users working with very large datasets may experience slower response times, and expanding support to other NLDR methods is a potential direction for future development.
 
 ## Supplementary Materials
 
