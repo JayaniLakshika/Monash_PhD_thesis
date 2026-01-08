@@ -518,20 +518,42 @@ glmm_model <- glmer(
 ```{r}
 # Fixed effects only
 emm1_tr <- emtrends(glmm_model, 
-                    specs = ~ method*bw_ratio_scaled, 
-                    var = "bw_ratio_scaled",
-                    infer = TRUE) |>
-  as_tibble() |>
-  mutate(across(where(is.numeric), ~ round(., 2)))  |>
-  mutate(p_val_sig = if_else(p.value <= 0.001, "***",
-                             if_else(p.value <= 0.01, "**",
-                                     if_else(p.value <= 0.05, "*", if_else(p.value <= 0.1, ".", " "))))) |>
-  rename(c("estimate" = "bw_ratio_scaled.trend")) |>
-  dplyr::select(method, estimate, SE, asymp.LCL, asymp.UCL, z.ratio, p.value, p_val_sig)
-
-# # Random effects only
-# random_effects_data <- imap_dfr(glmm_models, 
-#                               ~ tidy(.x, effects = "ran_vals") |> mutate(method = .y))  
+         specs = ~ method * bw_ratio_scaled, 
+         var = "bw_ratio_scaled",
+         infer = TRUE) |>
+    as_tibble() |>
+    mutate(
+        p_val_sig = case_when(
+            p.value <= 0.001 ~ "***",
+            p.value <= 0.01  ~ "**",
+            p.value <= 0.05  ~ "*",
+            p.value <= 0.1   ~ ".",
+            TRUE             ~ ""
+        )
+    ) |>
+    mutate(
+        p_fmt = if_else(
+            p.value < 0.001,
+            "<0.001",
+            formatC(p.value, format = "f", digits = 2)
+        ),
+        p = paste(p_fmt, p_val_sig)
+    ) |>
+    mutate(
+        across(
+            c(bw_ratio_scaled.trend, SE, z.ratio, asymp.LCL, asymp.UCL),
+            ~ round(., 2)
+        )
+    ) |>
+    mutate(
+        `95% CI` = paste0("[", asymp.LCL, ", ", asymp.UCL, "]")
+    ) |>
+    rename(
+        Slope  = bw_ratio_scaled.trend,
+        Method = method,
+        z      = z.ratio
+    ) |>
+    select(Method, Slope, SE, `95% CI`, z, p)
 ```
 
 ```{r}
@@ -663,16 +685,42 @@ glmm_model_min <- glmer(
 
 ```{r}
 emm1_tr_min <- emtrends(glmm_model_min, 
-                    specs = ~ method*exp_min_dist_scaled, 
-                    var = "exp_min_dist_scaled",
-                    infer = TRUE) |>
-  as_tibble() |>
-  mutate(across(where(is.numeric), ~ round(., 2)))  |>
-  mutate(p_val_sig = if_else(p.value <= 0.001, "***",
-                             if_else(p.value <= 0.01, "**",
-                                     if_else(p.value <= 0.05, "*", if_else(p.value <= 0.1, ".", " "))))) |>
-  rename(c("estimate" = "exp_min_dist_scaled.trend")) |>
-  dplyr::select(method, estimate, SE, asymp.LCL, asymp.UCL, z.ratio, p.value, p_val_sig)
+         specs = ~ method * exp_min_dist_scaled, 
+         var = "exp_min_dist_scaled",
+         infer = TRUE) |>
+    as_tibble() |>
+    mutate(
+        p_val_sig = case_when(
+            p.value <= 0.001 ~ "***",
+            p.value <= 0.01  ~ "**",
+            p.value <= 0.05  ~ "*",
+            p.value <= 0.1   ~ ".",
+            TRUE             ~ ""
+        )
+    ) |>
+    mutate(
+        p_fmt = if_else(
+            p.value < 0.001,
+            "<0.001",
+            formatC(p.value, format = "f", digits = 2)
+        ),
+        p = paste(p_fmt, p_val_sig)
+    ) |>
+    mutate(
+        across(
+            c(exp_min_dist_scaled.trend, SE, z.ratio, asymp.LCL, asymp.UCL),
+            ~ round(., 2)
+        )
+    ) |>
+    mutate(
+        `95% CI` = paste0("[", asymp.LCL, ", ", asymp.UCL, "]")
+    ) |>
+    rename(
+        Slope  = exp_min_dist_scaled.trend,
+        Method = method,
+        z      = z.ratio
+    ) |>
+    select(Method, Slope, SE, `95% CI`, z, p)
 ```
 
 ```{r}
@@ -865,17 +913,14 @@ nld_plt1_three_clust_07 <- ggplot(
     facet_grid(scale_factor~method, scales = "free") +
     geom_text(
       data = annot_df_07,
-      aes(
-        x = x,
-        y = y,
-        label = label
-      ),
-      hjust = 1.1,   # push slightly inward from top-right
-      vjust = 1.2,
+      aes(label = label),
+      x = Inf, y = Inf,
+      hjust = 1.2,
+      vjust = 1.6,
       size = 3,
-      inherit.aes = FALSE,
-      color = "#a6761d"
-    ) +
+      color = "#a6761d",
+      inherit.aes = FALSE
+  ) +
     theme(trip.text = element_text(size = 10))
 
 ```
@@ -1139,19 +1184,16 @@ nld_plt1_three_clust_12 <- ggplot(
 ) +
   geom_point(alpha=0.05, size=1, colour = "black") +
   facet_grid(scale_factor~method, scales = "free") +
-      geom_text(
-      data = annot_df_12,
-      aes(
-        x = x,
-        y = y,
-        label = label
-      ),
-      hjust = 1.1,   # push slightly inward from top-right
-      vjust = 1.2,
-      size = 3,
-      inherit.aes = FALSE,
-      color = "#a6761d"
-    ) +
+  geom_text(
+    data = annot_df_12,
+    aes(label = label),
+    x = Inf, y = Inf,
+    hjust = 1.2,
+    vjust = 1.6,
+    size = 3,
+    color = "#a6761d",
+    inherit.aes = FALSE
+) +
   theme(aspect.ratio = 1,
         strip.text = element_text(size = 10))
 

@@ -302,7 +302,7 @@ window.Quarto = {
 <p>Nonlinear transformations allow for multiple shape-varying clusters to be represented in a single <span class="math inline">2\text{-}D</span> layout. In contrast, classical linear projection will often require multiple projections to show multiple clusters. <a href="#fig-nldr-layouts" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> illustrates this: a1-a4 show linear projections revealing three well-separated clusters, one spherical, one ribbon-like and one like a star-shaped pyramid. The NLDR layout (left) is generated using tSNE has a mostly reasonable display of the three clusters in a single view, although it struggles with the star pyramid. It does place the clusters very close to each other which does not reflect the large separation in the high-dimensional space.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-nldr-layouts" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Multi-panel figure comparing a 2-D NLDR layout with multiple linear projections of the same 4-D data. The left panel shows a 2-D t-SNE layout with abstract horizontal and vertical axes representing embedding dimensions, each spanning a roughly symmetric range around zero. Points are colored or symbol-coded to indicate three underlying data structures. One group forms a compact, approximately spherical cluster. A second group forms a long, curved, ribbon-like band. A third group forms a star-shaped, pyramid-like structure with multiple arms radiating outward from a central region; in the tSNE layout, this structure appears split into several smaller, spatially separated point groups. The four right-hand panels (labeled a1–a4) show different 2-D linear projections of the same 4-D data, as produced by a tour. Each panel uses horizontal and vertical axes corresponding to different linear combinations of the original four variables, with numeric scales varying across projections but remaining continuous. In each projection, the same three data structures are visible: the spherical cluster appears compact, the curvilinear structure appears as a bent or elongated band whose orientation changes across projections, and the star-shaped pyramid appears as a single connected structure whose shape and orientation vary but remain coherent across all four views." data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-nldr-layouts" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Multi-panel figure comparing a 2-D NLDR layout with multiple linear projections of the same 4-D data. The left panel shows a 2-D t-SNE layout with abstract horizontal and vertical axes representing embedding dimensions, each spanning a roughly symmetric range around zero. Points are colored or symbol-coded to indicate three underlying data structures. One group forms a compact, approximately spherical cluster. A second group forms a long, curved, ribbon-like band. A third group forms a star-shaped, pyramid-like structure with multiple arms radiating outward from a central region; in the tSNE layout, this structure appears split into several smaller, spatially separated point groups. The four right-hand panels (labeled a1–a4) show different 2-D linear projections of the same 4-D data, as produced by a tour. Each panel uses horizontal and vertical axes corresponding to different linear combinations of the original four variables, with numeric scales varying across projections but remaining continuous. In each projection, the same three data structures are visible: the spherical cluster appears compact, the curvilinear structure appears as a bent or elongated band whose orientation changes across projections, and the star-shaped pyramid appears as a single connected structure whose shape and orientation vary but remain coherent across all four views." data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-nldr-layouts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-chap5_files/figure-html/fig-nldr-layouts-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht" alt="Multi-panel figure comparing a 2-D NLDR layout with multiple linear projections of the same 4-D data. The left panel shows a 2-D t-SNE layout with abstract horizontal and vertical axes representing embedding dimensions, each spanning a roughly symmetric range around zero. Points are colored or symbol-coded to indicate three underlying data structures. One group forms a compact, approximately spherical cluster. A second group forms a long, curved, ribbon-like band. A third group forms a star-shaped, pyramid-like structure with multiple arms radiating outward from a central region; in the tSNE layout, this structure appears split into several smaller, spatially separated point groups. The four right-hand panels (labeled a1–a4) show different 2-D linear projections of the same 4-D data, as produced by a tour. Each panel uses horizontal and vertical axes corresponding to different linear combinations of the original four variables, with numeric scales varying across projections but remaining continuous. In each projection, the same three data structures are visible: the spherical cluster appears compact, the curvilinear structure appears as a bent or elongated band whose orientation changes across projections, and the star-shaped pyramid appears as a single connected structure whose shape and orientation vary but remain coherent across all four views.">
 </div>
@@ -426,76 +426,54 @@ Table&nbsp;5.1: Estimated trends of correct identification probability with resp
 </figcaption><div aria-describedby="tbl-glmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 13%">
-<col style="width: 7%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 14%">
-</colgroup>
 <thead><tr class="header">
-<th style="text-align: left;">method</th>
-<th style="text-align: right;">estimate</th>
+<th style="text-align: left;">Method</th>
+<th style="text-align: right;">Slope</th>
 <th style="text-align: right;">SE</th>
-<th style="text-align: right;">asymp.LCL</th>
-<th style="text-align: right;">asymp.UCL</th>
-<th style="text-align: right;">z.ratio</th>
-<th style="text-align: right;">p.value</th>
-<th style="text-align: left;">p_val_sig</th>
+<th style="text-align: left;">95% CI</th>
+<th style="text-align: right;">z</th>
+<th style="text-align: left;">p</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">TriMAP</td>
 <td style="text-align: right;">0.03</td>
 <td style="text-align: right;">0.49</td>
-<td style="text-align: right;">-0.92</td>
-<td style="text-align: right;">0.99</td>
+<td style="text-align: left;">[-0.92, 0.99]</td>
 <td style="text-align: right;">0.07</td>
-<td style="text-align: right;">0.95</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">0.95</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: right;">1.15</td>
 <td style="text-align: right;">0.49</td>
-<td style="text-align: right;">0.19</td>
-<td style="text-align: right;">2.11</td>
+<td style="text-align: left;">[0.19, 2.11]</td>
 <td style="text-align: right;">2.35</td>
-<td style="text-align: right;">0.02</td>
-<td style="text-align: left;">*</td>
+<td style="text-align: left;">0.02 *</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">PaCMAP</td>
 <td style="text-align: right;">0.51</td>
 <td style="text-align: right;">0.48</td>
-<td style="text-align: right;">-0.43</td>
-<td style="text-align: right;">1.45</td>
+<td style="text-align: left;">[-0.43, 1.45]</td>
 <td style="text-align: right;">1.06</td>
-<td style="text-align: right;">0.29</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">0.29</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: right;">-2.61</td>
 <td style="text-align: right;">0.62</td>
-<td style="text-align: right;">-3.83</td>
-<td style="text-align: right;">-1.40</td>
+<td style="text-align: left;">[-3.83, -1.4]</td>
 <td style="text-align: right;">-4.20</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: left;">***</td>
+<td style="text-align: left;">&lt;0.001 ***</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">PHATE</td>
 <td style="text-align: right;">-0.92</td>
 <td style="text-align: right;">0.54</td>
-<td style="text-align: right;">-1.97</td>
-<td style="text-align: right;">0.13</td>
+<td style="text-align: left;">[-1.97, 0.13]</td>
 <td style="text-align: right;">-1.71</td>
-<td style="text-align: right;">0.09</td>
-<td style="text-align: left;">.</td>
+<td style="text-align: left;">0.09 .</td>
 </tr>
 </tbody>
 </table>
@@ -506,7 +484,7 @@ Table&nbsp;5.1: Estimated trends of correct identification probability with resp
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-glmm" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Multi-panel figure showing the relationship between cluster separation and identification accuracy for five NLDR methods. In the left panel, a line plot displays model-based estimated probabilities of correct identification as a function of the scaled between–within (BW) ratio. The horizontal axis represents the scaled BW ratio, increasing from low to high cluster separability, and the vertical axis shows predicted probability of correct identification, ranging from 0 to 1. Five colored lines correspond to UMAP, PaCMAP, TriMAP, tSNE, and PHATE. Each line is surrounded by a shaded band indicating a 95% confidence interval around the estimate. The right side of the figure contains separate panels for each NLDR method. In each panel, the horizontal axis again shows the scaled BW ratio and the vertical axis shows the proportion of correct identifications. Black points represent observed proportions at different BW ratio values, and a smooth colored curve overlays the points, representing the fitted logistic regression model for that method." data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-glmm" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Multi-panel figure showing the relationship between cluster separation and identification accuracy for five NLDR methods. In the left panel, a line plot displays model-based estimated probabilities of correct identification as a function of the scaled between–within (BW) ratio. The horizontal axis represents the scaled BW ratio, increasing from low to high cluster separability, and the vertical axis shows predicted probability of correct identification, ranging from 0 to 1. Five colored lines correspond to UMAP, PaCMAP, TriMAP, tSNE, and PHATE. Each line is surrounded by a shaded band indicating a 95% confidence interval around the estimate. The right side of the figure contains separate panels for each NLDR method. In each panel, the horizontal axis again shows the scaled BW ratio and the vertical axis shows the proportion of correct identifications. Black points represent observed proportions at different BW ratio values, and a smooth colored curve overlays the points, representing the fitted logistic regression model for that method." data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-glmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-chap5_files/figure-html/fig-glmm-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht" alt="Multi-panel figure showing the relationship between cluster separation and identification accuracy for five NLDR methods. In the left panel, a line plot displays model-based estimated probabilities of correct identification as a function of the scaled between–within (BW) ratio. The horizontal axis represents the scaled BW ratio, increasing from low to high cluster separability, and the vertical axis shows predicted probability of correct identification, ranging from 0 to 1. Five colored lines correspond to UMAP, PaCMAP, TriMAP, tSNE, and PHATE. Each line is surrounded by a shaded band indicating a 95% confidence interval around the estimate. The right side of the figure contains separate panels for each NLDR method. In each panel, the horizontal axis again shows the scaled BW ratio and the vertical axis shows the proportion of correct identifications. Black points represent observed proportions at different BW ratio values, and a smooth colored curve overlays the points, representing the fitted logistic regression model for that method.">
 </div>
@@ -524,76 +502,54 @@ Table&nbsp;5.2: Estimated trends of correct identification probability with resp
 </figcaption><div aria-describedby="tbl-glmm-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 13%">
-<col style="width: 7%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 14%">
-</colgroup>
 <thead><tr class="header">
-<th style="text-align: left;">method</th>
-<th style="text-align: right;">estimate</th>
+<th style="text-align: left;">Method</th>
+<th style="text-align: right;">Slope</th>
 <th style="text-align: right;">SE</th>
-<th style="text-align: right;">asymp.LCL</th>
-<th style="text-align: right;">asymp.UCL</th>
-<th style="text-align: right;">z.ratio</th>
-<th style="text-align: right;">p.value</th>
-<th style="text-align: left;">p_val_sig</th>
+<th style="text-align: left;">95% CI</th>
+<th style="text-align: right;">z</th>
+<th style="text-align: left;">p</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">TriMAP</td>
 <td style="text-align: right;">0.20</td>
 <td style="text-align: right;">0.20</td>
-<td style="text-align: right;">-0.20</td>
-<td style="text-align: right;">0.59</td>
+<td style="text-align: left;">[-0.2, 0.59]</td>
 <td style="text-align: right;">0.97</td>
-<td style="text-align: right;">0.33</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">0.33</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">UMAP</td>
 <td style="text-align: right;">0.59</td>
 <td style="text-align: right;">0.20</td>
-<td style="text-align: right;">0.20</td>
-<td style="text-align: right;">0.98</td>
+<td style="text-align: left;">[0.2, 0.98]</td>
 <td style="text-align: right;">2.99</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: left;">***</td>
+<td style="text-align: left;">0.00 **</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">PaCMAP</td>
 <td style="text-align: right;">0.22</td>
 <td style="text-align: right;">0.19</td>
-<td style="text-align: right;">-0.16</td>
-<td style="text-align: right;">0.60</td>
+<td style="text-align: left;">[-0.16, 0.6]</td>
 <td style="text-align: right;">1.12</td>
-<td style="text-align: right;">0.26</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">0.26</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">tSNE</td>
 <td style="text-align: right;">-0.78</td>
 <td style="text-align: right;">0.22</td>
-<td style="text-align: right;">-1.20</td>
-<td style="text-align: right;">-0.35</td>
+<td style="text-align: left;">[-1.2, -0.35]</td>
 <td style="text-align: right;">-3.60</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: left;">***</td>
+<td style="text-align: left;">&lt;0.001 ***</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">PHATE</td>
 <td style="text-align: right;">-0.35</td>
 <td style="text-align: right;">0.21</td>
-<td style="text-align: right;">-0.76</td>
-<td style="text-align: right;">0.06</td>
+<td style="text-align: left;">[-0.76, 0.06]</td>
 <td style="text-align: right;">-1.68</td>
-<td style="text-align: right;">0.09</td>
-<td style="text-align: left;">.</td>
+<td style="text-align: left;">0.09 .</td>
 </tr>
 </tbody>
 </table>
@@ -604,7 +560,7 @@ Table&nbsp;5.2: Estimated trends of correct identification probability with resp
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-glmm-min" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A multi-panel figure showing the relationship between cluster separation and identification accuracy for five NLDR methods. The left panel is a line plot of model-based estimated probabilities of correct cluster identification. The horizontal axis represents exp(scaled minimum distance), increasing from low to high cluster separation, and the vertical axis shows predicted probability of correct identification, ranging from 0 to 1. Five colored curves correspond to UMAP, tSNE, PHATE, PaCMAP, and TriMAP, each surrounded by a shaded 95% confidence interval band. The right side of the figure contains separate panels for each NLDR method. In each panel, the horizontal axis again shows exp(scaled minimum distance) and the vertical axis shows the proportion of correct identifications. Black points represent observed proportions at different separation levels, and a smooth colored curve overlays the points, showing the fitted logistic regression model for that method." data-fig-align="center" data-fig-pos="!ht">
+<div id="fig-glmm-min" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A multi-panel figure showing the relationship between cluster separation and identification accuracy for five NLDR methods. The left panel is a line plot of model-based estimated probabilities of correct cluster identification. The horizontal axis represents exp(scaled minimum distance), increasing from low to high cluster separation, and the vertical axis shows predicted probability of correct identification, ranging from 0 to 1. Five colored curves correspond to UMAP, tSNE, PHATE, PaCMAP, and TriMAP, each surrounded by a shaded 95% confidence interval band. The right side of the figure contains separate panels for each NLDR method. In each panel, the horizontal axis again shows exp(scaled minimum distance) and the vertical axis shows the proportion of correct identifications. Black points represent observed proportions at different separation levels, and a smooth colored curve overlays the points, showing the fitted logistic regression model for that method." data-fig-pos="!ht" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-glmm-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-chap5_files/figure-html/fig-glmm-min-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="!ht" alt="A multi-panel figure showing the relationship between cluster separation and identification accuracy for five NLDR methods. The left panel is a line plot of model-based estimated probabilities of correct cluster identification. The horizontal axis represents exp(scaled minimum distance), increasing from low to high cluster separation, and the vertical axis shows predicted probability of correct identification, ranging from 0 to 1. Five colored curves correspond to UMAP, tSNE, PHATE, PaCMAP, and TriMAP, each surrounded by a shaded 95% confidence interval band. The right side of the figure contains separate panels for each NLDR method. In each panel, the horizontal axis again shows exp(scaled minimum distance) and the vertical axis shows the proportion of correct identifications. Black points represent observed proportions at different separation levels, and a smooth colored curve overlays the points, showing the fitted logistic regression model for that method.">
 </div>
