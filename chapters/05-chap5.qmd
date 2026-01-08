@@ -292,17 +292,24 @@ This study aims to answer which NLDR methods are more accurate in identifying th
 
 Need to work on adding these info:
 
-- In data generation: Why three clusters? How they positioned? Why the data in 4-D? Why different number of points in each cluster? Why different shaped clusters? Why always a combination of nonlinear shaped cluster (capture nonlinear shape), pyramid shapes cluster (capture density), and other shape (hemisphere/cube/Gaussian)?
+- In data generation: 
+    - Why three clusters? How they positioned? Why the data in 4-D? Why different number of points in each cluster? 
+    
+    - Why different shaped clusters? Why always a combination of nonlinear shaped cluster (capture nonlinear shape), pyramid shapes cluster (capture density), and other shape (hemisphere/cube/Gaussian)? (added what each dataset consist of in appendix)
 
 - Why do we choose these specific distance scale factors?
 
 - Why did we scale the data sets before showing in the tour?
 
-- Why these number of participants enough? 
+- Why these number of participants enough? (may be good to add in appendix)
+
+- Why did we chose BW ratio and minimum distance? (already added to appendix but have ro think that it's necessary adding something in the main paper as well)
 
 - Why do we scaled BW ratio and minimum distance?
 
 - Why do we used exponential minimum scaled distance?
+
+- In the discussion, may add how to expand the study?
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
