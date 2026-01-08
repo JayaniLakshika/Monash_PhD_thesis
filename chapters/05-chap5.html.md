@@ -447,7 +447,7 @@ Future work could extend this framework by considering additional data structure
 
 ## Supplementary Materials
 
-All the materials to reproduce the chapter can be found at [github.com/JayaniLakshika/paper-vis-experiment](https://github.com/JayaniLakshika/paper-vis-experiment).
+<!-- All the materials to reproduce the chapter can be found at [github.com/JayaniLakshika/paper-vis-experiment](https://github.com/JayaniLakshika/paper-vis-experiment). -->
 
 The appendix provides additional details on the experimental materials and process, including the three-cluster data structures, $2\text{-}D$ NLDR layouts, inter-cluster distance metrics, and the data collection and analysis processes, along with links to videos, and scripts.
 

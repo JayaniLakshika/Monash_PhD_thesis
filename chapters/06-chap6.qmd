@@ -31,9 +31,9 @@ A key advantage of `menuraR` is its accessibility. The application is fully web-
 
 This chapter introduces the version $1.0.2$ of `menuraR`, describing its implementation, core features, and intended use cases. We demonstrate how the application can inform NLDR choices, highlight key visual diagnostics, and support exploratory data analysis and teaching.
 
-## Usability survey
+## User-Informed design
 
-We conducted a usability survey with the NUMBATs research group at Monash University to inform decisions regarding the app's design. Participants were asked to complete a series of tasks within the application, including uploading data, generating new NLDR layouts, comparing embeddings, and interpreting model diagnostics. The run sheets used to guide the study are openly available at: [github.com/JayaniLakshika/paper-menuraR/run\_sheets](https://github.com/JayaniLakshika/paper-menuraR/tree/main/run_sheets). Their interactions, feedback, and suggestions were used to refine the interface, improve documentation, and identify features that enhance usability or require redesign.
+We conducted a usability survey with the NUMBATs research group at Monash University to inform decisions regarding the app's design. Participants were asked to complete a series of tasks within the application, including uploading data, generating new NLDR layouts, comparing embeddings, and interpreting model diagnostics. Their interactions, feedback, and suggestions were used to refine the interface, improve documentation, and identify features that enhance usability or require redesign.
 
 ## Methods
 
@@ -124,6 +124,8 @@ Developed using the R Shiny framework, `menuraR` eliminates many of the technica
 ## Supplementary Materials
 
 The data used in the survey are available at [github.com/JayaniLakshika/paper-menuraR/data](https://github.com/JayaniLakshika/paper-menuraR/tree/main/data), and the example data used in the app are available at [github.com/JayaniLakshika/menuraR/data](https://github.com/JayaniLakshika/menuraR/tree/main/data).
+
+The run sheets used to guide the study are openly available at: [github.com/JayaniLakshika/paper-menuraR/run\_sheets](https://github.com/JayaniLakshika/paper-menuraR/tree/main/run_sheets).
 
 ## Acknowledgments
 

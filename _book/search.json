@@ -334,7 +334,7 @@
     "href": "chapters/05-chap5.html#supplementary-materials",
     "title": "5  Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study",
     "section": "\n5.7 Supplementary Materials",
-    "text": "5.7 Supplementary Materials\nAll the materials to reproduce the chapter can be found at github.com/JayaniLakshika/paper-vis-experiment.\nThe appendix provides additional details on the experimental materials and process, including the three-cluster data structures, 2\\text{-}D NLDR layouts, inter-cluster distance metrics, and the data collection and analysis processes, along with links to videos, and scripts.",
+    "text": "5.7 Supplementary Materials\n\nThe appendix provides additional details on the experimental materials and process, including the three-cluster data structures, 2\\text{-}D NLDR layouts, inter-cluster distance metrics, and the data collection and analysis processes, along with links to videos, and scripts.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study</span>"
     ]
@@ -832,7 +832,7 @@
     "href": "chapters/06-chap6.html#supplementary-materials",
     "title": "6  menuraR: An R Shiny App to Help Select the Best Nonlinear Dimension Reduction Representation",
     "section": "\n6.7 Supplementary Materials",
-    "text": "6.7 Supplementary Materials\nThe data used in the survey are available at github.com/JayaniLakshika/paper-menuraR/data, and the example data used in the app are available at github.com/JayaniLakshika/menuraR/data.",
+    "text": "6.7 Supplementary Materials\nThe data used in the survey are available at github.com/JayaniLakshika/paper-menuraR/data, and the example data used in the app are available at github.com/JayaniLakshika/menuraR/data.\nThe run sheets used to guide the study are openly available at: github.com/JayaniLakshika/paper-menuraR/run_sheets.",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>menuraR: An R Shiny App to Help Select the Best Nonlinear Dimension Reduction Representation</span>"
     ]
@@ -912,6 +912,16 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>B</span>  <span class='chapter-title'>Appendix to \"Perception and Misperception of Clustering in Nonlinear Dimension Reduction: A User Study\"</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/06-chap6.html#user-informed-design",
+    "href": "chapters/06-chap6.html#user-informed-design",
+    "title": "6  menuraR: An R Shiny App to Help Select the Best Nonlinear Dimension Reduction Representation",
+    "section": "\n6.2 User-Informed design",
+    "text": "6.2 User-Informed design\nWe conducted a usability survey with the NUMBATs research group at Monash University to inform decisions regarding the app’s design. Participants were asked to complete a series of tasks within the application, including uploading data, generating new NLDR layouts, comparing embeddings, and interpreting model diagnostics. Their interactions, feedback, and suggestions were used to refine the interface, improve documentation, and identify features that enhance usability or require redesign.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>menuraR: An R Shiny App to Help Select the Best Nonlinear Dimension Reduction Representation</span>"
     ]
   }
 ]
