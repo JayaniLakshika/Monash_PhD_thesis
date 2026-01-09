@@ -208,7 +208,7 @@ distance_df_scaled <- distance_df |>
     ~ (. - min(.)) / (max(.) - min(.)),
     .names = "{.col}_scaled"
   )) |>
-  mutate(exp_min_dist_scaled = exp(min_dist)) |>
+  mutate(exp_min_dist_scaled = exp(min_dist_scaled)) |>
   mutate(sqr_avg_btw_dist_scaled = avg_btw_dist_scaled^2) |>
   mutate(sqr_pearsongamma_scaled = pearsongamma_scaled^2) |>
   mutate(sqr_avg_silwidth_dist_scaled = avg_silwidth_dist_scaled^2) |>

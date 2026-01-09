@@ -123,31 +123,31 @@ $H_{0m1}$: The distance between the clusters has no effect on the probability of
 This study aims to answer which NLDR methods are more accurate in identifying the same data structure in the $2\text{-}D$ NLDR plot and the tour, as the distance increases, and to identify which types of data structure components are more prone to misidentification across methods.
 -->
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-Need to work on adding these info:
+<!-- Need to work on adding these info: -->
 
-- In data generation: 
-    - Why three clusters? How they positioned? Why the data in 4-D? Why different number of points in each cluster? (Done)
-    
-    - Why different shaped clusters? Why always a combination of nonlinear shaped cluster (capture nonlinear shape), pyramid shapes cluster (capture density), and other shape (hemisphere/cube/Gaussian)? (added what each dataset consist of in appendix, done)
+<!-- - In data generation:  -->
+<!--     - Why three clusters? How they positioned? Why the data in 4-D? Why different number of points in each cluster? (Done) -->
 
-- Why do we choose these specific distance scale factors? (done)
+<!--     - Why different shaped clusters? Why always a combination of nonlinear shaped cluster (capture nonlinear shape), pyramid shapes cluster (capture density), and other shape (hemisphere/cube/Gaussian)? (added what each dataset consist of in appendix, done) -->
 
-- Why did we scale the data sets before showing in the tour? (added as a comment)
+<!-- - Why do we choose these specific distance scale factors? (done) -->
 
-- In the discussion, may add how to expand the study? (done)
+<!-- - Why did we scale the data sets before showing in the tour? (added as a comment) -->
+
+<!-- - In the discussion, may add how to expand the study? (done) -->
+
+<!-- - Why did we chose BW ratio and minimum distance? (already added to appendix but have ro think that it's necessary adding something in the main paper as well) -->
 
 
-- Why these number of participants enough? (may be good to add in appendix)
+<!-- - Why these number of participants enough? (may be good to add in appendix) -->
 
-- Why did we chose BW ratio and minimum distance? (already added to appendix but have ro think that it's necessary adding something in the main paper as well)
+<!-- - Why do we scaled BW ratio and minimum distance? -->
 
-- Why do we scaled BW ratio and minimum distance?
+<!-- - Why do we used exponential minimum scaled distance? -->
 
-- Why do we used exponential minimum scaled distance?
-
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 ### Data generation
 
@@ -179,9 +179,9 @@ There are two sets of attention check data; one consisting of three Gaussian clu
 
 Although the main analysis focuses on trials where the same data are shown in both displays, it is essential to include DIFFERENT trials in the experiment. Without them, participants could rely on a trivial strategy—such as always responding "SAME" and still achieve high accuracy. DIFFERENT trials therefore act as a necessary control, ensuring that correct responses in SAME trials reflect genuine perceptual agreement between the NLDR layout and the tour rather than response bias or guessing.
 
-Therefore, the experiment was designed to include a mixture of SAME, DIFFERENT, and attention check trials. In total, $28$ non–attention-check data structures were used. Of these, $18$ data structures were assigned to SAME trials, where the same high-dimensional data structure was used to generate both the $2\text{-}D$ NLDR plot and the tour. These trials are the primary focus of the analysis.
+Therefore, the experiment was designed to include a mixture of SAME, DIFFERENT, and attention check trials. In total, $28$ non–attention check data structures were used. Of these, $18$ data structures were assigned to SAME trials, where the same high-dimensional data structure was used to generate both the $2\text{-}D$ NLDR plot and the tour. These trials are the primary focus of the analysis.
 
-The remaining $10$ data structures were used to create DIFFERENT trials. In these cases, the NLDR plot and the tour were generated from two distinct but related data structures. For example, when data structure `three_clust_19` appeared in the NLDR plot, `three_clust_20` was shown in the tour. Although these DIFFERENT trials are not analysed directly, they play a crucial role in maintaining the integrity of the task by preventing systematic response strategies.
+The remaining $10$ data structures were used to create DIFFERENT trials. In these cases, the NLDR plot and the tour were generated from two distinct but related data structures. For example, when data structure `three_clust_19` appeared in the NLDR plot, `three_clust_20` was shown in the tour. Although these DIFFERENT trials are not analyzed directly, they play a crucial role in maintaining the integrity of the task by preventing systematic response strategies.
 
 In addition, two clearly separable Gaussian cluster data sets were included as attention checks. These appear as both SAME and DIFFERENT trials and are used to verify that participants are paying attention and are able to perform the task under easy conditions.
 
@@ -208,7 +208,7 @@ The first factor consisted of five NLDR methods: *tSNE, UMAP, PHATE, PaCMAP, and
 
 The second factor, the distance scale factor, controlled the degree of cluster separation in the high-dimensional space. Five categorical levels: *small, small–medium, medium, medium–large, and large* were defined to represent increasing degrees of separability. This categorical design enhances interpretability and perceptual distinctness, allowing subjects to discern meaningful structural differences while maintaining robustness against minor data variations.
 
-In our analysis of the results, we decided to quantify the distances between clusters numerically rather than using the distance scale factor levels directly. Cluster separability was quantified using two complementary measures: the *between-to-within (BW) ratio* and the *minimum inter-cluster distance*. A higher value of either metric indicates greater separation among clusters (@fig-dist-metrics). 
+In our analysis of the results, we decided to quantify the distances between clusters numerically rather than using the distance scale factor levels directly. Cluster separability was quantified using two complementary measures: the *between-to-within (BW) ratio* and the *minimum inter-cluster distance*. A higher value of either metric indicates greater separation among clusters (@fig-dist-metrics). To ensure comparability across datasets with different underlying structures, all distance-based metrics were min–max scaled prior to analysis.  
 
 The BW ratio, defined as
 
@@ -233,7 +233,14 @@ $$
   d(\mathbf{x}_i, \mathbf{x}_j),
 $$
 
-which captures the closest proximity between any two clusters.
+which captures the closest proximity between any two clusters. The scaled minimum distance was exponentiated to put more emphasis on cases where clusters are very close together, which is where people are most likely to confuse them. Small changes at short distances can strongly affect how separable clusters appear, while larger increases in distance tend to have much less impact on perception.
+
+
+<!-- The BW ratio and minimum inter-cluster distance capture complementary aspects of cluster separation: global dispersion and local boundary proximity, respectively. To make these measures comparable across data structures, all distance-based metrics were first rescaled to the unit interval using min–max normalization. -->
+
+<!-- The scaled BW ratio was used as a global measure of separation, with larger values indicating clearer overall structure. For the minimum inter-cluster distance, we applied an exponential transformation to the scaled values. This transformation was chosen intentionally to emphasize differences at small separations, where clusters are close to touching and perceptual ambiguity is highest. -->
+
+<!-- In this setting, small increases in minimum distance can lead to disproportionately large improvements in visual distinguishability, whereas similar increases at already large separations have relatively little perceptual effect. The exponential transformation accentuates this nonlinearity, allowing the metric to better reflect perceptual sensitivity to local cluster boundaries rather than treating all changes in distance as equally meaningful. -->
 
 
 ::: {.cell layout-align="center"}
