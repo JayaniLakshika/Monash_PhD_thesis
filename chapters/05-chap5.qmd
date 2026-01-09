@@ -1511,6 +1511,9 @@ three_clust_13_data <- high_d_data |>
   filter(sample_size == 7500) |>
   pull(high_d_data)
 
+cluster <- three_clust_13_data[[1]] |> 
+    pull(cluster)
+
 three_clust_13_data <- three_clust_13_data[[1]] |> 
   select(-cluster)
 
@@ -1578,7 +1581,7 @@ cluster_means <- projected_df$projected_df |>
 three_clust13_proj2 <- plot_proj(
   proj_obj = projected_df, 
   point_param = c(1, 0.05, "#000000"), # size, alpha, color
-  plot_limits = c(-0.8, 0.7), 
+  plot_limits = c(-0.8, 0.8), 
   title = "a2", 
   cex = 1, 
   axis_text_size = 2,
@@ -1620,8 +1623,8 @@ projected_df <- get_projection(projection = prj1,
                                centered_data = centered_three_clust_13_data, 
                                axis_param = list(limits = 0.5,
                                                  axis_scaled = 3, 
-                                                 axis_pos_x = -0.2, 
-                                                 axis_pos_y = -0.2, 
+                                                 axis_pos_x = -0.3, 
+                                                 axis_pos_y = -0.3, 
                                                  threshold = 0.03))
 
 cluster_means <- projected_df$projected_df |>
@@ -1633,7 +1636,7 @@ cluster_means <- projected_df$projected_df |>
 three_clust13_proj1_1 <- plot_proj(
   proj_obj = projected_df, 
   point_param = c(1, 0.05, "#000000"), # size, alpha, color
-  plot_limits = c(-0.3, 0.55), 
+  plot_limits = c(-0.4, 0.55), 
   title = "b1", 
   cex = 1, 
   axis_text_size = 2,
@@ -1668,8 +1671,8 @@ cluster_means <- projected_df$projected_df |>
 
 three_clust13_proj2_1 <- plot_proj(
   proj_obj = projected_df, 
-  point_param = c(1, 0.05, "#000000"), # size, alpha, color
-  plot_limits = c(-0.55, 0.4), 
+  point_param = c(0.5, 0.05, "#000000"), # size, alpha, color
+  plot_limits = c(-0.55, 0.5), 
   title = "b2", 
   cex = 1, 
   axis_text_size = 2,
