@@ -5,609 +5,96 @@ format: html
 
 <!--autoalt::generate_alt_text("~/Desktop/PhD Monash research files/Monash_PhD_thesis/extra/alt-text-code.qmd", "~/Desktop/PhD Monash research files/Monash_PhD_thesis/extra/alt-text-code.txt", api = "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")-->
 
-## Using a published $2\text{-}D$ NLDR layout as a case study
+### Experiment design
 
-In the Introduction, a published UMAP layout (*n_neighbors = 30* and *min_dist = 0.3*) of a human PBMC CITE-seq dataset [@hao2021] is used as a motivating example. The UMAP layout shows several visually distinct clusters with different shapes. Some clusters appear compact and well separated, while others are elongated, curved, or partially overlapping. In total, six clusters can be seen, including three with nonlinear shapes, two roughly Gaussian clusters, and one elliptical cluster, along with a small amount of background noise scattered between clusters. At first glance, it looks convincing. But this immediately raises an important question: *is this really the best way to represent the structure in the $10\text{-}D$ PBMC CITE-seq data?*
+The visual layout of the experiment for five subjects is shown in @fig-exp-design. Each subject completed $20$ trials: $15$ SAME trials, in which the same data structure was shown in both the $2\text{-}D$ NLDR plot and the tour; $4$ DIFFERENT trials, showing DIFFERENT data structures; and one attention check trial that could be either SAME or DIFFERENT. The purpose of the DIFFERENT trials was to ensure that subjects didn't get too familiar with the task, which might happen if the data is always the same in both graphics.  For the SAME, five NLDR methods (*tSNE, UMAP, PHATE, PaCMAP, and TriMAP*) were each paired with three of five distance scale factors (*small, small-medium, medium, medium-large, and large*), giving $15$ balanced combinations. In the DIFFERENT, four NLDR methods were randomly selected, with the remaining method assigned to the attention check trial. All DIFFERENT and attention check trials used a distance scale factor of *medium-large*.
 
-Looking more closely, the data contain six clusters that are fairly close to one another (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-dt-tourr"} else { "@fig-dt-prj"})`). Three of them have clearly nonlinear shapes, two look more like Gaussian blobs, and one is closer to an ellipse, with a bit of background noise scattered around. These kinds of data structures are common in bioinformatics data. Using the `cardinalR` package, data with this different cluster shapes and background noise can be generated.
+```{r}
+#| fig-height: 4
+#| fig-width: 8
+#| label: fig-exp-design
+#| fig-pos: "!ht"
+#| out-width: 100%
+#| fig-cap: "Experimental design for ten subjects. Shapes represent NLDR methods, and fill colors denote distance scale factors, ranging from low to high separability and mapped from light to dark. The figure shows only the SAME trials, making it easier to see the balanced design: for each subject, all five NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) are equally represented, and each method appears with three of the five distance scale factors (small, small–medium, medium, medium–large, and large), distributed across subjects. The order of trials is randomized within each subject. In the full experiment (not shown), DIFFERENT trials and attention checks were inserted at random positions. Each subject completed $20$ trials in total: $15$ SAME trials, $4$ DIFFERENT trials comparing different data structures, and $1$ attention check (SAME or DIFFERENT). All DIFFERENT and attention-check trials used a medium–large distance scale factor."
 
-To assess how well the UMAP layout reflects the structure of the $10\text{-}D$ PBMC CITE-seq data, we use the `quollr` framework (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-model-html"} else { "@fig-model-pdf"})`). With a model fitted using a binwidth of $0.03$, the layout appears reasonable overall, but some limitations become clear. In particular, the roughly Gaussian clusters look more squeezed than expected, and background noise seems to form a separate cluster that likely does not represent a true group in the data. In addition, the nonlinear shaped clusters could benefit from being more spread out to better reflect their underlying structure. Also, clusters should be more close. These observations suggest that, while the current layout is informative, there is good potential to find an alternative layout that represents the data structure even more clearly.
+experiment_design01 <- read_rds(here::here("data/vis-exp/experiment_design_with_methods_and_distance_factor_missings_batch04.rds")) |>
+  filter(subject %in% c(paste0("subject", 67:76))) |>
+  mutate(
+    subject = as.integer(factor(subject))  # 1–10
+  )
 
-```{r fig-model-pdf, eval=knitr::is_latex_output(), fig.cap="Wireframe model representation of the UMAP layout, lifted and displayed in $10\\text{-}D$ space. The left panel shows the UMAP layout with a triangular mesh overlay, forming the wireframe structure. This mesh can be lifted into higher dimensions and projected to examine how the geometric structure of the data is preserved. Panels (a1–a4) display different $2\\text{-}D$ projections of the lifted wireframe. The model fits well. We can also observe different densities along the nonlinear shaped clusters.", fig.pos="!ht"}
-
-# Add plot label
-
-interior_annotation <- function(label, position = c(0.92, 0.92), cex = 1, col="grey70") {
-  annotation_custom(grid::textGrob(label = label,
-                                   x = unit(position[1], "npc"), y = unit(position[2], "npc"),
-                                   gp = grid::gpar(cex = cex, col=col)))
-}
-
-# Scale high-d data
-
-# Center the data by subtracting the mean of each column
-center_data <- function(data) {
-  center_values <- colMeans(data)
-  data_centered <- sweep(data, 2, center_values, FUN = "-")  # subtract means
-  data_centered
-}
-
-# Function to scale data manually
-# scale_data_manual <- function(data) {
-#   # Step 1: Center the data (mean 0)
-#   data_centered <- center_data(data)
-#
-#   # Step 2: Calculate the standard deviation of each dimension
-#   sds <- apply(data_centered, 2, sd)
-#
-#   # Step 3: Scale each dimension to have the range [0, 1]
-#   data_scaled <- apply(data_centered, 2, function(col) col / max(abs(col)))
-#
-#   # Step 4: Scale dimensions according to their variation
-#   # The dimension with the highest standard deviation is scaled to [-1, 1]
-#   # Other dimensions are scaled to smaller ranges based on their standard deviations
-#   max_sd <- max(sds)
-#
-#   # Normalize the standard deviations to get scaling factors
-#   scaling_factors <- sds / max_sd
-#
-#   for (i in seq_along(scaling_factors)) {
-#     data_scaled[, i] <- data_scaled[, i] * scaling_factors[i]
-#   }
-#
-#   # Combine the scaled data with the 'type' column and return as a tibble
-#   data_scaled <- as_tibble(data_scaled)
-#
-#   return(data_scaled)
-# }
-
-# Get projection
-
-get_projection <- function(projection, centered_data, axis_param) {
-
-  projected <- as.matrix(centered_data) %*% projection
-  projected_df <- projected |>
-    tibble::as_tibble(.name_repair = "unique") |>
-    dplyr::rename(c("proj1" = "...1",
-                    "proj2" = "...2")) |>
-    dplyr::mutate(ID = dplyr::row_number())
-
-  limits <- axis_param$limits
-  axis_scaled <- axis_param$axis_scaled
-  axis_pos_x <- axis_param$axis_pos_x
-  axis_pos_y <- axis_param$axis_pos_y
-  threshold <- axis_param$threshold
-
-  axes_obj <- gen_axes(
-    proj = projection * axis_scaled,
-    limits = limits,
-    axis_pos_x = axis_pos_x,
-    axis_pos_y = axis_pos_y,
-    axis_labels = names(centered_data),
-    threshold = threshold)
-
-  axes <- axes_obj$axes
-  circle <- axes_obj$circle
-
-  return(list(projected_df = projected_df,
-              axes = axes,
-              circle = circle))
-
-}
-
-# Plot projection
-plot_proj <- function(proj_obj,
-                      point_param = c(1.5, 0.5, "#000000"), # size, alpha, color
-                      plot_limits, title, cex = 2,
-                      position = c(0.92, 0.92),
-                      axis_text_size = 3,
-                      is_color = FALSE) {
-
-  projected_df <- proj_obj$projected_df
-  axes <- proj_obj$axes
-  circle <- proj_obj$circle
-
-  if(is_color == FALSE) {
-
-    initial_plot <- ggplot() +
-      geom_point(
-        data = projected_df,
-        aes(
-          x = proj1,
-          y = proj2),
-        size = as.numeric(point_param[1]),
-        alpha = as.numeric(point_param[2]),
-        color = point_param[3])
-
-  } else {
-
-    projected_df <- projected_df |>
-      dplyr::mutate(cluster = proj_obj$cluster)
-
-    initial_plot <- ggplot() +
-      geom_point(
-        data = projected_df,
-        aes(
-          x = proj1,
-          y = proj2,
-          color = cluster),
-        size = as.numeric(point_param[1]),
-        alpha = as.numeric(point_param[2]))
-
-  }
-
-  initial_plot <- initial_plot +
-    geom_segment(
-      data=axes,
-      aes(x=x1, y=y1, xend=x2, yend=y2),
-      colour="grey70") +
-    geom_text(
-      data=axes,
-      aes(x=x2, y=y2),
-      label=rownames(axes),
-      colour="grey50",
-      size = axis_text_size) +
-    geom_path(
-      data=circle,
-      aes(x=c1, y=c2), colour="grey70") +
-    xlim(plot_limits) +
-    ylim(plot_limits) +
-    interior_annotation(title, position, cex = cex)
-
-  initial_plot
-
-}
-
-# Generate axes
-
-gen_axes <- function(proj, limits = 1, axis_pos_x = NULL, axis_pos_y = NULL, axis_labels, threshold) {
-
-  axis_scale <- limits/6
-
-  if (is.null(axis_pos_x)) {
-
-    axis_pos_x <- -2/3 * limits
-
-  }
-
-  if (is.null(axis_pos_y)) {
-
-    axis_pos_y <- -2/3 * limits
-
-  }
-
-  adj <- function(x, axis_pos) axis_pos + x * axis_scale
-  axes <- data.frame(x1 = adj(0, axis_pos_x),
-                     y1 = adj(0, axis_pos_y),
-                     x2 = adj(proj[, 1], axis_pos_x),
-                     y2 = adj(proj[, 2], axis_pos_y))
-
-  rownames(axes) <- axis_labels
-
-  ## To remove axes
-  axes <- axes |>
-    mutate(distance = sqrt((x2 - x1)^2 + (y2 - y1)^2)) |>
-    filter(distance >= threshold)
-
-  theta <- seq(0, 2 * pi, length = 50)
-  circle <- data.frame(c1 = adj(cos(theta), axis_pos_x),
-                       c2 = adj(sin(theta), axis_pos_y))
-
-  return(list(axes = axes, circle = circle))
-
-}
-
-
-plot_hbe <- function(error_df) {
-
-  ggplot(error_df,
-         aes(x = a1,
-             y = HBE,
-             colour = method)) +
-    geom_point(size = 0.8) +
-    geom_line(linewidth = 0.3) +
-    ylab("HBE") +
-    xlab(expression(paste("binwidth (", a[1], ")"))) +
-    theme_minimal() +
-    theme(panel.border = element_rect(fill = 'transparent'),
-          plot.title = element_text(size = 12, hjust = 0.5, vjust = -0.5),
-          axis.ticks.x = element_line(),
-          axis.ticks.y = element_line(),
-          legend.position = "none",
-          axis.text.x = element_text(size = 7),
-          axis.text.y = element_text(size = 7),
-          axis.title.x = element_text(size = 7),
-          axis.title.y = element_text(size = 7),
-          plot.margin = margin(0, 0, 0, 0))
-
-}
-
-
-
-pbmc_data <- read_rds(here::here("data/CITE-seq/cite_seq_pbmc.rds")) 
-
-umap_pbmc <- read_rds(here::here("data/CITE-seq/CITE-seq_umap_n-neigbors_30_min-dist_0.3.rds"))
-
-model_obj <- fit_highd_model(
-  highd_data = pbmc_data, 
-  nldr_data = umap_pbmc, 
-  b1 = 40, 
-  q = 0.1, 
-  hd_thresh = 0)
-
-pbmc_umap_scaled <- model_obj$nldr_scaled_obj$scaled_nldr
-hex_grid_pbmc <- model_obj$hb_obj$hex_poly
-counts_df_pbmc <- model_obj$hb_obj$std_cts
-tr_from_to_df_pbmc <- model_obj$trimesh_data
-df_bin_centroids_pbmc <- model_obj$model_2d
-df_bin_pbmc <- model_obj$model_highd
-
-hex_grid_with_counts_pbmc <- left_join(
-  hex_grid_pbmc, counts_df_pbmc, 
-  by = c("h" = "h"))
-
-## 2-d vis model
-hex_grid_pbmc <- ggplot(
-  data = hex_grid_with_counts_pbmc, 
-  aes(x = x, y = y)) +
-  geom_point(data = pbmc_umap_scaled, 
-             aes(x = emb1, y = emb2), 
-             alpha = 0.1, color = "#66B2CC") +
-  geom_segment(data = tr_from_to_df_pbmc,
-               aes(
-                 x = x_from,
-                 y = y_from,
-                 xend = x_to,
-                 yend = y_to),
-               colour = "#000000") +
-  # geom_point(data = df_bin_centroids_pbmc, 
-  #            aes(x = c_x, y = c_y), 
-  #            size = 0.3, color = "#FF7755") +
-  theme_linedraw() +
-              theme(
-                  aspect.ratio = 1,
-                  plot.background = element_rect(fill = 'transparent', colour = NA),
-                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
-                  panel.background = element_rect(fill = 'transparent', 
-                                                  colour = NA),
-                  panel.grid.major = element_blank(), 
-                  panel.grid.minor = element_blank(), 
-                  axis.title.x = element_blank(), axis.title.y = element_blank(),
-                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
-                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
-                  legend.background = element_rect(fill = 'transparent', 
-                                                   colour = NA),
-                  legend.key = element_rect(fill = 'transparent', 
-                                            colour = NA),
-                  legend.position = "none", 
-                  legend.title = element_text(size=5), 
-                  legend.text = element_text(size=4),
-                  legend.key.height = unit(0.25, 'cm'),
-                  legend.key.width = unit(0.25, 'cm'),
-                  plot.margin = margin(0, 0, 0, 0)
-              )
-
-df <- inner_join(pbmc_data, pbmc_umap_scaled, by = "ID")
-
-### Define type column
-df <- df |>
-  select(starts_with("x"), starts_with("emb")) |>
-  mutate(type = "data") ## original dataset
-
-df_b <- df_bin_pbmc |>
-  filter(h %in% df_bin_centroids_pbmc$h) |>
-  mutate(type = "model") ## Data with summarized mean
-
-## Reorder the rows of df_b according to the h order in model_2d
-df_b <- df_b[match(df_bin_centroids_pbmc$h, df_b$h),] |>
-  tidyr::drop_na() |>
-  select(-h)
-
-df_exe_pbmc_int <- bind_rows(df_b, df)
-
-shared_df <- crosstalk::SharedData$new(df_exe_pbmc_int)
-
-# Scatter points
-nldr_plt <- plot_ly() |>
-  # Background points (pbmc_umap_scaled)
-  add_trace(
-    data = shared_df,
-    x = ~emb1,
-    y = ~emb2,
-    type = 'scatter',
-    mode = 'markers',
-    marker = list(color = '#66B2CC', size = 5, opacity = 0.1),
-    hoverinfo = 'none',
-    showlegend = FALSE
+# Prepare dataset
+plot_data <- experiment_design01 |>
+  select(subject, attempt, method, is_same, is_attention_check, distance_factor) |>
+  filter(is_same == "SAME") |>
+  filter(is_attention_check == "NO") |>
+  mutate(
+    # Recode distance factor
+    distance_sf = recode(as.character(distance_factor),
+                         `0.1` = "S",
+                         `0.6` = "SM",
+                         `0.9` = "M",
+                         `1`   = "ML",
+                         `1.1` = "L"),
+    # Recode method names
+    method = recode(as.character(method),
+                    tsne   = "tSNE",
+                    umap   = "UMAP",
+                    phate  = "PHATE",
+                    trimap = "TriMAP",
+                    pacmap = "PaCMAP"),
+    # Stroke size for attention check
+    stroke_size = ifelse(is_attention_check == "YES", 1.3, 0.5),
+    # Fill color: solid for SAME, hollow for DIFFERENT
+    is_same_fill = ifelse(is_same == "SAME", distance_sf, "white")
   ) |>
-  # Segments (tr_from_to_df_pbmc)
-  add_segments(
-    data = tr_from_to_df_pbmc,
-    x = ~x_from,
-    xend = ~x_to,
-    y = ~y_from,
-    yend = ~y_to,
-    line = list(color = '#000000'),
-    hoverinfo = 'none',
-    showlegend = FALSE
-  ) |>
-  # # Centroids (df_bin_centroids_pbmc)
-  # add_trace(
-  #   data = df_bin_centroids_pbmc,
-  #   x = ~c_x,
-  #   y = ~c_y,
-  #   type = 'scatter',
-  #   mode = 'markers',
-  #   marker = list(color = '#FF7755', size = 3),
-  #   hoverinfo = 'none',
-  #   showlegend = FALSE
-  # ) |>
-    # Layout with border
-    layout(
-        width = 400,
-        height = 400,
-        xaxis = list(
-            showgrid = FALSE,
-            zeroline = FALSE,
-            showticklabels = FALSE,
-            ticks = "",
-            title = ""
-        ),
-        yaxis = list(
-            showgrid = FALSE,
-            zeroline = FALSE,
-            showticklabels = FALSE,
-            ticks = "",
-            title = ""
-        ),
+  # Group by subject to assign horizontal positions
+  group_by(subject) |>
+  arrange(attempt) |>
+  mutate(trial_pos = (row_number() - 1) * 6) |>  # increased spacing
+  ungroup() |>
+  # Reverse factor levels so first subject is on top
+  mutate(subject_id = factor(subject, levels = rev(unique(subject))),
+         method = factor(method, levels = c("tSNE","UMAP","PHATE","TriMAP","PaCMAP")),
+         is_same_fill = factor(is_same_fill, levels = c("S","SM","M","ML","L", "white")))
 
-        # ADD A BOX AROUND THE ENTIRE PLOT PANEL
-        shapes = list(
-            list(
-                type = "rect",
-                xref = "paper", yref = "paper",
-                x0 = 0, y0 = 0,
-                x1 = 1, y1 = 1,
-                line = list(color = "black", width = 0.5)
-            )
-        )
-    ) |>
-    style(
-        selected = list(marker = list(opacity = 1)),
-        unselected = list(marker = list(opacity = 1))
-    ) |>
-    highlight(
-        on = "plotly_selected",
-        off = "plotly_deselect"
-    ) |>
-    config(displayModeBar = FALSE)
+# Define colors for distance factor
+distance_colors <- c(
+  "S"  = "#fef0d9",
+  "SM" = "#fdcc8a",
+  "M"  = "#fc8d59",
+  "ML" = "#e34a33",
+  "L"  = "#b30000"
+)
 
-langevitour_output <- langevitour::langevitour(df_exe_pbmc_int[1:10],
-                                               lineFrom = tr_from_to_df_pbmc$from_reindexed,
-                                               lineTo = tr_from_to_df_pbmc$to_reindexed,
-                                               group = df_exe_pbmc_int$type,
-                                               pointSize = append(rep(0, NROW(df_b)), rep(1, NROW(df))),
-                                               levelColors = c("#66B2CC", "#FF7755"),
-                                               link=shared_df,
-                                               linkFilter=FALSE,
-                                               width = "400px", height = "380px")
+# Define shapes for methods
+method_shapes <- c(
+  "tSNE"   = 21,
+  "UMAP"   = 24,
+  "PHATE"  = 22,
+  "TriMAP" = 23,
+  "PaCMAP" = 25
+)
 
-df_b_pbmc <- df_bin_pbmc |>
-  dplyr::filter(h %in% df_bin_centroids_pbmc$h) |>
-  dplyr::mutate(type = "model") ## Data with summarized mean
-
-## Reorder the rows of df_b according to the h order in df_b_with_center_data
-df_b_pbmc <- df_b_pbmc[match(df_bin_centroids_pbmc$h, df_b_pbmc$h),] |>
-  dplyr::select(-h) 
-
-pbmc_labeled <- pbmc_data |>
-  select(-ID) |>
-  mutate(type = "data")
-
-# Apply the scaling
-df_model_data_pbmc <- bind_rows(pbmc_labeled, df_b_pbmc)
-scaled_pbmc <- center_data(df_model_data_pbmc[,-11]) |>
-  as_tibble() |>
-  mutate(type = df_model_data_pbmc$type)
-
-scaled_pbmc_data <- scaled_pbmc |>
-  filter(type == "data") |>
-  select(-type)
-
-scaled_pbmc_data_model <- scaled_pbmc |>
-  filter(type == "model") |>
-  select(-type)
-
-
-## First projection
-projection1 <- cbind(
-  c(-0.002584,-0.004429,0.000598,-0.008122,0.003990,0.005002,-0.005135,0.003106,0.000766,-0.004760),
-  c(-0.000276,-0.004985,-0.006425,0.004049,0.006375,-0.003721,-0.005586,-0.004404,-0.001809,0.001366))
-
-proj_obj1 <- quollr::get_projection(projection = projection1, 
-                            highd_data = scaled_pbmc_data, 
-                            model_highd = scaled_pbmc_data_model, 
-                            trimesh_data = tr_from_to_df_pbmc, 
-                            axis_param = list(limits = 1.5, 
-                                              axis_scaled = 80,
-                                              axis_pos_x = -0.75, 
-                                              axis_pos_y = -0.75, 
-                                              threshold = 0.15))
-
-pbmc_proj_umap_model1 <- quollr::plot_proj(
-  proj_obj = proj_obj1,
-  point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
-  line_param = c(0.5, 0.3, "#000000"),
-  plot_limits = c(-1, 1.2), 
-  axis_text_size = 3,
-  is_category = FALSE) +
-  interior_annotation(label = "a1", cex = 1) +
-  theme_linedraw() +
-              theme(
-                  aspect.ratio = 1,
-                  plot.background = element_rect(fill = 'transparent', colour = NA),
-                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
-                  panel.background = element_rect(fill = 'transparent', 
-                                                  colour = NA),
-                  panel.grid.major = element_blank(), 
-                  panel.grid.minor = element_blank(), 
-                  axis.title.x = element_blank(), axis.title.y = element_blank(),
-                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
-                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
-                  legend.background = element_rect(fill = 'transparent', 
-                                                   colour = NA),
-                  legend.key = element_rect(fill = 'transparent', 
-                                            colour = NA),
-                  legend.position = "none", 
-                  legend.title = element_text(size=5), 
-                  legend.text = element_text(size=4),
-                  legend.key.height = unit(0.25, 'cm'),
-                  legend.key.width = unit(0.25, 'cm'),
-                  plot.margin = margin(0, 0, 0, 0)
-              )
-
-projection2 <- cbind(
-  c(-0.007784,0.000224,-0.005620,0.003714,0.000785,0.000783,-0.004530,-0.000969,0.003910,0.006988),
-  c(0.001418,-0.003104,-0.003641,0.004786,-0.000776,0.006803,0.004252,0.007773,0.003565,-0.002629))
-
-proj_obj2 <- quollr::get_projection(projection = projection2, 
-                                    highd_data = scaled_pbmc_data, 
-                                    model_highd = scaled_pbmc_data_model, 
-                                    trimesh_data = tr_from_to_df_pbmc, 
-                                    axis_param = list(limits = 1.2, 
-                                                      axis_scaled = 70,
-                                                      axis_pos_x = -0.9, 
-                                                      axis_pos_y = -0.9, 
-                                                      threshold = 0.1)) 
-
-pbmc_proj_umap_model2 <- quollr::plot_proj(
-  proj_obj = proj_obj2,
-  point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
-  line_param = c(0.5, 0.3, "#000000"),
-  plot_limits = c(-1.1, 0.8), 
-  axis_text_size = 3,
-  is_category = FALSE) +
-  interior_annotation(label = "a2", cex = 1) +
-  theme_linedraw() +
-              theme(
-                  aspect.ratio = 1,
-                  plot.background = element_rect(fill = 'transparent', colour = NA),
-                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
-                  panel.background = element_rect(fill = 'transparent', 
-                                                  colour = NA),
-                  panel.grid.major = element_blank(), 
-                  panel.grid.minor = element_blank(), 
-                  axis.title.x = element_blank(), axis.title.y = element_blank(),
-                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
-                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
-                  legend.background = element_rect(fill = 'transparent', 
-                                                   colour = NA),
-                  legend.key = element_rect(fill = 'transparent', 
-                                            colour = NA),
-                  legend.position = "none", 
-                  legend.title = element_text(size=5), 
-                  legend.text = element_text(size=4),
-                  legend.key.height = unit(0.25, 'cm'),
-                  legend.key.width = unit(0.25, 'cm'),
-                  plot.margin = margin(0, 0, 0, 0)
-              )
-
-projection3 <- cbind(
-  c(-0.012856,-0.002227,-0.000675,0.000355,-0.001067,0.003746,-0.001626,-0.001175,0.000823,0.001464),
-  c(0.001945,-0.006327,-0.001400,0.008778,0.000065,0.002431,-0.002239,-0.004185,-0.003852,-0.005169))
-
-proj_obj3 <- quollr::get_projection(projection = projection3, 
-                                    highd_data = scaled_pbmc_data, 
-                                    model_highd = scaled_pbmc_data_model, 
-                                    trimesh_data = tr_from_to_df_pbmc, 
-                                    axis_param = list(limits = 1.2, 
-                                                      axis_scaled = 65,
-                                                      axis_pos_x = -1.1, 
-                                                      axis_pos_y = -1.1, 
-                                                      threshold = 0.09))
-
-pbmc_proj_umap_model3 <- quollr::plot_proj(
-  proj_obj = proj_obj3,
-  point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
-  line_param = c(0.5, 0.3, "#000000"),
-  plot_limits = c(-1.3, 0.55), 
-  axis_text_size = 3,
-  is_category = FALSE) +
-  interior_annotation(label = "a3", cex = 1) +
-  theme_linedraw() +
-              theme(
-                  aspect.ratio = 1,
-                  plot.background = element_rect(fill = 'transparent', colour = NA),
-                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
-                  panel.background = element_rect(fill = 'transparent', 
-                                                  colour = NA),
-                  panel.grid.major = element_blank(), 
-                  panel.grid.minor = element_blank(), 
-                  axis.title.x = element_blank(), axis.title.y = element_blank(),
-                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
-                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
-                  legend.background = element_rect(fill = 'transparent', 
-                                                   colour = NA),
-                  legend.key = element_rect(fill = 'transparent', 
-                                            colour = NA),
-                  legend.position = "none", 
-                  legend.title = element_text(size=5), 
-                  legend.text = element_text(size=4),
-                  legend.key.height = unit(0.25, 'cm'),
-                  legend.key.width = unit(0.25, 'cm'),
-                  plot.margin = margin(0, 0, 0, 0)
-              )
-
-projection4 <- cbind(
-  c(0.003665,-0.003923,0.002530,-0.002269,-0.003925,0.002946,-0.005566,-0.008850,0.000273,0.004358),
-  c(0.006940,0.000372,-0.000835,0.004686,0.004959,0.001986,0.001930,-0.004115,0.006304,-0.005739))
-
-proj_obj4 <- quollr::get_projection(projection = projection4, 
-                                    highd_data = scaled_pbmc_data, 
-                                    model_highd = scaled_pbmc_data_model, 
-                                    trimesh_data = tr_from_to_df_pbmc, 
-                                    axis_param = list(limits = 1.1, 
-                                                      axis_scaled = 90,
-                                                      axis_pos_x = -0.65, 
-                                                      axis_pos_y = -0.65, 
-                                                      threshold = 0.12))
-
-pbmc_proj_umap_model4 <- quollr::plot_proj(
-  proj_obj = proj_obj4,
-  point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
-  line_param = c(0.5, 0.3, "#000000"),
-  plot_limits = c(-0.85, 0.7), 
-  axis_text_size = 3,
-  is_category = FALSE) +
-  interior_annotation(label = "a4", cex = 1) +
-  theme_linedraw() +
-              theme(
-                  aspect.ratio = 1,
-                  plot.background = element_rect(fill = 'transparent', colour = NA),
-                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
-                  panel.background = element_rect(fill = 'transparent', 
-                                                  colour = NA),
-                  panel.grid.major = element_blank(), 
-                  panel.grid.minor = element_blank(), 
-                  axis.title.x = element_blank(), axis.title.y = element_blank(),
-                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
-                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
-                  legend.background = element_rect(fill = 'transparent', 
-                                                   colour = NA),
-                  legend.key = element_rect(fill = 'transparent', 
-                                            colour = NA),
-                  legend.position = "none", 
-                  legend.title = element_text(size=5), 
-                  legend.text = element_text(size=4),
-                  legend.key.height = unit(0.25, 'cm'),
-                  legend.key.width = unit(0.25, 'cm'),
-                  plot.margin = margin(0, 0, 0, 0)
-              )
-
-hex_grid_pbmc + wrap_plots(
-  pbmc_proj_umap_model1, pbmc_proj_umap_model2, 
-  pbmc_proj_umap_model3, pbmc_proj_umap_model4, ncol = 2)
+# Plot
+ggplot(plot_data, aes(x = trial_pos, y = subject_id)) +
+  geom_point(aes(
+    shape = method,          # map method to shape (legend appears)
+    fill = is_same_fill,     # distance factor for SAME trials
+    stroke = stroke_size
+  ),
+  size = 5,                 # slightly smaller shapes to avoid overlap
+  color = "black") +
+  scale_shape_manual(values = method_shapes, name = "NLDR Method") +
+scale_fill_manual(values = distance_colors, na.value = "white", name = "Distance Factor",
+                      guide = guide_legend(override.aes = list(color = distance_colors))) +
+  scale_y_discrete(name = "Subject") +
+  scale_x_continuous(name = "Trial", breaks = NULL, expand = expansion(mult = 0.05)) +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.title = element_blank()
+  ) 
 ```
-
-
-

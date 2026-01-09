@@ -354,7 +354,8 @@ The visual layout of the experiment for five subjects is shown in @fig-exp-desig
 #| label: fig-exp-design
 #| fig-pos: "!ht"
 #| out-width: 100%
-#| fig-cap: "Experiment design for ten subjects. Shapes represent NLDR methods, and fill colors denote distance scale factors (from low to high, mapped from light to dark). Solid shapes indicate SAME trials, unfilled shapes indicate DIFFERENT trials, and thicker outlines denote attention checks. Each subject completed $20$ trials: $15$ SAME trials showing the same data structure in both the $2\\text{-}D$ plot and tour, $4$ DIFFERENT trials showing different structures, and one attention check (SAME or DIFFERENT). In SAME trials, five NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) were combined with three of five distance scale factors (small, small-medium, medium, medium-large, and large). For DIFFERENT trials, four NLDR methods were randomly selected, and the remaining method was used in the attention check. All DIFFERENT and attention check trials used a distance scale factor of *medium-large*."
+#| fig-cap: "Experimental design for ten subjects. Shapes represent NLDR methods, and fill colors denote distance scale factors, ranging from low to high separability and mapped from light to dark. The figure shows only the SAME trials, making it easier to see the balanced design: for each subject, all five NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) are equally represented, and each method appears with three of the five distance scale factors (small, small–medium, medium, medium–large, and large), distributed across subjects. The order of trials is randomized within each subject. In the full experiment (not shown), DIFFERENT trials and attention checks were inserted at random positions. Each subject completed $20$ trials in total: $15$ SAME trials, $4$ DIFFERENT trials comparing different data structures, and $1$ attention check (SAME or DIFFERENT). All DIFFERENT and attention-check trials used a medium–large distance scale factor."
+#| fig-alt: "A design shows the visual layout of an experiment for ten subjects, arranged in ten rows (one per subject) and 15 columns (one per trial). Each object represents a single trial. Along the horizontal axis, trials are ordered from 1 to 20; the vertical axis lists subjects 1 through 5. Most cells (15 per subject) are coded as SAME trials, where the same data structure is shown in both the 2‑D NLDR plot and the tour. SAME trials are further distinguished by combinations of five NLDR methods (tSNE, UMAP, PHATE, PaCMAP, TriMAP) and five distance scale factors (small to large), with 15 balanced method–scale combinations per subject. The grid visually emphasizes that each subject has the same number of trials and a consistent pattern of many SAME trials."
 
 experiment_design01 <- read_rds(here::here("data/vis-exp/experiment_design_with_methods_and_distance_factor_missings_batch04.rds")) |>
   filter(subject %in% c(paste0("subject", 67:76))) |>
@@ -365,6 +366,8 @@ experiment_design01 <- read_rds(here::here("data/vis-exp/experiment_design_with_
 # Prepare dataset
 plot_data <- experiment_design01 |>
   select(subject, attempt, method, is_same, is_attention_check, distance_factor) |>
+  filter(is_same == "SAME") |>
+  filter(is_attention_check == "NO") |>
   mutate(
     # Recode distance factor
     distance_sf = recode(as.character(distance_factor),
