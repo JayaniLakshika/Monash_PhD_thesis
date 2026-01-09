@@ -1323,50 +1323,51 @@ three_clust07_proj2_1 <- plot_proj(
 ```
 
 ```{r}
+#| label: nldr-13-tsne
 
-nldr1_three_clust_12 <- get_embeddings(dt_structutre = "three_clust_13") |>
+nldr1_three_clust_13_tsne <- get_embeddings(dt_structutre = "three_clust_07") |>
   filter(scale_factor == c(0.1, 1.1)) |>
-  filter(method %in% c("tsne", "umap")) |>
-    mutate(scale_factor = recode(scale_factor,
-                             `0.1` = "S",
-                             `1.1` = "L")) |>
-    mutate(scale_factor = factor(scale_factor,
-                           c("S", "L"))) |>
-    mutate(method = recode(method,
-                             "tsne" = "tSNE",
-                             "umap" = "UMAP")) 
+  filter(method %in% c("tsne")) |>
+  mutate(scale_factor = recode(scale_factor,
+                               `0.1` = "S",
+                               `1.1` = "L")) |>
+  mutate(scale_factor = factor(scale_factor,
+                               c("S", "L"))) |>
+  mutate(method = recode(method,
+                         "tsne" = "tSNE",
+                         "umap" = "UMAP")) 
 
-prop_df_12 <- results_df_method_ds |>
-    filter(structure_high_d == "three_clust_13") |>
-    group_by(method, distance_factor) |>
-    summarise(
-        n_total   = n(),
-        n_correct = sum(result == 1, na.rm = TRUE),
-        prop_correct = n_correct / n_total,
-        .groups = "drop"
-    ) |>
-    filter(method %in% c("tSNE", "UMAP")) |>
-    filter(distance_factor %in% c("S", "L")) |>
-    mutate(
-        label = sprintf("%.2f", prop_correct)
-    )
+prop_df_13_tsne <- results_df_method_ds |>
+  filter(structure_high_d == "three_clust_07") |>
+  group_by(method, distance_factor) |>
+  summarise(
+    n_total   = n(),
+    n_correct = sum(result == 1, na.rm = TRUE),
+    prop_correct = n_correct / n_total,
+    .groups = "drop"
+  ) |>
+  filter(method %in% c("tSNE", "UMAP")) |>
+  filter(distance_factor %in% c("S", "L")) |>
+  mutate(
+    label = sprintf("%.2f", prop_correct)
+  )
 
-corner_df_12 <- nldr1_three_clust_12 |>
-    group_by(method, scale_factor) |>
-    summarise(
-        x = max(emb1, na.rm = TRUE),
-        y = max(emb2, na.rm = TRUE),
-        .groups = "drop"
-    )
+corner_df_13_tsne <- nldr1_three_clust_13_tsne |>
+  group_by(method, scale_factor) |>
+  summarise(
+    x = max(emb1, na.rm = TRUE),
+    y = max(emb2, na.rm = TRUE),
+    .groups = "drop"
+  )
 
-annot_df_12 <- corner_df_12 |>
-    left_join(
-        prop_df_12,
-        by = c("method" = "method",
-               "scale_factor" = "distance_factor")
-    )
+annot_df_13_tsne <- corner_df_13_tsne |>
+  left_join(
+    prop_df_13_tsne,
+    by = c("method" = "method",
+           "scale_factor" = "distance_factor")
+  )
 
-sf_max_xy_12 <- nldr1_three_clust_12 |>
+sf_max_xy_13_tsne <- nldr1_three_clust_13_tsne |>
   group_by(scale_factor) |>
   summarise(
     x = max(emb1, na.rm = TRUE),
@@ -1374,12 +1375,13 @@ sf_max_xy_12 <- nldr1_three_clust_12 |>
     .groups = "drop"
   )
 
-annot_df_12 <- annot_df_12 |>
+annot_df_13_tsne <- annot_df_13_tsne |>
   select(-x, -y) |>          # remove old per-method values
-  left_join(sf_max_xy_12, by = "scale_factor")
+  left_join(sf_max_xy_13_tsne, by = "scale_factor")
 
-nld_plt1_three_clust_12 <- ggplot(
-  data = nldr1_three_clust_12,
+
+nld_plt1_three_clust_13_tsne <- ggplot(
+  data = nldr1_three_clust_13_tsne,
   aes(
     x = emb1,
     y = emb2
@@ -1388,7 +1390,7 @@ nld_plt1_three_clust_12 <- ggplot(
   geom_point(alpha=0.05, size=1, colour = "black") +
   facet_grid(scale_factor~method, scales = "free") +
   geom_text(
-    data = annot_df_12,
+    data = annot_df_13_tsne,
     aes(label = label),
     x = Inf, y = Inf,
     hjust = 1.2,
@@ -1396,7 +1398,90 @@ nld_plt1_three_clust_12 <- ggplot(
     size = 3,
     color = "#a6761d",
     inherit.aes = FALSE
+  ) +
+  theme(aspect.ratio = 1,
+        strip.text.x = element_text(size = 10),
+        strip.text.y = element_blank())
+
+```
+
+```{r}
+#| label: nldr-13-umap
+
+nldr1_three_clust_13_umap <- get_embeddings(dt_structutre = "three_clust_07") |>
+  filter(scale_factor == c(0.1, 1.1)) |>
+  filter(method %in% c("umap")) |>
+  mutate(scale_factor = recode(scale_factor,
+                               `0.1` = "S",
+                               `1.1` = "L")) |>
+  mutate(scale_factor = factor(scale_factor,
+                               c("S", "L"))) |>
+  mutate(method = recode(method,
+                         "tsne" = "tSNE",
+                         "umap" = "UMAP")) 
+
+prop_df_13_umap <- results_df_method_ds |>
+  filter(structure_high_d == "three_clust_07") |>
+  group_by(method, distance_factor) |>
+  summarise(
+    n_total   = n(),
+    n_correct = sum(result == 1, na.rm = TRUE),
+    prop_correct = n_correct / n_total,
+    .groups = "drop"
+  ) |>
+  filter(method %in% c("tSNE", "UMAP")) |>
+  filter(distance_factor %in% c("S", "L")) |>
+  mutate(
+    label = sprintf("%.2f", prop_correct)
+  )
+
+corner_df_13_umap <- nldr1_three_clust_13_umap |>
+  group_by(method, scale_factor) |>
+  summarise(
+    x = max(emb1, na.rm = TRUE),
+    y = max(emb2, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+annot_df_13_umap <- corner_df_13_umap |>
+  left_join(
+    prop_df_13_umap,
+    by = c("method" = "method",
+           "scale_factor" = "distance_factor")
+  )
+
+sf_max_xy_13_umap <- nldr1_three_clust_13_umap |>
+  group_by(scale_factor) |>
+  summarise(
+    x = max(emb1, na.rm = TRUE),
+    y = max(emb2, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+annot_df_13_umap <- annot_df_13_umap |>
+  select(-x, -y) |>          # remove old per-method values
+  left_join(sf_max_xy_13_umap, by = "scale_factor")
+
+
+nld_plt1_three_clust_13_umap <- ggplot(
+  data = nldr1_three_clust_13_umap,
+  aes(
+    x = emb1,
+    y = emb2
+  )
 ) +
+  geom_point(alpha=0.05, size=1, colour = "black") +
+  facet_grid(scale_factor~method, scales = "free") +
+  geom_text(
+    data = annot_df_13_umap,
+    aes(label = label),
+    x = Inf, y = Inf,
+    hjust = 1.2,
+    vjust = 1.6,
+    size = 3,
+    color = "#a6761d",
+    inherit.aes = FALSE
+  ) +
   theme(aspect.ratio = 1,
         strip.text = element_text(size = 10))
 
@@ -1404,18 +1489,18 @@ nld_plt1_three_clust_12 <- ggplot(
 
 ```{r}
 
-three_clust_12_data <- high_d_data |> 
+three_clust_13_data <- high_d_data |> 
   filter(dataset == "three_clust_13") |> 
   filter(scale_factor == 0.1) |> 
   filter(sample_size == 7500) |>
   pull(high_d_data)
 
-three_clust_12_data <- three_clust_12_data[[1]] |> 
+three_clust_13_data <- three_clust_13_data[[1]] |> 
   select(-cluster)
 
 # Apply the scaling
 
-centered_three_clust_12_data <- center_data(three_clust_12_data) |>
+centered_three_clust_13_data <- center_data(three_clust_13_data) |>
   as_tibble()
 
 ## First projection
@@ -1425,7 +1510,7 @@ prj1 <- cbind(
 
 
 projected_df <- get_projection(projection = prj1, 
-                               centered_data = centered_three_clust_12_data, 
+                               centered_data = centered_three_clust_13_data, 
                                axis_param = list(limits = 1,
                                                  axis_scaled = 3, 
                                                  axis_pos_x = -0.7, 
@@ -1438,7 +1523,7 @@ cluster_means <- projected_df$projected_df |>
   summarise(mean_proj1 = mean(proj1),
             mean_proj2 = mean(proj2))
 
-three_clust12_proj1 <- plot_proj(
+three_clust13_proj1 <- plot_proj(
   proj_obj = projected_df, 
   point_param = c(1, 0.05, "#000000"), # size, alpha, color
   plot_limits = c(-0.9, 0.8), 
@@ -1461,7 +1546,7 @@ prj2 <- cbind(
   c(0.01124,0.16552,-0.12749,0.12761))
 
 projected_df <- get_projection(projection = prj2, 
-                               centered_data = centered_three_clust_12_data, 
+                               centered_data = centered_three_clust_13_data, 
                                axis_param = list(limits = 0.8,
                                                  axis_scaled = 4, 
                                                  axis_pos_x = -0.65, 
@@ -1474,7 +1559,7 @@ cluster_means <- projected_df$projected_df |>
   summarise(mean_proj1 = mean(proj1),
             mean_proj2 = mean(proj2))
 
-three_clust12_proj2 <- plot_proj(
+three_clust13_proj2 <- plot_proj(
   proj_obj = projected_df, 
   point_param = c(1, 0.05, "#000000"), # size, alpha, color
   plot_limits = c(-0.8, 0.7), 
@@ -1495,18 +1580,18 @@ three_clust12_proj2 <- plot_proj(
 
 ```{r}
 
-three_clust_12_data <- high_d_data |> 
+three_clust_13_data <- high_d_data |> 
   filter(dataset == "three_clust_13") |> 
   filter(scale_factor == 1.1) |> 
   filter(sample_size == 7500) |>
   pull(high_d_data)
 
-three_clust_12_data <- three_clust_12_data[[1]] |> 
+three_clust_13_data <- three_clust_13_data[[1]] |> 
   select(-cluster)
 
 # Apply the scaling
 
-centered_three_clust_12_data <- center_data(three_clust_12_data) |>
+centered_three_clust_13_data <- center_data(three_clust_13_data) |>
   as_tibble()
 
 ## First projection
@@ -1516,7 +1601,7 @@ prj1 <- cbind(
 
 
 projected_df <- get_projection(projection = prj1, 
-                               centered_data = centered_three_clust_12_data, 
+                               centered_data = centered_three_clust_13_data, 
                                axis_param = list(limits = 0.5,
                                                  axis_scaled = 3, 
                                                  axis_pos_x = -0.2, 
@@ -1529,7 +1614,7 @@ cluster_means <- projected_df$projected_df |>
   summarise(mean_proj1 = mean(proj1),
             mean_proj2 = mean(proj2))
 
-three_clust12_proj1_1 <- plot_proj(
+three_clust13_proj1_1 <- plot_proj(
   proj_obj = projected_df, 
   point_param = c(1, 0.05, "#000000"), # size, alpha, color
   plot_limits = c(-0.3, 0.55), 
@@ -1552,7 +1637,7 @@ prj2 <- cbind(
   c(0.01124,0.16552,-0.12749,0.12761))
 
 projected_df <- get_projection(projection = prj2, 
-                               centered_data = centered_three_clust_12_data, 
+                               centered_data = centered_three_clust_13_data, 
                                axis_param = list(limits = 0.5,
                                                  axis_scaled = 4, 
                                                  axis_pos_x = -0.45, 
@@ -1565,7 +1650,7 @@ cluster_means <- projected_df$projected_df |>
   summarise(mean_proj1 = mean(proj1),
             mean_proj2 = mean(proj2))
 
-three_clust12_proj2_1 <- plot_proj(
+three_clust13_proj2_1 <- plot_proj(
   proj_obj = projected_df, 
   point_param = c(1, 0.05, "#000000"), # size, alpha, color
   plot_limits = c(-0.55, 0.4), 
@@ -1586,11 +1671,11 @@ three_clust12_proj2_1 <- plot_proj(
 ```{r}
 #| fig-height: 3.5
 #| fig-width: 6.7
-#| label: fig-three12-miss
+#| label: fig-three13-miss
 #| fig-cap: "tSNE and UMAP layouts and $2\\text{-}D$ projections for the data structure `three_clust_12`, composed of an S-curve, a hemisphere, and a filled hexagonal pyramid, shown under small and large cluster separation. Panels (a1–a2) show two fixed $2\\text{-}D$ projections at small separation, and panels (b1–b2) show the same projections at large separation; the corresponding tSNE and UMAP layouts are shown in the right panels. For each NLDR layout, the proportion of correct identifications for the corresponding method and distance factor is reported in the top-right corner of the plot. At small separation, curved and rounded components overlap substantially in both methods, making the structure difficult to distinguish. With increased separation, UMAP preserves the distinct geometric character of each component, maintaining an elongated S-curve, a compact hemisphere, and a coherent pyramidal structure. In contrast, tSNE fragments curved and volumetric components into irregular, disconnected pieces, obscuring global shape cues."
 #| fig-alt: "A multi-panel figure comparing linear projections and NLDR layouts of the same 4-D dataset, labelled three_clust_12. The data consist of three geometric structures: an elongated S-curve, a rounded hemispherical cluster, and a filled hexagonal pyramid. The left portion of the figure shows four fixed 2-D linear projections arranged in two rows. Panels (a1) and (a2) display two projections under small cluster separation, where points from the three structures overlap substantially and the curved and rounded components are difficult to distinguish. Panels (b1) and (b2) show the same projections under large cluster separation, where the S-curve, hemisphere, and pyramid become more spatially separated and visually distinct. The right portion of the figure shows the corresponding 2-D NLDR layouts produced by tSNE and UMAP for the same small and large separation settings. For each NLDR layout, the proportion of correct identifications for the corresponding method and distance factor is reported in the top-right corner of the plot. At small separation, both methods show overlapping point clouds with limited separation between structures. At large separation, the UMAP layout displays a smooth, elongated S-shaped structure alongside a compact hemispherical cluster and a coherent pyramidal cluster. In contrast, the tSNE layout shows these structures broken into multiple disconnected or irregularly shaped groups."
 
-(three_clust12_proj1 + three_clust12_proj2) / (three_clust12_proj1_1 + three_clust12_proj2_1) | nld_plt1_three_clust_12
+(three_clust13_proj1/ three_clust13_proj1_1) | (three_clust13_proj2_1/ three_clust13_proj2) | nld_plt1_three_clust_13_tsne | nld_plt1_three_clust_13_umap
 ```
 
 ## Limitations {#sec-limitations}
