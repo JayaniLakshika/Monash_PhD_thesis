@@ -130,11 +130,14 @@ Need to work on adding these info:
 - In data generation: 
     - Why three clusters? How they positioned? Why the data in 4-D? Why different number of points in each cluster? (Done)
     
-    - Why different shaped clusters? Why always a combination of nonlinear shaped cluster (capture nonlinear shape), pyramid shapes cluster (capture density), and other shape (hemisphere/cube/Gaussian)? (added what each dataset consist of in appendix)
+    - Why different shaped clusters? Why always a combination of nonlinear shaped cluster (capture nonlinear shape), pyramid shapes cluster (capture density), and other shape (hemisphere/cube/Gaussian)? (added what each dataset consist of in appendix, done)
 
 - Why do we choose these specific distance scale factors? (done)
 
-- Why did we scale the data sets before showing in the tour?
+- Why did we scale the data sets before showing in the tour? (added as a comment)
+
+- In the discussion, may add how to expand the study? (done)
+
 
 - Why these number of participants enough? (may be good to add in appendix)
 
@@ -144,13 +147,11 @@ Need to work on adding these info:
 
 - Why do we used exponential minimum scaled distance?
 
-- In the discussion, may add how to expand the study?
-
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ### Data generation
 
-A total of $30$ $4\text{-}D$ data sets are generated. Two are reserved as attention check used to determine if the subject conscientiously attempted the task. All data sets were standardized prior to NLDR and showing in the tour. 
+A total of $30$ $4\text{-}D$ data sets are generated. Two are reserved as attention check used to determine if the subject conscientiously attempted the task. All data sets were standardized prior to NLDR and showing in the tour. <!--to ensure comparable variable scales and to prevent any single dimension from disproportionately influencing the resulting visualizations.-->
 
 #### Non-attention check data
 
@@ -162,8 +163,9 @@ In the SAME trials, the degree of separation between clusters was varied by mult
 
 In contrast, data structures used for the DIFFERENT trials retained the original centroid distances (scale factor $1$) without modification. This allows the DIFFERENT trials to serve as stable reference cases while ensuring that variation in separation is introduced only in trials where participants are asked to judge whether two displays show the same data.
 
+Shapes for each cluster were selected randomly from a predefined set of curved, linear, and volumetric structures, including S-curves, crescents, spirals, hyperbolic and cylindrical shapes, as well as geometric solids such as cubes, hemispheres, pyramids, cones, and Gaussian clusters.
 
-XXX Shapes for each cluster were selected randomly from a set of XXX. 
+<!-- The specific shape combinations used for each data structure are listed in Appendix X. -->
 
 <!-- In total, there are $28$ data structures used for the experiment. Out of these, $18$ data structures show the same structure in both the $2\text{-}D$ NLDR plot and tour for each experiment, while the remaining $10$ data structures display different structures in the $2\text{-}D$ NLDR plot and tour. This means that when data structure $19$ is displayed in the NLDR plot, data structure $20$ appears in the tour.  -->
 
