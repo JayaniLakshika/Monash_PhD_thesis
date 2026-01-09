@@ -989,7 +989,7 @@ prop_df_07 <- results_df_method_ds |>
     filter(method %in% c("tSNE", "UMAP")) |>
     filter(distance_factor %in% c("S", "L")) |>
     mutate(
-        label = round(prop_correct, 2)
+        label = sprintf("%.2f", prop_correct)
     )
 
 corner_df_07 <- nldr1_three_clust_07 |>
@@ -1263,7 +1263,7 @@ prop_df_12 <- results_df_method_ds |>
     filter(method %in% c("tSNE", "UMAP")) |>
     filter(distance_factor %in% c("S", "L")) |>
     mutate(
-        label = round(prop_correct, 2)
+        label = sprintf("%.2f", prop_correct)
     )
 
 corner_df_12 <- nldr1_three_clust_12 |>
@@ -1312,7 +1312,8 @@ nld_plt1_three_clust_12 <- ggplot(
     color = "#a6761d",
     inherit.aes = FALSE
 ) +
-  theme(strip.text = element_text(size = 10))
+  theme(aspect.ratio = 1,
+        strip.text = element_text(size = 10))
 
 ```
 
