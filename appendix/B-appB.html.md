@@ -106,7 +106,7 @@
 :::
 
 
-Animations of the $4\text{-}D$ tours that used for the study are available on YouTube at the links given in @tbl-links-html.
+Animations of the $4\text{-}D$ tours that were used for the study’s non-attention-check SAME trials, non-attention-check DIFFERENT trials, and attention-check trials are available on YouTube at the links given in @tbl-links-same-html, @tbl-links-diff-html, and @tbl-links-at-html.
 
 
 ::: {.cell layout-align="center"}
@@ -115,7 +115,7 @@ Animations of the $4\text{-}D$ tours that used for the study are available on Yo
 
 
 
-::: {#tbl-links-html .cell layout-align="center" tbl-pos='H' tbl-cap='Videos'}
+::: {#tbl-links-same-html .cell layout-align="center" tbl-pos='H' tbl-cap='Videos of datasets used for non-attention-check SAME trials'}
 ::: {.cell-output-display}
 `````{=html}
 <table>
@@ -273,6 +273,106 @@ Animations of the $4\text{-}D$ tours that used for the study are available on Yo
    <td style="text-align:left;"> <a href="https://youtube.com/shorts/_x7kGF4xRz4">youtube.com/shorts/_x7kGF4xRz4</a> </td>
    <td style="text-align:left;"> <a href="https://youtu.be/e_-IQycglVE">youtu.be/e_-IQycglVE</a> </td>
    <td style="text-align:left;"> <a href="https://youtube.com/shorts/rY8hIqDaHKw">youtube.com/shorts/rY8hIqDaHKw</a> </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+:::
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {#tbl-links-diff-html .cell layout-align="center" tbl-pos='H' tbl-cap='Videos of datasets used for non-attention-check DIFFERENT trials'}
+::: {.cell-output-display}
+`````{=html}
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Data structure </th>
+   <th style="text-align:left;"> URL </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> three_clust_19 </td>
+   <td style="text-align:left;"> <a href="https://youtube.com/shorts/fb-gQ064JdI">youtube.com/shorts/fb-gQ064JdI</a> </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> three_clust_20 </td>
+   <td style="text-align:left;"> <a href="https://youtube.com/shorts/5Lm03LMiC2s">youtube.com/shorts/5Lm03LMiC2s</a> </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> three_clust_21 </td>
+   <td style="text-align:left;"> <a href="https://youtube.com/shorts/BmKzrqTWUbI">youtube.com/shorts/BmKzrqTWUbI</a> </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> three_clust_22 </td>
+   <td style="text-align:left;"> <a href="https://youtube.com/shorts/wrn6lj7-RrQ">youtube.com/shorts/wrn6lj7-RrQ</a> </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> three_clust_23 </td>
+   <td style="text-align:left;"> <a href="https://youtube.com/shorts/AWgG3tbfYpA">youtube.com/shorts/AWgG3tbfYpA</a> </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> three_clust_24 </td>
+   <td style="text-align:left;"> <a href="https://youtube.com/shorts/JR_6QorZjj8">youtube.com/shorts/JR_6QorZjj8</a> </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> three_clust_25 </td>
+   <td style="text-align:left;"> <a href="https://youtube.com/shorts/gKEZGGZcE6c">youtube.com/shorts/gKEZGGZcE6c</a> </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> three_clust_26 </td>
+   <td style="text-align:left;"> <a href="https://youtube.com/shorts/Ar7OAtuwWsc">youtube.com/shorts/Ar7OAtuwWsc</a> </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> three_clust_27 </td>
+   <td style="text-align:left;"> <a href="https://youtube.com/shorts/BXcLP-qqPWo">youtube.com/shorts/BXcLP-qqPWo</a> </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> three_clust_28 </td>
+   <td style="text-align:left;"> <a href="https://youtube.com/shorts/e6cP4jC2xGM">youtube.com/shorts/e6cP4jC2xGM</a> </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+:::
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {#tbl-links-at-html .cell layout-align="center" tbl-pos='H' tbl-cap='Videos of datasets used for attention check trials'}
+::: {.cell-output-display}
+`````{=html}
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Data structure </th>
+   <th style="text-align:left;"> URL </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> three_clust_29 </td>
+   <td style="text-align:left;"> <a href="https://youtu.be/E9msE_XX0KA">youtu.be/E9msE_XX0KA</a> </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> three_clust_30 </td>
+   <td style="text-align:left;"> <a href="https://youtu.be/_f2WvtD2xog">youtu.be/f2WvtD2xog</a> </td>
   </tr>
 </tbody>
 </table>

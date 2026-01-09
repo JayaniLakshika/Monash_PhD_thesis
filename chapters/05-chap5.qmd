@@ -584,7 +584,7 @@ min_dist_quasi <- ggplot(data = results_df_method_ds,
        )) +
   geom_quasirandom(alpha = 0.5) +
   interior_annotation("b", position = c(0.05, 0.92), cex = 2) +
-  ylab("exp(minimum distance scaled)") +
+  ylab("exp(scaled minimum distance)") +
   xlab("distance scale factor") +
   theme_minimal() +
   theme(aspect.ratio = 0.4)
