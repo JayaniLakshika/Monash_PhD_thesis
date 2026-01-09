@@ -121,12 +121,12 @@ Animations of the $4\text{-}D$ tours that used for the study are available on Yo
 <table>
  <thead>
   <tr>
-   <th style="text-align:left;"> data structure </th>
+   <th style="text-align:left;"> Data structure </th>
    <th style="text-align:left;"> small </th>
-   <th style="text-align:left;"> small-medium </th>
-   <th style="text-align:left;"> medium </th>
-   <th style="text-align:left;"> medium-large </th>
-   <th style="text-align:left;"> large </th>
+   <th style="text-align:left;"> Small-medium </th>
+   <th style="text-align:left;"> Medium </th>
+   <th style="text-align:left;"> Medium-large </th>
+   <th style="text-align:left;"> Large </th>
   </tr>
  </thead>
 <tbody>
