@@ -1276,7 +1276,7 @@ corner_df_12 <- nldr1_three_clust_12 |>
 
 annot_df_12 <- corner_df_12 |>
     left_join(
-        prop_df_07,
+        prop_df_12,
         by = c("method" = "method",
                "scale_factor" = "distance_factor")
     )
