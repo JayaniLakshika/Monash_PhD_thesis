@@ -297,7 +297,7 @@ window.Quarto = {
 </header><section id="scripts" class="level2" data-number="B.1"><h2 data-number="B.1" class="anchored" data-anchor-id="scripts">
 <span class="header-section-number">B.1</span> Scripts</h2>
 <div class="cell" data-layout-align="center" data-tbl-pos="H">
-<div id="tbl-script-desc" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center" data-tbl-pos="H">
+<div id="tbl-script-desc" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-pos="H" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-script-desc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;B.1: R script files used to generate outputs in the main paper.
 </figcaption><div aria-describedby="tbl-script-desc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -389,7 +389,7 @@ Table&nbsp;B.1: R script files used to generate outputs in the main paper.
 </div>
 </section><section id="data-sets" class="level2" data-number="B.2"><h2 data-number="B.2" class="anchored" data-anchor-id="data-sets">
 <span class="header-section-number">B.2</span> Data sets</h2>
-<p><a href="#tbl-dt-str" class="quarto-xref">Table&nbsp;<span>B.2</span></a> summarizes the three-cluster data sets used in the experiment. Each data set was generated using the <code>cardinalR</code> package <span class="citation" data-cites="jayani2025b">(<a href="../refs.html#ref-jayani2025b" role="doc-biblioref">Gamage et al. 2025</a>)</span> and comprises three clusters with distinct structures. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in <span class="math inline">4\text{-}D</span> space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods. All data sets used in this experiment are available at <a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/data/vis-exp/high_d_data_three_close_clust_all.rds">github.com/JayaniLakshika/Monash_PhD_thesis/data/vis-exp/high_d_data_three_close_clust_all.rds</a>.</p>
+<p><a href="#tbl-dt-str" class="quarto-xref">Table&nbsp;<span>B.2</span></a> summarizes the three-cluster data sets used in the experiment. Each data set was generated using the <code>cardinalR</code> package <span class="citation" data-cites="jayani2025b">(<a href="../refs.html#ref-jayani2025b" role="doc-biblioref">Gamage et al. 2025</a>)</span> and comprises three clusters with distinct structures. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in <span class="math inline">4\text{-}D</span> space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods. All data sets used in this experiment are available at <a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/data/vis-exp/high_d_data_three_clust_all.rds">github.com/JayaniLakshika/Monash_PhD_thesis/data/vis-exp/high_d_data_three_clust_all.rds</a>.</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-dt-str" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-dt-str-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -431,7 +431,7 @@ Table&nbsp;B.2: Description of the simulated three-cluster data structures. Each
 <tr class="even">
 <td style="text-align: left;">three_clust_04</td>
 <td style="text-align: left;">curv2</td>
-<td style="text-align: left;">gaussian</td>
+<td style="text-align: left;">Gaussian</td>
 <td style="text-align: left;">filled_hexagonal_pyramid</td>
 </tr>
 <tr class="odd">
@@ -455,7 +455,7 @@ Table&nbsp;B.2: Description of the simulated three-cluster data structures. Each
 <tr class="even">
 <td style="text-align: left;">three_clust_08</td>
 <td style="text-align: left;">conic_spiral</td>
-<td style="text-align: left;">gaussian</td>
+<td style="text-align: left;">Gaussian</td>
 <td style="text-align: left;">filled_hexagonal_pyramid</td>
 </tr>
 <tr class="odd">
@@ -467,7 +467,7 @@ Table&nbsp;B.2: Description of the simulated three-cluster data structures. Each
 <tr class="even">
 <td style="text-align: left;">three_clust_10</td>
 <td style="text-align: left;">spherical_spiral</td>
-<td style="text-align: left;">gaussian</td>
+<td style="text-align: left;">Gaussian</td>
 <td style="text-align: left;">pyramid_triangular_base</td>
 </tr>
 <tr class="odd">
@@ -491,7 +491,7 @@ Table&nbsp;B.2: Description of the simulated three-cluster data structures. Each
 <tr class="even">
 <td style="text-align: left;">three_clust_14</td>
 <td style="text-align: left;">curv2</td>
-<td style="text-align: left;">gaussian</td>
+<td style="text-align: left;">Gaussian</td>
 <td style="text-align: left;">pyramid_triangular_base</td>
 </tr>
 <tr class="odd">
@@ -515,8 +515,80 @@ Table&nbsp;B.2: Description of the simulated three-cluster data structures. Each
 <tr class="even">
 <td style="text-align: left;">three_clust_18</td>
 <td style="text-align: left;">conic_spiral</td>
-<td style="text-align: left;">gaussian</td>
+<td style="text-align: left;">Gaussian</td>
 <td style="text-align: left;">pyramid_triangular_base</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">three_clust_19</td>
+<td style="text-align: left;">helical_hyper_spiral</td>
+<td style="text-align: left;">hemisphere</td>
+<td style="text-align: left;">filled_hexagonal_pyramid</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">three_clust_20</td>
+<td style="text-align: left;">spherical_spiral</td>
+<td style="text-align: left;">elliptical</td>
+<td style="text-align: left;">blunted_cone</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">three_clust_21</td>
+<td style="text-align: left;">curv</td>
+<td style="text-align: left;">Gaussian</td>
+<td style="text-align: left;">pyramid_rectangular_base</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">three_clust_22</td>
+<td style="text-align: left;">s_curve</td>
+<td style="text-align: left;">cube</td>
+<td style="text-align: left;">pyramid_triangular_base</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">three_clust_23</td>
+<td style="text-align: left;">curvy_cylinder</td>
+<td style="text-align: left;">hemisphere</td>
+<td style="text-align: left;">filled_hexagonal_pyramid</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">three_clust_24</td>
+<td style="text-align: left;">curv2</td>
+<td style="text-align: left;">elliptical</td>
+<td style="text-align: left;">blunted_cone</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">three_clust_25</td>
+<td style="text-align: left;">nonlinear_hyperbola2</td>
+<td style="text-align: left;">Gaussian</td>
+<td style="text-align: left;">pyramid_rectangular_base</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">three_clust_26</td>
+<td style="text-align: left;">crescent</td>
+<td style="text-align: left;">cube</td>
+<td style="text-align: left;">pyramid_triangular_base</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">three_clust_27</td>
+<td style="text-align: left;">nonlinear_hyperbola2</td>
+<td style="text-align: left;">hemisphere</td>
+<td style="text-align: left;">filled_hexagonal_pyramid</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">three_clust_28</td>
+<td style="text-align: left;">conic_spiral</td>
+<td style="text-align: left;">elliptical</td>
+<td style="text-align: left;">blunted_cone</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">three_clust_29</td>
+<td style="text-align: left;">Gaussian</td>
+<td style="text-align: left;">Gaussian</td>
+<td style="text-align: left;">Gaussian</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">three_clust_30</td>
+<td style="text-align: left;">Gaussian</td>
+<td style="text-align: left;">Gaussian</td>
+<td style="text-align: left;">Gaussian</td>
 </tr>
 </tbody>
 </table>
@@ -527,7 +599,7 @@ Table&nbsp;B.2: Description of the simulated three-cluster data structures. Each
 </div>
 <p>Animations of the <span class="math inline">4\text{-}D</span> tours that used for the study are available on YouTube at the links given in <a href="#tbl-links-html" class="quarto-xref">Table&nbsp;<span>B.3</span></a>.</p>
 <div class="cell" data-layout-align="center" data-tbl-pos="H">
-<div id="tbl-links-html" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center" data-tbl-pos="H">
+<div id="tbl-links-html" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-pos="H" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-links-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;B.3: Videos
 </figcaption><div aria-describedby="tbl-links-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">

@@ -102,7 +102,7 @@ if (knitr::is_latex_output()) {
 
 ## Data sets
 
-@tbl-dt-str summarizes the three-cluster data sets used in the experiment. Each data set was generated using the `cardinalR` package [@jayani2025b] and comprises three clusters with distinct structures. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in $4\text{-}D$ space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods. All data sets used in this experiment are available at [github.com/JayaniLakshika/Monash_PhD_thesis/data/vis-exp/high_d_data_three_close_clust_all.rds](https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/data/vis-exp/high_d_data_three_close_clust_all.rds).
+@tbl-dt-str summarizes the three-cluster data sets used in the experiment. Each data set was generated using the `cardinalR` package [@jayani2025b] and comprises three clusters with distinct structures. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in $4\text{-}D$ space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods. All data sets used in this experiment are available at [github.com/JayaniLakshika/Monash_PhD_thesis/data/vis-exp/high_d_data_three_clust_all.rds](https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/data/vis-exp/high_d_data_three_clust_all.rds).
 
 ```{r}
 #| tbl-cap: "Description of the simulated three-cluster data structures. Each data structure consists of three clusters with different geometric shapes."

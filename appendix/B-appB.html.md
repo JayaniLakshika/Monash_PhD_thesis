@@ -61,7 +61,7 @@
 
 ## Data sets
 
-@tbl-dt-str summarizes the three-cluster data sets used in the experiment. Each data set was generated using the `cardinalR` package [@jayani2025b] and comprises three clusters with distinct structures. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in $4\text{-}D$ space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods. All data sets used in this experiment are available at [github.com/JayaniLakshika/Monash_PhD_thesis/data/vis-exp/high_d_data_three_close_clust_all.rds](https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/data/vis-exp/high_d_data_three_close_clust_all.rds).
+@tbl-dt-str summarizes the three-cluster data sets used in the experiment. Each data set was generated using the `cardinalR` package [@jayani2025b] and comprises three clusters with distinct structures. The collection of structures spans a wide range of nonlinear, curved, and density-based configurations in $4\text{-}D$ space, providing controlled yet varied settings for assessing perceptual differences across NLDR methods. All data sets used in this experiment are available at [github.com/JayaniLakshika/Monash_PhD_thesis/data/vis-exp/high_d_data_three_clust_all.rds](https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/data/vis-exp/high_d_data_three_clust_all.rds).
 
 
 ::: {#tbl-dt-str .cell layout-align="center" tbl-cap='Description of the simulated three-cluster data structures. Each data structure consists of three clusters with different geometric shapes.'}
@@ -73,21 +73,33 @@
 |three_clust_01 |curv                 |elliptical |blunted_cone             |
 |three_clust_02 |s_curve              |cube       |pyramid_rectangular_base |
 |three_clust_03 |curvy_cylinder       |hemisphere |pyramid_triangular_base  |
-|three_clust_04 |curv2                |gaussian   |filled_hexagonal_pyramid |
+|three_clust_04 |curv2                |Gaussian   |filled_hexagonal_pyramid |
 |three_clust_05 |nonlinear_hyperbola  |elliptical |blunted_cone             |
 |three_clust_06 |crescent             |cube       |pyramid_rectangular_base |
 |three_clust_07 |nonlinear_hyperbola2 |hemisphere |pyramid_triangular_base  |
-|three_clust_08 |conic_spiral         |gaussian   |filled_hexagonal_pyramid |
+|three_clust_08 |conic_spiral         |Gaussian   |filled_hexagonal_pyramid |
 |three_clust_09 |helical_hyper_spiral |cube       |blunted_cone             |
-|three_clust_10 |spherical_spiral     |gaussian   |pyramid_triangular_base  |
+|three_clust_10 |spherical_spiral     |Gaussian   |pyramid_triangular_base  |
 |three_clust_11 |curv                 |elliptical |pyramid_rectangular_base |
 |three_clust_12 |s_curve              |hemisphere |filled_hexagonal_pyramid |
 |three_clust_13 |curvy_cylinder       |cube       |blunted_cone             |
-|three_clust_14 |curv2                |gaussian   |pyramid_triangular_base  |
+|three_clust_14 |curv2                |Gaussian   |pyramid_triangular_base  |
 |three_clust_15 |nonlinear_hyperbola  |elliptical |pyramid_rectangular_base |
 |three_clust_16 |crescent             |hemisphere |filled_hexagonal_pyramid |
 |three_clust_17 |nonlinear_hyperbola2 |cube       |blunted_cone             |
-|three_clust_18 |conic_spiral         |gaussian   |pyramid_triangular_base  |
+|three_clust_18 |conic_spiral         |Gaussian   |pyramid_triangular_base  |
+|three_clust_19 |helical_hyper_spiral |hemisphere |filled_hexagonal_pyramid |
+|three_clust_20 |spherical_spiral     |elliptical |blunted_cone             |
+|three_clust_21 |curv                 |Gaussian   |pyramid_rectangular_base |
+|three_clust_22 |s_curve              |cube       |pyramid_triangular_base  |
+|three_clust_23 |curvy_cylinder       |hemisphere |filled_hexagonal_pyramid |
+|three_clust_24 |curv2                |elliptical |blunted_cone             |
+|three_clust_25 |nonlinear_hyperbola2 |Gaussian   |pyramid_rectangular_base |
+|three_clust_26 |crescent             |cube       |pyramid_triangular_base  |
+|three_clust_27 |nonlinear_hyperbola2 |hemisphere |filled_hexagonal_pyramid |
+|three_clust_28 |conic_spiral         |elliptical |blunted_cone             |
+|three_clust_29 |Gaussian             |Gaussian   |Gaussian                 |
+|three_clust_30 |Gaussian             |Gaussian   |Gaussian                 |
 
 
 :::
