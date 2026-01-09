@@ -394,7 +394,7 @@ plot_data <- experiment_design01 |>
   mutate(trial_pos = (row_number() - 1) * 6) |>  # increased spacing
   ungroup() |>
   # Reverse factor levels so first subject is on top
-  mutate(subject_id = factor(subject, levels = rev(unique(subject))),
+  mutate(subject = factor(subject, levels = sort(unique(subject), decreasing = TRUE)),
          method = factor(method, levels = c("tSNE","UMAP","PHATE","TriMAP","PaCMAP")),
          is_same_fill = factor(is_same_fill, levels = c("S","SM","M","ML","L", "white")))
 
@@ -417,7 +417,7 @@ method_shapes <- c(
 )
 
 # Plot
-ggplot(plot_data, aes(x = trial_pos, y = subject_id)) +
+ggplot(plot_data, aes(x = trial_pos, y = subject)) +
   geom_point(aes(
     shape = method,          # map method to shape (legend appears)
     fill = is_same_fill,     # distance factor for SAME trials
