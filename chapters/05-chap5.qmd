@@ -1239,7 +1239,7 @@ three_clust07_proj2_1 <- plot_proj(
 
 ```{r}
 
-nldr1_three_clust_12 <- get_embeddings(dt_structutre = "three_clust_12") |>
+nldr1_three_clust_12 <- get_embeddings(dt_structutre = "three_clust_13") |>
   filter(scale_factor == c(0.1, 1.1)) |>
   filter(method %in% c("tsne", "umap")) |>
     mutate(scale_factor = recode(scale_factor,
@@ -1252,7 +1252,7 @@ nldr1_three_clust_12 <- get_embeddings(dt_structutre = "three_clust_12") |>
                              "umap" = "UMAP")) 
 
 prop_df_12 <- results_df_method_ds |>
-    filter(structure_high_d == "three_clust_12") |>
+    filter(structure_high_d == "three_clust_13") |>
     group_by(method, distance_factor) |>
     summarise(
         n_total   = n(),
@@ -1312,15 +1312,14 @@ nld_plt1_three_clust_12 <- ggplot(
     color = "#a6761d",
     inherit.aes = FALSE
 ) +
-  theme(aspect.ratio = 1,
-        strip.text = element_text(size = 10))
+  theme(strip.text = element_text(size = 10))
 
 ```
 
 ```{r}
 
 three_clust_12_data <- high_d_data |> 
-  filter(dataset == "three_clust_12") |> 
+  filter(dataset == "three_clust_13") |> 
   filter(scale_factor == 0.1) |> 
   filter(sample_size == 7500) |>
   pull(high_d_data)
@@ -1411,7 +1410,7 @@ three_clust12_proj2 <- plot_proj(
 ```{r}
 
 three_clust_12_data <- high_d_data |> 
-  filter(dataset == "three_clust_12") |> 
+  filter(dataset == "three_clust_13") |> 
   filter(scale_factor == 1.1) |> 
   filter(sample_size == 7500) |>
   pull(high_d_data)
