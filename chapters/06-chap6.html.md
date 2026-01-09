@@ -51,7 +51,7 @@ The `menuraR` application is implemented in R using the `shiny` package [@winsto
 
 The application enables users to generate and compare two-dimensional NLDR layouts in high dimensional spsace. Users can either upload their own pre-computed NLDR layouts, or compute layouts using tSNE [@jesse2015] and UMAP [@james2025] as part of the application. Core computations, including layout generation, model fitting, and diagnostic evaluation, are handled by the `quollr` package [@jayani2025a]. This includes construction of two-dimensional wireframe representations, lifting these structures into the original high-dimensional space, and computing the hexbin error (HBE) across a range of binwidths.
 
-`menuraR` is deployed on the [shinyapps.io](https://shinyapps.io) platform, allowing users to access the application through a web browser without local installation or dependency management. A centralized server environment ensures consistent computational settings across sessions, supporting reproducible evaluation of NLDR layouts.
+`menuraR` is deployed on the [shinyapps.io](https://shinyapps.io) platform, allowing users to access the application through a web browser without local installation or dependency management. This provides a consistent environment for users within a given deployment, while long-term reproducibility is supported through version-controlled code and documented workflows.
 
 The combination of an interactive Shiny interface with the `quollr` back end allows users to explore multiple embeddings, assess hyper-parameter effects, and examine diagnostic measures within a single workflow, without requiring programming expertise.
 
