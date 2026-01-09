@@ -128,11 +128,11 @@ This study aims to answer which NLDR methods are more accurate in identifying th
 Need to work on adding these info:
 
 - In data generation: 
-    - Why three clusters? How they positioned? Why the data in 4-D? Why different number of points in each cluster? 
+    - Why three clusters? How they positioned? Why the data in 4-D? Why different number of points in each cluster? (Done)
     
     - Why different shaped clusters? Why always a combination of nonlinear shaped cluster (capture nonlinear shape), pyramid shapes cluster (capture density), and other shape (hemisphere/cube/Gaussian)? (added what each dataset consist of in appendix)
 
-- Why do we choose these specific distance scale factors?
+- Why do we choose these specific distance scale factors? (done)
 
 - Why did we scale the data sets before showing in the tour?
 
@@ -154,13 +154,20 @@ A total of $30$ $4\text{-}D$ data sets are generated. Two are reserved as attent
 
 #### Non-attention check data
 
-For the experiment, three cluster data are generated. The three clusters contain different number of points and shapes. Let $C_1, C_2,$ and $C_3$ denote the centroids of three clusters. The pairwise distances between these centroids are calculated as: $d(C_1, C_2) = c_{12}, \quad d(C_1, C_3) = c_{13}, \quad d(C_2, C_3) = c_{23}$, where clusters $C_1$ and $C_2$ are in close proximity, whereas cluster $C_3$ is positioned further away from the other two clusters, suggesting a spatial separation within the data. The reason for using the distance between centroids is that it can be easily controlled. 
+<!--originally the clusters are positioned in tips of a triangle in 4-D. But the things is, for each data set (sample), when computing the distances, it varies. So, used target distance between clusters. That's why the distances are approximate.-->
+
+For the experiment, three cluster data sets are generated. The three clusters contain different numbers of points and shapes. Let $C_1, C_2,$ and $C_3$ denote the centroids of three clusters. The pairwise distances between these centroids are calculated as: $d(C_1, C_2) = c_{12},~d(C_1, C_3) = c_{13}, \text{ and } d(C_2, C_3) = c_{23}$. At the original distance scale (scale factor $1$, referred to as medium-large), clusters $C_1$ and $C_2$ are in close proximity, while cluster $C_3$ is positioned farther away, creating an asymmetric separation pattern. Centroid distances were used because they provide a simple and controllable way to adjust overall cluster separation.
+
+In the SAME trials, the degree of separation between clusters was varied by multiplying the original centroid distances by four scale factors: $0.1$ (small), $0.6$ (small-medium), $0.9$ (medium), and $1.1$ (large). These values were chosen to span a range of perceptual difficulty from cases where clusters are expected to overlap strongly and be hard to distinguish ($0.1$), through intermediate levels where separation is visible but ambiguous ($0.6$ and $0.9$), to cases where clusters are clearly separated ($1.1$). Using proportional scaling ensures that the relative geometry of the data is preserved while systematically controlling how strongly separation cues are expressed.
+
+In contrast, data structures used for the DIFFERENT trials retained the original centroid distances (scale factor $1$) without modification. This allows the DIFFERENT trials to serve as stable reference cases while ensuring that variation in separation is introduced only in trials where participants are asked to judge whether two displays show the same data.
+
 
 XXX Shapes for each cluster were selected randomly from a set of XXX. 
 
 <!-- In total, there are $28$ data structures used for the experiment. Out of these, $18$ data structures show the same structure in both the $2\text{-}D$ NLDR plot and tour for each experiment, while the remaining $10$ data structures display different structures in the $2\text{-}D$ NLDR plot and tour. This means that when data structure $19$ is displayed in the NLDR plot, data structure $20$ appears in the tour.  -->
 
-The degree of separation between centroids is changed using four scale factors: $0.1$ (small), $0.6$ (small-medium), $0.9$ (medium), and $1.1$ (large),  in the SAME trials. In contrast, data structures used for the DIFFERENT trials retained the original centroid distances (called medium-large).
+<!-- The degree of separation between centroids is changed using four scale factors: $0.1$ (small), $0.6$ (small-medium), $0.9$ (medium), and $1.1$ (large),  in the SAME trials. In contrast, data structures used for the DIFFERENT trials retained the original centroid distances (called medium-large). -->
 
 #### Attention check data
 
