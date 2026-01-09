@@ -123,23 +123,50 @@ $H_{0m1}$: The distance between the clusters has no effect on the probability of
 This study aims to answer which NLDR methods are more accurate in identifying the same data structure in the $2\text{-}D$ NLDR plot and the tour, as the distance increases, and to identify which types of data structure components are more prone to misidentification across methods.
 -->
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Need to work on adding these info:
+
+- In data generation: 
+    - Why three clusters? How they positioned? Why the data in 4-D? Why different number of points in each cluster? 
+    
+    - Why different shaped clusters? Why always a combination of nonlinear shaped cluster (capture nonlinear shape), pyramid shapes cluster (capture density), and other shape (hemisphere/cube/Gaussian)? (added what each dataset consist of in appendix)
+
+- Why do we choose these specific distance scale factors?
+
+- Why did we scale the data sets before showing in the tour?
+
+- Why these number of participants enough? (may be good to add in appendix)
+
+- Why did we chose BW ratio and minimum distance? (already added to appendix but have ro think that it's necessary adding something in the main paper as well)
+
+- Why do we scaled BW ratio and minimum distance?
+
+- Why do we used exponential minimum scaled distance?
+
+- In the discussion, may add how to expand the study?
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 ### Data generation
 
-A total of $30$ data sets are generated, each containing three clusters. Two of the data sets, that are extremely easy to evaluate are reserved as attention checks, that will be used to determine if the subject conscientiously attempted the task. All data sets were standardized prior to NLDR and showing in the tour. 
+A total of $30$ $4\text{-}D$ data sets are generated. Two are reserved as attention check used to determine if the subject conscientiously attempted the task. All data sets were standardized prior to NLDR and showing in the tour. 
 
 #### Non-attention check data
 
-For the experiment, three cluster data are generated. The three clusters contain different number of points and shapes. Let $C_1, C_2,$ and $C_3$ denote the centroids of three clusters. The pairwise distances between these centroids are calculated as: $d(C_1, C_2) = c_{12} \approx 2.17, \quad d(C_1, C_3) = c_{13} \approx 4, \quad d(C_2, C_3) \approx c_{23} = 3.6$. These results indicate that clusters $C_1$ and $C_2$ are in close proximity, whereas cluster $C_3$ is positioned further away from the other two clusters, suggesting a spatial separation within the data. The reason for using the distance between centroids is that it can be easily controlled. 
+For the experiment, three cluster data are generated. The three clusters contain different number of points and shapes. Let $C_1, C_2,$ and $C_3$ denote the centroids of three clusters. The pairwise distances between these centroids are calculated as: $d(C_1, C_2) = c_{12}, \quad d(C_1, C_3) = c_{13}, \quad d(C_2, C_3) = c_{23}$, where clusters $C_1$ and $C_2$ are in close proximity, whereas cluster $C_3$ is positioned further away from the other two clusters, suggesting a spatial separation within the data. The reason for using the distance between centroids is that it can be easily controlled. 
+
+XXX Shapes for each cluster were selected randomly from a set of XXX. 
 
 <!-- In total, there are $28$ data structures used for the experiment. Out of these, $18$ data structures show the same structure in both the $2\text{-}D$ NLDR plot and tour for each experiment, while the remaining $10$ data structures display different structures in the $2\text{-}D$ NLDR plot and tour. This means that when data structure $19$ is displayed in the NLDR plot, data structure $20$ appears in the tour.  -->
 
-To systematically vary the degree of separation in the SAME trials, the original (medium-large) centroid distances are scaled by four different factors: $0.1$ (small), $0.6$ (small-medium), $0.9$ (medium), and $1.1$ (large). In contrast, data structures used for the DIFFERENT trials retained the original (medium-large) centroid distances.
+The degree of separation between centroids is changed using four scale factors: $0.1$ (small), $0.6$ (small-medium), $0.9$ (medium), and $1.1$ (large),  in the SAME trials. In contrast, data structures used for the DIFFERENT trials retained the original centroid distances (called medium-large).
 
 #### Attention check data
 
 There are two sets of attention check data; one consisting of three Gaussian clusters and the other consisting of four Gaussian clusters. Each cluster is generated using a multivariate normal distribution where the mean vectors and variances were predefined. Specifically, for the three-cluster case, the mean vectors were set as $[1, 0, 0, 0]$, $[0, 1, 0, 0]$, and $[0, 0, 1, 1]$, with a common variance of $0.1$ for all clusters. For the four-cluster case, the mean vectors were defined as $[1, 0, 0, 1]$, $[0, 1, 1, 0]$, $[1, 0, 1, 0]$, and $[0, 1, 0, 1]$, also using a variance of $0.1$. This approach ensures that data points are normally distributed around the specified centroids, with the spread controlled by the variance parameter. Each Gaussian cluster dataset consists of $4\text{-}D$ data with a sample size of $7500$, and each cluster contains an equal number of data points.
 
-### Organisation of SAME and DIFFERENT trials
+### Organization of SAME and DIFFERENT trials
 
 Although the main analysis focuses on trials where the same data are shown in both displays, it is essential to include DIFFERENT trials in the experiment. Without them, participants could rely on a trivial strategy—such as always responding "SAME" and still achieve high accuracy. DIFFERENT trials therefore act as a necessary control, ensuring that correct responses in SAME trials reflect genuine perceptual agreement between the NLDR layout and the tour rather than response bias or guessing.
 
@@ -159,33 +186,42 @@ The visual layout of the experiment for five subjects is shown in @fig-exp-desig
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Experiment design for five subjects. Shapes represent NLDR methods, and fill colors denote distance scale factors (from low to high, mapped from light to dark). Solid shapes indicate SAME trials, unfilled shapes indicate DIFFERENT trials, and thicker outlines denote attention checks. Each subject completed $20$ trials: $15$ SAME trials showing the same data structure in both the $2\text{-}D$ plot and tour, $4$ DIFFERENT trials showing different structures, and one attention check (SAME or DIFFERENT). In SAME trials, five NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) were combined with three of five distance scale factors (small, small-medium, medium, medium-large, and large). For DIFFERENT trials, four NLDR methods were randomly selected, and the remaining method was used in the attention check. All DIFFERENT and attention check trials used a distance scale factor of *medium-large*.](../figures/vis-exp/exp_design.png){#fig-exp-design fig-align='center' fig-pos='!ht' width=100%}
+![Experiment design for ten subjects. Shapes represent NLDR methods, and fill colors denote distance scale factors (from low to high, mapped from light to dark). Solid shapes indicate SAME trials, unfilled shapes indicate DIFFERENT trials, and thicker outlines denote attention checks. Each subject completed $20$ trials: $15$ SAME trials showing the same data structure in both the $2\text{-}D$ plot and tour, $4$ DIFFERENT trials showing different structures, and one attention check (SAME or DIFFERENT). In SAME trials, five NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) were combined with three of five distance scale factors (small, small-medium, medium, medium-large, and large). For DIFFERENT trials, four NLDR methods were randomly selected, and the remaining method was used in the attention check. All DIFFERENT and attention check trials used a distance scale factor of *medium-large*.](05-chap5_files/figure-pdf/fig-exp-design-1.pdf){#fig-exp-design fig-align='center' fig-pos='!ht' width=100%}
 :::
 :::
 
 
-### Treatments
+### Experimental factors
 
-Two primary treatments were considered in the experiment: the NLDR method and the distance scale factor.
+Two factors of interest were considered in the experiment: the NLDR method and the distance scale factor.
 
-The first treatment consisted of five NLDR methods: *tSNE, UMAP, PHATE, PaCMAP, and TriMAP* each producing a $2\text{-}D$ representation.
+The first factor consisted of five NLDR methods: *tSNE, UMAP, PHATE, PaCMAP, and TriMAP* each producing a $2\text{-}D$ representation.
 
-The second treatment, the distance scale factor, controlled the degree of cluster separation in the high-dimensional space. Five categorical levels: *small, small–medium, medium, medium–large, and large* were defined to represent increasing degrees of separability. This categorical design enhances interpretability and perceptual distinctness, allowing subjects to discern meaningful structural differences while maintaining robustness against minor data variations.
+The second factor, the distance scale factor, controlled the degree of cluster separation in the high-dimensional space. Five categorical levels: *small, small–medium, medium, medium–large, and large* were defined to represent increasing degrees of separability. This categorical design enhances interpretability and perceptual distinctness, allowing subjects to discern meaningful structural differences while maintaining robustness against minor data variations.
 
-Cluster separability was quantified using two complementary measures: the *between-to-within (BW) ratio* and the *minimum inter-cluster distance*. A higher value of either metric indicates greater separation among clusters (@fig-dist-metrics). 
+In our analysis of the results, we decided to quantify the distances between clusters numerically rather than using the distance scale factor levels directly. Cluster separability was quantified using two complementary measures: the *between-to-within (BW) ratio* and the *minimum inter-cluster distance*. A higher value of either metric indicates greater separation among clusters (@fig-dist-metrics). 
 
 The BW ratio, defined as
 
 $$
-\text{BW Ratio} = \frac{B}{W} = \frac{ \sum_{i=1}^{3} n_i \cdot \|\bar{\mathbf{x}}_i - \bar{\mathbf{x}}\|^2 }{ \sum_{i=1}^{3} \sum_{\mathbf{x}_j \in C_i} \|\mathbf{x}_j - \bar{\mathbf{x}}_i\|^2 },
+  \text{BW ratio}
+  =
+  \frac{
+      \sum_{i=1}^{K} n_i~d(\bar{\mathbf{x}}_i, \bar{\mathbf{x}})
+  }{
+      \sum_{i=1}^{K} \sum_{\mathbf{x}_j \in C_i}
+      d(\mathbf{x}_j, \bar{\mathbf{x}}_i)
+  },
 $$
 
-where (B) and (W) denote between- and within-cluster dispersion, respectively; $\bar{\mathbf{x}}_i$ is the centroid of cluster $C_i$; $\bar{\mathbf{x}}$ is the overall centroid; and $n_i$ is the number of observations in cluster $C_i$. 
+where $d(\cdot,\cdot)$ denotes the Euclidean distance, $C_i$ is the $i^{th}$ cluster with $n_i$ observations, $\bar{\mathbf{x}}_i$ is the centroid of cluster $C_i$, and $\bar{\mathbf{x}}$ is the overall centroid of the dataset.
 
 In addition, the minimum distance was used as a complementary measure of global separation:
 
 $$
-\text{minimum distance} = \min_{k \neq \ell} \min_{x \in C_k, , y \in C_\ell} d(x, y),
+  \text{minimum distance} =
+  \min_{k \neq \ell}\min_{\mathbf{x}_i \in C_k,\mathbf{x}_j \in C_l}
+  d(\mathbf{x}_i, \mathbf{x}_j),
 $$
 
 which captures the closest proximity between any two clusters.
@@ -205,7 +241,7 @@ which captures the closest proximity between any two clusters.
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Distribution of distance metric values across distance scale factors used as treatments in the experiment. (a) Between-to-within (BW) ratio and (b) minimum inter-cluster distance, each plotted against five categorical distance scale factors: small (S), small–medium (SM), medium (M), medium–large (ML), and large (L). Both metrics increase systematically with the scale factor, confirming that the distance scale treatment effectively controls cluster separability in the high-dimensional space.](05-chap5_files/figure-pdf/fig-dist-metrics-1.pdf){#fig-dist-metrics fig-align='center' fig-alt='Two-panel figure showing the distribution of cluster separation metrics across categorical distance scale factors. Panel (a) displays a quasi-random scatter plot of the between-to-within (BW) ratio. The horizontal axis lists five categorical distance scale factors—small (S), small–medium (SM), medium (M), medium–large (ML), and large (L) arranged from left to right. The vertical axis shows BW ratio values on a continuous numeric scale increasing upward. For each scale factor, multiple points are plotted with slight horizontal jitter, forming vertical bands that represent the distribution of BW ratios under that condition. The point clouds shift progressively upward from S to L, indicating larger BW ratios at higher distance scales. Panel (b) shows a similar quasi-random scatter plot for the minimum inter-cluster distance. The horizontal axis again displays the five distance scale factors (S to L), and the vertical axis shows minimum distance values on a continuous scale. Points are jittered horizontally within each category, producing vertical distributions whose central tendency increases from left to right.' width=100%}
+![Distribution of distance metric values across distance scale factors used as treatments in the experiment. (a) scaled between-to-within (BW) ratio and (b) exp(scaled minimum inter-cluster distance), each plotted against five categorical distance scale factors: small (S), small–medium (SM), medium (M), medium–large (ML), and large (L). Both metrics increase systematically with the scale factor, confirming that the distance scale treatment effectively controls cluster separability in the high-dimensional space.](05-chap5_files/figure-pdf/fig-dist-metrics-1.pdf){#fig-dist-metrics fig-align='center' fig-alt='Two-panel figure showing the distribution of cluster separation metrics across categorical distance scale factors. Panel (a) displays a quasi-random scatter plot of the scaled between-to-within (BW) ratio. The horizontal axis lists five categorical distance scale factors—small (S), small–medium (SM), medium (M), medium–large (ML), and large (L) arranged from left to right. The vertical axis shows BW ratio values on a continuous numeric scale increasing upward. For each scale factor, multiple points are plotted with slight horizontal jitter, forming vertical bands that represent the distribution of BW ratios under that condition. The point clouds shift progressively upward from S to L, indicating larger BW ratios at higher distance scales. Panel (b) shows a similar quasi-random scatter plot for the exponential scaled minimum inter-cluster distance. The horizontal axis again displays the five distance scale factors (S to L), and the vertical axis shows minimum distance values on a continuous scale. Points are jittered horizontally within each category, producing vertical distributions whose central tendency increases from left to right.' width=100%}
 :::
 :::
 
@@ -227,16 +263,16 @@ After completing $20$ evaluations, they were asked for their demographics which 
 Two generalized linear mixed effects models [@mcculloch2001] were fitted to model the likelihood of detecting the data structure in both the $2\text{-}D$ NLDR layout and the tour (@eq-glmm1). Both models accounted for subject-level variability and the effect of distance measures under different NLDR methods. The general form of the model is given by:
 
 $$
-\text{logit}(P(y_{ijm} = 1)) = \mu_{m} + \beta_{m} d_{i} + \gamma_{j}
+\text{logit}(P(y_{ijm} = 1)) = \mu_{m} + \beta_{m} d_{i} + \gamma_{j},
 $$ {#eq-glmm1}
 
-where $\mu_{m}$ is the overall mean for NLDR method $m$, $d_i$ is the distance measure for the data structure $i = 1, \dots, 18$, $\beta_m$ is the fixed effect of distance metric under NLDR method $m$, $\gamma_j$ is the random effect of the subject $j = 1, 2, \dots, 127$, where $\gamma_j \sim N(0, \sigma_\gamma^2)$. Separate models were fitted using $d_i$ as either the scaled BW ratio or the exp(scaled minimum distance). The NLDR methods denoted by $m$ can include TriMAP, UMAP, PaCMAP, tSNE, and PHATE.
+where $\mu_{m}$ is the intercept, $d_i$ is the distance measure for the data structure $i = 1, \dots, 18$, $\beta_m$ is the fixed effect of distance metric under NLDR method $m$, $\gamma_j$ is the random effect of the subject $j = 1, 2, \dots, 127$, where $\gamma_j \sim N(0, \sigma_\gamma^2)$. Separate models were fitted using $d_i$ as either the scaled BW ratio or the exp(scaled minimum distance). The NLDR methods denoted by $m$ can include TriMAP, UMAP, PaCMAP, tSNE, and PHATE. The models were fitted using the `lme4` package [@douglas2015] and examined with the `emmeans` package [@russell2025].
 
 ## Results {#sec-results}
 
-The data was collected from $127$ subjects, resulting in $127 \times 15 = 1905$ evaluations, excluding the attention check trials and the trials shows the different data in two displays.
+The data was collected from $127$ subjects, resulting in $127 \times 15 = 1905$ evaluations, excluding the attention check trials and the trials showing the different data in two displays.
 
-### Correct proportions
+### Effect of method and distance between clusters
 
 The proportion of correct identifications across NLDR methods and distance conditions was analysed to evaluate how effectively each method preserves cluster separation. Results are summarized using two generalized linear mixed-effects models, with either the scaled BW ratio (@fig-glmm, @tbl-glmm) or the exp(scaled minimum distance) (@fig-glmm-min, @tbl-glmm-min) as the distance predictor. Both models accounted for subject-level variability through random effects and included NLDR method as a fixed factor interacting with the distance measure.
 
@@ -255,20 +291,20 @@ Results from the model using the scaled BW ratio (@tbl-glmm) indicate that clust
 
 
 
-::: {#tbl-glmm .cell layout-align="center" tbl-cap='Estimated trends of correct identification probability with respect to scaled BW ratio by NLDR method.The table shows method-specific slope estimates (log-odds scale) for the effect of the scaled BW ratio on the probability of correct identification, obtained from a generalized linear mixed-effects model. Estimates represent the change in log-odds of correct identification per unit increase in scaled BW ratio for each NLDR method, along with standard errors (SE), asymptotic 95\% confidence intervals (LCL, UCL), Wald z-statistics, and corresponding p-values. Positive estimates indicate improved identification accuracy with increasing cluster separation, while negative estimates indicate declining accuracy. Significance codes: ($\emph{p}\leq 0.001$ \'`***`\', $\emph{p}\leq 0.01$ \'`**`\', $\emph{p}\leq 0.05$ \'`*`\', $\emph{p}\leq 0.1$ \'`.`\').'}
+::: {#tbl-glmm .cell layout-align="center" tbl-cap='Estimated trends of correct identification probability with respect to scaled BW ratio by NLDR method.The table shows method-specific slope estimates (log-odds scale) for the effect of the scaled BW ratio on the probability of correct identification, obtained from a generalized linear mixed-effects model. Estimates represent the change in log-odds of correct identification per unit increase in scaled BW ratio for each NLDR method, along with standard errors (SE), 95\% confidence intervals, Wald z-statistics, and corresponding p-values. p-values and Confidence Intervals are calculated assuming normally distributed errors in the estimates. Positive estimates indicate improved identification accuracy with increasing cluster separation, while negative estimates indicate declining accuracy. Significance codes: ($\emph{p}\leq 0.001$ \'`***`\', $\emph{p}\leq 0.01$ \'`**`\', $\emph{p}\leq 0.05$ \'`*`\', $\emph{p}\leq 0.1$ \'`.`\').'}
 ::: {.cell-output-display}
 \begin{table}
 \centering
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{lrrrrrrl}
+\begin{tabular}{lrrlrl}
 \toprule
-method & estimate & SE & asymp.LCL & asymp.UCL & z.ratio & p.value & p\_val\_sig\\
+Method & Slope & SE & 95\% CI & z & p\\
 \midrule
-TriMAP & 0.03 & 0.49 & -0.92 & 0.99 & 0.07 & 0.95 & \\
-UMAP & 1.15 & 0.49 & 0.19 & 2.11 & 2.35 & 0.02 & *\\
-PaCMAP & 0.51 & 0.48 & -0.43 & 1.45 & 1.06 & 0.29 & \\
-tSNE & -2.61 & 0.62 & -3.83 & -1.40 & -4.20 & 0.00 & ***\\
-PHATE & -0.92 & 0.54 & -1.97 & 0.13 & -1.71 & 0.09 & .\\
+TriMAP & 0.03 & 0.49 & {}[-0.92, 0.99] & 0.07 & 0.95\\
+UMAP & 1.15 & 0.49 & {}[0.19, 2.11] & 2.35 & 0.02 *\\
+PaCMAP & 0.51 & 0.48 & {}[-0.43, 1.45] & 1.06 & 0.29\\
+tSNE & -2.61 & 0.62 & {}[-3.83, -1.4] & -4.20 & <0.001 ***\\
+PHATE & -0.92 & 0.54 & {}[-1.97, 0.13] & -1.71 & 0.09 .\\
 \bottomrule
 \end{tabular}}
 \end{table}
@@ -293,7 +329,7 @@ PHATE & -0.92 & 0.54 & -1.97 & 0.13 & -1.71 & 0.09 & .\\
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Estimated probability of correct identification as a function of the scaled BW ratio for five NLDR methods. The left panel shows model-based estimated probabilities with 95\% confidence intervals across values of the scaled BW ratio. The right panels show observed proportions of correct identification (black points) and fitted logistic regression curves for each method. The scaled BW ratio measures relative cluster separation, with larger values indicating greater separability. Performance trends differ across methods, with UMAP showing increasing accuracy, tSNE and PHATE decreasing accuracy, and TriMAP exhibiting relatively stable performance.](05-chap5_files/figure-pdf/fig-glmm-1.pdf){#fig-glmm fig-align='center' fig-pos='!ht' fig-alt='Multi-panel figure showing the relationship between cluster separation and identification accuracy for five NLDR methods. In the left panel, a line plot displays model-based estimated probabilities of correct identification as a function of the scaled between–within (BW) ratio. The horizontal axis represents the scaled BW ratio, increasing from low to high cluster separability, and the vertical axis shows predicted probability of correct identification, ranging from 0 to 1. Five colored lines correspond to UMAP, PaCMAP, TriMAP, tSNE, and PHATE. Each line is surrounded by a shaded band indicating a 95% confidence interval around the estimate. The right side of the figure contains separate panels for each NLDR method. In each panel, the horizontal axis again shows the scaled BW ratio and the vertical axis shows the proportion of correct identifications. Black points represent observed proportions at different BW ratio values, and a smooth colored curve overlays the points, representing the fitted logistic regression model for that method.' width=100%}
+![Estimated probability of correct identification as a function of the scaled BW ratio for five NLDR methods. The left panel shows model-based estimated probabilities with 95\% confidence intervals across values of the scaled BW ratio. The right panels show observed proportions of correct identification (black points) and fitted logistic regression curves for each method. Each black point represents the proportion of SAME responses from a distinct combination of data structure, distance scale factor, and NLDR method. The scaled BW ratio measures relative cluster separation, with larger values indicating greater separability. Performance trends differ across methods, with UMAP showing increasing accuracy, tSNE and PHATE decreasing accuracy, and TriMAP exhibiting relatively stable performance.](05-chap5_files/figure-pdf/fig-glmm-1.pdf){#fig-glmm fig-align='center' fig-pos='!ht' fig-alt='Multi-panel figure showing the relationship between cluster separation and identification accuracy for five NLDR methods. In the left panel, a line plot displays model-based estimated probabilities of correct identification as a function of the scaled between–within (BW) ratio. The horizontal axis represents the scaled BW ratio, increasing from low to high cluster separability, and the vertical axis shows predicted probability of correct identification, ranging from 0 to 1. Five colored lines correspond to UMAP, PaCMAP, TriMAP, tSNE, and PHATE. Each line is surrounded by a shaded band indicating a 95% confidence interval around the estimate. The right side of the figure contains separate panels for each NLDR method. In each panel, the horizontal axis again shows the scaled BW ratio and the vertical axis shows the proportion of correct identifications. Black points represent observed proportions at different BW ratio values, and a smooth colored curve overlays the points, representing the fitted logistic regression model for that method.' width=100%}
 :::
 :::
 
@@ -313,20 +349,20 @@ To assess whether these patterns depend on how separation is quantified, we fitt
 
 
 
-::: {#tbl-glmm-min .cell layout-align="center" tbl-cap='Estimated trends of correct identification probability with respect to exp(scaled minimum distance) by NLDR method.The table shows method-specific slope estimates (log-odds scale) for the effect of the exp(scaled minimum distance) on the probability of correct identification, obtained from a generalized linear mixed-effects model. Estimates represent the change in log-odds of correct identification per unit increase in exp(scaled minimum distance) for each NLDR method, along with standard errors (SE), asymptotic 95\% confidence intervals (LCL, UCL), Wald z-statistics, and corresponding p-values. Positive estimates indicate improved identification accuracy with increasing cluster separation, while negative estimates indicate declining accuracy. Significance codes: ($\emph{p}\leq 0.001$ \'`***`\', $\emph{p}\leq 0.01$ \'`**`\', $\emph{p}\leq 0.05$ \'`*`\', $\emph{p}\leq 0.1$ \'`.`\').'}
+::: {#tbl-glmm-min .cell layout-align="center" tbl-cap='Estimated trends of correct identification probability with respect to exp(scaled minimum distance) by NLDR method.The table shows method-specific slope estimates (log-odds scale) for the effect of the exp(scaled minimum distance) on the probability of correct identification, obtained from a generalized linear mixed-effects model. Estimates represent the change in log-odds of correct identification per unit increase in exp(scaled minimum distance) for each NLDR method, along with standard errors (SE), 95\% confidence intervals, Wald z-statistics, and corresponding p-values. p-values and Confidence Intervals are calculated assuming normally distributed errors in the estimates. Positive estimates indicate improved identification accuracy with increasing cluster separation, while negative estimates indicate declining accuracy. Significance codes: ($\emph{p}\leq 0.001$ \'`***`\', $\emph{p}\leq 0.01$ \'`**`\', $\emph{p}\leq 0.05$ \'`*`\', $\emph{p}\leq 0.1$ \'`.`\').'}
 ::: {.cell-output-display}
 \begin{table}
 \centering
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{lrrrrrrl}
+\begin{tabular}{lrrlrl}
 \toprule
-method & estimate & SE & asymp.LCL & asymp.UCL & z.ratio & p.value & p\_val\_sig\\
+Method & Slope & SE & 95\% CI & z & p\\
 \midrule
-TriMAP & 0.20 & 0.20 & -0.20 & 0.59 & 0.97 & 0.33 & \\
-UMAP & 0.59 & 0.20 & 0.20 & 0.98 & 2.99 & 0.00 & ***\\
-PaCMAP & 0.22 & 0.19 & -0.16 & 0.60 & 1.12 & 0.26 & \\
-tSNE & -0.78 & 0.22 & -1.20 & -0.35 & -3.60 & 0.00 & ***\\
-PHATE & -0.35 & 0.21 & -0.76 & 0.06 & -1.68 & 0.09 & .\\
+TriMAP & 0.20 & 0.20 & {}[-0.2, 0.59] & 0.97 & 0.33\\
+UMAP & 0.59 & 0.20 & {}[0.2, 0.98] & 2.99 & 0.00 **\\
+PaCMAP & 0.22 & 0.19 & {}[-0.16, 0.6] & 1.12 & 0.26\\
+tSNE & -0.78 & 0.22 & {}[-1.2, -0.35] & -3.60 & <0.001 ***\\
+PHATE & -0.35 & 0.21 & {}[-0.76, 0.06] & -1.68 & 0.09 .\\
 \bottomrule
 \end{tabular}}
 \end{table}
@@ -351,39 +387,12 @@ PHATE & -0.35 & 0.21 & -0.76 & 0.06 & -1.68 & 0.09 & .\\
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Estimated probability of correct identification as a function of the exp(scaled minimum distance) for five NLDR methods. The left panel shows model-based estimated probabilities with 95% confidence intervals across values of the exp(scaled minimum distance). The right panels show observed proportions of correct identification (black points) and fitted logistic regression curves for each method. Larger values correspond to greater spatial separation between clusters. UMAP shows increasing accuracy with increasing separation, whereas tSNE and PHATE show declining trends, and TriMAP exhibits relatively stable performance.](05-chap5_files/figure-pdf/fig-glmm-min-1.pdf){#fig-glmm-min fig-align='center' fig-pos='!ht' fig-alt='A multi-panel figure showing the relationship between cluster separation and identification accuracy for five NLDR methods. The left panel is a line plot of model-based estimated probabilities of correct cluster identification. The horizontal axis represents exp(scaled minimum distance), increasing from low to high cluster separation, and the vertical axis shows predicted probability of correct identification, ranging from 0 to 1. Five colored curves correspond to UMAP, tSNE, PHATE, PaCMAP, and TriMAP, each surrounded by a shaded 95% confidence interval band. The right side of the figure contains separate panels for each NLDR method. In each panel, the horizontal axis again shows exp(scaled minimum distance) and the vertical axis shows the proportion of correct identifications. Black points represent observed proportions at different separation levels, and a smooth colored curve overlays the points, showing the fitted logistic regression model for that method.' width=100%}
+![Estimated probability of correct identification as a function of the exp(scaled minimum distance) for five NLDR methods. The left panel shows model-based estimated probabilities with 95% confidence intervals across values of the exp(scaled minimum distance). The right panels show observed proportions of correct identification (black points) and fitted logistic regression curves for each method. Each black point represents the proportion of SAME responses from a distinct combination of data structure, distance scale factor, and NLDR method. Larger values correspond to greater spatial separation between clusters. UMAP shows increasing accuracy with increasing separation, whereas tSNE and PHATE show declining trends, and TriMAP exhibits relatively stable performance.](05-chap5_files/figure-pdf/fig-glmm-min-1.pdf){#fig-glmm-min fig-align='center' fig-pos='!ht' fig-alt='A multi-panel figure showing the relationship between cluster separation and identification accuracy for five NLDR methods. The left panel is a line plot of model-based estimated probabilities of correct cluster identification. The horizontal axis represents exp(scaled minimum distance), increasing from low to high cluster separation, and the vertical axis shows predicted probability of correct identification, ranging from 0 to 1. Five colored curves correspond to UMAP, tSNE, PHATE, PaCMAP, and TriMAP, each surrounded by a shaded 95% confidence interval band. The right side of the figure contains separate panels for each NLDR method. In each panel, the horizontal axis again shows exp(scaled minimum distance) and the vertical axis shows the proportion of correct identifications. Black points represent observed proportions at different separation levels, and a smooth colored curve overlays the points, showing the fitted logistic regression model for that method.' width=100%}
 :::
 :::
 
 
 Taken together, these results demonstrate that the impact of cluster separability on correct identification is robust to the choice of distance measure but varies substantially across NLDR methods. Methods such as UMAP benefit from increased separation, whereas tSNE and PHATE appear sensitive to over-separation, potentially leading to distortions in the low-dimensional representation. TriMAP, by contrast, shows little sensitivity to changes in separation, suggesting robustness across a wide range of cluster configurations.
-
-### Variability across data sets and subjects
-
-Two sources of variability in the experimental design that are important to assess relative to the fitted model: data sets and subjects. Data sets are effectively treated as replicates in the experiment, providing random samples of a range of types of clusters. Humans have different perceptual skills which is why it is important to include a subject random effect in the model. 
-
-Across the data sets used in the experiment, the proportion of correct responses ranges from approximately $0.3$ to $0.7$ (@fig-var-sum a). While this spread indicates that some data sets are easier to identify than others, the overall pattern is fairly consistent. Many data sets behave similarly, which is not surprising given that they are constructed from a shared set of underlying data structures. Because the data sets exhibit comparable levels of difficulty rather than forming distinct groups, treating data set as a separate experimental factor is unlikely to add explanatory power. Instead, variation across data sets reflects structural differences already captured by the design of the simulation.
-
-In contrast, subject-level performance shows natural but well-behaved variability. Most subjects achieve moderate accuracy, centred around a correct proportion of roughly $0.5$ (@fig-var-sum b), with fewer subjects at the lower and higher ends. Importantly, this distribution is balanced rather than polarized. High-accuracy subjects do not succeed simply by always choosing "SAME"; they still make occasional errors. Similarly, subjects with lower accuracy are not consistently choosing "DIFFERENT" and do show some correct responses. As a result, no subject has a correct proportion of exactly $0$ or $1$.
-
-This pattern suggests that subjects differ in overall sensitivity to visual structure, but not in a way that reflects systematic bias or disengagement. These individual differences are therefore well-represented as random effects, allowing us to account for baseline variation in performance without attributing it to the experimental conditions themselves. Modeling subjects as a random effect captures this heterogeneity while preserving the focus on how NLDR methods and cluster separation influence perceptual accuracy.
-
-<!-- #### Summary -->
-<!-- data structure wise analysis-->
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![Examining the variability of proportion correct across data sets and subjects. Panel (a) shows the proportion of correct responses for each data set. Black indicates the correct proportion and binomial confidence intervals, with colour representing correct proportion across different distance-scaling within each data set (low to high matching light to dark). The variability ranges from $0.3$ to $0.7$ and is consistent with considering the data sets as replication variability due to random sampling. Panel (b) shows the distribution of proportion correct across subjects. It is relatively Gaussian with a few participants performing exceptionally well and some poorly. This is consistent with other human subject experiments and reflects individual visual skills, illustrating the need to include subject-specific random effects in the model.](05-chap5_files/figure-pdf/fig-var-sum-1.pdf){#fig-var-sum fig-align='center' width=100%}
-:::
-:::
-
 
 ### Patterns for misidentification
 
@@ -421,7 +430,7 @@ Another common source of misidentification comes from uneven point density. In s
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![tSNE and UMAP layouts and $2\text{-}D$ projections for the data structure `three_clust_07`, composed of a nonlinear hyperbola, a hemisphere, and a triangular pyramid, shown under small and large cluster separation. Panels (a1–a2) show two fixed $2\text{-}D$ projections at small separation, and panels (b1–b2) show the same projections at large separation; the corresponding tSNE and UMAP layouts are shown in the right panels. At small separation, curved and rounded components overlap substantially in both methods, making the structure difficult to distinguish. With increased separation, UMAP yields smoother, more continuous representations that retain the curvature of the hyperbolic component and improve spacing between clusters. In contrast, tSNE bends and breaks the hyperbolic structure and introduces irregular gaps between points, weakening global shape cues.](05-chap5_files/figure-pdf/fig-three07-miss-1.pdf){#fig-three07-miss fig-align='center' fig-alt='A multi-panel figure comparing NLDR layouts and linear projections of the same 4-D dataset, labelled three_clust_07. The data consist of three geometric structures: a curved hyperbolic band, a rounded hemispherical cluster, and a triangular pyramid-shaped cluster. The left half of the figure shows four 2-D linear projections arranged in two rows. Panels (a1) and (a2) display two fixed 2-D projections under small cluster separation, while panels (b1) and (b2) show the same projections under large cluster separation. In the small-separation projections, points from the three structures overlap substantially, with the curved and rounded components intermingling. In the large-separation projections, the three structures are more spatially separated, making the curved hyperbolic band, hemispherical cluster, and pyramid-shaped cluster more distinguishable. The right side of the figure shows corresponding 2-D NLDR layouts produced by tSNE and UMAP for the same small and large separation settings. In the small-separation layouts, both methods display overlapping point clouds with limited visual separation between structures. In the large-separation layouts, UMAP produces smoother, more continuous point arrangements that follow the curved shape of the hyperbolic structure and increase spacing between clusters, while tSNE shows a more fragmented layout with bends, breaks, and irregular gaps in the curved structure.' width=100%}
+![tSNE and UMAP layouts and $2\text{-}D$ projections for the data structure `three_clust_07`, composed of a nonlinear hyperbola, a hemisphere, and a triangular pyramid, shown under small and large cluster separation. Panels (a1–a2) show two fixed $2\text{-}D$ projections at small separation, and panels (b1–b2) show the same projections at large separation; the corresponding tSNE and UMAP layouts are shown in the right panels. For each NLDR layout, the proportion of correct identifications for the corresponding method and distance factor is reported in the top-right corner of the plot. At small separation, curved and rounded components overlap substantially in both methods, making the structure difficult to distinguish. With increased separation, UMAP yields smoother, more continuous representations that retain the curvature of the hyperbolic component and improve spacing between clusters. In contrast, tSNE bends and breaks the hyperbolic structure and introduces irregular gaps between points, weakening global shape cues.](05-chap5_files/figure-pdf/fig-three07-miss-1.pdf){#fig-three07-miss fig-align='center' fig-alt='A multi-panel figure comparing NLDR layouts and linear projections of the same 4-D dataset, labelled three_clust_07. The data consist of three geometric structures: a curved hyperbolic band, a rounded hemispherical cluster, and a triangular pyramid-shaped cluster. The left half of the figure shows four 2-D linear projections arranged in two rows. Panels (a1) and (a2) display two fixed 2-D projections under small cluster separation, while panels (b1) and (b2) show the same projections under large cluster separation. For each NLDR layout, the proportion of correct identifications for the corresponding method and distance factor is reported in the top-right corner of the plot. In the small-separation projections, points from the three structures overlap substantially, with the curved and rounded components intermingling. In the large-separation projections, the three structures are more spatially separated, making the curved hyperbolic band, hemispherical cluster, and pyramid-shaped cluster more distinguishable. The right side of the figure shows corresponding 2-D NLDR layouts produced by tSNE and UMAP for the same small and large separation settings. In the small-separation layouts, both methods display overlapping point clouds with limited visual separation between structures. In the large-separation layouts, UMAP produces smoother, more continuous point arrangements that follow the curved shape of the hyperbolic structure and increase spacing between clusters, while tSNE shows a more fragmented layout with bends, breaks, and irregular gaps in the curved structure.' width=100%}
 :::
 :::
 
@@ -448,7 +457,7 @@ Another common source of misidentification comes from uneven point density. In s
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![tSNE and UMAP layouts and $2\text{-}D$ projections for the data structure `three_clust_12`, composed of an S-curve, a hemisphere, and a filled hexagonal pyramid, shown under small and large cluster separation. Panels (a1–a2) show two fixed $2\text{-}D$ projections at small separation, and panels (b1–b2) show the same projections at large separation; the corresponding tSNE and UMAP layouts are shown in the right panels. At small separation, curved and rounded components overlap substantially in both methods, making the structure difficult to distinguish. With increased separation, UMAP preserves the distinct geometric character of each component, maintaining an elongated S-curve, a compact hemisphere, and a coherent pyramidal structure. In contrast, tSNE fragments curved and volumetric components into irregular, disconnected pieces, obscuring global shape cues.](05-chap5_files/figure-pdf/fig-three12-miss-1.pdf){#fig-three12-miss fig-align='center' fig-alt='A multi-panel figure comparing linear projections and NLDR layouts of the same 4-D dataset, labelled three_clust_12. The data consist of three geometric structures: an elongated S-curve, a rounded hemispherical cluster, and a filled hexagonal pyramid. The left portion of the figure shows four fixed 2-D linear projections arranged in two rows. Panels (a1) and (a2) display two projections under small cluster separation, where points from the three structures overlap substantially and the curved and rounded components are difficult to distinguish. Panels (b1) and (b2) show the same projections under large cluster separation, where the S-curve, hemisphere, and pyramid become more spatially separated and visually distinct. The right portion of the figure shows the corresponding 2-D NLDR layouts produced by tSNE and UMAP for the same small and large separation settings. At small separation, both methods show overlapping point clouds with limited separation between structures. At large separation, the UMAP layout displays a smooth, elongated S-shaped structure alongside a compact hemispherical cluster and a coherent pyramidal cluster. In contrast, the tSNE layout shows these structures broken into multiple disconnected or irregularly shaped groups.' width=100%}
+![tSNE and UMAP layouts and $2\text{-}D$ projections for the data structure `three_clust_12`, composed of an S-curve, a hemisphere, and a filled hexagonal pyramid, shown under small and large cluster separation. Panels (a1–a2) show two fixed $2\text{-}D$ projections at small separation, and panels (b1–b2) show the same projections at large separation; the corresponding tSNE and UMAP layouts are shown in the right panels. For each NLDR layout, the proportion of correct identifications for the corresponding method and distance factor is reported in the top-right corner of the plot. At small separation, curved and rounded components overlap substantially in both methods, making the structure difficult to distinguish. With increased separation, UMAP preserves the distinct geometric character of each component, maintaining an elongated S-curve, a compact hemisphere, and a coherent pyramidal structure. In contrast, tSNE fragments curved and volumetric components into irregular, disconnected pieces, obscuring global shape cues.](05-chap5_files/figure-pdf/fig-three12-miss-1.pdf){#fig-three12-miss fig-align='center' fig-alt='A multi-panel figure comparing linear projections and NLDR layouts of the same 4-D dataset, labelled three_clust_12. The data consist of three geometric structures: an elongated S-curve, a rounded hemispherical cluster, and a filled hexagonal pyramid. The left portion of the figure shows four fixed 2-D linear projections arranged in two rows. Panels (a1) and (a2) display two projections under small cluster separation, where points from the three structures overlap substantially and the curved and rounded components are difficult to distinguish. Panels (b1) and (b2) show the same projections under large cluster separation, where the S-curve, hemisphere, and pyramid become more spatially separated and visually distinct. The right portion of the figure shows the corresponding 2-D NLDR layouts produced by tSNE and UMAP for the same small and large separation settings. For each NLDR layout, the proportion of correct identifications for the corresponding method and distance factor is reported in the top-right corner of the plot. At small separation, both methods show overlapping point clouds with limited separation between structures. At large separation, the UMAP layout displays a smooth, elongated S-shaped structure alongside a compact hemispherical cluster and a coherent pyramidal cluster. In contrast, the tSNE layout shows these structures broken into multiple disconnected or irregularly shaped groups.' width=100%}
 :::
 :::
 
@@ -475,7 +484,7 @@ Future work could extend this framework by considering additional data structure
 
 ## Supplementary Materials
 
-All the materials to reproduce the chapter can be found at [github.com/JayaniLakshika/paper-vis-experiment](https://github.com/JayaniLakshika/paper-vis-experiment).
+<!-- All the materials to reproduce the chapter can be found at [github.com/JayaniLakshika/paper-vis-experiment](https://github.com/JayaniLakshika/paper-vis-experiment). -->
 
 The appendix provides additional details on the experimental materials and process, including the three-cluster data structures, $2\text{-}D$ NLDR layouts, inter-cluster distance metrics, and the data collection and analysis processes, along with links to videos, and scripts.
 
