@@ -365,6 +365,8 @@ experiment_design01 <- read_rds(here::here("data/vis-exp/experiment_design_with_
 # Prepare dataset
 plot_data <- experiment_design01 |>
   select(subject, attempt, method, is_same, is_attention_check, distance_factor) |>
+  filter(is_same == "SAME") |>
+  filter(is_attention_check == "NO") |>
   mutate(
     # Recode distance factor
     distance_sf = recode(as.character(distance_factor),
