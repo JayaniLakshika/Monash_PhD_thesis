@@ -413,6 +413,7 @@ Based on these patterns, we selected the BW ratio and the exponentiated scaled m
 
 To determine the number of responses required per treatment combination, we based the power analysis on conditions that exhibited the greatest perceptual ambiguity in the pilot study. Specifically, we focused on tSNE and UMAP embeddings at distance scale factors 0.1 and 0.6, which correspond to small and small–medium cluster separation. These conditions produced neither floor nor ceiling effects and showed substantial variation in correct identification rates, making them well suited for estimating detectable effect sizes. Distance factor 1.0 was not used for power estimation, as performance was near ceiling and provided limited sensitivity for detecting differences.
 
+<!--script/vis-exp/pwr_analysis_umap_0.1_0.6.R, script/vis-exp/pwr_analysis_tsne_0.1_0.6.R-->
 
 ::: {.cell layout-align="center"}
 
