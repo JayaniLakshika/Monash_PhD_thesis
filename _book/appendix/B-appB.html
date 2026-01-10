@@ -381,6 +381,14 @@ Table&nbsp;B.1: R script files used to generate outputs in the main paper.
 <td style="text-align: left;">19_find_which_replicates_missing.R</td>
 <td style="text-align: left;">Identifies missing responses across experimental conditions.</td>
 </tr>
+<tr class="even">
+<td style="text-align: left;">pwr_analysis_umap_0.1_0.6.R</td>
+<td style="text-align: left;">Power analysis to decide the number of responses needed to detect the difference between UMAP 0.1 and 0.6 distance scale factors.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">pwr_analysis_tsne_0.1_0.6.R</td>
+<td style="text-align: left;">Power analysis to decide the number of responses needed to detect the difference between tSNE 0.1 and 0.6 distance scale factors.</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -854,7 +862,7 @@ Table&nbsp;B.5: Videos of datasets used for attention check trials
 </div>
 </section><section id="text-d-nldr-layouts" class="level2" data-number="B.3"><h2 data-number="B.3" class="anchored" data-anchor-id="text-d-nldr-layouts">
 <span class="header-section-number">B.3</span> <span class="math inline">2\text{-}D</span> NLDR layouts</h2>
-<p>All <span class="math inline">2\text{-}D</span> NLDR layouts used in the experiment are available in the supplementary repository: <a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/tree/main/figures/vis-exp/layouts">github.com/JayaniLakshika/Monash_PhD_thesis/figures/vis-exp/layouts</a>. These include all <span class="math inline">2\text{-}D</span> embeddings generated under different NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) with default hyper-parameter settings for the simulated <span class="math inline">4\text{-}D</span> data sets. All embedding data used to generate the <span class="math inline">2\text{-}D</span> NLDR layouts are available at <a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/data/vis-exp/embedding_data_three_clust_all.rds">https://github.com/JayaniLakshika/Monash_PhD_thesis/data/vis-exp/embedding_data_three_clust_all.rds</a>.</p>
+<p>All <span class="math inline">2\text{-}D</span> NLDR layouts used in the experiment are available in the supplementary repository: <a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/tree/main/figures/vis-exp/layouts">github.com/JayaniLakshika/Monash_PhD_thesis/figures/vis-exp/layouts</a>. These include all <span class="math inline">2\text{-}D</span> embeddings generated under different NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) with default hyper-parameter settings for the simulated <span class="math inline">4\text{-}D</span> data sets. All embedding data used to generate the <span class="math inline">2\text{-}D</span> NLDR layouts are available at <a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/data/vis-exp/embedding_data_three_clust_all.rds">github.com/JayaniLakshika/Monash_PhD_thesis/data/vis-exp/embedding_data_three_clust_all.rds</a>.</p>
 </section><section id="distance-metrics" class="level2" data-number="B.4"><h2 data-number="B.4" class="anchored" data-anchor-id="distance-metrics">
 <span class="header-section-number">B.4</span> Distance metrics</h2>
 <p>To quantify cluster separation in the high-dimensional space, we considered several inter-cluster distance metrics that capture different aspects of separability (<a href="#fig-distance-metrics" class="quarto-xref">Figure&nbsp;<span>B.1</span></a>). Together, these metrics reflect both global separation between clusters and more local boundary proximity.</p>
@@ -880,12 +888,12 @@ Figure&nbsp;B.1: Pairwise relationships among six distance metrics used to quant
 <!--script/vis-exp/pwr_analysis_umap_0.1_0.6.R, script/vis-exp/pwr_analysis_tsne_0.1_0.6.R-->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-num-res-detect" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%" data-fig-align="center">
+<div id="fig-num-res-detect" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-num-res-detect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="B-appB_files/figure-html/fig-num-res-detect-1.png" id="fig-num-res-detect" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:100.0%">
+<img src="B-appB_files/figure-html/fig-num-res-detect-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-num-res-detect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;B.2
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-num-res-detect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;B.2: Power curves showing the relationship between the number of responses and detection probability for differences in correct identification rates between distance factors <span class="math inline">0.1</span> and <span class="math inline">0.6</span>. Panel (a) shows results for tSNE and panel (b) for UMAP. Curves correspond to different effect sizes (difference in proportions), with darker lines indicating larger effects. The horizontal line marks the target power of <span class="math inline">0.8</span>, and the vertical dashed lines indicate the approximate number of responses required to reach this level for a moderate–large effect (≈<span class="math inline">0.22</span>). UMAP reaches the target power with fewer responses than tSNE, reflecting lower variability in participant responses.
 </figcaption></figure>
 </div>
 </div>
@@ -1019,7 +1027,7 @@ Figure&nbsp;B.10: Examining the variability of proportion correct across data se
 <p>The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty-three trials, including the demographics and the attention check trial. Participants who exceeded the average time of <span class="math inline">5-10</span> minutes were excluded, as determined from the pilot study. Following this, individuals who didn’t accurately detect the attention check trial were also removed. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set is further refined by filtering out all the responses, which showed the same data structures in <span class="math inline">2\text{-}D</span> NLDR plot and tour.</p>
 </section><section id="demographics" class="level3"><h3 class="anchored" data-anchor-id="demographics">Demographics</h3>
 <p>Along with the responses to the trials, we have collected a series of demographic information including preferred pronoun, age range category, education background, and previous experience in PCA and Non-linear dimension reduction techniques. <a href="#tbl-pronoun" class="quarto-xref">Table&nbsp;<span>B.6</span></a>, <a href="#tbl-age" class="quarto-xref">Table&nbsp;<span>B.7</span></a>, <a href="#tbl-education" class="quarto-xref">Table&nbsp;<span>B.8</span></a>, <a href="#tbl-pca" class="quarto-xref">Table&nbsp;<span>B.9</span></a>, and <a href="#tbl-nldr" class="quarto-xref">Table&nbsp;<span>B.10</span></a> provide summaries of the demographic data.</p>
-<p>The participants are fairly balanced in terms of pronouns, with similar proportions identifying as <em>she/her</em> (<span class="math inline">50.4\%</span>) and <em>he/him</em> (<span class="math inline">48.0\%</span>), and a small number identifying as <em>they/them</em> (<span class="math inline">1.6\%</span>). Participants cover a wide age range, with most between <span class="math inline">25</span> and <span class="math inline">34</span> years old (<span class="math inline">35.4\%</span>), followed by those aged <span class="math inline">18–24</span> (<span class="math inline">20.5\%</span>) and <span class="math inline">35–44</span> (<span class="math inline">19.7\%</span>). The sample has more younger and mid-adult age groups, while still including representation from older participants.</p>
+<p>The participants are fairly balanced in terms of pronouns, with similar proportions identifying as <em>she/her</em> (<span class="math inline">50.4\%</span>) and <em>he/him</em> (<span class="math inline">48.0\%</span>), and a small number identifying as <em>they/them</em> (<span class="math inline">1.6\%</span>). Participants cover a wide age range, with most between <span class="math inline">25</span> and <span class="math inline">34</span> years old (<span class="math inline">35.4\%</span>), followed by those aged <span class="math inline">18-24</span> (<span class="math inline">20.5\%</span>) and <span class="math inline">35-44</span> (<span class="math inline">19.7\%</span>). The sample has more younger and mid-adult age groups, while still including representation from older participants.</p>
 <p>Most participants have completed an undergraduate degree (<span class="math inline">44.9\%</span>) or a postgraduate qualification (<span class="math inline">26.8\%</span>), with others reporting some undergraduate study (<span class="math inline">21.3\%</span>). Only a small proportion did not complete high school. Prior experience with dimension reduction methods is limited: the majority report no previous experience with PCA (<span class="math inline">84.2\%</span>) or nonlinear dimension reduction techniques (<span class="math inline">86.6\%</span>). This suggests that most participants approached the task without strong prior familiarity, allowing the results to reflect general perceptual interpretation rather than expert knowledge.</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-pronoun" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">

@@ -52,6 +52,8 @@
 |13\_data\_processing\_method\_ds\_factor.R             |Processes collected experimental data and generates the  file, containing all relevant details for the same data structure shown in both displays. |
 |17\_compute\_distance\_btw\_centroids.R                |Computes different distance metrics between cluster in the high-dimensional space.                                                                 |
 |19\_find\_which\_replicates\_missing.R                 |Identifies missing responses across experimental conditions.                                                                                       |
+|pwr\_analysis\_umap\_0.1\_0.6.R                        |Power analysis to decide the number of responses needed to detect the difference between UMAP 0.1 and 0.6 distance scale factors.                  |
+|pwr\_analysis\_tsne\_0.1\_0.6.R                        |Power analysis to decide the number of responses needed to detect the difference between tSNE 0.1 and 0.6 distance scale factors.                  |
 
 
 :::
@@ -385,7 +387,7 @@ Animations of the $4\text{-}D$ tours that were used for the study’s non-attent
 
 ## $2\text{-}D$ NLDR layouts
 
-All $2\text{-}D$ NLDR layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/Monash_PhD_thesis/figures/vis-exp/layouts](https://github.com/JayaniLakshika/Monash_PhD_thesis/tree/main/figures/vis-exp/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) with default hyper-parameter settings for the simulated $4\text{-}D$ data sets. All embedding data used to generate the $2\text{-}D$ NLDR layouts are available at [https://github.com/JayaniLakshika/Monash_PhD_thesis/data/vis-exp/embedding_data_three_clust_all.rds](https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/data/vis-exp/embedding_data_three_clust_all.rds).
+All $2\text{-}D$ NLDR layouts used in the experiment are available in the supplementary repository: [github.com/JayaniLakshika/Monash_PhD_thesis/figures/vis-exp/layouts](https://github.com/JayaniLakshika/Monash_PhD_thesis/tree/main/figures/vis-exp/layouts). These include all $2\text{-}D$ embeddings generated under different NLDR methods (tSNE, UMAP, PHATE, TriMAP, and PaCMAP) with default hyper-parameter settings for the simulated $4\text{-}D$ data sets. All embedding data used to generate the $2\text{-}D$ NLDR layouts are available at [github.com/JayaniLakshika/Monash_PhD_thesis/data/vis-exp/embedding_data_three_clust_all.rds](https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/data/vis-exp/embedding_data_three_clust_all.rds).
 
 ## Distance metrics
 
@@ -427,7 +429,7 @@ Using pilot estimates of the correct proportion, we conducted a simulation-based
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![](B-appB_files/figure-html/fig-num-res-detect-1.png){#fig-num-res-detect fig-align='center' width=100%}
+![Power curves showing the relationship between the number of responses and detection probability for differences in correct identification rates between distance factors $0.1$ and $0.6$. Panel (a) shows results for tSNE and panel (b) for UMAP. Curves correspond to different effect sizes (difference in proportions), with darker lines indicating larger effects. The horizontal line marks the target power of $0.8$, and the vertical dashed lines indicate the approximate number of responses required to reach this level for a moderate–large effect (≈$0.22$). UMAP reaches the target power with fewer responses than tSNE, reflecting lower variability in participant responses.](B-appB_files/figure-html/fig-num-res-detect-1.png){#fig-num-res-detect fig-align='center' width=100%}
 :::
 :::
 
@@ -568,7 +570,7 @@ The initial step in the data cleaning process involves the selection of subjects
 
 Along with the responses to the trials, we have collected a series of demographic information including preferred pronoun, age range category, education background, and previous experience in PCA and Non-linear dimension reduction techniques. @tbl-pronoun, @tbl-age, @tbl-education, @tbl-pca, and @tbl-nldr provide summaries of the demographic data.  
 
-The participants are fairly balanced in terms of pronouns, with similar proportions identifying as *she/her* ($50.4\%$) and *he/him* ($48.0\%$), and a small number identifying as *they/them* ($1.6\%$). Participants cover a wide age range, with most between $25$ and $34$ years old ($35.4\%$), followed by those aged $18–24$ ($20.5\%$) and $35–44$ ($19.7\%$). The sample has more younger and mid-adult age groups, while still including representation from older participants.
+The participants are fairly balanced in terms of pronouns, with similar proportions identifying as *she/her* ($50.4\%$) and *he/him* ($48.0\%$), and a small number identifying as *they/them* ($1.6\%$). Participants cover a wide age range, with most between $25$ and $34$ years old ($35.4\%$), followed by those aged $18-24$ ($20.5\%$) and $35-44$ ($19.7\%$). The sample has more younger and mid-adult age groups, while still including representation from older participants.
 
 Most participants have completed an undergraduate degree ($44.9\%$) or a postgraduate qualification ($26.8\%$), with others reporting some undergraduate study ($21.3\%$). Only a small proportion did not complete high school. Prior experience with dimension reduction methods is limited: the majority report no previous experience with PCA ($84.2\%$) or nonlinear dimension reduction techniques ($86.6\%$). This suggests that most participants approached the task without strong prior familiarity, allowing the results to reflect general perceptual interpretation rather than expert knowledge.
 
