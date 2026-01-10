@@ -61,7 +61,7 @@ for (j in 1:length(n_seq)) {
 }
 
 prob_tb <- tibble(n = prob[,1],
-                  p = prob[,2]-p1,
+                  p = p1-prob[,2],
                   dif = prob[,3],
                   pval = prob[,4],
                   pdetect = prob[,5]

@@ -318,84 +318,56 @@ Based on these patterns, we selected the BW ratio and the exponentiated scaled m
 To determine the number of responses required per treatment combination, we based the power analysis on conditions that exhibited the greatest perceptual ambiguity in the pilot study. Specifically, we focused on tSNE and UMAP embeddings at distance scale factors 0.1 and 0.6, which correspond to small and small–medium cluster separation. These conditions produced neither floor nor ceiling effects and showed substantial variation in correct identification rates, making them well suited for estimating detectable effect sizes. Distance factor 1.0 was not used for power estimation, as performance was near ceiling and provided limited sensitivity for detecting differences.
 
 ```{r}
-## From the pilot study
+umap_sample_dt <- read_rds(here::here("data/vis-exp/umap_0.1_0.6_three_clust_pwr_results.rds"))
 
-library(tidyverse)
-library(emmeans)
-library(lme4)
+tsne_sample_dt <- read_rds(here::here("data/vis-exp/tsne_0.1_0.6_three_clust_pwr_results.rds"))
 
-results_df_method_ds <- read_rds(here::here("data/vis-exp/result_method_ds_factor.rds"))
+# Common limits for p
+p_limits <- range(
+  c(umap_sample_dt$p, tsne_sample_dt$p),
+  na.rm = TRUE
+)
 
-results_df_method_ds <- results_df_method_ds |>
-  filter(method != "pca")
+shared_colour_scale <- scale_color_continuous_diverging(
+  palette = "Purple-Brown",
+  limits = p_limits
+)
 
-## To reformat the response variable
-results_df_method_ds <- results_df_method_ds |>
-  mutate(result = if_else(result == "Correct", 1, 0))
-
-## To change the type of distance factor
-results_df_method_ds <- results_df_method_ds |>
-  mutate(distance_factor = as.factor(distance_factor))
-
-results_df_method_ds_umap <- results_df_method_ds |>
-  filter(method == "umap")
-
-## Fit the logistic model (full) with 18 subjects
-model_main_results_ds_umap <- glmer(result ~ distance_factor + (1 | subject), data = results_df_method_ds_umap,
-                               family = "binomial",
-                               control = glmerControl(optimizer = "bobyqa",
-                                                      optCtrl = list(maxfun = 1e5)))
-
-emmeans_umap <- emmeans(model_main_results_ds_umap, specs = pairwise ~ distance_factor, type = "response", infer = TRUE)
-
-p1 <- 0.389 ## from collected data: emmeans_umap, distance_factor = 0.1
-p2_seq <- p1 + seq(0.01, 0.3, 0.01) ## from collected data (0.444) distance_factor = 0.6
-ntrials <- 1000
-n_seq <- seq(5, 100, 5)
-
-prob <- NULL
-for (j in 1:length(n_seq)) {
-  for (k in 1:length(p2_seq)) {
-    n <- n_seq[j]
-    p2 <- p2_seq[k]
-    dif <- NULL; pval <- NULL; pdetect <- NULL
-    for (i in 1:ntrials) {
-      d1 <- rbinom(n, 1, p1)
-      d2 <- rbinom(n, 1, p2)
-      dif <- c(dif, (sum(d1)-sum(d2))/n)
-      pval <- c(pval, prop.test(x=c(sum(d1), sum(d2)), n=c(n, n),
-                                alternative="less")$p.value)
-      pdetect <- c(pdetect,
-                   ifelse(prop.test(x=c(sum(d1), sum(d2)), n=c(n, n),
-                                    alternative="less")$p.value < 0.05, 1, 0))
-    }
-    prob <- rbind(prob, cbind(n, p2, mean(dif), mean(pval), sum(pdetect)/ntrials))
-  }
-  cat(j, "\n")
-}
-
-prob_tb <- tibble(n = prob[,1],
-                  p = prob[,2]-p1,
-                  dif = prob[,3],
-                  pval = prob[,4],
-                  pdetect = prob[,5]
-) |>
-  mutate(sig = ifelse(pval < 0.05, "yes", "no"))
-ggplot(prob_tb, aes(x=n, y=p, fill=sig)) +
-  geom_tile() +
-  theme_minimal()
-
-ggplot(prob_tb, aes(x=n, y=pval, group=p, colour=p)) +
-  geom_hline(yintercept=0.05) +
+umap_sample_plt <- ggplot(
+  umap_sample_dt,
+  aes(x = n, y = pdetect, group = p, colour = p)
+) +
   geom_line() +
-  theme_minimal()
-
-ggplot(prob_tb, aes(x=n, y=pdetect, group=p, colour=p)) +
-  geom_line() +
+  geom_vline(xintercept = 62, linetype = "dashed") +
   geom_hline(yintercept = 0.8) +
+  xlab("number of responses") +
+  ylab("power") +
+  labs(color = "effect size") +
+  shared_colour_scale +
   theme_minimal()
 
+tsne_sample_plt <- ggplot(
+  tsne_sample_dt,
+  aes(x = n, y = pdetect, group = p, colour = p)
+) +
+  geom_line() +
+  geom_vline(xintercept = 62, linetype = "dashed") +
+  geom_hline(yintercept = 0.8) +
+  xlab("number of responses") +
+  ylab("power") +
+  labs(color = "effect size") +
+  shared_colour_scale +
+  theme_minimal()
 
+```
+
+```{r}
+#| fig-height: 5
+#| fig-width: 10
+
+umap_sample_plt + tsne_sample_plt +
+  plot_layout(guides = "collect") &
+  theme(legend.position = "bottom")
 ```
 
 <!-- To determine a suitable number of participants per treatment combination (method × distance scale factor), we conducted a simulation-based power analysis. The outcome of interest was binary (correct vs. incorrect identification), and differences between conditions were evaluated using tests for differences in proportions. -->
