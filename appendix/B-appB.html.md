@@ -402,7 +402,7 @@ To quantify cluster separation in the high-dimensional space, we considered seve
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Pairwise relationships among six distance metrics used to quantify cluster separation in the high-dimensional space: between–within (BW) ratio, exponentiated scaled minimum distance, quantile-ranked average between-cluster distance, Pearson–Gamma coefficient, average silhouette distance, and square-root–transformed Dunn and Dunn2 indices. The diagonal panels show the distribution of each metric, while the lower panels show scatterplots colored by distance scaling factor (S, SM, M, ML, L). Upper panels report Pearson correlation coefficients for all pairs, with significance indicated by asterisks ($p < 0.001$ '`***`'). Metrics show high positive correlation, confirming that they capture consistent structural variation. The BW ratio and exponentiated minimum distance were chosen for the main analysis because they provide complementary summaries of global cluster separation and local boundary distance.](B-appB_files/figure-html/fig-distance-metrics-1.png){#fig-distance-metrics fig-align='center' width=100%}
+![Pairwise relationships among six distance metrics used to quantify cluster separation in the high-dimensional space: between–within (BW) ratio, exponentiated scaled minimum distance, quantile-ranked average between-cluster distance, Pearson–Gamma coefficient, average silhouette distance, and square-root–transformed Dunn and Dunn2 indices. The diagonal panels show the distribution of each metric, while the lower panels show scatterplots colored by distance scaling factor (S, SM, M, ML, L). Upper panels report Pearson correlation coefficients for all pairs, with significance indicated by asterisks ($p < 0.001$ '`***`'). Metrics show high positive correlation, confirming that they capture consistent structural variation. The BW ratio and exponentiated minimum distance were chosen for the main analysis because they provide complementary summaries of global cluster separation and local boundary distance.](B-appB_files/figure-html/fig-distance-metrics-1.png){#fig-distance-metrics fig-align='center' fig-alt='A matrix of pairwise plots showing relationships among six cluster separation metrics. Each row and column corresponds to one metric. The diagonal panels display the distribution of each metric, shown as smooth density curves. The lower triangular panels contain scatterplots comparing pairs of metrics, with points colored by distance scaling factor levels labeled S, SM, M, ML, and L. The scatterplots show strong positive associations across most metric pairs, with points forming tight upward-sloping clouds. The upper triangular panels display Pearson correlation coefficients, many of which are large and positive, with asterisks indicating statistically significant correlations. Overall, the figure shows that all metrics vary consistently with distance scaling, while still capturing slightly different aspects of cluster separation.' width=100%}
 :::
 :::
 
@@ -429,20 +429,12 @@ Using pilot estimates of the correct proportion, we conducted a simulation-based
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Power curves showing the relationship between the number of responses and detection probability for differences in correct identification rates between distance factors $0.1$ and $0.6$. Panel (a) shows results for tSNE and panel (b) for UMAP. Curves correspond to different effect sizes (difference in proportions), with darker lines indicating larger effects. The horizontal line marks the target power of $0.8$, and the vertical dashed lines indicate the approximate number of responses required to reach this level for a moderate–large effect (≈$0.22$). UMAP reaches the target power with fewer responses than tSNE, reflecting lower variability in participant responses.](B-appB_files/figure-html/fig-num-res-detect-1.png){#fig-num-res-detect fig-align='center' width=100%}
+![Power curves showing the relationship between the number of responses and detection probability for differences in correct identification rates between distance factors $0.1$ and $0.6$. Panel (a) shows results for tSNE and panel (b) for UMAP. Curves correspond to different effect sizes (difference in proportions), with darker lines indicating larger effects. The horizontal line marks the target power of $0.8$, and the vertical dashed lines indicate the approximate number of responses required to reach this level for a moderate–large effect (≈$0.22$). UMAP reaches the target power with fewer responses than tSNE, reflecting lower variability in participant responses.](B-appB_files/figure-html/fig-num-res-detect-1.png){#fig-num-res-detect fig-align='center' fig-alt='Two side-by-side line plots show detection probability as a function of the number of responses per condition. Panel (a) corresponds to tSNE and panel (b) to UMAP. In both panels, the x-axis shows the number of responses per condition, ranging from about 10 to 100, and the y-axis shows detection probability from 0 to 1. Multiple lines are shown in each panel, corresponding to different effect sizes, with darker lines indicating larger effects. Detection probability increases as the number of responses increases for all effect sizes. A horizontal reference line marks a detection probability of 0.8, and a vertical dashed line indicates the approximate number of responses required to reach this level for a moderate–large effect (around 0.22). UMAP reaches this threshold with fewer responses (around 70) than tSNE (around 80), indicating higher sensitivity and lower variability for UMAP at this effect size.' width=100%}
 :::
 :::
 
 
 The results show that (@fig-num-res-detect), for this effect size, UMAP reaches a detection probability of $0.8$ with around $70$ responses per condition, while tSNE requires approximately $80$ responses to achieve the same level of power. This difference reflects the higher variability observed in tSNE responses compared to UMAP. Importantly, these results indicate that the number of responses collected in the main experiment (typically between $75$ and $80$ per condition) is sufficient to detect moderate to large effects for both methods.
-
-<!-- To determine a suitable number of participants per treatment combination (method × distance scale factor), we conducted a simulation-based power analysis. The outcome of interest was binary (correct vs. incorrect identification), and differences between conditions were evaluated using tests for differences in proportions. -->
-
-<!-- Rather than performing separate power analyses for each of the 25 treatment combinations, we focused on determining whether the experiment had sufficient power to detect *meaningful differences in accuracy* across conditions. This is appropriate because all conditions are analyzed jointly within the same statistical model, and power is primarily driven by the number of observations per condition and the expected effect size. -->
-
-<!-- A baseline accuracy rate of (p_1 = 0.61) was estimated from pilot data. Alternative accuracy rates (p_2) were generated by adding differences ranging from 0.01 to 0.30, representing small to large effects. For each combination of sample size (n) and effect size ((p_2 - p_1)), 1,000 simulated experiments were run. In each simulation, two binomial samples were generated and compared using a one-sided test for differences in proportions at the 5% significance level. -->
-
-<!-- Power was estimated as the proportion of simulations in which a significant difference was detected. Results showed that moderate effect sizes (approximately 0.05–0.10 difference in accuracy) achieved at least 80% power with sample sizes comparable to those used in the experiment. This supports the adequacy of the chosen design for detecting differences across methods and distance scale factors. -->
 
 ## Data collection process
 
@@ -460,20 +452,12 @@ A total of $1905$ evaluations from $127$ participants has been collected.
 
 After giving consent, the participant can start the trials. Two visual displays of data are shown where the data may be the same or different (@fig-act). One of the visual displays is a $2\text{-}D$ NLDR plot, and the other is a tour made of many $2\text{-}D$ plots. The participants were asked to decide whether that data was the same in both displays and to report their confidence about their choice and any comments about the answer.
 
-When the participants completed the twenty-three evaluations, they were asked for their demographics which included preferred pronoun, the highest level of education achieved, their age category, whether they used principal component analysis in their work, and whether they applied NLDR techniques such as tSNE and UMAP (@fig-demo). Finally, the participants need to click on prolific URL ([https://app.prolific.co/submissions/](https://app.prolific.co/submissions/complete?cc=CLDDOZ10)) to redirect back to the Prolific app (@fig-end). 
+When the participants completed the twenty evaluations, they were asked for their demographics which included preferred pronoun, the highest level of education achieved, their age category, whether they used principal component analysis in their work, and whether they applied NLDR techniques such as tSNE and UMAP (@fig-demo). Finally, the participants need to click on prolific URL ([https://app.prolific.co/submissions/](https://app.prolific.co/submissions/complete?cc=CLDDOZ10)) to redirect back to the Prolific app (@fig-end). 
 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Diagram of online experiment setup.](../figures/vis-exp/experiment.png){#fig-exp-setup fig-align='center' width=100%}
-:::
-:::
-
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![The introduction page of the study app.](../figures/vis-exp/introduction.png){#fig-intro-page fig-align='center' width=100%}
+![Diagram of online experiment setup.](../figures/vis-exp/experiment.png){#fig-exp-setup fig-align='center' fig-alt='A flow diagram showing the experimental workflow implemented in the Shiny application. The process begins when a participant starts the study. The app connects to a Google Sheet containing subject IDs and checks which IDs are available by reading a column that indicates whether an ID has been used. One eligible subject ID is randomly selected and marked as used, ensuring it cannot be assigned again. The assigned subject ID is then used to link the participant to the experiment design and the corresponding high-dimensional and embedding data. The participant is shown a sequence of trials, where each trial displays both a tour of linear projections and two-dimensional NLDR embeddings based on the assigned data. After each trial, the participant records their response, which is saved to a results Google Sheet. Once all trials are completed, the participant fills out a demographics questionnaire, and these responses are saved to a separate demographics Google Sheet. The diagram shows this process proceeding sequentially from study start to completion.' width=100%}
 :::
 :::
 
@@ -481,7 +465,7 @@ When the participants completed the twenty-three evaluations, they were asked fo
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![The consent form provided in the study app.](../figures/vis-exp/consent.png){#fig-consent fig-align='center' width=100%}
+![The introduction page of the study app.](../figures/vis-exp/introduction.png){#fig-intro-page fig-align='center' fig-alt='Each subject had access to the survey via the [shiny.io server](https://www.shinyapps.io/). The first interface of the survey app contained an introduction, instructions for the survey (@fig-intro-page), a consent form (@fig-consent), and buttons to access, for example, actual trials. Participants can try three examples prior to the study where the answers were not recorded (@fig-example). The subjects were first asked for their consent to the responses being used for analysis.' width=100%}
 :::
 :::
 
@@ -489,7 +473,7 @@ When the participants completed the twenty-three evaluations, they were asked fo
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![The example trial page of the study app.](../figures/vis-exp/example.png){#fig-example fig-align='center' width=100%}
+![The consent form provided in the study app.](../figures/vis-exp/consent.png){#fig-consent fig-align='center' fig-alt='A screenshot of the introduction page of the Shiny survey application. The page contains a title and several paragraphs explaining the purpose of the study and providing instructions on how to complete the visual comparison tasks. Text explains what participants will see during the experiment and how to submit responses. Navigation buttons are shown at the bottom of the page, allowing participants to proceed to the consent form, try example trials, or begin the study.' width=100%}
 :::
 :::
 
@@ -497,7 +481,7 @@ When the participants completed the twenty-three evaluations, they were asked fo
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![The actual trial page of the study app.](../figures/vis-exp/attempt.png){#fig-act fig-align='center' width=100%}
+![The example trial page of the study app.](../figures/vis-exp/example.png){#fig-example fig-align='center' fig-alt='A screenshot of the example trials interface in the survey application. The page displays sample visualizations similar to those used in the main experiment, allowing participants to practice the task. Instructions explain that these examples are for familiarization only and that responses are not recorded. Controls are shown for navigating through three example trials before starting the actual study.' width=100%}
 :::
 :::
 
@@ -505,7 +489,7 @@ When the participants completed the twenty-three evaluations, they were asked fo
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![The demographics page of the study app.](../figures/vis-exp/demographics.png){#fig-demo fig-align='center' width=100%}
+![The actual trial page of the study app.](../figures/vis-exp/attempt.png){#fig-act fig-align='center' fig-alt='A screenshot of the main trial interface of the survey application. Two visual displays are shown side by side. One display shows a two-dimensional nonlinear dimensionality reduction (NLDR) embedding, while the other shows a tour consisting of many two-dimensional linear projections of the same or different high-dimensional data. Below the visualizations, participants are asked to indicate whether the data shown in the two displays are the same or different. Additional interface elements allow participants to report their confidence in the decision and to enter optional comments before submitting the response.' width=100%}
 :::
 :::
 
@@ -513,7 +497,15 @@ When the participants completed the twenty-three evaluations, they were asked fo
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![The end page of the study app.](../figures/vis-exp/end_page.png){#fig-end fig-align='center' width=100%}
+![The demographics page of the study app.](../figures/vis-exp/demographics.png){#fig-demo fig-align='center' fig-alt='A screenshot of the demographics questionnaire displayed after the completion of all trials. The page contains several questions asking participants about their preferred pronoun, highest level of education attained, age category, and experience with statistical techniques. Checkboxes or selection inputs ask whether participants have used principal component analysis and nonlinear dimensionality reduction methods such as tSNE or UMAP. A button is provided to submit the demographic information.' width=100%}
+:::
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![The end page of the study app.](../figures/vis-exp/end_page.png){#fig-end fig-align='center' fig-alt='A screenshot of the final page of the survey application shown after all responses have been submitted. The page includes a short message thanking participants for completing the study and provides instructions for returning to the Prolific platform. A clickable link or button is displayed that redirects participants to the Prolific submission URL to complete the study and receive credit.' width=100%}
 :::
 :::
 
@@ -522,7 +514,7 @@ Once a participant starts the study (@fig-exp-setup), the "eligibility_subject_I
 
 After identifying the eligible subject IDs, one is randomly assigned to the participant, and "1" is recorded in the "used" column corresponding to that subject ID. This subject ID will later assist in connecting the experiment design, high-dimensional data, and embedding data.
 
-Once a subject ID is allocated to a participant, the experiment design data is loaded, and the relevant attempts, data structure, and methods are presented to the participant. This process continues until the participant completes all attempts. After determining the data structure and methods, the relevant high-dimensional and embedding data is loaded from "high_d_data_three_clust_all.rds" and "embedding_data_three_clust_all.rds," respectively, and displayed in both tour and $2\text{-}D$ NLDR plots. 
+Once a subject ID is allocated to a participant, the experiment design data are loaded, and the relevant attempts, data structure, and methods are presented to the participant. This process continues until the participant completes all attempts. After determining the data structure and methods, the relevant high-dimensional and embedding data is loaded from "high_d_data_three_clust_all.rds" and "embedding_data_three_clust_all.rds", respectively, and displayed in both tour and $2\text{-}D$ NLDR plots. 
 
 Once the participant records their answers, a new row is added to the "result_df" Google Sheet with their responses. This continues until the participant finishes the study. Finally, after completing the evaluations, participants are asked to fill out a demographics questionnaire. Their responses are then recorded in a new row of the "demographic_details" Google Sheet.
 
@@ -555,7 +547,7 @@ The proportion correct across subjects is symmetric and unimodal, reasonably con
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Examining the variability of proportion correct across data sets and subjects. Panel (a) shows the proportion of correct responses for each data set. The variability ranges from $0.3$ to $0.7$ and is consistent with considering the data sets as replication variability due to random sampling. Panel (b) shows the distribution of proportion correct across subjects. It is relatively Gaussian with a few participants performing exceptionally well and some poorly. This is consistent with other human subject experiments and reflects individual visual skills, illustrating the need to include subject-specific random effects in the model.](B-appB_files/figure-html/fig-var-sum-1.png){#fig-var-sum fig-align='center' width=100%}
+![Examining the variability of proportion correct across data sets and subjects. Panel (a) shows the proportion of correct responses for each data set. The variability ranges from $0.3$ to $0.7$ and is consistent with considering the data sets as replication variability due to random sampling. Panel (b) shows the distribution of proportion correct across subjects. It is relatively Gaussian with a few participants performing exceptionally well and some poorly. This is consistent with other human subject experiments and reflects individual visual skills, illustrating the need to include subject-specific random effects in the model.](B-appB_files/figure-html/fig-var-sum-1.png){#fig-var-sum fig-align='center' fig-alt='The figure has two panels summarizing variability in proportion correct. Panel (a) shows a plot of proportion correct for each data set, with values ranging approximately from 0.3 to 0.7. The points vary across data sets but cluster within a moderate range, indicating variability consistent with random sampling across replicated data sets. Panel (b) shows a histogram of subjects’ proportion of correct responses. The horizontal axis is proportion correct, ranging from 0 to 1, and the vertical axis is the number of subjects. The distribution is roughly symmetric and unimodal, centered near 0.5. Most subjects cluster around the middle accuracy range, with fewer subjects at the lower and higher ends. A small number of participants perform notably better or worse than average, and no subject has perfect or zero accuracy.' width=100%}
 :::
 :::
 
@@ -564,7 +556,7 @@ The proportion correct across subjects is symmetric and unimodal, reasonably con
 
 ### Data cleaning
 
-The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty-three trials, including the demographics and the attention check trial. Participants who exceeded the average time of $5-10$ minutes were excluded, as determined from the pilot study. Following this, individuals who didn't accurately detect the attention check trial were also removed. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set is further refined by filtering out all the responses, which showed the same data structures in $2\text{-}D$ NLDR plot and tour.
+The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty trials, including the demographics and the attention check trial. Participants who exceeded the average time of $5-10$ minutes were excluded, as determined from the pilot study. Following this, individuals who didn't accurately detect the attention check trial were also removed. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set is further refined by filtering out all the responses, which showed the same data structures in $2\text{-}D$ NLDR plot and tour.
 
 ### Demographics
 

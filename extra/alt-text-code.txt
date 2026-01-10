@@ -1,16 +1,1 @@
-# Chunk label: fig-exp-design --------------------
-## Alt-text: A small multiples diagram shows the visual layout of an experiment for five subjects, arranged in five rows (one per subject) and 20 columns (one per trial). Each cell represents a single trial. Along the horizontal axis, trials are ordered from 1 to 20; the vertical axis lists subjects 1 through 5. Most cells (15 per subject) are coded as SAME trials, where the same data structure is shown in both the 2‑D NLDR plot and the tour. Four cells per subject are coded as DIFFERENT trials, and one cell per subject is an attention check that can be either SAME or DIFFERENT. SAME trials are further distinguished by combinations of five NLDR methods (tSNE, UMAP, PHATE, PaCMAP, TriMAP) and five distance scale factors (small to large), with 15 balanced method–scale combinations per subject; DIFFERENT and attention check trials all use a medium‑large distance scale factor. The grid visually emphasizes that each subject has the same total number of trials and a consistent pattern of many SAME trials interspersed with fewer DIFFERENT and a single attention check trial.
 
-Assumptions: I assume the figure is a grid or matrix of cells (rather than, for example, a timeline or flowchart) and that trial type, NLDR method, and distance scale are encoded using distinct colours or symbols within each cell, since this is not explicitly specified.
-
-Checklist:
-1. Identified chart type. YES  
-2. Named axes and variables. YES  
-3. Mentioned approximate ranges or scales (where meaningful). YES  
-4. Described data mappings (e.g. colour/shape/size/facets). YES  
-5. Described main patterns, trends, or clusters. YES  
-6. Explicitly noted any assumptions. YES
-
-## Caption (for reference): The visual layout of the experiment for five subjects is shown in @fig-exp-design. Each subject completed $20$ trials: $15$ SAME trials, in which the same data structure was shown in both the $2\text{-}D$ NLDR plot and the tour; $4$ DIFFERENT trials, showing DIFFERENT data structures; and one attention check trial that could be either SAME or DIFFERENT. The purpose of the DIFFERENT trials was to ensure that subjects didn't get too familiar with the task, which might happen if the data is always the same in both graphics. For the SAME, five NLDR methods (*tSNE, UMAP, PHATE, PaCMAP, and TriMAP*) were each paired with three of five distance scale factors (*small, small-medium, medium, medium-large, and large*), giving $15$ balanced combinations. In the DIFFERENT, four NLDR methods were randomly selected, with the remaining method assigned to the attention check trial. All DIFFERENT and attention check trials used a distance scale factor of *medium-large*.
-
-## Usage: BrailleR, Cummulated cost: NA, Cummulated token usage: 0
