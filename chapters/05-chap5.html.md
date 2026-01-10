@@ -400,7 +400,7 @@ Taken together, these results demonstrate that the impact of cluster separabilit
 
 ### Patterns conceptualization
 
-The difference between tSNE and UMAP embeddings is curious: the further apart clusters are in high dimensions the more often subjects reported the data between the views was different when the embedding was tSNE. The UMAP results are more as expected, that the further apart the clusters, the more likely the subject is to report they are the same data. @fig-three07-miss shows the results for one data set called `three_clust_07`. Plots on the left (a1, a2, b1, b2) show linear projections from a tour and plots on the right show embeddings by tSNE and UMAP. Rows correspond to small and large distance respectively. The proportion of correct responses is show in each embedding plot. (The total number of evaluations for each were $3$, $4$, $4$, and $4$, respectively.) 
+The difference between tSNE and UMAP embeddings is curious: the further apart clusters are in high dimensions the more often subjects reported the data between the views was different when the embedding was tSNE. The UMAP results are more as expected, that the further apart the clusters, the more likely the subject is to report they are the same data. @fig-three07-miss shows the results for one data set called `three_clust_07`. Plots on the left (a1, a2, b1, b2) show linear projections from a tour and plots on the right show embeddings by tSNE and UMAP. Rows correspond to small and large distance respectively. The proportion of correct responses is shown in each embedding plot. (The total number of evaluations for each were $3$, $4$, $4$, and $4$, respectively.) 
 
 The reason for the difference in conceptualization from the different embeddings here is quite clear. Firstly, UMAP represents the data with large separation as three unusually shaped clusters that are well-separated. On the other hand, tSNE de-emphasizes the separation, and also does something worse - splits one cluster into two to make four clusters. It is understandable that a different conceptualization would be made from this embedding relative to that from the tour of linear projections which clearly shows three clusters. 
 
@@ -449,11 +449,7 @@ Another common source of misidentification comes from uneven point density. In s
 :::
 
 
-
-::: {.cell layout-align="center"}
-
-:::
-
+A different pattern is seen for the data set `three_clust_13`, which consists of a curvy cylinder, a cube, and a blunted cone, shown under small and large separation. Here, tSNE aligns more closely with the tour, particularly under small separation, where the proportion of correct responses is higher for tSNE ($0.67$) than for UMAP ($0.00$). In these layouts, tSNE preserves the overall grouping without introducing artificial splits, making it easier to reconcile the embedding with the linear projections. UMAP, on the other hand, emphasizes shape and density in ways that depart from the tour, especially when clusters are close together, leading to lower accuracy. Even at large separation, where UMAP improves ($0.60$ correct), the visual cues remain less consistent with the tour than those produced by tSNE. This example highlights that which method leads to better conceptual alignment can depend strongly on the underlying data structure, and that neither embedding consistently dominates across all cases.
 
 
 ::: {.cell layout-align="center"}
@@ -468,6 +464,12 @@ Another common source of misidentification comes from uneven point density. In s
 
 
 
+::: {.cell layout-align="center"}
+
+:::
+
+
+
 
 ::: {.cell layout-align="center"}
 
@@ -476,7 +478,9 @@ Another common source of misidentification comes from uneven point density. In s
 
 
 ::: {.cell layout-align="center"}
-
+::: {.cell-output-display}
+![tSNE and UMAP layouts and $2\text{-}D$ projections for the data structure `three_clust_13`, composed of a curvy cylinder, a cube, and a blunted cone, shown under small and large cluster separation. Panels (a1–a2) show two fixed $2\text{-}D$ projections at small separation, and panels (b1–b2) show the same projections at large separation; the corresponding tSNE and UMAP layouts are shown in the right panels. For each NLDR layout, the proportion of correct identifications for the corresponding method and distance factor is reported in the top-right corner of the plot. At small separation, the cube and blunted cone partially overlap in the linear projections, but tSNE preserves their separation more clearly than UMAP, leading to a higher proportion of correct responses. With increased separation, both methods improve in interpretability; however, UMAP still compresses the curvy cylinder toward the other components, while tSNE maintains clearer boundaries between the three clusters, supporting more consistent identification across separation levels.](05-chap5_files/figure-html/fig-three13-miss-1.png){#fig-three13-miss fig-align='center' fig-alt='A multi-panel figure comparing linear projections and nonlinear dimension reduction (NLDR) layouts of the same 4-D dataset, labelled three_clust_13. The data consist of three geometric structures: a curvy cylindrical cluster, a cubic cluster, and a blunted cone. The left portion of the figure shows four fixed 2-D linear projections arranged in two rows. Panels (a1) and (a2) display two projections under small cluster separation, where the cube and blunted cone partially overlap and the curvy cylinder is visible but not clearly isolated. Panels (b1) and (b2) show the same projections under large cluster separation, where all three structures are more clearly separated and their distinct shapes are easier to recognize. The right portion of the figure shows the corresponding 2-D NLDR layouts produced by tSNE and UMAP for the same small and large separation settings. For each NLDR layout, the proportion of correct identifications for the corresponding method and distance factor is shown in the top-right corner. At small separation, the tSNE layout maintains clearer boundaries between the cube, blunted cone, and curvy cylinder than UMAP, which compresses the structures and increases overlap. At large separation, both methods show improved separation; however, UMAP still pulls the curvy cylinder closer to the other clusters, while tSNE preserves more distinct cluster boundaries, supporting higher identification accuracy.' width=100%}
+:::
 :::
 
 
