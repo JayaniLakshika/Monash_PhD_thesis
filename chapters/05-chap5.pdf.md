@@ -88,7 +88,7 @@ The chapter is organized as follows. @sec-background provides a summary of the l
 
 Historically, $2\text{-}D$ nonlinear representations of $p\text{-}D$ data have been obtained through versions of multidimensional scaling (MDS) (originally defined by @kruskal1964, and see @borg2005 for a modern overview) and linear representations using principal component analysis (PCA) (for an overview see @jolliffe2011). MDS aims to construct a low dimensional (usually $2\text{-}D$) layout that preserves pairwise distances between observations in the original space by minimizing a stress function. <!-- Variants such as non-metric scaling [@saeed2018] and isomap [@silva2002] extend this approach to capture nonlinear relationships.--> Challenges such as distance concentration that lead to difficulties for interpretation have been documented by @johnstone2009.
 
-NLDR methods have developed to improve on MDS with varying degrees of preserving local and/or global structures of $p\text{-}D$ data: tSNE, UMAP, PHATE, TriMAP, and PaCMAP. Each method uses different underlying principles. For example, tSNE and PHATE emphasize local relationships, while TriMAP and PaCMAP are designed to better capture global structure. As a result, these methods can produce very different $2\text{-}D$ layouts of the same data, potentially leading to misinterpretation of structures such as cluster separation. 
+NLDR methods have developed to improve on MDS with varying degrees of preserving local and/or global structures of $p\text{-}D$ data, with some modern methods being tSNE, UMAP, PHATE, TriMAP, and PaCMAP. Each method uses different underlying principles. For example, tSNE and PHATE emphasize local relationships, while TriMAP and PaCMAP are designed to better capture global structure. As a result, these methods can produce very different $2\text{-}D$ layouts of the same data, potentially leading to misinterpretation of structures such as cluster separation. 
 
 An alternative to NLDR for visualizing $p\text{-}D$ data is to use linear projections. PCA is the classical approach, producing new variables as linear combinations of the original dimensions. While PCA provides a single static projection that maximizes variance, tours introduced by @As85 extend this idea by generating smooth sequences of linear projections, effectively creating a movie of the data viewed from multiple directions. Tours can reveal structure that may be hidden in any single projection by continuously changing the viewing angle through high-dimensional space. Many tour algorithms have since been developed and are implemented in the R package `tourr` [@wickham2011], with interactive variants available in `langevitour` [@harisson2024] and `detourr` [@casper2025]. Tours are valuable because they preserve the geometry of the data unlike NLDR methods - they do not warp distances or angles. This makes them faithful but sometimes visually cluttered representations: global structure can obscure local detail, and the phenomenon of piling [@laa2022], where high-dimensional points project toward the center, can make clusters harder to distinguish.
 
@@ -123,44 +123,53 @@ $H_{0m1}$: The distance between the clusters has no effect on the probability of
 This study aims to answer which NLDR methods are more accurate in identifying the same data structure in the $2\text{-}D$ NLDR plot and the tour, as the distance increases, and to identify which types of data structure components are more prone to misidentification across methods.
 -->
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-Need to work on adding these info:
+<!-- Need to work on adding these info: -->
 
-- In data generation: 
-    - Why three clusters? How they positioned? Why the data in 4-D? Why different number of points in each cluster? 
-    
-    - Why different shaped clusters? Why always a combination of nonlinear shaped cluster (capture nonlinear shape), pyramid shapes cluster (capture density), and other shape (hemisphere/cube/Gaussian)? (added what each dataset consist of in appendix)
+<!-- - In data generation:  -->
+<!--     - Why three clusters? How they positioned? Why the data in 4-D? Why different number of points in each cluster? (Done) -->
 
-- Why do we choose these specific distance scale factors?
+<!--     - Why different shaped clusters? Why always a combination of nonlinear shaped cluster (capture nonlinear shape), pyramid shapes cluster (capture density), and other shape (hemisphere/cube/Gaussian)? (added what each dataset consist of in appendix, done) -->
 
-- Why did we scale the data sets before showing in the tour?
+<!-- - Why do we choose these specific distance scale factors? (done) -->
 
-- Why these number of participants enough? (may be good to add in appendix)
+<!-- - Why did we scale the data sets before showing in the tour? (added as a comment) -->
 
-- Why did we chose BW ratio and minimum distance? (already added to appendix but have ro think that it's necessary adding something in the main paper as well)
+<!-- - In the discussion, may add how to expand the study? (done) -->
 
-- Why do we scaled BW ratio and minimum distance?
+<!-- - Why did we chose BW ratio and minimum distance? (already added to appendix but have ro think that it's necessary adding something in the main paper as well) -->
 
-- Why do we used exponential minimum scaled distance?
 
-- In the discussion, may add how to expand the study?
+<!-- - Why these number of participants enough? (may be good to add in appendix) -->
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<!-- - Why do we scaled BW ratio and minimum distance? -->
+
+<!-- - Why do we used exponential minimum scaled distance? -->
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 ### Data generation
 
-A total of $30$ $4\text{-}D$ data sets are generated. Two are reserved as attention check used to determine if the subject conscientiously attempted the task. All data sets were standardized prior to NLDR and showing in the tour. 
+A total of $30$ $4\text{-}D$ data sets are generated. Two are reserved as attention check used to determine if the subject conscientiously attempted the task. All data sets were standardized prior to NLDR and showing in the tour. <!--to ensure comparable variable scales and to prevent any single dimension from disproportionately influencing the resulting visualizations.-->
 
 #### Non-attention check data
 
-For the experiment, three cluster data are generated. The three clusters contain different number of points and shapes. Let $C_1, C_2,$ and $C_3$ denote the centroids of three clusters. The pairwise distances between these centroids are calculated as: $d(C_1, C_2) = c_{12}, \quad d(C_1, C_3) = c_{13}, \quad d(C_2, C_3) = c_{23}$, where clusters $C_1$ and $C_2$ are in close proximity, whereas cluster $C_3$ is positioned further away from the other two clusters, suggesting a spatial separation within the data. The reason for using the distance between centroids is that it can be easily controlled. 
+<!--originally the clusters are positioned in tips of a triangle in 4-D. But the things is, for each data set (sample), when computing the distances, it varies. So, used target distance between clusters. That's why the distances are approximate.-->
 
-XXX Shapes for each cluster were selected randomly from a set of XXX. 
+For the experiment, three cluster data sets are generated. The three clusters contain different numbers of points and shapes. Let $C_1, C_2,$ and $C_3$ denote the centroids of three clusters. The pairwise distances between these centroids are calculated as: $d(C_1, C_2) = c_{12},~d(C_1, C_3) = c_{13}, \text{ and } d(C_2, C_3) = c_{23}$. At the original distance scale (scale factor $1$, referred to as medium-large), clusters $C_1$ and $C_2$ are in close proximity, while cluster $C_3$ is positioned farther away, creating an asymmetric separation pattern. Centroid distances were used because they provide a simple and controllable way to adjust overall cluster separation.
+
+In the SAME trials, the degree of separation between clusters was varied by multiplying the original centroid distances by four scale factors: $0.1$ (small), $0.6$ (small-medium), $0.9$ (medium), and $1.1$ (large). These values were chosen to span a range of perceptual difficulty from cases where clusters are expected to overlap strongly and be hard to distinguish ($0.1$), through intermediate levels where separation is visible but ambiguous ($0.6$ and $0.9$), to cases where clusters are clearly separated ($1.1$). Using proportional scaling ensures that the relative geometry of the data is preserved while systematically controlling how strongly separation cues are expressed.
+
+In contrast, data structures used for the DIFFERENT trials retained the original centroid distances (scale factor $1$) without modification. This allows the DIFFERENT trials to serve as stable reference cases while ensuring that variation in separation is introduced only in trials where participants are asked to judge whether two displays show the same data.
+
+Shapes for each cluster were selected randomly from a predefined set of curved, linear, and volumetric structures, including S-curves, crescents, spirals, hyperbolic and cylindrical shapes, as well as geometric solids such as cubes, hemispheres, pyramids, cones, and Gaussian clusters.
+
+<!-- The specific shape combinations used for each data structure are listed in Appendix X. -->
 
 <!-- In total, there are $28$ data structures used for the experiment. Out of these, $18$ data structures show the same structure in both the $2\text{-}D$ NLDR plot and tour for each experiment, while the remaining $10$ data structures display different structures in the $2\text{-}D$ NLDR plot and tour. This means that when data structure $19$ is displayed in the NLDR plot, data structure $20$ appears in the tour.  -->
 
-The degree of separation between centroids is changed using four scale factors: $0.1$ (small), $0.6$ (small-medium), $0.9$ (medium), and $1.1$ (large),  in the SAME trials. In contrast, data structures used for the DIFFERENT trials retained the original centroid distances (called medium-large).
+<!-- The degree of separation between centroids is changed using four scale factors: $0.1$ (small), $0.6$ (small-medium), $0.9$ (medium), and $1.1$ (large),  in the SAME trials. In contrast, data structures used for the DIFFERENT trials retained the original centroid distances (called medium-large). -->
 
 #### Attention check data
 
@@ -170,9 +179,9 @@ There are two sets of attention check data; one consisting of three Gaussian clu
 
 Although the main analysis focuses on trials where the same data are shown in both displays, it is essential to include DIFFERENT trials in the experiment. Without them, participants could rely on a trivial strategy—such as always responding "SAME" and still achieve high accuracy. DIFFERENT trials therefore act as a necessary control, ensuring that correct responses in SAME trials reflect genuine perceptual agreement between the NLDR layout and the tour rather than response bias or guessing.
 
-Therefore, the experiment was designed to include a mixture of SAME, DIFFERENT, and attention check trials. In total, $28$ non–attention-check data structures were used. Of these, $18$ data structures were assigned to SAME trials, where the same high-dimensional data structure was used to generate both the $2\text{-}D$ NLDR plot and the tour. These trials are the primary focus of the analysis.
+Therefore, the experiment was designed to include a mixture of SAME, DIFFERENT, and attention check trials. In total, $28$ non–attention check data structures were used. Of these, $18$ data structures were assigned to SAME trials, where the same high-dimensional data structure was used to generate both the $2\text{-}D$ NLDR plot and the tour. These trials are the primary focus of the analysis.
 
-The remaining $10$ data structures were used to create DIFFERENT trials. In these cases, the NLDR plot and the tour were generated from two distinct but related data structures. For example, when data structure `three_clust_19` appeared in the NLDR plot, `three_clust_20` was shown in the tour. Although these DIFFERENT trials are not analysed directly, they play a crucial role in maintaining the integrity of the task by preventing systematic response strategies.
+The remaining $10$ data structures were used to create DIFFERENT trials. In these cases, the NLDR plot and the tour were generated from two distinct but related data structures. For example, when data structure `three_clust_19` appeared in the NLDR plot, `three_clust_20` was shown in the tour. Although these DIFFERENT trials are not analyzed directly, they play a crucial role in maintaining the integrity of the task by preventing systematic response strategies.
 
 In addition, two clearly separable Gaussian cluster data sets were included as attention checks. These appear as both SAME and DIFFERENT trials and are used to verify that participants are paying attention and are able to perform the task under easy conditions.
 
@@ -199,7 +208,7 @@ The first factor consisted of five NLDR methods: *tSNE, UMAP, PHATE, PaCMAP, and
 
 The second factor, the distance scale factor, controlled the degree of cluster separation in the high-dimensional space. Five categorical levels: *small, small–medium, medium, medium–large, and large* were defined to represent increasing degrees of separability. This categorical design enhances interpretability and perceptual distinctness, allowing subjects to discern meaningful structural differences while maintaining robustness against minor data variations.
 
-In our analysis of the results, we decided to quantify the distances between clusters numerically rather than using the distance scale factor levels directly. Cluster separability was quantified using two complementary measures: the *between-to-within (BW) ratio* and the *minimum inter-cluster distance*. A higher value of either metric indicates greater separation among clusters (@fig-dist-metrics). 
+In our analysis of the results, we decided to quantify the distances between clusters numerically rather than using the distance scale factor levels directly. Cluster separability was quantified using two complementary measures: the *between-to-within (BW) ratio* and the *minimum inter-cluster distance*. A higher value of either metric indicates greater separation among clusters (@fig-dist-metrics). To ensure comparability across datasets with different underlying structures, all distance-based metrics were min–max scaled prior to analysis.  
 
 The BW ratio, defined as
 
@@ -224,7 +233,14 @@ $$
   d(\mathbf{x}_i, \mathbf{x}_j),
 $$
 
-which captures the closest proximity between any two clusters.
+which captures the closest proximity between any two clusters. The scaled minimum distance was exponentiated to put more emphasis on cases where clusters are very close together, which is where people are most likely to confuse them. Small changes at short distances can strongly affect how separable clusters appear, while larger increases in distance tend to have much less impact on perception.
+
+
+<!-- The BW ratio and minimum inter-cluster distance capture complementary aspects of cluster separation: global dispersion and local boundary proximity, respectively. To make these measures comparable across data structures, all distance-based metrics were first rescaled to the unit interval using min–max normalization. -->
+
+<!-- The scaled BW ratio was used as a global measure of separation, with larger values indicating clearer overall structure. For the minimum inter-cluster distance, we applied an exponential transformation to the scaled values. This transformation was chosen intentionally to emphasize differences at small separations, where clusters are close to touching and perceptual ambiguity is highest. -->
+
+<!-- In this setting, small increases in minimum distance can lead to disproportionately large improvements in visual distinguishability, whereas similar increases at already large separations have relatively little perceptual effect. The exponential transformation accentuates this nonlinearity, allowing the metric to better reflect perceptual sensitivity to local cluster boundaries rather than treating all changes in distance as equally meaningful. -->
 
 
 ::: {.cell layout-align="center"}
@@ -394,9 +410,13 @@ PHATE & -0.35 & 0.21 & {}[-0.76, 0.06] & -1.68 & 0.09 .\\
 
 Taken together, these results demonstrate that the impact of cluster separability on correct identification is robust to the choice of distance measure but varies substantially across NLDR methods. Methods such as UMAP benefit from increased separation, whereas tSNE and PHATE appear sensitive to over-separation, potentially leading to distortions in the low-dimensional representation. TriMAP, by contrast, shows little sensitivity to changes in separation, suggesting robustness across a wide range of cluster configurations.
 
-### Patterns for misidentification
+### Patterns conceptualization
 
-To better understand the patterns of misidentification, we examine tSNE and UMAP layouts for data structures that are commonly confused by participants. Rather than treating errors as random noise, this analysis shows that misidentification often arises from a combination of the underlying structure of the data and the way NLDR methods transform that structure. In particular, several recurring visual patterns appear to drive perceptual confusion.
+The difference between tSNE and UMAP embeddings is curious: the further apart clusters are in high dimensions the more often subjects reported the data between the views was different when the embedding was tSNE. The UMAP results are more as expected, that the further apart the clusters, the more likely the subject is to report they are the same data. @fig-three07-miss shows the results for one data set called `three_clust_07`. Plots on the left (a1, a2, b1, b2) show linear projections from a tour and plots on the right show embeddings by tSNE and UMAP. Rows correspond to small and large distance respectively. The proportion of correct responses is shown in each embedding plot. (The total number of evaluations for each were $3$, $4$, $4$, and $4$, respectively.) 
+
+The reason for the difference in conceptualization from the different embeddings here is quite clear. Firstly, UMAP represents the data with large separation as three unusually shaped clusters that are well-separated. On the other hand, tSNE de-emphasizes the separation, and also does something worse - splits one cluster into two to make four clusters. It is understandable that a different conceptualization would be made from this embedding relative to that from the tour of linear projections which clearly shows three clusters. 
+
+<!-- To better understand the patterns of misidentification, we examine tSNE and UMAP layouts for data structures that are commonly confused by participants. Rather than treating errors as random noise, this analysis shows that misidentification often arises from a combination of the underlying structure of the data and the way NLDR methods transform that structure. In particular, several recurring visual patterns appear to drive perceptual confusion.
 
 One common pattern is that, regardless of the distance between clusters in high-dimensional space, tSNE often places clusters very close together in the NLDR layout. This compression reduces visual separation and makes distinct clusters appear really close or overlapping, even when they are well separated in the original space. For example, in both `three_clust_12` and `three_clust_07` (@fig-three12-miss and @fig-three07-miss), increasing the distance between clusters does not consistently improve separation in tSNE. As a result, subjects may perceive these clusters as belonging to a single cluster or as weakly separated clusters, leading to confusion between clearly distinct high-dimensional configurations.
 
@@ -406,7 +426,13 @@ Linear or smoothly varying structures in high dimensions often appear nonlinear 
 
 Across multiple examples, including `three_clust_12` and `three_clust_07` (@fig-three12-miss and @fig-three07-miss), increasing high-dimensional separation does not reliably lead to more interpretable layouts. UMAP often benefits more from increased separation, preserving overall geometry and making components easier to distinguish. However, partial proximity between clusters can still remain, allowing perceptual ambiguity to persist. For tSNE, greater separation may even worsen interpretability by increasing fragmentation or compressing global structure, weakening the participants rely on to identify cluster relationships.
 
-Another common source of misidentification comes from uneven point density. In some of our data structures, density is an important feature of the shape in high dimensions, but it is not reliably preserved in the NLDR layouts. For example, in the nonlinear hyperbolic structure (@fig-three12-miss), one corner is clearly denser in high dimensions, yet this feature is not easy to identify in either tSNE or UMAP layouts. Similarly, the tip of the star-shaped pyramid is densely populated in high dimensions (@fig-three07-miss), but this density cue is often lost in the projections; especially in tSNE, where the structure is further distorted or fragmented. When these density cues are weakened or misplaced, participants lose important visual signals needed to recognize the underlying structure, increasing the chance of misidentification.
+Another common source of misidentification comes from uneven point density. In some of our data structures, density is an important feature of the shape in high dimensions, but it is not reliably preserved in the NLDR layouts. For example, in the nonlinear hyperbolic structure (@fig-three12-miss), one corner is clearly denser in high dimensions, yet this feature is not easy to identify in either tSNE or UMAP layouts. Similarly, the tip of the star-shaped pyramid is densely populated in high dimensions (@fig-three07-miss), but this density cue is often lost in the projections; especially in tSNE, where the structure is further distorted or fragmented. When these density cues are weakened or misplaced, participants lose important visual signals needed to recognize the underlying structure, increasing the chance of misidentification.-->
+
+
+::: {.cell layout-align="center"}
+
+:::
+
 
 
 ::: {.cell layout-align="center"}
@@ -435,6 +461,14 @@ Another common source of misidentification comes from uneven point density. In s
 :::
 
 
+A different pattern is seen for the data set `three_clust_13`, which consists of a curvy cylinder, a cube, and a blunted cone, shown under small and large separation. Here, tSNE aligns more closely with the tour, particularly under small separation, where the proportion of correct responses is higher for tSNE ($0.67$) than for UMAP ($0.00$). In these layouts, tSNE preserves the overall grouping without introducing artificial splits, making it easier to reconcile the embedding with the linear projections. UMAP, on the other hand, emphasizes shape and density in ways that depart from the tour, especially when clusters are close together, leading to lower accuracy. Even at large separation, where UMAP improves ($0.60$ correct), the visual cues remain less consistent with the tour than those produced by tSNE. This example highlights that which method leads to better conceptual alignment can depend strongly on the underlying data structure, and that neither embedding consistently dominates across all cases.
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
 
 ::: {.cell layout-align="center"}
 
@@ -457,7 +491,7 @@ Another common source of misidentification comes from uneven point density. In s
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![tSNE and UMAP layouts and $2\text{-}D$ projections for the data structure `three_clust_12`, composed of an S-curve, a hemisphere, and a filled hexagonal pyramid, shown under small and large cluster separation. Panels (a1–a2) show two fixed $2\text{-}D$ projections at small separation, and panels (b1–b2) show the same projections at large separation; the corresponding tSNE and UMAP layouts are shown in the right panels. For each NLDR layout, the proportion of correct identifications for the corresponding method and distance factor is reported in the top-right corner of the plot. At small separation, curved and rounded components overlap substantially in both methods, making the structure difficult to distinguish. With increased separation, UMAP preserves the distinct geometric character of each component, maintaining an elongated S-curve, a compact hemisphere, and a coherent pyramidal structure. In contrast, tSNE fragments curved and volumetric components into irregular, disconnected pieces, obscuring global shape cues.](05-chap5_files/figure-pdf/fig-three12-miss-1.pdf){#fig-three12-miss fig-align='center' fig-alt='A multi-panel figure comparing linear projections and NLDR layouts of the same 4-D dataset, labelled three_clust_12. The data consist of three geometric structures: an elongated S-curve, a rounded hemispherical cluster, and a filled hexagonal pyramid. The left portion of the figure shows four fixed 2-D linear projections arranged in two rows. Panels (a1) and (a2) display two projections under small cluster separation, where points from the three structures overlap substantially and the curved and rounded components are difficult to distinguish. Panels (b1) and (b2) show the same projections under large cluster separation, where the S-curve, hemisphere, and pyramid become more spatially separated and visually distinct. The right portion of the figure shows the corresponding 2-D NLDR layouts produced by tSNE and UMAP for the same small and large separation settings. For each NLDR layout, the proportion of correct identifications for the corresponding method and distance factor is reported in the top-right corner of the plot. At small separation, both methods show overlapping point clouds with limited separation between structures. At large separation, the UMAP layout displays a smooth, elongated S-shaped structure alongside a compact hemispherical cluster and a coherent pyramidal cluster. In contrast, the tSNE layout shows these structures broken into multiple disconnected or irregularly shaped groups.' width=100%}
+![tSNE and UMAP layouts and $2\text{-}D$ projections for the data structure `three_clust_13`, composed of a curvy cylinder, a cube, and a blunted cone, shown under small and large cluster separation. Panels (a1–a2) show two fixed $2\text{-}D$ projections at small separation, and panels (b1–b2) show the same projections at large separation; the corresponding tSNE and UMAP layouts are shown in the right panels. For each NLDR layout, the proportion of correct identifications for the corresponding method and distance factor is reported in the top-right corner of the plot. At small separation, the cube and blunted cone partially overlap in the linear projections, but tSNE preserves their separation more clearly than UMAP, leading to a higher proportion of correct responses. With increased separation, both methods improve in interpretability; however, UMAP still compresses the curvy cylinder toward the other components, while tSNE maintains clearer boundaries between the three clusters, supporting more consistent identification across separation levels.](05-chap5_files/figure-pdf/fig-three13-miss-1.pdf){#fig-three13-miss fig-align='center' fig-alt='A multi-panel figure comparing linear projections and nonlinear dimension reduction (NLDR) layouts of the same 4-D dataset, labelled three_clust_13. The data consist of three geometric structures: a curvy cylindrical cluster, a cubic cluster, and a blunted cone. The left portion of the figure shows four fixed 2-D linear projections arranged in two rows. Panels (a1) and (a2) display two projections under small cluster separation, where the cube and blunted cone partially overlap and the curvy cylinder is visible but not clearly isolated. Panels (b1) and (b2) show the same projections under large cluster separation, where all three structures are more clearly separated and their distinct shapes are easier to recognize. The right portion of the figure shows the corresponding 2-D NLDR layouts produced by tSNE and UMAP for the same small and large separation settings. For each NLDR layout, the proportion of correct identifications for the corresponding method and distance factor is shown in the top-right corner. At small separation, the tSNE layout maintains clearer boundaries between the cube, blunted cone, and curvy cylinder than UMAP, which compresses the structures and increases overlap. At large separation, both methods show improved separation; however, UMAP still pulls the curvy cylinder closer to the other clusters, while tSNE preserves more distinct cluster boundaries, supporting higher identification accuracy.' width=100%}
 :::
 :::
 
@@ -466,21 +500,23 @@ Another common source of misidentification comes from uneven point density. In s
 
 One of the main drawbacks of visual experiments is their reliance on human judgments. In this context, the effectiveness of identifying the $2\text{-}D$ NLDR plot and the tour from the same data can be dependent on the perceptual ability and visual skills of the individual. However, when the results from multiple individuals are combined, the overall quality and robustness of the outcome is considerably high.
 
-It is important to remove HTML widget elements such as controls, interactivity, and $2\text{-}D$ plot elements such as axis labels and text that might introduce bias. We recommend using a crowd-sourcing service like Prolific [@palan2018] to access high-quality data, as it is a time- and cost-effective way.
+<!-- It is important to remove HTML widget elements such as controls, interactivity, and $2\text{-}D$ plot elements such as axis labels and text that might introduce bias. We recommend using a crowd-sourcing service like Prolific [@palan2018] to access high-quality data, as it is a time- and cost-effective way. NOT RELEVANT-->
 
-In this study, we used a specific data structure consisting of three distinct clusters, each with unique shapes. Two of the clusters are in close proximity to one another, while the third cluster is located farther away. Each cluster varies in the number of points it contains. We selected this data structure because it is simple.
+In this study, we chose to use only three clusters, each with unique shapes, and place two close with the third located farther away. We also used different sample sizes for each cluster. The purpose was to ensure a manageable experiment as an initial project. Using $4\text{-}D$ data allows tours to convey structural information effectively without imposing excessive cognitive or visual load on viewers. Some of the results should hold for more clusters, different arrangements, and higher dimensions, but it would be interesting to expand the scope to check these factors in the future.
 
-To keep the experiment fair and consistent across trials, we approximately fixed the distance between the clusters in each data structure. We also used five distance scale factors to gradually change how far apart the clusters were. While this controlled setup makes it easier to interpret the results, it does limit how well the findings apply to more complex data structures with uneven or irregular cluster arrangements.
+<!-- To keep the experiment fair and consistent across trials, we approximately fixed the distance between the clusters in each data structure. We also used five distance scale factors to gradually change how far apart the clusters were. While this controlled setup makes it easier to interpret the results, it does limit how well the findings apply to more complex data structures with uneven or irregular cluster arrangements.-->
 
 ## Conclusions {#sec-exp-conclusion}
 
 This study examined whether people can correctly identify that a static $2\text{-}D$ NLDR layout and a dynamic tour represent the same high-dimensional data, and how this ability depends on both cluster separation and the NLDR method used. Using three clusters with different shapes, number of points, and unequal separation, we were able to directly test whether increasing high-dimensional separation improves perceptual identification, and whether this effect varies across methods.
 
-The results show that cluster separation does matter, but its impact is strongly method dependent. For UMAP and PaCMAP, increasing separation led to higher probabilities of correct identification, indicating that these methods more reliably preserve data structures that support visual matching between the NLDR layout and the tour. TriMAP showed a weaker but generally consistent trend. In contrast, tSNE often showed the opposite pattern: greater separation did not improve, and in some cases reduced, correct identification, suggesting that its emphasis on local structure can distort global relationships in ways that hinder perceptual alignment. PHATE showed little systematic relationship between separation and identification accuracy, consistent with its focus on smooth manifold structure rather than discrete cluster separation.
+The results show that cluster separation does matter, but its impact is strongly method dependent. The results show that UMAP and tSNE lead to  significantly different conceptualizations as distance between clusters increases. There is a hint that PaCMAP behaves like UMAP, and PHATE behaves like tSNE, and TriMAP conceptualization is not affected by distance, but these are not statistically significant patterns. <!-- TriMAP showed a weaker but generally consistent trend. In contrast, tSNE often showed the opposite pattern: greater separation did not improve, and in some cases reduced, correct identification, suggesting that its emphasis on local structure can distort global relationships in ways that hinder perceptual alignment. PHATE showed little systematic relationship between separation and identification accuracy, consistent with its focus on smooth manifold structure rather than discrete cluster separation.--> 
 
-Importantly, misidentification was not random. Some data structure components, particularly curved or dense shapes were consistently more difficult to recognize across methods, even at larger separations. This indicates that perceptual errors arise from systematic interactions between data structure and method-specific distortions, rather than from subject variability alone. These findings support the need to evaluate NLDR layouts not only by algorithmic criteria, but also by how well they function as visual models in high-dimension space.
+<!-- Importantly, misidentification was not random. Some data structure components, particularly curved or dense shapes were consistently more difficult to recognize across methods, even at larger separations. XXX your analysis dod not study this so it is not valid to make this statement. XXX This indicates that perceptual errors arise from systematic interactions between data structure and method-specific distortions, rather than from subject variability alone. These findings support the need to evaluate NLDR layouts not only by algorithmic criteria, but also by how well they function as visual models in high-dimension space.-->
 
-Future work could extend this framework by considering additional data structures, including overlapping clusters, hierarchical manifolds, and continuous gradients, as well as varying noise levels, dimensionality, and sample size. Comparisons with linear methods such as PCA, or with supervised embeddings, would help clarify whether the observed effects are specific to nonlinear techniques. Incorporating automated visual similarity measures alongside human judgments, and exploring interactive or user-centered evaluations, could further strengthen this approach. Overall, this work highlights the need for systematic, perceptually grounded methods to assess $2\text{-}D$ NLDR layouts as representations of high-dimensional data space.
+This experiment is best viewed as a template for further studies on how people interpret NLDR layouts. Future work could extend this factors studied by considering different numbers of clusters, sample size, <!-- additional data structures, including overlapping clusters, hierarchical manifolds, and continuous gradients,--> varying noise levels and dimensionality. For three clusters including PCA (a linear method) as an embedding is not necessary because almost always it makes a useful display of three clusters in $2\text{-}D$ that is easily recognized as the same data when viewed with a tour. For more than three clusters this would not be true, and it would be important to include PCA as a comparison method.
+
+Overall, this work highlights the need for more experiments that systematically assess perception of structure in $2\text{-}D$ NLDR layouts with respect to structure present in high-dimensional data. With results from more human subjects experiments it may be possible to develop better metrics that could be used to automate assessment of  visual similarity measures. These would be helpful to use alongside NLDR layouts to assist with providing more faithful representations.
 
 ## Supplementary Materials
 

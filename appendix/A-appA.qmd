@@ -325,137 +325,6 @@ $$
 s_2 + (b_2 - 1) \times a_2 \geq r_2.
 $$ {#eq-equation5}
 
-
-
-
-```{r}
-#| label: code-illustration
-# Code to draw illustration for notation
-## hexagon binning to have regular hexagons
-
-hex_grid_temp <- read_rds(here::here("data/vis-algo/two_nonlinear/hex_grid_temp.rds"))
-all_centroids_df_temp <- read_rds(here::here("data/vis-algo/two_nonlinear/all_centroids_df_tempp.rds"))
-start_pt <- read_rds(here::here("data/vis-algo/two_nonlinear/start_pt.rds"))
-d_rect <- read_rds(here::here("data/vis-algo/two_nonlinear/d_rect.rds"))
-a1 <- read_rds(here::here("data/vis-algo/two_nonlinear/a2_data.rds"))
-a2 <- read_rds(here::here("data/vis-algo/two_nonlinear/a1_data.rds"))
-l <- read_rds(here::here("data/vis-algo/two_nonlinear/l_data.rds"))
-rect_adj <- read_rds(here::here("data/vis-algo/two_nonlinear/rect_adj.rds"))
-
-hex_param_vis <- ggplot() + 
-  geom_polygon(data = hex_grid_temp, 
-               aes(x = x, 
-                   y = y, 
-                   group = h),
-               fill = "white", 
-               colour = "#bdbdbd") +
-  geom_point(data = all_centroids_df_temp, aes(
-    x = c_x, 
-    y = c_y), 
-    colour = "#31a354", size = 0.9) +
-  geom_point(data = start_pt, aes(x = c_x, 
-                                  y = c_y), 
-             colour = "black") + 
-  geom_rect(data=d_rect, 
-            aes(xmin = x1min - rect_adj$x1,# - rect_adj$s1, 
-                xmax = x1max - rect_adj$x1,# - rect_adj$s1, 
-                ymin = x2min - rect_adj$x2,# - rect_adj$s2, 
-                ymax = x2max - rect_adj$x2),# - rect_adj$s2), 
-            fill = "white", 
-            colour = "black", 
-            alpha = 0, 
-            linewidth = 0.7) +
-  geom_point(data=d_rect, aes(x=x1min - rect_adj$x1, 
-                              y=x2min - rect_adj$x2)) + 
-  geom_point(data=d_rect, aes(x=x1max - rect_adj$x1, 
-                              y=x2min - rect_adj$x2)) + 
-  geom_point(data=d_rect, aes(x=x1min - rect_adj$x1, 
-                              y=x2max - rect_adj$x2)) + 
-  annotate("text", x=d_rect$x1min - rect_adj$x1, 
-           y=d_rect$x2min - rect_adj$x2,
-           label = "(0,0)", 
-           hjust=-0.1, vjust=-0.3, size = 8) + 
-  annotate("text", x=d_rect$x1max - rect_adj$x1, 
-           y=d_rect$x2min - rect_adj$x2,
-           label = "(0,1)", 
-           hjust=1.1, vjust=-0.3, size = 8) + 
-  annotate("text", x=d_rect$x1min - rect_adj$x1, 
-           y=d_rect$x2max - rect_adj$x2,
-           label = "'(0,'*y[2][max]*')'", 
-           parse = TRUE,
-           hjust=-0.1, vjust=1.2, size = 8) + 
-  geom_segment(data=d_rect, aes(
-    x = x1min  - rect_adj$x1, # 0 - 0.03, 
-    y = -0.31, 
-    xend = x1max - rect_adj$x1, #1 - 0.03, 
-    yend = -0.31), #-0.35),
-    arrow = arrow(length = unit(0.03, "npc"),
-                  ends = "both"), 
-    colour = "black")+
-  annotate("text", x=0.5, y=-0.38, 
-           label = "r[1]", parse = TRUE, colour = "black", size = 8) +
-  geom_segment(data=d_rect, aes(
-    x = -0.25, 
-    y = x2min - rect_adj$x2, #0 - 0.05, 
-    xend = -0.25, 
-    yend = x2max - rect_adj$x2), #r2 - 0.05),
-    arrow = arrow(length = unit(0.03, "npc"),
-                  ends = "both"), 
-    colour = "black")+ 
-  annotate("text", x=-0.3, y=0.4, 
-           label = "r[2]", parse = TRUE, colour = "black", size = 8) +
-  geom_segment(data = a1, aes(
-    x = x, #-0.1 + 0.2087578, 
-    y = y, #-0.15, 
-    xend = xend, #-0.1 + 0.2087578*2, 
-    yend = yend), #-0.15),
-    arrow = arrow(length = unit(0.03, "npc"),
-                  ends = "both"), 
-    colour = "black")+ # a1 = 0.2087578
-  annotate("text", 
-           x=(a1$x+a1$xend)/2, 
-           y=a1$y, 
-           label = "a[1]", parse = TRUE, 
-           colour = "black",
-           vjust = 1.2, size = 8) +
-  geom_segment(data = a2, aes(
-    x = x, #-0.15, 
-    y = y, #-0.1*r2 + 0.1807896*2, 
-    xend = xend, #-0.15, 
-    yend = yend), #-0.1*r2 + 0.1807896*3),
-    arrow = arrow(length = unit(0.03, "npc"),
-                  ends = "both"), 
-    colour = "black") + # a2 = 0.1807896
-  annotate("text", x=a2$x, y=(a2$y+a2$yend)/2, 
-           label = "a[2]", parse = TRUE,
-           colour = "black", hjust=-0.2, size = 8) +
-  annotate("text", x=-0.18, y=-0.24, 
-           label = "'('*s[1]*','*s[2]*')'", parse = TRUE,
-           colour = "black", size = 8) +
-  geom_segment(data = l, aes(
-    x = x, #-0.15, 
-    y = y, #-0.1*r2 + 0.1807896*2, 
-    xend = xend, #-0.15, 
-    yend = yend), #-0.1*r2 + 0.1807896*3),
-    arrow = arrow(length = unit(0.03, "npc"),
-                  ends = "both"), 
-    colour = "black") + 
-  annotate("text", x=l$x + 0.03, y=(l$y+l$yend)/2, 
-           label = "l", parse = TRUE,
-           colour = "black", hjust=-0.2, size = 8) +
-  coord_equal()
-```
-
-```{r}
-#| label: fig-hex-param
-#| fig-cap: "The components of the hexagon grid illustrating notation."
-#| out-width: 30%
-#| fig-pos: "!ht"
-#| eval: false
-
-hex_param_vis
-```
-
 Since $a_1$ and $a_2$ are distances,
 
 $$
@@ -1535,6 +1404,7 @@ comp_metrics_pbmc <- plot_comp_metrics(nldr_metrics) +
 #| out-width: 100%
 #| fig-height: 6
 #| fig-width: 6
+#| fig-alt: "A parallel coordinate plot comparing five scaled evaluation metrics—rRTA, rSC, rGS, rARNX, and HBE (with a_1 = 0.06) across eight NLDR layouts computed on the PBMC3k dataset. Each vertical axis represents one metric, scaled to a common range, and each colored line corresponds to a single NLDR layout, connecting its values across all five metrics. The lines cross the axes at different heights, showing how layouts rank differently depending on the metric. Most layouts show broadly similar performance across rRTA, rSC, and rGS, with layout e consistently scoring highest or near-highest on these measures. In contrast, rARNX and HBE show stronger disagreement with the other metrics: layout d ranks best on HBE and rARNX but much lower on rRTA, rSC, and rGS, while layout f scores poorly on both rARNX and HBE. Layout a performs well on rGS and rSC but is less favored by the remaining metrics. Overall, the figure highlights both agreement and disagreement among the metrics in how they assess layout quality."
 
 design <- "
 AABB
@@ -1659,6 +1529,7 @@ comp_metrics_mnist <- plot_comp_metrics(nldr_metrics) +
 #| out-width: 100%
 #| fig-height: 5
 #| fig-width: 6
+#| fig-alt: "A parallel coordinate plot comparing five scaled evaluation metrics—rARNX, rRTA, rSC, rGS, and HBE (with a_1=0.04)—across six NLDR layouts (labelled a through f) computed on the MNIST digit 1 dataset. Each vertical axis represents one metric, scaled to a common range, and each colored line corresponds to a single layout, connecting its values across all metrics. The lines cross the axes at different heights, showing that layouts are ranked differently depending on the metric used. Layout a scores highest on HBE and rRTA but much lower on rARNX, rSC, and rGS. Layout e consistently scores lowest, or near lowest, across all metrics. Layouts a and f follow similar trends across most metrics, except for rRTA, where layout a performs best and layout f performs worst. Layout c shows particularly low values for rARNX, rSC, and HBE. Overall, the figure highlights disagreement among the metrics and illustrates that no single measure fully captures embedding quality."
 
 comp_metrics_mnist + wrap_plots(nldr_mnist1, nldr_mnist2, nldr_mnist3, 
                                     nldr_mnist4, nldr_mnist5, nldr_mnist6, ncol = 2)

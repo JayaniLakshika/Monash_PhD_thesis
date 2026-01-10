@@ -1086,6 +1086,7 @@ This journey has been as much about exploring the unknown as it has been about d
 #| fig-cap: "Geographic footprint of the PhD journey, highlighting research visits, conferences, and academic engagements across Australia, Austria, and the United States. Locations include Salzburg and Vienna (Austria), Nebraska and Tennessee (USA), and Melbourne, Sydney, Canberra, and Perth (Australia), alongside moments from conferences, collaborations, and software dissemination."
 #| label: fig-mem
 #| fig-alt: "A world map highlighting locations associated with the PhD journey. Markers indicate research visits, conferences, and academic engagements across Australia, Austria, and the United States, including Melbourne, Sydney, Canberra, and Perth; Salzburg and Vienna; and sites in Nebraska and Tennessee. Additional images or insets show moments from conferences, collaborations, and software dissemination activities at these locations."
+#| out-width: 98%
 
 # Read images
 austria_img <- rasterGrob(png::readPNG(here::here("figures/austria.png")), interpolate=TRUE)

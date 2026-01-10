@@ -108,7 +108,7 @@
 :::
 
 
-Animations of the $4\text{-}D$ tours that were used for the study’s non-attention-check SAME trials, non-attention-check DIFFERENT trials, and attention-check trials are available on YouTube at the links given in @tbl-links-same-html, @tbl-links-diff-html, and @tbl-links-at-html.
+Animations of the $4\text{-}D$ tours that were used for the study’s non-attention check SAME trials, non-attention check DIFFERENT trials, and attention-check trials are available on YouTube at the links given in @tbl-links-same-html, @tbl-links-diff-html, and @tbl-links-at-html.
 
 
 ::: {.cell layout-align="center"}
@@ -117,14 +117,14 @@ Animations of the $4\text{-}D$ tours that were used for the study’s non-attent
 
 
 
-::: {#tbl-links-same-html .cell layout-align="center" tbl-pos='H' tbl-cap='Videos of datasets used for non-attention-check SAME trials'}
+::: {#tbl-links-same-html .cell layout-align="center" tbl-pos='H' tbl-cap='Videos of datasets used for non-attention check SAME trials'}
 ::: {.cell-output-display}
 `````{=html}
 <table>
  <thead>
   <tr>
    <th style="text-align:left;"> Data structure </th>
-   <th style="text-align:left;"> small </th>
+   <th style="text-align:left;"> Small </th>
    <th style="text-align:left;"> Small-medium </th>
    <th style="text-align:left;"> Medium </th>
    <th style="text-align:left;"> Medium-large </th>
@@ -291,7 +291,7 @@ Animations of the $4\text{-}D$ tours that were used for the study’s non-attent
 
 
 
-::: {#tbl-links-diff-html .cell layout-align="center" tbl-pos='H' tbl-cap='Videos of datasets used for non-attention-check DIFFERENT trials'}
+::: {#tbl-links-diff-html .cell layout-align="center" tbl-pos='H' tbl-cap='Videos of datasets used for non-attention check DIFFERENT trials'}
 ::: {.cell-output-display}
 `````{=html}
 <table>
@@ -370,11 +370,11 @@ Animations of the $4\text{-}D$ tours that were used for the study’s non-attent
 <tbody>
   <tr>
    <td style="text-align:left;"> three_clust_29 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/E9msE_XX0KA">youtu.be/E9msE_XX0KA</a> </td>
+   <td style="text-align:left;"> <a href="https://youtube.com/shorts/bqZporzHQ5U">youtube.com/shorts/bqZporzHQ5U</a> </td>
   </tr>
   <tr>
    <td style="text-align:left;"> three_clust_30 </td>
-   <td style="text-align:left;"> <a href="https://youtu.be/_f2WvtD2xog">youtu.be/f2WvtD2xog</a> </td>
+   <td style="text-align:left;"> <a href="https://youtube.com/shorts/onAg2AgT2P4">youtube.com/shorts/onAg2AgT2P4</a> </td>
   </tr>
 </tbody>
 </table>
@@ -429,7 +429,7 @@ Using pilot estimates of the correct proportion, we conducted a simulation-based
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Power curves showing the relationship between the number of responses and detection probability for differences in correct identification rates between distance factors $0.1$ and $0.6$. Panel (a) shows results for tSNE and panel (b) for UMAP. Curves correspond to different effect sizes (difference in proportions), with darker lines indicating larger effects. The horizontal line marks the target power of $0.8$, and the vertical dashed lines indicate the approximate number of responses required to reach this level for a moderate–large effect (≈$0.22$). UMAP reaches the target power with fewer responses than tSNE, reflecting lower variability in participant responses.](B-appB_files/figure-html/fig-num-res-detect-1.png){#fig-num-res-detect fig-align='center' fig-alt='Two side-by-side line plots show detection probability as a function of the number of responses per condition. Panel (a) corresponds to tSNE and panel (b) to UMAP. In both panels, the x-axis shows the number of responses per condition, ranging from about 10 to 100, and the y-axis shows detection probability from 0 to 1. Multiple lines are shown in each panel, corresponding to different effect sizes, with darker lines indicating larger effects. Detection probability increases as the number of responses increases for all effect sizes. A horizontal reference line marks a detection probability of 0.8, and a vertical dashed line indicates the approximate number of responses required to reach this level for a moderate–large effect (around 0.22). UMAP reaches this threshold with fewer responses (around 70) than tSNE (around 80), indicating higher sensitivity and lower variability for UMAP at this effect size.' width=100%}
+![Power curves showing the relationship between the number of responses and detection probability for differences in correct identification rates between distance factors $0.1$ and $0.6$. Panel (a) shows results for tSNE and panel (b) for UMAP. Curves correspond to different effect sizes (difference in proportions), with darker lines indicating larger effects. The horizontal line marks the target power of $0.8$, and the vertical dashed lines indicate the approximate number of responses required to reach this level for a moderate–large effect ($\approx 0.22$). UMAP reaches the target power with fewer responses than tSNE, reflecting lower variability in participant responses.](B-appB_files/figure-html/fig-num-res-detect-1.png){#fig-num-res-detect fig-align='center' fig-alt='Two side-by-side line plots show detection probability as a function of the number of responses per condition. Panel (a) corresponds to tSNE and panel (b) to UMAP. In both panels, the x-axis shows the number of responses per condition, ranging from about 10 to 100, and the y-axis shows detection probability from 0 to 1. Multiple lines are shown in each panel, corresponding to different effect sizes, with darker lines indicating larger effects. Detection probability increases as the number of responses increases for all effect sizes. A horizontal reference line marks a detection probability of 0.8, and a vertical dashed line indicates the approximate number of responses required to reach this level for a moderate–large effect (around 0.22). UMAP reaches this threshold with fewer responses (around 70) than tSNE (around 80), indicating higher sensitivity and lower variability for UMAP at this effect size.' width=100%}
 :::
 :::
 

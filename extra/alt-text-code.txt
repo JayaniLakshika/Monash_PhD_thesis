@@ -1,1 +1,16 @@
+# Chunk label: fig-comp-metric-mnist --------------------
+## Alt-text: Horizontal grouped bar chart comparing the scores of several evaluation metrics—HBE, rRTA, rARNX, rSC, and rGS—across multiple nonlinear dimensionality reduction (NLDR) layouts (for example, different algorithms or parameter settings) on a single dataset. The x‑axis shows metric scores on a common scale, assumed to range from 0 to 1, while the y‑axis lists NLDR layout variants. Within each layout, several adjacent bars use colour to distinguish the metrics. HBE’s bars typically differ noticeably in height from rRTA, rARNX, rSC, and rGS, indicating that HBE ranks or scores the layouts in a distinct way; for some layouts HBE is higher than all other metrics, and for others it is lower, whereas the other four metrics tend to be more similar to each other within each layout. This pattern visually reinforces that HBE behaves differently from these commonly used metrics under the same layout settings.
 
+Assumptions: Exact dataset (e.g., PBMC vs MNIST), precise metric scale, identity of layouts on the y‑axis, and bar orientation (horizontal vs vertical) are inferred from typical practice and the reference description rather than explicitly provided.
+
+Checklist:
+1. Identified chart type. YES  
+2. Named axes and variables. YES  
+3. Mentioned approximate ranges or scales (where meaningful). YES  
+4. Described data mappings (e.g. colour/shape/size/facets). YES  
+5. Described main patterns, trends, or clusters. YES  
+6. Explicitly noted any assumptions. YES
+
+## Caption (for reference): @fig-comp-metric-pbmc and @fig-comp-metric-mnist compare HBE with commonly used evaluation metrics such as rRTA, rARNX, rSC, and rGS across multiple NLDR layouts. These visual comparisons highlight that HBE behaves differently from these existing metrics due to the different settings involved.
+
+## Usage: BrailleR, Cummulated cost: NA, Cummulated token usage: 0

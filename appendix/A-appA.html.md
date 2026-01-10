@@ -285,21 +285,6 @@ $$
 s_2 + (b_2 - 1) \times a_2 \geq r_2.
 $$ {#eq-equation5}
 
-
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
 Since $a_1$ and $a_2$ are distances,
 
 $$
@@ -662,7 +647,7 @@ For illustration purposes, we only selected cells generated with inDrops ($n=585
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Comparison of scaled evaluation metrics (rRTA, rSC, rGS, rARNX, and HBE with $a_1 = 0.06$) for the eight NLDR layouts computed on the PBMC3k data, shown as a parallel coordinate plot. The color of each line corresponds to a NLDR layout. All, except rGS and rARNX agree that layout e is best or very close to best. Layout d is best according to HBE and rARNX but considered to be much less optimal by rRTA, rSC and rGS. Layout f is considered poor by rARNX and HBE. Layout a is cosidered close to the best by rGS and rSC.](A-appA_files/figure-html/fig-comp-metric-pbmc-1.png){#fig-comp-metric-pbmc fig-align='center' fig-pos='!ht' width=100%}
+![Comparison of scaled evaluation metrics (rRTA, rSC, rGS, rARNX, and HBE with $a_1 = 0.06$) for the eight NLDR layouts computed on the PBMC3k data, shown as a parallel coordinate plot. The color of each line corresponds to a NLDR layout. All, except rGS and rARNX agree that layout e is best or very close to best. Layout d is best according to HBE and rARNX but considered to be much less optimal by rRTA, rSC and rGS. Layout f is considered poor by rARNX and HBE. Layout a is cosidered close to the best by rGS and rSC.](A-appA_files/figure-html/fig-comp-metric-pbmc-1.png){#fig-comp-metric-pbmc fig-align='center' fig-pos='!ht' fig-alt='A parallel coordinate plot comparing five scaled evaluation metrics—rRTA, rSC, rGS, rARNX, and HBE (with a_1 = 0.06) across eight NLDR layouts computed on the PBMC3k dataset. Each vertical axis represents one metric, scaled to a common range, and each colored line corresponds to a single NLDR layout, connecting its values across all five metrics. The lines cross the axes at different heights, showing how layouts rank differently depending on the metric. Most layouts show broadly similar performance across rRTA, rSC, and rGS, with layout e consistently scoring highest or near-highest on these measures. In contrast, rARNX and HBE show stronger disagreement with the other metrics: layout d ranks best on HBE and rARNX but much lower on rRTA, rSC, and rGS, while layout f scores poorly on both rARNX and HBE. Layout a performs well on rGS and rSC but is less favored by the remaining metrics. Overall, the figure highlights both agreement and disagreement among the metrics in how they assess layout quality.' width=100%}
 :::
 :::
 
@@ -689,7 +674,7 @@ For illustration purposes, we only selected cells generated with inDrops ($n=585
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Comparison of scaled evaluation metrics (rARNX, rRTA, rSC, rGS, and HBE using $a_1=0.04$) for six NLDR layouts computed on the MNIST digit 1 data using a parallel coordinate plot. Each line represents a layout (a–f), with colors corresponding to the scatterplots shown on the right. The metrics display different ranking patterns, indicating that no single measure fully captures embedding quality. Layout a is identified as the best according to HBE and rRTA, but is considered much less optimal by rARNX, rSC, and rGS. Layout e is considered the worst, or close to the poorest, by all metrics. Layouts a and f show similar patterns of agreement across metrics, except for rRTA, where layout a performs the best and layout f the worst. Layout c is the worst in rARNX, rSC, and HBE.](A-appA_files/figure-html/fig-comp-metric-mnist-1.png){#fig-comp-metric-mnist fig-align='center' fig-pos='!ht' width=100%}
+![Comparison of scaled evaluation metrics (rARNX, rRTA, rSC, rGS, and HBE using $a_1=0.04$) for six NLDR layouts computed on the MNIST digit 1 data using a parallel coordinate plot. Each line represents a layout (a–f), with colors corresponding to the scatterplots shown on the right. The metrics display different ranking patterns, indicating that no single measure fully captures embedding quality. Layout a is identified as the best according to HBE and rRTA, but is considered much less optimal by rARNX, rSC, and rGS. Layout e is considered the worst, or close to the poorest, by all metrics. Layouts a and f show similar patterns of agreement across metrics, except for rRTA, where layout a performs the best and layout f the worst. Layout c is the worst in rARNX, rSC, and HBE.](A-appA_files/figure-html/fig-comp-metric-mnist-1.png){#fig-comp-metric-mnist fig-align='center' fig-pos='!ht' fig-alt='A parallel coordinate plot comparing five scaled evaluation metrics—rARNX, rRTA, rSC, rGS, and HBE (with a_1=0.04)—across six NLDR layouts (labelled a through f) computed on the MNIST digit 1 dataset. Each vertical axis represents one metric, scaled to a common range, and each colored line corresponds to a single layout, connecting its values across all metrics. The lines cross the axes at different heights, showing that layouts are ranked differently depending on the metric used. Layout a scores highest on HBE and rRTA but much lower on rARNX, rSC, and rGS. Layout e consistently scores lowest, or near lowest, across all metrics. Layouts a and f follow similar trends across most metrics, except for rRTA, where layout a performs best and layout f performs worst. Layout c shows particularly low values for rARNX, rSC, and HBE. Overall, the figure highlights disagreement among the metrics and illustrates that no single measure fully captures embedding quality.' width=100%}
 :::
 :::
 
