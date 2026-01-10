@@ -117,17 +117,17 @@ if (knitr::is_latex_output()) {
       mutate(cluster2 = gsub("_", "\\\\_", cluster2)) |>
       mutate(cluster3 = gsub("_", "\\\\_", cluster3)) |>
       kable(format="latex", col.names = c("Data structure", "Cluster1", "Cluster2", "Cluster3"), booktabs = T, table.pos = "!ht", linesep = "", escape = FALSE)  |>
-      column_spec(1, width = "2cm") |>
+      column_spec(1, width = "3cm") |>
       column_spec(2, width = "4cm") |>
       column_spec(3, width = "2cm") |>
-      column_spec(4, width = "3cm")
+      column_spec(4, width = "4cm")
 } else {
     dt_str |> 
       kable(col.names = c("Data structure", "Cluster1", "Cluster2", "Cluster3"), linesep = "", escape = FALSE, table.pos = "!ht") 
 }
 ```
 
-Animations of the $4\text{-}D$ tours that were used for the study’s non-attention-check SAME trials, non-attention-check DIFFERENT trials, and attention-check trials are available on YouTube at the links given in @tbl-links-same-html, @tbl-links-diff-html, and @tbl-links-at-html.
+Animations of the $4\text{-}D$ tours that were used for the study’s non-attention check SAME trials, non-attention check DIFFERENT trials, and attention-check trials are available on YouTube at the links given in @tbl-links-same-html, @tbl-links-diff-html, and @tbl-links-at-html.
 
 ```{r}
 links_df <- read_csv(here::here("data/vis-exp/video_links_same.csv"))
@@ -136,15 +136,15 @@ links_df <- read_csv(here::here("data/vis-exp/video_links_same.csv"))
 ```{r}
 #| label: tbl-links-same-html
 #| tbl-pos: H
-#| tbl-cap: "Videos of datasets used for non-attention-check SAME trials"
+#| tbl-cap: "Videos of datasets used for non-attention check SAME trials"
 
 if (knitr::is_latex_output()) {
   # Create the table
   links_df |>
-    mutate(`data structure` = gsub("_", "\\\\_", `data structure`)) |>
+    mutate(`Data structure` = gsub("_", "\\\\_", `Data structure`)) |>
     mutate(
       across(
-        -`data structure`,
+        -`Data structure`,
         ~ gsub(
           '<a href="([^"]+)">([^<]+)</a>',
           '\\\\href{\\1}{\\\\url{\\2}}',
@@ -159,7 +159,7 @@ if (knitr::is_latex_output()) {
                   font_size = 12,
                   latex_options = c("repeat_header")) |>
     row_spec(0, bold = TRUE) |>
-    column_spec(1:6, width = c("2.5cm", "2.5cm", "2.5cm", "2.5cm", "2.5cm", "2.5cm")) 
+    column_spec(1:6, width = c("2.3cm", "2.3cm", "2.4cm", "2cm", "2.4cm", "2cm")) 
   
 } else {
   
@@ -175,15 +175,15 @@ links_df_diff <- read_csv(here::here("data/vis-exp/video_links_diff.csv"))
 ```{r}
 #| label: tbl-links-diff-html
 #| tbl-pos: H
-#| tbl-cap: "Videos of datasets used for non-attention-check DIFFERENT trials"
+#| tbl-cap: "Videos of datasets used for non-attention check DIFFERENT trials"
 
 if (knitr::is_latex_output()) {
   # Create the table
   links_df_diff |>
-    mutate(`data structure` = gsub("_", "\\\\_", `data structure`)) |>
+    mutate(`Data structure` = gsub("_", "\\\\_", `Data structure`)) |>
     mutate(
       across(
-        -`data structure`,
+        -`Data structure`,
         ~ gsub(
           '<a href="([^"]+)">([^<]+)</a>',
           '\\\\href{\\1}{\\\\url{\\2}}',
@@ -198,7 +198,7 @@ if (knitr::is_latex_output()) {
                   font_size = 12,
                   latex_options = c("repeat_header")) |>
     row_spec(0, bold = TRUE) |>
-    column_spec(1:6, width = c("1.5cm", "14cm")) 
+    column_spec(1:6, width = c("3cm", "10cm")) 
   
 } else {
   
@@ -219,10 +219,10 @@ links_df_at <- read_csv(here::here("data/vis-exp/video_links_att.csv"))
 if (knitr::is_latex_output()) {
   # Create the table
   links_df_at |>
-    mutate(`data structure` = gsub("_", "\\\\_", `data structure`)) |>
+    mutate(`Data structure` = gsub("_", "\\\\_", `Data structure`)) |>
     mutate(
       across(
-        -`data structure`,
+        -`Data structure`,
         ~ gsub(
           '<a href="([^"]+)">([^<]+)</a>',
           '\\\\href{\\1}{\\\\url{\\2}}',
@@ -237,7 +237,7 @@ if (knitr::is_latex_output()) {
                   font_size = 12,
                   latex_options = c("repeat_header")) |>
     row_spec(0, bold = TRUE) |>
-    column_spec(1:6, width = c("1.5cm", "14cm")) 
+    column_spec(1:6, width = c("3cm", "10cm")) 
   
 } else {
   
@@ -373,7 +373,7 @@ tsne_sample_plt <- ggplot(
 #| fig-height: 5
 #| fig-width: 10
 #| label: fig-num-res-detect
-#| fig-cap: "Power curves showing the relationship between the number of responses and detection probability for differences in correct identification rates between distance factors $0.1$ and $0.6$. Panel (a) shows results for tSNE and panel (b) for UMAP. Curves correspond to different effect sizes (difference in proportions), with darker lines indicating larger effects. The horizontal line marks the target power of $0.8$, and the vertical dashed lines indicate the approximate number of responses required to reach this level for a moderate–large effect (≈$0.22$). UMAP reaches the target power with fewer responses than tSNE, reflecting lower variability in participant responses."
+#| fig-cap: "Power curves showing the relationship between the number of responses and detection probability for differences in correct identification rates between distance factors $0.1$ and $0.6$. Panel (a) shows results for tSNE and panel (b) for UMAP. Curves correspond to different effect sizes (difference in proportions), with darker lines indicating larger effects. The horizontal line marks the target power of $0.8$, and the vertical dashed lines indicate the approximate number of responses required to reach this level for a moderate–large effect ($\\approx 0.22$). UMAP reaches the target power with fewer responses than tSNE, reflecting lower variability in participant responses."
 #| fig-alt: "Two side-by-side line plots show detection probability as a function of the number of responses per condition. Panel (a) corresponds to tSNE and panel (b) to UMAP. In both panels, the x-axis shows the number of responses per condition, ranging from about 10 to 100, and the y-axis shows detection probability from 0 to 1. Multiple lines are shown in each panel, corresponding to different effect sizes, with darker lines indicating larger effects. Detection probability increases as the number of responses increases for all effect sizes. A horizontal reference line marks a detection probability of 0.8, and a vertical dashed line indicates the approximate number of responses required to reach this level for a moderate–large effect (around 0.22). UMAP reaches this threshold with fewer responses (around 70) than tSNE (around 80), indicating higher sensitivity and lower variability for UMAP at this effect size."
 
 umap_sample_plt + tsne_sample_plt +
