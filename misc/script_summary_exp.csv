@@ -16,3 +16,5 @@ additional\_functions.R,Helper functions to render the main paper.
 13\_data\_processing\_method\_ds\_factor.R,"Processes collected experimental data and generates the  file, containing all relevant details for the same data structure shown in both displays. "
 17\_compute\_distance\_btw\_centroids.R,Computes different distance metrics between cluster in the high-dimensional space.
 19\_find\_which\_replicates\_missing.R,Identifies missing responses across experimental conditions.
+pwr\_analysis\_umap\_0.1\_0.6.R,Power analysis to decide the number of responses needed to detect the difference between UMAP 0.1 and 0.6 distance scale factors.
+pwr\_analysis\_tsne\_0.1\_0.6.R,Power analysis to decide the number of responses needed to detect the difference between tSNE 0.1 and 0.6 distance scale factors.
