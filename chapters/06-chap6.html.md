@@ -85,7 +85,7 @@ Once the desired layouts are finalized, users click "Start Analysis" to proceed 
 
 The comparison begins by selecting the binwidth ($a_1$), which controls the width of the hexagons in the hexagonal grid (@fig-menuraR_ui2). For the chosen binwidth, $a_1$, the Shiny application visualizes hexagonal grids overlaid on each selected $2\text{-}D$ NLDR layout. Also, the app constructs a $2\text{-}D$ wireframe representation for each layout, which forms the basis for subsequent lifting the model into high-dimensional space. The app also generates a plot showing the Hexbin Error (HBE) against the binwidth parameter ($a_1$) and identifies the "best" representation that yields the lowest HBE for that specific $a_1$. Users can modify the $a_1$ value to see what layout performs best for the chosen bandwidth.
 
-Furthermore, users have the option to download the $2\text{-}D$ layouts, corresponding data, the HBE versus binwidth plot, and the summary table, which contains error, HBE, the number of bins along the x-axis ($b_1$), the number of bins along the y-axis ($b_2$), the total number of bins ($b$), the number of non-empty bins ($m$), the bin width ($a_1$), the bin height ($a_2$), standardized bin counts ($w_h$), and NLDR method id.
+Furthermore, users have the option to download the $2\text{-}D$ layouts, corresponding data, the HBE versus binwidth plot, and the summary table, which contains error, HBE, the number of bins along the x-axis ($b_1$), the number of bins along the y-axis ($b_2$), the total number of bins ($b$), the number of non-empty bins ($m$), the binwidth ($a_1$), the bin height ($a_2$), standardized bin counts ($w_h$), and NLDR method id.
 
 
 ::: {.cell layout-align="center"}
