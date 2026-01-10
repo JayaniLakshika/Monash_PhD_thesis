@@ -313,9 +313,13 @@ As shown in @fig-distance-metrics, most metric pairs are strongly positively cor
 
 Based on these patterns, we selected the BW ratio and the exponentiated scaled minimum distance for the main analyses. The BW ratio captures overall separation by contrasting between- and within-cluster dispersion, while the exponentiated minimum distance focuses on the closest boundaries between clusters. Both measures are strongly correlated with the other metrics (upper panels of @fig-distance-metrics) but reflect complementary aspects of separability, allowing us to assess whether perceptual accuracy is driven more by global structure, local proximity, or both.
 
-## Power analysis
+## Determining the number of responses per treatment
 
-To determine the number of responses required per treatment combination, we based the power analysis on conditions that exhibited the greatest perceptual ambiguity in the pilot study. Specifically, we focused on tSNE and UMAP embeddings at distance scale factors 0.1 and 0.6, which correspond to small and small–medium cluster separation. These conditions produced neither floor nor ceiling effects and showed substantial variation in correct identification rates, making them well suited for estimating detectable effect sizes. Distance factor 1.0 was not used for power estimation, as performance was near ceiling and provided limited sensitivity for detecting differences.
+Before running the main experiment, we examined how many responses were needed for each treatment (method × distance factor) to reliably detect meaningful differences in performance. Rather than attempting to cover all possible combinations, we focused on representative comparisons that are most informative for the study. In particular, we compared UMAP and tSNE under two distance conditions ($0.1$ and $0.6$), which showed clear differences in correct identification rates in the pilot data.
+
+Using pilot estimates of the correct proportion, we conducted a simulation-based power analysis based on a difference in proportions framework. The baseline probability was taken from the estimated performance at the smaller distance factor ($0.1$), and a range of effect sizes was explored. We focused on an effect size of approximately $0.22$, which corresponds to a change of about $20$ percentage points in correct identification and reflects a perceptually meaningful improvement in the ability to distinguish whether two views show the same data.
+
+<!-- Targeting moderate to large effects is appropriate in perceptual studies of visualization, where small statistical differences may not translate into noticeable or reliable changes in what users actually see or report. In this context, effects of practical interest are those that lead to clear differences in perception rather than marginal improvements that are difficult for participants to detect consistently. -->
 
 <!--script/vis-exp/pwr_analysis_umap_0.1_0.6.R, script/vis-exp/pwr_analysis_tsne_0.1_0.6.R-->
 ```{r}
@@ -365,11 +369,14 @@ tsne_sample_plt <- ggplot(
 ```{r}
 #| fig-height: 5
 #| fig-width: 10
+#| label: fig-num-res-detect
 
 umap_sample_plt + tsne_sample_plt +
   plot_layout(guides = "collect") &
   theme(legend.position = "bottom")
 ```
+
+The results show that (@fig-num-res-detect), for this effect size, UMAP reaches a detection probability of $0.8$ with around $70$ responses per condition, while tSNE requires approximately $80$ responses to achieve the same level of power. This difference reflects the higher variability observed in tSNE responses compared to UMAP. Importantly, these results indicate that the number of responses collected in the main experiment (typically between $75$ and $80$ per condition) is sufficient to detect moderate to large effects for both methods.
 
 <!-- To determine a suitable number of participants per treatment combination (method × distance scale factor), we conducted a simulation-based power analysis. The outcome of interest was binary (correct vs. incorrect identification), and differences between conditions were evaluated using tests for differences in proportions. -->
 
