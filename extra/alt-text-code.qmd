@@ -9,18 +9,19 @@ format: html
 
 As we were writing this paper @xia2024 appeared proposing a new method called scDEED helping to assess the validity of a \gD{} embedding. scDEED calculates a reliability score for each cell embedding based on the similarity between the cell’s \gD{} embedding neighbors and its neighbors prior to embedding. A low reliability score suggests a dubious embedding. It can help in the deciding on optimal hyper-parameters. Here we illustrate how our method compares with the results from scDEED.
 
-Note that @xia2024 uses a different PBMC dataset than that used by @chen2024, shown by us in the main paper example, which is why this comparison is shown here and not in the main paper. Their data contains $31,021$ cells including cell type labels, and the gene expression levels were in the unit of log-transformed UMI count per $10,000$. They focused on three sequencing methods (inDrops, DropSeq, and SeqWell) and four common cell types Cytotoxic T cell, CD4+T cell, CD14+ Monocyte, and B cell. Pre-processing follows the process in @xia2024 again using the Human Peripheral Blood Mononuclear Cells (PBMC) data. 
+Note that @xia2024 uses a different PBMC dataset than that used by @chen2024, shown by us in the main paper example, which is why this comparison is shown here and not in the main paper. Their data contains $31,021$ cells including cell type labels, and the gene expression levels were in the unit of log-transformed UMI count per $10,000$. They focused on three sequencing methods (inDrops, DropSeq, and SeqWell) and four common cell types Cytotoxic T cell, CD4+T cell, CD14+ Monocyte, and B cell. Pre-processing follows the process in @xia2024 again using the Human Peripheral Blood Mononuclear Cells (PBMC) data.
 
 For illustration purposes, we only selected cells generated with inDrops ($n=5858$ cells). Also, @xia2024 used first $9$ principal components to generate the UMAP and tSNE with default hyper-parameters. The objective is to what scDEED suggests is the best layout with what HBE would choose. Layout a (@fig-pbmc-mse-umap) is generated from the hyper-parameters suggested by @chen2024, and layout b (@fig-pbmc-mse-umap) is with suggested hyper-parameters by scDEED to be more accurate. <!--Layouts a and b contain $46$ and $83$ dubious cells respectively.--> The HBE vs binwidth ($a_1$) plot (@fig-pbmc-mse-umap) illustrates that our approach would suggest that scDEED is correct here, that layout b is more accurately reflecting the cluster structure in the PBMC data. This is also supported by examining the models in the data space as shown in @fig-model-pbmc-author-proj.
 
 
 ```{r}
-#| label: fig-pbmc-mse-umap
+#| echo: false
+#| fig-cap: "Compare the published \\gD{} layout (@fig-pbmc-mse-umap a) made with UMAP and the \\gD{} layout made with tSNE selected as optimal by scDEED (@fig-pbmc-mse-umap b) and also HBE (@fig-pbmc-mse-umap). The two plots on the right show projections from a tour, with the models overlaid. The published layout a suggested three separated clusters with two of them are close, but this is not present in the data. While there may be three clusters they are not well-separated. The difference in model fit also indicates this: the published layout a does not capture the nonlinear structure of the clusters like the model generated from layout b. This supports the choice that layout b is the better representation of the data, because it shows close clusters. Videos of the langevitour animations are available at <https://youtu.be/ffiB4MGWyn8> and <https://youtu.be/e7XNL18co1c> respectively."
+#| label: fig-model-pbmc-author-proj
 #| fig-pos: "!ht"
-#| out-width: 100%
-#| fig-cap: "Comparing the published layout (a) with what would be suggested to be optimal by scDEED (b), using HBE for varying (i) binwidth ($a_1$), and (ii) average bin count ($\\bar{n}_h$), on a subset of PBMC3k data. Color represents NLDR layouts. HBE would corroborate that the scDEED optimized layout is better than what was originally published. Plot (ii), which accounts for the density within clusters by using average bin count, shows reduced differences between layouts, indicating that part of the variation in (i) is driven by cluster density rather than true structural differences. Comparison of scaled evaluation metrics (iii) (rRTA, rSC, rGS, rARNX, and HBE using $a_1=0.04$) for two NLDR layouts of the PBMC3k data the originally published layout (a) and the scDEED optimized layout (b). Each line represents a layout, with color matching the corresponding scatterplots. Most metrics (rSC, rARNX, and HBE) consistently indicate that the optimized layout (b) provides a better representation, while rRTA, and rGS slightly favor the published layout."
-#| fig-width: 6
-#| fig-height: 4
+#| fig-width: 10
+#| fig-height: 6
+#| out-width: 90%
 # Read a variety of different NLDR representations of PBMC
 # and plot them on same aspect ratio
 umap_pbmc <- read_rds(here::here("data/vis-algo/pbmc3k/pbmc_scdeed_umap_n_neighbors_30_min_dist_0.3.rds"))
@@ -44,61 +45,112 @@ nldr2c <- tsne_pbmc |>
   interior_annotation("b")
 
 
-error_pbmc_umap <- read_rds(here::here("data/vis-algo/pbmc3k/error_scdeed_pbmc_umap_30_min_dist_0.3.rds"))
-error_pbmc_tsne <- read_rds(here::here("data/vis-algo/pbmc3k/error_scdeed_pbmc_tsne_perplexity_30.rds"))
+umap_pbmc_scaled_with_cluster <- read_rds(here::here("data/vis-algo/pbmc3k/umap_pbmc_scaled_with_cluster_scDEED.rds"))
 
-error_pbmc <- bind_rows(error_pbmc_umap,
-                        error_pbmc_tsne)
+tr_from_to_df_pbmc <- read_rds(here::here("data/vis-algo/pbmc3k/tr_from_to_df_pbmc_scDEED.rds"))
 
-error_pbmc_avg <- error_pbmc |>
-  filter(b1 >= 5) |>
-  group_by(method, n_bar) |>
-  filter(HBE == min(HBE)) |>
-  ungroup()
+trimesh_removed_pbmc <- ggplot() + 
+    geom_point(
+        data = umap_pbmc_scaled_with_cluster,
+        aes(
+            x = emb1,
+            y = emb2,
+            color = cluster
+        ),
+        alpha = 0.3#,
+        #size = 0.1
+    )  +
+    geom_segment(data = tr_from_to_df_pbmc, 
+                 aes(
+                     x = x_from, 
+                     y = y_from, 
+                     xend = x_to, 
+                     yend = y_to),
+                 colour = "#000000",
+                 linewidth = 1) +
+    scale_color_manual(values = c("#8dd3c7", "#fdb462", "#bebada")) +
+    interior_annotation("a1", cex = 2) +
+    theme(
+        aspect.ratio = 1
+    )
 
-error_pbmc_scdeed <- error_pbmc |> 
-  dplyr::filter(b1 == 30) |>
-  dplyr::select(method, HBE)
+proj_obj1 <- read_rds(here::here("data/vis-algo/pbmc3k/proj_obj1_umap_scDEED.rds"))
 
-error_pbmc <- error_pbmc |>
-  mutate(a1 = round(a1, 2)) |>
-  filter(b1 >= 5) |>
-  group_by(method, a1) |>
-  filter(HBE == min(HBE)) |>
-  ungroup()
+pbmc_proj_umap_model1 <- plot_proj(
+    proj_obj = proj_obj1, 
+    point_param = c(1.5, 0.2), # size, alpha, color
+    plot_limits = c(-0.04, 0.045), 
+    axis_text_size = 4,
+    is_category = TRUE) + 
+    interior_annotation(label = "a2", cex = 2) +
+    scale_color_manual(values = c("#8dd3c7", "#fdb462", "#bebada"))
 
+proj_obj2 <- read_rds(here::here("data/vis-algo/pbmc3k/proj_obj2_umap_scDEED.rds"))
 
-error_umap_plot_pbmc <-  plot_hbe(error_pbmc) +
-  scale_x_continuous(breaks = sort(unique(error_pbmc$a1))[c(1, 5, 9, 12, 15, 18, 20, 21)]) +
-  scale_color_manual(values=c('#377eb8', '#e41a1c')) 
+pbmc_proj_umap_model2 <- plot_proj(
+    proj_obj = proj_obj2, 
+    point_param = c(1.5, 0.2), # size, alpha, color
+    plot_limits = c(-0.03, 0.03), 
+    axis_text_size = 4,
+    is_category = TRUE) +
+    interior_annotation(label = "a3", cex = 2) +
+    scale_color_manual(values = c("#8dd3c7", "#fdb462", "#bebada"))
 
-error_umap_plot_pbmc_nbar <-  plot_hbe_nbar(error_pbmc_avg) +
-  annotate("text", x = 5, y = 4.5, label = "ii", size = 4, colour = "grey70") +
-  scale_color_manual(values=c('#377eb8', '#e41a1c')) 
+tsne_pbmc_scaled_with_cluster <- read_rds(here::here("data/vis-algo/pbmc3k/tsne_pbmc_scaled_with_cluster_scDEED.rds"))
 
-nldr_metrics <- read_rds(here::here("data/vis-algo/pbmc3k/nldr_eval_metrics_scdeed.rds"))
+tr_from_to_df_pbmc <- read_rds(here::here("data/vis-algo/pbmc3k/tr_from_to_df_pbmc_tsne_scDEED.rds"))
 
-nldr_metrics <- inner_join(nldr_metrics, error_pbmc_scdeed, by = c("Method" = "method")) |>
-  rename("sc" = "r") |>
-  mutate(`rARNX` = 1 - `AUC(R_NX)`) |>
-  mutate(`rRTA` = 1 - RTA) |>
-  mutate(`rSC` = 1 - sc) |>
-  mutate(`rGS` = 1 -  GS)
+trimesh_removed_pbmc_best <- ggplot() + 
+    geom_point(
+        data = tsne_pbmc_scaled_with_cluster,
+        aes(
+            x = emb1,
+            y = emb2,
+            color = cluster
+        ),
+        alpha = 0.3#,
+        #size = 0.1
+    )  +
+    geom_segment(data = tr_from_to_df_pbmc, 
+                 aes(
+                     x = x_from, 
+                     y = y_from, 
+                     xend = x_to, 
+                     yend = y_to),
+                 colour = "#000000",
+                 linewidth = 1) +
+    scale_color_manual(values = c("#8dd3c7", "#fdb462", "#bebada")) +
+    interior_annotation("b1", cex = 2) +
+    theme(
+        aspect.ratio = 1
+    )
+proj_obj1 <- read_rds(here::here("data/vis-algo/pbmc3k/proj_obj1_tsne_scDEED.rds"))
 
-comp_metrics_pbmc_scdeed <- plot_comp_metrics(nldr_metrics) +
-  interior_annotation("iii") +
-  interior_annotation("better", position = c(0.09, 0.15)) +
-  interior_annotation("worse", position = c(0.09, 0.9)) +
-  scale_color_manual(values=c('#377eb8', '#e41a1c'))
+pbmc_proj_tsne_model1_best <- plot_proj(
+    proj_obj = proj_obj1, 
+    point_param = c(1.5, 0.2), # size, alpha, color
+    plot_limits = c(-0.04, 0.045), 
+    axis_text_size = 4,
+    is_category = TRUE) + 
+    interior_annotation(label = "b2", cex = 2) +
+    scale_color_manual(values = c("#8dd3c7", "#fdb462", "#bebada"))
 
-# Second row: horizontal stack
-bottom_row <- nldr1c + nldr2c + 
-  plot_layout(ncol = 2, widths = c(50, 50))
+proj_obj2 <- read_rds(here::here("data/vis-algo/pbmc3k/proj_obj2_tsne_scDEED.rds"))
 
-# Combine top and bottom rows vertically
-final_plot <- (error_umap_plot_pbmc | bottom_row)/(error_umap_plot_pbmc_nbar | comp_metrics_pbmc_scdeed) + plot_layout(heights = c(0.7, 1))
+pbmc_proj_tsne_model2_best <- plot_proj(
+    proj_obj = proj_obj2, 
+    point_param = c(1.5, 0.2), # size, alpha, color
+    plot_limits = c(-0.03, 0.03), 
+    axis_text_size = 4,
+    is_category = TRUE) + 
+    interior_annotation(label = "b3", cex = 2) +
+    scale_color_manual(values = c("#8dd3c7", "#fdb462", "#bebada"))
 
-final_plot
+free(trimesh_removed_pbmc) + free(trimesh_removed_pbmc_best) +
+    pbmc_proj_umap_model1 + pbmc_proj_tsne_model1_best +
+    pbmc_proj_umap_model2 + pbmc_proj_tsne_model2_best +
+    plot_layout(nrow=2, byrow=FALSE) &
+    theme(legend.position='none')
 ```
 
 <!-- # Appendix to "Choosing Better NLDR Layouts by Evaluating the Model in the High-Dimensional Data Space" {#sec-appendix-a} -->

@@ -950,10 +950,8 @@ full_hexgrid + data_hexgrid +
 
 ```{r fig-geom-outputs-pdf, fig.cap="The outputs of \\texttt{geom\\_hexgrid} and \\texttt{geom\\_trimesh} include: (a) a complete hexagonal grid, (b) a hexagonal grid that corresponds with the data, (c) a full grid based on centroid triangulation, and (d) a centroid triangulation grid that aligns with the data.", fig.align='center', fig.pos="!ht", fig.height=5, fig.width=20, eval=knitr::is_latex_output(), fig.alt = "The figure consists of four 2-D panels illustrating hexagonal grids and triangulated meshes. Panel (a) shows a complete hexagonal grid covering a rectangular 2-D region, with all hexagons drawn regardless of whether data are present. Panel (b) shows a hexagonal grid restricted to bins that contain data points, with only those hexagons displayed and gaps where bins are empty. Panel (c) shows a full triangulated mesh constructed from centroids across the entire grid region, with centroids connected by straight line segments to form triangles. Panel (d) shows a triangulated mesh constructed only from centroids corresponding to non-empty bins, aligned with the data layout and leaving open areas where no centroids are present. In all panels, the horizontal and vertical axes represent continuous 2-D coordinates with bounded numeric ranges, and the grids and meshes are drawn with uniform line styles and colors."}
 
- full_hexgrid + 
-  data_hexgrid +  
-  full_triangulation_grid + 
-  data_triangulation_grid +
+full_hexgrid + data_hexgrid +  
+  full_triangulation_grid + data_triangulation_grid +
   plot_layout(ncol = 4)
 ```
 
