@@ -411,19 +411,12 @@ To assess how well the UMAP layout reflects the structure of the $10\text{-}D$ P
 ```{r}
 umap_pbmc <- read_rds(here::here("data/CITE-seq/CITE-seq_umap_n-neigbors_30_min-dist_0.3.rds"))
 
-model_obj <- fit_highd_model(
-  highd_data = pbmc_data, 
-  nldr_data = umap_pbmc, 
-  b1 = 40, 
-  q = 0.1, 
-  hd_thresh = 0)
-
-pbmc_umap_scaled <- model_obj$nldr_scaled_obj$scaled_nldr
-hex_grid_pbmc <- model_obj$hb_obj$hex_poly
-counts_df_pbmc <- model_obj$hb_obj$std_cts
-tr_from_to_df_pbmc <- model_obj$trimesh_data
-df_bin_centroids_pbmc <- model_obj$model_2d
-df_bin_pbmc <- model_obj$model_highd
+pbmc_umap_scaled <- read_rds(here::here("data/CITE-seq/pbmc_umap_scaled.rds"))
+hex_grid_pbmc <- read_rds(here::here("data/CITE-seq/hex_grid_pbmc.rds"))
+counts_df_pbmc <- read_rds(here::here("data/CITE-seq/counts_df_pbmc.rds"))
+tr_from_to_df_pbmc <- read_rds(here::here("data/CITE-seq/tr_from_to_df_pbmc.rds"))
+df_bin_centroids_pbmc <- read_rds(here::here("data/CITE-seq/df_bin_centroids_pbmc.rds"))
+df_bin_pbmc <- read_rds(here::here("data/CITE-seq/df_bin_pbmc.rds"))
 
 hex_grid_with_counts_pbmc <- left_join(
   hex_grid_pbmc, counts_df_pbmc, 

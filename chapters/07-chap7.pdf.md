@@ -12,7 +12,7 @@
 
 # Conclusion and future plans {#sec-conclusion}
 
-This thesis presents five key contributions that collectively advance the understanding and evaluation of NLDR methods. The work introduces a new method and software for NLDR diagnostics, provides insights into how people identify data structures when NLDR layouts and tour views are shown together, develops methods for generating clustering data structures, and implements user-friendly tools that support exploratory analysis and visualization.
+This thesis presents five key contributions that collectively advance the understanding and evaluation of NLDR methods. The work introduces a new method and software for NLDR diagnostics, providing insights into how people identify data structures when NLDR layouts and tour views are displayed together. It develops methods for generating clustering data structures and implements user-friendly tools that support exploratory analysis and visualization.
 
 ## Contributions
 
@@ -22,7 +22,7 @@ The primary contributions of this research are fivefold. First, we introduce a n
 
 In the Introduction, a published UMAP layout (*n_neighbors = 30* and *min_dist = 0.3*) of a human PBMC CITE-seq dataset [@hao2021] is used as a motivating example. The UMAP layout shows several visually distinct clusters with different shapes. Some clusters appear compact and well separated, while others are elongated, curved, or partially overlapping. In total, six clusters can be seen, including three with nonlinear shapes, two roughly Gaussian clusters, and one elliptical cluster, along with a small amount of background noise scattered between clusters. At first glance, it looks convincing. But this immediately raises an important question: *is this really the best way to represent the structure in the $10\text{-}D$ PBMC CITE-seq data?*
 
-Looking more closely, the data contain six clusters that are fairly close to one another (@fig-dt-prj). Three of them have clearly nonlinear shapes, two look more like Gaussian blobs, and one is closer to an ellipse, with a bit of background noise scattered around. These kinds of data structures are common in bioinformatics data. Using the `cardinalR` package, data with this different cluster shapes and background noise can be generated.
+Looking more closely, the data contain six clusters that are fairly close to one another (@fig-dt-prj). Three of them have clearly nonlinear shapes, two Gaussian blobs, and one is closer to an ellipse, with a bit of background noise scattered around. These kinds of data structures are common in bioinformatics data. Using the `cardinalR` package, data with these different cluster shapes and background noise can be generated.
 
 
 ::: {.cell}
@@ -51,7 +51,7 @@ Looking more closely, the data contain six clusters that are fairly close to one
 
 ::: {.cell}
 ::: {.cell-output-display}
-![Three $2\text{-}D$ projections from $10\text{-}D$, for the PBMC CITE-seq (a1-a3) and a simulated dataset generated using \texttt{cardinalR} (b1-b3) data. The PBMC CITE-seq data shows six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\text{-}D$ dataset with similar structural characteristics.](07-chap7_files/figure-pdf/fig-dt-prj-1.pdf){#fig-dt-prj fig-alt='A six-panel figure shows three two-dimensional projections of two different ten-dimensional datasets. The top row (panels a1–a3) displays three distinct 2-D projections of the PBMC CITE-seq data, each using abstract horizontal and vertical projection axes. Across these projections, six clusters are visible: three clusters exhibit nonlinear geometric shapes such as curved arcs or bent ribbons, while three appear approximately Gaussian and compact. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise. The bottom row (panels b1–b3) shows three corresponding 2-D projections of a simulated dataset generated using cardinalR. These projections display six clusters with analogous structural diversity: three approximately Gaussian clusters, one quadratic-shaped cluster, one spherical spiral, and one conic spiral, again with sparse background noise. Although the exact shapes and relative positions vary across projections, the simulated data reproduces the mixture of nonlinear and Gaussian cluster structures observed in the PBMC CITE-seq data, illustrating structural similarity between the real and synthetic high-dimensional datasets.'}
+![Three $2\text{-}D$ projections from $10\text{-}D$, for the PBMC CITE-seq (a1-a3) and a simulated dataset generated using \texttt{cardinalR} (b1-b3) data. The PBMC CITE-seq data show six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\text{-}D$ dataset with similar structural characteristics.](07-chap7_files/figure-pdf/fig-dt-prj-1.pdf){#fig-dt-prj fig-alt='A six-panel figure shows three two-dimensional projections of two different ten-dimensional datasets. The top row (panels a1–a3) displays three distinct 2-D projections of the PBMC CITE-seq data, each using abstract horizontal and vertical projection axes. Across these projections, six clusters are visible: three clusters exhibit nonlinear geometric shapes such as curved arcs or bent ribbons, while three appear approximately Gaussian and compact. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise. The bottom row (panels b1–b3) shows three corresponding 2-D projections of a simulated dataset generated using cardinalR. These projections display six clusters with analogous structural diversity: three approximately Gaussian clusters, one quadratic-shaped cluster, one spherical spiral, and one conic spiral, again with sparse background noise. Although the exact shapes and relative positions vary across projections, the simulated data reproduces the mixture of nonlinear and Gaussian cluster structures observed in the PBMC CITE-seq data, illustrating structural similarity between the real and synthetic high-dimensional datasets.'}
 :::
 :::
 
@@ -121,13 +121,13 @@ The TriMAP layout is universally poor. The tSNE layout with little separation pe
 
 ## Future work
 
-There are several directions that this work can be developed.
+There are several directions in which this work can be developed.
 
 <!--add section on Do you have any plans/ideas to extend this to NDR results that project into more than 2D / do you think that would even be possible (say, for up to 5D projections or so)?. You’ve got one bullet point for your thesis future work section now! You could point Fabian to your paper conclusions where some ideas are suggested.-->
 
 ### Extending our algorithm to NLDR representations beyond $2\text{-}D$
 
-A potential direction for future work is extending the current algorithm to NLDR results that project into more than two dimensions. While most existing tools including those developed in this thesis focus on $2\text{-}D$ embeddings, exploring projections into higher dimensions like $3\text{-}D$ or $5\text{-}D$ spaces could provide richer structural information in some settings.
+A potential direction for future work is extending the current algorithm to NLDR results that project into more than two dimensions. While most existing tools, including those developed in this thesis, focus on $2\text{-}D$ embeddings, exploring projections into higher dimensions like $3\text{-}D$ or $5\text{-}D$ spaces could provide richer structural information in some settings.
 
 Binning into cubes ($3\text{-}D$ or higher) could be performed relatively easily and used as the basis for constructing a wireframe representation of the fitted model. The algorithm for convex hull computation in $p$-dimensions, as described by @barber1996 and implemented in related software [@stephane2023], serves as inspiration for this approach. Alternatively, a simpler method using $k$-means clustering to obtain centroids in higher-dimensional embeddings might be feasible; however, the challenge would lie in determining how to connect these centroids to form an appropriate wireframe structure.
 
@@ -139,7 +139,7 @@ Moreover, investigating how scagnostic profiles vary with different sample sizes
 
 ### Compare prediction approaches
 
-Future work includes evaluating and comparing the prediction capabilities of different NLDR methods. Only some methods such as UMAP provide built-in functionality [@tomasz2023] to project new high-dimensional observations into an existing low-dimensional embedding. Our approach introduces a general prediction framework that can be applied to any NLDR method. It works by identifying the nearest high-dimensional bin centroid for a new observation and assigning its corresponding $2\text{-}D$ centroid from the fitted model.
+Future work includes evaluating and comparing the prediction capabilities of different NLDR methods. Only some methods, such as UMAP provide built-in functionality [@tomasz2023] to project new high-dimensional observations into an existing low-dimensional embedding. Our approach introduces a general prediction framework that can be applied to any NLDR method. It works by identifying the nearest high-dimensional bin centroid for a new observation and assigning its corresponding $2\text{-}D$ centroid from the fitted model.
 
 Having predictions from both the built-in functions (when available) and our centroid-based method allows for direct performance comparisons. This enables a systematic evaluation of how well different approaches preserve structure when projecting new observations into an existing NLDR space.
 
@@ -209,7 +209,7 @@ A useful extension to `quollr` would be to link cluster selections between the t
 
 All materials associated with this thesis are openly available to support transparency and reproducible research. The thesis is written in Quarto [@jjallaire2024] and is available in both **HTML** and **PDF** formats. The **HTML version**, which includes interactive figures and linked visualizations, is published at
 [jayani-lakshika-phd-thesis.netlify](https://jayani-lakshika-phd-thesis.netlify.app). The **PDF version** of the thesis is available at
-[github.com/JayaniLakshika/Monash_PhD_thesis/_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-Dimensional-Data.pdf](https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-Dimensional-Data.pdf). All source code, data, and software used to generate the analyzes, figures, and results are maintained in a public GitHub repository at
+[github.com/JayaniLakshika/Monash_PhD_thesis/_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-Dimensional-Data.pdf](https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-Dimensional-Data.pdf). All source code, data, and software used to generate the analyses, figures, and results are maintained in a public GitHub repository at
 [github.com/JayaniLakshika/Monash_PhD_thesis](https://github.com/JayaniLakshika/Monash_PhD_thesis), enabling full reproduction of this work.
 
 For accessibility, all figures include alt-text. The [autoAlt](https://github.com/numbats/autoAlt) package was used as a starting point for generating these descriptions, which were then reviewed and adjusted to better reflect the content of each figure and its caption.
@@ -235,7 +235,7 @@ In addition, a number of R packages were essential in the development of this wo
 
 ## Research workflow and project organization
 
-Presentations, package development, and writing are the three primary types of activities that shape this thesis. I have developed a habit of using Git and Github to track and synchronize my academic work since I started the PhD program. All commits are grouped by the activity types, with annotations of important milestones, shown in @fig-task-commit. It has been a fruitful program.
+Presentations, package development, and writing are the three primary types of activities that shape this thesis. I have developed a habit of using Git and GitHub to track and synchronize my academic work since I started the PhD program. All commits are grouped by the activity types, with annotations of important milestones, shown in @fig-task-commit. It has been a fruitful program.
 
 <!--scripts/git_commits.R-->
 
