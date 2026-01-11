@@ -298,7 +298,7 @@ This data is constructed by simulating two clusters, each consisting of $1000$ o
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Two projections of the \pD{} true model overlaying the data are shown in a, b. Video of the langevitour animations is available at <https://youtu.be/35TrnYJsUUI>.](A-appA_files/figure-pdf/fig-true-data-1.pdf){#fig-true-data fig-align='center' width=100%}
+![Two projections of the \pD{} true model overlaying the data are shown in a, b. Video of the langevitour animations is available at <https://youtu.be/35TrnYJsUUI>.](A-appA_files/figure-pdf/fig-true-data-1.pdf){#fig-true-data fig-align='center' fig-alt='A two-panel figure showing two different 2-D projections of the true geometric structure underlying the 2NC7 dataset, with observed data overlaid. Each panel displays a dense cloud of points representing the simulated observations, together with smooth line structures indicating the underlying manifold. Panel (a) shows a projection in which one cluster forms a thick, curved C-shaped structure, while the second cluster appears as a distinct curved surface intersecting the projection. Panel (b) shows an alternative projection of the same data, where the relative orientation of the two clusters differs, but both curved manifolds remain visible and separable. In both views, the points lie close to the projected model curves, indicating that the observed data closely follow the underlying 4-D geometric structures despite the added noise dimensions.' width=100%}
 :::
 :::
 
@@ -326,21 +326,6 @@ $$ {#eq-equation4}
 $$
 s_2 + (b_2 - 1) \times a_2 \geq r_2.
 $$ {#eq-equation5}
-
-
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
-
-
-::: {.cell layout-align="center"}
-
-:::
-
 
 Since $a_1$ and $a_2$ are distances,
 
@@ -415,7 +400,7 @@ $$
 
 ## Binning the data
 
-Points are assigned to the bin they fall into based on the nearest centroid. If a point is equidistant from multiple centroids, it is assigned to the centroid with the smallest bin ID.
+Points are assigned to the bin they fall into based on the nearest centroid (@fig-assign-data). If a point is equidistant from multiple centroids, it is assigned to the centroid with the smallest bin ID.
 
 
 ::: {.cell layout-align="center"}
@@ -432,14 +417,14 @@ Points are assigned to the bin they fall into based on the nearest centroid. If 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Binning the data. Points are assigned to the nearest centroid. If a point is equidistant from multiple centroids, assigned to the centroid with the smallest bin ID.](A-appA_files/figure-pdf/fig-assign-data-1.pdf){#fig-assign-data fig-align='center' fig-pos='!ht' width=100%}
+![Binning the data. Points are assigned to the nearest centroid. If a point is equidistant from multiple centroids, assigned to the centroid with the smallest bin ID.](A-appA_files/figure-pdf/fig-assign-data-1.pdf){#fig-assign-data fig-align='center' fig-pos='!ht' fig-alt='A two-panel figure showing how observations are assigned to bins using a hexagonal grid. In both panels, the x- and y-axes represent two numerical dimensions of the data, with a regular grid of hexagonal cells covering the plotting area. Each hexagon is coloured according to the bin (centroid) to which it is assigned. In the first panel, hexagons are coloured based on the nearest-centroid rule, where each cell is assigned to the closest centroid in the plane. In the second panel, hexagons that are equidistant to multiple centroids are highlighted to illustrate the tie-breaking rule: such cells are assigned to the centroid with the smallest bin identifier, resulting in a small number of hexagons changing colour compared to the first panel. Overall, most hexagons form contiguous regions around each centroid, with only boundary cells affected by the tie-breaking procedure.' width=100%}
 :::
 :::
 
 
 ## Area of a hexagon
 
-The area of a hexagon is defined as $A = 3\sqrt{3}l^2/2$, where $l$ is the side length of the hexagon. $l$ can be computed using $a_1$ and $a_2$.
+The area of a hexagon is defined as $A = 3\sqrt{3}l^2/2$, where $l$ is the side length of the hexagon (@fig-tri-param). $l$ can be computed using $a_1$ and $a_2$.
 
 
 
@@ -451,7 +436,7 @@ The area of a hexagon is defined as $A = 3\sqrt{3}l^2/2$, where $l$ is the side 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![The components of the right triangle illustrating notation.](A-appA_files/figure-pdf/fig-tri-param-1.pdf){#fig-tri-param fig-align='center' fig-pos='!ht' width=30%}
+![The components of the right triangle illustrating notation.](A-appA_files/figure-pdf/fig-tri-param-1.pdf){#fig-tri-param fig-align='center' fig-pos='!ht' fig-alt='A simple drawing of a right triangle on Cartesian axes. The x-axis runs from about 0 to 4 and the y-axis from about 0 to 3. The triangle’s vertices are at (0,0), (4,0), and (0,3), forming a right angle at the origin where the horizontal leg lies along the x-axis and the vertical leg lies along the y-axis. The horizontal side is length 4, the vertical side is length 3, and the hypotenuse slopes down from (0,3) to (4,0). The figure illustrates the standard notation for the components of a right triangle, with the two legs aligned to the axes and the hypotenuse connecting their endpoints.' width=30%}
 :::
 :::
 
@@ -542,7 +527,7 @@ The models are fitted to each these layouts. @fig-five-gau-projs a2, b2, c2 show
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![NLDR's organize points in the \gD{} layout in different ways, possibly misleadingly, illustrated using three layouts: (a) tSNE, (b) UMAP, (c) PaCMAP. The data has five Gaussian clusters in \fD{}. The bottom row of plots shows a \gD{} projection from a tour on \fD{} revealing the differences generated by the layouts on the model fits.  We would expect the model fit to be like that in (a2) where it is distinctly is separate for each cluster but like a hairball in each. This would indicate the distinct clusters, each being fully \fD{}. With (c2), the curiousity is that the model is a \gD{} pancake shape in \fD{}, indicating that there is some ordering of points done by PaCMAP, posisbly along some principal component axes. Videos of the langevitour animations are available at <https://youtu.be/I-kxCwVfqiQ>, <https://youtu.be/gD1P01FUPyU>, and <https://youtu.be/MxJ_srOFQNk> respectively.](A-appA_files/figure-pdf/fig-five-gau-projs-1.pdf){#fig-five-gau-projs fig-align='center' fig-pos='!ht' width=100%}
+![NLDR's organize points in the \gD{} layout in different ways, possibly misleadingly, illustrated using three layouts: (a) tSNE, (b) UMAP, (c) PaCMAP. The data has five Gaussian clusters in \fD{}. The bottom row of plots shows a \gD{} projection from a tour on \fD{} revealing the differences generated by the layouts on the model fits.  We would expect the model fit to be like that in (a2) where it is distinctly separate for each cluster but like a hairball in each. This would indicate the distinct clusters, each being fully \fD{}. With (c2), the curiosity is that the model is a \gD{} pancake shape in \fD{}, indicating that there is some ordering of points done by PaCMAP, possibly along some principal component axes. Videos of the langevitour animations are available at <https://youtu.be/I-kxCwVfqiQ>, <https://youtu.be/gD1P01FUPyU>, and <https://youtu.be/MxJ_srOFQNk> respectively.](A-appA_files/figure-pdf/fig-five-gau-projs-1.pdf){#fig-five-gau-projs fig-align='center' fig-pos='!ht' fig-alt='A multi-panel figure comparing three NLDR layouts: tSNE, UMAP, and PaCMAP applied to the same dataset consisting of five Gaussian clusters in four dimensions. The top row shows the 2-D layouts produced by (a) tSNE, (b) UMAP, and (c) PaCMAP, where points are grouped into five visually distinct clusters but arranged differently by each method. The bottom row shows corresponding projections from a tour through the original four-dimensional space, with fitted models overlaid for each cluster. In the tSNE and UMAP cases, the fitted models within each cluster appear complex and highly curved, filling the projected space and indicating that the clusters retain substantial four-dimensional structure. In contrast, the PaCMAP projection shows several clusters with much flatter, pancake-like fitted surfaces, suggesting that the layout imposes an artificial ordering that reduces apparent dimensionality. Together, the panels illustrate how different NLDR methods can lead to different geometric interpretations of the same high-dimensional data.' width=100%}
 :::
 :::
 
@@ -577,7 +562,7 @@ The tSNE behaviour is to squeeze the low density area of the data together into 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Exploring the effect of density on the NLDR layout using a \gD{} curved sheet in \fD{} with different density at each end. Three plots are linked: density plot of residuals (a1, b1), NLDR layout (a2, b2), projection of \fD{} model and data (a3, b3). The brown points indicate the selected set, which are different in each row. In (a2), the top part of the triangular shape is selected which corresponds to higher residuals (a1) and the sparse end of the structure (a3). In (b2) one of other corners is highlighted, which can be seen to correspond to low residuals (b1) and one side of the dense end of the data (b3). While the tSNE layout represents the dense end of the sheet correctly as two corners in the layout, it contracts the sparse end of the sheet into a single corner. Video of the langevitour animation is available at <https://youtu.be/-KsQH0rII2A>.](A-appA_files/figure-pdf/fig-one-dens_clust-error-1.pdf){#fig-one-dens_clust-error fig-align='center' fig-pos='!ht' width=100%}
+![Exploring the effect of density on the NLDR layout using a \gD{} curved sheet in \fD{} with different density at each end. Three plots are linked: density plot of residuals (a1, b1), NLDR layout (a2, b2), projection of \fD{} model and data (a3, b3). The brown points indicate the selected set, which are different in each row. In (a2), the top part of the triangular shape is selected which corresponds to higher residuals (a1) and the sparse end of the structure (a3). In (b2) one of other corners is highlighted, which can be seen to correspond to low residuals (b1) and one side of the dense end of the data (b3). While the tSNE layout represents the dense end of the sheet correctly as two corners in the layout, it contracts the sparse end of the sheet into a single corner. Video of the langevitour animation is available at <https://youtu.be/-KsQH0rII2A>.](A-appA_files/figure-pdf/fig-one-dens_clust-error-1.pdf){#fig-one-dens_clust-error fig-align='center' fig-pos='!ht' fig-alt='A multi-panel figure illustrating how density affects a tSNE layout for a curved sheet embedded in higher-dimensional space. Each row contains three linked plots: a density plot of model residuals on the left, a tSNE layout in the middle, and a projection of the original high-dimensional model and data on the right. Points are colored, with a subset highlighted in brown to indicate a brushed selection. In the top row (a), the highlighted points form the upper corner of the triangular tSNE layout, corresponding to higher residuals in the density plot and to the sparse end of the curved sheet in the original space. In the bottom row (b), a different corner of the tSNE triangle is highlighted, corresponding to lower residuals and to one side of the dense end of the sheet. The tSNE layout represents the dense end of the sheet as two distinct corners but collapses the sparse end into a single corner, showing how variations in point density can distort the layout.' width=100%}
 :::
 :::
 
@@ -637,7 +622,7 @@ For illustration purposes, we only selected cells generated with inDrops ($n=585
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Comparing the published layout (a) with what would be suggested to be optimal by scDEED (b), using HBE for varying (i) binwidth ($a_1$), and (ii) average bin count ($\bar{n}_h$), on a subset of PBMC3k data. Color represents NLDR layouts. HBE would corroborate that the scDEED optimized layout is better than what was originally published. Plot (ii), which accounts for the density within clusters by using average bin count, shows reduced differences between layouts, indicating that part of the variation in (i) is driven by cluster density rather than true structural differences. Comparison of scaled evaluation metrics (iii) (rRTA, rSC, rGS, rARNX, and HBE using $a_1=0.04$) for two NLDR layouts of the PBMC3k data the originally published layout (a) and the scDEED optimized layout (b). Each line represents a layout, with color matching the corresponding scatterplots. Most metrics (rSC, rARNX, and HBE) consistently indicate that the optimized layout (b) provides a better representation, while rRTA, and rGS slightly favor the published layout.](A-appA_files/figure-pdf/fig-pbmc-mse-umap-1.pdf){#fig-pbmc-mse-umap fig-align='center' fig-pos='!ht' width=100%}
+![Comparing the published layout (a) with what would be suggested to be optimal by scDEED (b), using HBE for varying (i) binwidth ($a_1$), and (ii) average bin count ($\bar{n}_h$), on a subset of PBMC3k data. Color represents NLDR layouts. HBE would corroborate that the scDEED optimized layout is better than what was originally published. Plot (ii), which accounts for the density within clusters by using average bin count, shows reduced differences between layouts, indicating that part of the variation in (i) is driven by cluster density rather than true structural differences. Comparison of scaled evaluation metrics (iii) (rRTA, rSC, rGS, rARNX, and HBE using $a_1=0.04$) for two NLDR layouts of the PBMC3k data the originally published layout (a) and the scDEED optimized layout (b). Each line represents a layout, with color matching the corresponding scatterplots. Most metrics (rSC, rARNX, and HBE) consistently indicate that the optimized layout (b) provides a better representation, while rRTA, and rGS slightly favor the published layout.](A-appA_files/figure-pdf/fig-pbmc-mse-umap-1.pdf){#fig-pbmc-mse-umap fig-align='center' fig-pos='!ht' fig-alt='A multi-panel line plot compares two UMAP layouts of PBMC single-cell data. Panel (i) shows HBE score on the vertical axis versus binwidth parameter (a_1) on the horizontal axis, with two smooth lines representing layouts a (published) and b (scDEED-suggested) distinguished by color or line type. Panel (ii) shows HBE score versus average bin count (n_h), with two lines for the layouts showing similar trends as panel (i). Panel (iii) shows scaled evaluation metrics (rRTA, rSC, rGS, rARNX, HBE at a_1=0.04) on the vertical axis versus metric type on the horizontal axis, with lines for layouts a and b connecting the metric values, distinguished by color or line type. Across all panels, lines are continuous, smooth, and colors consistently represent the layouts, with no isolated points or extreme spikes.' width=100%}
 :::
 :::
 
@@ -672,7 +657,7 @@ For illustration purposes, we only selected cells generated with inDrops ($n=585
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Compare the published \gD{} layout (@fig-pbmc-mse-umap a) made with UMAP and the \gD{} layout made with tSNE selected as optimal by scDEED (@fig-pbmc-mse-umap b) and also HBE (@fig-pbmc-mse-umap). The two plots on the right show projections from a tour, with the models overlaid. The published layout a suggested three separated clusters with two of them are close, but this is not present in the data. While there may be three clusters they are not well-separated. The difference in model fit also indicates this: the published layout a does not capture the nonlinear structure of the clusters like the model generated from layout b. This supports the choice that layout b is the better representation of the data, because it shows close clusters. Videos of the langevitour animations are available at <https://youtu.be/ffiB4MGWyn8> and <https://youtu.be/e7XNL18co1c> respectively.](A-appA_files/figure-pdf/fig-model-pbmc-author-proj-1.pdf){#fig-model-pbmc-author-proj fig-align='center' fig-pos='!ht' width=90%}
+![Compare the published \gD{} layout (@fig-pbmc-mse-umap a) made with UMAP and the \gD{} layout made with tSNE selected as optimal by scDEED (@fig-pbmc-mse-umap b) and also HBE (@fig-pbmc-mse-umap). The two plots on the right show projections from a tour, with the models overlaid. The published layout a suggested three separated clusters with two of them are close, but this is not present in the data. While there may be three clusters they are not well-separated. The difference in model fit also indicates this: the published layout a does not capture the nonlinear structure of the clusters like the model generated from layout b. This supports the choice that layout b is the better representation of the data, because it shows close clusters. Videos of the langevitour animations are available at <https://youtu.be/ffiB4MGWyn8> and <https://youtu.be/e7XNL18co1c> respectively.](A-appA_files/figure-pdf/fig-model-pbmc-author-proj-1.pdf){#fig-model-pbmc-author-proj fig-align='center' fig-pos='!ht' fig-alt='A multi-panel figure showing PBMC single-cell data. The left panel shows the published UMAP layout (layout a) with the 2-D wireframe, with three clusters visible and two clusters positioned close together; axes correspond to the first two UMAP dimensions spanning the full data range, with a roughly square aspect ratio. The middle panel shows the scDEED-selected tSNE layout (layout b) overlaying a 2-D wireframe on the first two tSNE dimensions, with three clusters more evenly spaced; axes span the full range and aspect ratio is roughly square. Points in both panels are colored by cluster or layout. The two panels on the right show tour projections of the same data with models overlaid; points represent cells, lines or overlays indicate model structure, axes correspond to the projection dimensions, and clusters and relative distances between points are visible. Across all panels, points and lines are continuous with no extreme outliers, and cluster density, spacing, and arrangement are visually apparent.' width=90%}
 :::
 :::
 
@@ -704,7 +689,7 @@ For illustration purposes, we only selected cells generated with inDrops ($n=585
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Comparison of scaled evaluation metrics (rRTA, rSC, rGS, rARNX, and HBE with $a_1 = 0.06$) for the eight NLDR layouts computed on the PBMC3k data, shown as a parallel coordinate plot. The color of each line corresponds to a NLDR layout. All, except rGS and rARNX agree that layout e is best or very close to best. Layout d is best according to HBE and rARNX but considered to be much less optimal by rRTA, rSC and rGS. Layout f is considered poor by rARNX and HBE. Layout a is cosidered close to the best by rGS and rSC.](A-appA_files/figure-pdf/fig-comp-metric-pbmc-1.pdf){#fig-comp-metric-pbmc fig-align='center' fig-pos='!ht' width=100%}
+![Comparison of scaled evaluation metrics (rRTA, rSC, rGS, rARNX, and HBE with $a_1 = 0.06$) for the eight NLDR layouts computed on the PBMC3k data, shown as a parallel coordinate plot. The color of each line corresponds to a NLDR layout. All, except rGS and rARNX agree that layout e is best or very close to best. Layout d is best according to HBE and rARNX but considered to be much less optimal by rRTA, rSC and rGS. Layout f is considered poor by rARNX and HBE. Layout a is cosidered close to the best by rGS and rSC.](A-appA_files/figure-pdf/fig-comp-metric-pbmc-1.pdf){#fig-comp-metric-pbmc fig-align='center' fig-pos='!ht' fig-alt='A parallel coordinate plot comparing five scaled evaluation metrics—rRTA, rSC, rGS, rARNX, and HBE (with a_1 = 0.06) across eight NLDR layouts computed on the PBMC3k dataset. Each vertical axis represents one metric, scaled to a common range, and each colored line corresponds to a single NLDR layout, connecting its values across all five metrics. The lines cross the axes at different heights, showing how layouts rank differently depending on the metric. Most layouts show broadly similar performance across rRTA, rSC, and rGS, with layout e consistently scoring highest or near-highest on these measures. In contrast, rARNX and HBE show stronger disagreement with the other metrics: layout d ranks best on HBE and rARNX but much lower on rRTA, rSC, and rGS, while layout f scores poorly on both rARNX and HBE. Layout a performs well on rGS and rSC but is less favored by the remaining metrics. Overall, the figure highlights both agreement and disagreement among the metrics in how they assess layout quality.' width=100%}
 :::
 :::
 
@@ -731,7 +716,7 @@ For illustration purposes, we only selected cells generated with inDrops ($n=585
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Comparison of scaled evaluation metrics (rARNX, rRTA, rSC, rGS, and HBE using $a_1=0.04$) for six NLDR layouts computed on the MNIST digit 1 data using a parallel coordinate plot. Each line represents a layout (a–f), with colors corresponding to the scatterplots shown on the right. The metrics display different ranking patterns, indicating that no single measure fully captures embedding quality. Layout a is identified as the best according to HBE and rRTA, but is considered much less optimal by rARNX, rSC, and rGS. Layout e is considered the worst, or close to the poorest, by all metrics. Layouts a and f show similar patterns of agreement across metrics, except for rRTA, where layout a performs the best and layout f the worst. Layout c is the worst in rARNX, rSC, and HBE.](A-appA_files/figure-pdf/fig-comp-metric-mnist-1.pdf){#fig-comp-metric-mnist fig-align='center' fig-pos='!ht' width=100%}
+![Comparison of scaled evaluation metrics (rARNX, rRTA, rSC, rGS, and HBE using $a_1=0.04$) for six NLDR layouts computed on the MNIST digit 1 data using a parallel coordinate plot. Each line represents a layout (a–f), with colors corresponding to the scatterplots shown on the right. The metrics display different ranking patterns, indicating that no single measure fully captures embedding quality. Layout a is identified as the best according to HBE and rRTA, but is considered much less optimal by rARNX, rSC, and rGS. Layout e is considered the worst, or close to the poorest, by all metrics. Layouts a and f show similar patterns of agreement across metrics, except for rRTA, where layout a performs the best and layout f the worst. Layout c is the worst in rARNX, rSC, and HBE.](A-appA_files/figure-pdf/fig-comp-metric-mnist-1.pdf){#fig-comp-metric-mnist fig-align='center' fig-pos='!ht' fig-alt='A parallel coordinate plot comparing five scaled evaluation metrics—rARNX, rRTA, rSC, rGS, and HBE (with a_1=0.04)—across six NLDR layouts (labelled a through f) computed on the MNIST digit 1 dataset. Each vertical axis represents one metric, scaled to a common range, and each colored line corresponds to a single layout, connecting its values across all metrics. The lines cross the axes at different heights, showing that layouts are ranked differently depending on the metric used. Layout a scores highest on HBE and rRTA but much lower on rARNX, rSC, and rGS. Layout e consistently scores lowest, or near lowest, across all metrics. Layouts a and f follow similar trends across most metrics, except for rRTA, where layout a performs best and layout f performs worst. Layout c shows particularly low values for rARNX, rSC, and HBE. Overall, the figure highlights disagreement among the metrics and illustrates that no single measure fully captures embedding quality.' width=100%}
 :::
 :::
 

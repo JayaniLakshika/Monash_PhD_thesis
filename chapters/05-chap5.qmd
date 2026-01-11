@@ -316,7 +316,7 @@ This study aims to answer which NLDR methods are more accurate in identifying th
 
 ### Data generation
 
-A total of $30$ $4\text{-}D$ data sets are generated. Two are reserved as attention check used to determine if the subject conscientiously attempted the task. All data sets were standardized prior to NLDR and showing in the tour. <!--to ensure comparable variable scales and to prevent any single dimension from disproportionately influencing the resulting visualizations.-->
+A total of $30$ $4\text{-}D$ data sets are generated. Two are reserved as an attention check used to determine if the subject conscientiously attempted the task. All data sets were standardized prior to NLDR and are shown in the tour. <!--to ensure comparable variable scales and to prevent any single dimension from disproportionately influencing the resulting visualizations.-->
 
 #### Non-attention check data
 

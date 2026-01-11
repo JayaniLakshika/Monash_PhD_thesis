@@ -151,7 +151,7 @@ This study aims to answer which NLDR methods are more accurate in identifying th
 
 ### Data generation
 
-A total of $30$ $4\text{-}D$ data sets are generated. Two are reserved as attention check used to determine if the subject conscientiously attempted the task. All data sets were standardized prior to NLDR and showing in the tour. <!--to ensure comparable variable scales and to prevent any single dimension from disproportionately influencing the resulting visualizations.-->
+A total of $30$ $4\text{-}D$ data sets are generated. Two are reserved as an attention check used to determine if the subject conscientiously attempted the task. All data sets were standardized prior to NLDR and are shown in the tour. <!--to ensure comparable variable scales and to prevent any single dimension from disproportionately influencing the resulting visualizations.-->
 
 #### Non-attention check data
 
@@ -311,13 +311,13 @@ Results from the model using the scaled BW ratio (@tbl-glmm) indicate that clust
 ::: {.cell-output-display}
 
 
-|Method | Slope|   SE|95% CI        |     z|p          |
-|:------|-----:|----:|:-------------|-----:|:----------|
-|TriMAP |  0.03| 0.49|[-0.92, 0.99] |  0.07|0.95       |
-|UMAP   |  1.15| 0.49|[0.19, 2.11]  |  2.35|0.02 *     |
-|PaCMAP |  0.51| 0.48|[-0.43, 1.45] |  1.06|0.29       |
-|tSNE   | -2.61| 0.62|[-3.83, -1.4] | -4.20|<0.001 *** |
-|PHATE  | -0.92| 0.54|[-1.97, 0.13] | -1.71|0.09 .     |
+|Method | Slope|   SE|95% CI         |     z|p          |
+|:------|-----:|----:|:--------------|-----:|:----------|
+|TriMAP |  0.03| 0.49|[-0.92, 0.99]  |  0.07|0.95       |
+|UMAP   |  1.15| 0.49|[0.19, 2.11]   |  2.35|0.02 *     |
+|PaCMAP |  0.51| 0.48|[-0.43, 1.45]  |  1.06|0.29       |
+|tSNE   | -2.61| 0.62|[-3.83, -1.39] | -4.20|<0.001 *** |
+|PHATE  | -0.92| 0.54|[-1.97, 0.13]  | -1.71|0.09 .     |
 
 
 :::

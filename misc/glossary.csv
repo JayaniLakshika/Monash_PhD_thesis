@@ -56,6 +56,7 @@ Data set,"A simulated configuration of points in high-dimensional space with pre
 Delaunay triangulation,"A geometric method that connects points into triangles such that no point lies inside the circumcircle of any triangle, used to define neighborhood structure."
 Demographics questionnaire,"A set of questions collecting background information about participants, such as age range, education level, and prior experience with dimension reduction methods."
 `detourr`,"An R package for dynamic visualization of high-dimensional data using tour methods, supporting interactive exploration through projection sequences."
+DIFFERENT trials,Trials in which the $2\text{-}D$ NLDR embedding and the tour are generated from different (but related) high-dimensional datasets. These trials act as controls to prevent trivial response strategies.
 Diffusion process,"A mathematical process modeling how information spreads across a graph or manifold, used in NLDR to capture intrinsic geometry."
 Dimension reduction (DR),A technique that maps high-dimensional data into a lower-dimensional space while attempting to preserve important structure.
 Distance scale factor,"A multiplier applied to centroid distances to control how close or far apart clusters are. Levels include small, small–medium, medium, medium–large, and large."
@@ -164,7 +165,7 @@ Rotation matrix,A matrix that changes the orientation of data without changing d
 Run sheets,Step-by-step task instructions provided to participants during a usability study to ensure consistency in task execution and to facilitate systematic feedback collection.
 S-curve,"A smooth, bent surface in 3D often used to test whether algorithms can “unfold” nonlinear structure."
 S-curve with hole,"An S-shaped manifold with a missing spherical region, creating topological complexity."
-Same / Different trials,Experimental conditions where the $2$-D NLDR plot and the tour either come from the same dataset (SAME) or from different datasets (DIFFERENT).
+Same (SAME) trials,Trials in which the $2\text{-}D$ NLDR embedding and the tour are generated from the same high-dimensional dataset. These trials form the primary basis for analysis.
 Scaled distance,A distance measure adjusted to account for differences in scale across simulated data structures.
 Scaling,A transformation that adjusts the spread or magnitude of a geometric shape along one or more dimensions.
 Scaling (data scaling),Standardizing data before analysis so that variables have comparable ranges.
@@ -212,3 +213,16 @@ Web-based interface,A graphical user interface accessed through a web browser th
 Wireframe model,"A geometric representation of an NLDR layout constructed by connecting neighboring bin centroids with line segments, forming a mesh that approximates the layout’s structure."
 Within-cluster dispersion/ distance,A measure of how spread out points are within each cluster.
 Wrapper function,A helper function that calls another function but simplifies inputs or outputs.
+Standardization,A preprocessing step in which variables are rescaled to have comparable ranges (typically mean zero and unit variance) before applying NLDR methods.
+Visual conceptualization,"The mental interpretation formed by a viewer when observing a visualization, such as perceiving the number of clusters or their relationships."
+Baseline probability,"The estimated probability of a correct response under a reference condition, used as the starting point in power analysis. In this study, it corresponds to performance at the smallest distance factor ($0.1$)."
+Correct identification rate / proportion correct,The proportion of trials in which participants correctly judged whether the $2\text{-}D$ NLDR plot and the tour represented the same data.
+Data set variability,"Variation in performance attributable to differences among the simulated data sets, such as cluster shape, size, or arrangement. In this experiment, data sets act as replicates and contribute random noise to the response."
+Effect size,"The magnitude of a difference in performance between two experimental conditions. Here, it is defined as a difference in proportions, with an effect size of approximately $0.22$ corresponding to a $20$ percentage-point increase in correct identification."
+Pilot data,"Preliminary experimental data used to estimate performance levels and inform the design of the main experiment, including sample size and effect size selection."
+Power analysis,A procedure used to determine the number of responses required per treatment to reliably detect a specified effect size with high probability.
+Random effect,"A component of a statistical model that captures variability attributable to random differences across experimental units, such as subjects or data sets."
+Simulation-based power analysis,"A power analysis approach that uses simulated data, rather than closed-form formulas, to assess the ability to detect effects under realistic experimental conditions."
+Subject variability,"Differences in performance attributable to individual participants’ perceptual abilities, attention, and strategies. This variability is modeled using a subject-level random effect."
+Treatment,"A distinct experimental condition formed by a specific combination of factors, here defined as an NLDR method paired with a distance scale factor."
+Unimodal distribution,"A probability distribution with a single dominant peak. The distribution of subject-level proportions correct is approximately unimodal, supporting the use of normally distributed random effects."

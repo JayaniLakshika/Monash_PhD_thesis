@@ -151,7 +151,7 @@ This study aims to answer which NLDR methods are more accurate in identifying th
 
 ### Data generation
 
-A total of $30$ $4\text{-}D$ data sets are generated. Two are reserved as attention check used to determine if the subject conscientiously attempted the task. All data sets were standardized prior to NLDR and showing in the tour. <!--to ensure comparable variable scales and to prevent any single dimension from disproportionately influencing the resulting visualizations.-->
+A total of $30$ $4\text{-}D$ data sets are generated. Two are reserved as an attention check used to determine if the subject conscientiously attempted the task. All data sets were standardized prior to NLDR and are shown in the tour. <!--to ensure comparable variable scales and to prevent any single dimension from disproportionately influencing the resulting visualizations.-->
 
 #### Non-attention check data
 
@@ -233,7 +233,7 @@ $$
   d(\mathbf{x}_i, \mathbf{x}_j),
 $$
 
-which captures the closest proximity between any two clusters. The scaled minimum distance was exponentiated to put more emphasis on cases where clusters are very close together, which is where people are most likely to confuse them. Small changes at short distances can strongly affect how separable clusters appear, while larger increases in distance tend to have much less impact on perception.
+which captures the closest proximity between any two clusters. The scaled minimum distance was exponentiated so that, where it agrees with the BW ratio, the relationship between the two measures is approximately linear. The transformation increases separation among larger distance values while leaving small distances largely unchanged, facilitating more comparable variation across datasets.
 
 
 <!-- The BW ratio and minimum inter-cluster distance capture complementary aspects of cluster separation: global dispersion and local boundary proximity, respectively. To make these measures comparable across data structures, all distance-based metrics were first rescaled to the unit interval using min–max normalization. -->
@@ -319,7 +319,7 @@ Method & Slope & SE & 95\% CI & z & p\\
 TriMAP & 0.03 & 0.49 & {}[-0.92, 0.99] & 0.07 & 0.95\\
 UMAP & 1.15 & 0.49 & {}[0.19, 2.11] & 2.35 & 0.02 *\\
 PaCMAP & 0.51 & 0.48 & {}[-0.43, 1.45] & 1.06 & 0.29\\
-tSNE & -2.61 & 0.62 & {}[-3.83, -1.4] & -4.20 & <0.001 ***\\
+tSNE & -2.61 & 0.62 & {}[-3.83, -1.39] & -4.20 & <0.001 ***\\
 PHATE & -0.92 & 0.54 & {}[-1.97, 0.13] & -1.71 & 0.09 .\\
 \bottomrule
 \end{tabular}}
@@ -412,7 +412,7 @@ Taken together, these results demonstrate that the impact of cluster separabilit
 
 ### Patterns conceptualization
 
-The difference between tSNE and UMAP embeddings is curious: the further apart clusters are in high dimensions the more often subjects reported the data between the views was different when the embedding was tSNE. The UMAP results are more as expected, that the further apart the clusters, the more likely the subject is to report they are the same data. @fig-three07-miss shows the results for one data set called `three_clust_07`. Plots on the left (a1, a2, b1, b2) show linear projections from a tour and plots on the right show embeddings by tSNE and UMAP. Rows correspond to small and large distance respectively. The proportion of correct responses is shown in each embedding plot. (The total number of evaluations for each were $3$, $4$, $4$, and $4$, respectively.) 
+The difference between tSNE and UMAP embeddings is curious: the further apart clusters are in high dimensions the more often subjects reported the data between the views was different when the embedding was tSNE. The UMAP results are more as expected, that the further apart the clusters, the more likely the subject is to report they are the same data. @fig-three07-miss shows the results for one data set called `three_clust_07`. Plots on the left (a1, a2, b1, b2) show linear projections from a tour and plots on the right show embeddings by tSNE and UMAP. Rows correspond to small and large distance respectively. The proportion of correct responses is shown in each embedding plot. (The total number of evaluations for each were $3$, $4$, $4$, and $4$, respectively. While there are relatively few evaluations for any single example like this one, this example serves to illustrate the general pattern.) 
 
 The reason for the difference in conceptualization from the different embeddings here is quite clear. Firstly, UMAP represents the data with large separation as three unusually shaped clusters that are well-separated. On the other hand, tSNE de-emphasizes the separation, and also does something worse - splits one cluster into two to make four clusters. It is understandable that a different conceptualization would be made from this embedding relative to that from the tour of linear projections which clearly shows three clusters. 
 
@@ -461,7 +461,7 @@ Another common source of misidentification comes from uneven point density. In s
 :::
 
 
-A different pattern is seen for the data set `three_clust_13`, which consists of a curvy cylinder, a cube, and a blunted cone, shown under small and large separation. Here, tSNE aligns more closely with the tour, particularly under small separation, where the proportion of correct responses is higher for tSNE ($0.67$) than for UMAP ($0.00$). In these layouts, tSNE preserves the overall grouping without introducing artificial splits, making it easier to reconcile the embedding with the linear projections. UMAP, on the other hand, emphasizes shape and density in ways that depart from the tour, especially when clusters are close together, leading to lower accuracy. Even at large separation, where UMAP improves ($0.60$ correct), the visual cues remain less consistent with the tour than those produced by tSNE. This example highlights that which method leads to better conceptual alignment can depend strongly on the underlying data structure, and that neither embedding consistently dominates across all cases.
+A different pattern is seen for the data set `three_clust_13`, which consists of a curvy cylinder, a cube, and a blunted cone, shown under small and large separation. (The total number of evaluations for each case were $3$, $5$, $6$, and $6$, respectively. While there are relatively few evaluations for any single example like this one, the figure is intended to illustrate a general pattern observed across multiple data sets.) Here, tSNE aligns more closely with the tour, particularly under small separation, where the proportion of correct responses is higher for tSNE ($0.67$) than for UMAP ($0.00$). In these layouts, tSNE preserves the overall grouping without introducing artificial splits, making it easier to reconcile the embedding with the linear projections. UMAP, on the other hand, emphasizes shape and density in ways that depart from the tour, especially when clusters are close together, leading to lower accuracy. Even at large separation, where UMAP improves ($0.60$ correct), the visual cues remain less consistent with the tour than those produced by tSNE. This example highlights that which method leads to better conceptual alignment can depend strongly on the underlying data structure, and that neither embedding consistently dominates across all cases.
 
 
 ::: {.cell layout-align="center"}
@@ -514,7 +514,7 @@ The results show that cluster separation does matter, but its impact is strongly
 
 <!-- Importantly, misidentification was not random. Some data structure components, particularly curved or dense shapes were consistently more difficult to recognize across methods, even at larger separations. XXX your analysis dod not study this so it is not valid to make this statement. XXX This indicates that perceptual errors arise from systematic interactions between data structure and method-specific distortions, rather than from subject variability alone. These findings support the need to evaluate NLDR layouts not only by algorithmic criteria, but also by how well they function as visual models in high-dimension space.-->
 
-This experiment is best viewed as a template for further studies on how people interpret NLDR layouts. Future work could extend this factors studied by considering different numbers of clusters, sample size, <!-- additional data structures, including overlapping clusters, hierarchical manifolds, and continuous gradients,--> varying noise levels and dimensionality. For three clusters including PCA (a linear method) as an embedding is not necessary because almost always it makes a useful display of three clusters in $2\text{-}D$ that is easily recognized as the same data when viewed with a tour. For more than three clusters this would not be true, and it would be important to include PCA as a comparison method.
+This experiment is best viewed as a template for further studies on how people interpret NLDR layouts. Future work could extend the factors studied by considering different numbers of clusters, sample size, <!-- additional data structures, including overlapping clusters, hierarchical manifolds, and continuous gradients,--> varying noise levels and dimensionality. For three clusters including PCA (a linear method) as an embedding is not necessary because almost always it makes a useful display of three clusters in $2\text{-}D$ that is easily recognized as the same data when viewed with a tour. PCA is not needed to reveal three clusters, we included it as a positive control. PCA provides a case where the embedding is expected to closely match the tour, helping confirm that participants can correctly identify the same data when distortions are minimal. This makes it easier to interpret errors observed for nonlinear methods, where mismatches are more likely. For more than three clusters this would not be true, and it would be important to include PCA as a comparison method.
 
 Overall, this work highlights the need for more experiments that systematically assess perception of structure in $2\text{-}D$ NLDR layouts with respect to structure present in high-dimensional data. With results from more human subjects experiments it may be possible to develop better metrics that could be used to automate assessment of  visual similarity measures. These would be helpful to use alongside NLDR layouts to assist with providing more faithful representations.
 

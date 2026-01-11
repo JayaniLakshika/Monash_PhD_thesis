@@ -822,6 +822,7 @@ As an alternative to `langevitour`, users can explore the fitted $p\text{-}D$ mo
 :::
 
 
+<!--this is worked for detour 0.1.0 version, but for 0.2.0 version, didn't work-->
 
 ::: {.cell}
 
