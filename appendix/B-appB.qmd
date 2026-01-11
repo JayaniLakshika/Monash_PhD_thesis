@@ -385,7 +385,7 @@ The results show that (@fig-num-res-detect), for this effect size, UMAP reaches 
 
 ## Data collection process
 
-### Recruite participants
+### Recruit participants
 
 Subjects were recruited from Prolific [@palan2018], an online platform, to evaluate the trials. The study expects that the participants are uninvolved judges with no prior knowledge of the data to avoid inadvertently affecting results. Potential subjects needed with fluent in English and have completed at least $10$ Prolific studies with a $98\%$ approval rate. The Prolific server only considers participants who are age $18$ and older.
 
