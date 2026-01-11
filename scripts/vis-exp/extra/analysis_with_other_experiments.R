@@ -1,9 +1,7 @@
 ### Experiment II
 
-method + sample size
+#method + sample size
 
-```{r}
-#| label: read-collected-data-method-ss
 
 results_df_method_ss <- read_rds(here::here("data/result_method_sample_size.rds"))
 
@@ -19,13 +17,7 @@ results_df_method_ss <- results_df_method_ss |>
 results_df_method_ss <- results_df_method_ss |>
   mutate(method = factor(method,
                          levels = c("pca", "tsne", "umap", "phate", "trimap", "pacmap")))
-```
 
-```{r}
-#| label: pcp-ss
-#| fig-cap: "Parallel coordinate plots of the various decisions made by participants based on different sample sizes."
-#| fig-width: 15
-#| fig-height: 10
 
 results_df_method_ss |>
   select(subject, method, sample_size, result) |>
@@ -48,10 +40,7 @@ results_df_method_ss |>
         axis.ticks.y = element_blank(),
         axis.title = element_blank())
 
-```
 
-```{r}
-#| label: logistic-method-ss
 ## Fit the logistic model (full)
 model_main_results_ss <- glmer(result ~ method * sample_size + (1 | subject), data = results_df_method_ss,
                                family = "binomial",
@@ -59,10 +48,7 @@ model_main_results_ss <- glmer(result ~ method * sample_size + (1 | subject), da
                                                       optCtrl = list(maxfun = 1e5)))
 
 #summary(model_main_results_ss)
-```
 
-```{r}
-#| eval: false
 
 results_df_method_ss |>
   count(method, sample_size, result, sort = TRUE) |>
@@ -82,12 +68,8 @@ model_no_interaction_ss <- glmer(result ~ method + sample_size + (1 | subject), 
                                                         optCtrl = list(maxfun = 1e5)))
 
 #summary(model_no_interaction_ss)
-```
 
-
-```{r}
-#| label: tbl-glmer-comp-ss
-#| tbl-cap: "Summary of model with and without interactions."
+##| tbl-cap: "Summary of model with and without interactions."
 
 anova(model_no_interaction_ss, model_main_results_ss) |>
   tidy() |>
@@ -95,11 +77,11 @@ anova(model_no_interaction_ss, model_main_results_ss) |>
                     booktabs = TRUE,
                     label = "summarysscomp") |>
   kableExtra::kable_styling(latex_options = "scale_down")
-```
-
-```{r}
-#| label: tbl-glmer-no-ss
-#| tbl-cap: "Parametric coefficients in GLMM model without interaction."
+# ```
+#
+# ```{r}
+# #| label: tbl-glmer-no-ss
+# #| tbl-cap: "Parametric coefficients in GLMM model without interaction."
 
 # Extract fixed effect
 tidy(model_no_interaction_ss, effects = "fixed") |>
@@ -108,12 +90,12 @@ tidy(model_no_interaction_ss, effects = "fixed") |>
                     booktabs = TRUE,
                     label = "glmerssno") |>
   kableExtra::kable_styling(latex_options = "scale_down")
-```
-
-
-```{r}
-#| label: tbl-glmer-ss
-#| tbl-cap: "Parametric coefficients in GLMM model with interaction."
+# ```
+#
+#
+# ```{r}
+# #| label: tbl-glmer-ss
+# #| tbl-cap: "Parametric coefficients in GLMM model with interaction."
 
 # Extract fixed effect
 tidy(model_main_results_ss, effects = "fixed") |>
@@ -122,17 +104,17 @@ tidy(model_main_results_ss, effects = "fixed") |>
                     booktabs = TRUE,
                     label = "glmerss") |>
   kableExtra::kable_styling(latex_options = "scale_down")
-```
-
-```{r}
-#| eval: false
+# ```
+#
+# ```{r}
+# #| eval: false
 
 resid_panel(model_main_results_ss, plots = "all")
-```
-
-```{r}
-#| label: emmeans-glmer-ss
-#| fig-cap: "Emmeans with interaction"
+# ```
+#
+# ```{r}
+# #| label: emmeans-glmer-ss
+# #| fig-cap: "Emmeans with interaction"
 
 #ref_grid(model_main_results) ## The foundation for emmeans
 
@@ -156,10 +138,10 @@ plot(emm1_1, comparisons = TRUE, type = "response") +
 # # emm1$emmeans
 # # emm1$contrasts
 # plot(emm1) + theme_minimal()
-```
-
-```{r}
-#| label: gen-correct-prop-by-method-ss
+# ```
+#
+# ```{r}
+# #| label: gen-correct-prop-by-method-ss
 
 all_method_ss <- results_df_method_ss |>
   select(method, sample_size) |>
@@ -172,12 +154,12 @@ method_ss_by_result_df <- results_df_method_ss |>
 
 method_ss_by_result_df <- left_join(all_method_ss, method_ss_by_result_df, by =c("method", "sample_size")) %>%
   replace(is.na(.), 0)
-```
-
-```{r}
-#| label: fig-response-by-method-ss
-#| fig-cap: "The corrected proportion achieved by participants when viewing NLDR methods and the sample size. Each point represents the correct proportion by the NLDR method and the sample size. XXXNeed to write conclude sentence after collecting data"
-#| fig-pos: H
+# ```
+#
+# ```{r}
+# #| label: fig-response-by-method-ss
+# #| fig-cap: "The corrected proportion achieved by participants when viewing NLDR methods and the sample size. Each point represents the correct proportion by the NLDR method and the sample size. XXXNeed to write conclude sentence after collecting data"
+# #| fig-pos: H
 
 method_ss_by_result_df |>
   ggplot(
@@ -204,10 +186,10 @@ method_ss_by_result_df |>
   xlab("sample size") +
   ylab("correct proportion")
 
-```
-
-```{r}
-#| label: fit-model-time-taken-ss
+# ```
+#
+# ```{r}
+# #| label: fit-model-time-taken-ss
 
 ## To change the type of distance time_taken_in_seconds
 results_df_method_ss <- results_df_method_ss |>
@@ -218,21 +200,21 @@ model_main_time_taken_ss <- lmerTest::lmer(time_taken_in_minutes ~ method + samp
 
 # summary(model_main_time_taken)
 # coef(model_main_time_taken)
-```
-
-```{r}
-#| label: fit-model-time-taken-ss-no
+# ```
+#
+# ```{r}
+# #| label: fit-model-time-taken-ss-no
 
 ## Fit the logistic model (full)
 model_main_time_taken_no_interaction_ss <- lmerTest::lmer(time_taken_in_minutes ~ method + sample_size + (1 | subject), data = results_df_method_ss, control = lmerControl(optimizer = "bobyqa"))
 
 # summary(model_main_time_taken)
 # coef(model_main_time_taken)
-```
-
-```{r}
-#| label: tbl-lmer-comp-ss
-#| tbl-cap: "Summary of model with and without interactions."
+# ```
+#
+# ```{r}
+# #| label: tbl-lmer-comp-ss
+# #| tbl-cap: "Summary of model with and without interactions."
 
 anova(model_main_time_taken_no_interaction_ss, model_main_time_taken_ss) |>
   tidy() |>
@@ -240,11 +222,11 @@ anova(model_main_time_taken_no_interaction_ss, model_main_time_taken_ss) |>
                     booktabs = TRUE,
                     label = "summarysscompt") |>
   kableExtra::kable_styling(latex_options = "scale_down")
-```
-
-```{r}
-#| label: tbl-lmer-no-ss
-#| tbl-cap: "Parametric coefficients in LMM model without interaction."
+# ```
+#
+# ```{r}
+# #| label: tbl-lmer-no-ss
+# #| tbl-cap: "Parametric coefficients in LMM model without interaction."
 
 # Extract fixed effect
 tidy(model_main_time_taken_no_interaction_ss, effects = "fixed") |>
@@ -253,11 +235,11 @@ tidy(model_main_time_taken_no_interaction_ss, effects = "fixed") |>
                     booktabs = TRUE,
                     label = "glmernosst") |>
   kableExtra::kable_styling(latex_options = "scale_down")
-```
-
-```{r}
-#| label: tbl-lmer-ss
-#| tbl-cap: "Parametric coefficients in LMM model with interaction."
+# ```
+#
+# ```{r}
+# #| label: tbl-lmer-ss
+# #| tbl-cap: "Parametric coefficients in LMM model with interaction."
 
 # Extract fixed effect
 tidy(model_main_time_taken_ss, effects = "fixed") |>
@@ -266,11 +248,11 @@ tidy(model_main_time_taken_ss, effects = "fixed") |>
                     booktabs = TRUE,
                     label = "glmersst") |>
   kableExtra::kable_styling(latex_options = "scale_down")
-```
-
-```{r}
-#| label: emmeans-lmer-ss
-#| fig-cap: "Emmeans with interaction"
+# ```
+#
+# ```{r}
+# #| label: emmeans-lmer-ss
+# #| fig-cap: "Emmeans with interaction"
 
 #ref_grid(model_main_time_taken)
 
@@ -296,12 +278,12 @@ plot(emm2_1, comparisons = TRUE) +
 #
 # # emm2$emmeans
 # # emm2$contrasts
-```
-
-```{r}
-#| label: fig-time-by-method-ss
-#| fig-cap: "The distribution of time taken (in minutes) to submit the response for each combination of NLDR method, the answer, and sample size, shown using horizontally jittered plots. The colored point indicates the average time taken for each NLDR method. XXXNeed to write conclude sentence after collecting data"
-#| fig-pos: H
+# ```
+#
+# ```{r}
+# #| label: fig-time-by-method-ss
+# #| fig-cap: "The distribution of time taken (in minutes) to submit the response for each combination of NLDR method, the answer, and sample size, shown using horizontally jittered plots. The colored point indicates the average time taken for each NLDR method. XXXNeed to write conclude sentence after collecting data"
+# #| fig-pos: H
 
 results_df_method_ss |>
   mutate(result = if_else(result == 0, "wrong", "correct")) |>
@@ -334,15 +316,15 @@ results_df_method_ss |>
   xlab("DR method") +
   ylab("time taken (in minutes)")
 
-```
-
-
-### Experiment III
-
-method + percentage of background noise
-
-```{r}
-#| label: read-collected-data-method-bkg-noise
+# ```
+#
+#
+# ### Experiment III
+#
+# method + percentage of background noise
+#
+# ```{r}
+# #| label: read-collected-data-method-bkg-noise
 
 results_df_method_bkg <- read_rds(here::here("data/result_method_bkg_noise.rds"))
 
@@ -358,14 +340,14 @@ results_df_method_bkg <- results_df_method_bkg |>
 results_df_method_bkg <- results_df_method_bkg |>
   mutate(method = factor(method,
                          levels = c("pca", "tsne", "umap", "phate", "trimap", "pacmap")))
-
-```
-
-```{r}
-#| label: pcp-bkg
-#| fig-cap: "Parallel coordinate plots of the various decisions made by participants based on different percentage of background noise."
-#| fig-width: 15
-#| fig-height: 10
+#
+# ```
+#
+# ```{r}
+# #| label: pcp-bkg
+# #| fig-cap: "Parallel coordinate plots of the various decisions made by participants based on different percentage of background noise."
+# #| fig-width: 15
+# #| fig-height: 10
 
 results_df_method_bkg |>
   select(subject, method, bkg_noise, result) |>
@@ -388,10 +370,10 @@ results_df_method_bkg |>
         axis.ticks.y = element_blank(),
         axis.title = element_blank())
 
-```
-
-```{r}
-#| label: logistic-method-bkg
+# ```
+#
+# ```{r}
+# #| label: logistic-method-bkg
 
 ## Fit the logistic model (full)
 model_main_results_bkg <- glmer(result ~ method * bkg_noise + (1 | subject), data = results_df_method_bkg,
@@ -400,10 +382,10 @@ model_main_results_bkg <- glmer(result ~ method * bkg_noise + (1 | subject), dat
                                                        optCtrl = list(maxfun = 1e5)))
 
 #summary(model_main_results_bkg)
-```
-
-```{r}
-#| eval: false
+# ```
+#
+# ```{r}
+# #| eval: false
 
 results_df_method_bkg |>
   count(method, bkg_noise, result, sort = TRUE) |>
@@ -412,23 +394,23 @@ results_df_method_bkg |>
                     booktabs = TRUE,
                     label = "nldr") |>
   kableExtra::kable_styling(latex_options = "scale_down")
-```
-
-
-```{r}
-# Fit the model without interaction
+# ```
+#
+#
+# ```{r}
+# # Fit the model without interaction
 model_no_interaction_bkg <- glmer(result ~ method + bkg_noise + (1 | subject), data = results_df_method_bkg,
                                   family = "binomial",
                                   control = glmerControl(optimizer = "bobyqa",
                                                          optCtrl = list(maxfun = 1e5)))
 
 #summary(model_no_interaction_bkg)
-```
-
-
-```{r}
-#| label: tbl-glmer-comp-bkg
-#| tbl-cap: "Summary of model with and without interactions."
+# ```
+#
+#
+# ```{r}
+# #| label: tbl-glmer-comp-bkg
+# #| tbl-cap: "Summary of model with and without interactions."
 
 anova(model_no_interaction_bkg, model_main_results_bkg) |>
   tidy() |>
@@ -436,11 +418,11 @@ anova(model_no_interaction_bkg, model_main_results_bkg) |>
                     booktabs = TRUE,
                     label = "summarybkgcomp") |>
   kableExtra::kable_styling(latex_options = "scale_down")
-```
-
-```{r}
-#| label: tbl-glmer-no-bkg
-#| tbl-cap: "Parametric coefficients in GLMM model without interaction."
+# ```
+#
+# ```{r}
+# #| label: tbl-glmer-no-bkg
+# #| tbl-cap: "Parametric coefficients in GLMM model without interaction."
 
 # Extract fixed effect
 tidy(model_no_interaction_bkg, effects = "fixed") |>
@@ -449,12 +431,12 @@ tidy(model_no_interaction_bkg, effects = "fixed") |>
                     booktabs = TRUE,
                     label = "glmerbkgno") |>
   kableExtra::kable_styling(latex_options = "scale_down")
-```
-
-
-```{r}
-#| label: tbl-glmer-bkg
-#| tbl-cap: "Parametric coefficients in GLMM model with interaction."
+# ```
+#
+#
+# ```{r}
+# #| label: tbl-glmer-bkg
+# #| tbl-cap: "Parametric coefficients in GLMM model with interaction."
 
 # Extract fixed effect
 tidy(model_main_results_bkg, effects = "fixed") |>
@@ -463,17 +445,17 @@ tidy(model_main_results_bkg, effects = "fixed") |>
                     booktabs = TRUE,
                     label = "glmerbkg") |>
   kableExtra::kable_styling(latex_options = "scale_down")
-```
-
-```{r}
-#| eval: false
+# ```
+#
+# ```{r}
+# #| eval: false
 
 resid_panel(model_main_results_bkg, plots = "all")
-```
-
-```{r}
-#| label: emmeans-glmer-bkg
-#| fig-cap: "Emmeans with interaction"
+# ```
+#
+# ```{r}
+# #| label: emmeans-glmer-bkg
+# #| fig-cap: "Emmeans with interaction"
 
 #ref_grid(model_main_results) ## The foundation for emmeans
 
@@ -497,10 +479,10 @@ plot(emm1_1, comparisons = TRUE, type = "response") +
 # # emm1$emmeans
 # # emm1$contrasts
 # plot(emm1) + theme_minimal()
-```
-
-```{r}
-#| label: gen-correct-prop-by-method-bkg
+# ```
+#
+# ```{r}
+# #| label: gen-correct-prop-by-method-bkg
 
 all_method_bkg <- results_df_method_bkg |>
   select(method, bkg_noise) |>
@@ -513,12 +495,12 @@ method_bkg_by_result_df <- results_df_method_bkg |>
 
 method_bkg_by_result_df <- left_join(all_method_bkg, method_bkg_by_result_df, by =c("method", "bkg_noise")) %>%
   replace(is.na(.), 0)
-```
-
-```{r}
-#| label: fig-response-by-method-bkg
-#| fig-cap: "The corrected proportion achieved by participants when viewing NLDR methods and the percentage of background noise. Each point represents the correct proportion by the NLDR method and the percentage of background noise. XXXNeed to write conclude sentence after collecting data"
-#| fig-pos: H
+# ```
+#
+# ```{r}
+# #| label: fig-response-by-method-bkg
+# #| fig-cap: "The corrected proportion achieved by participants when viewing NLDR methods and the percentage of background noise. Each point represents the correct proportion by the NLDR method and the percentage of background noise. XXXNeed to write conclude sentence after collecting data"
+# #| fig-pos: H
 
 method_bkg_by_result_df |>
   ggplot(
@@ -545,10 +527,10 @@ method_bkg_by_result_df |>
   xlab("Percentage of background noise") +
   ylab("correct proportion")
 
-```
-
-```{r}
-#| label: fit-model-time-taken-bkg
+# ```
+#
+# ```{r}
+# #| label: fit-model-time-taken-bkg
 
 ## To change the type of distance time_taken_in_seconds
 results_df_method_bkg <- results_df_method_bkg |>
@@ -559,21 +541,21 @@ model_main_time_taken_bkg <- lmerTest::lmer(time_taken_in_minutes ~ method + bkg
 
 # summary(model_main_time_taken)
 # coef(model_main_time_taken)
-```
-
-```{r}
-#| label: fit-model-time-taken-bkg-no
+# ```
+#
+# ```{r}
+# #| label: fit-model-time-taken-bkg-no
 
 ## Fit the logistic model (full)
 model_main_time_taken_no_interaction_bkg <- lmerTest::lmer(time_taken_in_minutes ~ method + bkg_noise + (1 | subject), data = results_df_method_bkg, control = lmerControl(optimizer = "bobyqa"))
 
 # summary(model_main_time_taken)
 # coef(model_main_time_taken)
-```
-
-```{r}
-#| label: tbl-lmer-comp-bkg
-#| tbl-cap: "Summary of model with and without interactions."
+# ```
+#
+# ```{r}
+# #| label: tbl-lmer-comp-bkg
+# #| tbl-cap: "Summary of model with and without interactions."
 
 anova(model_main_time_taken_no_interaction_bkg, model_main_time_taken_bkg) |>
   tidy() |>
@@ -581,11 +563,11 @@ anova(model_main_time_taken_no_interaction_bkg, model_main_time_taken_bkg) |>
                     booktabs = TRUE,
                     label = "summarybkgcompt") |>
   kableExtra::kable_styling(latex_options = "scale_down")
-```
-
-```{r}
-#| label: tbl-lmer-no-bkg
-#| tbl-cap: "Parametric coefficients in LMM model without interaction."
+# ```
+#
+# ```{r}
+# #| label: tbl-lmer-no-bkg
+# #| tbl-cap: "Parametric coefficients in LMM model without interaction."
 
 # Extract fixed effect
 tidy(model_main_time_taken_no_interaction_bkg, effects = "fixed") |>
@@ -594,11 +576,11 @@ tidy(model_main_time_taken_no_interaction_bkg, effects = "fixed") |>
                     booktabs = TRUE,
                     label = "glmernobkgt") |>
   kableExtra::kable_styling(latex_options = "scale_down")
-```
-
-```{r}
-#| label: tbl-lmer-bkg
-#| tbl-cap: "Parametric coefficients in LMM model with interaction."
+# ```
+#
+# ```{r}
+# #| label: tbl-lmer-bkg
+# #| tbl-cap: "Parametric coefficients in LMM model with interaction."
 
 # Extract fixed effect
 tidy(model_main_time_taken_bkg, effects = "fixed") |>
@@ -607,11 +589,11 @@ tidy(model_main_time_taken_bkg, effects = "fixed") |>
                     booktabs = TRUE,
                     label = "glmerbkgt") |>
   kableExtra::kable_styling(latex_options = "scale_down")
-```
-
-```{r}
-#| label: emmeans-lmer-bkg
-#| fig-cap: "Emmeans with interaction"
+# ```
+#
+# ```{r}
+# #| label: emmeans-lmer-bkg
+# #| fig-cap: "Emmeans with interaction"
 
 #ref_grid(model_main_time_taken)
 
@@ -637,12 +619,12 @@ plot(emm2_1, comparisons = TRUE) +
 #
 # # emm2$emmeans
 # # emm2$contrasts
-```
-
-```{r}
-#| label: fig-time-by-method-bkg
-#| fig-cap: "The distribution of time taken (in minutes) to submit the response for each combination of NLDR method, the answer, and percentage of background noise, shown using horizontally jittered plots. The colored point indicates the average time taken for each NLDR method. XXXNeed to write conclude sentence after collecting data"
-#| fig-pos: H
+# ```
+#
+# ```{r}
+# #| label: fig-time-by-method-bkg
+# #| fig-cap: "The distribution of time taken (in minutes) to submit the response for each combination of NLDR method, the answer, and percentage of background noise, shown using horizontally jittered plots. The colored point indicates the average time taken for each NLDR method. XXXNeed to write conclude sentence after collecting data"
+# #| fig-pos: H
 
 results_df_method_bkg |>
   mutate(result = if_else(result == 0, "wrong", "correct")) |>
@@ -674,8 +656,8 @@ results_df_method_bkg |>
   guides(colour = guide_legend(nrow = 1)) +
   xlab("DR method") +
   ylab("time taken (in minutes)")
-
-```
+#
+# ```
 
 
 ### Experiment IV

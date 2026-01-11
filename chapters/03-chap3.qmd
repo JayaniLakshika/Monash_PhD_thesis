@@ -999,6 +999,7 @@ detourr_prj2 <- rasterGrob(png::readPNG(here::here("figures/quollr/model_proj2_d
 grid.arrange(detourr_prj1, detourr_prj2, ncol = 1)
 ```
 
+<!--this is worked for detour 0.1.0 version, but for 0.2.0 version, didn't work-->
 ```{r fig-scurve-highd-model-detourrhtml, echo=TRUE, eval=knitr::is_html_output(), fig.cap="`detourr` output of the lifted high-dimensional wireframe model from the `scurve` UMAP layout. These views illustrate how the lifted wireframe model captures the structure of the `scurve` data. Regions with sparse or no data in the UMAP layout are also visible in the lifted model.", fig.alt = "The figure shows an animated detourr tour of the lifted high-dimensional wireframe model derived from the scurve UMAP layout. The display presents a sequence of changing 2-D projections, where the horizontal and vertical axes represent linear combinations of the original high-dimensional coordinates with continuous numeric ranges. The wireframe model appears as a network of connected line segments, and the scurve data points are overlaid as individual markers. As the tour progresses, the orientation and shape of the wireframe and point cloud change smoothly, revealing different alignments between the model and the data. In some views, sections of the wireframe extend into regions with few or no data points, leaving visible gaps. The visualization maintains a roughly square aspect ratio and consistent visual encodings throughout the tour."}
 
 detour(

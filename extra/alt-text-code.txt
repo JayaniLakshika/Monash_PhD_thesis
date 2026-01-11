@@ -1,16 +1,1 @@
-# Chunk label: fig-model-pbmc-author-proj --------------------
-## Alt-text: A line chart compares HBE (y-axis) against bin width parameter \(a_1\) (x-axis) for two UMAP layouts of PBMC single-cell data (layout a using Chen et al.’s hyper-parameters and layout b using scDEED’s hyper-parameters). The x-axis spans a sequence of bin width values (increasing left to right), and the y-axis spans HBE scores (higher values indicating better agreement between embedding and underlying data structure). Two lines—one for each layout—show how HBE changes as \(a_1\) varies. Across most of the \(a_1\) range, layout b’s line lies above layout a’s, indicating consistently higher HBE and suggesting that scDEED’s hyper-parameter choice yields a more accurate cluster-preserving embedding of the 5,858 inDrops PBMC cells. Any crossings or convergence between the lines occur only in narrower subranges of \(a_1\), and do not overturn the overall pattern that layout b performs better.
 
-Assumptions: The plot uses two differently coloured lines to distinguish layouts a and b, a continuous numeric scale for both axes, and HBE is plotted as a single scalar summary per bin width value. Exact numeric tick values were not provided, so axis ranges and relative line positions are described qualitatively.
-
-Checklist:
-1. Identified chart type. YES  
-2. Named axes and variables. YES  
-3. Mentioned approximate ranges or scales (where meaningful). YES  
-4. Described data mappings (e.g. colour/shape/size/facets). YES  
-5. Described main patterns, trends, or clusters. YES  
-6. Explicitly noted any assumptions. YES
-
-## Caption (for reference): For illustration purposes, we only selected cells generated with inDrops ($n=5858$ cells). Also, @xia2024 used first $9$ principal components to generate the UMAP and tSNE with default hyper-parameters. The objective is to what scDEED suggests is the best layout with what HBE would choose. Layout a (@fig-pbmc-mse-umap) is generated from the hyper-parameters suggested by @chen2024, and layout b (@fig-pbmc-mse-umap) is with suggested hyper-parameters by scDEED to be more accurate. <!--Layouts a and b contain $46$ and $83$ dubious cells respectively.--> The HBE vs binwidth ($a_1$) plot (@fig-pbmc-mse-umap) illustrates that our approach would suggest that scDEED is correct here, that layout b is more accurately reflecting the cluster structure in the PBMC data. This is also supported by examining the models in the data space as shown in @fig-model-pbmc-author-proj.
-
-## Usage: BrailleR, Cummulated cost: NA, Cummulated token usage: 0

@@ -256,7 +256,7 @@ This data is constructed by simulating two clusters, each consisting of $1000$ o
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Two projections of the \pD{} true model overlaying the data are shown in a, b. Video of the langevitour animations is available at <https://youtu.be/35TrnYJsUUI>.](A-appA_files/figure-html/fig-true-data-1.png){#fig-true-data fig-align='center' width=100%}
+![Two projections of the \pD{} true model overlaying the data are shown in a, b. Video of the langevitour animations is available at <https://youtu.be/35TrnYJsUUI>.](A-appA_files/figure-html/fig-true-data-1.png){#fig-true-data fig-align='center' fig-alt='A two-panel figure showing two different 2-D projections of the true geometric structure underlying the 2NC7 dataset, with observed data overlaid. Each panel displays a dense cloud of points representing the simulated observations, together with smooth line structures indicating the underlying manifold. Panel (a) shows a projection in which one cluster forms a thick, curved C-shaped structure, while the second cluster appears as a distinct curved surface intersecting the projection. Panel (b) shows an alternative projection of the same data, where the relative orientation of the two clusters differs, but both curved manifolds remain visible and separable. In both views, the points lie close to the projected model curves, indicating that the observed data closely follow the underlying 4-D geometric structures despite the added noise dimensions.' width=100%}
 :::
 :::
 
@@ -358,7 +358,7 @@ $$
 
 ## Binning the data
 
-Points are assigned to the bin they fall into based on the nearest centroid. If a point is equidistant from multiple centroids, it is assigned to the centroid with the smallest bin ID.
+Points are assigned to the bin they fall into based on the nearest centroid (@fig-assign-data). If a point is equidistant from multiple centroids, it is assigned to the centroid with the smallest bin ID.
 
 
 ::: {.cell layout-align="center"}
@@ -375,14 +375,14 @@ Points are assigned to the bin they fall into based on the nearest centroid. If 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Binning the data. Points are assigned to the nearest centroid. If a point is equidistant from multiple centroids, assigned to the centroid with the smallest bin ID.](A-appA_files/figure-html/fig-assign-data-1.png){#fig-assign-data fig-align='center' fig-pos='!ht' width=100%}
+![Binning the data. Points are assigned to the nearest centroid. If a point is equidistant from multiple centroids, assigned to the centroid with the smallest bin ID.](A-appA_files/figure-html/fig-assign-data-1.png){#fig-assign-data fig-align='center' fig-pos='!ht' fig-alt='A two-panel figure showing how observations are assigned to bins using a hexagonal grid. In both panels, the x- and y-axes represent two numerical dimensions of the data, with a regular grid of hexagonal cells covering the plotting area. Each hexagon is coloured according to the bin (centroid) to which it is assigned. In the first panel, hexagons are coloured based on the nearest-centroid rule, where each cell is assigned to the closest centroid in the plane. In the second panel, hexagons that are equidistant to multiple centroids are highlighted to illustrate the tie-breaking rule: such cells are assigned to the centroid with the smallest bin identifier, resulting in a small number of hexagons changing colour compared to the first panel. Overall, most hexagons form contiguous regions around each centroid, with only boundary cells affected by the tie-breaking procedure.' width=100%}
 :::
 :::
 
 
 ## Area of a hexagon
 
-The area of a hexagon is defined as $A = 3\sqrt{3}l^2/2$, where $l$ is the side length of the hexagon. $l$ can be computed using $a_1$ and $a_2$.
+The area of a hexagon is defined as $A = 3\sqrt{3}l^2/2$, where $l$ is the side length of the hexagon (@fig-tri-param). $l$ can be computed using $a_1$ and $a_2$.
 
 
 
@@ -394,7 +394,7 @@ The area of a hexagon is defined as $A = 3\sqrt{3}l^2/2$, where $l$ is the side 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![The components of the right triangle illustrating notation.](A-appA_files/figure-html/fig-tri-param-1.png){#fig-tri-param fig-align='center' fig-pos='!ht' width=30%}
+![The components of the right triangle illustrating notation.](A-appA_files/figure-html/fig-tri-param-1.png){#fig-tri-param fig-align='center' fig-pos='!ht' fig-alt='A simple drawing of a right triangle on Cartesian axes. The x-axis runs from about 0 to 4 and the y-axis from about 0 to 3. The triangle’s vertices are at (0,0), (4,0), and (0,3), forming a right angle at the origin where the horizontal leg lies along the x-axis and the vertical leg lies along the y-axis. The horizontal side is length 4, the vertical side is length 3, and the hypotenuse slopes down from (0,3) to (4,0). The figure illustrates the standard notation for the components of a right triangle, with the two legs aligned to the axes and the hypotenuse connecting their endpoints.' width=30%}
 :::
 :::
 
@@ -485,7 +485,7 @@ The models are fitted to each these layouts. @fig-five-gau-projs a2, b2, c2 show
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![NLDR's organize points in the \gD{} layout in different ways, possibly misleadingly, illustrated using three layouts: (a) tSNE, (b) UMAP, (c) PaCMAP. The data has five Gaussian clusters in \fD{}. The bottom row of plots shows a \gD{} projection from a tour on \fD{} revealing the differences generated by the layouts on the model fits.  We would expect the model fit to be like that in (a2) where it is distinctly is separate for each cluster but like a hairball in each. This would indicate the distinct clusters, each being fully \fD{}. With (c2), the curiousity is that the model is a \gD{} pancake shape in \fD{}, indicating that there is some ordering of points done by PaCMAP, posisbly along some principal component axes. Videos of the langevitour animations are available at <https://youtu.be/I-kxCwVfqiQ>, <https://youtu.be/gD1P01FUPyU>, and <https://youtu.be/MxJ_srOFQNk> respectively.](A-appA_files/figure-html/fig-five-gau-projs-1.png){#fig-five-gau-projs fig-align='center' fig-pos='!ht' width=100%}
+![NLDR's organize points in the \gD{} layout in different ways, possibly misleadingly, illustrated using three layouts: (a) tSNE, (b) UMAP, (c) PaCMAP. The data has five Gaussian clusters in \fD{}. The bottom row of plots shows a \gD{} projection from a tour on \fD{} revealing the differences generated by the layouts on the model fits.  We would expect the model fit to be like that in (a2) where it is distinctly separate for each cluster but like a hairball in each. This would indicate the distinct clusters, each being fully \fD{}. With (c2), the curiosity is that the model is a \gD{} pancake shape in \fD{}, indicating that there is some ordering of points done by PaCMAP, possibly along some principal component axes. Videos of the langevitour animations are available at <https://youtu.be/I-kxCwVfqiQ>, <https://youtu.be/gD1P01FUPyU>, and <https://youtu.be/MxJ_srOFQNk> respectively.](A-appA_files/figure-html/fig-five-gau-projs-1.png){#fig-five-gau-projs fig-align='center' fig-pos='!ht' fig-alt='A multi-panel figure comparing three NLDR layouts: tSNE, UMAP, and PaCMAP applied to the same dataset consisting of five Gaussian clusters in four dimensions. The top row shows the 2-D layouts produced by (a) tSNE, (b) UMAP, and (c) PaCMAP, where points are grouped into five visually distinct clusters but arranged differently by each method. The bottom row shows corresponding projections from a tour through the original four-dimensional space, with fitted models overlaid for each cluster. In the tSNE and UMAP cases, the fitted models within each cluster appear complex and highly curved, filling the projected space and indicating that the clusters retain substantial four-dimensional structure. In contrast, the PaCMAP projection shows several clusters with much flatter, pancake-like fitted surfaces, suggesting that the layout imposes an artificial ordering that reduces apparent dimensionality. Together, the panels illustrate how different NLDR methods can lead to different geometric interpretations of the same high-dimensional data.' width=100%}
 :::
 :::
 
@@ -520,7 +520,7 @@ The tSNE behaviour is to squeeze the low density area of the data together into 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Exploring the effect of density on the NLDR layout using a \gD{} curved sheet in \fD{} with different density at each end. Three plots are linked: density plot of residuals (a1, b1), NLDR layout (a2, b2), projection of \fD{} model and data (a3, b3). The brown points indicate the selected set, which are different in each row. In (a2), the top part of the triangular shape is selected which corresponds to higher residuals (a1) and the sparse end of the structure (a3). In (b2) one of other corners is highlighted, which can be seen to correspond to low residuals (b1) and one side of the dense end of the data (b3). While the tSNE layout represents the dense end of the sheet correctly as two corners in the layout, it contracts the sparse end of the sheet into a single corner. Video of the langevitour animation is available at <https://youtu.be/-KsQH0rII2A>.](A-appA_files/figure-html/fig-one-dens_clust-error-1.png){#fig-one-dens_clust-error fig-align='center' fig-pos='!ht' width=100%}
+![Exploring the effect of density on the NLDR layout using a \gD{} curved sheet in \fD{} with different density at each end. Three plots are linked: density plot of residuals (a1, b1), NLDR layout (a2, b2), projection of \fD{} model and data (a3, b3). The brown points indicate the selected set, which are different in each row. In (a2), the top part of the triangular shape is selected which corresponds to higher residuals (a1) and the sparse end of the structure (a3). In (b2) one of other corners is highlighted, which can be seen to correspond to low residuals (b1) and one side of the dense end of the data (b3). While the tSNE layout represents the dense end of the sheet correctly as two corners in the layout, it contracts the sparse end of the sheet into a single corner. Video of the langevitour animation is available at <https://youtu.be/-KsQH0rII2A>.](A-appA_files/figure-html/fig-one-dens_clust-error-1.png){#fig-one-dens_clust-error fig-align='center' fig-pos='!ht' fig-alt='A multi-panel figure illustrating how density affects a tSNE layout for a curved sheet embedded in higher-dimensional space. Each row contains three linked plots: a density plot of model residuals on the left, a tSNE layout in the middle, and a projection of the original high-dimensional model and data on the right. Points are colored, with a subset highlighted in brown to indicate a brushed selection. In the top row (a), the highlighted points form the upper corner of the triangular tSNE layout, corresponding to higher residuals in the density plot and to the sparse end of the curved sheet in the original space. In the bottom row (b), a different corner of the tSNE triangle is highlighted, corresponding to lower residuals and to one side of the dense end of the sheet. The tSNE layout represents the dense end of the sheet as two distinct corners but collapses the sparse end into a single corner, showing how variations in point density can distort the layout.' width=100%}
 :::
 :::
 

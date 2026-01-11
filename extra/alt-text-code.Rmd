@@ -1,0 +1,49 @@
+---
+title: "alt-text-code"
+format: html
+---
+
+<!--autoalt::generate_alt_text("~/Desktop/PhD Monash research files/Monash_PhD_thesis/extra/alt-text-code.qmd", "~/Desktop/PhD Monash research files/Monash_PhD_thesis/extra/alt-text-code.txt", api = "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")-->
+
+
+```{r}
+if (!requireNamespace("detourr", quietly = TRUE)) {
+  stop("Package 'detourr' is required but not installed.")
+}
+
+if (packageVersion("detourr") != "0.1.0") {
+  stop(
+    sprintf(
+      "This document requires detourr version 0.1.0, but version %s is installed.",
+      packageVersion("detourr")
+    )
+  )
+}
+
+library(detourr)
+library(dplyr)
+data(pdfsense, package = "liminal")
+
+pcs <- pdfsense |>
+  select(X1:X56) |>
+  prcomp()
+
+pcs <- as_tibble(pcs$x) |>
+  select(PC1:PC6)
+
+plot_data <- pdfsense |>
+  select(-(X1:X56)) |>
+  mutate(Type = as.character(Type)) |>
+  bind_cols(pcs)
+
+set.seed(1)
+
+detour(
+  plot_data,
+  tour_aes(
+    projection = starts_with("PC"),
+    colour = Type, label = I(ID)
+  )
+) |>
+  show_scatter(axes = FALSE, alpha = 0.7, size = 0.5)
+```
