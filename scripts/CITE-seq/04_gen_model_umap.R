@@ -1,6 +1,7 @@
 ## This script is to generate model for CITE-seq data...
 library(quollr)
 library(tidyverse)
+set.seed(20240110)
 
 pbmc_data <- read_rds(here::here("data/CITE-seq/cite_seq_pbmc.rds"))
 
@@ -9,7 +10,7 @@ umap_pbmc <- read_rds(here::here("data/CITE-seq/CITE-seq_umap_n-neigbors_30_min-
 model_obj <- fit_highd_model(
   highd_data = pbmc_data,
   nldr_data = umap_pbmc,
-  b1 = 40,
+  b1 = 41,
   q = 0.1,
   hd_thresh = 0)
 
