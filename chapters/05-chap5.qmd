@@ -481,7 +481,7 @@ $$
   d(\mathbf{x}_i, \mathbf{x}_j),
 $$
 
-which captures the closest proximity between any two clusters. The scaled minimum distance was exponentiated to put more emphasis on cases where clusters are very close together, which is where people are most likely to confuse them. Small changes at short distances can strongly affect how separable clusters appear, while larger increases in distance tend to have much less impact on perception.
+which captures the closest proximity between any two clusters. The scaled minimum distance was exponentiated so that, where it agrees with the BW ratio, the relationship between the two measures is approximately linear. The transformation increases separation among larger distance values while leaving small distances largely unchanged, facilitating more comparable variation across datasets.
 
 
 <!-- The BW ratio and minimum inter-cluster distance capture complementary aspects of cluster separation: global dispersion and local boundary proximity, respectively. To make these measures comparable across data structures, all distance-based metrics were first rescaled to the unit interval using min–max normalization. -->
