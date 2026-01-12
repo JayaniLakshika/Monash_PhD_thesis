@@ -49,49 +49,6 @@ pbmc_data_tour <- langevitour::langevitour(
   levelColors = "#66B2CC"
 )
 
-n_vec <- c(500, 700, 700, 500, 700, 700)
-
-dist_mat <- matrix(
-  c(
-    0, 1, 1, 1,
-    1, 0, 0.8, 1,
-    1, 0.8, 0, 1,
-    1, 1, 1, 0,
-    1, 1, 1, 1,
-    1, 1, 1, 1
-  ),
-  nrow = 6
-)
-
-clust_data <- gen_multicluster(
-  n = n_vec,
-  k = 6,
-  loc = dist_mat,
-  scale = c(0.25, 0.4, 0.4, 0.6, 0.7, 0.5),
-  shape = c(
-    "gaussian",
-    "gaussian",
-    "quadratic",
-    "sphericalspiral",
-    "conicspiral",
-    "gaussian"
-  ),
-  add_bkg = TRUE
-)
-
-## Add noise dimensions
-noise_df <- gen_noisedims(n = NROW(clust_data), 
-                          p = 6, m = rep(0.9, 6), 
-                          s = rep(0.01, 6))
-names(noise_df) <- paste0("x", 5:10)
-
-clust_data <- clust_data |> select(-cluster) |>
-  bind_cols(noise_df)
-
-clust_data_tour <- langevitour::langevitour(clust_data,
-                         enableControls = TRUE,
-                         width = "400px", height = "380px",
-                         levelColors = "#66B2CC")
 ```
 
 ```{r}
@@ -267,7 +224,64 @@ class(pbmcdatafig) <- c(class(pbmcdatafig), "htmlwidget")
 pbmcdatafig
 ```
 
-Using the `cardinalR` package, data with these different cluster shapes and background noise can be generated (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-dt-tourr-sim"} else { "@fig-dt-prj-sim"})`).
+```{r}
+
+n_vec <- c(500, 700, 700, 500, 700, 700)
+
+dist_mat <- matrix(
+  c(
+    0, 1, 1, 1,
+    1, 0, 0.8, 1,
+    1, 0.8, 0, 1,
+    1, 1, 1, 0,
+    1, 1, 1, 1,
+    1, 1, 1, 1
+  ),
+  nrow = 6
+)
+```
+
+Using the `cardinalR` package, we generated a synthetic dataset designed to mimic the structure of the PBMC CITE-seq data (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-dt-tourr-sim"} else { "@fig-dt-prj-sim"})`). We first created six clusters with different shapes—three approximately Gaussian, one quadratic, one spherical spiral, and one conic spiral—while adding background noise:
+
+```{r, echo=TRUE}
+clust_data <- gen_multicluster(
+  n = n_vec,
+  k = 6,
+  loc = dist_mat,
+  scale = c(0.25, 0.4, 0.4, 0.6, 0.7, 0.5),
+  shape = c(
+    "gaussian",
+    "gaussian",
+    "quadratic",
+    "sphericalspiral",
+    "conicspiral",
+    "gaussian"
+  ),
+  add_bkg = TRUE
+)
+```
+
+To match the dimensionality of the PBMC dataset, six additional noise dimensions were added with small variance:
+
+```{r, echo=TRUE}
+## Add noise dimensions
+noise_df <- gen_noisedims(n = NROW(clust_data), 
+                          p = 6, m = rep(0.9, 6), 
+                          s = rep(0.01, 6))
+names(noise_df) <- paste0("x", 5:10)
+
+clust_data <- clust_data |> select(-cluster) |>
+  bind_cols(noise_df)
+```
+
+This produced a $10\text{-}D$ dataset with a mix of nonlinear and Gaussian structures, similar to the PBMC CITE-seq data, while keeping a bit of background noise for realism.
+
+```{r}
+clust_data_tour <- langevitour::langevitour(clust_data,
+                         enableControls = TRUE,
+                         width = "400px", height = "380px",
+                         levelColors = "#66B2CC")
+```
 
 ```{r fig-dt-tourr-sim, eval=knitr::is_html_output(), fig.cap="Tour view of the $10\\text{-}D$ simulated dataset generated using `cardinalR`. To create a synthetic dataset comparable to the $10\\text{-}D$ PBMC CITE-seq data, `cardinalR` first generated a $4\\text{-}D$ structure consisting of three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with added background noise. Six additional noise dimensions were then included to produce a $10\\text{-}D$ dataset retaining similar structural characteristics.", fig.pos="!ht", fig.alt="The figure shows a tour of a simulated ten-dimensional dataset generated using cardinalR. As the projection evolves, six clusters with diverse geometric forms become apparent: three approximately Gaussian clusters, one quadratic structure, one spherical spiral, and one conic spiral, along with sparse background noise. Although individual projections vary over time, the tour illustrates that the simulated data reproduces the mixture of nonlinear and Gaussian structures observed in the PBMC CITE-seq dataset."}
 
