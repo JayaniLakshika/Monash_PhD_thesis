@@ -163,7 +163,7 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Front matter</span></a>
+ <span class="menu-text">Copyright notice</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -270,12 +270,12 @@ window.Quarto = {
    
   <ul class="collapse">
 <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">6.1</span> Introduction</a></li>
-  <li><a href="#user-informed-design" id="toc-user-informed-design" class="nav-link" data-scroll-target="#user-informed-design"><span class="header-section-number">6.2</span> User-Informed design</a></li>
+  <li><a href="#user-informed-design" id="toc-user-informed-design" class="nav-link" data-scroll-target="#user-informed-design"><span class="header-section-number">6.2</span> User-informed design</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="header-section-number">6.3</span> Methods</a></li>
   <li><a href="#the-shiny-application" id="toc-the-shiny-application" class="nav-link" data-scroll-target="#the-shiny-application"><span class="header-section-number">6.4</span> The Shiny application</a></li>
-  <li><a href="#example-workflow" id="toc-example-workflow" class="nav-link" data-scroll-target="#example-workflow"><span class="header-section-number">6.5</span> Example Workflow</a></li>
+  <li><a href="#example-workflow" id="toc-example-workflow" class="nav-link" data-scroll-target="#example-workflow"><span class="header-section-number">6.5</span> Example workflow</a></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">6.6</span> Conclusions</a></li>
-  <li><a href="#supplementary-materials" id="toc-supplementary-materials" class="nav-link" data-scroll-target="#supplementary-materials"><span class="header-section-number">6.7</span> Supplementary Materials</a></li>
+  <li><a href="#supplementary-materials" id="toc-supplementary-materials" class="nav-link" data-scroll-target="#supplementary-materials"><span class="header-section-number">6.7</span> Supplementary materials</a></li>
   <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments"><span class="header-section-number">6.8</span> Acknowledgments</a></li>
   </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/JayaniLakshika/Monash_PhD_thesis/edit/master/Thesis/chapters/06-chap6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -304,7 +304,7 @@ window.Quarto = {
 <p>A key advantage of <code>menuraR</code> is its accessibility. The application is fully web-based and does not require a local installation of R or package management. Centralized hosting ensures that users always access the most up-to-date version, while reproducibility is supported through logging and open availability of the underlying code. In this way, <code>menuraR</code> enhances transparency in NLDR evaluation and fosters broader adoption of rigorous visualization practices.</p>
 <p>This chapter introduces <code>menuraR</code>, describing its implementation, core features, and intended use cases. We demonstrate how the application can inform NLDR choices, highlight key visual diagnostics, and support exploratory data analysis and teaching.</p>
 </section><section id="user-informed-design" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="user-informed-design">
-<span class="header-section-number">6.2</span> User-Informed design</h2>
+<span class="header-section-number">6.2</span> User-informed design</h2>
 <p>To ensure <code>menuraR</code> is intuitive and practical, we conducted a usability study with members of the Business Analytics research group at Monash University (NUMBATs). The goal was to observe how users interact with the app, identify confusing aspects, and gather suggestions for improvement.</p>
 <p>We provided two slightly different run sheets for two groups of participants:</p>
 <ol type="1">
@@ -383,7 +383,7 @@ Figure&nbsp;6.3: Interactive Model Diagnostics in . The interface provides inter
 </div>
 </div>
 </section></section><section id="example-workflow" class="level2" data-number="6.5"><h2 data-number="6.5" class="anchored" data-anchor-id="example-workflow">
-<span class="header-section-number">6.5</span> Example Workflow</h2>
+<span class="header-section-number">6.5</span> Example workflow</h2>
 <p>We evaluated <code>menuraR</code> using the PBMC3k single-cell RNA-seq dataset <span class="citation" data-cites="rahul2025">(<a href="../refs.html#ref-rahul2025" role="doc-biblioref">Satija et al. 2025</a>)</span>, a widely used benchmark for assessing dimensionality-reduction methods in single-cell analysis. This dataset contains <span class="math inline">2622</span> human peripheral blood mononuclear cells (PBMCs) measured across <span class="math inline">1000</span> gene expression variables and is commonly used to study cellular heterogeneity and population structure at the single-cell level.</p>
 <p>In single-cell RNA-seq analysis, clustering is typically used to identify groups of cells with similar expression profiles, while nonlinear dimension reduction (NLDR) methods are employed to summarize and visualize this structure in two dimensions. Importantly, NLDR methods do not use cluster labels to compute embeddings; labels are instead used post hoc for interpretation and visualization.</p>
 <p>We applied NLDR methods to the first nine principal components of the gene expression matrix. Using the <em>Compare NLDR Layouts</em> tab of <code>menuraR</code>, we generated four embeddings commonly used in practice: tSNE with perplexity values of <span class="math inline">30</span> (default) and <span class="math inline">18</span>, and UMAP with <span class="math inline">({\text{n\_neighbors}}, \text{min\_dist})</span> set to <span class="math inline">(15, 0.1)</span> (default) and <span class="math inline">(41, 0.43)</span>. Visual comparison showed consistent separation of major immune cell populations across all layouts, with clear differences in cluster separation and neighborhood continuity. Overall, tSNE produced smaller inter-cluster separation, while UMAP yielded more distinct clusters. For both methods, hyper-parameter choices controlled the local–global trade-off: smaller neighborhood sizes or lower perplexity emphasized tight local groupings, whereas larger neighborhood sizes or higher perplexity produced smoother global transitions (<a href="07-chap7.html#fig-menuraR_ui2" class="quarto-xref">Figure&nbsp;<span>7.4</span></a>).</p>
@@ -395,7 +395,7 @@ Figure&nbsp;6.3: Interactive Model Diagnostics in . The interface provides inter
 <p>Developed using the R Shiny framework, <code>menuraR</code> eliminates many of the technical barriers traditionally associated with advanced statistical software. Users do not need to install additional packages or configure language-specific environments, which is particularly valuable for interdisciplinary research teams and educational settings. The platform helps users to compare NLDR layouts, select the ones that most accurately represent the high-dimensional data structure, and assess NLDR results.</p>
 <p>Currently, <code>menuraR</code> supports only two NLDR methods: tSNE and UMAP for computing additional layouts within the app. Performance may vary depending on dataset size and browser memory limits, as all computations are handled server-side. Users working with very large datasets may experience slower response times, and expanding support to other NLDR methods is a potential direction for future development.</p>
 </section><section id="supplementary-materials" class="level2" data-number="6.7"><h2 data-number="6.7" class="anchored" data-anchor-id="supplementary-materials">
-<span class="header-section-number">6.7</span> Supplementary Materials</h2>
+<span class="header-section-number">6.7</span> Supplementary materials</h2>
 <p>The <code>menuraR</code> application is available online at <a href="https://ebsmonash.shinyapps.io/menuraR/" class="uri">https://ebsmonash.shinyapps.io/menuraR/</a>. All data and materials used in the study are openly available. The survey data collected from participants can be accessed at <a href="https://github.com/JayaniLakshika/paper-menuraR/tree/main/data">https://github.com/JayaniLakshika/paper-menuraR/data</a>. The example datasets provided within the menuraR app are available at <a href="https://github.com/JayaniLakshika/menuraR/tree/main/data">https://github.com/JayaniLakshika/menuraR/data</a>.</p>
 <p>Additionally, the run sheets used to guide participants through the usability study are publicly available at <a href="https://github.com/JayaniLakshika/paper-menuraR/tree/main/run_sheets">https://github.com/JayaniLakshika/paper-menuraR/run_sheets</a>.</p>
 </section><section id="acknowledgments" class="level2" data-number="6.8"><h2 data-number="6.8" class="anchored" data-anchor-id="acknowledgments">
