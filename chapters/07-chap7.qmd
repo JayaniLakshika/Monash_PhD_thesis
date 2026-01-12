@@ -966,9 +966,9 @@ commits <- read_rds(here::here("data/git_commits.rds"))
 commits |>
   mutate(Week = floor_date(When, unit = "week")) |>
   group_by(Repository, Week) |>
-  summarise(Commits = n()) |>
+  summarise(Commits = n(), .groups = "drop") |>
   ggplot(aes(x = Week, y = Commits)) +
-  geom_smooth(span = 0.15, se = FALSE) +
+  geom_smooth(span = 0.55, se = FALSE) +
   geom_point() +
   facet_wrap(~ Repository, scales = "free_y", ncol = 1) +
   theme_bw()
