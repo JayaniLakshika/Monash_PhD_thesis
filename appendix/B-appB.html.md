@@ -419,7 +419,7 @@ Before running the main experiment, we examined how many responses were needed f
 
 Using pilot estimates of the correct proportion, we conducted a simulation-based power analysis based on a difference in proportions framework. The baseline probability was taken from the estimated performance at the smaller distance factor ($0.1$), and a range of effect sizes was explored. We focused on an effect size of approximately $0.22$, which corresponds to a change of about $20$ percentage points in correct identification and reflects a perceptually meaningful improvement in the ability to distinguish whether two views show the same data.
 
-<!-- Targeting moderate to large effects is appropriate in perceptual studies of visualization, where small statistical differences may not translate into noticeable or reliable changes in what users actually see or report. In this context, effects of practical interest are those that lead to clear differences in perception rather than marginal improvements that are difficult for participants to detect consistently. -->
+<!-- Targeting moderate to large effects is appropriate in perceptual studies of visualization, where small statistical differences may not translate into noticeable or reliable changes in what users actually see or report. In this context, effects of practical interest are those that lead to clear differences in perception rather than marginal improvements that are difficult for subjects to detect consistently. -->
 
 <!--script/vis-exp/pwr_analysis_umap_0.1_0.6.R, script/vis-exp/pwr_analysis_tsne_0.1_0.6.R-->
 
@@ -440,21 +440,21 @@ The results show that (@fig-num-res-detect), for this effect size, UMAP reaches 
 
 ## Data collection process
 
-### Recruit participants
+### Recruit subjects
 
-Subjects were recruited from Prolific [@palan2018], an online platform, to evaluate the trials. The study expects that the participants are uninvolved judges with no prior knowledge of the data to avoid inadvertently affecting results. Potential subjects needed with fluent in English and have completed at least $10$ Prolific studies with a $98\%$ approval rate. The Prolific server only considers participants who are age $18$ and older.
+Subjects were recruited from Prolific [@palan2018], an online platform, to evaluate the trials. The study expects that the subjects are uninvolved judges with no prior knowledge of the data to avoid inadvertently affecting results. Potential subjects needed with fluent in English and have completed at least $10$ Prolific studies with a $98\%$ approval rate. The Prolific server only considers subjects who are age $18$ and older.
 
 All subjects were trained using three example displays to orient them to the evaluation trials and provided [introductory materials](https://drive.google.com/file/d/14o-nSjy50Qw2eoQArK5AhjowLIOe6m14/view). All subjects who completed the task were compensated $9.96$ GBP per hour for their time via the Prolific payment system.
 
 ### Web application to collect responses
 
-The survey web application, [Match-a-roo](https://ebsmonash.shinyapps.io/web_game/), is designed to collect survey responses and demographics using the `shiny` [@winston2025a] package in R. Each subject had access to the survey via the [shiny.io server](https://www.shinyapps.io/). The first interface of the survey app contained an introduction, instructions for the survey (@fig-intro-page), a consent form (@fig-consent), and buttons to access, for example, actual trials. Participants can try three examples prior to the study where the answers were not recorded (@fig-example). The subjects were first asked for their consent to the responses being used for analysis.
+The survey web application, [Match-a-roo](https://ebsmonash.shinyapps.io/web_game/), is designed to collect survey responses and demographics using the `shiny` [@winston2025a] package in R. Each subject had access to the survey via the [shiny.io server](https://www.shinyapps.io/). The first interface of the survey app contained an introduction, instructions for the survey (@fig-intro-page), a consent form (@fig-consent), and buttons to access, for example, actual trials. Subjects can try three examples prior to the study where the answers were not recorded (@fig-example). The subjects were first asked for their consent to the responses being used for analysis.
 
-A total of $1905$ evaluations from $127$ participants have been collected.
+A total of $150$ participants took part in the study. Of these, $127$ completed the attention check correctly, while $23$ provided incorrect responses. The analysis was therefore conducted using data from the $127$ participants who passed the attention check.
 
-After giving consent, the participant can start the trials. Two visual displays of data are shown, where the data may be the same or different (@fig-act). One of the visual displays is a $2\text{-}D$ NLDR plot, and the other is a tour made of many $2\text{-}D$ plots. The participants were asked to decide whether the data was the same in both displays and to report their confidence about their choice and any comments about the answer.
+After giving consent, the participant can start the trials. Two visual displays of data are shown, where the data may be the same or different (@fig-act). One of the visual displays is a $2\text{-}D$ NLDR plot, and the other is a tour made of many $2\text{-}D$ plots. The subjects were asked to decide whether the data was the same in both displays and to report their confidence about their choice and any comments about the answer.
 
-When the participants completed the twenty evaluations, they were asked for their demographics, which included preferred pronoun, the highest level of education achieved, their age category, whether they used principal component analysis in their work, and whether they applied NLDR techniques such as tSNE and UMAP (@fig-demo). Finally, the participants need to click on the prolific URL ([https://app.prolific.co/submissions/](https://app.prolific.co/submissions/complete?cc=CLDDOZ10)) to redirect back to the Prolific app (@fig-end). 
+When the subjects completed the twenty evaluations, they were asked for their demographics, which included preferred pronoun, the highest level of education achieved, their age category, whether they used principal component analysis in their work, and whether they applied NLDR techniques such as tSNE and UMAP (@fig-demo). Finally, the subjects need to click on the prolific URL ([https://app.prolific.co/submissions/](https://app.prolific.co/submissions/complete?cc=CLDDOZ10)) to redirect back to the Prolific app (@fig-end). 
 
 
 ::: {.cell layout-align="center"}
@@ -467,7 +467,7 @@ When the participants completed the twenty evaluations, they were asked for thei
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![The introduction page of the study app.](../figures/vis-exp/introduction.png){#fig-intro-page fig-align='center' fig-alt='Each subject had access to the survey via the [shiny.io server](https://www.shinyapps.io/). The first interface of the survey app contained an introduction, instructions for the survey (@fig-intro-page), a consent form (@fig-consent), and buttons to access, for example, actual trials. Participants can try three examples prior to the study where the answers were not recorded (@fig-example). The subjects were first asked for their consent to the responses being used for analysis.' width=100%}
+![The introduction page of the study app.](../figures/vis-exp/introduction.png){#fig-intro-page fig-align='center' fig-alt='Each subject had access to the survey via the [shiny.io server](https://www.shinyapps.io/). The first interface of the survey app contained an introduction, instructions for the survey (@fig-intro-page), a consent form (@fig-consent), and buttons to access, for example, actual trials. Subjects can try three examples prior to the study where the answers were not recorded (@fig-example). The subjects were first asked for their consent to the responses being used for analysis.' width=100%}
 :::
 :::
 
@@ -475,7 +475,7 @@ When the participants completed the twenty evaluations, they were asked for thei
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![The consent form provided in the study app.](../figures/vis-exp/consent.png){#fig-consent fig-align='center' fig-alt='A screenshot of the introduction page of the Shiny survey application. The page contains a title and several paragraphs explaining the purpose of the study and providing instructions on how to complete the visual comparison tasks. Text explains what participants will see during the experiment and how to submit responses. Navigation buttons are shown at the bottom of the page, allowing participants to proceed to the consent form, try example trials, or begin the study.' width=100%}
+![The consent form provided in the study app.](../figures/vis-exp/consent.png){#fig-consent fig-align='center' fig-alt='A screenshot of the introduction page of the Shiny survey application. The page contains a title and several paragraphs explaining the purpose of the study and providing instructions on how to complete the visual comparison tasks. Text explains what subjects will see during the experiment and how to submit responses. Navigation buttons are shown at the bottom of the page, allowing subjects to proceed to the consent form, try example trials, or begin the study.' width=100%}
 :::
 :::
 
@@ -483,7 +483,7 @@ When the participants completed the twenty evaluations, they were asked for thei
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![The example trial page of the study app.](../figures/vis-exp/example.png){#fig-example fig-align='center' fig-alt='A screenshot of the example trials interface in the survey application. The page displays sample visualizations similar to those used in the main experiment, allowing participants to practice the task. Instructions explain that these examples are for familiarization only and that responses are not recorded. Controls are shown for navigating through three example trials before starting the actual study.' width=100%}
+![The example trial page of the study app.](../figures/vis-exp/example.png){#fig-example fig-align='center' fig-alt='A screenshot of the example trials interface in the survey application. The page displays sample visualizations similar to those used in the main experiment, allowing subjects to practice the task. Instructions explain that these examples are for familiarization only and that responses are not recorded. Controls are shown for navigating through three example trials before starting the actual study.' width=100%}
 :::
 :::
 
@@ -491,7 +491,7 @@ When the participants completed the twenty evaluations, they were asked for thei
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![The actual trial page of the study app.](../figures/vis-exp/attempt.png){#fig-act fig-align='center' fig-alt='A screenshot of the main trial interface of the survey application. Two visual displays are shown side by side. One display shows a two-dimensional nonlinear dimensionality reduction (NLDR) embedding, while the other shows a tour consisting of many two-dimensional linear projections of the same or different high-dimensional data. Below the visualizations, participants are asked to indicate whether the data shown in the two displays are the same or different. Additional interface elements allow participants to report their confidence in the decision and to enter optional comments before submitting the response.' width=100%}
+![The actual trial page of the study app.](../figures/vis-exp/attempt.png){#fig-act fig-align='center' fig-alt='A screenshot of the main trial interface of the survey application. Two visual displays are shown side by side. One display shows a two-dimensional nonlinear dimensionality reduction (NLDR) embedding, while the other shows a tour consisting of many two-dimensional linear projections of the same or different high-dimensional data. Below the visualizations, subjects are asked to indicate whether the data shown in the two displays are the same or different. Additional interface elements allow subjects to report their confidence in the decision and to enter optional comments before submitting the response.' width=100%}
 :::
 :::
 
@@ -499,7 +499,7 @@ When the participants completed the twenty evaluations, they were asked for thei
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![The demographics page of the study app.](../figures/vis-exp/demographics.png){#fig-demo fig-align='center' fig-alt='A screenshot of the demographics questionnaire displayed after the completion of all trials. The page contains several questions asking participants about their preferred pronoun, highest level of education attained, age category, and experience with statistical techniques. Checkboxes or selection inputs ask whether participants have used principal component analysis and nonlinear dimensionality reduction methods such as tSNE or UMAP. A button is provided to submit the demographic information.' width=100%}
+![The demographics page of the study app.](../figures/vis-exp/demographics.png){#fig-demo fig-align='center' fig-alt='A screenshot of the demographics questionnaire displayed after the completion of all trials. The page contains several questions asking subjects about their preferred pronoun, highest level of education attained, age category, and experience with statistical techniques. Checkboxes or selection inputs ask whether subjects have used principal component analysis and nonlinear dimensionality reduction methods such as tSNE or UMAP. A button is provided to submit the demographic information.' width=100%}
 :::
 :::
 
@@ -507,7 +507,7 @@ When the participants completed the twenty evaluations, they were asked for thei
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![The end page of the study app.](../figures/vis-exp/end_page.png){#fig-end fig-align='center' fig-alt='A screenshot of the final page of the survey application shown after all responses have been submitted. The page includes a short message thanking participants for completing the study and provides instructions for returning to the Prolific platform. A clickable link or button is displayed that redirects participants to the Prolific submission URL to complete the study and receive credit.' width=100%}
+![The end page of the study app.](../figures/vis-exp/end_page.png){#fig-end fig-align='center' fig-alt='A screenshot of the final page of the survey application shown after all responses have been submitted. The page includes a short message thanking subjects for completing the study and provides instructions for returning to the Prolific platform. A clickable link or button is displayed that redirects subjects to the Prolific submission URL to complete the study and receive credit.' width=100%}
 :::
 :::
 
@@ -518,7 +518,7 @@ After identifying the eligible subject IDs, one is randomly assigned to the part
 
 Once a subject ID is allocated to a participant, the experiment design data are loaded, and the relevant attempts, data structure, and methods are presented to the participant. This process continues until the participant completes all attempts. After determining the data structure and methods, the relevant high-dimensional and embedding data are loaded from "high_d_data_three_clust_all.rds" and "embedding_data_three_clust_all.rds", respectively, and displayed in both tour and $2\text{-}D$ NLDR plots. 
 
-Once the participant records their answers, a new row is added to the "result_df" Google Sheet with their responses. This continues until the participant finishes the study. Finally, after completing the evaluations, participants are asked to fill out a demographics questionnaire. Their responses are then recorded in a new row of the "demographic_details" Google Sheet.
+Once the participant records their answers, a new row is added to the "result_df" Google Sheet with their responses. This continues until the participant finishes the study. Finally, after completing the evaluations, subjects are asked to fill out a demographics questionnaire. Their responses are then recorded in a new row of the "demographic_details" Google Sheet.
 
 ## Variability across data sets and subjects
 
@@ -550,7 +550,7 @@ The proportion correct across subjects is symmetric and unimodal, reasonably con
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Examining the variability of proportion correct across data sets and subjects. Panel (a) shows the proportion of correct responses for each data set. The variation in correct response rates ranges from $0.3$ to $0.7$. Given the randomized and balanced design, this variation is largely consistent with expected replication variability and does not add a substantial amount of random noise to the overall results. Panel (b) shows the distribution of proportion correct across subjects. It is relatively Gaussian, with a few participants performing exceptionally well and some poorly. This is consistent with other human subject experiments and reflects individual visual skills, illustrating the need to include subject-specific random effects in the model.](B-appB_files/figure-html/fig-var-sum-1.png){#fig-var-sum fig-align='center' fig-alt='The figure has two panels summarizing variability in proportion correct. Panel (a) shows a plot of proportion correct for each data set, with values ranging approximately from 0.3 to 0.7. The proportions vary across data sets but cluster within a moderate range. Panel (b) shows a histogram of subjects’ proportion of correct responses. The horizontal axis is proportion correct, ranging from 0 to 1, and the vertical axis is the number of subjects. The distribution is roughly symmetric and unimodal, centered near 0.5. Most subjects cluster around the middle accuracy range, with fewer subjects at the lower and higher ends. A small number of participants perform notably better or worse than average, and no subject has perfect or zero accuracy.' width=100%}
+![Examining the variability of proportion correct across data sets and subjects. Panel (a) shows the proportion of correct responses for each data set. The variation in correct response rates ranges from $0.3$ to $0.7$. Given the randomized and balanced design, this variation is largely consistent with expected replication variability and does not add a substantial amount of random noise to the overall results. Panel (b) shows the distribution of proportion correct across subjects. It is relatively Gaussian, with a few subjects performing exceptionally well and some poorly. This is consistent with other human subject experiments and reflects individual visual skills, illustrating the need to include subject-specific random effects in the model.](B-appB_files/figure-html/fig-var-sum-1.png){#fig-var-sum fig-align='center' fig-alt='The figure has two panels summarizing variability in proportion correct. Panel (a) shows a plot of proportion correct for each data set, with values ranging approximately from 0.3 to 0.7. The proportions vary across data sets but cluster within a moderate range. Panel (b) shows a histogram of subjects’ proportion of correct responses. The horizontal axis is proportion correct, ranging from 0 to 1, and the vertical axis is the number of subjects. The distribution is roughly symmetric and unimodal, centered near 0.5. Most subjects cluster around the middle accuracy range, with fewer subjects at the lower and higher ends. A small number of subjects perform notably better or worse than average, and no subject has perfect or zero accuracy.' width=100%}
 :::
 :::
 
@@ -559,15 +559,15 @@ The proportion correct across subjects is symmetric and unimodal, reasonably con
 
 ### Data cleaning
 
-The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty trials, including the demographics and the attention check trial. Participants who exceeded the average time of $5-10$ minutes were excluded, as determined from the pilot study. Following this, individuals who didn't accurately detect the attention check trial were also removed. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set is further refined by filtering out all the responses which showed the same data structures in $2\text{-}D$ NLDR plot and tour.
+The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty trials, including the demographics and the attention check trial. Subjects who exceeded the average time of $5-10$ minutes were excluded, as determined from the pilot study. Following this, individuals who didn't accurately detect the attention check trial were also removed. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set is further refined by filtering out all the responses which showed the same data structures in $2\text{-}D$ NLDR plot and tour.
 
 ### Demographics
 
 Along with the responses to the trials, we have collected a series of demographic information, including preferred pronoun, age range category, educational background, and previous experience in PCA and Non-linear dimension reduction techniques. @tbl-pronoun, @tbl-age, @tbl-education, @tbl-pca, and @tbl-nldr provide summaries of the demographic data.  
 
-The participants are fairly balanced in terms of pronouns, with similar proportions identifying as *she/her* ($50.4\%$) and *he/him* ($48.0\%$), and a small number identifying as *they/them* ($1.6\%$). Participants cover a wide age range, with most between $25$ and $34$ years old ($35.4\%$), followed by those aged $18-24$ ($20.5\%$) and $35-44$ ($19.7\%$). The sample has more younger and mid-adult age groups, while still including representation from older participants.
+The subjects are fairly balanced in terms of pronouns, with similar proportions identifying as *she/her* ($50.4\%$) and *he/him* ($48.0\%$), and a small number identifying as *they/them* ($1.6\%$). Subjects cover a wide age range, with most between $25$ and $34$ years old ($35.4\%$), followed by those aged $18-24$ ($20.5\%$) and $35-44$ ($19.7\%$). The sample has more younger and mid-adult age groups, while still including representation from older subjects.
 
-Most participants have completed an undergraduate degree ($44.9\%$) or a postgraduate qualification ($26.8\%$), with others reporting some undergraduate study ($21.3\%$). Only a small proportion did not complete high school. Prior experience with dimension reduction methods is limited: the majority report no previous experience with PCA ($84.2\%$) or nonlinear dimension reduction techniques ($86.6\%$). This suggests that most participants approached the task without strong prior familiarity, allowing the results to reflect general perceptual interpretation rather than expert knowledge.
+Most subjects have completed an undergraduate degree ($44.9\%$) or a postgraduate qualification ($26.8\%$), with others reporting some undergraduate study ($21.3\%$). Only a small proportion did not complete high school. Prior experience with dimension reduction methods is limited: the majority report no previous experience with PCA ($84.2\%$) or nonlinear dimension reduction techniques ($86.6\%$). This suggests that most subjects approached the task without strong prior familiarity, allowing the results to reflect general perceptual interpretation rather than expert knowledge.
 
 
 ::: {.cell layout-align="center"}
@@ -576,7 +576,7 @@ Most participants have completed an undergraduate degree ($44.9\%$) or a postgra
 
 
 
-::: {#tbl-pronoun .cell layout-align="center" tbl-cap='Summary of the pronoun distribution of participants recruited for this study.'}
+::: {#tbl-pronoun .cell layout-align="center" tbl-cap='Summary of the pronoun distribution of subjects recruited for this study.'}
 ::: {.cell-output-display}
 
 
@@ -593,7 +593,7 @@ Most participants have completed an undergraduate degree ($44.9\%$) or a postgra
 
 
 
-::: {#tbl-age .cell layout-align="center" tbl-cap='Summary of the age distribution of participants recruited for this study.'}
+::: {#tbl-age .cell layout-align="center" tbl-cap='Summary of the age distribution of subjects recruited for this study.'}
 ::: {.cell-output-display}
 
 
@@ -612,7 +612,7 @@ Most participants have completed an undergraduate degree ($44.9\%$) or a postgra
 
 
 
-::: {#tbl-education .cell layout-align="center" tbl-cap='Summary of the educational distribution of participants recruited for this study.'}
+::: {#tbl-education .cell layout-align="center" tbl-cap='Summary of the educational distribution of subjects recruited for this study.'}
 ::: {.cell-output-display}
 
 
@@ -631,7 +631,7 @@ Most participants have completed an undergraduate degree ($44.9\%$) or a postgra
 
 
 
-::: {#tbl-pca .cell layout-align="center" tbl-cap='Summary of the previous experience in PCA of participants recruited for this study.'}
+::: {#tbl-pca .cell layout-align="center" tbl-cap='Summary of the previous experience in PCA of subjects recruited for this study.'}
 ::: {.cell-output-display}
 
 
@@ -647,7 +647,7 @@ Most participants have completed an undergraduate degree ($44.9\%$) or a postgra
 
 
 
-::: {#tbl-nldr .cell layout-align="center" tbl-cap='Summary of the previous experience in Nonlinear dimension reduction techniques of participants recruited for this study.'}
+::: {#tbl-nldr .cell layout-align="center" tbl-cap='Summary of the previous experience in Nonlinear dimension reduction techniques of subjects recruited for this study.'}
 ::: {.cell-output-display}
 
 

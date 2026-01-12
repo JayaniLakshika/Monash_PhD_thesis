@@ -372,7 +372,7 @@ For each point, a direction in the first $p-1$ dimensions is sampled uniformly o
 :::
 
 
-Cone-shaped structures appear in particle dispersions, light beams, and tapering processes, where spread decreases along one axis. They are also used to benchmark clustering and dimensionality reduction methods [@hadsell2006].
+Cone-shaped structures appear in particle dispersions, light beams, and tapering processes, where spread decreases along one axis. They are also used to benchmark clustering and dimension reduction methods [@hadsell2006].
 
 
 ::: {.cell}
@@ -645,7 +645,7 @@ Pyramid structures mimic tapering or layered geometries seen in architecture, cr
 
 #### S-curve
 
-The S-curve is a smooth, non-linear manifold in $3\text{-}D$ space. Using `gen_scurve(n)`, it is defined by $X_1 = \sin(\theta), \quad X_2 \sim U(0, 2), \quad X_3 = \text{sign}(\theta)(\cos(\theta) - 1), \quad \theta \sim U(-3\pi/2, 3\pi/2).$
+The S-curve is a smooth, nonlinear manifold in $3\text{-}D$ space. Using `gen_scurve(n)`, it is defined by $X_1 = \sin(\theta), \quad X_2 \sim U(0, 2), \quad X_3 = \text{sign}(\theta)(\cos(\theta) - 1), \quad \theta \sim U(-3\pi/2, 3\pi/2).$
 
 This follows the `s_curve()` function from snedata [@james2025], itself adapted from *scikit-learn*, but differs by returning a tibble with standardized names (`x1`, `x2`, `x3`), excluding the color variable, and omitting built-in noise (which can be added separately). S-curve is commonly used in manifold learning and dimension reduction as benchmarks for unfolding curved structure.
 
@@ -824,7 +824,7 @@ The Swiss roll is a classic benchmark for manifold learning, illustrating how a 
 
 <!--https://laustep.github.io/stlahblog/posts/TorusKnot4D.html-->
 
-The Trefoil is a closed, nontrivial one-dimensional manifold embedded in $3\text{-}D$ or $4\text{-}D$ space (@fig-trefoil-proj). The trefoil features topological complexity in the form of self-overlaps, making it a valuable test case for evaluating the ability of non-linear dimension reduction methods to preserve global structure, loops, and embeddings in high-dimensional data. 
+The Trefoil is a closed, nontrivial one-dimensional manifold embedded in $3\text{-}D$ or $4\text{-}D$ space (@fig-trefoil-proj). The trefoil features topological complexity in the form of self-overlaps, making it a valuable test case for evaluating the ability of nonlinear dimension reduction methods to preserve global structure, loops, and embeddings in high-dimensional data. 
 
 For the $4\text{-}D$ trefoil knot [@laurent2024], the function `gen_trefoil4d(n, steps)` generates the structure on the $3$-sphere ($S^3 \subset \mathbb{R}^4$) using two angular parameters, $\theta$ and $\phi$. A band of thickness around the knot path is controlled by the `steps` argument, while the number of $\theta$ and $\phi$ values is determined by the `steps` and `n` arguments, respectively (@fig-trefoil-proj a). The coordinates are defined as $$X_1 = \cos(\theta) \cos(\phi), \quad X_2 = \cos(\theta) \sin(\phi), \\\quad X_3 = \sin(\theta) \cos(1.5 \phi),\text{ and }X_4 = \sin(\theta) \sin(1.5 \phi),$$ where $\theta$ parameterizes the band thickness and $\phi$ parameterizes the knot trajectory. 
 
@@ -950,7 +950,7 @@ Second, the `gen_curvycylinder(n, p, h)` function generates a $p\text{-}D$ datas
 :::
 
 
-For a spiraling path on a spherical surface in the first four dimensions, `gen_sphericalspiral(n, p, spins)` (@fig-triginometric-proj c), let $\theta \in [0, 2\pi \times \text{spins}]$  be the azimuthal angle (longitude), controls the number of spiral turns and the $\phi \in [0, \pi]$ be the polar angle (latitude), controls the vertical sweep from the north to the south pole. Cartesian coordinates from spherical conversion: $X_1 = \sin(\phi)\cos(\theta)$, $X_2 = \sin(\phi)\sin(\theta)$, $X_3 = \cos(\phi) + \varepsilon$, where $\varepsilon \sim U(-0.5, 0.5)$ introduces vertical jitter, and $X_4 = \theta / \max(\theta)$: a normalized progression along the spiral path. This generates a spherical spiral curve embedded in $4\text{-}D$ space, combining both circular and vertical movement, with gentle curvature and non-linear progression.  
+For a spiraling path on a spherical surface in the first four dimensions, `gen_sphericalspiral(n, p, spins)` (@fig-triginometric-proj c), let $\theta \in [0, 2\pi \times \text{spins}]$  be the azimuthal angle (longitude), controls the number of spiral turns and the $\phi \in [0, \pi]$ be the polar angle (latitude), controls the vertical sweep from the north to the south pole. Cartesian coordinates from spherical conversion: $X_1 = \sin(\phi)\cos(\theta)$, $X_2 = \sin(\phi)\sin(\theta)$, $X_3 = \cos(\phi) + \varepsilon$, where $\varepsilon \sim U(-0.5, 0.5)$ introduces vertical jitter, and $X_4 = \theta / \max(\theta)$: a normalized progression along the spiral path. This generates a spherical spiral curve embedded in $4\text{-}D$ space, combining both circular and vertical movement, with gentle curvature and nonlinear progression.  
 
 
 ::: {.cell}
@@ -990,7 +990,7 @@ For a helical spiral in four dimensions, `gen_helicalspiral(n, p)` (@fig-trigino
 :::
 
 
-Similarly, the `gen_conicspiral(n, p, spins)` function generates a dataset of $n$ points forming a conical spiral in the first four dimensions of $p\text{-}D$ (@fig-triginometric-proj e). The geometry combines radial expansion, vertical elevation, and spiral deformation, simulating a structure that fans out like a $3\text{-}D$ conic helix. The shape is defined by parameter $\theta \in [0, 2\pi\text{spins}]$, controlling the angular progression of the spiral. The Archimedean spiral in the horizontal plane is represented by; $X_1 = \theta\cos(\theta)$ for radial expansion in $x$, and $X_2 = \theta\sin(\theta)$ for radial expansion in $y$. The growth pattern resembles a cone, with the height increasing according to $X_3 = 2\theta / \max(\theta) + \varepsilon_3$, with $\varepsilon_3 \sim U(-0.1, 0.6).$ Spiral modulation in the fourth dimension is represented by $X_4 = \theta\sin(2\theta) + \varepsilon_4$, with $\varepsilon_4 \sim U(-0.1, 0.6)$, which simulates a twisting helical component in a non-radial dimension. 
+Similarly, the `gen_conicspiral(n, p, spins)` function generates a dataset of $n$ points forming a conical spiral in the first four dimensions of $p\text{-}D$ (@fig-triginometric-proj e). The geometry combines radial expansion, vertical elevation, and spiral deformation, simulating a structure that fans out like a $3\text{-}D$ conic helix. The shape is defined by parameter $\theta \in [0, 2\pi \times \text{spins}]$, controlling the angular progression of the spiral. The Archimedean spiral in the horizontal plane is represented by; $X_1 = \theta\cos(\theta)$ for radial expansion in $x$, and $X_2 = \theta\sin(\theta)$ for radial expansion in $y$. The growth pattern resembles a cone, with the height increasing according to $X_3 = 2\theta / \max(\theta) + \varepsilon_3$, with $\varepsilon_3 \sim U(-0.1, 0.6).$ Spiral modulation in the fourth dimension is represented by $X_4 = \theta\sin(2\theta) + \varepsilon_4$, with $\varepsilon_4 \sim U(-0.1, 0.6)$, which simulates a twisting helical component in a non-radial dimension. 
 
 
 ::: {.cell}
@@ -1074,7 +1074,7 @@ The package provides functionality for generating datasets with spherical hole (
 
 The core function `gen_hole(df, anchor, r)` removes points from a dataset that fall within a user-specified hypersphere. Formally, given data points ($x \in \mathbb{R}^p$), a center ($a \in \mathbb{R}^p$), and radius ($r > 0$), only points satisfying $\sqrt{\sum_{i=1}^n(x_i-a_i)^2} > r$ are retained. The anchor point ($a$) can either be user-specified or default to the dataset mean, and radius ($r$) is controlled by the user, with safeguards to avoid trivial or degenerate cases. Because it operates generically on any dataset, spherical or hyperspherical holes can be embedded in a wide range of geometric structures.
 
-Two specialized wrappers illustrate this idea. The function `gen_scurvehole(n, r_hole)` generates an S-curve with a spherical hole by applying `gen_hole()` to the output of `gen_scurve()`. This structure has been used in prior diagnostic studies of NLDR methods [@joshua2000; @van2007], since it tests the ability of algorithms to capture non-linear manifolds that are not simply connected. The second wrapper, `gen_unifcubehole(n, p, r_hole)`, generates uniformly sampled cube data with a hyperspherical hole. By embedding a hyperspherical void inside a convex high-dimensional structure, this creates non-convex regions that challenge algorithms in terms of separability and neighborhood preservation.
+Two specialized wrappers illustrate this idea. The function `gen_scurvehole(n, r_hole)` generates an S-curve with a spherical hole by applying `gen_hole()` to the output of `gen_scurve()`. This structure has been used in prior diagnostic studies of NLDR methods [@joshua2000; @van2007], since it tests the ability of algorithms to capture nonlinear manifolds that are not simply connected. The second wrapper, `gen_unifcubehole(n, p, r_hole)`, generates uniformly sampled cube data with a hyperspherical hole. By embedding a hyperspherical void inside a convex high-dimensional structure, this creates non-convex regions that challenge algorithms in terms of separability and neighborhood preservation.
 
 ### Generate noise dimensions
 
@@ -1163,7 +1163,7 @@ Function & Explanation\\
 \texttt{make\_mobiusgau} & Möbius-like cluster combined with a Gaussian.\\
 \texttt{make\_multigau} & Multiple Gaussian clusters in high-dimensional space.\\
 \texttt{make\_curvygau} & Curvilinear cluster with a Gaussian cluster.\\
-\texttt{make\_klink\_circles} & K-link circular clusters (non-linear circular patterns).\\
+\texttt{make\_klink\_circles} & K-link circular clusters (nonlinear circular patterns).\\
 \texttt{make\_chain\_circles} & Chain-like circular clusters connected sequentially.\\
 \texttt{make\_klink\_curvycycle} & K-link curvy cycle clusters (curvilinear loop structures).\\
 \texttt{make\_chain\_curvycycle} & Chain-like curvy cycle clusters connected sequentially.\\
@@ -1183,7 +1183,7 @@ Function & Explanation\\
 
 ### Additional functions
 
-The package includes various supplementary tools in addition to the shape-generating functions mentioned earlier. These tools allow users to create background noise, randomize the rows of the data, relocate clusters, generate a vector whose product and sum are approximately equal to a target value, rotate structures, and normalize the data. @tbl-add-tb details these functions. More detailed explanations are available in [jayanilakshika.github.io/cardinalR/articles/03additionalfun](https://jayanilakshika.github.io/cardinalR/articles/03additionalfun.html).
+The package includes various supplementary tools in addition to the shape-generating functions mentioned earlier. These tools allow users to create background noise, randomize the rows of the data, relocate clusters, generate a vector whose product and sum are approximately equal to a target value, rotate structures, and normalize the data. @tbl-add-tb details these functions. More detailed explanations are available in [jayanilakshika.github.io/cardinalR/articles/03additionalfun.html](https://jayanilakshika.github.io/cardinalR/articles/03additionalfun.html).
 
 
 ::: {.cell}
@@ -1290,14 +1290,14 @@ We applied six popular DR techniques to the generated dataset: Principal Compone
 
 ::: {.cell}
 ::: {.cell-output-display}
-![Assessing which of the 6 NLDR layouts ((a) tSNE, (b) UMAP, (c) PAHTE, (d) TriMAP, (e) PaCMAP, and (f) PCA) of the five clusters data is the better representation using HBE for varying binwidth ($a_1$). Color is used for the lines and points in the left plot to match the scatterplots of the NLDR layouts (a-f). Layout f is universally poor. Layouts a and b are universally optimal. Layout b shows six well-separated clusters and layout a shows close clusters, thus layout a is the best choice.](04-chap4_files/figure-pdf/fig-nldr-layouts-1.pdf){#fig-nldr-layouts fig-pos='!ht' fig-alt='A multi-panel figure compares 2-D scatterplots from six nonlinear dimensionality reduction methods applied to the same dataset with five true clusters. Each panel plots the first embedding dimension on the horizontal axis and the second embedding dimension on the vertical axis. Points represent individual observations and are colored by cluster membership, with six distinct cluster colors reused consistently across panels. In the tSNE panel, clusters form compact, clearly separated groups with small gaps between clusters, indicating strong preservation of both local neighbourhoods and the global cluster layout. UMAP and PaCMAP also show six visibly distinct clusters that are moderately well separated but with slightly more overlap and distortion than tSNE. PHATE produces curved, nonlinear cluster shapes where clusters are stretched or intertwined, obscuring the original simple cluster geometry. TriMAP collapses the data into three main visible groups instead of six, with only small distances between these groups, suggesting loss of finer cluster structure. PCA displays the weakest structure: clusters overlap substantially and align along a roughly linear or planar trend, failing to reflect the underlying non-linear separation among the six groups.' width=100%}
+![Assessing which of the 6 NLDR layouts ((a) tSNE, (b) UMAP, (c) PAHTE, (d) TriMAP, (e) PaCMAP, and (f) PCA) of the five clusters data is the better representation using HBE for varying binwidth ($a_1$). Color is used for the lines and points in the left plot to match the scatterplots of the NLDR layouts (a-f). Layout f is universally poor. Layouts a and b are universally optimal. Layout b shows six well-separated clusters and layout a shows close clusters, thus layout a is the best choice.](04-chap4_files/figure-pdf/fig-nldr-layouts-1.pdf){#fig-nldr-layouts fig-pos='!ht' fig-alt='A multi-panel figure compares 2-D scatterplots from six nonlinear dimension reduction methods applied to the same dataset with five true clusters. Each panel plots the first embedding dimension on the horizontal axis and the second embedding dimension on the vertical axis. Points represent individual observations and are colored by cluster membership, with six distinct cluster colors reused consistently across panels. In the tSNE panel, clusters form compact, clearly separated groups with small gaps between clusters, indicating strong preservation of both local neighbourhoods and the global cluster layout. UMAP and PaCMAP also show six visibly distinct clusters that are moderately well separated but with slightly more overlap and distortion than tSNE. PHATE produces curved, nonlinear cluster shapes where clusters are stretched or intertwined, obscuring the original simple cluster geometry. TriMAP collapses the data into three main visible groups instead of six, with only small distances between these groups, suggesting loss of finer cluster structure. PCA displays the weakest structure: clusters overlap substantially and align along a roughly linear or planar trend, failing to reflect the underlying nonlinear separation among the six groups.' width=100%}
 :::
 :::
 
 
 To assess their performance, we computed the hexbin error (HBE) between the observed high-dimensional data and the fitted values, defined as the high-dimensional mappings of the bin centroids [@gamage2025c]. A lower HBE indicates that the method better preserves the high-dimensional structure in its low-dimensional embedding.
 
-As shown in @fig-nldr-layouts, tSNE (@fig-nldr-layouts a) achieved the lowest HBE across bin widths (mostly tiny), indicating high preservation of both local and global structures. Its layout displays well-separated clusters with minimal inter-cluster distances, making it the most faithful representation of the underlying data structure. UMAP and PaCMAP (@fig-nldr-layouts b and e) produced moderately accurate embeddings, although the six clusters appear more well-separated, while PHATE (@fig-nldr-layouts c) shows nonlinear cluster structures irrespective of the original structure. Also, TriMAP (@fig-nldr-layouts d) has high HBE, and shows three clusters with small distances. PCA (@fig-nldr-layouts f) failed to capture the non-linear geometry, leading to the highest HBE.
+As shown in @fig-nldr-layouts, tSNE (@fig-nldr-layouts a) achieved the lowest HBE across bin widths (mostly tiny), indicating high preservation of both local and global structures. Its layout displays well-separated clusters with minimal inter-cluster distances, making it the most faithful representation of the underlying data structure. UMAP and PaCMAP (@fig-nldr-layouts b and e) produced moderately accurate embeddings, although the six clusters appear more well-separated, while PHATE (@fig-nldr-layouts c) shows nonlinear cluster structures irrespective of the original structure. Also, TriMAP (@fig-nldr-layouts d) has high HBE, and shows three clusters with small distances. PCA (@fig-nldr-layouts f) failed to capture the nonlinear geometry, leading to the highest HBE.
 
 ### Benchmarking clustering algorithms
 
