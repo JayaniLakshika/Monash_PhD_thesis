@@ -235,7 +235,7 @@ clust_data_proj3 <- plot_proj(
               )
 ```
 
-```{r fig-dt-tourr-pbmc, eval=knitr::is_html_output(), fig.cap="Tour view of the $10\\text{-}D$ PBMC CITE-seq dataset. The data shows six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise.", fig.pos="!ht", fig.alt="The figure shows a tour of the 10-D PBMC CITE-seq dataset, where points move smoothly as the projection rotates through different two-dimensional views. Across the tour, six clusters remain consistently visible: three exhibit nonlinear geometric structure, appearing as curved or twisted shapes that change orientation across projections, while three appear more compact and approximately Gaussian. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise."}
+```{r fig-dt-tourr-pbmc, eval=knitr::is_html_output(), fig.cap="Tour view of the $10\\text{-}D$ PBMC CITE-seq dataset, shown using a random subset of $10000$ points for computational efficiency. The data shows six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise.", fig.pos="!ht", fig.alt="The figure shows a tour of the 10-D PBMC CITE-seq dataset, where points move smoothly as the projection rotates through different two-dimensional views. Across the tour, six clusters remain consistently visible: three exhibit nonlinear geometric structure, appearing as curved or twisted shapes that change orientation across projections, while three appear more compact and approximately Gaussian. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise."}
 
 pbmcdatafig <- bscols(
     htmltools::div(
@@ -421,7 +421,7 @@ pbmc_data_proj3 <- plot_proj(
 #| fig-width: 15
 #| fig-height: 5
 #| label: fig-dt-prj-pbmc
-#| fig-cap: "Three $2\\text{-}D$ projections of the $10\\text{-}D$ PBMC CITE-seq data. The dataset shows six well-separated yet closely positioned clusters, including three with nonlinear geometric structures and three approximately Gaussian clusters, along with a small amount of background noise."
+#| fig-cap: "Three $2\\text{-}D$ projections of the $10\\text{-}D$ PBMC CITE-seq data, shown using a random subset of $10000$ points for computational efficiency. The dataset shows six well-separated yet closely positioned clusters, including three with nonlinear geometric structures and three approximately Gaussian clusters, along with a small amount of background noise."
 #| fig-alt: "A three-panel figure shows three two-dimensional projections of the PBMC CITE-seq ten-dimensional datasets, each using abstract horizontal and vertical projection axes. Across these projections, six clusters are visible: three clusters exhibit nonlinear geometric shapes such as curved arcs or bent ribbons, while three appear approximately Gaussian and compact. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise."
 
 pbmc_data_proj1 + pbmc_data_proj2 +
@@ -894,7 +894,7 @@ knitr::include_graphics(here::here("figures/CITE-seq/menuraR_ui2_CITE-seq.png"))
 
 ## Future work
 
-There are several directions in which this work can be developed.
+This thesis opens up several directions for future work that build directly on its methodological, experimental, and software contributions. These include extending the proposed methods beyond $2\text{-}D$ NLDR representations, exploring additional factors that influence how NLDR layouts are perceived, and developing more interactive and diagnostic tools to support evaluation. These directions aim to deepen our understanding of NLDR behavior and improve how these methods are assessed and used in practice.
 
 <!--add section on Do you have any plans/ideas to extend this to NDR results that project into more than 2D / do you think that would even be possible (say, for up to 5D projections or so)?. You’ve got one bullet point for your thesis future work section now! You could point Fabian to your paper conclusions where some ideas are suggested.-->
 
