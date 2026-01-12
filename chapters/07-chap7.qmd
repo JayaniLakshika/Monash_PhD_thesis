@@ -224,7 +224,7 @@ class(pbmcdatafig) <- c(class(pbmcdatafig), "htmlwidget")
 pbmcdatafig
 ```
 
-Using the `cardinalR` package, we generated a synthetic dataset designed to mimic the structure of the PBMC CITE-seq data (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-dt-tourr-sim"} else { "@fig-dt-prj-sim"})`). We first created six clusters with different shapes—three approximately Gaussian, one quadratic, one spherical spiral, and one conic spiral—while adding background noise:
+We generated a synthetic $10\text{-}D$ dataset using the cardinalR package to mimic the structure of the PBMC CITE-seq data (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-dt-tourr-sim"} else { "@fig-dt-prj-sim"})`). The dataset consists of six clusters with the following number of points: $500$, $700$, $700$, $500$, $700$, and $700$, for a total of $3,800$ points. The cluster centers were arranged according to a custom distance matrix to control their relative positions in the space. Each cluster was assigned a different geometric shape: three approximately Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise.
 
 ```{r, echo=TRUE}
 ## Number of points for each cluster
