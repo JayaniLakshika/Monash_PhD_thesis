@@ -1060,22 +1060,26 @@ phd_commits |>
     geom_label_repel(
     aes(label = event), data = filter(phd_commits, Repository == types[4]),
     nudge_y = 0.5, hjust = 0, size = 3,
-    arrow = arrow(length = unit(0.02, "npc"), type = "closed")
+    arrow = arrow(length = unit(0.02, "npc"), type = "closed"),
+    segment.color = "#bdbdbd"
   ) +
   geom_label_repel(
     aes(label = event), data = filter(phd_commits, Repository == types[3]),
     nudge_y = 0.4, hjust = 0, size = 3,
-    arrow = arrow(length = unit(0.02, "npc"), type = "closed")
+    arrow = arrow(length = unit(0.02, "npc"), type = "closed"),
+    segment.color = "#bdbdbd"
   ) +
   geom_label_repel(
     aes(label = event), data = filter(phd_commits, Repository == types[2]),
     nudge_y = 0.05, hjust = 0, size = 3,
-    arrow = arrow(length = unit(0.02, "npc"), type = "closed")
+    arrow = arrow(length = unit(0.02, "npc"), type = "closed"),
+    segment.color = "#bdbdbd"
   ) +
   geom_label_repel(
     aes(label = event), data = filter(phd_commits, Repository == types[1]),
     nudge_y = 0.5, hjust = 1, size = 3,
-    arrow = arrow(length = unit(0.02, "npc"), type = "closed")
+    arrow = arrow(length = unit(0.02, "npc"), type = "closed"),
+    segment.color = "#bdbdbd"
   ) +
   ylab("") +
   scale_colour_brewer(palette = "Set2") +
