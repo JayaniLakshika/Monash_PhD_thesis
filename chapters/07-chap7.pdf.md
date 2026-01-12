@@ -10,7 +10,7 @@
 :::
 
 
-# Conclusion and future plans {#sec-conclusion}
+# Conclusion and Future Plans {#sec-conclusion}
 
 This thesis presents five key contributions that collectively advance the understanding and evaluation of NLDR methods. The work introduces a new method and software for NLDR diagnostics, providing insights into how people identify data structures when NLDR layouts and tour views are displayed together. It develops methods for generating clustering data structures and implements user-friendly tools that support exploratory analysis and visualization.
 
@@ -22,7 +22,7 @@ The primary contributions of this research are fivefold. First, we introduce a n
 
 In the Introduction, a published UMAP layout (*n_neighbors = 30* and *min_dist = 0.3*) of a human PBMC CITE-seq dataset [@hao2021] is used as a motivating example. The UMAP layout shows several visually distinct clusters with different shapes. Some clusters appear compact and well separated, while others are elongated, curved, or partially overlapping. In total, six clusters can be seen, including three with nonlinear shapes, two roughly Gaussian clusters, and one elliptical cluster, along with a small amount of background noise scattered between clusters. At first glance, it looks convincing. But this immediately raises an important question: *is this really the best way to represent the structure in the $10\text{-}D$ PBMC CITE-seq data?*
 
-Looking more closely, the data contain six clusters that are fairly close to one another (@fig-dt-prj). Three of them have clearly nonlinear shapes, two Gaussian blobs, and one is closer to an ellipse, with a bit of background noise scattered around. These kinds of data structures are common in bioinformatics data. Using the `cardinalR` package, data with these different cluster shapes and background noise can be generated.
+Looking more closely, the data contain six clusters that are fairly close to one another (@fig-dt-prj-pbmc). Three of them have clearly nonlinear shapes, two Gaussian blobs, and one is closer to an ellipse, with a bit of background noise scattered around. These kinds of data structures are common in bioinformatics data. Using the `cardinalR` package, data with these different cluster shapes and background noise can be generated (@fig-dt-prj-sim).
 
 
 ::: {.cell}
@@ -40,6 +40,13 @@ Looking more closely, the data contain six clusters that are fairly close to one
 ::: {.cell}
 
 :::
+
+
+
+::: {.cell}
+
+:::
+
 
 
 
@@ -51,7 +58,15 @@ Looking more closely, the data contain six clusters that are fairly close to one
 
 ::: {.cell}
 ::: {.cell-output-display}
-![Three $2\text{-}D$ projections from $10\text{-}D$, for the PBMC CITE-seq (a1-a3) and a simulated dataset generated using \texttt{cardinalR} (b1-b3) data. The PBMC CITE-seq data show six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\text{-}D$ dataset with similar structural characteristics.](07-chap7_files/figure-pdf/fig-dt-prj-1.pdf){#fig-dt-prj fig-alt='A six-panel figure shows three two-dimensional projections of two different ten-dimensional datasets. The top row (panels a1–a3) displays three distinct 2-D projections of the PBMC CITE-seq data, each using abstract horizontal and vertical projection axes. Across these projections, six clusters are visible: three clusters exhibit nonlinear geometric shapes such as curved arcs or bent ribbons, while three appear approximately Gaussian and compact. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise. The bottom row (panels b1–b3) shows three corresponding 2-D projections of a simulated dataset generated using cardinalR. These projections display six clusters with analogous structural diversity: three approximately Gaussian clusters, one quadratic-shaped cluster, one spherical spiral, and one conic spiral, again with sparse background noise. Although the exact shapes and relative positions vary across projections, the simulated data reproduces the mixture of nonlinear and Gaussian cluster structures observed in the PBMC CITE-seq data, illustrating structural similarity between the real and synthetic high-dimensional datasets.'}
+![Three $2\text{-}D$ projections from $10\text{-}D$, for the PBMC CITE-seq (a1-a3) and a simulated dataset generated using \texttt{cardinalR} (b1-b3) data. The PBMC CITE-seq data show six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\text{-}D$ dataset with similar structural characteristics.](07-chap7_files/figure-pdf/fig-dt-prj-pbmc-1.pdf){#fig-dt-prj-pbmc fig-alt='A six-panel figure shows three two-dimensional projections of two different ten-dimensional datasets. The top row (panels a1–a3) displays three distinct 2-D projections of the PBMC CITE-seq data, each using abstract horizontal and vertical projection axes. Across these projections, six clusters are visible: three clusters exhibit nonlinear geometric shapes such as curved arcs or bent ribbons, while three appear approximately Gaussian and compact. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise. The bottom row (panels b1–b3) shows three corresponding 2-D projections of a simulated dataset generated using cardinalR. These projections display six clusters with analogous structural diversity: three approximately Gaussian clusters, one quadratic-shaped cluster, one spherical spiral, and one conic spiral, again with sparse background noise. Although the exact shapes and relative positions vary across projections, the simulated data reproduces the mixture of nonlinear and Gaussian cluster structures observed in the PBMC CITE-seq data, illustrating structural similarity between the real and synthetic high-dimensional datasets.'}
+:::
+:::
+
+
+
+::: {.cell}
+::: {.cell-output-display}
+![Three $2\text{-}D$ projections from $10\text{-}D$, for the PBMC CITE-seq (a1-a3) and a simulated dataset generated using \texttt{cardinalR} (b1-b3) data. The PBMC CITE-seq data show six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\text{-}D$ dataset with similar structural characteristics.](07-chap7_files/figure-pdf/fig-dt-prj-sim-1.pdf){#fig-dt-prj-sim fig-alt='A six-panel figure shows three two-dimensional projections of two different ten-dimensional datasets. The top row (panels a1–a3) displays three distinct 2-D projections of the PBMC CITE-seq data, each using abstract horizontal and vertical projection axes. Across these projections, six clusters are visible: three clusters exhibit nonlinear geometric shapes such as curved arcs or bent ribbons, while three appear approximately Gaussian and compact. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise. The bottom row (panels b1–b3) shows three corresponding 2-D projections of a simulated dataset generated using cardinalR. These projections display six clusters with analogous structural diversity: three approximately Gaussian clusters, one quadratic-shaped cluster, one spherical spiral, and one conic spiral, again with sparse background noise. Although the exact shapes and relative positions vary across projections, the simulated data reproduces the mixture of nonlinear and Gaussian cluster structures observed in the PBMC CITE-seq data, illustrating structural similarity between the real and synthetic high-dimensional datasets.'}
 :::
 :::
 
@@ -145,25 +160,15 @@ Having predictions from both the built-in functions (when available) and our cen
 
 ### Interactive diagnostic tool for NLDR evaluation
 
-A promising direction for future work is the development of an interactive tool that enables diagnostic evaluation of NLDR methods, particularly in the context of clustering. Since different NLDR techniques and parameter settings can lead to varied low-dimensional representations and possible misclassifications. It is essential to have tools that help users explore and understand the sources of these discrepancies.
+A promising direction for future work is to extend the interactive capabilities developed in this thesis into a more comprehensive diagnostic tool for evaluating NLDR methods, particularly in the context of clustering. In this work, we have already demonstrated the value of interactive visualization—through tours, linked views, and brushing—for understanding how different NLDR layouts align with structure in the original high-dimensional data. Building on these ideas, a natural next step is the development of an interactive diagnostic tool that supports more targeted exploration of where and why NLDR methods succeed or fail.
 
-We propose building a Shiny-based interactive application that allows users to upload: $2\text{-}D$ and high-dimensional Euclidean distance matrices, NLDR embeddings, and results from spin-and-brush analysis [@cook2000; @wilhelm1999].
+This functionality could be developed as an extension of the existing menuraR Shiny application, which already provides a framework for exploring NLDR layouts alongside high-dimensional structure. The proposed tool would allow users to upload $2\text{-}D$ embeddings, high-dimensional data or distance matrices, and results from spin-and-brush analysis [@cook2000; @wilhelm1999], enabling deeper inspection of discrepancies between representations.
 
-Spin-and-brush is a dynamic visual method used to explore clustering structures in high-dimensional numerical data. It is especially helpful in identifying the influence of nuisance variables, structural differences among clusters (e.g., shape or variance), and detecting low-dimensional manifolds embedded in higher dimensions. This functionality can be implemented using the `detourr` package [@casper2025], which supports recording and replaying brushing sequences.
+Spin-and-brush is a dynamic visual method for exploring clustering structure in high-dimensional numerical data and has proven effective for identifying the influence of nuisance variables, differences in cluster shape or variance, and the presence of low-dimensional manifolds. Support for recording and replaying brushing sequences, as implemented in the `detourr` package [@casper2025], aligns closely with the interactive strategies used throughout this thesis and would integrate naturally into the proposed diagnostic workflow.
 
-The envisioned tool would allow users to select a specific cluster and a data point of interest and inspect how the data point relates to its cluster through interactive $2\text{-}D$ and high-dimensional distance visualizations.
+The envisioned interface would build on linked-view concepts already explored here. For example, users could select a cluster and a specific data point within a $2\text{-}D$ NLDR layout and examine how that point relates to others in the same cluster through linked distance-based views. One panel could display the selected cluster and point in the embedding, while a second panel shows the distribution of high-dimensional distances from that point to other cluster members.
 
-The user interface could be organized into two panels. The left panel would display the selected cluster and the specific point within the $2\text{-}D$ embedding. The right panel would show a distribution of distances from the selected point to all other points within the same cluster.
-
-Interactive brushing between these panels would help users explore where NLDR methods preserve or distort clustering structure. This tool would not only support more intuitive diagnosis of NLDR performance but could also serve as a foundation for building automated evaluation metrics that align with human interpretation.
-
-### Lineup protocols to evaluate NLDR sensitivity and structure preservation
-
-A valuable extension of this work would be to develop lineup-based evaluation protocols [@andreas2009] for NLDR methods. Lineups, originally introduced as a statistical inference tool for graphical perception, involve presenting a true data plot randomly embedded among a set of null plots generated under a null model. Observers are asked to identify the plot that appears most different, allowing for an assessment of whether a visual structure stands out beyond what might be expected by chance.
-
-Applied to NLDR, lineups could help evaluate how well a $2\text{-}D$ layout preserves the structure of the original high-dimensional data. For example, a lineup could contain one plot of the true NLDR layout and multiple null layouts generated from shuffled or noise-added versions of the data. If participants consistently identify the true layout, it suggests that the NLDR method has effectively preserved meaningful structure.
-
-Lineups could also be extended to study the sensitivity of NLDR methods to hyperparameters. Multiple layouts could be shown, each corresponding to a different hyperparameter setting (e.g., number of neighbors in UMAP or perplexity in tSNE), to evaluate whether small parameter changes lead to perceptually different results. This would allow researchers to quantify the robustness of each method and guide more stable parameter selection.
+Linked brushing between these panels would allow users to directly investigate where NLDR methods preserve local and global structure and where distortions occur. By extending the interactive ideas developed in this thesis, such a tool would support more intuitive diagnosis of NLDR performance and provide a foundation for developing automated evaluation measures that are better aligned with human interpretation.
 
 ### Visualizing experimental designs
 
@@ -179,7 +184,9 @@ The initial workflow includes importing the experimental design and results, dat
 
 ### Investigating perception and misperception in NLDR with additional factors
 
-While our current user study has focused on how the distance between clusters affects human perception of NLDR layouts, there remain several important factors that could further influence perception and misperception. A promising direction for future work is to systematically explore how variations in data characteristics impact a user's ability to correctly interpret dimensionality-reduced representations.
+One of the contributions of this thesis is the development of a controlled experimental framework for studying how people perceive and interpret NLDR layouts. With this framework in place and shown to work well for measuring perceptual accuracy and misperception, many additional experimental questions can now be explored systematically.
+
+While the current user study focused primarily on how cluster separation influences human perception of NLDR layouts, many additional factors are likely to affect how users conceptualize and interpret low-dimensional embeddings. An important direction for future work is therefore to extend this experimental paradigm to investigate how variations in data characteristics and algorithmic choices influence perception and misperception.
 
 Specifically, we propose extending the perceptual study to consider:
 
@@ -193,9 +200,23 @@ Specifically, we propose extending the perceptual study to consider:
 
 - Random seed: Since many NLDR methods are stochastic (e.g., tSNE, UMAP), different seeds can lead to different embeddings. It is valuable to understand whether these differences are perceptible to users and how they affect interpretability.
 
+- NLDR hyper-parameters: Algorithm-specific hyper-parameters (such as perplexity in tSNE or the number of neighbors and minimum distance in UMAP) have a strong influence on the resulting embedding. By systematically varying these settings within the experimental framework developed in this thesis, future studies could examine how hyper-parameter choices change the visual appearance of layouts and whether these changes are noticeable or misleading to users.
+
 By extending the study to incorporate these data-driven variables, we can build a more comprehensive understanding of when and why human misperception occurs in NLDR layouts, and which methods are more resilient to such distortions. This work will support the development of more robust diagnostics and improve the practical use of NLDR.
 
-### Comparative perceptual study of PCA and NLDR Methods
+### Lineup protocols to evaluate NLDR sensitivity and structure preservation
+
+In this thesis, particularly in [Chapter 5](#sec-second-paper), we developed and applied a controlled experimental framework to study how people judge whether a static $2\text{-}D$ NLDR layout represents the same underlying high-dimensional data as a tour of linear projections. This task enabled us to quantify perceptual accuracy and misperception, and to examine how these outcomes depend on factors such as cluster separation and the choice of NLDR method.
+
+As discussed in the previous section, this framework can be extended by introducing additional data- and algorithm-related factors that may influence perception. A complementary direction is to modify the experimental task itself, with the goal of probing different aspects of how NLDR layouts are perceived and potentially increasing statistical power. One promising approach in this regard is the use of lineup-based evaluation protocols [@andreas2009].
+
+Lineups were originally introduced as a graphical inference tool for assessing whether visual structure in a plot is stronger than what would be expected under a null model. In a lineup, a plot generated from the true data is randomly embedded among a set of null plots, and observers are asked to identify the plot that appears most different. Successful identification provides evidence that the visual structure is perceptually salient and not attributable to chance.
+
+When combined with the experimental framework developed in this thesis, lineups could be used to evaluate how well a $2\text{-}D$ NLDR layout preserves structure from the original high-dimensional data. For example, a lineup could include one NLDR layout computed from the true data alongside several null layouts generated from shuffled data or noise-perturbed versions. If participants consistently identify the true layout, this would suggest that the NLDR method preserves meaningful structure in a way that is perceptually accessible to human viewers.
+
+Lineups could also be used to study the sensitivity of NLDR methods to hyper-parameter choices. Layouts generated under different hyper-parameter settings—such as perplexity in tSNE or the number of neighbors and minimum distance in UMAP—could be embedded within a lineup to assess whether small parameter changes lead to perceptually distinguishable differences. This would allow the robustness and stability of NLDR methods to be evaluated from a human-centered perspective and could help guide more reliable parameter selection.
+
+### Comparative perceptual study of PCA and NLDR methods
 
 Another valuable direction for future work is to investigate how PCA compares to NLDR methods in terms of human perception and interpretability. PCA is a linear method widely used for its simplicity and mathematical transparency, whereas NLDR methods often involve nonlinear transformations and hyper-parameter tuning.
 
@@ -215,7 +236,7 @@ All materials associated with this thesis are openly available to support transp
 For accessibility, all figures include alt-text. The [autoAlt](https://github.com/numbats/autoAlt) package was used as a starting point for generating these descriptions, which were then reviewed and adjusted to better reflect the content of each figure and its caption.
 
 <!--scripts/pkg_cran_info.R-->
-The software outputs of this research have been made publicly available to support transparency and reproducibility. The R package `quollr` has been on CRAN since March $2024$ and has received $5041$ downloads from the CRAN mirror; its development version is hosted on GitHub at [github.com/jayanilakshika/quollr](https://github.com/jayanilakshika/quollr). The R package `cardinalR` has been available on CRAN since April $2024$ and has received $4283$ downloads from the CRAN mirror, with the latest development version at [github.com/jayanilakshika/cardinalR](https://github.com/jayanilakshika/cardinalR). @fig-pkg-commit gives an overview of my Git commits to these repositories.
+The software outputs of this research have been made publicly available to support transparency and reproducibility. The R package `quollr` has been on CRAN since March $2024$ and has received $5175$ downloads from the CRAN mirror; its development version is hosted on GitHub at [github.com/jayanilakshika/quollr](https://github.com/jayanilakshika/quollr). The R package `cardinalR` has been available on CRAN since April $2024$ and has received $4407$ downloads from the CRAN mirror, with the latest development version at [github.com/jayanilakshika/cardinalR](https://github.com/jayanilakshika/cardinalR). @fig-pkg-commit gives an overview of my Git commits to these repositories.
 
 A Shiny application for `quollr` is accessible via one of the mirror sites at [menurar.netlify.app/](https://menurar.netlify.app/), with its source code available at [github.com/JayaniLakshika/menuraR](https://github.com/JayaniLakshika/menuraR). The survey web application, **Match-a-roo** ([https://ebsmonash.shinyapps.io/Match-a-roo/](https://ebsmonash.shinyapps.io/Match-a-roo/)), was designed and implemented in Shiny to collect participant responses and demographic information. Each subject accessed the survey through the [shinyapps.io](https://www.shinyapps.io/) server.
 
@@ -245,42 +266,6 @@ Presentations, package development, and writing are the three primary types of a
 :::
 :::
 
-
-## Planning and design software
-
-In addition to the completed methods and software presented in this thesis, a large amount of exploratory planning and design work went into the development of the R packages `quollr` (@fig-workquollr) and `cardinalR` (@fig-workcardinalR), as well as the Shiny application `menuraR` (@fig-workmenuraR). This includes personal working sheets, sketches, and early conceptual diagrams that show how initial ideas gradually evolved into the implemented software tools.
-
-
-::: {.cell}
-::: {.cell-output-display}
-![Working sheets used during the planning and development of `quollr`, showing how early ideas evolved into a diagnostic R package.](../figures/quollr.png){#fig-workquollr fig-pos='H' fig-alt='Photographs of handwritten and sketched working sheets used during the early planning of the quollr R package. The pages contain rough notes that explore diagnostic ideas and evaluation strategies, illustrating the progression from initial conceptual sketches to a structured software design.' width=80%}
-:::
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-![Working sheets used during the planning and development of `cardinalR`, documenting the evolution of data generation strategies into software.](../figures/cardinalR.png){#fig-workcardinalR fig-pos='H' fig-alt='Working sheet documenting the development of the cardinalR package. The sheets include hand-drawn cluster diagrams, mathematical notes, parameter tables, and pseudocode outlining data generation strategies. These materials show how exploratory ideas were iteratively refined into a coherent framework for simulating high-dimensional data.' width=80%}
-:::
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-![Working sheets used in the planning and design of `menuraR`, showing how initial concepts were refined into a functional Shiny application.](../figures/menuraR.png){#fig-workmenuraR fig-pos='H' fig-alt='Working sheet from the planning and design phase of the menuraR Shiny application. The pages show hand-drawn interface layouts, workflow diagrams, and notes linking user interactions to analytical outputs, illustrating how early conceptual designs were developed into a functional interactive visualization tool.' width=80%}
-:::
-:::
-
-
-## Software names
-
-Each software name is inspired by an animal. `quollr` is named after the **quoll**, a carnivorous, curious, and endangered marsupial from Australia. `cardinalR` is inspired by the North American **cardinal** bird. `menuraR` comes from Australia’s lyrebirds (**Menura**), famous for their elaborate courtship displays and extraordinary ability to mimic sounds.
-
-## Presentations
-
-I presented my research work at $12^{th}$-Conference of the Asian Regional Section of the International Association for Statistical Computing (IASC-ARS 2023) (Wollongon, Australia), Australian Statistical Conference (ASC 2023) (Wollongon, Australia), Bioinformatics Seminar 2024, Victorian branch of the Australian and New Zealand Industrial and Applied Mathematics Society (VicANZIAM) 2024 (RMIT university, Melbourne, Australia), Faculty of BusEco Three Minute Thesis (3MT) competition 2024, useR! 2024 (Salzburg, Austria), Graphics Group Presentation 2024 (Nebraska, USA), UNO Data Science Club 2024 (Omaha, USA), Joint Statistical Meetings (JSM) 2025 (Nashville, USA), useR! 2025 (Durham, USA), Biometrics in the Bush Capital (BIBC2025) (Canberra, Australia), and Australian Statistical Conference (ASC 2025) (Perth, Western Australia) (@fig-mem).
 
 ## Final thoughts
 

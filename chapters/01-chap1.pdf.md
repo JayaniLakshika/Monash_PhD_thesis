@@ -30,7 +30,7 @@
 <!--   - Any literature of user-firendly platforms for NLDR users -->
 
 
-A high-dimensional dataset is one in which each observation is described by many features, or dimensions, often with associations among them. To create visual representations of high-dimensional data, it is common to apply **dimension reduction** techniques. One established approach is **linear projection**, where high-dimensional points are represented as linear combinations of the original features. **Principal Component Analysis (PCA)** (for an overview, see @jolliffe2011) is the most familiar method, identifying directions of maximum variance. Extending this idea, **tours** [@lee2021] provide dynamic sequences of linear projections, giving views from multiple angles to help reveal hidden structure. Tour methods are implemented in R packages such as `tourr` [@wickham2011], `langevitour` [@harisson2024], and `detourr` [@casper2025]. A key advantage of linear projections is that they preserve the geometric relationships of the original data; they do not introduce distortion. However, linear projections can become cluttered, and global structure may obscure local detail. Furthermore, *piling* [@laa2022], where points concentrate in the center of projections, can mask important variation.
+A high-dimensional dataset is one in which each observation is described by many features, or dimensions, often with associations among them. To create visual representations of high-dimensional data, it is common to apply **dimension reduction** techniques. One established approach is **linear projection**, where high-dimensional points are represented as linear combinations of the original features. **Principal Component Analysis (PCA)** (for an overview, see @jolliffe2011) is the most familiar method, identifying directions of maximum variance. Extending this idea, **tours** (see overview, in @lee2021) provide dynamic sequences of linear projections, giving views from multiple angles to help reveal hidden structure. Tour methods are implemented in R packages such as `tourr` [@wickham2011], `langevitour` [@harisson2024], and `detourr` [@casper2025]. A key advantage of linear projections is that they preserve the geometric relationships of the original data; they do not introduce distortion. However, linear projections can become cluttered, and global structure may obscure local detail. Furthermore, *piling* [@laa2022], where points concentrate in the center of projections, can mask important variation.
 
 Because linear projections can reveal only limited aspects of high-dimensional structure, analysts often turn to nonlinear dimension reduction (NLDR) methods in the hope of revealing patterns that may not be visible in any linear view. Common NLDR techniques include t-distributed stochastic neighbor embedding (t-SNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) [@moon2019], large-scale dimensionality reduction using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. The methods tSNE, UMAP, TriMAP, and PaCMAP can be considered for producing the \kD{} representation by minimizing the divergence between two inter-point distance distributions. PHATE is an example of a diffusion process spreading to capture geometric shapes that include both global and local structure. (See @coifman2005 for an explanation of diffusion processes.) These methods are designed to *exaggerate structure*, making it easier for analysts to detect patterns that may not be apparent through linear projections.
 
@@ -58,7 +58,7 @@ Despite the widespread use of NLDR, there is no widely accepted or visually inte
 
 In addition to technical gaps, **little is known about how people perceive and misperceive structure in NLDR layouts**. It is unclear how different NLDR representations influence analysts’ conclusions, or how distortions introduced by NLDR affect decision making. Given the critical role of visualization in high-dimensional data analysis, understanding the human perception of NLDR representations is essential.
 
-## Research Objectives
+## Research objectives
 
 This thesis aims to address the key challenges in understanding and evaluating NLDR methods through four main objectives:
 
@@ -74,13 +74,13 @@ This thesis aims to address the key challenges in understanding and evaluating N
 
 This research contributes to a deeper understanding of how NLDR methods can be evaluated and trusted in practice. It provides new tools and software for assessment, benchmark datasets for testing algorithms, and insights from a large-scale user study to guide effective use of NLDR in high-dimensional data analysis.
 
-## Thesis Outline
+## Thesis outline
 
 The rest of the thesis is organized as follows:
 
 @sec-first-paper introduces an algorithm to assess the NLDR and decide on which, if any, is the most reasonable representation of the structure(s) present in high-dimensional data. We create a model starting with an NLDR layout that is then used to display as a wireframe in high dimensions.
 
-@sec-third-paper presents the implementation of the work is available as an R package, named `quollr`, an acronym for "**qu**estioning how a high-dimensional **o**bject **l**ooks in **l**ow-dimensions using **r**" [@jayani2025a]. This package also contains a function for performing hexagonal binning using a new approach, for saving langevitour results with a specific projection, and link plots to understand the quirks that occur with different NLDR techniques.
+@sec-third-paper presents the implementation of the work, which is available as an R package named `quollr`, an acronym for "**qu**estioning how a high-dimensional **o**bject **l**ooks in **l**ow-dimensions using **r**" [@jayani2025a]. This package also contains a function for performing hexagonal binning using a new approach, for saving langevitour results with a specific projection, and link plots to understand the quirks that occur with different NLDR techniques.
 
 @sec-fourth-paper introduces the R package, `cardinalR` [@jayani2025b] (**c**ollection of v**ar**ious high-**d**imens**i**o**nal** data
 structures in **R**), which includes functions to generate high-dimensional clustering data structures, with features such as adding noise dimensions and background noise, along with some already generated examples.

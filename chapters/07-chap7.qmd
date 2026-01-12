@@ -39,7 +39,7 @@ Looking more closely, the data contain six clusters that are fairly close to one
 
 pbmc_data <- read_rds(here::here("data/CITE-seq/cite_seq_pbmc.rds")) 
 sample_pbmc_data <- pbmc_data |> 
-  sample_n(10000) 
+  sample_n(10000) ## Because the large data set
 
 pbmc_data_tour <- langevitour::langevitour(
   sample_pbmc_data |> 
@@ -443,6 +443,7 @@ clust_data_proj1 +
 
 To assess how well the UMAP layout reflects the structure of the $10\text{-}D$ PBMC CITE-seq data, we use the `quollr` framework (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-model-html"} else { "@fig-model-pdf"})`). With a model fitted using a binwidth of $0.03$, the layout appears reasonable overall, but some limitations become clear. In particular, the roughly Gaussian clusters look more squeezed than expected, and background noise seems to form a separate cluster that likely does not represent a true group in the data. In addition, the nonlinear shaped clusters could benefit from being more spread out to better reflect their underlying structure. Also, clusters should be more close. These observations suggest that, while the current layout is informative, there is good potential to find an alternative layout that represents the data structure even more clearly.
 
+<!--scripts/CITE-seq/04_gen_model_umap.R-->
 ```{r}
 umap_pbmc <- read_rds(here::here("data/CITE-seq/CITE-seq_umap_n-neigbors_30_min-dist_0.3.rds"))
 
@@ -461,16 +462,17 @@ hex_grid_with_counts_pbmc <- left_join(
 hex_grid_pbmc <- ggplot(
   data = hex_grid_with_counts_pbmc, 
   aes(x = x, y = y)) +
-  geom_point(data = pbmc_umap_scaled, 
+  geom_point(data = pbmc_umap_scaled |> filter(ID %in% sample_pbmc_data$ID), 
              aes(x = emb1, y = emb2), 
-             alpha = 0.1, color = "#66B2CC") +
+             alpha = 0.5, color = "#66B2CC") +
   geom_segment(data = tr_from_to_df_pbmc,
                aes(
                  x = x_from,
                  y = y_from,
                  xend = x_to,
                  yend = y_to),
-               colour = "#000000") +
+               colour = "#000000",
+               alpha = 0.5) +
   # geom_point(data = df_bin_centroids_pbmc, 
   #            aes(x = c_x, y = c_y), 
   #            size = 0.3, color = "#FF7755") +
@@ -527,7 +529,7 @@ nldr_plt <- plot_ly() |>
     y = ~emb2,
     type = 'scatter',
     mode = 'markers',
-    marker = list(color = '#66B2CC', size = 5, opacity = 0.1),
+    marker = list(color = '#66B2CC', size = 5, opacity = 0.5),
     hoverinfo = 'none',
     showlegend = FALSE
   ) |>
@@ -538,7 +540,7 @@ nldr_plt <- plot_ly() |>
     xend = ~x_to,
     y = ~y_from,
     yend = ~y_to,
-    line = list(color = '#000000'),
+    line = list(color = '#000000', width = 0.5, opacity = 0.01),
     hoverinfo = 'none',
     showlegend = FALSE
   ) |>
@@ -616,7 +618,7 @@ df_b_pbmc <- df_bin_pbmc |>
 df_b_pbmc <- df_b_pbmc[match(df_bin_centroids_pbmc$h, df_b_pbmc$h),] |>
   dplyr::select(-h) 
 
-pbmc_labeled <- pbmc_data |>
+pbmc_labeled <- sample_pbmc_data |>
   select(-ID) |>
   mutate(type = "data")
 

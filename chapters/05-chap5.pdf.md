@@ -274,7 +274,7 @@ The subjects were asked to provide their Prolific ID and their consent to the re
 
 After completing $20$ evaluations, they were asked for their demographics, which included preferred pronoun, the highest level of education achieved, their age category, whether they used principal component analysis in their work, and whether they applied NLDR techniques such as tSNE and UMAP.
 
-### Generalized Linear Mixed-Effects Models
+### Generalized linear mixed-effects models
 
 Two generalized linear mixed effects models [@mcculloch2001] were fitted to model the likelihood of detecting the data structure in both the $2\text{-}D$ NLDR layout and the tour (@eq-glmm1). Both models accounted for subject-level variability and the effect of distance measures under different NLDR methods. The general form of the model is given by:
 
@@ -518,7 +518,7 @@ This experiment is best viewed as a template for further studies on how people i
 
 Overall, this work highlights the need for more experiments that systematically assess the perception of structure in $2\text{-}D$ NLDR layouts with respect to structure present in high-dimensional data. With results from more human subject experiments, it may be possible to develop better metrics that could be used to automate the assessment of  visual similarity measures. These would be helpful to use alongside NLDR layouts to assist with providing more faithful representations.
 
-## Supplementary Materials
+## Supplementary materials
 
 <!-- All the materials to reproduce the chapter can be found at [github.com/JayaniLakshika/paper-vis-experiment](https://github.com/JayaniLakshika/paper-vis-experiment). -->
 
