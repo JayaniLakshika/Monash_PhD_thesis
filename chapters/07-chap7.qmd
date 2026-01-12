@@ -38,9 +38,12 @@ Looking more closely, the data contain six clusters that are fairly close to one
 #| label: sim-data-cardilanR
 
 pbmc_data <- read_rds(here::here("data/CITE-seq/cite_seq_pbmc.rds")) 
+sample_pbmc_data <- pbmc_data |> 
+  sample_n(10000) 
 
 pbmc_data_tour <- langevitour::langevitour(
-  pbmc_data |> select(-ID),
+  sample_pbmc_data |> 
+  select(-ID),
   enableControls = TRUE,
   width = "400px", height = "380px",
   levelColors = "#66B2CC"
@@ -235,16 +238,16 @@ clust_data_proj3 <- plot_proj(
 ```{r fig-dt-tourr-pbmc, eval=knitr::is_html_output(), fig.cap="Comparison of a $10\\text{-}D$ PBMC CITE-seq dataset (left) and a simulated dataset generated using `cardinalR` (right). The PBMC CITE-seq data show six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\\text{-}D$ dataset with similar structural characteristics.", fig.pos="!ht", fig.alt="A two-panel interactive figure compares linear projection tours of two ten-dimensional datasets. The left panel shows a tour of the PBMC CITE-seq data, where points move smoothly as the projection rotates through different two-dimensional views. Across the tour, six clusters remain consistently visible: three exhibit nonlinear geometric structure, appearing as curved or twisted shapes that change orientation across projections, while three appear more compact and approximately Gaussian. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise. The right panel shows a corresponding tour of a simulated ten-dimensional dataset generated using cardinalR. As the projection changes, six clusters with diverse geometric forms are revealed: three approximately Gaussian clusters, one quadratic structure, one spherical spiral, and one conic spiral, along with sparse background noise. Although individual projections vary in appearance over time, the tour demonstrates that the simulated data reproduces the mixture of nonlinear and Gaussian structures seen in the PBMC CITE-seq data. The side-by-side tours allow comparison of how similar high-dimensional structure is expressed across multiple linear projections."}
 
 pbmcdatafig <- bscols(
-  htmltools::div(
-    style = "display: grid; grid-template-columns: 1fr;
+    htmltools::div(
+        style = "display: grid; grid-template-columns: 1fr;
     gap: 0px;
     align-items: start;
-    justify-items: stretch;
+    justify-items: center;
     margin: 0;
     padding: 0;",
-    pbmc_data_tour
-  ),
-  device = "xs"
+        pbmc_data_tour
+    ),
+    device = "xs"
 )
 
 class(pbmcdatafig) <- c(class(pbmcdatafig), "htmlwidget")
@@ -255,16 +258,16 @@ pbmcdatafig
 ```{r fig-dt-tourr-sim, eval=knitr::is_html_output(), fig.cap="Comparison of a $10\\text{-}D$ PBMC CITE-seq dataset (left) and a simulated dataset generated using `cardinalR` (right). The PBMC CITE-seq data show six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\\text{-}D$ dataset with similar structural characteristics.", fig.pos="!ht", fig.alt="A two-panel interactive figure compares linear projection tours of two ten-dimensional datasets. The left panel shows a tour of the PBMC CITE-seq data, where points move smoothly as the projection rotates through different two-dimensional views. Across the tour, six clusters remain consistently visible: three exhibit nonlinear geometric structure, appearing as curved or twisted shapes that change orientation across projections, while three appear more compact and approximately Gaussian. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise. The right panel shows a corresponding tour of a simulated ten-dimensional dataset generated using cardinalR. As the projection changes, six clusters with diverse geometric forms are revealed: three approximately Gaussian clusters, one quadratic structure, one spherical spiral, and one conic spiral, along with sparse background noise. Although individual projections vary in appearance over time, the tour demonstrates that the simulated data reproduces the mixture of nonlinear and Gaussian structures seen in the PBMC CITE-seq data. The side-by-side tours allow comparison of how similar high-dimensional structure is expressed across multiple linear projections."}
 
 simdatafig <- bscols(
-  htmltools::div(
-    style = "display: grid; grid-template-columns: 1fr;
+    htmltools::div(
+        style = "display: grid; grid-template-columns: 1fr;
     gap: 0px;
     align-items: start;
-    justify-items: stretch;
+    justify-items: center;
     margin: 0;
     padding: 0;",
-    clust_data_tour
-  ),
-  device = "xs"
+        clust_data_tour
+    ),
+    device = "xs"
 )
 
 class(simdatafig) <- c(class(simdatafig), "htmlwidget")
@@ -275,7 +278,7 @@ simdatafig
 
 ```{r}
 #| label: pbmc_data-prj
-centered_pbmc_data <- center_data(pbmc_data |> select(-ID))
+centered_pbmc_data <- center_data(sample_pbmc_data |> select(-ID))
 
 ## First projection
 projection1 <- cbind(
@@ -495,7 +498,7 @@ hex_grid_pbmc <- ggplot(
                   plot.margin = margin(0, 0, 0, 0)
               )
 
-df <- inner_join(pbmc_data, pbmc_umap_scaled, by = "ID")
+df <- inner_join(sample_pbmc_data, pbmc_umap_scaled, by = "ID")
 
 ### Define type column
 df <- df |>
