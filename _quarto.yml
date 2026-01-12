@@ -14,7 +14,7 @@ book:
   repo-branch: master
   downloads: [pdf]
   chapters:
-    - text: "Front matter"
+    - text: ""
       file: index.qmd
     - "preliminaries/abstract.qmd"
     - "preliminaries/acknowledgements.qmd"
