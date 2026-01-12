@@ -20,7 +20,7 @@ set.seed(20240110)
 source(here::here("scripts/cardinalR/additional_functions.R"))
 ```
 
-# Conclusion and future plans {#sec-conclusion}
+# Conclusion and Future Plans {#sec-conclusion}
 
 This thesis presents five key contributions that collectively advance the understanding and evaluation of NLDR methods. The work introduces a new method and software for NLDR diagnostics, providing insights into how people identify data structures when NLDR layouts and tour views are displayed together. It develops methods for generating clustering data structures and implements user-friendly tools that support exploratory analysis and visualization.
 

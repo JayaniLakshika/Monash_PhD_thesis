@@ -1,4 +1,4 @@
-# Additional activities
+# Academic Contributions and Professional Engagement
 
 ## Planning and design software
 
