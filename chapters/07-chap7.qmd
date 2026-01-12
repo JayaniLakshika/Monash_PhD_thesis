@@ -232,17 +232,37 @@ clust_data_proj3 <- plot_proj(
               )
 ```
 
-```{r fig-dt-tourr, eval=knitr::is_html_output(), fig.cap="Comparison of a $10\\text{-}D$ PBMC CITE-seq dataset (left) and a simulated dataset generated using `cardinalR` (right). The PBMC CITE-seq data show six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\\text{-}D$ dataset with similar structural characteristics.", fig.pos="!ht", fig.alt="A two-panel interactive figure compares linear projection tours of two ten-dimensional datasets. The left panel shows a tour of the PBMC CITE-seq data, where points move smoothly as the projection rotates through different two-dimensional views. Across the tour, six clusters remain consistently visible: three exhibit nonlinear geometric structure, appearing as curved or twisted shapes that change orientation across projections, while three appear more compact and approximately Gaussian. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise. The right panel shows a corresponding tour of a simulated ten-dimensional dataset generated using cardinalR. As the projection changes, six clusters with diverse geometric forms are revealed: three approximately Gaussian clusters, one quadratic structure, one spherical spiral, and one conic spiral, along with sparse background noise. Although individual projections vary in appearance over time, the tour demonstrates that the simulated data reproduces the mixture of nonlinear and Gaussian structures seen in the PBMC CITE-seq data. The side-by-side tours allow comparison of how similar high-dimensional structure is expressed across multiple linear projections."}
+```{r fig-dt-tourr-pbmc, eval=knitr::is_html_output(), fig.cap="Comparison of a $10\\text{-}D$ PBMC CITE-seq dataset (left) and a simulated dataset generated using `cardinalR` (right). The PBMC CITE-seq data show six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\\text{-}D$ dataset with similar structural characteristics.", fig.pos="!ht", fig.alt="A two-panel interactive figure compares linear projection tours of two ten-dimensional datasets. The left panel shows a tour of the PBMC CITE-seq data, where points move smoothly as the projection rotates through different two-dimensional views. Across the tour, six clusters remain consistently visible: three exhibit nonlinear geometric structure, appearing as curved or twisted shapes that change orientation across projections, while three appear more compact and approximately Gaussian. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise. The right panel shows a corresponding tour of a simulated ten-dimensional dataset generated using cardinalR. As the projection changes, six clusters with diverse geometric forms are revealed: three approximately Gaussian clusters, one quadratic structure, one spherical spiral, and one conic spiral, along with sparse background noise. Although individual projections vary in appearance over time, the tour demonstrates that the simulated data reproduces the mixture of nonlinear and Gaussian structures seen in the PBMC CITE-seq data. The side-by-side tours allow comparison of how similar high-dimensional structure is expressed across multiple linear projections."}
 
-simdatafig <- bscols(
+pbmcdatafig <- bscols(
   htmltools::div(
-    style = "display: grid; grid-template-columns: 1fr 1fr;
+    style = "display: grid; grid-template-columns: 1fr;
     gap: 0px;
     align-items: start;
     justify-items: stretch;
     margin: 0;
     padding: 0;",
-    pbmc_data_tour, clust_data_tour
+    pbmc_data_tour
+  ),
+  device = "xs"
+)
+
+class(pbmcdatafig) <- c(class(pbmcdatafig), "htmlwidget")
+
+pbmcdatafig
+```
+
+```{r fig-dt-tourr-sim, eval=knitr::is_html_output(), fig.cap="Comparison of a $10\\text{-}D$ PBMC CITE-seq dataset (left) and a simulated dataset generated using `cardinalR` (right). The PBMC CITE-seq data show six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\\text{-}D$ dataset with similar structural characteristics.", fig.pos="!ht", fig.alt="A two-panel interactive figure compares linear projection tours of two ten-dimensional datasets. The left panel shows a tour of the PBMC CITE-seq data, where points move smoothly as the projection rotates through different two-dimensional views. Across the tour, six clusters remain consistently visible: three exhibit nonlinear geometric structure, appearing as curved or twisted shapes that change orientation across projections, while three appear more compact and approximately Gaussian. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise. The right panel shows a corresponding tour of a simulated ten-dimensional dataset generated using cardinalR. As the projection changes, six clusters with diverse geometric forms are revealed: three approximately Gaussian clusters, one quadratic structure, one spherical spiral, and one conic spiral, along with sparse background noise. Although individual projections vary in appearance over time, the tour demonstrates that the simulated data reproduces the mixture of nonlinear and Gaussian structures seen in the PBMC CITE-seq data. The side-by-side tours allow comparison of how similar high-dimensional structure is expressed across multiple linear projections."}
+
+simdatafig <- bscols(
+  htmltools::div(
+    style = "display: grid; grid-template-columns: 1fr;
+    gap: 0px;
+    align-items: start;
+    justify-items: stretch;
+    margin: 0;
+    padding: 0;",
+    clust_data_tour
   ),
   device = "xs"
 )
@@ -251,6 +271,7 @@ class(simdatafig) <- c(class(simdatafig), "htmlwidget")
 
 simdatafig
 ```
+
 
 ```{r}
 #| label: pbmc_data-prj
@@ -395,13 +416,24 @@ pbmc_data_proj3 <- plot_proj(
 
 ```{r, eval=knitr::is_latex_output()}
 #| fig-width: 15
-#| fig-height: 10
-#| label: fig-dt-prj
+#| fig-height: 5
+#| label: fig-dt-prj-pbmc
 #| fig-cap: "Three $2\\text{-}D$ projections from $10\\text{-}D$, for the PBMC CITE-seq (a1-a3) and a simulated dataset generated using \\texttt{cardinalR} (b1-b3) data. The PBMC CITE-seq data show six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\\text{-}D$ dataset with similar structural characteristics."
 #| fig-alt: "A six-panel figure shows three two-dimensional projections of two different ten-dimensional datasets. The top row (panels a1–a3) displays three distinct 2-D projections of the PBMC CITE-seq data, each using abstract horizontal and vertical projection axes. Across these projections, six clusters are visible: three clusters exhibit nonlinear geometric shapes such as curved arcs or bent ribbons, while three appear approximately Gaussian and compact. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise. The bottom row (panels b1–b3) shows three corresponding 2-D projections of a simulated dataset generated using cardinalR. These projections display six clusters with analogous structural diversity: three approximately Gaussian clusters, one quadratic-shaped cluster, one spherical spiral, and one conic spiral, again with sparse background noise. Although the exact shapes and relative positions vary across projections, the simulated data reproduces the mixture of nonlinear and Gaussian cluster structures observed in the PBMC CITE-seq data, illustrating structural similarity between the real and synthetic high-dimensional datasets."
 
 pbmc_data_proj1 + pbmc_data_proj2 +
-  pbmc_data_proj3 + clust_data_proj1 +
+  pbmc_data_proj3 +
+  plot_layout(ncol = 3)
+```
+
+```{r, eval=knitr::is_latex_output()}
+#| fig-width: 15
+#| fig-height: 5
+#| label: fig-dt-prj-sim
+#| fig-cap: "Three $2\\text{-}D$ projections from $10\\text{-}D$, for the PBMC CITE-seq (a1-a3) and a simulated dataset generated using \\texttt{cardinalR} (b1-b3) data. The PBMC CITE-seq data show six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise. To construct a comparable synthetic dataset, `cardinalR` was used to generate a $4\\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. Six additional dimensions of noise were then added to obtain a $10\\text{-}D$ dataset with similar structural characteristics."
+#| fig-alt: "A six-panel figure shows three two-dimensional projections of two different ten-dimensional datasets. The top row (panels a1–a3) displays three distinct 2-D projections of the PBMC CITE-seq data, each using abstract horizontal and vertical projection axes. Across these projections, six clusters are visible: three clusters exhibit nonlinear geometric shapes such as curved arcs or bent ribbons, while three appear approximately Gaussian and compact. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise. The bottom row (panels b1–b3) shows three corresponding 2-D projections of a simulated dataset generated using cardinalR. These projections display six clusters with analogous structural diversity: three approximately Gaussian clusters, one quadratic-shaped cluster, one spherical spiral, and one conic spiral, again with sparse background noise. Although the exact shapes and relative positions vary across projections, the simulated data reproduces the mixture of nonlinear and Gaussian cluster structures observed in the PBMC CITE-seq data, illustrating structural similarity between the real and synthetic high-dimensional datasets."
+
+clust_data_proj1 +
   clust_data_proj2 + clust_data_proj3 +
   plot_layout(ncol = 3)
 ```
@@ -915,7 +947,9 @@ The initial workflow includes importing the experimental design and results, dat
 
 ### Investigating perception and misperception in NLDR with additional factors
 
-While our current user study has focused on how the distance between clusters affects human perception of NLDR layouts, there remain several important factors that could further influence perception and misperception. A promising direction for future work is to systematically explore how variations in data characteristics impact a user's ability to correctly interpret dimensionality-reduced representations.
+One of the contributions of this thesis is the development of a controlled experimental framework for studying how people perceive and interpret NLDR layouts. With this framework in place and shown to work well for measuring perceptual accuracy and misperception, many additional experimental questions can now be explored systematically.
+
+While the current user study focused primarily on how cluster separation influences human perception of NLDR layouts, many additional factors are likely to affect how users conceptualize and interpret low-dimensional embeddings. An important direction for future work is therefore to extend this experimental paradigm to investigate how variations in data characteristics and algorithmic choices influence perception and misperception.
 
 Specifically, we propose extending the perceptual study to consider:
 
@@ -928,6 +962,8 @@ Specifically, we propose extending the perceptual study to consider:
 - Sample size: Varying the number of observations may change both the visual density and the stability of the NLDR projection, influencing the interpretability of patterns.
 
 - Random seed: Since many NLDR methods are stochastic (e.g., tSNE, UMAP), different seeds can lead to different embeddings. It is valuable to understand whether these differences are perceptible to users and how they affect interpretability.
+
+- NLDR hyper-parameters: Algorithm-specific hyper-parameters (such as perplexity in tSNE or the number of neighbors and minimum distance in UMAP) have a strong influence on the resulting embedding. By systematically varying these settings within the experimental framework developed in this thesis, future studies could examine how hyper-parameter choices change the visual appearance of layouts and whether these changes are noticeable or misleading to users.
 
 By extending the study to incorporate these data-driven variables, we can build a more comprehensive understanding of when and why human misperception occurs in NLDR layouts, and which methods are more resilient to such distortions. This work will support the development of more robust diagnostics and improve the practical use of NLDR.
 
