@@ -111,7 +111,7 @@ Despite the widespread use of NLDR, there is no widely accepted or visually inte
 
 In addition to technical gaps, **little is known about how people perceive and misperceive structure in NLDR layouts**. It is unclear how different NLDR representations influence analysts’ conclusions, or how distortions introduced by NLDR affect decision making. Given the critical role of visualization in high-dimensional data analysis, understanding the human perception of NLDR representations is essential.
 
-## Research Objectives
+## Research objectives
 
 This thesis aims to address the key challenges in understanding and evaluating NLDR methods through four main objectives:
 
@@ -127,7 +127,7 @@ This thesis aims to address the key challenges in understanding and evaluating N
 
 This research contributes to a deeper understanding of how NLDR methods can be evaluated and trusted in practice. It provides new tools and software for assessment, benchmark datasets for testing algorithms, and insights from a large-scale user study to guide effective use of NLDR in high-dimensional data analysis.
 
-## Thesis Outline
+## Thesis outline
 
 The rest of the thesis is organized as follows:
 

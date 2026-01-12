@@ -31,7 +31,7 @@ A key advantage of `menuraR` is its accessibility. The application is fully web-
 
 This chapter introduces `menuraR`, describing its implementation, core features, and intended use cases. We demonstrate how the application can inform NLDR choices, highlight key visual diagnostics, and support exploratory data analysis and teaching.
 
-## User-Informed design
+## User-informed design
 
 To ensure `menuraR` is intuitive and practical, we conducted a usability study with members of the Business Analytics research group at Monash University (NUMBATs). The goal was to observe how users interact with the app, identify confusing aspects, and gather suggestions for improvement.
 
@@ -125,7 +125,7 @@ Once the best representation is selected, interactive plots are generated to dis
 knitr::include_graphics(here::here("figures/menuraR/menuraR_ui3.png"))
 ```
 
-## Example Workflow
+## Example workflow
 
 We evaluated `menuraR` using the PBMC3k single-cell RNA-seq dataset [@rahul2025], a widely used benchmark for assessing dimensionality-reduction methods in single-cell analysis. This dataset contains $2622$ human peripheral blood mononuclear cells (PBMCs) measured across $1000$ gene expression variables and is commonly used to study cellular heterogeneity and population structure at the single-cell level.
 
@@ -145,7 +145,7 @@ Developed using the R Shiny framework, `menuraR` eliminates many of the technica
 
 Currently, `menuraR` supports only two NLDR methods: tSNE and UMAP for computing additional layouts within the app. Performance may vary depending on dataset size and browser memory limits, as all computations are handled server-side. Users working with very large datasets may experience slower response times, and expanding support to other NLDR methods is a potential direction for future development.
 
-## Supplementary Materials
+## Supplementary materials
 
 The `menuraR` application is available online at <https://ebsmonash.shinyapps.io/menuraR/>. All data and materials used in the study are openly available. The survey data collected from participants can be accessed at [https://github.com/JayaniLakshika/paper-menuraR/data](https://github.com/JayaniLakshika/paper-menuraR/tree/main/data). The example datasets provided within the menuraR app are available at [https://github.com/JayaniLakshika/menuraR/data](https://github.com/JayaniLakshika/menuraR/tree/main/data).
 

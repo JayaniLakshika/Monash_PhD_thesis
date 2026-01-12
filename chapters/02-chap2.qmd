@@ -1897,7 +1897,7 @@ This work has also revealed some interesting behaviors of NLDR methods, includin
 
 Researchers usually use $2\text{-}D$ layouts, but if a $k\text{-}D$ ($k>2$) layout is provided, the approach developed here could be extended. Potential approaches include $3\text{-}D$ binning, $k$-means clustering, or even special implementations of convex hulls. 
 
-## Supplementary Materials {#sec-supplementary}
+## Supplementary materials {#sec-supplementary}
 
 All the materials to reproduce the chapter can be found at [https://github.com/JayaniLakshika/paper-nldr-vis-algorithm](https://github.com/JayaniLakshika/paper-nldr-vis-algorithm). 
 
