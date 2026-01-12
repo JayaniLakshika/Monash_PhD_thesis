@@ -20,33 +20,14 @@ The primary contributions of this research are fivefold. First, we introduce a n
 
 ## Using a published $2\text{-}D$ NLDR layout as a case study
 
-In the Introduction, a published UMAP layout (*n_neighbors = 30* and *min_dist = 0.3*) of a human PBMC CITE-seq dataset [@hao2021] is used as a motivating example. The UMAP layout shows several visually distinct clusters with different shapes. Some clusters appear compact and well separated, while others are elongated, curved, or partially overlapping. In total, six clusters can be seen, including three with nonlinear shapes, two roughly Gaussian clusters, and one elliptical cluster, along with a small amount of background noise scattered between clusters. At first glance, it looks convincing. But this immediately raises an important question: *is this really the best way to represent the structure in the $10\text{-}D$ PBMC CITE-seq data?*
+As introduced in [Chapter 1](#sec-intro), we consider a **published UMAP layout of a human PBMC CITE-seq dataset** [@hao2021] as a motivating example, generated using *n_neighbors = 30* and *min_dist = 0.3* (@fig-NLDR-variety-intro). This layout shows multiple clusters with distinct shapes: some appear compact and well-separated, while others are elongated, curved, or partially overlapping. In total, six clusters can be observed, including three with nonlinear shapes, two roughly Gaussian clusters, and one elliptical cluster, along with a small amount of background noise. While visually convincing at first glance, this layout immediately raises the question: *Does it faithfully represent the structure of the underlying $10\text{-}D$ PBMC CITE-seq data?*
 
-Looking more closely, the data contain six clusters that are fairly close to one another (@fig-dt-prj-pbmc). Three of them have clearly nonlinear shapes, two Gaussian blobs, and one is closer to an ellipse, with a bit of background noise scattered around. These kinds of data structures are common in bioinformatics data. Using the `cardinalR` package, data with these different cluster shapes and background noise can be generated (@fig-dt-prj-sim).
-
-
-::: {.cell}
-
-:::
-
+A closer examination of the dataset (@fig-dt-prj-pbmc) confirms that the six clusters are fairly close to one another, with three nonlinear-shaped clusters, two Gaussian-like blobs, and one closer to an ellipse, alongside some scattered background points. The full dataset contains approximately $160,000$ observations; for visualization purposes, we display a random subset of $10,000$ points to reduce computational overhead while preserving the overall cluster structure. Such cluster arrangements are typical of high-dimensional bioinformatics data.
 
 
 ::: {.cell}
 
 :::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
 
 
 
@@ -58,8 +39,46 @@ Looking more closely, the data contain six clusters that are fairly close to one
 
 ::: {.cell}
 ::: {.cell-output-display}
-![Three $2\text{-}D$ projections of the $10\text{-}D$ PBMC CITE-seq data. The dataset shows six well-separated yet closely positioned clusters, including three with nonlinear geometric structures and three approximately Gaussian clusters, along with a small amount of background noise.](07-chap7_files/figure-pdf/fig-dt-prj-pbmc-1.pdf){#fig-dt-prj-pbmc fig-alt='A three-panel figure shows three two-dimensional projections of the PBMC CITE-seq ten-dimensional datasets, each using abstract horizontal and vertical projection axes. Across these projections, six clusters are visible: three clusters exhibit nonlinear geometric shapes such as curved arcs or bent ribbons, while three appear approximately Gaussian and compact. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise.'}
+![Three $2\text{-}D$ projections of the $10\text{-}D$ PBMC CITE-seq data, shown using a random subset of $10,000$ points for computational efficiency. The dataset shows six well-separated yet closely positioned clusters, including three with nonlinear geometric structures and three approximately Gaussian clusters, along with a small amount of background noise.](07-chap7_files/figure-pdf/fig-dt-prj-pbmc-1.pdf){#fig-dt-prj-pbmc fig-alt='A three-panel figure shows three two-dimensional projections of the PBMC CITE-seq ten-dimensional datasets, each using abstract horizontal and vertical projection axes. A random subset of 10,000 points is displayed for computational efficiency. Across these projections, six clusters are visible: three clusters exhibit nonlinear geometric shapes such as curved arcs or bent ribbons, while three appear approximately Gaussian and compact. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise.'}
 :::
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+To better understand how these structures can be represented, we generated a synthetic $10\text{-}D$ dataset using the `cardinalR` package (@fig-dt-prj-sim). The dataset contains six clusters with $500$, $700$, $700$, $500$, $700$, and $700$ points, respectively, for a total of $3,800$ points. Cluster centers were positioned according to a custom distance matrix to control their relative arrangement, and each cluster was assigned a distinct geometric shape: three approximately Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. This synthetic dataset provides a controlled benchmark for assessing how well NLDR layouts capture cluster structure.
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
 :::
 
 
@@ -71,7 +90,7 @@ Looking more closely, the data contain six clusters that are fairly close to one
 :::
 
 
-To assess how well the UMAP layout reflects the structure of the $10\text{-}D$ PBMC CITE-seq data, we use the `quollr` framework (@fig-model-pdf). With a model fitted using a binwidth of $0.03$, the layout appears reasonable overall, but some limitations become clear. In particular, the roughly Gaussian clusters look more squeezed than expected, and background noise seems to form a separate cluster that likely does not represent a true group in the data. In addition, the nonlinear shaped clusters could benefit from being more spread out to better reflect their underlying structure. Also, clusters should be more close. These observations suggest that, while the current layout is informative, there is good potential to find an alternative layout that represents the data structure even more clearly.
+Using the `quollr` framework, we evaluated how well the UMAP layout reflects the structure of the $10\text{-}D$ PBMC CITE-seq data (@fig-model-pdf). With a model fitted using a binwidth of $0.03$, the layout appears reasonable overall, but some limitations become clear. In particular, the roughly Gaussian clusters look more squeezed than expected, and background noise seems to form a separate cluster that likely does not represent a true group in the data. In addition, the nonlinear shaped clusters could benefit from being more spread out to better reflect their underlying structure. Also, clusters should be more close. These observations suggest that, while the current layout is informative, there is good potential to find an alternative layout that represents the data structure even more clearly.
 
 <!--scripts/CITE-seq/04_gen_model_umap.R-->
 
@@ -100,7 +119,7 @@ To assess how well the UMAP layout reflects the structure of the $10\text{-}D$ P
 :::
 
 
-This leads to the idea of comparing several NLDR layouts rather than relying on just one. The Shiny app `menuraR` makes this comparison easier by allowing different layouts and parameter settings.
+This motivates the comparison of multiple NLDR layouts, rather than relying on a single embedding. The Shiny app `menuraR` makes this comparison easier by allowing different layouts and parameter settings.
 
 Rather than computing embeddings on the fly, it is also helpful to precompute the NLDR layouts. In this case, four layouts are of interest:
 
@@ -123,8 +142,6 @@ Once the data and layouts are loaded in the *Data Upload* tab, all three embeddi
 
 This allows the layouts to be viewed side by side, overlaid with hexagonal grids, and evaluated using the hexbin error across different bin widths. With `menuraR`, at binwidth of $0.03$, the most reasonable layout is tSNE with *perplexity = 84* (@fig-menuraR_ui2).
 
-The TriMAP layout is universally poor. The tSNE layout with little separation performs well at tiny binwidth (where most points are in their own bin) and poorly as binwidth increases. Also, the layout shows more clusters than it should. Both UMAP and PaCMAP perform better in this case because they produce more clearly separated clusters. However, PaCMAP spreads the Gaussian clusters too far apart, with some clusters even overlapping, which makes the structure harder to interpret. In contrast, UMAP provides well-separated clusters without introducing these issues, making it the most reasonable choice here.
-
 
 ::: {.cell}
 ::: {.cell-output-display}
@@ -133,11 +150,13 @@ The TriMAP layout is universally poor. The tSNE layout with little separation pe
 :::
 
 
+The TriMAP layout is universally poor. The tSNE layout with little separation performs well at tiny binwidth (where most points are in their own bin) and poorly as binwidth increases. Also, the layout shows more clusters than it should. Both UMAP and PaCMAP perform better in this case because they produce more clearly separated clusters. However, PaCMAP spreads the Gaussian clusters too far apart, with some clusters even overlapping, which makes the structure harder to interpret. In contrast, UMAP provides well-separated clusters without introducing these issues, making it the most reasonable choice here. This addresses the question posed in the [Introduction](#sec-intro): while NLDR layouts can distort structure in general, the published UMAP layout provides a faithful and visually reasonable representation of the PBMC CITE-seq dataset.
+
 <!-- Finally, the *Model Diagnostics* tab can be used to dig deeper into where each layout works well and where it struggles. Linked views between the 2D layout and the high-dimensional model make it easier to see, for example, whether squeezed Gaussian clusters, stretched nonlinear clusters, or background noise are being handled differently across UMAP, TriMAP, and PaCMAP. -->
 
 ## Future work
 
-There are several directions in which this work can be developed.
+This thesis opens up several directions for future work that build directly on its methodological, experimental, and software contributions. These include extending the proposed methods beyond $2\text{-}D$ NLDR representations, exploring additional factors that influence how NLDR layouts are perceived, and developing more interactive and diagnostic tools to support evaluation. These directions aim to deepen our understanding of NLDR behavior and improve how these methods are assessed and used in practice.
 
 <!--add section on Do you have any plans/ideas to extend this to NDR results that project into more than 2D / do you think that would even be possible (say, for up to 5D projections or so)?. You’ve got one bullet point for your thesis future work section now! You could point Fabian to your paper conclusions where some ideas are suggested.-->
 
@@ -173,9 +192,11 @@ Linked brushing between these panels would allow users to directly investigate w
 
 ### Visualizing experimental designs
 
-The main objective of this tool is to visualize and validate results from experiments. It includes a web application that allows users to easily upload their experiment design data and results data for  visualization. Additionally, we plan to incorporate interactive features such as linked selections and filters. While the tool primarily visualizes categorical data, transforming continuous data into intervals can provide a useful way to visualize continuous data as well. 
+An important practical challenge encountered throughout this thesis is understanding, validating, and diagnosing results from complex experimental designs involving multiple factors and conditions. To support this process, a useful direction for future work is the development of an interactive visualization tool specifically designed to explore and validate experimental designs and their outcomes, including those used in the perceptual studies presented in this thesis.
 
-The initial workflow includes importing the experimental design and results, data preprocessing, $2\text{-}D$ static visualization, $2\text{-}D$ interactive visualization, and dynamic visualization. The data preprocessing steps involve mapping the design data and finding missing responses in the results, transforming the data to a wide format to compute the number of responses for each factor level combination (missing combinations are recorded as $0$), and converting the data into a long format suitable for visualization. For $2\text{-}D$ static plots, `ggplot2` [@hadley2016] is used to provide a clear view of the distribution of counts across various factor levels. `plotly` [@chapman2020] is used to add interactivity, and hovering over the tiles reveals additional information, enhancing the user's ability to interact with and understand the data. The dynamic visualization will show each vertex as a factor level combination, with jittered points representing the number of responses for each factor combination and edges connected with one level change in a factor. Currently, the `detourr` [@casper2025] package is used for the implementation.
+The main objective of this tool is to visualize and validate experimental results. It includes a web application that allows users to upload experimental design data and corresponding results for visualization. Interactive features such as linked selections and filtering would support exploration of relationships between factors and responses. While the tool primarily targets categorical experimental factors, continuous variables could be transformed into intervals to enable consistent visualization.
+
+The proposed workflow includes importing experimental design and results data, preprocessing, $2\text{-}D$ static visualization, $2\text{-}D$ interactive visualization, and dynamic visualization. Preprocessing steps involve mapping design variables, identifying missing responses, transforming data to wide format to compute response counts for each factor-level combination (with missing combinations recorded as $0$), and converting the data into a long format suitable for visualization. Static plots created using `ggplot2` [@hadley2016] provide an overview of response distributions across factor levels, while `plotly` [@chapman2020] adds interactivity through hover-based detail. Dynamic visualizations represent each factor-level combination as a vertex, with jittered points indicating response counts and edges connecting combinations that differ by a single factor level. This functionality is currently supported through the `detourr` package [@casper2025].
 
 <!-- ::: {#fig-fritillaR_sc layout-ncol="1"} -->
 <!-- ![](Figures/fritillaR_vis.png) -->
@@ -237,7 +258,7 @@ All materials associated with this thesis are openly available to support transp
 For accessibility, all figures include alt-text. The [autoAlt](https://github.com/numbats/autoAlt) package was used as a starting point for generating these descriptions, which were then reviewed and adjusted to better reflect the content of each figure and its caption.
 
 <!--scripts/pkg_cran_info.R-->
-The software outputs of this research have been made publicly available to support transparency and reproducibility. The R package `quollr` has been on CRAN since March $2024$ and has received $5175$ downloads from the CRAN mirror; its development version is hosted on GitHub at [github.com/jayanilakshika/quollr](https://github.com/jayanilakshika/quollr). The R package `cardinalR` has been available on CRAN since April $2024$ and has received $4407$ downloads from the CRAN mirror, with the latest development version at [github.com/jayanilakshika/cardinalR](https://github.com/jayanilakshika/cardinalR). @fig-pkg-commit gives an overview of my Git commits to these repositories.
+The software outputs of this research have been made publicly available to support transparency and reproducibility. The R package `quollr` has been on CRAN since March $2024$ and has received $5175$ downloads from the CRAN mirror as of $12^{th}$ January $2026$; its development version is hosted on GitHub at [github.com/jayanilakshika/quollr](https://github.com/jayanilakshika/quollr). The R package `cardinalR` has been available on CRAN since April $2024$ and has received $4407$ downloads from the CRAN mirror as of $12^{th}$ January $2026$, with the latest development version at [github.com/jayanilakshika/cardinalR](https://github.com/jayanilakshika/cardinalR). @fig-pkg-commit gives an overview of my Git commits to these repositories.
 
 A Shiny application for `quollr` is accessible via one of the mirror sites at [menurar.netlify.app/](https://menurar.netlify.app/), with its source code available at [github.com/JayaniLakshika/menuraR](https://github.com/JayaniLakshika/menuraR). The survey web application, **Match-a-roo** ([https://ebsmonash.shinyapps.io/Match-a-roo/](https://ebsmonash.shinyapps.io/Match-a-roo/)), was designed and implemented in Shiny to collect participant responses and demographic information. Each subject accessed the survey through the [shinyapps.io](https://www.shinyapps.io/) server.
 
