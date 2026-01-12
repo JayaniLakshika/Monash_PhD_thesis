@@ -926,14 +926,6 @@ The envisioned interface would build on linked-view concepts already explored he
 
 Linked brushing between these panels would allow users to directly investigate where NLDR methods preserve local and global structure and where distortions occur. By extending the interactive ideas developed in this thesis, such a tool would support more intuitive diagnosis of NLDR performance and provide a foundation for developing automated evaluation measures that are better aligned with human interpretation.
 
-### Lineup protocols to evaluate NLDR sensitivity and structure preservation
-
-A valuable extension of this work would be to develop lineup-based evaluation protocols [@andreas2009] for NLDR methods. Lineups, originally introduced as a statistical inference tool for graphical perception, involve presenting a true data plot randomly embedded among a set of null plots generated under a null model. Observers are asked to identify the plot that appears most different, allowing for an assessment of whether a visual structure stands out beyond what might be expected by chance.
-
-Applied to NLDR, lineups could help evaluate how well a $2\text{-}D$ layout preserves the structure of the original high-dimensional data. For example, a lineup could contain one plot of the true NLDR layout and multiple null layouts generated from shuffled or noise-added versions of the data. If participants consistently identify the true layout, it suggests that the NLDR method has effectively preserved meaningful structure.
-
-Lineups could also be extended to study the sensitivity of NLDR methods to hyperparameters. Multiple layouts could be shown, each corresponding to a different hyperparameter setting (e.g., number of neighbors in UMAP or perplexity in tSNE), to evaluate whether small parameter changes lead to perceptually different results. This would allow researchers to quantify the robustness of each method and guide more stable parameter selection.
-
 ### Visualizing experimental designs
 
 The main objective of this tool is to visualize and validate results from experiments. It includes a web application that allows users to easily upload their experiment design data and results data for  visualization. Additionally, we plan to incorporate interactive features such as linked selections and filters. While the tool primarily visualizes categorical data, transforming continuous data into intervals can provide a useful way to visualize continuous data as well. 
@@ -967,6 +959,18 @@ Specifically, we propose extending the perceptual study to consider:
 - NLDR hyper-parameters: Algorithm-specific hyper-parameters (such as perplexity in tSNE or the number of neighbors and minimum distance in UMAP) have a strong influence on the resulting embedding. By systematically varying these settings within the experimental framework developed in this thesis, future studies could examine how hyper-parameter choices change the visual appearance of layouts and whether these changes are noticeable or misleading to users.
 
 By extending the study to incorporate these data-driven variables, we can build a more comprehensive understanding of when and why human misperception occurs in NLDR layouts, and which methods are more resilient to such distortions. This work will support the development of more robust diagnostics and improve the practical use of NLDR.
+
+### Lineup protocols to evaluate NLDR sensitivity and structure preservation
+
+In this thesis, particularly in [Chapter 5](#sec-second-paper), we developed and applied a controlled experimental framework to study how people judge whether a static $2\text{-}D$ NLDR layout represents the same underlying high-dimensional data as a tour of linear projections. This task enabled us to quantify perceptual accuracy and misperception, and to examine how these outcomes depend on factors such as cluster separation and the choice of NLDR method.
+
+As discussed in the previous section, this framework can be extended by introducing additional data- and algorithm-related factors that may influence perception. A complementary direction is to modify the experimental task itself, with the goal of probing different aspects of how NLDR layouts are perceived and potentially increasing statistical power. One promising approach in this regard is the use of lineup-based evaluation protocols [@andreas2009].
+
+Lineups were originally introduced as a graphical inference tool for assessing whether visual structure in a plot is stronger than what would be expected under a null model. In a lineup, a plot generated from the true data is randomly embedded among a set of null plots, and observers are asked to identify the plot that appears most different. Successful identification provides evidence that the visual structure is perceptually salient and not attributable to chance.
+
+When combined with the experimental framework developed in this thesis, lineups could be used to evaluate how well a $2\text{-}D$ NLDR layout preserves structure from the original high-dimensional data. For example, a lineup could include one NLDR layout computed from the true data alongside several null layouts generated from shuffled data or noise-perturbed versions. If participants consistently identify the true layout, this would suggest that the NLDR method preserves meaningful structure in a way that is perceptually accessible to human viewers.
+
+Lineups could also be used to study the sensitivity of NLDR methods to hyper-parameter choices. Layouts generated under different hyper-parameter settings—such as perplexity in tSNE or the number of neighbors and minimum distance in UMAP—could be embedded within a lineup to assess whether small parameter changes lead to perceptually distinguishable differences. This would allow the robustness and stability of NLDR methods to be evaluated from a human-centered perspective and could help guide more reliable parameter selection.
 
 ### Comparative perceptual study of PCA and NLDR Methods
 
