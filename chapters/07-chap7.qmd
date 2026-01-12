@@ -32,7 +32,7 @@ The primary contributions of this research are fivefold. First, we introduce a n
 
 In the Introduction, a published UMAP layout (*n_neighbors = 30* and *min_dist = 0.3*) of a human PBMC CITE-seq dataset [@hao2021] is used as a motivating example. The UMAP layout shows several visually distinct clusters with different shapes. Some clusters appear compact and well separated, while others are elongated, curved, or partially overlapping. In total, six clusters can be seen, including three with nonlinear shapes, two roughly Gaussian clusters, and one elliptical cluster, along with a small amount of background noise scattered between clusters. At first glance, it looks convincing. But this immediately raises an important question: *is this really the best way to represent the structure in the $10\text{-}D$ PBMC CITE-seq data?*
 
-Looking more closely, the data contain six clusters that are fairly close to one another (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-dt-tourr-pbmc"} else { "@fig-dt-prj-pbmc"})`). Three of them have clearly nonlinear shapes, two Gaussian blobs, and one is closer to an ellipse, with a bit of background noise scattered around. These kinds of data structures are common in bioinformatics data. Using the `cardinalR` package, data with these different cluster shapes and background noise can be generated (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-dt-tourr-sim"} else { "@fig-dt-prj-sim"})`).
+Looking more closely, the data contain six clusters that are fairly close to one another (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-dt-tourr-pbmc"} else { "@fig-dt-prj-pbmc"})`). Three of them have clearly nonlinear shapes, two Gaussian blobs, and one is closer to an ellipse, with a bit of background noise scattered around. The full dataset contains $\approx160,000$ observations; however, for visualization, we used a random subset of $10,000$ points to reduce computational overhead and keep both interactive and static displays responsive, while still preserving the overall cluster structure. These kinds of data structures are common in bioinformatics data. 
 
 ```{r}
 #| label: sim-data-cardilanR
@@ -93,188 +93,6 @@ clust_data_tour <- langevitour::langevitour(clust_data,
                          width = "400px", height = "380px",
                          levelColors = "#66B2CC")
 ```
-
-```{r}
-#| label: clust-data-prj
-
-centered_clust_data <- center_data(clust_data)
-
-## First projection
-projection1 <- cbind(
-  c(-0.002584,-0.004429,0.000598,-0.008122,0.003990,0.005002,-0.005135,0.003106,0.000766,-0.004760),
-  c(-0.000276,-0.004985,-0.006425,0.004049,0.006375,-0.003721,-0.005586,-0.004404,-0.001809,0.001366))
-
-proj_obj1 <- get_projection(projection = projection1 * 100, 
-                            centered_data = centered_clust_data, 
-                            axis_param = list(limits = 1,
-                                              axis_scaled = 1, 
-                                              axis_pos_x = -0.8, 
-                                              axis_pos_y = -0.8, 
-                                              threshold = 0.12))
-
-clust_data_proj1 <- plot_proj(
-  proj_obj = proj_obj1, 
-  point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
-  plot_limits = c(-1, 1.2), 
-  title = "a1", 
-  cex = 2, 
-  axis_text_size = 4,
-  is_color = FALSE) +
-  theme_linedraw() +
-              theme(
-                  aspect.ratio = 1,
-                  plot.background = element_rect(fill = 'transparent', colour = NA),
-                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
-                  panel.background = element_rect(fill = 'transparent', 
-                                                  colour = NA),
-                  panel.grid.major = element_blank(), 
-                  panel.grid.minor = element_blank(), 
-                  axis.title.x = element_blank(), axis.title.y = element_blank(),
-                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
-                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
-                  legend.background = element_rect(fill = 'transparent', 
-                                                   colour = NA),
-                  legend.key = element_rect(fill = 'transparent', 
-                                            colour = NA),
-                  legend.position = "none", 
-                  legend.title = element_text(size=5), 
-                  legend.text = element_text(size=4),
-                  legend.key.height = unit(0.25, 'cm'),
-                  legend.key.width = unit(0.25, 'cm'),
-                  plot.margin = margin(0, 0, 0, 0)
-              )
-
-## Second projection
-projection2 <- cbind(
-  c(-0.007784,0.000224,-0.005620,0.003714,0.000785,0.000783,-0.004530,-0.000969,0.003910,0.006988),
-  c(0.001418,-0.003104,-0.003641,0.004786,-0.000776,0.006803,0.004252,0.007773,0.003565,-0.002629))
-
-proj_obj2 <- get_projection(projection = projection2 * 100, 
-                            centered_data = centered_clust_data, 
-                            axis_param = list(limits = 1,
-                                              axis_scaled = 1, 
-                                              axis_pos_x = -1.05, 
-                                              axis_pos_y = -1.05, 
-                                              threshold = 0.12))
-
-clust_data_proj2 <- plot_proj(
-  proj_obj = proj_obj2, 
-  point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
-  plot_limits = c(-1.25, 1.25), 
-  title = "a2", 
-  cex = 2, 
-  axis_text_size = 4,
-  is_color = FALSE) +
-  theme_linedraw() +
-              theme(
-                  aspect.ratio = 1,
-                  plot.background = element_rect(fill = 'transparent', colour = NA),
-                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
-                  panel.background = element_rect(fill = 'transparent', 
-                                                  colour = NA),
-                  panel.grid.major = element_blank(), 
-                  panel.grid.minor = element_blank(), 
-                  axis.title.x = element_blank(), axis.title.y = element_blank(),
-                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
-                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
-                  legend.background = element_rect(fill = 'transparent', 
-                                                   colour = NA),
-                  legend.key = element_rect(fill = 'transparent', 
-                                            colour = NA),
-                  legend.position = "none", 
-                  legend.title = element_text(size=5), 
-                  legend.text = element_text(size=4),
-                  legend.key.height = unit(0.25, 'cm'),
-                  legend.key.width = unit(0.25, 'cm'),
-                  plot.margin = margin(0, 0, 0, 0)
-              )
-
-## Third projection
-projection3 <- cbind(
-  c(-0.012856,-0.002227,-0.000675,0.000355,-0.001067,0.003746,-0.001626,-0.001175,0.000823,0.001464),
-  c(0.001945,-0.006327,-0.001400,0.008778,0.000065,0.002431,-0.002239,-0.004185,-0.003852,-0.005169))
-
-proj_obj3 <- get_projection(projection = projection3 * 100, 
-                            centered_data = centered_clust_data, 
-                            axis_param = list(limits = 1.3,
-                                              axis_scaled = 0.7, 
-                                              axis_pos_x = -1.2, 
-                                              axis_pos_y = -1.2, 
-                                              threshold = 0.1))
-
-clust_data_proj3 <- plot_proj(
-  proj_obj = proj_obj3, 
-  point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
-  plot_limits = c(-1.5, 1.5), 
-  title = "a3", 
-  cex = 2, 
-  axis_text_size = 4,
-  is_color = FALSE) +
-  theme_linedraw() +
-              theme(
-                  aspect.ratio = 1,
-                  plot.background = element_rect(fill = 'transparent', colour = NA),
-                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
-                  panel.background = element_rect(fill = 'transparent', 
-                                                  colour = NA),
-                  panel.grid.major = element_blank(), 
-                  panel.grid.minor = element_blank(), 
-                  axis.title.x = element_blank(), axis.title.y = element_blank(),
-                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
-                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
-                  legend.background = element_rect(fill = 'transparent', 
-                                                   colour = NA),
-                  legend.key = element_rect(fill = 'transparent', 
-                                            colour = NA),
-                  legend.position = "none", 
-                  legend.title = element_text(size=5), 
-                  legend.text = element_text(size=4),
-                  legend.key.height = unit(0.25, 'cm'),
-                  legend.key.width = unit(0.25, 'cm'),
-                  plot.margin = margin(0, 0, 0, 0)
-              )
-```
-
-```{r fig-dt-tourr-pbmc, eval=knitr::is_html_output(), fig.cap="Tour view of the $10\\text{-}D$ PBMC CITE-seq dataset, shown using a random subset of $10000$ points for computational efficiency. The data shows six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise.", fig.pos="!ht", fig.alt="The figure shows a tour of the 10-D PBMC CITE-seq dataset, where points move smoothly as the projection rotates through different two-dimensional views. Across the tour, six clusters remain consistently visible: three exhibit nonlinear geometric structure, appearing as curved or twisted shapes that change orientation across projections, while three appear more compact and approximately Gaussian. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise."}
-
-pbmcdatafig <- bscols(
-    htmltools::div(
-        style = "display: grid; grid-template-columns: 1fr;
-    gap: 0px;
-    align-items: start;
-    justify-items: center;
-    margin: 0;
-    padding: 0;",
-        pbmc_data_tour
-    ),
-    device = "xs"
-)
-
-class(pbmcdatafig) <- c(class(pbmcdatafig), "htmlwidget")
-
-pbmcdatafig
-```
-
-```{r fig-dt-tourr-sim, eval=knitr::is_html_output(), fig.cap="Tour view of the $10\\text{-}D$ simulated dataset generated using `cardinalR`. To create a synthetic dataset comparable to the $10\\text{-}D$ PBMC CITE-seq data, `cardinalR` first generated a $4\\text{-}D$ structure consisting of three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with added background noise. Six additional noise dimensions were then included to produce a $10\\text{-}D$ dataset retaining similar structural characteristics.", fig.pos="!ht", fig.alt="The figure shows a tour of a simulated ten-dimensional dataset generated using cardinalR. As the projection evolves, six clusters with diverse geometric forms become apparent: three approximately Gaussian clusters, one quadratic structure, one spherical spiral, and one conic spiral, along with sparse background noise. Although individual projections vary over time, the tour illustrates that the simulated data reproduces the mixture of nonlinear and Gaussian structures observed in the PBMC CITE-seq dataset."}
-
-simdatafig <- bscols(
-    htmltools::div(
-        style = "display: grid; grid-template-columns: 1fr;
-    gap: 0px;
-    align-items: start;
-    justify-items: center;
-    margin: 0;
-    padding: 0;",
-        clust_data_tour
-    ),
-    device = "xs"
-)
-
-class(simdatafig) <- c(class(simdatafig), "htmlwidget")
-
-simdatafig
-```
-
 
 ```{r}
 #| label: pbmc_data-prj
@@ -421,12 +239,195 @@ pbmc_data_proj3 <- plot_proj(
 #| fig-width: 15
 #| fig-height: 5
 #| label: fig-dt-prj-pbmc
-#| fig-cap: "Three $2\\text{-}D$ projections of the $10\\text{-}D$ PBMC CITE-seq data, shown using a random subset of $10000$ points for computational efficiency. The dataset shows six well-separated yet closely positioned clusters, including three with nonlinear geometric structures and three approximately Gaussian clusters, along with a small amount of background noise."
-#| fig-alt: "A three-panel figure shows three two-dimensional projections of the PBMC CITE-seq ten-dimensional datasets, each using abstract horizontal and vertical projection axes. Across these projections, six clusters are visible: three clusters exhibit nonlinear geometric shapes such as curved arcs or bent ribbons, while three appear approximately Gaussian and compact. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise."
+#| fig-cap: "Three $2\\text{-}D$ projections of the $10\\text{-}D$ PBMC CITE-seq data, shown using a random subset of $10,000$ points for computational efficiency. The dataset shows six well-separated yet closely positioned clusters, including three with nonlinear geometric structures and three approximately Gaussian clusters, along with a small amount of background noise."
+#| fig-alt: "A three-panel figure shows three two-dimensional projections of the PBMC CITE-seq ten-dimensional datasets, each using abstract horizontal and vertical projection axes. A random subset of 10,000 points is displayed for computational efficiency. Across these projections, six clusters are visible: three clusters exhibit nonlinear geometric shapes such as curved arcs or bent ribbons, while three appear approximately Gaussian and compact. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise."
 
 pbmc_data_proj1 + pbmc_data_proj2 +
   pbmc_data_proj3 +
   plot_layout(ncol = 3)
+```
+
+```{r fig-dt-tourr-pbmc, eval=knitr::is_html_output(), fig.cap="Tour view of the $10\\text{-}D$ PBMC CITE-seq dataset, shown using a random subset of $10,000$ points for computational efficiency. The data shows six well-separated yet closely positioned clusters, including three clusters with nonlinear geometric structure and three approximately Gaussian clusters, along with a small amount of background noise.", fig.pos="!ht", fig.alt="The figure shows a tour of the 10-D PBMC CITE-seq dataset, where points move smoothly as the projection rotates through different two-dimensional views. A random subset of 10,000 points is displayed for computational efficiency. Across the tour, six clusters remain consistently visible: three exhibit nonlinear geometric structure, appearing as curved or twisted shapes that change orientation across projections, while three appear more compact and approximately Gaussian. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise."}
+
+pbmcdatafig <- bscols(
+    htmltools::div(
+        style = "display: grid; grid-template-columns: 1fr;
+    gap: 0px;
+    align-items: start;
+    justify-items: center;
+    margin: 0;
+    padding: 0;",
+        pbmc_data_tour
+    ),
+    device = "xs"
+)
+
+class(pbmcdatafig) <- c(class(pbmcdatafig), "htmlwidget")
+
+pbmcdatafig
+```
+
+Using the `cardinalR` package, data with these different cluster shapes and background noise can be generated (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-dt-tourr-sim"} else { "@fig-dt-prj-sim"})`).
+
+```{r fig-dt-tourr-sim, eval=knitr::is_html_output(), fig.cap="Tour view of the $10\\text{-}D$ simulated dataset generated using `cardinalR`. To create a synthetic dataset comparable to the $10\\text{-}D$ PBMC CITE-seq data, `cardinalR` first generated a $4\\text{-}D$ structure consisting of three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with added background noise. Six additional noise dimensions were then included to produce a $10\\text{-}D$ dataset retaining similar structural characteristics.", fig.pos="!ht", fig.alt="The figure shows a tour of a simulated ten-dimensional dataset generated using cardinalR. As the projection evolves, six clusters with diverse geometric forms become apparent: three approximately Gaussian clusters, one quadratic structure, one spherical spiral, and one conic spiral, along with sparse background noise. Although individual projections vary over time, the tour illustrates that the simulated data reproduces the mixture of nonlinear and Gaussian structures observed in the PBMC CITE-seq dataset."}
+
+simdatafig <- bscols(
+    htmltools::div(
+        style = "display: grid; grid-template-columns: 1fr;
+    gap: 0px;
+    align-items: start;
+    justify-items: center;
+    margin: 0;
+    padding: 0;",
+        clust_data_tour
+    ),
+    device = "xs"
+)
+
+class(simdatafig) <- c(class(simdatafig), "htmlwidget")
+
+simdatafig
+```
+
+```{r}
+#| label: clust-data-prj
+
+centered_clust_data <- center_data(clust_data)
+
+## First projection
+projection1 <- cbind(
+  c(-0.002584,-0.004429,0.000598,-0.008122,0.003990,0.005002,-0.005135,0.003106,0.000766,-0.004760),
+  c(-0.000276,-0.004985,-0.006425,0.004049,0.006375,-0.003721,-0.005586,-0.004404,-0.001809,0.001366))
+
+proj_obj1 <- get_projection(projection = projection1 * 100, 
+                            centered_data = centered_clust_data, 
+                            axis_param = list(limits = 1,
+                                              axis_scaled = 1, 
+                                              axis_pos_x = -0.8, 
+                                              axis_pos_y = -0.8, 
+                                              threshold = 0.12))
+
+clust_data_proj1 <- plot_proj(
+  proj_obj = proj_obj1, 
+  point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
+  plot_limits = c(-1, 1.2), 
+  title = "a1", 
+  cex = 2, 
+  axis_text_size = 4,
+  is_color = FALSE) +
+  theme_linedraw() +
+              theme(
+                  aspect.ratio = 1,
+                  plot.background = element_rect(fill = 'transparent', colour = NA),
+                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
+                  panel.background = element_rect(fill = 'transparent', 
+                                                  colour = NA),
+                  panel.grid.major = element_blank(), 
+                  panel.grid.minor = element_blank(), 
+                  axis.title.x = element_blank(), axis.title.y = element_blank(),
+                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+                  legend.background = element_rect(fill = 'transparent', 
+                                                   colour = NA),
+                  legend.key = element_rect(fill = 'transparent', 
+                                            colour = NA),
+                  legend.position = "none", 
+                  legend.title = element_text(size=5), 
+                  legend.text = element_text(size=4),
+                  legend.key.height = unit(0.25, 'cm'),
+                  legend.key.width = unit(0.25, 'cm'),
+                  plot.margin = margin(0, 0, 0, 0)
+              )
+
+## Second projection
+projection2 <- cbind(
+  c(-0.007784,0.000224,-0.005620,0.003714,0.000785,0.000783,-0.004530,-0.000969,0.003910,0.006988),
+  c(0.001418,-0.003104,-0.003641,0.004786,-0.000776,0.006803,0.004252,0.007773,0.003565,-0.002629))
+
+proj_obj2 <- get_projection(projection = projection2 * 100, 
+                            centered_data = centered_clust_data, 
+                            axis_param = list(limits = 1,
+                                              axis_scaled = 1, 
+                                              axis_pos_x = -1.05, 
+                                              axis_pos_y = -1.05, 
+                                              threshold = 0.12))
+
+clust_data_proj2 <- plot_proj(
+  proj_obj = proj_obj2, 
+  point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
+  plot_limits = c(-1.25, 1.25), 
+  title = "a2", 
+  cex = 2, 
+  axis_text_size = 4,
+  is_color = FALSE) +
+  theme_linedraw() +
+              theme(
+                  aspect.ratio = 1,
+                  plot.background = element_rect(fill = 'transparent', colour = NA),
+                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
+                  panel.background = element_rect(fill = 'transparent', 
+                                                  colour = NA),
+                  panel.grid.major = element_blank(), 
+                  panel.grid.minor = element_blank(), 
+                  axis.title.x = element_blank(), axis.title.y = element_blank(),
+                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+                  legend.background = element_rect(fill = 'transparent', 
+                                                   colour = NA),
+                  legend.key = element_rect(fill = 'transparent', 
+                                            colour = NA),
+                  legend.position = "none", 
+                  legend.title = element_text(size=5), 
+                  legend.text = element_text(size=4),
+                  legend.key.height = unit(0.25, 'cm'),
+                  legend.key.width = unit(0.25, 'cm'),
+                  plot.margin = margin(0, 0, 0, 0)
+              )
+
+## Third projection
+projection3 <- cbind(
+  c(-0.012856,-0.002227,-0.000675,0.000355,-0.001067,0.003746,-0.001626,-0.001175,0.000823,0.001464),
+  c(0.001945,-0.006327,-0.001400,0.008778,0.000065,0.002431,-0.002239,-0.004185,-0.003852,-0.005169))
+
+proj_obj3 <- get_projection(projection = projection3 * 100, 
+                            centered_data = centered_clust_data, 
+                            axis_param = list(limits = 1.3,
+                                              axis_scaled = 0.7, 
+                                              axis_pos_x = -1.2, 
+                                              axis_pos_y = -1.2, 
+                                              threshold = 0.1))
+
+clust_data_proj3 <- plot_proj(
+  proj_obj = proj_obj3, 
+  point_param = c(0.5, 0.2, "#66B2CC"), # size, alpha, color
+  plot_limits = c(-1.5, 1.5), 
+  title = "a3", 
+  cex = 2, 
+  axis_text_size = 4,
+  is_color = FALSE) +
+  theme_linedraw() +
+              theme(
+                  aspect.ratio = 1,
+                  plot.background = element_rect(fill = 'transparent', colour = NA),
+                  plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
+                  panel.background = element_rect(fill = 'transparent', 
+                                                  colour = NA),
+                  panel.grid.major = element_blank(), 
+                  panel.grid.minor = element_blank(), 
+                  axis.title.x = element_blank(), axis.title.y = element_blank(),
+                  axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+                  axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+                  legend.background = element_rect(fill = 'transparent', 
+                                                   colour = NA),
+                  legend.key = element_rect(fill = 'transparent', 
+                                            colour = NA),
+                  legend.position = "none", 
+                  legend.title = element_text(size=5), 
+                  legend.text = element_text(size=4),
+                  legend.key.height = unit(0.25, 'cm'),
+                  legend.key.width = unit(0.25, 'cm'),
+                  plot.margin = margin(0, 0, 0, 0)
+              )
 ```
 
 ```{r, eval=knitr::is_latex_output()}
