@@ -916,7 +916,7 @@ Having predictions from both the built-in functions (when available) and our cen
 
 ### Interactive diagnostic tool for NLDR evaluation
 
-A promising direction for future work is the development of an interactive tool that enables diagnostic evaluation of NLDR methods, particularly in the context of clustering. Since different NLDR techniques and parameter settings can lead to varied low-dimensional representations and possible misclassifications. It is essential to have tools that help users explore and understand the sources of these discrepancies.
+A promising direction for future work is the development of an interactive tool that enables diagnostic evaluation of NLDR methods, particularly in the context of clustering. Since different NLDR techniques and hyper-parameter settings can lead to varied low-dimensional representations and possible misclassifications. It is essential to have tools that help users explore and understand the sources of these discrepancies.
 
 We propose building a Shiny-based interactive application that allows users to upload: $2\text{-}D$ and high-dimensional Euclidean distance matrices, NLDR embeddings, and results from spin-and-brush analysis [@cook2000; @wilhelm1999].
 
