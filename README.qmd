@@ -23,7 +23,7 @@ image_read_pdf("_book/This-is-my-thesis.pdf", pages = 1) |>
 fs::file_copy("_book/This-is-my-thesis.pdf", "examples/template.pdf", overwrite = TRUE)
 ```
 
-# New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Non-linear Dimension Reduction Layouts of High-dimensional Data
+# New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Non-linear Dimension Reduction Layouts of High-Dimensional Data
 
 This repository contains the **source code, datasets, and supplementary materials** for my PhD thesis at **Monash University, Australia**.
 
