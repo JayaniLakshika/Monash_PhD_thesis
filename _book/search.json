@@ -474,7 +474,7 @@
     "href": "chapters/08-chap8.html#software-availability-and-usage",
     "title": "\n8  Reproducibility and Availability\n",
     "section": "\n8.2 Software availability and usage",
-    "text": "8.2 Software availability and usage\n\nThe software outputs of this research have been made publicly available to support transparency and reproducibility. The R package quollr has been on CRAN since March 2024 and has received 5175 downloads from the CRAN mirror as of 12^{th} January 2026; its development version is hosted on GitHub at github.com/jayanilakshika/quollr. The R package cardinalR has been available on CRAN since April 2024 and has received 4407 downloads from the CRAN mirror as of 12^{th} January 2026, with the latest development version at github.com/jayanilakshika/cardinalR. Figure 8.1 gives an overview of my Git commits to these repositories.\n\n\n\n\n\n\n\n\nFigure 8.1: Weekly commit activity for the cardinalR and quollr packages.",
+    "text": "8.2 Software availability and usage\n\nThe software outputs of this research have been made publicly available to support transparency and reproducibility. The R package quollr, introduced and used in Chapter 2 and Chapter 3, has been on CRAN since March 2024 and has received 5175 downloads from the CRAN mirror as of 12^{th} January 2026; its development version is hosted on GitHub at github.com/jayanilakshika/quollr. The R package cardinalR, discussed in Chapter 4, has been available on CRAN since April 2024 and has received 4407 downloads from the CRAN mirror as of 12^{th} January 2026, with the latest development version at github.com/jayanilakshika/cardinalR. Figure 8.1 gives an overview of my Git commits to these repositories.\n\n\n\n\n\n\n\n\nFigure 8.1: Weekly commit activity for the cardinalR and quollr packages.",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Reproducibility and Availability</span>"
     ]
@@ -484,7 +484,7 @@
     "href": "chapters/08-chap8.html#web-applications",
     "title": "\n8  Reproducibility and Availability\n",
     "section": "\n8.3 Web applications",
-    "text": "8.3 Web applications\nA Shiny application for quollr is accessible via one of the mirror sites at menurar.netlify.app/, with its source code available at github.com/JayaniLakshika/menuraR. The survey web application, Match-a-roo (https://ebsmonash.shinyapps.io/Match-a-roo/), was designed and implemented in Shiny to collect participant responses and demographic information. Each subject accessed the survey through the shinyapps.io server.",
+    "text": "8.3 Web applications\nA Shiny application for quollr, described in Chapter 6, is accessible via one of the mirror sites at menurar.netlify.app/, with its source code available at github.com/JayaniLakshika/menuraR. The survey web application, Match-a-roo (https://ebsmonash.shinyapps.io/Match-a-roo/), was designed and implemented in Shiny to collect the data for the experiment discussed in Chapter 5, participant responses and demographic information. Each subject accessed the survey through the shinyapps.io server.",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Reproducibility and Availability</span>"
     ]
