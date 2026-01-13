@@ -75,9 +75,10 @@ fully clone this repo.
 
 ### Install required packages
 
-All the R packages required for this project are listed in
+All the R packages required for this project, along with their versions,
+are listed in [`_Rpackages.txt`](../_Rpackages.txt) and in
 [`scripts/software.R`](scripts/software.R). You can install them by
-sourcing this script in R:
+sourcing the R script:
 
 ``` r
 source("scripts/software.R")

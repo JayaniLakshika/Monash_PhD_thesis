@@ -95,6 +95,7 @@ lifecycle==1.0.5
 listenv==0.10.0
 lme4==1.1-38
 lubridate==1.9.4
+magick==2.9.0
 magrittr==2.0.4
 mclust==6.1.2
 memoise==2.0.1
@@ -124,6 +125,7 @@ promises==1.5.0
 proxy==0.4-29
 ps==1.9.1
 purrr==1.2.1
+quarto==1.5.1
 quollr==1.0.6
 R.methodsS3==1.8.2
 R.oo==1.27.1
