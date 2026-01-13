@@ -2,5 +2,6 @@ data/vis-algo/pbmc3k/pbmc3k_final.rds filter=lfs diff=lfs merge=lfs -text
 data/vis-exp/embedding_data_three_clust_all.rds filter=lfs diff=lfs merge=lfs -text
 data/vis-exp/high_d_data_three_close_clust_all.rds filter=lfs diff=lfs merge=lfs -text
 data/vis-exp/high_d_data_three_clust_all.rds filter=lfs diff=lfs merge=lfs -text
+_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Nonlinear-Dimension-Reduction-Layouts-of-High-Dimensional-Data.pdf filter=lfs diff=lfs merge=lfs -text
 
 
