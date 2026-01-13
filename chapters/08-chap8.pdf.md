@@ -17,7 +17,7 @@ To support accessibility, all figures include alt-text. The [autoAlt](https://gi
 
 ## Software availability and usage
 <!--scripts/pkg_cran_info.R-->
-The software outputs of this research have been made publicly available to support transparency and reproducibility. The R package `quollr` has been on CRAN since March $2024$ and has received $5175$ downloads from the CRAN mirror as of $12^{th}$ January $2026$; its development version is hosted on GitHub at [github.com/jayanilakshika/quollr](https://github.com/jayanilakshika/quollr). The R package `cardinalR` has been available on CRAN since April $2024$ and has received $4407$ downloads from the CRAN mirror as of $12^{th}$ January $2026$, with the latest development version at [github.com/jayanilakshika/cardinalR](https://github.com/jayanilakshika/cardinalR). @fig-pkg-commit gives an overview of my Git commits to these repositories.
+The software outputs of this research have been made publicly available to support transparency and reproducibility. The R package `quollr`, introduced and used in [Chapter 2](#sec-first-paper) and [Chapter 3](#sec-third-paper), has been on CRAN since March $2024$ and has received $5175$ downloads from the CRAN mirror as of $12^{th}$ January $2026$; its development version is hosted on GitHub at [github.com/jayanilakshika/quollr](https://github.com/jayanilakshika/quollr). The R package `cardinalR`, discussed in [Chapter 4](#sec-fourth-paper), has been available on CRAN since April $2024$ and has received $4407$ downloads from the CRAN mirror as of $12^{th}$ January $2026$, with the latest development version at [github.com/jayanilakshika/cardinalR](https://github.com/jayanilakshika/cardinalR). @fig-pkg-commit gives an overview of my Git commits to these repositories.
 
 <!--scripts/git_commits.R-->
 
@@ -30,7 +30,7 @@ The software outputs of this research have been made publicly available to suppo
 
 ## Web applications
 
-A Shiny application for `quollr` is accessible via one of the mirror sites at [menurar.netlify.app/](https://menurar.netlify.app/), with its source code available at [github.com/JayaniLakshika/menuraR](https://github.com/JayaniLakshika/menuraR). The survey web application, **Match-a-roo** ([https://ebsmonash.shinyapps.io/Match-a-roo/](https://ebsmonash.shinyapps.io/Match-a-roo/)), was designed and implemented in Shiny to collect participant responses and demographic information. Each subject accessed the survey through the [shinyapps.io](https://www.shinyapps.io/) server.
+A Shiny application for `quollr`, described in [Chapter 6](#sec-fifth-paper), is accessible via one of the mirror sites at [menurar.netlify.app/](https://menurar.netlify.app/), with its source code available at [github.com/JayaniLakshika/menuraR](https://github.com/JayaniLakshika/menuraR). The survey web application, **Match-a-roo** ([https://ebsmonash.shinyapps.io/Match-a-roo/](https://ebsmonash.shinyapps.io/Match-a-roo/)), was designed and implemented in `Shiny` to collect the data for the experiment discussed in [Chapter 5](#sec-second-paper), participant responses and demographic information. Each subject accessed the survey through the [shinyapps.io](https://www.shinyapps.io/) server.
 
 ## Supporting R packages
 
@@ -39,7 +39,7 @@ In addition, a number of R packages were essential in the development of this wo
 
 ## Research workflow and project organization
 
-Presentations, package development, and writing are the three primary types of activities that shape this thesis. I have developed a habit of using Git and GitHub to track and synchronize my academic work since I started the PhD program. All commits are grouped by the activity types, with annotations of important milestones, shown in @fig-task-commit. It has been a fruitful program.
+Presentations, package development, and writing are the three primary types of activities that shape this thesis. Figure @fig-task-commit summarizes my GitHub commits documenting these activities since the start of my PhD, with commits grouped by activity type and annotated with important milestones. It has been a fruitful program.
 
 <!--scripts/git_commits.R-->
 
