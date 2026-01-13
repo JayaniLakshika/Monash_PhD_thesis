@@ -141,7 +141,7 @@ The package is organized into seven core modules corresponding to stages of the 
 
 7. Interactivity: The functions `comb_all_data_model()` and `show_link_plots()` generate interactive linked visualizations that connect the $2\text{-}D$ NLDR layout, the corresponding tour view, and the fitted model. Similarly, `comb_all_data_model_error()` and `show_error_link_plots()` integrate the error distribution with the $2\text{-}D$ embedding and tour view, enabling interactivity across multiple plots.
 
-Each module is internally independent but connected through data objects (see next section). This modular design simplifies maintenance and allows developers to extend individual components such as substituting different binning approaches, extracting centroids, or using visualization tools, without altering the overall workflow.
+Each module is internally independent but connected through data objects (see next section). This modular design simplifies maintenance and allows developers to extend individual components, such as substituting different binning approaches, extracting centroids, or using visualization tools, without altering the overall workflow.
 
 ### Data objects
 
@@ -458,7 +458,7 @@ tr_object <- tri_bin_centroids(
 :::
 
 
-The `gen_edges()` function uses this triangulation object to extract line segments between neighboring bins. It constructs a unique set of bin-to-bin connections by identifying the triangle edges and filtering duplicate or reversed links. Each edge is then annotated with its start and end coordinates, and the Euclidean distance between the coordinates.
+The `gen_edges()` function uses this triangulation object to extract line segments between neighboring bins. It constructs a unique set of bin-to-bin connections by identifying the triangle edges and filtering duplicate or reversed links. Each edge is then annotated with its start and end coordinates and the Euclidean distance between the coordinates.
 
 
 ::: {.cell}

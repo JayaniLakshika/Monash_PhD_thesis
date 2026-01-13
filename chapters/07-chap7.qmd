@@ -449,7 +449,7 @@ clust_data_proj1 +
   plot_layout(ncol = 3)
 ```
 
-Using the `quollr` framework, we evaluated how well the UMAP layout reflects the structure of the $10\text{-}D$ PBMC CITE-seq data (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-model-html"} else { "@fig-model-pdf"})`). With a model fitted using a binwidth of $0.03$, the layout appears reasonable overall, but some limitations become clear. In particular, the roughly Gaussian clusters look more squeezed than expected, and background noise seems to form a separate cluster that likely does not represent a true group in the data. In addition, the nonlinear shaped clusters could benefit from being more spread out to better reflect their underlying structure. Also, clusters should be more close. These observations suggest that, while the current layout is informative, there is good potential to find an alternative layout that represents the data structure even more clearly.
+Using the `quollr` framework, we evaluated how well the UMAP layout reflects the structure of the $10\text{-}D$ PBMC CITE-seq data (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-model-html"} else { "@fig-model-pdf"})`). With a model fitted using a binwidth of $0.03$, the layout appears reasonable overall, but some limitations become clear. In particular, the roughly Gaussian clusters look more squeezed than expected, and background noise seems to form a separate cluster that likely does not represent a true group in the data. In addition, the nonlinear shaped clusters could benefit from being more spread out to better reflect their underlying structure. Also, clusters should be closer. These observations suggest that, while the current layout is informative, there is good potential to find an alternative layout that represents the data structure even more clearly.
 
 <!--scripts/CITE-seq/04_gen_model_umap.R-->
 ```{r}
@@ -885,13 +885,13 @@ Once the data and layouts are loaded in the *Data Upload* tab, all three embeddi
 knitr::include_graphics(here::here("figures/CITE-seq/menuraR_ui1_CITE-seq.png"))
 ```
 
-This allows the layouts to be viewed side by side, overlaid with hexagonal grids, and evaluated using the hexbin error across different bin widths. With `menuraR`, at binwidth of $0.03$, the most reasonable layout is tSNE with *perplexity = 84* (@fig-menuraR_ui2).
+This allows the layouts to be viewed side by side, overlaid with hexagonal grids, and evaluated using the hexbin error across different bin widths. With `menuraR`, at a binwidth of $0.03$, the most reasonable layout is tSNE with *perplexity = 84* (@fig-menuraR_ui2).
 
 ```{r}
 #| label: fig-menuraR_ui2
 #| out-width: 100%
 #| fig-cap: "NLDR layout comparison and hexbin error evaluation in `menuraR`. The *Compare NLDR Layouts* tab displays multiple $2\\text{-}D$ NLDR embeddings side by side, overlaid with hexagonal grids and corresponding wireframe representations. Users can explore how the hexbin error (HBE) changes with the binwidth parameter ($a_1$) and compare layouts directly. For this example, at a binwidth of $0.03$, the tSNE layout with *perplexity = 84* is identified as the most reasonable representation. Layouts, HBE plots, and summary tables can be downloaded for further analysis."
-#| fig-alt: "A screenshot of the Compare NLDR Layouts tab in the menuraR interface. Multiple two-dimensional NLDR embeddings are shown side by side, allowing direct visual comparison of different layouts. Each embedding is overlaid with a hexagonal binning grid and an associated wireframe representation, highlighting local neighborhood structure. Adjacent plots display how the hexbin error (HBE) varies as the binwidth parameter a1 hanges. Controls allow the user to adjust the binwidth and explore its effect on each layout. In this example, at a binwidth of 0.03, the tSNE layout with perplexity set to 84 shows the lowest HBE and is identified as the most reasonable representation. Options are provided to download the layouts, HBE plots, and summary tables for further analysis."
+#| fig-alt: "A screenshot of the Compare NLDR Layouts tab in the menuraR interface. Multiple two-dimensional NLDR embeddings are shown side by side, allowing direct visual comparison of different layouts. Each embedding is overlaid with a hexagonal binning grid and an associated wireframe representation, highlighting local neighborhood structure. Adjacent plots display how the hexbin error (HBE) varies as the binwidth parameter a1 changes. Controls allow the user to adjust the binwidth and explore its effect on each layout. In this example, at a binwidth of 0.03, the tSNE layout with perplexity set to 84 shows the lowest HBE and is identified as the most reasonable representation. Options are provided to download the layouts, HBE plots, and summary tables for further analysis."
 
 knitr::include_graphics(here::here("figures/CITE-seq/menuraR_ui2_CITE-seq.png"))
 ```
@@ -920,7 +920,7 @@ Moreover, investigating how scagnostic profiles vary with different sample sizes
 
 ### Compare prediction approaches
 
-Future work includes evaluating and comparing the prediction capabilities of different NLDR methods. Only some methods, such as UMAP provide built-in functionality [@tomasz2023] to project new high-dimensional observations into an existing low-dimensional embedding. Our approach introduces a general prediction framework that can be applied to any NLDR method. It works by identifying the nearest high-dimensional bin centroid for a new observation and assigning its corresponding $2\text{-}D$ centroid from the fitted model.
+Future work includes evaluating and comparing the prediction capabilities of different NLDR methods. Only some methods, such as UMAP, provide built-in functionality [@tomasz2023] to project new high-dimensional observations into an existing low-dimensional embedding. Our approach introduces a general prediction framework that can be applied to any NLDR method. It works by identifying the nearest high-dimensional bin centroid for a new observation and assigning its corresponding $2\text{-}D$ centroid from the fitted model.
 
 Having predictions from both the built-in functions (when available) and our centroid-based method allows for direct performance comparisons. This enables a systematic evaluation of how well different approaches preserve structure when projecting new observations into an existing NLDR space.
 
@@ -988,7 +988,7 @@ Lineups could also be used to study the sensitivity of NLDR methods to hyper-par
 
 Another valuable direction for future work is to investigate how PCA compares to NLDR methods in terms of human perception and interpretability. PCA is a linear method widely used for its simplicity and mathematical transparency, whereas NLDR methods often involve nonlinear transformations and hyper-parameter tuning.
 
-By comparing how users interpret and misinterpret PCA layouts versus NLDR generated layouts, we can gain insights into whether linear techniques are inherently easier to understand or whether they may lead to different types of visual distortions. This work would help clarify when PCA is sufficient for visual analysis and when the added complexity of NLDR is warranted, particularly for exploratory tasks that rely on visual intuition.
+By comparing how users interpret and misinterpret PCA layouts versus NLDR-generated layouts, we can gain insights into whether linear techniques are inherently easier to understand or whether they may lead to different types of visual distortions. This work would help clarify when PCA is sufficient for visual analysis and when the added complexity of NLDR is warranted, particularly for exploratory tasks that rely on visual intuition.
 
 ### Extension for `quollr`
 
