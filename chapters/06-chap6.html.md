@@ -129,9 +129,9 @@ Currently, `menuraR` supports only two NLDR methods: tSNE and UMAP for computing
 
 ## Supplementary materials
 
-The `menuraR` application is available online at <https://ebsmonash.shinyapps.io/menuraR/>. All data and materials used in the study are openly available. The survey data collected from participants can be accessed at [https://github.com/JayaniLakshika/paper-menuraR/data](https://github.com/JayaniLakshika/paper-menuraR/tree/main/data). The example datasets provided within the menuraR app are available at [https://github.com/JayaniLakshika/menuraR/data](https://github.com/JayaniLakshika/menuraR/tree/main/data).
+The `menuraR` application is available online at <https://ebsmonash.shinyapps.io/menuraR/>. All data and materials used in the study are openly available. The survey data collected from participants can be accessed at [https://github.com/JayaniLakshika/paper-menuraR/data](https://github.com/JayaniLakshika/paper-menuraR/tree/main/data). The example datasets provided within the menuraR app are available at [github.com/JayaniLakshika/menuraR/data](https://github.com/JayaniLakshika/menuraR/tree/main/data).
 
-Additionally, the run sheets used to guide participants through the usability study are publicly available at [https://github.com/JayaniLakshika/paper-menuraR/run_sheets](https://github.com/JayaniLakshika/paper-menuraR/tree/main/run_sheets).
+Additionally, the run sheets used to guide participants through the usability study are publicly available at [github.com/JayaniLakshika/Monash_PhD_thesis/menuraR/run_sheets](https://github.com/JayaniLakshika/Monash_PhD_thesis/tree/main/scripts/menuraR/run_sheets).
 
 ## Acknowledgments
 

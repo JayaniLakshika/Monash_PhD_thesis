@@ -414,7 +414,7 @@
     "href": "chapters/06-chap6.html#supplementary-materials",
     "title": "6  menuraR: An R Shiny App to Help Select the Best Nonlinear Dimension Reduction Representation",
     "section": "\n6.7 Supplementary materials",
-    "text": "6.7 Supplementary materials\nThe menuraR application is available online at https://ebsmonash.shinyapps.io/menuraR/. All data and materials used in the study are openly available. The survey data collected from participants can be accessed at https://github.com/JayaniLakshika/paper-menuraR/data. The example datasets provided within the menuraR app are available at https://github.com/JayaniLakshika/menuraR/data.\nAdditionally, the run sheets used to guide participants through the usability study are publicly available at https://github.com/JayaniLakshika/paper-menuraR/run_sheets.",
+    "text": "6.7 Supplementary materials\nThe menuraR application is available online at https://ebsmonash.shinyapps.io/menuraR/. All data and materials used in the study are openly available. The survey data collected from participants can be accessed at https://github.com/JayaniLakshika/paper-menuraR/data. The example datasets provided within the menuraR app are available at github.com/JayaniLakshika/menuraR/data.\nAdditionally, the run sheets used to guide participants through the usability study are publicly available at github.com/JayaniLakshika/Monash_PhD_thesis/menuraR/run_sheets.",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>menuraR: An R Shiny App to Help Select the Best Nonlinear Dimension Reduction Representation</span>"
     ]
