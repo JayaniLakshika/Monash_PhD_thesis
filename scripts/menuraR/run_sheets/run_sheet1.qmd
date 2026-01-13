@@ -1,0 +1,105 @@
+---
+title: "Run Sheet for `menuraR` Shiny App"
+format: pdf
+---
+
+<!-- this runsheet for them to start with Generate default tSNE and UMAP layouts-->
+
+## 1. Introduction
+
+Thank you for participating in this study. We are testing the usability and effectiveness of the `menuraR` Shiny app, which allows users to compare multiple non-linear dimension reduction (NLDR) layouts and select the most reasonable one.
+
+Your participation will help us improve the design and functionality of the app. This is not a test of your skills, but rather an evaluation of the app.
+
+## 2. Tutorial
+
+Please see this video for a quick walkthrough of the `menuraR` app. It only takes about $5$ minutes to watch the video tutorial.
+
+## 3. Getting Started
+
+Follow the instructions below to complete the study. The task should take approximately $10$ minutes
+
+* Open the app in your browser: [https://menurar.netlify.app](https://menurar.netlify.app)
+
+* Upload the High-dimensional data provided for you.
+
+* Here are some suggested layouts you can explore, but feel free to use the same or add any others you like:
+
+
+| Method | Hyper-parameters |
+| ------ | ---------------------- |
+| tSNE   | perplexity = $18$                     |
+| tSNE   | perplexity = $7$                      |
+| tSNE   | perplexity = $42$                     |
+| tSNE   | perplexity = $26$                     |
+| UMAP   | n_neighbors = $28$, min_dist = $0.3$                     |
+| UMAP   | n_neighbors = $45$, min_dist = $0.55$                     |
+| UMAP   | n_neighbors = $11$, min_dist = $0.76$                     |
+
+## 4. Tasks
+
+### Which of the layouts did you use for comparison?
+
+| Method | Hyper-parameters |
+| ------ | ---------------------- |
+| \_\_\_\_\_\_\_\_\_   |  \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|
+| \_\_\_\_\_\_\_\_\_   |  \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|
+| \_\_\_\_\_\_\_\_\_   |  \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|
+| \_\_\_\_\_\_\_\_\_   |  \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|
+| \_\_\_\_\_\_\_\_\_   |  \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|
+| \_\_\_\_\_\_\_\_\_   |  \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|
+| \_\_\_\_\_\_\_\_\_   |  \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|
+| \_\_\_\_\_\_\_\_\_   |  \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|
+| \_\_\_\_\_\_\_\_\_   |  \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|
+| \_\_\_\_\_\_\_\_\_   |  \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|
+
+### What binwidth (a1) did you chose?
+
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+### What is/are the best layout(s) provided by the app?
+
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+### Would you choose the same layout(s) suggested by the app?
+
+* [ ] Yes 
+* [ ] No
+
+- **If yes**: Why do you think this is the best layout(s)?  
+
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+- **If no**: What layout(s) would you suggest instead, and why do you think it would be better?
+
+Layout(s): \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+Reason(s): \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+## 4. Demographic Information
+
+Please answer the following:
+
+1. Have you used principal component analysis in your work?
+* [ ] Yes 
+* [ ] No
+
+2. Have you applied non-linear dimensional reduction techniques such as tSNE and UMAP?
+* [ ] Yes 
+* [ ] No
+
+3. Select your subject area: 
+* [ ] Statistics
+* [ ] Econometrics
+* [ ] Bioinformatics
+* [ ] Other: \_\_\_\_\_\_\_
+
+## 5. Completion
+
+Thank you for your time and valuable feedback! Please remember to send the **Layouts plot image** and the **Layouts data** along with your responses.
+
