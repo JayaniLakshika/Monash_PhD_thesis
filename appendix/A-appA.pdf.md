@@ -252,8 +252,8 @@ c\_shaped\_dens\_str & 01\_gen\_data.R & Generates the $2\text{-}D$ curved sheet
 c\_shaped\_dens\_str & 02\_gen\_embeddings\_uni\_dens.R & Generates multiple NLDR embeddings.\\
 c\_shaped\_dens\_str & 03\_gen\_model\_with\_tSNE.R & Fits the model for the tSNE layout.\\
 \midrule
-pbmc3k & 01\_obtain\_pca\_author.R & Obtains  author\'s PCA results.\\
-pbmc3k & 02\_obtain\_umap\_authors.R & Obtains  author\'s UMAP embeddings.\\
+pbmc3k & 01\_obtain\_pca\_author.R & Obtains  author PCA results.\\
+pbmc3k & 02\_obtain\_umap\_authors.R & Obtains  author UMAP embeddings.\\
 pbmc3k & 03\_gen\_umap\_diff\_param.R & Generates multiple UMAP embeddings with different hyper\-parameter values.\\
 pbmc3k & 04\_gen\_tsne\_diff\_param.R & Generates multiple tSNE embeddings with different hyper\-parameter values.\\
 pbmc3k & 05\_gen\_phate.R & Generates a PHATE embeddings with default hyper\-parameters.\\

@@ -24,6 +24,7 @@ book:
     - "chapters/05-chap5.qmd"
     - "chapters/06-chap6.qmd"
     - "chapters/07-chap7.qmd"
+    - "chapters/08-chap8.qmd"
     - "refs.qmd"
   appendices:
     - "appendix/A-appA.qmd"
