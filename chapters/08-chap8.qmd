@@ -53,7 +53,7 @@ In addition, a number of R packages were essential in the development of this wo
 
 ## Research workflow and project organization
 
-Presentations, package development, and writing are the three primary types of activities that shape this thesis. Figure @fig-task-commit summarizes my GitHub commits documenting these activities since the start of my PhD, with commits grouped by activity type and annotated with important milestones. It has been a fruitful program.
+Presentations, package development, and writing are the three primary types of activities that shape this thesis. @fig-task-commit summarizes my GitHub commits documenting these activities since the start of my PhD, with commits grouped by activity type and annotated with important milestones. It has been a fruitful program.
 
 <!--scripts/git_commits.R-->
 ```{r}
