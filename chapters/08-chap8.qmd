@@ -16,11 +16,11 @@ All materials associated with this thesis are openly available for transparency 
 
 ## Accessibility of figures
 
-To support accessibility, all figures supplemented with alt text, which allows screen readers and vision impaired readers to access their content. The `autoAlt` [@maliny2025] package was used as a starting point for generating these descriptions, which were then reviewed and refined to better reflect the content of each figure and its caption.
+To support accessibility, all figures are supplemented with alt text, which allows screen readers and vision-impaired readers to access their content. The `autoAlt` [@maliny2025] package was used as a starting point for generating these descriptions, which were then reviewed and refined to better reflect the content of each figure and its caption.
 
 ## Software availability and usage
 <!--scripts/pkg_cran_info.R-->
-Some of the software developed has been packaged and been avaialable on the Comphrensive R Archieve Network (CRAN).The R package `quollr`, introduced and used in [Chapter 2](#sec-first-paper) and [Chapter 3](#sec-third-paper), has been on CRAN since March $2024$ and has received $5175$ downloads from the CRAN mirror as of $12^{th}$ January $2026$; its development version is hosted on GitHub at [https://github.com/jayanilakshika/quollr](https://github.com/jayanilakshika/quollr). The R package `cardinalR`, discussed in [Chapter 4](#sec-fourth-paper), has been available on CRAN since April $2024$ and has received $4407$ downloads from the CRAN mirror as of $12^{th}$ January $2026$, with the latest development version at [https://github.com/jayanilakshika/cardinalR](https://github.com/jayanilakshika/cardinalR). @fig-pkg-commit gives an overview of my Git commits to these repositories.
+Some of the software developed has been packaged and is been available on the Comprehensive R Archive Network (CRAN). The R package `quollr`, introduced and used in [Chapter 2](#sec-first-paper) and [Chapter 3](#sec-third-paper), has been on CRAN since March $2024$ and has received $5175$ downloads from the CRAN mirror as of $12^{th}$ January $2026$; its development version is hosted on GitHub at [https://github.com/jayanilakshika/quollr](https://github.com/jayanilakshika/quollr). The R package `cardinalR`, discussed in [Chapter 4](#sec-fourth-paper), has been available on CRAN since April $2024$ and has received $4407$ downloads from the CRAN mirror as of $12^{th}$ January $2026$, with the latest development version at [https://github.com/jayanilakshika/cardinalR](https://github.com/jayanilakshika/cardinalR). @fig-pkg-commit gives an overview of my Git commits to these repositories.
 
 <!--scripts/git_commits.R-->
 ```{r}
@@ -44,7 +44,7 @@ commits |>
 
 ## Web applications
 
-A Shiny application described in [Chapter 6](#sec-fifth-paper), is accessible via one of the mirror sites at [https://menurar.netlify.app/](https://menurar.netlify.app/), with its source code available at [https://github.com/JayaniLakshika/menuraR](https://github.com/JayaniLakshika/menuraR). The survey web application, **Match-a-roo** ([https://ebsmonash.shinyapps.io/Match-a-roo/](https://ebsmonash.shinyapps.io/Match-a-roo/)), was designed and implemented in `Shiny` to collect the data for the experiment discussed in [Chapter 5](#sec-second-paper), participant responses and demographic information. Each subject accessed the survey through the `shinyapps.io` [@posit2022] server.
+A Shiny application described in [Chapter 6](#sec-fifth-paper), is accessible via one of the mirror sites at [https://menurar.netlify.app/](https://menurar.netlify.app/), with its source code available at [https://github.com/JayaniLakshika/menuraR](https://github.com/JayaniLakshika/menuraR). The survey web application, **Match-a-roo** ([https://ebsmonash.shinyapps.io/Match-a-roo/](https://ebsmonash.shinyapps.io/Match-a-roo/)), was designed and implemented in `Shiny` to collect the data for the experiment discussed in [Chapter 5](#sec-second-paper), participant responses, and demographic information. Each subject accessed the survey through the `shinyapps.io` [@posit2022] server.
 
 ## Supporting R packages
 

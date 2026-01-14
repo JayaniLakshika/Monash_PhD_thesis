@@ -12,63 +12,15 @@
 
 # Conclusion and Future Plans {#sec-conclusion}
 
-This thesis presents five key contributions that collectively advance the understanding and evaluation of NLDR methods. The work introduces a new method and software for NLDR diagnostics, providing insights into how people identify data structures when NLDR layouts and tour views are displayed together. It develops methods for generating clustering data structures and implements user-friendly tools that support exploratory analysis and visualization.
-
 ## Contributions
 
-The primary contributions of this research are fivefold. First, we introduce a novel method for visualizing how NLDR warps data, thereby improving the diagnostics of NLDR techniques. Second, we develop an R package, `quollr`, which implements the proposed diagnostic method. Third, we create `cardinalR`, a package that generates high-dimensional clustering data structures with enhanced features such as added noise dimensions and background noise. Fourth, we conduct a human-subject experiment to investigate the perception and misperception of NLDR representations, providing evidence on how data structures are identified in NLDR layouts compared to tours. Finally, we develop a Shiny application that offers analysts a user-friendly interface for selecting the most accurate NLDR representation.
+The primary contributions of this research are fivefold. We introduced a novel method for visualizing how NLDR warps data, thereby improving the diagnostics of NLDR techniques. This methodology is available on an R package, `quollr`, which implements the proposed diagnostic method. The `cardinalR` package generates high-dimensional clustering data with a variety of cluster shapes and enhanced features, such as added noise and background noise. A human subjects experiment showed that different methods create a systematically different conceptualization of the same cluster structure from each other and from what would be imagined from tour views. Finally, this methodology has been made available in a user-friendly web interface. Overall, this work supports better exploratory data analysis and visualization of high-dimensional data.
 
-## Using a published $2\text{-}D$ NLDR layout as a case study
+## How the chapters fit together
 
-As introduced in [Chapter 1](#sec-intro), we consider a **published UMAP layout of a human PBMC CITE-seq dataset** [@hao2021] as a motivating example, generated using *n_neighbors = 30* and *min_dist = 0.3* (@fig-NLDR-variety-intro). This layout shows multiple clusters with distinct shapes: some appear compact and well-separated, while others are elongated, curved, or partially overlapping. In total, six clusters can be observed, including three with nonlinear shapes, two roughly Gaussian clusters, and one elliptical cluster, along with a small amount of background noise. While visually convincing at first glance, this layout immediately raises the question: *Does it faithfully represent the structure of the underlying $10\text{-}D$ PBMC CITE-seq data?*
+In the [Introduction](#sec-intro), we showed a **published UMAP layout of a human PBMC CITE-seq dataset** [@hao2021] (@fig-NLDR-variety-intro) as a motivating example. This layout shows multiple clusters with distinct shapes: some appear compact and well-separated, while others are elongated, curved, or partially overlapping. In total, six clusters can be observed, including three with nonlinear shapes, two roughly Gaussian clusters, and one elliptical cluster, along with a small amount of background noise.  We asked the question: *Does it faithfully represent the structure of the underlying $10\text{-}D$ PBMC CITE-seq data?* Here is how we can check that given the various contributions of this thesis.
 
-A closer examination of the dataset (@fig-dt-prj-pbmc) confirms that the six clusters are fairly close to one another, with three nonlinear-shaped clusters, two Gaussian-like blobs, and one closer to an ellipse, alongside some scattered background points. The full dataset contains approximately $160,000$ observations; for visualization purposes, we display a random subset of $10,000$ points to reduce computational overhead while preserving the overall cluster structure. Such cluster arrangements are typical of high-dimensional bioinformatics data.
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-![Three $2\text{-}D$ projections of the $10\text{-}D$ PBMC CITE-seq data, shown using a random subset of $10,000$ points for computational efficiency. The dataset shows six well-separated yet closely positioned clusters, including three with nonlinear geometric structures and three approximately Gaussian clusters, along with a small amount of background noise.](07-chap7_files/figure-pdf/fig-dt-prj-pbmc-1.pdf){#fig-dt-prj-pbmc fig-alt='A three-panel figure shows three two-dimensional projections of the PBMC CITE-seq ten-dimensional datasets, each using abstract horizontal and vertical projection axes. A random subset of 10,000 points is displayed for computational efficiency. Across these projections, six clusters are visible: three clusters exhibit nonlinear geometric shapes such as curved arcs or bent ribbons, while three appear approximately Gaussian and compact. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise.'}
-:::
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-To better understand how these structures can be represented, we generated a synthetic $10\text{-}D$ dataset using the `cardinalR` package (@fig-dt-prj-sim). The dataset contains six clusters with $500$, $700$, $700$, $500$, $700$, and $700$ points, respectively, for a total of $3,800$ points. Cluster centers were positioned according to a custom distance matrix to control their relative arrangement, and each cluster was assigned a distinct geometric shape: three approximately Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. This synthetic dataset provides a controlled benchmark for assessing how well NLDR layouts capture cluster structure.
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
-
-
-::: {.cell}
-
-:::
-
+@fig-dt-prj-pbmc shows the data using the tour. It also suggests that there are six clusters, and they are fairly close to one another, with three nonlinear-shaped clusters, two Gaussian-like blobs, and one closer to an ellipse, alongside some scattered background points. The full dataset contains approximately $160,000$ observations, so for computational efficiency for visualization purposes, we display a random subset of $10,000$ points. Such cluster arrangements are commonly seen in other bioinformatics data.
 
 
 ::: {.cell}
@@ -85,8 +37,14 @@ To better understand how these structures can be represented, we generated a syn
 
 ::: {.cell}
 ::: {.cell-output-display}
-![Three $2\text{-}D$ projections of a $10\text{-}D$ simulated dataset generated using `cardinalR`. To create a synthetic dataset comparable to PBMC CITE-seq data, `cardinalR` first generated a $4\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with added background noise. Six additional noise dimensions were then added to produce a $10\text{-}D$ dataset retaining similar structural characteristics.](07-chap7_files/figure-pdf/fig-dt-prj-sim-1.pdf){#fig-dt-prj-sim fig-alt='A three-panel figure shows three two-dimensional projections of a simulated dataset generated using cardinalR. These projections display six clusters with analogous structural diversity: three approximately Gaussian clusters, one quadratic-shaped cluster, one spherical spiral, and one conic spiral, again with sparse background noise. Although the exact shapes and relative positions vary across projections, the simulated data reproduces the mixture of nonlinear and Gaussian cluster structures observed in the PBMC CITE-seq data, illustrating structural similarity between the real and synthetic high-dimensional datasets.'}
+![Three $2\text{-}D$ projections of the $10\text{-}D$ PBMC CITE-seq data produced using a tour. The dataset shows six well-separated yet closely positioned clusters, including three with nonlinear geometric structures and three approximately Gaussian clusters, along with a small amount of background noise.](07-chap7_files/figure-pdf/fig-dt-prj-pbmc-1.pdf){#fig-dt-prj-pbmc fig-alt='A three-panel figure shows three two-dimensional projections of the PBMC CITE-seq ten-dimensional datasets, each using abstract horizontal and vertical projection axes. Across these projections, six clusters are visible: three clusters exhibit nonlinear geometric shapes such as curved arcs or bent ribbons, while three appear approximately Gaussian and compact. The clusters are well separated but positioned relatively close to one another, with a small number of scattered points representing background noise.'}
 :::
+:::
+
+
+
+::: {.cell}
+
 :::
 
 
@@ -153,6 +111,46 @@ This allows the layouts to be viewed side by side, overlaid with hexagonal grids
 The TriMAP layout is universally poor. The tSNE layout with little separation performs well at tiny binwidth (where most points are in their own bin) and poorly as binwidth increases. Also, the layout shows more clusters than it should. Both UMAP and PaCMAP perform better in this case because they produce more clearly separated clusters. However, PaCMAP spreads the Gaussian clusters too far apart, with some clusters even overlapping, which makes the structure harder to interpret. In contrast, UMAP provides well-separated clusters without introducing these issues, making it the most reasonable choice here. This addresses the question posed in the [Introduction](#sec-intro): while NLDR layouts can distort structure in general, the published UMAP layout provides a faithful and visually reasonable representation of the PBMC CITE-seq dataset.
 
 <!-- Finally, the *Model Diagnostics* tab can be used to dig deeper into where each layout works well and where it struggles. Linked views between the 2D layout and the high-dimensional model make it easier to see, for example, whether squeezed Gaussian clusters, stretched nonlinear clusters, or background noise are being handled differently across UMAP, TriMAP, and PaCMAP. -->
+
+To better understand how these structures can be represented, we generated a synthetic $10\text{-}D$ dataset using the `cardinalR` package (@fig-dt-prj-sim). The dataset contains six clusters with $500$, $700$, $700$, $500$, $700$, and $700$ points, respectively, for a total of $3,800$ points. Cluster centers were positioned according to a custom distance matrix to control their relative arrangement, and each cluster was assigned a distinct geometric shape: three approximately Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with additional background noise. This synthetic dataset provides a controlled benchmark for assessing how well NLDR layouts capture cluster structure.
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+
+:::
+
+
+
+::: {.cell}
+::: {.cell-output-display}
+![Three $2\text{-}D$ projections of a $10\text{-}D$ simulated dataset generated using `cardinalR`. To create a synthetic dataset comparable to PBMC CITE-seq data, `cardinalR` first generated a $4\text{-}D$ structure comprising three Gaussian clusters, one quadratic cluster, one spherical spiral, and one conic spiral, with added background noise. Six additional noise dimensions were then added to produce a $10\text{-}D$ dataset retaining similar structural characteristics.](07-chap7_files/figure-pdf/fig-dt-prj-sim-1.pdf){#fig-dt-prj-sim fig-alt='A three-panel figure shows three two-dimensional projections of a simulated dataset generated using cardinalR. These projections display six clusters with analogous structural diversity: three approximately Gaussian clusters, one quadratic-shaped cluster, one spherical spiral, and one conic spiral, again with sparse background noise. Although the exact shapes and relative positions vary across projections, the simulated data reproduces the mixture of nonlinear and Gaussian cluster structures observed in the PBMC CITE-seq data, illustrating structural similarity between the real and synthetic high-dimensional datasets.'}
+:::
+:::
+
 
 ## Future work
 

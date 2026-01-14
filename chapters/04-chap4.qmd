@@ -78,7 +78,7 @@ The next section provides an overview of the usage of the `cardinalR` package, i
 
 ## Usage
 
-The `cardinalR` package is built on a modular framework where individual geometric generators (e.g., Gaussian, cone, sphere) create well-defined shapes (A full list of available shape generators are available at <https://jayanilakshika.github.io/cardinalR/reference/index.html>.), which can then be combined into a single dataset including scaling, rotation, and translation. The package is available on CRAN, and the source is available on GitHub at [JayaniLakshika/cardinalR](https://github.com/JayaniLakshika/cardinalR). 
+The `cardinalR` package is built on a modular framework where individual geometric generators (e.g., Gaussian, cone, sphere) create well-defined shapes (A full list of available shape generators are available at <https://jayanilakshika.github.io/cardinalR/reference/index.html>.), which can then be combined into a single dataset including scaling, rotation, and translation. The package is available on CRAN, and the source is available on GitHub at [https://github.com/JayaniLakshika/cardinalR](https://github.com/JayaniLakshika/cardinalR). 
 
 The main function, `gen_multicluster()`, is an all-in-one function that includes generating individual shapes, handling scaling and rotating of these shapes, and combining the result into a single unified dataset. This function and associated workflow allow flexible construction of complex, high-dimensional structures for evaluating clustering and dimension reduction methods. @fig-workflow illustrates the workflow of `gen_multicluster()`.
 
@@ -2205,7 +2205,7 @@ if (knitr::is_latex_output()) {
 
 ### Additional functions
 
-The package includes various supplementary tools in addition to the shape-generating functions mentioned earlier. These tools allow users to create background noise, randomize the rows of the data, relocate clusters, generate a vector whose product and sum are approximately equal to a target value, rotate structures, and normalize the data. @tbl-add-tb details these functions. More detailed explanations are available in [jayanilakshika.github.io/cardinalR/articles/03additionalfun.html](https://jayanilakshika.github.io/cardinalR/articles/03additionalfun.html).
+The package includes various supplementary tools in addition to the shape-generating functions mentioned earlier. These tools allow users to create background noise, randomize the rows of the data, relocate clusters, generate a vector whose product and sum are approximately equal to a target value, rotate structures, and normalize the data. @tbl-add-tb details these functions. More detailed explanations are available in [https://jayanilakshika.github.io/cardinalR/articles/03additionalfun.html](https://jayanilakshika.github.io/cardinalR/articles/03additionalfun.html).
 
 ```{r}
 add_fun_tb <- tibble(fun = c("gen_bkgnoise",
@@ -2712,7 +2712,7 @@ Future extensions of `cardinalR` may include biologically inspired or applicatio
 
 ## Acknowledgements
 
-The source material for this chapter, including the full datasets and figures, is available at [github.com/JayaniLakshika/paper-cardinalR](https://github.com/JayaniLakshika/paper-cardinalR). This article is created using `knitr` [@yihui2015] and `rmarkdown` [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `tibble` [@kirill2023], `gtools` [@gregory2023], `dplyr` [@hadley2023], `stats` [@core2025], `tidyr` [@hadley2024], `purrr` [@hadley2025], `mvtnorm` [@alan2009], `geozoo` [@barret2016], and `MASS` [@venables2002]. 
+The source material for this chapter, including the full datasets and figures, is available at [https://github.com/JayaniLakshika/paper-cardinalR](https://github.com/JayaniLakshika/paper-cardinalR). This article is created using `knitr` [@yihui2015] and `rmarkdown` [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `tibble` [@kirill2023], `gtools` [@gregory2023], `dplyr` [@hadley2023], `stats` [@core2025], `tidyr` [@hadley2024], `purrr` [@hadley2025], `mvtnorm` [@alan2009], `geozoo` [@barret2016], and `MASS` [@venables2002]. 
 
 
 

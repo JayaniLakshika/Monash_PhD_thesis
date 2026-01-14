@@ -64,7 +64,7 @@ The chapter is organized as follows. The usage section explains how users can fi
 
 ## Usage
 
-The package is available on CRAN, and the development version is available at [github.com/JayaniLakshika/quollr](https://github.com/JayaniLakshika/quollr).
+The package is available on CRAN, and the development version is available at [https://github.com/JayaniLakshika/quollr](https://github.com/JayaniLakshika/quollr).
 
 Our algorithm includes the following steps: (1) scaling the NLDR data, (2) computing configurations of a hexagon grid, (3) binning the data, (4) obtaining the centroids of each bin, (5) indicating neighboring bins with line segments that connect the centroids, and (6) lifting the model into high dimensions. A detailed description of the algorithm can be found in @gamage2025c.
 
@@ -970,7 +970,7 @@ errornldrdt_link
 :::
 
 
-In the implementation examples, points are shown without cluster-based coloring unless explicitly stated. When points are colored by cluster, linked plot functionality is currently only partially supported: selections made in the `langevitour` controls are not reflected in the corresponding highlights in the interactive $2\text{-}D$ layout. As a result, cluster-specific exploration must be carried out separately in the tour view and the interactive $2\text{-}D$ layout. In addition to `langevitour`, linked plots can also be constructed using tour views generated with the `detourr` package. (see [vignette: 8. Linked plots with `detourr`](https://jayanilakshika.github.io/quollr/articles/quollr8linkeddetourr.html) for details.)
+In the implementation examples, points are shown without cluster-based coloring unless explicitly stated. When points are colored by cluster, linked plot functionality is currently only partially supported: selections made in the `langevitour` controls are not reflected in the corresponding highlights in the interactive $2\text{-}D$ layout. As a result, cluster-specific exploration must be carried out separately in the tour view and the interactive $2\text{-}D$ layout. In addition to `langevitour`, linked plots can also be constructed using tour views generated with the `detourr` package. (see [https://jayanilakshika.github.io/quollr/articles/quollr8linkeddetourr.html](https://jayanilakshika.github.io/quollr/articles/quollr8linkeddetourr.html) for details.)
 
 ## Application
 
@@ -1123,4 +1123,4 @@ There are several avenues for future development. While hexagonal binning provid
 
 ## Acknowledgements
 
-The source code for reproducing this chapter can be found at: [github.com/JayaniLakshika/paper-quollr](https://github.com/JayaniLakshika/paper-quollr). This article is created using `knitr` [@yihui2015] and `rmarkdown` [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `dplyr` [@hadley2023], `ggplot2` [@hadley2016], `interp` (>= 1.1-6) [@albrecht2024], `langevitour` [@harisson2024], `detourr` [@casper2025], `proxy`[@david2022], `stats` [@core2025], `tibble` [@kirill2023], `tidyselect` [@lionel2024], `crosstalk` [@joe2025], `plotly` [@chapman2020], `htmltools` [@joe2024], `kableExtra` [@hao2024], `patchwork` [@thomas2024], and `readr` [@hadley2024].
+The source code for reproducing this chapter can be found at: [https://github.com/JayaniLakshika/paper-quollr](https://github.com/JayaniLakshika/paper-quollr). This article is created using `knitr` [@yihui2015] and `rmarkdown` [@yihui2018] in R with the `rjtools::rjournal_article` template. These `R` packages were used for this work: `cli` [@gabor2025], `dplyr` [@hadley2023], `ggplot2` [@hadley2016], `interp` (>= 1.1-6) [@albrecht2024], `langevitour` [@harisson2024], `detourr` [@casper2025], `proxy`[@david2022], `stats` [@core2025], `tibble` [@kirill2023], `tidyselect` [@lionel2024], `crosstalk` [@joe2025], `plotly` [@chapman2020], `htmltools` [@joe2024], `kableExtra` [@hao2024], `patchwork` [@thomas2024], and `readr` [@hadley2024].

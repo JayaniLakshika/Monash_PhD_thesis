@@ -6,18 +6,18 @@
 
 # Reproducibility and Availability
 
-All materials associated with this thesis are openly available to support transparency and reproducible research. The thesis is written in Quarto [@jjallaire2024] and is available in both **HTML** and **PDF** formats. The **HTML version**, which includes interactive figures and linked visualizations, is published at
-[jayani-lakshika-phd-thesis.netlify](https://jayani-lakshika-phd-thesis.netlify.app). The **PDF version** of the thesis is available at
-[github.com/JayaniLakshika/Monash_PhD_thesis/_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-Dimensional-Data.pdf](https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-Dimensional-Data.pdf). All source code, data, and software used to generate the analyses, figures, and results are maintained in a public GitHub repository at
-[github.com/JayaniLakshika/Monash_PhD_thesis](https://github.com/JayaniLakshika/Monash_PhD_thesis), enabling full reproduction of this work.
+All materials associated with this thesis are openly available for transparency and following reproducible practice. The thesis is written in Quarto [@jjallaire2024] and is available in both **HTML** and **PDF** formats. The **HTML formatted** thesis, which includes interactive and linked plots can be read at
+[https://jayani-lakshika-phd-thesis.netlify.app](https://jayani-lakshika-phd-thesis.netlify.app), and the **PDF formatted** thesis can be downloaded from
+[https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-Dimensional-Data.pdf](https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/_book/New-Interactive-Visual-Tools-and-Statistical-Methodology-for-Selecting-and-Evaluating-Non-linear-Dimension-Reduction-Layouts-of-High-Dimensional-Data.pdf). All source code, data, and software used to generate the thesis is available on the public GitHub repository at
+[https://github.com/JayaniLakshika/Monash_PhD_thesis](https://github.com/JayaniLakshika/Monash_PhD_thesis).
 
 ## Accessibility of figures
 
-To support accessibility, all figures include alt-text. The [autoAlt](https://github.com/numbats/autoAlt) package was used as a starting point for generating these descriptions, which were then reviewed and refined to better reflect the content of each figure and its caption.
+To support accessibility, all figures are supplemented with alt text, which allows screen readers and vision-impaired readers to access their content. The `autoAlt` [@maliny2025] package was used as a starting point for generating these descriptions, which were then reviewed and refined to better reflect the content of each figure and its caption.
 
 ## Software availability and usage
 <!--scripts/pkg_cran_info.R-->
-The software outputs of this research have been made publicly available to support transparency and reproducibility. The R package `quollr`, introduced and used in [Chapter 2](#sec-first-paper) and [Chapter 3](#sec-third-paper), has been on CRAN since March $2024$ and has received $5175$ downloads from the CRAN mirror as of $12^{th}$ January $2026$; its development version is hosted on GitHub at [github.com/jayanilakshika/quollr](https://github.com/jayanilakshika/quollr). The R package `cardinalR`, discussed in [Chapter 4](#sec-fourth-paper), has been available on CRAN since April $2024$ and has received $4407$ downloads from the CRAN mirror as of $12^{th}$ January $2026$, with the latest development version at [github.com/jayanilakshika/cardinalR](https://github.com/jayanilakshika/cardinalR). @fig-pkg-commit gives an overview of my Git commits to these repositories.
+Some of the software developed has been packaged and is been available on the Comprehensive R Archive Network (CRAN). The R package `quollr`, introduced and used in [Chapter 2](#sec-first-paper) and [Chapter 3](#sec-third-paper), has been on CRAN since March $2024$ and has received $5175$ downloads from the CRAN mirror as of $12^{th}$ January $2026$; its development version is hosted on GitHub at [https://github.com/jayanilakshika/quollr](https://github.com/jayanilakshika/quollr). The R package `cardinalR`, discussed in [Chapter 4](#sec-fourth-paper), has been available on CRAN since April $2024$ and has received $4407$ downloads from the CRAN mirror as of $12^{th}$ January $2026$, with the latest development version at [https://github.com/jayanilakshika/cardinalR](https://github.com/jayanilakshika/cardinalR). @fig-pkg-commit gives an overview of my Git commits to these repositories.
 
 <!--scripts/git_commits.R-->
 
@@ -30,7 +30,7 @@ The software outputs of this research have been made publicly available to suppo
 
 ## Web applications
 
-A Shiny application for `quollr`, described in [Chapter 6](#sec-fifth-paper), is accessible via one of the mirror sites at [menurar.netlify.app/](https://menurar.netlify.app/), with its source code available at [github.com/JayaniLakshika/menuraR](https://github.com/JayaniLakshika/menuraR). The survey web application, **Match-a-roo** ([https://ebsmonash.shinyapps.io/Match-a-roo/](https://ebsmonash.shinyapps.io/Match-a-roo/)), was designed and implemented in `Shiny` to collect the data for the experiment discussed in [Chapter 5](#sec-second-paper), participant responses and demographic information. Each subject accessed the survey through the [shinyapps.io](https://www.shinyapps.io/) server.
+A Shiny application described in [Chapter 6](#sec-fifth-paper), is accessible via one of the mirror sites at [https://menurar.netlify.app/](https://menurar.netlify.app/), with its source code available at [https://github.com/JayaniLakshika/menuraR](https://github.com/JayaniLakshika/menuraR). The survey web application, **Match-a-roo** ([https://ebsmonash.shinyapps.io/Match-a-roo/](https://ebsmonash.shinyapps.io/Match-a-roo/)), was designed and implemented in `Shiny` to collect the data for the experiment discussed in [Chapter 5](#sec-second-paper), participant responses, and demographic information. Each subject accessed the survey through the `shinyapps.io` [@posit2022] server.
 
 ## Supporting R packages
 
