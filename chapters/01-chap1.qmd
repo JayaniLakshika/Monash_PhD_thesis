@@ -95,7 +95,7 @@ nldr1 <- umap_pbmc |>
 ```{r}
 #| label: fig-NLDR-variety-intro
 #| echo: false
-#| fig-cap: "UMAP representation of a human PBMC CITE-seq dataset [@hao2021], generated using n_neighbors = $30$ and min_dist = $0.3$, used as a motivating example of NLDR layouts. The layout shows multiple clusters with distinct shapes, including compact, well-separated groups as well as elongated and partially overlapping structures. This raises the question of whether this layout faithfully represents the underlying high-dimensional structure in the PBMC CITE-seq data."
+#| fig-cap: "UMAP representation shown in @hao2021 of human PBMC CITE-seq dataset, generated using n_neighbors = $30$ and min_dist = $0.3$, used as a motivating example of NLDR layouts. The layout shows multiple clusters with distinct shapes, including compact, well-separated groups as well as elongated and partially overlapping structures. This raises the question of whether this layout faithfully represents the underlying high-dimensional structure in the PBMC CITE-seq data."
 #| fig-width: 4
 #| fig-height: 4
 #| out-width: 50%
