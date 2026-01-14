@@ -33,7 +33,7 @@ The feedback we received led to several key improvements:
 
 -   **Displaying Uploaded NLDR Layouts:** When users uploaded NLDR layouts, the titles' showing method and hyper-parameters were being cut off. This was fixed so that all layout titles are fully visible, improving clarity.
 
--   **Understanding Binwidth (**$a_1$): Users were confused about how changing the binwidth affected the analysis. Previously, only the NLDR layout was drawn without any overlay, so changes to $a_1$ were not visually clear. We added a hexagon grid overlay on the NLDR layout, making the effect of the binwidth immediately visible.
+-   **Understanding Binwidth** ($a_1$): Users were confused about how changing the binwidth affected the analysis. Previously, only the NLDR layout was drawn without any overlay, so changes to $a_1$ were not visually clear. We added a hexagon grid overlay on the NLDR layout, making the effect of the binwidth immediately visible.
 
 -   **Seeing the Model in High Dimensions:** Some participants did not understand how the $2\text{-}D$ layout relates to the high-dimensional model. To address this, we added a $2\text{-}D$ wireframe step, which allows users to see the underlying structure before lifting it into high dimensions.
 
@@ -129,9 +129,9 @@ Currently, `menuraR` supports only two NLDR methods: tSNE and UMAP for computing
 
 ## Supplementary materials
 
-The `menuraR` application is available online at <https://ebsmonash.shinyapps.io/menuraR/>. All data and materials used in the study are openly available. The survey data collected from participants can be accessed at [https://github.com/JayaniLakshika/paper-menuraR/data](https://github.com/JayaniLakshika/paper-menuraR/tree/main/data). The example datasets provided within the menuraR app are available at [https://github.com/JayaniLakshika/menuraR/data](https://github.com/JayaniLakshika/menuraR/tree/main/data).
+The `menuraR` application is available online at <https://ebsmonash.shinyapps.io/menuraR/>. All data and materials used in the study are openly available. The survey data collected from participants can be accessed at [github.com/JayaniLakshika/Monash_PhD_thesis/data/menuraR/usability_study_data.csv](https://github.com/JayaniLakshika/Monash_PhD_thesis/blob/main/data/menuraR/usability_study_data.csv). The example datasets provided within the menuraR app are available at [github.com/JayaniLakshika/Monash_PhD_thesis/data/menuraR](https://github.com/JayaniLakshika/Monash_PhD_thesis/tree/main/data/menuraR).
 
-Additionally, the run sheets used to guide participants through the usability study are publicly available at [https://github.com/JayaniLakshika/paper-menuraR/run_sheets](https://github.com/JayaniLakshika/paper-menuraR/tree/main/run_sheets).
+Additionally, the run sheets used to guide participants through the usability study are publicly available at [github.com/JayaniLakshika/Monash_PhD_thesis/menuraR/run_sheets](https://github.com/JayaniLakshika/Monash_PhD_thesis/tree/main/scripts/menuraR/run_sheets).
 
 ## Acknowledgments
 

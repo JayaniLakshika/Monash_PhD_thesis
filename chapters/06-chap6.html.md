@@ -33,7 +33,7 @@ The feedback we received led to several key improvements:
 
 -   **Displaying Uploaded NLDR Layouts:** When users uploaded NLDR layouts, the titles' showing method and hyper-parameters were being cut off. This was fixed so that all layout titles are fully visible, improving clarity.
 
--   **Understanding Binwidth (**$a_1$): Users were confused about how changing the binwidth affected the analysis. Previously, only the NLDR layout was drawn without any overlay, so changes to $a_1$ were not visually clear. We added a hexagon grid overlay on the NLDR layout, making the effect of the binwidth immediately visible.
+-   **Understanding Binwidth** ($a_1$): Users were confused about how changing the binwidth affected the analysis. Previously, only the NLDR layout was drawn without any overlay, so changes to $a_1$ were not visually clear. We added a hexagon grid overlay on the NLDR layout, making the effect of the binwidth immediately visible.
 
 -   **Seeing the Model in High Dimensions:** Some participants did not understand how the $2\text{-}D$ layout relates to the high-dimensional model. To address this, we added a $2\text{-}D$ wireframe step, which allows users to see the underlying structure before lifting it into high dimensions.
 
