@@ -1,31 +1,14 @@
-data_structure,cluster1,cluster2,cluster3
-three_clust_01,curv,elliptical,blunted_cone
-three_clust_02,s_curve,cube,pyramid_rectangular_base
-three_clust_03,curvy_cylinder,hemisphere,pyramid_triangular_base
-three_clust_04,curv2,Gaussian,filled_hexagonal_pyramid
-three_clust_05,nonlinear_hyperbola,elliptical,blunted_cone
-three_clust_06,crescent,cube,pyramid_rectangular_base
-three_clust_07,nonlinear_hyperbola2,hemisphere,pyramid_triangular_base
-three_clust_08,conic_spiral,Gaussian,filled_hexagonal_pyramid
-three_clust_09,helical_hyper_spiral,cube,blunted_cone
-three_clust_10,spherical_spiral,Gaussian,pyramid_triangular_base
-three_clust_11,curv,elliptical,pyramid_rectangular_base
-three_clust_12,s_curve,hemisphere,filled_hexagonal_pyramid
-three_clust_13,curvy_cylinder,cube,blunted_cone
-three_clust_14,curv2,Gaussian,pyramid_triangular_base
-three_clust_15,nonlinear_hyperbola,elliptical,pyramid_rectangular_base
-three_clust_16,crescent,hemisphere,filled_hexagonal_pyramid
-three_clust_17,nonlinear_hyperbola2,cube,blunted_cone
-three_clust_18,conic_spiral,Gaussian,pyramid_triangular_base
-three_clust_19,helical_hyper_spiral,hemisphere,filled_hexagonal_pyramid
-three_clust_20,spherical_spiral,elliptical,blunted_cone
-three_clust_21,curv,Gaussian,pyramid_rectangular_base
-three_clust_22,s_curve,cube,pyramid_triangular_base
-three_clust_23,curvy_cylinder,hemisphere,filled_hexagonal_pyramid
-three_clust_24,curv2,elliptical,blunted_cone
-three_clust_25,nonlinear_hyperbola2,Gaussian,pyramid_rectangular_base
-three_clust_26,crescent,cube,pyramid_triangular_base
-three_clust_27,nonlinear_hyperbola2,hemisphere,filled_hexagonal_pyramid
-three_clust_28,conic_spiral,elliptical,blunted_cone
-three_clust_29,Gaussian,Gaussian,Gaussian
-three_clust_30,Gaussian,Gaussian,Gaussian
+Study type,Data set,Chosen layouts,Chosen binwidth (a1),The best layout(s) is provided by the app,Chosen the same layout(s) suggested by the app,The best layout(s) is provided by the participant,Reason,Experience with PCA,Experience with NLDR,Subject area,Comments to improve the app
+1,mouse,"tSNE (perplexity = 18), tSNE (perplexity = 30), UMAP (n_neighbors = 15, min_dist = 0.1), UMAP (n_neighbors = 47, min_dist = 0.84), UMAP (n_neighbors = 5, min_dist = 0.08)",0.15,tSNE (perplexity = 18),YES,tSNE (perplexity = 18),"Number of clusters in the layout matches in the high-dimensional visuals, as well as the distance",YES,NO,Econometrics,
+1,mouse,"tSNE (perplexity = 18), tSNE (perplexity = 30), UMAP (n_neighbors = 15, min_dist = 0.1)",0.06,tSNE (perplexity = 30),YES,tSNE (perplexity = 30),"The data is quite sparse in tour and the main cluster is very densed in high-dimensions. So, it should be densed in 2-D. This is better than UMAP because the smaller clusters are diffuse but not really separated from the big one.",YES,YES,Statistics,
+2,pdfsense,"tSNE (perplexity = 18), UMAP (n_neighbors = 11, min_dist = 0.76)",0.02,tSNE (perplexity = 18),YES,tSNE (perplexity = 18),It has the smallest HBE and clusters in the 2-D plot seen to match with clusters in the tour plot.,YES,YES,Statistics,
+1,mouse,"tSNE (perplexity = 42), tSNE (perplexity = 30), UMAP (n_neighbors = 15, min_dist = 0.1), UMAP (n_neighbors = 45, min_dist = 0.55)",0.19,"UMAP (n_neighbors = 45, min_dist = 0.55)",YES,"UMAP (n_neighbors = 45, min_dist = 0.55)",Because of the number of clusters.,YES,YES,Statistics,
+1,pdfsense,"tSNE (perplexity = 10), tSNE (perplexity = 25), UMAP (n_neighbors = 11, min_dist = 0.49), UMAP (n_neighbors = 46, min_dist = 0.1)",0.02,tSNE (perplexity = 10),YES,tSNE (perplexity = 10),The other layouts seem to have spurious and disorting artifacts.,YES,NO,Statistics and statistical genomics,
+1,mouse,"tSNE (perplexity = 20), tSNE (perplexity = 30), UMAP (n_neighbors = 15, min_dist = 0.7), UMAP (n_neighbors = 20, min_dist = 0.09)",0.22,"UMAP (n_neighbors = 15, min_dist = 0.7)",YES,"UMAP (n_neighbors = 15, min_dist = 0.7)",It separated the clusters really well and easier to see. That's why I chose this layout.,YES,NO,Statistics,
+2,pdfsense,"tSNE (perplexity = 26), tSNE (perplexity = 52), UMAP (n_neighbors = 15, min_dist = 0.7), UMAP (n_neighbors = 45, min_dist = 0.55)",0.02,tSNE (perplexity = 26),YES,tSNE (perplexity = 26),NA,YES,YES,Statistics,
+2,pdfsense,"tSNE (perplexity = 52), UMAP (n_neighbors = 12, min_dist = 0.2), UMAP (n_neighbors = 13, min_dist = 0.2), UMAP (n_neighbors = 15, min_dist = 0.1)",0.12,tSNE (perplexity = 52),YES,tSNE (perplexity = 52),Because there was good clusters sepation of a few wavy clusters,YES,YES,Statistics,
+2,pdfsense,,,,,,,,,,
+1,pdfsense,,,,,,,,,,
+2,mouse,,,,,,,,,,
+1,mouse,,,,,,,,,,
+2,mouse,,,,,,,,,,

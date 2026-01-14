@@ -12,14 +12,14 @@ materials** for my PhD thesis at **Monash University, Australia**.
 High-dimensional data, where each observation is described by many
 features, is common in fields such as bioinformatics, ecology, and
 forensic science. To visualise these data, researchers often reduce them
-to lower dimensions, typically to two. However, popular non-linear
-methods can sometimes distort or “hallucinate” patterns that do not
-actually exist. This research develops a new methodology and software to
-help users assess the reliability of these visualisations. It also
-examines common mistakes people make when selecting visualisations.
-Also, it provides software for generating benchmark datasets to test
-algorithms, which helps researchers in exploring and interpreting
-complex data.
+to lower dimensions, typically to two, using linear and non-linear
+techniques. However, popular non-linear methods can sometimes distort or
+“hallucinate” patterns that do not actually exist. This research
+develops a new methodology to help users assess the reliability of these
+visualisations, and examines common mistakes people make when selecting
+a nonlinear representation. The work is fully reproducible, with several
+software packages made available on the Comprehensive R Archive Network,
+and several web applications hosted at Monash.
 
 ## Software
 
