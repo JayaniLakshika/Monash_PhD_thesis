@@ -22,7 +22,7 @@ knitr::include_graphics(here::here("figures/quollr.png"))
 ```{r}
 #| fig-cap: "Working sheets used during the planning and development of `cardinalR`, documenting the evolution of data generation strategies into software."
 #| fig-pos: H
-#| out-width: "80%"
+#| out-width: "70%"
 #| label: fig-workcardinalR
 #| fig-alt: "Working sheet documenting the development of the cardinalR package. The sheets include hand-drawn cluster diagrams, mathematical notes, parameter tables, and pseudocode outlining data generation strategies. These materials show how exploratory ideas were iteratively refined into a coherent framework for simulating high-dimensional data."
 
@@ -32,7 +32,7 @@ knitr::include_graphics(here::here("figures/cardinalR.png"))
 ```{r}
 #| fig-cap: "Working sheets used in the planning and design of `menuraR`, showing how initial concepts were refined into a functional Shiny application."
 #| fig-pos: H
-#| out-width: "80%"
+#| out-width: "70%"
 #| label: fig-workmenuraR
 #| fig-alt: "Working sheet from the planning and design phase of the menuraR Shiny application. The pages show hand-drawn interface layouts, workflow diagrams, and notes linking user interactions to analytical outputs, illustrating how early conceptual designs were developed into a functional interactive visualization tool."
 
@@ -106,7 +106,7 @@ This journey has been as much about exploring the unknown as it has been about d
 #| fig-cap: "Geographic footprint of the PhD journey, highlighting research visits, conferences, and academic engagements across Australia, Austria, and the United States. Locations include Salzburg and Vienna (Austria), Nebraska and Tennessee (USA), and Melbourne, Sydney, Canberra, and Perth (Australia), alongside moments from conferences, collaborations, and software dissemination."
 #| label: fig-mem
 #| fig-alt: "A world map highlighting locations associated with the PhD journey. Markers indicate research visits, conferences, and academic engagements across Australia, Austria, and the United States, including Melbourne, Sydney, Canberra, and Perth; Salzburg and Vienna; and sites in Nebraska and Tennessee. Additional images or insets show moments from conferences, collaborations, and software dissemination activities at these locations."
-#| out-width: 98%
+#| out-width: 65%
 
 # Read images
 austria_img <- rasterGrob(png::readPNG(here::here("figures/austria.png")), interpolate=TRUE)

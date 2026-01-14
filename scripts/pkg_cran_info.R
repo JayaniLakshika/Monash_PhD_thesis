@@ -3,7 +3,7 @@
 library(flextable)
 library(officer)
 library(dplyr)
-library(pkgmeta)
+library(pkgmeta) ## install.packages("pak") ## pak::pak("robjhyndman/pkgmeta")
 library(lubridate)
 
 # Functions for getting downloads

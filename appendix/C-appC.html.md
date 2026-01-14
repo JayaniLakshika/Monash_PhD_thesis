@@ -21,7 +21,7 @@ In addition to the completed methods and software presented in this thesis, a la
 
 ::: {.cell}
 ::: {.cell-output-display}
-![Working sheets used during the planning and development of `cardinalR`, documenting the evolution of data generation strategies into software.](../figures/cardinalR.png){#fig-workcardinalR fig-pos='H' fig-alt='Working sheet documenting the development of the cardinalR package. The sheets include hand-drawn cluster diagrams, mathematical notes, parameter tables, and pseudocode outlining data generation strategies. These materials show how exploratory ideas were iteratively refined into a coherent framework for simulating high-dimensional data.' width=80%}
+![Working sheets used during the planning and development of `cardinalR`, documenting the evolution of data generation strategies into software.](../figures/cardinalR.png){#fig-workcardinalR fig-pos='H' fig-alt='Working sheet documenting the development of the cardinalR package. The sheets include hand-drawn cluster diagrams, mathematical notes, parameter tables, and pseudocode outlining data generation strategies. These materials show how exploratory ideas were iteratively refined into a coherent framework for simulating high-dimensional data.' width=70%}
 :::
 :::
 
@@ -29,7 +29,7 @@ In addition to the completed methods and software presented in this thesis, a la
 
 ::: {.cell}
 ::: {.cell-output-display}
-![Working sheets used in the planning and design of `menuraR`, showing how initial concepts were refined into a functional Shiny application.](../figures/menuraR.png){#fig-workmenuraR fig-pos='H' fig-alt='Working sheet from the planning and design phase of the menuraR Shiny application. The pages show hand-drawn interface layouts, workflow diagrams, and notes linking user interactions to analytical outputs, illustrating how early conceptual designs were developed into a functional interactive visualization tool.' width=80%}
+![Working sheets used in the planning and design of `menuraR`, showing how initial concepts were refined into a functional Shiny application.](../figures/menuraR.png){#fig-workmenuraR fig-pos='H' fig-alt='Working sheet from the planning and design phase of the menuraR Shiny application. The pages show hand-drawn interface layouts, workflow diagrams, and notes linking user interactions to analytical outputs, illustrating how early conceptual designs were developed into a functional interactive visualization tool.' width=70%}
 :::
 :::
 
@@ -93,7 +93,7 @@ This journey has been as much about exploring the unknown as it has been about d
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Geographic footprint of the PhD journey, highlighting research visits, conferences, and academic engagements across Australia, Austria, and the United States. Locations include Salzburg and Vienna (Austria), Nebraska and Tennessee (USA), and Melbourne, Sydney, Canberra, and Perth (Australia), alongside moments from conferences, collaborations, and software dissemination.](C-appC_files/figure-html/fig-mem-1.png){#fig-mem fig-align='center' fig-alt='A world map highlighting locations associated with the PhD journey. Markers indicate research visits, conferences, and academic engagements across Australia, Austria, and the United States, including Melbourne, Sydney, Canberra, and Perth; Salzburg and Vienna; and sites in Nebraska and Tennessee. Additional images or insets show moments from conferences, collaborations, and software dissemination activities at these locations.' width=98%}
+![Geographic footprint of the PhD journey, highlighting research visits, conferences, and academic engagements across Australia, Austria, and the United States. Locations include Salzburg and Vienna (Austria), Nebraska and Tennessee (USA), and Melbourne, Sydney, Canberra, and Perth (Australia), alongside moments from conferences, collaborations, and software dissemination.](C-appC_files/figure-html/fig-mem-1.png){#fig-mem fig-align='center' fig-alt='A world map highlighting locations associated with the PhD journey. Markers indicate research visits, conferences, and academic engagements across Australia, Austria, and the United States, including Melbourne, Sydney, Canberra, and Perth; Salzburg and Vienna; and sites in Nebraska and Tennessee. Additional images or insets show moments from conferences, collaborations, and software dissemination activities at these locations.' width=65%}
 :::
 :::
 

@@ -837,7 +837,8 @@ detour(
   tour_path(grand_tour(2), 
                     max_bases=50, fps = 60) |>
   show_scatter(axes = TRUE, size = 1.5, alpha = 0.5, 
-               edges = as.matrix(trimesh[, c("from_reindexed", "to_reindexed")]),
+               edges = as.matrix(trimesh[, c("from_reindexed", 
+                                             "to_reindexed")]),
                palette = c("#66B2CC", "#FF7755"),
                width = "600px", height = "600px") 
 ```
@@ -881,7 +882,8 @@ nldrdt_link <- show_link_plots(
 nldrdt_link <- crosstalk::bscols(
     htmltools::div(
         style = "display: grid; grid-template-columns: 1fr;
-    gap: 0px; align-items: start; justify-items: center; margin: 0; padding: 0;
+    gap: 0px; align-items: start; justify-items: center; 
+    margin: 0; padding: 0;
     height: 420px; width: 100%; overflow: hidden;",
         nldrdt_link
     ),
@@ -942,7 +944,8 @@ errornldrdt_link <- show_error_link_plots(
 errornldrdt_link <- crosstalk::bscols(
     htmltools::div(
         style = "display: grid; grid-template-columns: 1fr;
-    gap: 0px; align-items: start; justify-items: center; margin: 0; padding: 0;
+    gap: 0px; align-items: start; justify-items: center; 
+    margin: 0; padding: 0;
     height: 360px; width: 100%; overflow: hidden;",
         errornldrdt_link
     ),
