@@ -17,9 +17,9 @@ techniques. However, popular non-linear methods can sometimes distort or
 “hallucinate” patterns that do not actually exist. This research
 develops a new methodology to help users assess the reliability of these
 visualisations, and examines common mistakes people make when selecting
-a nonlinear representation. The work is fully reproducible, with several
-software packages made available on the Comprehensive R Archive Network,
-and several web applications hosted at Monash.
+a non-linear representation. The work is fully reproducible, with
+several software packages made available on the Comprehensive R Archive
+Network, and several web applications hosted at Monash.
 
 ## Software
 
