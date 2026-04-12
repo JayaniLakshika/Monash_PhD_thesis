@@ -467,7 +467,7 @@ Gaussian clouds are common benchmark structures in statistics and machine learni
 
 #### Linear
 
-The `gen_longlinear(n, p)` function generates a high-dimensional dataset representing a single noisy linear trajectory. Let $t_i = i - 1, \quad i = 1, \dots, n$, denote a common latent index shared across all dimensions. For each dimension $j = 1, \dots, p)$, independent scale and shift parameters are sampled as $a_j \sim U(-10, 10), \qquad b_j \sim U(-300, 300)$. Gaussian noise $\varepsilon_{ij} \sim N(0, (0.03n)^2)$ is added independently across observations and dimensions. The observed variables are then defined as $X_{ij} = a_j \bigl(t_i + b_j + \varepsilon_{ij}\bigr), \quad i = 1, \dots, n$. This construction yields a single elongated linear structure embedded in $p\text{-}D$, with each dimension exhibiting a different orientation, scale, and offset.
+The `gen_longlinear(n, p)` function generates a high-dimensional dataset representing a single noisy linear trajectory. Let $t_i = i - 1, \quad i = 1, \dots, n$, denote a common latent index shared across all dimensions. For each dimension $j = 1, \dots, p$, independent scale and shift parameters are sampled as $a_j \sim U(-10, 10), \qquad b_j \sim U(-300, 300)$. Gaussian noise $\varepsilon_{ij} \sim N(0, (0.03n)^2)$ is added independently across observations and dimensions. The observed variables are then defined as $X_{ij} = a_j \bigl(t_i + b_j + \varepsilon_{ij}\bigr), \quad i = 1, \dots, n$. This construction yields a single elongated linear structure embedded in $p\text{-}D$, with each dimension exhibiting a different orientation, scale, and offset.
 
 
 ::: {.cell}

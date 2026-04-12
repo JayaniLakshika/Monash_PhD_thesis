@@ -195,9 +195,19 @@ such things formally and unambiguously.
 
 **p. 64** “they do not produce a formal multicluster dataset” - what is that?
 
+*By "formal multicluster dataset", we mean a dataset composed of multiple distinct and separable groups (clusters), where each cluster represents an independent structure, typically with clear boundaries or low-density separation between them.*
+
+*In contrast, the branching structures generated here form a single connected object with multiple arms, so they do not consist of independent clusters despite having visually distinct components.*
+
 **p. 68, l.-9** There’s a bracket too many.
 
+*We removed the additional bracket.*
+
 **p. 70, l.-9** Explain “Sierpinski-like”.
+
+*By “Sierpinski-like”, we refer to a structure created by repeatedly taking midpoints between points and the corners of a shape. This process produces a pattern with a repeating structure and visible gaps, similar to the well-known Sierpiński triangle and its higher-dimensional versions.*
+
+*We use the term "-like" to indicate that the dataset only approximates this pattern using a finite number of points, rather than forming an exact mathematical fractal.*
 
 **Chapter 5** I think results for PCA should be included. They would certainly be of
 interest, and not doing them because of some speculation what the result may be
@@ -205,10 +215,14 @@ isn’t convincing.
 
 **p. 91** BW ratio treats the clusters as spherical, not just elliptical.
 
-**p. 92** Explicitly introduce the terminology “SAME” and “DIFFERENT” trials. Don’t
+*We agree that the between–within (BW) ratio is most naturally suited to spherical cluster assumptions, rather than general elliptical shapes. We revised the text as: Measuring distance between clusters is classically done using the between–within (BW) ratio, which captures global separability under assumptions of roughly spherical cluster structure.*
+
+**p. 92** Explicitly introduce the terminology "SAME" and "DIFFERENT" trials. Don’t
 leave guesswork to the reader, not even if names are expressive.
 
-**p. 92** What qualifies data to be “attention check data”? Gaussian variance is specified
+*We added the text as: The experiment consists of two types of trials: SAME trials and DIFFERENT trials. In SAME trials, two visualizations (one NLDR layout and the tour) are generated from the same underlying dataset, but with controlled variations in cluster separation. In DIFFERENT trials, the two visualizations are generated from different datasets.*
+
+**p. 92** What qualifies data to be "attention check data"? Gaussian variance is specified
 as a single number, but in order to define the Gaussian’s properly you need to state
 their covariance matrices.
 
