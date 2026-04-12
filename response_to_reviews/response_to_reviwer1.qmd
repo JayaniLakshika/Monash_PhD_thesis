@@ -1,0 +1,236 @@
+---
+title: "Response to reviews"
+format: pdf
+---
+
+*We thank the examiners for their careful assessment of my thesis. What follows is a point by point response to the examiners' comments.*
+
+## Assessment of Piyadi Gamage Jayani Lakshika - New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Nonlinear Dimension Reduction Layouts of High-Dimensional Data
+
+Christian Hennig
+
+April 8, 2026
+
+The thesis treats the evaluation of two-dimensional representations of high-dimensional
+data by nonlinear approaches such as UMAP and t-SNE. The core is the use of hexagonal binning of the 2-d representation, which can be lifted into the higher dimensional
+space, used to visualise the relation between the 2-d representation and the original data
+using a tour, and to assess the quality of the fit by the so-called hexbin error (HBE).
+This can in particular be used to compare different representations. The thesis presents
+various illustrations and visualisations based on this approach. Chapter 2 presents the
+basic definitions and methods. Chapter 3 presents a software package to implement these.
+Chapter 4 presents another package that can generate benchmark datasets from an impressive amount of different models generating geometrically structured data. This can
+in particular be used to generate data with different clusters, potentially of very different
+kinds. Chapter 5 contains an empirical study in which test persons were asked to guess
+whether a low-dimensional representation is of the same dataset that they could see in a
+tour. In particular it was investigated in which way this depends on separation between
+clusters for a variety of representation models. Chapter 6 provides a Shiny App that allows a user to use the techniques proposed in Chapter 2 to assess different representations
+of their own data in an interactive manner. Chapter 7 concludes the thesis.
+
+The thesis is very well written. The material presented is original, useful, timely, and of
+wide interest. As far as I see, it is also correct. The software seems well organised, well
+documented, and well thought through.
+
+As the work is collaborative, I am not in a position to assess the candidate’s individual
+contributions precisely, however I will assume that the candidate did much of the work
+and is willing to take responsibility for all of it.
+
+Assuming this, I confirm that
+
+- the thesis makes an original and substantial contribution to the discipline or area
+of professional practice;
+
+- the candidate is able to critically reflect on, and engage with, complex ideas to
+create new knowledge and understanding;
+
+- the candidate has presented a thesis which, in format and presentation, is appropriate to the standard expected of the degree.
+
+I have a number of requests for amendments. In particular, the work touches upon some
+rather profound issues that the candidate currently treats rather naively, and that deserve
+more acknowledgment and discussion.
+
+*Therefore I recommend a pass with minor edits required.* Chances are the edits can be
+made in 1-2 months. What I write below is quite long, but much of this is just to explain
+the issue. I’m asking for acknowledgment and some thoughts regarding these issues, not
+for any rewriting, much change of what is there, or much extra work.
+
+**Major issues:**
+
+**General** The HBE is used as a general metric in order to evaluate representations, and
+it is stated in several places that a representation with a better HBE “performs
+better”. This is far from clear. In fact there are many statistics around that can be
+interpreted as evaluating the quality or lower dimensional representations. Actually
+many methods providing such representations are based on optimising an objective
+function that is meant to measure representation quality in some sense, starting from
+the variance criterion in PCA, various versions of stress in MDS, trustworthiness etc.
+Even t-SNE and UMAP can be written down as optimisation problems. Section 2.4
+mentions and uses a number of other metrics, but formal definitions are not given,
+and there is no discussion regarding the pros and cons of these metrics. Given that
+this is so, why could HBE be expected to formalise the quality of a representation
+any better than the metrics that already exist? Actually HBE has the rather obvious
+disadvantage that it depends on the parameters of the grid, which is not the case for
+most other existing metrics. So what is its actual advantage? Before recommending
+a software to the user that assesses “performance” by means of HBE, this surely
+needs to be addressed.
+
+**General** In many places the aim seems to be to find the “best” representation. But
+data analysts often use many visualisations of the same data because this can bring
+additional insight. Different kinds of visualisation can highlight different features
+of the data, and most insight can come from combining what can be learnt from
+several displays. So it should at least be acknowledged that bringing together a
+number of representations could be more informative for data analysis than looking
+for a single “best” one.
+
+**General** Cluster analysis is quite prominent in the thesis, and it is apparently implicitly
+always assumed that every dataset has a uniquely true clustering. There are several
+references to the “true clusters” without ever defining what these are supposed to
+be. This is very naive. There is no unique and agreed definition of what a cluster
+is, and several different legitimate clusterings can exist in the same dataset. See in
+particular
+
+Christian Hennig (2015) What are the true clusters? Pattern Recognition Letters
+64, 53-62, https://doi.org/10.1016/j.patrec.2015.04.009.
+
+So if there is talk of “true clusters”, there would need to be a definition of what
+this means, either (preferably) as functional of a general probability distribution, or
+using a data-based definition.
+
+The implicit assumption that the true clusters are unique and clear is particularly
+implied in Section 4 where different “shapes” of clusters can be combined in a
+single dataset. I’d like to challenge the author to give a general definition of true
+clusters according to which the true clusters are indeed in all these situations those
+that are implied to be the true cluster here, but I’m afraid chances are that this
+would be rather hopeless. Appeal to intuition will not do, and neither will be a
+statement that “different clusters are generated by different distributions” because
+any mixture distribution can be split up in an infinite variety of ways into different
+distributions. So the best I can ask for is an informal but insightful discussion of
+the issue, including a clear acknowledgment that the thesis uses an informal and
+intuitive cluster concept that can in all likelihood not be made precise and may very
+well involve ambiguity. There is more than one legitimate clustering of a dataset,
+so it cannot be fully clear what the “true clusters” are that are mentioned.
+
+The issue is particularly relevant when benchmarking clustering methods (Sec.
+4.4.2). All results are relative to the assumed truth. Note that methods like kmeans can be seen as coming with their own implicit cluster concept, and they will
+deviate obviously and legitimately from clusters that are defined in a different way,
+as are the clusters here.
+
+**General** In examples, PCA is usually run on high-dimensional data to reduce the dimension before applying the methods of interest to then only reduce the 10 (or
+so)-dimensional PCA representation to two dimensions. There should be a comment on this, why this is done and whether this is generally recommended. As
+far as I know, the literature on UMAP and other techniques treated here doesn’t
+recommend this and doesn’t suggest that this would be necessary.
+
+**Sec. 4.4.2** Much about this Section is quite naive and not very insightful. References
+for standard cluster analysis methods that are around for 50 years and more are
+given from between 2002 and 2019; original references are preferred. There are lots
+of hierarchical methods and it is not specified which one is used here. Also the
+concept of model-based clustering is very general and although I can guess what the
+author did, the given description is insufficient (not only Gaussian distributions can
+be mixed to define a clustering model). Given the variety of available covariance
+matrix models it seems very strange that the authors picked the one model that is
+almost identical to k-means when comparing with k-means. This is hardly ever of
+interest in practice, because otherwise one could stick to k-means in the first place,
+and the superior flexibility of model-based clustering would be wasted.
+
+A number of cluster validity statistics are computed, but there isn’t much discussion
+of their meaning and whether or why some of these might be more appropriate than
+others. In fact some of these are not even meant to be used on their own, see
+
+Akhanli S.E., Hennig C. (2020). Comparing clusterings and numbers of clusters
+by aggregation of calibrated clustering validity indexes. STATISTICS AND COMPUTING, 30(5), 1523-1544, doi:10.1007/s11222-020-09958-2
+
+Some guidance on good practices for benchmarking in cluster analysis:
+
+Van Mechelen, I., Boulesteix, A.-L., Dangl, R., Dean, N., Hennig, C., Leisch, F.,
+Steinley, D., & Warrens, M. J. (2023). A white paper on good research practices in
+benchmarking: The case of cluster analysis. WIREs Data Mining and Knowledge
+Discovery, 13(6), e1511. https://doi.org/10.1002/widm.1511
+
+**Chapter 5** There are some problematic issues with this survey. As far as I understand,
+many high-dimensional datasets can lead to the same 2-d representation using the
+techniques discussed here. This means that participants can at best know that it is
+possible that datasets are the same (2-d representation and tour), but it is always
+just as well possible that datasets are different. Even with the best understanding of
+the methods and the best intuition this can never be excluded. Saying “same” with
+confidence is therefore always wrong, because one can guess “same”, but confidence
+is never justified. Furthermore, I’d think that for the use of techniques such as
+UMAP, t-SNE etc. some understanding and training is required. They are not
+necessarily meant (or at least shouldn’t be meant) to be used in a purely intuitive
+way without any idea of their inner workings. But as far as I understand, this kind
+of intuitive use is what the survey investigates. There should be some discussion of
+to what extent this is appropriate and informative.
+
+**Minor issues:**
+
+**p. 6 and elsewhere** “NLDR can hallucinate wildly” - without a formal definition of
+what true structures are and how they should or should not be represented, it isn’t
+clear what “hallucinate” means. Also arguably the methods just do what they are
+defined to do; without a human analyser misinterpreting the display there can be
+no “hallucination”.
+
+**p. 8** Scale the data - I worry that there may be robustness issues with the min/max
+scaling here. A single large outlier on a variable will imply that all other observations
+have hardly any distance between each other on this variable.
+
+**p. 9** Write the linear optimisation problem down explicitly. This is not transparent.
+
+**p.11** What does “RNX curve” mean?
+
+**Fig. 2.5** y-axis label and annotation are missing.
+
+**p. 16, l. -6** “high correlation value” between what and what?
+
+**Fig. 2.8 bottom** The difference between the different metrics in assessing the layouts
+is staggering. This deserves a discussion.
+
+**Fig. 2.12** Layout f is called “best choice” but it doesn’t have the best HBE values where
+the HBE values are best (at low average bin count). What is the rationale here?
+
+**p. 59** More published data generators for clustering are:
+
+Maitra, R., & Melnykov, V. (2010). Simulating Data to Study Performance of
+Finite Mixture Modeling and Clustering Algorithms. Journal of Computational and
+Graphical Statistics, 19(2), 354–376. https://doi.org/10.1198/jcgs.2009.08054
+
+C. Shand, R. Allmendinger, J. Handl, A. Webb and J. Keane, ”HAWKS: Evolving
+Challenging Benchmark Sets for Cluster Analysis,” in IEEE Transactions on Evolutionary Computation, 26 (6), 1206-1220, 2022, doi: 10.1109/TEVC.2021.3137369
+
+**p. 62** I haven’t exactly understood how the “background noise” works. Better explain
+such things formally and unambiguously.
+
+**p. 64** “they do not produce a formal multicluster dataset” - what is that?
+
+**p. 68, l.-9** There’s a bracket too many.
+
+**p. 70, l.-9** Explain “Sierpinski-like”.
+
+**Chapter 5** I think results for PCA should be included. They would certainly be of
+interest, and not doing them because of some speculation what the result may be
+isn’t convincing.
+
+**p. 91** BW ratio treats the clusters as spherical, not just elliptical.
+
+**p. 92** Explicitly introduce the terminology “SAME” and “DIFFERENT” trials. Don’t
+leave guesswork to the reader, not even if names are expressive.
+
+**p. 92** What qualifies data to be “attention check data”? Gaussian variance is specified
+as a single number, but in order to define the Gaussian’s properly you need to state
+their covariance matrices.
+
+**p. 95** “The BW-ratio. . . ” is not a sentence.
+
+**Sec. 5.3.7** I think that once the same dataset (or generation rule) has been used more
+than once, the model needs a dataset effect, probably another random effect. Results
+of different test persons on the same data are dependent for sure.
+
+**Fig. 5.4 and elsewhere** Estimated probability results look generally quite weak given
+that there are only two response options. Comment!
+
+**Fig. B.10b** How is what is shown here connected to normal distribution of the random
+effects? The assumption is not about the plain “correct proportion”.
+
+**B.8.1** “Subjects who exceeded the average time of 5-10 minutes were excluded, as determined from the pilot study.” Why? I don’t see any reason for this.
+
+"Finally, the collected data set is further refined by filtering out all the responses
+which showed the same data structures in 2-D NLDR plot and tour." I suspect this
+sentence doesn’t say what you want to say here. In any case it is very strange.
+
+Christian Hennig, Bologna, 7 April 2026
