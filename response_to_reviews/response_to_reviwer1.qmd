@@ -1,15 +1,12 @@
 ---
-title: "Response to reviews"
+title: "New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Nonlinear Dimension Reduction Layouts of High-Dimensional Data"
+subtitle: "Response to reviews"
 format: pdf
 ---
 
 *We thank the examiners for their careful assessment of my thesis. What follows is a point by point response to the examiners' comments.*
 
-## Assessment of Piyadi Gamage Jayani Lakshika - New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Nonlinear Dimension Reduction Layouts of High-Dimensional Data
-
-Christian Hennig
-
-April 8, 2026
+# Examiner A: Prof Christian Hennig
 
 The thesis treats the evaluation of two-dimensional representations of high-dimensional
 data by nonlinear approaches such as UMAP and t-SNE. The core is the use of hexagonal binning of the 2-d representation, which can be lifted into the higher dimensional
@@ -233,4 +230,6 @@ effects? The assumption is not about the plain “correct proportion”.
 which showed the same data structures in 2-D NLDR plot and tour." I suspect this
 sentence doesn’t say what you want to say here. In any case it is very strange.
 
-Christian Hennig, Bologna, 7 April 2026
+# Examiner B: Prof Anne M. Ruiz
+
+No comments.
