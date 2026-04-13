@@ -159,6 +159,8 @@ A total of $30$ $4\text{-}D$ data sets are generated. Two are reserved as an att
 
 For the experiment, three cluster data sets are generated. The three clusters contain different numbers of points and shapes. Let $C_1, C_2,$ and $C_3$ denote the centroids of three clusters. The pairwise distances between these centroids are calculated as: $d(C_1, C_2) = c_{12},~d(C_1, C_3) = c_{13}, \text{ and } d(C_2, C_3) = c_{23}$. At the original distance scale (scale factor $1$, referred to as medium-large), clusters $C_1$ and $C_2$ are in close proximity, while cluster $C_3$ is positioned farther away, creating an asymmetric separation pattern. Centroid distances were used because they provide a simple and controllable way to adjust overall cluster separation.
 
+The experiment consists of two types of trials: SAME trials and DIFFERENT trials. In SAME trials, two visualizations (one NLDR layout and the tour) are generated from the same underlying dataset, but with controlled variations in cluster separation. In DIFFERENT trials, the two visualizations are generated from different datasets.
+
 In the SAME trials, the degree of separation between clusters was varied by multiplying the original centroid distances by four scale factors: $0.1$ (small), $0.6$ (small-medium), $0.9$ (medium), and $1.1$ (large). These values were chosen to span a range of perceptual difficulty from cases where clusters are expected to overlap strongly and be hard to distinguish ($0.1$), through intermediate levels where separation is visible but ambiguous ($0.6$ and $0.9$), to cases where clusters are clearly separated ($1.1$). Using proportional scaling ensures that the relative geometry of the data is preserved while systematically controlling how strongly separation cues are expressed.
 
 In contrast, data structures used for the DIFFERENT trials retained the original centroid distances (scale factor $1$) without modification. This allows the DIFFERENT trials to serve as stable reference cases while ensuring that variation in separation is introduced only in trials where participants are asked to judge whether two displays show the same data.
@@ -173,7 +175,14 @@ Shapes for each cluster were selected randomly from a predefined set of curved, 
 
 #### Attention check data
 
-There are two sets of attention check data: one consisting of three Gaussian clusters and the other consisting of four Gaussian clusters. Each cluster is generated using a multivariate normal distribution where the mean vectors and variances were predefined. Specifically, for the three-cluster case, the mean vectors were set as $[1, 0, 0, 0]$, $[0, 1, 0, 0]$, and $[0, 0, 1, 1]$, with a common variance of $0.1$ for all clusters. For the four-cluster case, the mean vectors were defined as $[1, 0, 0, 1]$, $[0, 1, 1, 0]$, $[1, 0, 1, 0]$, and $[0, 1, 0, 1]$, also using a variance of $0.1$. This approach ensures that data points are normally distributed around the specified centroids, with the spread controlled by the variance parameter. Each Gaussian cluster dataset consists of $4\text{-}D$ data with a sample size of $7500$, and each cluster contains an equal number of data points.
+<!-- There are two sets of attention check data: one consisting of three Gaussian clusters and the other consisting of four Gaussian clusters. Each cluster is generated using a multivariate normal distribution where the mean vectors and variances were predefined. Specifically, for the three-cluster case, the mean vectors were set as $[1, 0, 0, 0]$, $[0, 1, 0, 0]$, and $[0, 0, 1, 1]$, with a common variance of $0.1$ for all clusters. For the four-cluster case, the mean vectors were defined as $[1, 0, 0, 1]$, $[0, 1, 1, 0]$, $[1, 0, 1, 0]$, and $[0, 1, 0, 1]$, also using a variance of $0.1$. This approach ensures that data points are normally distributed around the specified centroids, with the spread controlled by the variance parameter. Each Gaussian cluster dataset consists of $4\text{-}D$ data with a sample size of $7500$, and each cluster contains an equal number of data points. -->
+
+
+The attention-check datasets were designed to be simple and easily interpretable, with clearly separated cluster structures that should be consistently recognized across visualizations. These datasets serve as a basic validation to ensure participants are attentive and understand the task.
+
+Each cluster was generated from a multivariate normal distribution with predefined mean vectors and a common isotropic covariance structure. Specifically, the covariance matrix for each cluster was taken as ($\sigma^2 I$), where ($\sigma^2 = 0.1$) and ($I$) is the identity matrix, implying equal variance in all dimensions and no correlation between variables.
+
+For the three-cluster case, the mean vectors were $[1,0,0,0]$, $[0,1,0,0]$, and $[0,0,1,1]$. For the four-cluster case, the means were $[1,0,0,1]$, $[0,1,1,0]$, $[1,0,1,0]$, and $[0,1,0,1]$. Each dataset consists of ($4\text{-}D$) observations with a total sample size of $7500$, equally divided among clusters.
 
 ### Organization of SAME and DIFFERENT trials
 
@@ -210,7 +219,7 @@ The second factor, the distance scale factor, controlled the degree of cluster s
 
 In our analysis of the results, we decided to quantify the distances between clusters numerically rather than using the distance scale factor levels directly. Cluster separability was quantified using two complementary measures: the *between-to-within (BW) ratio* and the *minimum inter-cluster distance*. A higher value of either metric indicates greater separation among clusters (@fig-dist-metrics). To ensure comparability across datasets with different underlying structures, all distance-based metrics were min–max scaled prior to analysis.  
 
-The BW ratio, defined as
+The BW ratio is defined as
 
 $$
   \text{BW ratio}
