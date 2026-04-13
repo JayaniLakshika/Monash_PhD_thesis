@@ -164,9 +164,13 @@ have hardly any distance between each other on this variable.
 
 **p.11** What does "RNX curve" mean?
 
+*We have clarified the meaning of the "RNX curve" by explicitly defining it as a co-ranking–based measure that evaluates neighborhood preservation across a range of neighborhood sizes, and explained how the ARNX summary is computed from this curve.*
+
 **Fig. 2.5** y-axis label and annotation are missing.
 
 **p. 16, l. -6** "high correlation value" between what and what?
+
+*We have clarified that the “correlation” refers to the Spearman correlation between pairwise distances in $p\text{-}D$ and $2\text{-}D$ as shown in the Shepard diagram. The text has been revised to make this explicit and to better explain how this value can be inflated in the presence of clustered structures.*
 
 **Fig. 2.8 bottom** The difference between the different metrics in assessing the layouts
 is staggering. This deserves a discussion.
