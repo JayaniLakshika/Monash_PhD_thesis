@@ -160,7 +160,11 @@ no "hallucination".
 scaling here. A single large outlier on a variable will imply that all other observations
 have hardly any distance between each other on this variable.
 
+*We agree that min–max scaling can be sensitive to extreme values and may compress the majority of observations when outliers are present. We have revised the manuscript to acknowledge this limitation and now explicitly suggest more robust alternatives, such as quantile-based scaling or preprocessing steps to mitigate the influence of outliers. We retain min–max scaling as a simple default in well-behaved settings.*
+
 **p. 9** Write the linear optimisation problem down explicitly. This is not transparent.
+
+*We have revised the manuscript to explicitly state the linear optimization problem used to determine $b_2$, including the objective and constraints. We also clarified how Equation (X) is obtained by substituting the smallest feasible value of $a_1$ and solving for $b_2$.*
 
 **p.11** What does "RNX curve" mean?
 
