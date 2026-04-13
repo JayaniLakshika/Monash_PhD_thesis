@@ -559,7 +559,7 @@ The proportion correct across subjects is symmetric and unimodal, reasonably con
 
 ### Data cleaning
 
-The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty trials, including the demographics and the attention check trial. Subjects who exceeded the average time of $5-10$ minutes were excluded, as determined from the pilot study. Following this, individuals who didn't accurately detect the attention check trial were also removed. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set is further refined by filtering out all the responses which showed the same data structures in $2\text{-}D$ NLDR plot and tour.
+The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty trials, including the demographics and the attention check trial. Subjects whose completion times substantially exceeded the expected duration ($5–10$ minutes, based on the pilot study) were excluded, as unusually long times likely indicated interruptions or disengagement rather than task-related effort. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set was refined by selecting responses from trials in which the $2\text{-}D$ NLDR layout and the tour represented the same underlying data, allowing us to assess participants’ ability to correctly identify the same data structures across the displays.
 
 ### Demographics
 
