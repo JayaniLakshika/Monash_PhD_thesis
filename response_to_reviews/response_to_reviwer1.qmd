@@ -231,6 +231,8 @@ their covariance matrices.
 than once, the model needs a dataset effect, probably another random effect. Results
 of different test persons on the same data are dependent for sure.
 
+*We acknowledge that responses corresponding to the same dataset may introduce dependence. In our study, the number of repeated observations per dataset was limited, and our primary focus was on differences across methods rather than dataset-specific effects. While we did not include a dataset-level random effect in the current model, we recognise this as a potential extension and have noted it as a limitation in the revised manuscript.*
+
 **Fig. 5.4 and elsewhere** Estimated probability results look generally quite weak given
 that there are only two response options. Comment!
 
