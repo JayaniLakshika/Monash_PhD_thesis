@@ -156,6 +156,8 @@ clear what "hallucinate" means. Also arguably the methods just do what they are
 defined to do; without a human analyser misinterpreting the display there can be
 no "hallucination".
 
+*We agree that the term "hallucinate" was imprecise and potentially misleading. Our intention was to describe situations where NLDR embeddings distort the original geometry in ways that may suggest structure (e.g., strong separation between groups) that is not supported by the high-dimensional relationships. We have revised the manuscript to replace this phrasing with a more precise description of geometric distortion and the potential for misinterpretation by the analyst.*
+
 **p. 8** Scale the data - I worry that there may be robustness issues with the min/max
 scaling here. A single large outlier on a variable will imply that all other observations
 have hardly any distance between each other on this variable.
@@ -191,8 +193,12 @@ Graphical Statistics, 19(2), 354–376. https://doi.org/10.1198/jcgs.2009.08054
 C. Shand, R. Allmendinger, J. Handl, A. Webb and J. Keane, ”HAWKS: Evolving
 Challenging Benchmark Sets for Cluster Analysis,” in IEEE Transactions on Evolutionary Computation, 26 (6), 1206-1220, 2022, doi: 10.1109/TEVC.2021.3137369
 
+*We have added these.*
+
 **p. 62** I haven’t exactly understood how the "background noise" works. Better explain
 such things formally and unambiguously.
+
+*We have revised the description of background noise to provide a clearer and more formal explanation, including how it is generated and incorporated into the dataset.*
 
 **p. 64** “they do not produce a formal multicluster dataset” - what is that?
 
@@ -213,6 +219,8 @@ such things formally and unambiguously.
 **Chapter 5** I think results for PCA should be included. They would certainly be of
 interest, and not doing them because of some speculation what the result may be
 isn’t convincing.
+
+*We agree that PCA can serve as a useful baseline. However, our study focuses specifically on nonlinear dimensionality reduction methods and how their transformations affect perceptual interpretation. Since PCA is a linear method that preserves global structure without introducing nonlinear distortions, it is generally consistent with the linear projections shown in the tour and therefore does not provide additional insight into the types of distortions we aim to study. For this reason, we have not included PCA in the main analysis, but we acknowledge its role as a baseline.*
 
 **p. 91** BW ratio treats the clusters as spherical, not just elliptical.
 
