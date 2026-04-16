@@ -252,6 +252,8 @@ of different test persons on the same data are dependent for sure.
 **Fig. 5.4 and elsewhere** Estimated probability results look generally quite weak given
 that there are only two response options. Comment!
 
+*While the task involves binary responses ("yes"/"no"), the estimated probabilities reflect substantial uncertainty in participants’ perceptual judgments rather than weak model performance. The stimuli were intentionally designed to include challenging cases (e.g., similar cluster structures, small separations, or nonlinear distortions), where distinguishing between visualisations is difficult. As a result, responses are often close to chance level, leading to moderate estimated probabilities.*
+
 **Fig. B.10b** How is what is shown here connected to normal distribution of the random
 effects? The assumption is not about the plain "correct proportion".
 
