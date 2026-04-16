@@ -178,11 +178,9 @@ have hardly any distance between each other on this variable.
 
 *We have clarified that the “correlation” refers to the Spearman correlation between pairwise distances in $p\text{-}D$ and $2\text{-}D$ as shown in the Shepard diagram. The text has been revised to make this explicit and to better explain how this value can be inflated in the presence of clustered structures.*
 
-**Fig. 2.8 bottom** The difference between the different metrics in assessing the layouts
-is staggering. This deserves a discussion.
+**Fig. 2.8 bottom** The difference between the different metrics in assessing the layouts is staggering. This deserves a discussion.
 
-**Fig. 2.12** Layout f is called "best choice" but it doesn’t have the best HBE values where
-the HBE values are best (at low average bin count). What is the rationale here?
+**Fig. 2.12** Layout f is called "best choice" but it doesn’t have the best HBE values where the HBE values are best (at low average bin count). What is the rationale here?
 
 **p. 59** More published data generators for clustering are:
 
