@@ -254,8 +254,9 @@ that there are only two response options. Comment!
 
 *While the task involves binary responses ("yes"/"no"), the estimated probabilities reflect substantial uncertainty in participants’ perceptual judgments rather than weak model performance. The stimuli were intentionally designed to include challenging cases (e.g., similar cluster structures, small separations, or nonlinear distortions), where distinguishing between visualisations is difficult. As a result, responses are often close to chance level, leading to moderate estimated probabilities.*
 
-**Fig. B.10b** How is what is shown here connected to normal distribution of the random
-effects? The assumption is not about the plain "correct proportion".
+**Fig. B.10b** How is what is shown here connected to normal distribution of the random effects? The assumption is not about the plain "correct proportion".
+
+*We agree that the normality assumption in the model applies to the random effects, not to the observed proportions of correct responses. The figure was intended as a descriptive summary of variability across subjects rather than a formal assessment of model assumptions. We have revised the text to remove the implication that this plot reflects the normality of the random effects and clarified its descriptive role.*
 
 **B.8.1** "Subjects who exceeded the average time of 5-10 minutes were excluded, as determined from the pilot study." Why? I don’t see any reason for this.
 
