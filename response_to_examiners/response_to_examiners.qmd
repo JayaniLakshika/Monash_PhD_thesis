@@ -53,8 +53,8 @@ for any rewriting, much change of what is there, or much extra work.
 **Major issues:**
 
 **General** The HBE is used as a general metric in order to evaluate representations, and
-it is stated in several places that a representation with a better HBE “performs
-better”. This is far from clear. In fact there are many statistics around that can be
+it is stated in several places that a representation with a better HBE "performs
+better". This is far from clear. In fact there are many statistics around that can be
 interpreted as evaluating the quality or lower dimensional representations. Actually
 many methods providing such representations are based on optimising an objective
 function that is meant to measure representation quality in some sense, starting from
@@ -149,6 +149,10 @@ necessarily meant (or at least shouldn’t be meant) to be used in a purely intu
 way without any idea of their inner workings. But as far as I understand, this kind
 of intuitive use is what the survey investigates. There should be some discussion of
 to what extent this is appropriate and informative.
+
+*I agree that a given 2-D NLDR representation is not uniquely determined by a single high-dimensional dataset, and therefore participants cannot definitively conclude that two visualisations arise from the same underlying data. Our intention, however, is not to assess whether participants can make a logically certain identification, but rather to study perceptual consistency: whether different visualisations of the same data are interpreted as similar or different by human observers. In this context, a “same” response reflects perceived similarity rather than a claim of uniqueness.*
+
+*I also agree that NLDR methods such as t-SNE and UMAP typically require expertise for careful interpretation. However, these visualisations are often used in exploratory settings where users rely heavily on visual intuition. Our study is designed to evaluate how such intuitive interpretations align with the underlying data structure.*
 
 **Minor issues:**
 
