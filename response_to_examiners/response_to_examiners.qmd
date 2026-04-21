@@ -69,6 +69,12 @@ most other existing metrics. So what is its actual advantage? Before recommendin
 a software to the user that assesses "performance" by means of HBE, this surely
 needs to be addressed.
 
+*I agree that many well-established metrics exist for assessing low-dimensional representations, each reflecting different aspects of structure preservation, and that NLDR methods themselves are typically defined through optimization objectives. Our intention is not to claim that HBE provides a universally better or more principled measure of embedding quality than these existing approaches.*
+
+*I have revised the thesis to clarify that HBE serves a different role: it is a model-based, diagnostic measure that evaluates how well a fitted representation (via the hexagonal binning model) approximates the data in the original high-dimensional space. In contrast to metrics such as trustworthiness, stress, or RNX-based measures, which summarize specific aspects of local or global structure preservation, HBE is designed to be used in conjunction with visual tools (e.g., tour overlays) to help localize and interpret distortions.*
+
+*I also acknowledge that HBE depends on grid parameters, and have revised the text to discuss this explicitly. Rather than viewing this as a drawback alone, I emphasize that examining HBE across a range of parameter values provides insight into the stability of a representation. I have softened language that previously suggested HBE measures "performance" in a general sense, and instead frame it as a complementary diagnostic tool alongside existing metrics.*
+
 **General** In many places the aim seems to be to find the "best" representation. But
 data analysts often use many visualisations of the same data because this can bring
 additional insight. Different kinds of visualisation can highlight different features
@@ -76,6 +82,8 @@ of the data, and most insight can come from combining what can be learnt from
 several displays. So it should at least be acknowledged that bringing together a
 number of representations could be more informative for data analysis than looking
 for a single "best" one.
+
+*I agree that, in practice, examining multiple visualizations is often more informative than selecting a single "best" representation, as different layouts can highlight different aspects of the data. I have revised the thesis to avoid the term "best layout" and instead refer to identifying the most reasonable representation in a given context. I also emphasize that our approach is intended to support comparative and diagnostic analysis across multiple layouts, rather than to prescribe a single optimal choice.*
 
 **General** Cluster analysis is quite prominent in the thesis, and it is apparently implicitly
 always assumed that every dataset has a uniquely true clustering. There are several
@@ -86,7 +94,7 @@ particular
 
 Christian Hennig (2015) What are the true clusters? Pattern Recognition Letters 64, 53-62, https://doi.org/10.1016/j.patrec.2015.04.009.
 
-So if there is talk of “true clusters”, there would need to be a definition of what
+So if there is talk of "true clusters", there would need to be a definition of what
 this means, either (preferably) as functional of a general probability distribution, or
 using a data-based definition.
 
@@ -105,6 +113,12 @@ so it cannot be fully clear what the "true clusters" are that are mentioned.
 
 The issue is particularly relevant when benchmarking clustering methods (Sec.
 4.4.2). All results are relative to the assumed truth. Note that methods like kmeans can be seen as coming with their own implicit cluster concept, and they will deviate obviously and legitimately from clusters that are defined in a different way, as are the clusters here.
+
+*I agree that clustering does not admit a unique "true" solution in general.*
+
+*In this paper, "true clusters" refers to the labels defined by the data-generating process, where each geometric component is generated separately and assigned a cluster identity. This is an operational definition used for simulation and benchmarking, rather than a universally valid notion of clustering.*
+
+*I revised the thesis to clarify this point, explicitly acknowledge that multiple valid clusterings may exist for the same data, and note that results are conditional on this construction-based definition.*
 
 **General** In examples, PCA is usually run on high-dimensional data to reduce the dimension before applying the methods of interest to then only reduce the 10 (or so)-dimensional PCA representation to two dimensions. There should be a comment on this, why this is done and whether this is generally recommended. As far as I know, the literature on UMAP and other techniques treated here doesn’t recommend this and doesn’t suggest that this would be necessary.
 
@@ -136,6 +150,8 @@ Steinley, D., & Warrens, M. J. (2023). A white paper on good research practices 
 benchmarking: The case of cluster analysis. WIREs Data Mining and Knowledge
 Discovery, 13(6), e1511. https://doi.org/10.1002/widm.1511
 
+*I revised Section 4.4.2 to improve clarity and rigor. Specifically, we will (i) add original references such as Stuart Lloyd (1982) and Joe H. Ward Jr. (1963), (ii) explicitly state that hierarchical clustering uses Ward’s linkage, (iii) clarify that model-based clustering is implemented via a Gaussian mixture model with the "EII" covariance structure and justify this as a baseline comparable to k-means, and (iv) expand the discussion of cluster validity indices, including their limitations and appropriate use, drawing on guidance from Seda E. Akhanli and Christian Hennig (2020) and related benchmarking recommendations. I also clarified that this comparison is illustrative rather than a comprehensive benchmarking study.*
+
 **Chapter 5** There are some problematic issues with this survey. As far as I understand,
 many high-dimensional datasets can lead to the same 2-d representation using the
 techniques discussed here. This means that participants can at best know that it is
@@ -162,17 +178,17 @@ clear what "hallucinate" means. Also arguably the methods just do what they are
 defined to do; without a human analyser misinterpreting the display there can be
 no "hallucination".
 
-*I agree that the term "hallucinate" was imprecise and potentially misleading. Our intention was to describe situations where NLDR embeddings distort the original geometry in ways that may suggest structure (e.g., strong separation between groups) that is not supported by the high-dimensional relationships. I have revised the manuscript to replace this phrasing with a more precise description of geometric distortion and the potential for misinterpretation by the analyst.*
+*I agree that the term "hallucinate" was imprecise and potentially misleading. Our intention was to describe situations where NLDR embeddings distort the original geometry in ways that may suggest structure (e.g., strong separation between groups) that is not supported by the high-dimensional relationships. I have revised the thesis to replace this phrasing with a more precise description of geometric distortion and the potential for misinterpretation by the analyst.*
 
 **p. 8** Scale the data - I worry that there may be robustness issues with the min/max
 scaling here. A single large outlier on a variable will imply that all other observations
 have hardly any distance between each other on this variable.
 
-*I agree that min–max scaling can be sensitive to extreme values and may compress the majority of observations when outliers are present. I have revised the manuscript to acknowledge this limitation and now explicitly suggest more robust alternatives, such as quantile-based scaling or preprocessing steps to mitigate the influence of outliers. I retain min–max scaling as a simple default in well-behaved settings.*
+*I agree that min–max scaling can be sensitive to extreme values and may compress the majority of observations when outliers are present. I have revised the thesis to acknowledge this limitation and now explicitly suggest more robust alternatives, such as quantile-based scaling or preprocessing steps to mitigate the influence of outliers. I retain min–max scaling as a simple default in well-behaved settings.*
 
 **p. 9** Write the linear optimisation problem down explicitly. This is not transparent.
 
-*I have revised the manuscript to explicitly state the linear optimization problem used to determine $b_2$, including the objective and constraints. I also clarified how Equation (X) is obtained by substituting the smallest feasible value of $a_1$ and solving for $b_2$.*
+*I have revised the thesis to explicitly state the linear optimization problem used to determine $b_2$, including the objective and constraints. I also clarified how Equation is obtained by substituting the smallest feasible value of $a_1$ and solving for $b_2$.*
 
 **p.11** What does "RNX curve" mean?
 
@@ -245,7 +261,7 @@ leave guesswork to the reader, not even if names are expressive.
 as a single number, but in order to define the Gaussian’s properly you need to state
 their covariance matrices.
 
-*I have clarified the definition of the attention-check datasets in the manuscript. Specifically, I now explain that these datasets were designed to have simple and clearly separable cluster structures, making them easy to recognise and thus suitable for verifying participant attention and task understanding.*
+*I have clarified the definition of the attention-check datasets in the thesis. Specifically, I now explain that these datasets were designed to have simple and clearly separable cluster structures, making them easy to recognise and thus suitable for verifying participant attention and task understanding.*
 
 *I have also revised the description of the Gaussian clusters to explicitly state the covariance structure. Each cluster is now defined using an isotropic covariance matrix of the form ($\sigma^2 I$), where ($\sigma^2 = 0.1$), ensuring equal variance across all dimensions and no correlation between variables.*
 
@@ -257,7 +273,7 @@ their covariance matrices.
 than once, the model needs a dataset effect, probably another random effect. Results
 of different test persons on the same data are dependent for sure.
 
-*I acknowledge that responses corresponding to the same dataset may introduce dependence. In our study, the number of repeated observations per dataset was limited, and our primary focus was on differences across methods rather than dataset-specific effects. While I did not include a dataset-level random effect in the current model, I recognise this as a potential extension and have noted it as a limitation in the revised manuscript.*
+*I acknowledge that responses corresponding to the same dataset may introduce dependence. In our study, the number of repeated observations per dataset was limited, and our primary focus was on differences across methods rather than dataset-specific effects. While I did not include a dataset-level random effect in the current model, I recognise this as a potential extension and have noted it as a limitation in the revised thesis.*
 
 **Fig. 5.4 and elsewhere** Estimated probability results look generally quite weak given
 that there are only two response options. Comment!
@@ -270,7 +286,7 @@ that there are only two response options. Comment!
 
 **B.8.1** "Subjects who exceeded the average time of 5-10 minutes were excluded, as determined from the pilot study." Why? I don’t see any reason for this.
 
-*I agree that excluding participants based solely on longer completion times requires justification. Our intention was to remove cases where unusually long durations likely reflected interruptions or disengagement rather than task-related effort. I have clarified this rationale in the manuscript.*
+*I agree that excluding participants based solely on longer completion times requires justification. Our intention was to remove cases where unusually long durations likely reflected interruptions or disengagement rather than task-related effort. I have clarified this rationale in the thesis.*
 
 "Finally, the collected data set is further refined by filtering out all the responses
 which showed the same data structures in 2-D NLDR plot and tour." I suspect this
