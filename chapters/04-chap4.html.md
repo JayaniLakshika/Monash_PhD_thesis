@@ -1403,7 +1403,13 @@ As shown in @fig-nldr-layouts, tSNE (@fig-nldr-layouts a) achieved the lowest HB
 
 ### Benchmarking clustering algorithms
 
-To further evaluate the structure of the generated data, we benchmarked three clustering algorithms: **$k$-means** [Chapter 20 of @boehmke2019], **hierarchical** [@murtagh2012], and **model-based clustering** [@chris2002; @scrucca2023] using the simulated dataset. Model-based clustering performed the `"EII"` covariance structure. Under this parameterization, clusters are spherical with equal volume and equal shape, and no orientation parameter is estimated. Cluster validity statistics were computed using the `cluster.stats()` function from the `fpc` package [@christian2024].
+To further evaluate the structure of the generated data, we benchmarked three clustering algorithms: **$k$-means** [Chapter 20 of @boehmke2019], **agglomerative hierarchical clustering with Ward’s linkage** [@ward1963; @murtagh2012], and **model-based clustering using Gaussian mixture models** [@chris2002; @scrucca2023] using the simulated dataset. 
+
+<!-- Model-based clustering performed the `"EII"` covariance structure. Under this parameterization, clusters are spherical with equal volume and equal shape, and no orientation parameter is estimated.  -->
+
+For model-based clustering, we use the `"EII"` covariance parameterization, which assumes spherical clusters with equal volume. This specification provides a constrained model that is broadly comparable to $k$-means clustering. While the Gaussian mixture framework allows more flexible covariance structures, these are not considered here, as the objective is to examine method behavior under a common baseline assumption rather than to optimize clustering performance.
+
+Cluster validity statistics were computed using the `cluster.stats()` function from the `fpc` package [@christian2024]. These indices capture different aspects of clustering quality, such as compactness and separation, and may not necessarily agree in their assessment of optimal cluster number. As discussed in @akhanli2020, such indices should be interpreted collectively rather than individually, and are most informative when used for comparative rather than absolute evaluation.
 
 <!--script/05_gen_cluster_stat.R-->
 
@@ -1488,6 +1494,8 @@ Views of the five-cluster synthetic dataset colored by the $k$-means four- and f
 
 
 @fig-highd-data-clusters-algo-html shows the four- and five-cluster $k$-means solutions, with cluster id used to color the points. Neither solution captures the geometric nature of the true clusters, but they are both reasonable partitions of the data. To examine either one, it is best to subset to a single cluster to view in the tour. With each solution, the five original shapes are each split by the clustering. More than 5 clusters would be needed to better capture the original shapes.
+
+Benchmarking of clustering methods typically requires multiple datasets, sensitivity analyses, and carefully controlled experimental designs [@iven2023]. The present analysis is therefore intended as an illustrative case study demonstrating how standard clustering methods behave under complex geometric structure, rather than as a comprehensive benchmarking study.
 
 ## Conclusion
 
