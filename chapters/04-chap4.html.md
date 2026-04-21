@@ -1306,9 +1306,13 @@ The package includes various supplementary tools in addition to the shape-genera
 
 ## Application
 
-This section demonstrates how the package can be used to generate complex high-dimensional datasets, evaluate dimension reduction (DR) and clustering methods. The example shows how diverse geometric structures can be simulated and analyzed to assess algorithmic behavior.
+<!-- This section demonstrates how the package can be used to generate complex high-dimensional datasets, evaluate dimension reduction (DR) and clustering methods. The example shows how diverse geometric structures can be simulated and analyzed to assess algorithmic behavior. -->
 
-To illustrate how high-dimensional clustered data can be generated using `cardinalR`, we generate a dataset with five clusters in $4\text{-}D$, each representing distinct geometric characteristics: a *helical spiral* (elongated and twisted), a *hemisphere* (curved surface), a *uniform cube* (isotropic distribution), a *cone* (density gradient), and a *Gaussian* cluster (compact and spherical) (@fig-highd-data). Each cluster has a unique number of points and scaling factor, representing variation in cluster size and spread across the $4\text{-}D$ space.
+This section illustrates the use of the `cardinalR` package for generating high-dimensional datasets with structured geometric components and for exploring the behavior of commonly used clustering methods and dimension reduction (DR) techniques. The aim is to demonstrate how such methods respond to data with heterogeneous and nonlinear structure, rather than to provide a comprehensive benchmarking study.
+
+To illustrate how high-dimensional clustered data can be generated using `cardinalR`, we generate a dataset with five clusters in $4\text{-}D$, each representing distinct geometric characteristics: a *helical spiral* (elongated and twisted), a *hemisphere* (curved surface), a *uniform cube* (isotropic distribution), a *cone* (density gradient), and a *Gaussian* cluster (compact and spherical) (@fig-highd-data). Each component is generated independently with distinct spatial and distributional properties and assigned a label during the data generation process. These labels represent generating components (by construction) and serve as reference groupings for analysis. Each component differs in size, scale, and spatial extent, introducing heterogeneity in both density and geometry across the full dataset.
+
+<!-- Each cluster has a unique number of points and scaling factor, representing variation in cluster size and spread across the $4\text{-}D$ space. -->
 
 
 ::: {.cell}
@@ -1436,7 +1440,7 @@ To further evaluate the structure of the generated data, we benchmarked three cl
 ```
 
 
-Views of the five-cluster synthetic dataset colored by the $k$-means four- and five-cluster solutions. These show how the five true structures: helical spiral, hemisphere, uniform cube, blunted cone, and Gaussian-shaped cluster appear under $k$-means partitions. Both the $4$- and $5$-cluster solutions mix colors, revealing substantial misclassification and limited ability of $k$-means to recover the underlying geometric structure.
+Views of the five-cluster synthetic dataset colored by the $k$-means four- and five-cluster solutions. These show how the five true structures: helical spiral, hemisphere, uniform cube, blunted cone, and Gaussian-shaped cluster appear under $k$-means partitions. Several indices show preference for solutions around $4$- and $5$-clusters. Differences between methods reflect the interaction between clustering assumptions and the underlying geometric structure rather than a clear ranking of overall performance.
 :::
 :::
 
