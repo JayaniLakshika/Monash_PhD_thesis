@@ -1,6 +1,6 @@
 ---
 title: "New Interactive Visual Tools and Statistical Methodology for Selecting and Evaluating Nonlinear Dimension Reduction Layouts of High-Dimensional Data"
-subtitle: "Response to reviews"
+subtitle: "Response to examiners"
 format: pdf
 ---
 
