@@ -339,7 +339,7 @@ Matching points in the $2\text{-}D$ layout with their positions in $p\text{-}D$ 
 
 The interactive $2\text{-}D$ layout [@chapman2020] and the `langevitour` [@harisson2024] view with the fitted model overlaid can be linked using a browsable HTML widget (@joe2025, @joe2024). A rectangular "brush" is used to select points in one plot, which will highlight the corresponding points in the other plot(s). Because the `langevitour` is dynamic, brush events that become active will pause the animation, so that a user can interrogate the current view. This approach will be illustrated on the examples to show how it can help to understand how the NLDR has organized the observations, and learn where it does not do well.
 
-## Choosing the best $2\text{-}D$ layout {#sec-bestfit-visalgo} 
+## Choosing a $2\text{-}D$ layout {#sec-bestfit-visalgo} 
 
 @fig-toy-rmse illustrates the approach to compare the fits for different representations and assess the strength of any fit. What does it mean to be a best fit for this problem? Analysts use an NLDR layout to display the structure present in high-dimensional data in a convenient $2\text{-}D$ display. It is a competitor to linear dimension reduction that can better represent nonlinear associations, such as clusters. However, these methods can hallucinate, suggesting patterns that don't exist, and grossly exaggerate other patterns. Having a layout that best fits the high-dimensional structure is desirable, but more important is to identify bad representations so they can be avoided. The goal is to help users decide on the most useful and appropriate low-dimensional representation of the high-dimensional data. 
 
