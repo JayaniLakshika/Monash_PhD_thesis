@@ -282,7 +282,7 @@ that there are only two response options. Comment!
 
 **Fig. B.10b** How is what is shown here connected to normal distribution of the random effects? The assumption is not about the plain "correct proportion".
 
-*I have revised the text to remove the implication that this plot reflects the normality of the random effects and clarified its descriptive role.*
+*The figure does not assess random effect assumptions; it shows variation in observed proportions across subjects. The caption has been revised.*
 
 **B.8.1** "Subjects who exceeded the average time of 5-10 minutes were excluded, as determined from the pilot study." Why? I don’t see any reason for this.
 
