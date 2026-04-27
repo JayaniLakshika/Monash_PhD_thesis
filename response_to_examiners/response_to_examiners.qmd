@@ -226,7 +226,7 @@ such things formally and unambiguously.
 
 *I have revised the description of background noise to provide a clearer and more formal explanation, including how it is generated and incorporated into the dataset.*
 
-**p. 64** “they do not produce a formal multicluster dataset” - what is that?
+**p. 64** "they do not produce a formal multicluster dataset" - what is that?
 
 *By "formal multicluster dataset", I mean a dataset composed of multiple distinct and separable groups (clusters), where each cluster represents an independent structure, typically with clear boundaries or low-density separation between them.*
 
