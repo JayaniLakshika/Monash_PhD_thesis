@@ -781,6 +781,7 @@ if (knitr::is_latex_output()) {
 #| tbl-cap: "Summary of the educational distribution of subjects recruited for this study."
 
 summary_table <- results_df_demographics |>
+  mutate(education = factor(education, levels = c("Did not complete high school", "Completed some undergraduate courses", "Undergraduate degree (A bachelor)", "Higher degree master or doctorate", "Prefer not to answer"))) |>
   count(education, period) |>
   pivot_wider(values_from = n, names_from = period, values_fill = 0) |>
   mutate(Total = `Period I` + `Period II`) |>
@@ -797,7 +798,7 @@ total_row <- tibble(
 )
 
 # Append the total row
-final_table <- bind_rows(summary_table, total_row)
+final_table <- bind_rows(summary_table, total_row) 
 
 if (knitr::is_latex_output()) {
     final_table |> 
