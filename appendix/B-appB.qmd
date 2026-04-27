@@ -474,6 +474,10 @@ Once a subject ID is allocated to a participant, the experiment design data are 
 
 Once the participant records their answers, a new row is added to the "result_df" Google Sheet with their responses. This continues until the participant finishes the study. Finally, after completing the evaluations, subjects are asked to fill out a demographics questionnaire. Their responses are then recorded in a new row of the "demographic_details" Google Sheet.
 
+## Preliminary assessment of PCA Layouts
+
+PCA layouts were considered during the study design and tested in a preliminary phase with a small group of participants ($18$ subjects). The results showed a high rate of correct identification (about $91\%$), suggesting that PCA views of the simulated $4\text{-}D$ data were easy to interpret when shown alongside the tour (Figure XX). Since PCA is a linear method, its projections closely match the views seen in the tour, making it easier to recognize the underlying structure. In contrast, NLDR methods such as tSNE, UMAP, PHATE, TriMAP, and PaCMAP can change the shape of the data, making interpretation less straightforward. For this reason, the main experiment focused on NLDR methods, where differences in perception are more informative.
+
 ## Variability across data sets and subjects
 
 Two sources of variability in the experimental design that are important to assess relative to the fitted model: data sets and subjects. Data sets are effectively treated as replicates in the experiment, providing random samples of a range of types of clusters. Humans have different perceptual skills, which is why it is important to include a subject random effect in the model. 
