@@ -250,12 +250,12 @@ isn’t convincing.
 
 **p. 91** BW ratio treats the clusters as spherical, not just elliptical.
 
-*I agree that the between–within (BW) ratio is most naturally suited to spherical cluster assumptions, rather than general elliptical shapes. I revised the text as: Measuring distance between clusters is classically done using the between–within (BW) ratio, which captures global separability under assumptions of roughly spherical cluster structure.*
+*I have revised the text.*
 
 **p. 92** Explicitly introduce the terminology "SAME" and "DIFFERENT" trials. Don’t
 leave guesswork to the reader, not even if names are expressive.
 
-*I added the text as: The experiment consists of two types of trials: SAME trials and DIFFERENT trials. In SAME trials, two visualizations (one NLDR layout and the tour) are generated from the same underlying dataset, but with controlled variations in cluster separation. In DIFFERENT trials, the two visualizations are generated from different datasets.*
+*I have introduced the terminologies.*
 
 **p. 92** What qualifies data to be "attention check data"? Gaussian variance is specified
 as a single number, but in order to define the Gaussian’s properly you need to state
@@ -286,7 +286,7 @@ that there are only two response options. Comment!
 
 **B.8.1** "Subjects who exceeded the average time of 5-10 minutes were excluded, as determined from the pilot study." Why? I don’t see any reason for this.
 
-*I agree that excluding participants based solely on longer completion times requires justification. Our intention was to remove cases where unusually long durations likely reflected interruptions or disengagement rather than task-related effort. I have clarified this rationale in the thesis.*
+*This sentence was included in error and does not reflect the final study design. It has been removed from the thesis.*
 
 "Finally, the collected data set is further refined by filtering out all the responses
 which showed the same data structures in 2-D NLDR plot and tour." I suspect this
