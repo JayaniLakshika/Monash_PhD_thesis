@@ -618,14 +618,14 @@ Most subjects have completed an undergraduate degree ($44.9\%$) or a postgraduat
 ::: {.cell-output-display}
 
 
-|Education                            | Period II| Period I| Total|      %|
-|:------------------------------------|---------:|--------:|-----:|------:|
-|Did not complete high school         |         4|        0|     4|   3.15|
-|Completed some undergraduate courses |        23|        4|    27|  21.26|
-|Undergraduate degree (A bachelor)    |        49|        8|    57|  44.88|
-|Higher degree master or doctorate    |        31|        3|    34|  26.77|
-|Prefer not to answer                 |         2|        3|     5|   3.94|
-|Total                                |       109|       18|   127| 100.00|
+|Education                            | Period I| Period II| Total|      %|
+|:------------------------------------|--------:|---------:|-----:|------:|
+|Did not complete high school         |        0|         4|     4|   3.15|
+|Completed some undergraduate courses |        4|        23|    27|  21.26|
+|Undergraduate degree (A bachelor)    |        8|        49|    57|  44.88|
+|Higher degree master or doctorate    |        3|        31|    34|  26.77|
+|Prefer not to answer                 |        3|         2|     5|   3.94|
+|Total                                |       18|       109|   127| 100.00|
 
 
 :::

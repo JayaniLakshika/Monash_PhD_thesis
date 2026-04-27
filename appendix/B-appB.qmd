@@ -798,7 +798,8 @@ total_row <- tibble(
 )
 
 # Append the total row
-final_table <- bind_rows(summary_table, total_row) 
+final_table <- bind_rows(summary_table, total_row) |>
+  select(Education, `Period I`, `Period II`, Total, `%`)
 
 if (knitr::is_latex_output()) {
     final_table |> 
