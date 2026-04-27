@@ -282,7 +282,7 @@ that there are only two response options. Comment!
 
 **Fig. B.10b** How is what is shown here connected to normal distribution of the random effects? The assumption is not about the plain "correct proportion".
 
-*I agree that the normality assumption in the model applies to the random effects, not to the observed proportions of correct responses. The figure was intended as a descriptive summary of variability across subjects rather than a formal assessment of model assumptions. I have revised the text to remove the implication that this plot reflects the normality of the random effects and clarified its descriptive role.*
+*I have revised the text to remove the implication that this plot reflects the normality of the random effects and clarified its descriptive role.*
 
 **B.8.1** "Subjects who exceeded the average time of 5-10 minutes were excluded, as determined from the pilot study." Why? I don’t see any reason for this.
 
@@ -292,7 +292,7 @@ that there are only two response options. Comment!
 which showed the same data structures in 2-D NLDR plot and tour." I suspect this
 sentence doesn’t say what you want to say here. In any case it is very strange.
 
-*I agree the original sentence was unclear. Our intention was to refer to responses from trials where both visualisations showed the same underlying data, rather than filtering based on participants’ answers. I have revised the sentence to make this explicit.*
+*I have revised the sentence to make this explicit.*
 
 # Examiner B: Prof Anne M. Ruiz
 
