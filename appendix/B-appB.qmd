@@ -32,6 +32,7 @@ library(stringr)
 library(ggbeeswarm)
 library(forcats)
 library(DHARMa)
+library(lme4)
 ```
 
 ```{r}
@@ -662,76 +663,10 @@ subj_acc_plt <- ggplot(subj_ci,
 #| fig-height: 5
 #| fig-width: 10
 #| label: fig-var-sum
-#| fig-cap: "Examining the variability of proportion correct across data sets and subjects, Panel (a) shows the proportion of correct responses for each data set, ranging from 0.3 to 0.7. Given the randomized and balanced design, this variation is consistent with expected sampling variability and does not introduce substantial additional noise into the overall results. Panel (b) shows the proportion of correct responses for each subject. The distribution is approximately symmetric, consistent with differences in individual visual perception and participant responses. This variability supports the inclusion of subject-specific random effects in the model."
+#| fig-cap: "Examining the variability of proportion correct across data sets and subjects, Panel (a) shows the proportion of correct responses for each data set, ranging from 0.3 to 0.7. Given the randomized and balanced design, this variation is consistent with expected sampling variability and does not introduce substantial additional noise into the overall results. Panel (b) shows the proportion of correct responses for each subject."
 #| fig-alt: "The figure has two panels summarizing variability in proportion correct. Panel (a) shows a plot of proportion correct for each data set, with values ranging approximately from 0.3 to 0.7. The proportions vary across data sets but cluster within a moderate range. Panel (b) shows a histogram of subjects’ proportion of correct responses. The horizontal axis is the correct proportion, ranging from 0 to 1, and the vertical axis is the number of subjects. The distribution is roughly symmetric and unimodal, centered near 0.5. Most subjects cluster around the middle accuracy range, with fewer subjects at the lower and higher ends. A small number of subjects perform notably better or worse than average, and no subject has perfect or zero accuracy."
 
 dt_acc_plt + subj_acc_plt +
-  plot_layout(ncol = 2)
-```
-
-## Diagnostics for the GLMM
-
-```{r}
-# Model 1
-## Fit the model with bw_ratio_scaled
-glmm_model <- glmer(
-  result ~ method*bw_ratio_scaled + (1 | subject),
-  data = results_df_method_ds,
-  family = binomial(),
-  control = glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 1e5))
-)
-
-# Model 2
-
-## Fit the model with exp_min_dist_scaled
-glmm_model_min <- glmer(
-  result ~ method*exp_min_dist_scaled + (1 | subject),
-  data = results_df_method_ds,
-  family = binomial(),
-  control = glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 1e5))
-)
-
-res_bw  <- simulateResiduals(glmm_model)
-res_min <- simulateResiduals(glmm_model_min)
-
-df_bw <- tibble::tibble(
-  fitted = res_bw$fittedPredictedResponse,
-  resid  = res_bw$scaledResiduals
-)
-
-df_min <- tibble::tibble(
-  fitted = res_min$fittedPredictedResponse,
-  resid  = res_min$scaledResiduals
-)
-
-fitvsres_bw <- ggplot(df_bw, aes(x = fitted, y = resid)) +
-  geom_point(alpha = 0.4) +
-  geom_smooth(se = FALSE) +
-  labs(x = "Fitted values", y = "Scaled residuals") +
-  theme_minimal()
-
-resid_bw <- ggplot(df_bw, aes(x = resid)) +
-  geom_histogram(bins = 30) +
-  labs(x = "Scaled residuals", y = "Count") +
-  theme_minimal()
-
-resid_qq_bw <- ggplot(df_bw, aes(sample = resid)) +
-  stat_qq(distribution = qunif) +
-  stat_qq_line(distribution = qunif) +
-  theme_minimal()
-
-re_bw <- ranef(glmm_model)$subject[[1]]
-
-subj_bw <- ggplot(data.frame(re = re_bw), aes(sample = re)) +
-  stat_qq() +
-  stat_qq_line() +
-  labs(y = "Random effects (subject)") +
-  theme_minimal()
-```
-
-```{r}
-fitvsres_bw + resid_bw + 
-  resid_qq_bw + subj_bw +
   plot_layout(ncol = 2)
 ```
 
