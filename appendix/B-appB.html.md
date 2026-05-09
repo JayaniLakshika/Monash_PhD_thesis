@@ -522,7 +522,33 @@ Once the participant records their answers, a new row is added to the "result_df
 
 ## Preliminary Assessment of PCA Layouts
 
-PCA layouts were considered during the study design and tested in a preliminary phase with a small group of participants ($18$ subjects). The results showed a high rate of correct identification (about $91%$), indicating that PCA layouts of the simulated $4\text{-}D$ data were comparatively easy to identify when shown alongside the tour (Figure XX). This is likely because the simulated data consisted of only three well-separated clusters in $4\text{-}D$, and PCA projections preserved much of the relative positioning of the clusters. Since PCA is itself a linear projection of the data, the layouts also closely resembled views observed in the tour. In contrast, NLDR methods such as tSNE, UMAP, PHATE, TriMAP, and PaCMAP can substantially alter the geometry of the data, making identification more challenging. Therefore, the main experiment focused on NLDR methods, where perceptual differences are more informative.
+PCA layouts were considered during the study design and tested in a preliminary phase with a small group of participants ($18$ subjects). The results showed a high rate of correct identification (about $91%$), indicating that PCA layouts of the simulated $4\text{-}D$ data were comparatively easy to identify when shown alongside the tour (@fig-nldr-layouts). This is likely because the simulated data consisted of only three well-separated clusters in $4\text{-}D$, and PCA projections preserved much of the relative positioning of the clusters. Since PCA is itself a linear projection of the data, the layouts also closely resembled views observed in the tour. In contrast, NLDR methods such as tSNE, UMAP, PHATE, TriMAP, and PaCMAP can substantially alter the geometry of the data, making identification more challenging. Therefore, the main experiment focused on NLDR methods, where perceptual differences are more informative.
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![Comparison of PCA (a) and NLDR $2\text{-}D$ (b-f) layouts (right) for the same simulated $4\text{-}D$ dataset containing three well-separated clusters. The PCA layout preserves the relative positioning of the clusters and closely resembles views observed in the tour (left), making the structure easier to identify. In contrast, the NLDR methods (tSNE (b), UMAP (c), PHATE (d), TriMAP (e), and PaCMAP (f)) apply nonlinear transformations that alter cluster geometry and relative spacing to varying degrees, leading to greater perceptual differences across layouts.](B-appB_files/figure-html/fig-nldr-layouts-1.png){#fig-nldr-layouts fig-align='center' fig-pos='!ht' fig-alt='A multi-panel figure showing two-dimensional embeddings of the same simulated 4-D dataset using PCA, tSNE, UMAP, PHATE, TriMAP, and PaCMAP. The dataset contains three well-separated clusters. The PCA layout shows clusters with clear separation and relative positioning similar to views seen in the tour. The NLDR layouts vary in cluster shape, spacing, and continuity. Some methods preserve smooth cluster structure, while others distort shapes or alter distances between clusters. The figure illustrates how PCA remains visually similar to linear projection views, whereas nonlinear methods produce more varied representations of the same high-dimensional data.' width=100%}
+:::
+:::
+
 
 ## Variability across data sets and subjects
 

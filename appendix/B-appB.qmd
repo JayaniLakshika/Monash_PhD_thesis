@@ -478,7 +478,167 @@ Once the participant records their answers, a new row is added to the "result_df
 
 ## Preliminary Assessment of PCA Layouts
 
-PCA layouts were considered during the study design and tested in a preliminary phase with a small group of participants ($18$ subjects). The results showed a high rate of correct identification (about $91%$), indicating that PCA layouts of the simulated $4\text{-}D$ data were comparatively easy to identify when shown alongside the tour (Figure XX). This is likely because the simulated data consisted of only three well-separated clusters in $4\text{-}D$, and PCA projections preserved much of the relative positioning of the clusters. Since PCA is itself a linear projection of the data, the layouts also closely resembled views observed in the tour. In contrast, NLDR methods such as tSNE, UMAP, PHATE, TriMAP, and PaCMAP can substantially alter the geometry of the data, making identification more challenging. Therefore, the main experiment focused on NLDR methods, where perceptual differences are more informative.
+PCA layouts were considered during the study design and tested in a preliminary phase with a small group of participants ($18$ subjects). The results showed a high rate of correct identification (about $91%$), indicating that PCA layouts of the simulated $4\text{-}D$ data were comparatively easy to identify when shown alongside the tour (@fig-nldr-layouts). This is likely because the simulated data consisted of only three well-separated clusters in $4\text{-}D$, and PCA projections preserved much of the relative positioning of the clusters. Since PCA is itself a linear projection of the data, the layouts also closely resembled views observed in the tour. In contrast, NLDR methods such as tSNE, UMAP, PHATE, TriMAP, and PaCMAP can substantially alter the geometry of the data, making identification more challenging. Therefore, the main experiment focused on NLDR methods, where perceptual differences are more informative.
+
+```{r}
+#| label: nldr-layouts
+
+clr_choice <- "#000000"
+
+nldr1 <- get_embeddings(dt_structutre = "three_clust_08") |>
+    filter(scale_factor == 1) |>
+    filter(method == "pca")
+
+nld_plt1 <- ggplot(
+  data = nldr1,
+  aes(
+    x = emb1,
+    y = emb2
+  )
+) +
+  geom_point(alpha=0.2, size=1, colour = clr_choice) +
+  interior_annotation("a", position = c(0.08, 0.9), cex = 2) +
+  theme(aspect.ratio = 1) 
+
+nldr2 <- get_embeddings(dt_structutre = "three_clust_08") |>
+    filter(scale_factor == 1) |>
+    filter(method == "tsne")
+
+nld_plt2 <- ggplot(
+  data = nldr2,
+  aes(
+    x = emb1,
+    y = emb2
+  )
+) +
+  geom_point(alpha=0.2, size=1, colour = clr_choice) +
+  interior_annotation("b", position = c(0.08, 0.9), cex = 2) +
+  theme(aspect.ratio = 1) 
+
+
+nldr3 <- get_embeddings(dt_structutre = "three_clust_08") |>
+    filter(scale_factor == 1) |>
+    filter(method == "umap")
+
+nld_plt3 <- ggplot(
+  data = nldr3,
+  aes(
+    x = emb1,
+    y = emb2
+  )
+) +
+  geom_point(alpha=0.2, size=1, colour = clr_choice) +
+  interior_annotation("c", position = c(0.08, 0.9), cex = 2) +
+  theme(aspect.ratio = 1) 
+
+
+nldr4 <- get_embeddings(dt_structutre = "three_clust_08") |>
+    filter(scale_factor == 1) |>
+    filter(method == "phate")
+
+nld_plt4 <- ggplot(
+  data = nldr4,
+  aes(
+    x = emb1,
+    y = emb2
+  )
+) +
+  geom_point(alpha=0.2, size=1, colour = clr_choice) +
+  interior_annotation("d", position = c(0.08, 0.9), cex = 2) +
+  theme(aspect.ratio = 1) 
+
+
+nldr5 <- get_embeddings(dt_structutre = "three_clust_08") |>
+    filter(scale_factor == 1) |>
+    filter(method == "trimap")
+
+nld_plt5 <- ggplot(
+  data = nldr5,
+  aes(
+    x = emb1,
+    y = emb2
+  )
+) +
+  geom_point(alpha=0.2, size=1, colour = clr_choice) +
+  interior_annotation("e", position = c(0.08, 0.9), cex = 2) +
+  theme(aspect.ratio = 1) 
+
+
+nldr6 <- get_embeddings(dt_structutre = "three_clust_08") |>
+    filter(scale_factor == 1) |>
+    filter(method == "pacmap")
+
+nld_plt6 <- ggplot(
+  data = nldr6,
+  aes(
+    x = emb1,
+    y = emb2
+  )
+) +
+  geom_point(alpha=0.2, size=1, colour = clr_choice) +
+  interior_annotation("f", position = c(0.08, 0.9), cex = 2) +
+  theme(aspect.ratio = 1) 
+```
+
+```{r}
+#| label: high-d-data
+
+high_d_data <- read_rds(here::here("data/vis-exp/high_d_data_three_close_clust_all.rds"))
+
+three_clust_08_data <- high_d_data |> 
+    filter(dataset == "three_clust_08") |> 
+    filter(scale_factor == 1) |> 
+    filter(sample_size == 7500) |>
+    pull(high_d_data)
+
+three_clust_08_data <- three_clust_08_data[[1]] |> 
+  select(-cluster)
+
+# Apply the scaling
+
+centered_three_clust_08_data <- center_data(three_clust_08_data) |>
+  as_tibble()
+```
+
+```{r}
+#| label: high-d-proj1
+
+## First projection
+prj1 <- cbind(
+  c(0.13547,-0.08077,-0.14494,-0.06269),
+  c(-0.02681,-0.20528,0.06918,0.04658))
+
+
+projected_df <- get_projection(projection = prj1, 
+                               centered_data = centered_three_clust_08_data, 
+                               axis_param = list(limits = 0.5,
+                                                 axis_scaled = 3, 
+                                                 axis_pos_x = -0.4, 
+                                                 axis_pos_y = -0.4, 
+                                                 threshold = 0.03))
+
+three_clust08_proj1 <- plot_proj(
+  proj_obj = projected_df, 
+  point_param = c(1, 0.05, "#000000"), # size, alpha, color
+  plot_limits = c(-0.5, 0.5), 
+  title = "", 
+  cex = 2, 
+  axis_text_size = 4,
+  is_color = FALSE)
+```
+
+```{r}
+#| label: fig-nldr-layouts
+#| fig-pos: "!ht"
+#| fig-width: 18
+#| fig-height: 7
+#| fig-cap: "Comparison of PCA (a) and NLDR $2\\text{-}D$ (b-f) layouts (right) for the same simulated $4\\text{-}D$ dataset containing three well-separated clusters. The PCA layout preserves the relative positioning of the clusters and closely resembles views observed in the tour (left), making the structure easier to identify. In contrast, the NLDR methods (tSNE (b), UMAP (c), PHATE (d), TriMAP (e), and PaCMAP (f)) apply nonlinear transformations that alter cluster geometry and relative spacing to varying degrees, leading to greater perceptual differences across layouts."
+#| fig-alt: "A multi-panel figure showing two-dimensional embeddings of the same simulated 4-D dataset using PCA, tSNE, UMAP, PHATE, TriMAP, and PaCMAP. The dataset contains three well-separated clusters. The PCA layout shows clusters with clear separation and relative positioning similar to views seen in the tour. The NLDR layouts vary in cluster shape, spacing, and continuity. Some methods preserve smooth cluster structure, while others distort shapes or alter distances between clusters. The figure illustrates how PCA remains visually similar to linear projection views, whereas nonlinear methods produce more varied representations of the same high-dimensional data."
+
+three_clust08_proj1 + (nld_plt1 | nld_plt2 | nld_plt3) / 
+  (nld_plt4 | nld_plt5 | nld_plt6) + 
+  plot_layout(widths = c(1.3, 2))
+```
 
 ## Variability across data sets and subjects
 
