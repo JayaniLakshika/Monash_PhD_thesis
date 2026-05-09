@@ -551,10 +551,6 @@ The [supplementary materials](#sec-appendix-a) provide additional details on the
 
 The R package `quollr`, available on CRAN and at [https://jayanilakshika.github.io/quollr/](https://jayanilakshika.github.io/quollr/), provides software accompanying this chapter to fit the wireframe model representation, compute diagnostics, visualize the model in the data with `langevitour`, and link multiple plots interactively. 
 
-
 ## Acknowledgments
 
 These `R` packages were used for the work: `tidyverse` [@hadley2019], `Rtsne` [@jesse2015], `umap` [@tomasz2023], `patchwork` [@thomas2024], `colorspace` [@achim2020], `langevitour` [@harisson2024], `conflicted` [@hadley2023], `reticulate` [@kevin2024], `kableExtra` [@hao2024]. These Python packages were used for the work: `trimap` [@amid2022] and `pacmap` [@yingfan2021]. The article was created with `R` packages `quarto` [@jjallaire2024]. 
-
-
-

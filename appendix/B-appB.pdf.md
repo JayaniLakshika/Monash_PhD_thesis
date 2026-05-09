@@ -392,6 +392,36 @@ Once a subject ID is allocated to a participant, the experiment design data are 
 
 Once the participant records their answers, a new row is added to the "result_df" Google Sheet with their responses. This continues until the participant finishes the study. Finally, after completing the evaluations, subjects are asked to fill out a demographics questionnaire. Their responses are then recorded in a new row of the "demographic_details" Google Sheet.
 
+## Preliminary Assessment of PCA Layouts
+
+PCA layouts were considered during the study design and tested in a preliminary phase with a small group of participants ($18$ subjects). The results showed a high rate of correct identification (about $91%$), indicating that PCA layouts of the simulated $4\text{-}D$ data were comparatively easy to identify when shown alongside the tour (@fig-nldr-layouts). This is likely because the simulated data consisted of only three well-separated clusters in $4\text{-}D$, and PCA projections preserved much of the relative positioning of the clusters. Since PCA is itself a linear projection of the data, the layouts also closely resembled views observed in the tour. In contrast, NLDR methods such as tSNE, UMAP, PHATE, TriMAP, and PaCMAP can substantially alter the geometry of the data, making identification more challenging. Therefore, the main experiment focused on NLDR methods, where perceptual differences are more informative.
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+
+:::
+
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![Comparison of PCA (a) and NLDR $2\text{-}D$ (b-f) layouts (right) for the same simulated $4\text{-}D$ dataset containing three well-separated clusters. The PCA layout preserves the relative positioning of the clusters and closely resembles views observed in the tour (left), making the structure easier to identify. In contrast, the NLDR methods (tSNE (b), UMAP (c), PHATE (d), TriMAP (e), and PaCMAP (f)) apply nonlinear transformations that alter cluster geometry and relative spacing to varying degrees, leading to greater perceptual differences across layouts.](B-appB_files/figure-pdf/fig-nldr-layouts-1.pdf){#fig-nldr-layouts fig-align='center' fig-pos='!ht' fig-alt='A multi-panel figure showing two-dimensional embeddings of the same simulated 4-D dataset using PCA, tSNE, UMAP, PHATE, TriMAP, and PaCMAP. The dataset contains three well-separated clusters. The PCA layout shows clusters with clear separation and relative positioning similar to views seen in the tour. The NLDR layouts vary in cluster shape, spacing, and continuity. Some methods preserve smooth cluster structure, while others distort shapes or alter distances between clusters. The figure illustrates how PCA remains visually similar to linear projection views, whereas nonlinear methods produce more varied representations of the same high-dimensional data.' width=100%}
+:::
+:::
+
+
 ## Variability across data sets and subjects
 
 Two sources of variability in the experimental design that are important to assess relative to the fitted model: data sets and subjects. Data sets are effectively treated as replicates in the experiment, providing random samples of a range of types of clusters. Humans have different perceptual skills, which is why it is important to include a subject random effect in the model. 
@@ -419,10 +449,12 @@ The proportion correct across subjects is symmetric and unimodal, reasonably con
 :::
 
 
+<!-- Examining the variability of proportion correct across data sets and subjects. Panel (a) shows the proportion of correct responses for each data set. The variation in correct response rates ranges from $0.3$ to $0.7$. Given the randomized and balanced design, this variation is largely consistent with expected replication variability and does not add a substantial amount of random noise to the overall results. Panel (b) shows the distribution of proportion correct across subjects. It is relatively Gaussian, with a few subjects performing exceptionally well and some poorly. This is consistent with other human subject experiments and reflects individual visual skills, illustrating the need to include subject-specific random effects in the model. -->
+
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Examining the variability of proportion correct across data sets and subjects. Panel (a) shows the proportion of correct responses for each data set. The variation in correct response rates ranges from $0.3$ to $0.7$. Given the randomized and balanced design, this variation is largely consistent with expected replication variability and does not add a substantial amount of random noise to the overall results. Panel (b) shows the distribution of proportion correct across subjects. It is relatively Gaussian, with a few subjects performing exceptionally well and some poorly. This is consistent with other human subject experiments and reflects individual visual skills, illustrating the need to include subject-specific random effects in the model.](B-appB_files/figure-pdf/fig-var-sum-1.pdf){#fig-var-sum fig-align='center' fig-alt='The figure has two panels summarizing variability in proportion correct. Panel (a) shows a plot of proportion correct for each data set, with values ranging approximately from 0.3 to 0.7. The proportions vary across data sets but cluster within a moderate range. Panel (b) shows a histogram of subjects’ proportion of correct responses. The horizontal axis is the correct proportion, ranging from 0 to 1, and the vertical axis is the number of subjects. The distribution is roughly symmetric and unimodal, centered near 0.5. Most subjects cluster around the middle accuracy range, with fewer subjects at the lower and higher ends. A small number of subjects perform notably better or worse than average, and no subject has perfect or zero accuracy.' width=100%}
+![Examining the variability of proportion correct across data sets and subjects, Panel (a) shows the proportion of correct responses for each data set, ranging from 0.3 to 0.7. Given the randomized and balanced design, this variation is consistent with expected sampling variability and does not introduce substantial additional noise into the overall results. Panel (b) shows the proportion of correct responses for each subject.](B-appB_files/figure-pdf/fig-var-sum-1.pdf){#fig-var-sum fig-align='center' fig-alt='The figure has two panels summarizing variability in proportion correct. Panel (a) shows a plot of proportion correct for each data set, with values ranging approximately from 0.3 to 0.7. The proportions vary across data sets but cluster within a moderate range. Panel (b) shows a histogram of subjects’ proportion of correct responses. The horizontal axis is the correct proportion, ranging from 0 to 1, and the vertical axis is the number of subjects. The distribution is roughly symmetric and unimodal, centered near 0.5. Most subjects cluster around the middle accuracy range, with fewer subjects at the lower and higher ends. A small number of subjects perform notably better or worse than average, and no subject has perfect or zero accuracy.' width=100%}
 :::
 :::
 
@@ -431,7 +463,7 @@ The proportion correct across subjects is symmetric and unimodal, reasonably con
 
 ### Data cleaning
 
-The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty trials, including the demographics and the attention check trial. Subjects who exceeded the average time of $5-10$ minutes were excluded, as determined from the pilot study. Following this, individuals who didn't accurately detect the attention check trial were also removed. Furthermore, the attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set is further refined by filtering out all the responses which showed the same data structures in $2\text{-}D$ NLDR plot and tour.
+The initial step in the data cleaning process involves the selection of subjects who have completed the requisite twenty trials, including the demographics and the attention check trial. The attention check trials were removed, as they did not contribute to the further analyses. Finally, the collected data set was refined by selecting responses from trials in which the $2\text{-}D$ NLDR layout and the tour represented the same underlying data, allowing us to assess participants’ ability to correctly identify the same data structures across the displays.
 
 ### Demographics
 
@@ -497,11 +529,11 @@ Total & 18 & 109 & 127 & 100.00\\
 \toprule
 Education & Period I & Period II & Total & \%\\
 \midrule
-Completed some undergraduate courses & 4 & 23 & 27 & 21.26\\
 Did not complete high school & 0 & 4 & 4 & 3.15\\
+Completed some undergraduate courses & 4 & 23 & 27 & 21.26\\
+Undergraduate degree (A bachelor) & 8 & 49 & 57 & 44.88\\
 Higher degree master or doctorate & 3 & 31 & 34 & 26.77\\
 Prefer not to answer & 3 & 2 & 5 & 3.94\\
-Undergraduate degree (A bachelor) & 8 & 49 & 57 & 44.88\\
 Total & 18 & 109 & 127 & 100.00\\
 \bottomrule
 \end{tabular}

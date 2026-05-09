@@ -1,6 +1,6 @@
 # cardinalR: Generating Interesting High-Dimensional Data Structures {#sec-fourth-paper}
 
-Simulated high dimensional data is useful for testing, validating, and improving algorithms used in dimension reduction, supervised, and unsupervised learning. High-dimensional data is characterized by multiple variables that are dependent or associated in some way, such as linear, nonlinear, clustering, or anomalies. Here, we provide new methods for generating a variety of high-dimensional structures using mathematical functions and statistical distributions organized into the R package `cardinalR`. Several example data sets are also provided. These will be useful for researchers to better understand how different analytical methods work and can be improved, with a special focus on nonlinear dimension reduction methods. This package enriches the existing toolset of benchmark datasets for evaluating algorithms.
+Simulated high dimensional data is useful for testing, validating, and improving algorithms used in dimension reduction, supervised, and unsupervised learning. High-dimensional data are characterized by multiple variables that are dependent or associated in some way, such as linear, nonlinear, clustering, or anomalies. Here, we provide new methods for generating a variety of high-dimensional structures using mathematical functions and statistical distributions organized into the R package `cardinalR`. Several example data sets are also provided. These will be useful for researchers to better understand how different analytical methods work and can be improved, with a special focus on nonlinear dimension reduction methods. This package enriches the existing toolset of benchmark datasets for evaluating algorithms.
 
 ```{r setup, include=FALSE}
 options(repos = "https://cloud.r-project.org") ## set up CRAN mirror
@@ -68,7 +68,7 @@ source(here::here("scripts/cardinalR/additional_functions.R"))
 
 Generating synthetic datasets with clearly defined geometric properties is useful for evaluating and benchmarking algorithms in various fields, such as machine learning, data mining, and computational biology. Researchers often need to generate data with specific dimensions, noise characteristics, and complex underlying structures to test the performance and robustness of their methods. There are numerous packages available in R for generating synthetic data, each designed with unique characteristics and focus areas. The `geozoo` package [@barret2016] provides functions to generate standard high-dimensional data like cubes, spheres, and simplexes, along with some prepared datasets. The `snedata` package  [@james2025] provides functions for generating common examples used in dimension reduction publications and to download benchmark data sets. The `splatter` package [@luke2017] is designed to simulate complex biological data, capturing field-specific nuances such as batch effects and differential expression. The `mlbench` package [@friedrich2024] provides access to benchmark datasets commonly associated with established classification or regression challenges. The `surreal` package [@james2024] implements the "Residual (Sur)Realism" algorithm [@leonard2007] to generate datasets that embed hidden images or text into residual plots, providing engaging visual demonstrations for teaching model diagnostics. Beyond R packages, other approaches include simulation frameworks based on finite mixture models [@maitra2010] and evolutionary methods such as HAWKS [@shand2022], which generate challenging clustering benchmarks by optimizing dataset difficulty. <!--Meanwhile, the `DHARMa` package (@florian2024) adopts a simulation-based approach to create scaled quantile residuals for generalized linear (mixed) models and related frameworks, supporting model diagnostics through intuitive residuals, plots, and tests for common misspecification issues.-->
 
-The current work implemented in the `cardinalR` R package builds on these approaches. It provides functions to generate a more extensive set of high-dimensional data structures, allowing users to: (i) construct high-dimensional datasets based on geometric shapes, including the option to enhance dimensionality by adding controlled noise dimensions; (ii) introduce adjustable levels of background noise to these structures; and (iii) combine the shapes to produce multiple clusters. The user can control characteristics such as the number of dimensions, shape, and sample size. It is designed to resource researchers with synthetic datasets to evaluate the performance and interpret the fit of NLDR methods, clustering algorithms, and visualization techniques. These datasets can also serve as benchmark examples for exploring how different choices of algorithm parameters affect the identification or representation of cluster and manifold structures in high-dimensional spaces.
+The current work implemented in the `cardinalR` R package builds on these approaches. It provides functions to generate a more extensive set of high-dimensional data structures, allowing users to: (i) construct high-dimensional datasets based on geometric shapes, including the option to enhance dimensionality by adding controlled noise dimensions; (ii) introduce adjustable levels of background noise to these structures; and (iii) combine the shapes to produce multiple clusters. The user can control characteristics such as the number of dimensions, shape, and sample size. It is designed to provide researchers with synthetic datasets to evaluate the performance and interpret the fit of NLDR methods, clustering algorithms, and visualization techniques. These datasets can also serve as benchmark examples for exploring how different choices of algorithm parameters affect the identification or representation of cluster and manifold structures in high-dimensional spaces.
 
 The motivation for developing this package originated from our own work in studying nonlinear dimension reduction (NLDR) algorithms. We wanted to conduct a visualization experiment to understand the perception and misperception of a variety of NLDR methods. This required simulated datasets with carefully controlled geometric and clustering properties. While some existing packages provided useful starting points, none fully supported the creation of flexible, high-dimensional data with the specific structural variations needed for our experiment. Developing these generators for research purposes underlies `cardinalR`, which is now a general-purpose package that should be useful for research and teaching.
 
@@ -78,7 +78,7 @@ The next section provides an overview of the usage of the `cardinalR` package, i
 
 ## Usage
 
-The `cardinalR` package is built on a modular framework where individual geometric generators (e.g., Gaussian, cone, sphere) create well-defined shapes (A full list of available shape generators are available at <https://jayanilakshika.github.io/cardinalR/reference/index.html>.), which can then be combined into a single dataset including scaling, rotation, and translation. The package is available on CRAN, and the source is available on GitHub at [https://github.com/JayaniLakshika/cardinalR](https://github.com/JayaniLakshika/cardinalR). 
+The `cardinalR` package is built on a modular framework where individual geometric generators (e.g., Gaussian, cone, sphere) create well-defined shapes (A full list of shape generators is available at <https://jayanilakshika.github.io/cardinalR/reference/index.html>.), which can then be combined into a single dataset including scaling, rotation, and translation. The package is available on CRAN, and the source is available on GitHub at [https://github.com/JayaniLakshika/cardinalR](https://github.com/JayaniLakshika/cardinalR). 
 
 The main function, `gen_multicluster()`, is an all-in-one function that includes generating individual shapes, handling scaling and rotating of these shapes, and combining the result into a single unified dataset. This function and associated workflow allow flexible construction of complex, high-dimensional structures for evaluating clustering and dimension reduction methods. @fig-workflow illustrates the workflow of `gen_multicluster()`.
 
@@ -95,11 +95,15 @@ The following is an example of a three-shape multiclustered dataset. The first s
 clust_data <- gen_multicluster(
   n = c(200, 300, 500),
   k = 3,
-  loc = matrix(c(
-    0, 0, 0, 0,
-    5, 9, 0, 0,
-    3, 4, 10, 7
-  ), nrow = 3, byrow = TRUE),
+  loc = matrix(
+    c(
+      0, 0, 0, 0,
+      5, 9, 0, 0,
+      3, 4, 10, 7
+    ),
+    nrow = 3,
+    byrow = TRUE
+  ),
   scale = c(3, 1, 2),
   shape = c("gaussian", "cone", "unifcube"),
   is_bkg = FALSE
@@ -132,8 +136,8 @@ main_tb <- tibble(arg = c("n",
                            "numeric (matrix)",
                            "numeric (vector)",
                            "character (vector)",
-                           "numeric (list)",
-                           "boolean"),
+                           "list of numeric matrices",
+                           "logical"),
                         exp = c("Number of points in each cluster.",
                                 "Number of clusters.",
                                 "Locations/centroids of clusters.",
@@ -999,16 +1003,16 @@ For rectangular and triangular pyramids, the remaining dimensions $X_4$ to $X_{p
 
 Finally, for the Sierpinski-like pyramid, `gen_pyrfrac(n, p)` (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-pyr d"} else { "@fig-pyr-proj d"})`), let $X_1, X_2, \dots, X_p$ denote the coordinates of the generated points. The generation process begins with an initial point $T_0 \in [0, 1]^p$ drawn from a uniform distribution: $T_0 \sim U(0, 1)^p$. Let $C_1, C_2, \dots, C_{p+1}$ denote the corner vertices of a $p\text{-}D$ simplex. At each iteration $i = 1, \dots, n$, a new point is computed by taking the midpoint between the previous point $T_{i-1}$ and a randomly selected vertex $C_k$: $T_i = 1/2(T_{i-1} + C_k), \quad C_k \in \{C_1, \dots, C_{p+1}\}$. This recursive midpoint rule generates self-similar patterns with systematic voids (holes) between clusters of points. The points remain bounded inside the convex hull of the simplex. The final output is a $n \times p$ matrix where each row represents a point: $X = \{T_1, T_2, \dots, T_n\}, \quad X \in \mathbb{R}^{n \times p}$.
 
-```{r data-pyrholes}
-pyrholes <- gen_pyrfrac(n = 1000, p = 4)
+```{r data-pyrfrac}
+pyrfrac <- gen_pyrfrac(n = 1000, p = 4)
 ```
 
 ```{r}
-pyrholes_lang <- langevitour::langevitour(pyrholes, levelColors = "black", enableControls = FALSE, width = "500px", height = "300px")
+pyrfrac_lang <- langevitour::langevitour(pyrfrac, levelColors = "black", enableControls = FALSE, width = "500px", height = "300px")
 ```
 
-```{r pyrholes-proj1}
-centered_data <- center_data(pyrholes)
+```{r pyrfrac-proj1}
+centered_data <- center_data(pyrfrac)
 
 ## First projection
 projection <- cbind(
@@ -1023,7 +1027,7 @@ proj_obj1 <- get_projection(projection = projection,
                                               axis_pos_y = -0.3, 
                                               threshold = 0.022))
 
-pyrholes_proj1 <- plot_proj(
+pyrfrac_proj1 <- plot_proj(
   proj_obj = proj_obj1, 
   point_param = c(1.5, 0.2, "#000000"), # size, alpha, color
   plot_limits = c(-0.4, 0.5), 
@@ -1034,7 +1038,7 @@ pyrholes_proj1 <- plot_proj(
 
 ```
 
-```{r pyrholes-proj2}
+```{r pyrfrac-proj2}
 
 ## Second projection
 projection <- cbind(
@@ -1049,7 +1053,7 @@ proj_obj2 <- get_projection(projection = projection,
                                               axis_pos_y = -0.23, 
                                               threshold = 0.03))
 
-pyrholes_proj2 <- plot_proj(
+pyrfrac_proj2 <- plot_proj(
   proj_obj = proj_obj2, 
   point_param = c(1.5, 0.2, "#000000"), # size, alpha, color
   plot_limits = c(-0.3, 0.5), 
@@ -1060,7 +1064,7 @@ pyrholes_proj2 <- plot_proj(
 
 ```
 
-```{r pyrholes-proj3}
+```{r pyrfrac-proj3}
 
 ## Third projection
 projection <- cbind(
@@ -1075,7 +1079,7 @@ proj_obj3 <- get_projection(projection = projection,
                                               axis_pos_y = -0.43, 
                                               threshold = 0.05))
 
-pyrholes_proj3 <- plot_proj(
+pyrfrac_proj3 <- plot_proj(
   proj_obj = proj_obj3, 
   point_param = c(1.5, 0.2, "#000000"), # size, alpha, color
   plot_limits = c(-0.5, 0.4), 
@@ -1088,11 +1092,11 @@ pyrholes_proj3 <- plot_proj(
 
 Pyramid structures mimic tapering or layered geometries seen in architecture, crystals, and fractal-like natural patterns [@kirkby1983].
 
-```{r fig-pyr, eval=knitr::is_html_output(), fig.cap="Viewing the $4\\text{-}D$  `pyrrect`, `pyrtri`, `pyrstar`, and `pyrholes` data. The `pyrrrect` structure forms a dense rectangular base tapering to a narrow tip, while `pytri` shows a more triangular spread with sharper edges. `Pyrstar` extends into multiple pointed branches radiating from a common core, and `pyrholes` reveals hollow or open regions within an otherwise compact shape.", fig.alt="The figure shows an interactive tour of the 4‑D pyrrrect, pyrtri, pyrstar, and pyrholes datasets. Points are displayed in continuously changing 2‑D projections, with each axis representing a linear combination of the four original dimensions. Points are plotted individually as small, uniformly colored markers with no additional visual encodings. In pyrrrect, points form a dense rectangular base tapering to a narrow tip; in pyrtri, points form a triangular distribution with sharper edges; in pyrstar, points extend into multiple pointed branches radiating from a central region; and in pyrholes, points cluster in a compact shape but leave hollow or open regions within it. The projections rotate smoothly, showing the 4‑D structures from multiple viewing angles and maintaining roughly square aspect ratios throughout.", fig.pos="!ht"}
+```{r fig-pyr, eval=knitr::is_html_output(), fig.cap="Viewing the $4\\text{-}D$  `pyrrect`, `pyrtri`, `pyrstar`, and `pyrfrac` data. The `pyrrrect` structure forms a dense rectangular base tapering to a narrow tip, while `pytri` shows a more triangular spread with sharper edges. `Pyrstar` extends into multiple pointed branches radiating from a common core, and `pyrfrac` reveals hollow or open regions within an otherwise compact shape.", fig.alt="The figure shows an interactive tour of the 4‑D pyrrrect, pyrtri, pyrstar, and pyrfrac datasets. Points are displayed in continuously changing 2‑D projections, with each axis representing a linear combination of the four original dimensions. Points are plotted individually as small, uniformly colored markers with no additional visual encodings. In pyrrrect, points form a dense rectangular base tapering to a narrow tip; in pyrtri, points form a triangular distribution with sharper edges; in pyrstar, points extend into multiple pointed branches radiating from a central region; and in pyrfrac, points cluster in a compact shape but leave hollow or open regions within it. The projections rotate smoothly, showing the 4‑D structures from multiple viewing angles and maintaining roughly square aspect ratios throughout.", fig.pos="!ht"}
 
 pyrfig <- bscols( 
   htmltools::div(
-  style = "display: grid; grid-template-columns: 1fr 1fr; gap: 0px; align-items: start; justify-items: center; margin: 0; padding: 0;", pyrrect_lang, pyrtri_lang, pyrstar_lang, pyrholes_lang
+  style = "display: grid; grid-template-columns: 1fr 1fr; gap: 0px; align-items: start; justify-items: center; margin: 0; padding: 0;", pyrrect_lang, pyrtri_lang, pyrstar_lang, pyrfrac_lang
   ), 
   device = "xs" )
 
@@ -1101,12 +1105,12 @@ class(pyrfig) <- c(class(pyrfig), "htmlwidget")
 pyrfig
 ```
 
-```{r fig-pyr-proj, eval=knitr::is_latex_output(), fig.cap="Three $2\\text{-}D$ projections from $4\\text{-}D$, for the \\texttt{pyrrect} (a1-a3), \\texttt{pyrtri} (b1-b3), \\texttt{pyrstar} (c1-c3), and \\texttt{pyrholes} (d1-d3) data. The \\texttt{pyrrrect} structure forms a dense rectangular base tapering to a narrow tip, while \\texttt{pytri} shows a more triangular spread with sharper edges. \\texttt{pyrstar} extends into multiple pointed branches radiating from a common core, and \\texttt{pyrholes} reveals hollow or open regions within an otherwise compact shape. These projections illustrate a range of pyramid-like geometries that vary in density and structure.", fig.width=12, fig.height=16, out.width="80%", fig.align='center', fig.alt="The figure shows three 2‑D scatter plots for each of four 4‑D datasets: pyrrrect, pyrtri, pyrstar, and pyrholes. In each plot, the horizontal and vertical axes represent continuous numeric coordinates of the selected 2‑D projection, and points are plotted individually as small, uniformly colored markers with no additional visual encodings. In pyrrrect, points form a dense rectangular base tapering to a narrow tip; in pyrtri, points form a triangular distribution with sharper edges; in pyrstar, points extend into multiple pointed branches radiating from a central region; and in pyrholes, points cluster in a compact shape but leave hollow or open regions within it. The plots maintain roughly square aspect ratios and illustrate how these different pyramid-like structures appear when projected from four to two dimensions.", fig.pos="!ht"}
+```{r fig-pyr-proj, eval=knitr::is_latex_output(), fig.cap="Three $2\\text{-}D$ projections from $4\\text{-}D$, for the \\texttt{pyrrect} (a1-a3), \\texttt{pyrtri} (b1-b3), \\texttt{pyrstar} (c1-c3), and \\texttt{pyrfrac} (d1-d3) data. The \\texttt{pyrrrect} structure forms a dense rectangular base tapering to a narrow tip, while \\texttt{pytri} shows a more triangular spread with sharper edges. \\texttt{pyrstar} extends into multiple pointed branches radiating from a common core, and \\texttt{pyrfrac} reveals hollow or open regions within an otherwise compact shape. These projections illustrate a range of pyramid-like geometries that vary in density and structure.", fig.width=12, fig.height=16, out.width="80%", fig.align='center', fig.alt="The figure shows three 2‑D scatter plots for each of four 4‑D datasets: pyrrrect, pyrtri, pyrstar, and pyrfrac. In each plot, the horizontal and vertical axes represent continuous numeric coordinates of the selected 2‑D projection, and points are plotted individually as small, uniformly colored markers with no additional visual encodings. In pyrrrect, points form a dense rectangular base tapering to a narrow tip; in pyrtri, points form a triangular distribution with sharper edges; in pyrstar, points extend into multiple pointed branches radiating from a central region; and in pyrfrac, points cluster in a compact shape but leave hollow or open regions within it. The plots maintain roughly square aspect ratios and illustrate how these different pyramid-like structures appear when projected from four to two dimensions.", fig.pos="!ht"}
 
 pyrrect_proj1 + pyrrect_proj2 + pyrrect_proj3 +
 pyrtri_proj1 + pyrtri_proj2 + pyrtri_proj3 +
 pyrstar_proj1 + pyrstar_proj2 + pyrstar_proj3 +
-pyrholes_proj1 + pyrholes_proj2 + pyrholes_proj3 +
+pyrfrac_proj1 + pyrfrac_proj2 + pyrfrac_proj3 +
   plot_layout(ncol = 3, guides = "collect") 
 ```
 
@@ -1472,7 +1476,7 @@ The Swiss roll is a classic benchmark for manifold learning, illustrating how a 
 
 The Trefoil is a closed, nontrivial one-dimensional manifold embedded in $3\text{-}D$ or $4\text{-}D$ space (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-trefoil"} else { "@fig-trefoil-proj"})`). The trefoil features topological complexity in the form of self-overlaps, making it a valuable test case for evaluating the ability of nonlinear dimension reduction methods to preserve global structure, loops, and embeddings in high-dimensional data. 
 
-For the $4\text{-}D$ trefoil knot [@laurent2024], the function `gen_trefoil4d(n, steps)` generates the structure on the $3$-sphere ($S^3 \subset \mathbb{R}^4$) using two angular parameters, $\theta$ and $\phi$. A band of thickness around the knot path is controlled by the `steps` argument, while the number of $\theta$ and $\phi$ values is determined by the `steps` and `n` arguments, respectively (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-trefoil a"} else { "@fig-trefoil-proj a"})`). The coordinates are defined as $$X_1 = \cos(\theta) \cos(\phi), \quad X_2 = \cos(\theta) \sin(\phi), \\\quad X_3 = \sin(\theta) \cos(1.5 \phi),\text{ and }X_4 = \sin(\theta) \sin(1.5 \phi),$$ where $\theta$ parameterizes the band thickness and $\phi$ parameterizes the knot trajectory. 
+For the $4\text{-}D$ trefoil knot [@lickorish1997; @rolfsen2003], the function `gen_trefoil4d(n, steps)` generates the structure on the $3$-sphere ($S^3 \subset \mathbb{R}^4$) using two angular parameters, $\theta$ and $\phi$. A band of thickness around the knot path is controlled by the `steps` argument, while the number of $\theta$ and $\phi$ values is determined by the `steps` and `n` arguments, respectively (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-trefoil a"} else { "@fig-trefoil-proj a"})`). The coordinates are defined as $$X_1 = \cos(\theta) \cos(\phi), \quad X_2 = \cos(\theta) \sin(\phi), \\\quad X_3 = \sin(\theta) \cos(1.5 \phi),\text{ and }X_4 = \sin(\theta) \sin(1.5 \phi),$$ where $\theta$ parameterizes the band thickness and $\phi$ parameterizes the knot trajectory. 
 
 ```{r data-trefoil4d}
 trefoil4d <- gen_trefoil4d(n = 500, steps = 5)
@@ -1561,13 +1565,13 @@ trefoil4d_proj3 <- plot_proj(
 
 ```
 
-For the $3\text{-}D$ stereographic projection [@laurent2024], `gen_trefoil3d(n, steps)` maps each point $(X_1, X_2, X_3, X_4) \in \mathbb{R}^4$ to $(X_1', X_2', X_3') \in \mathbb{R}^3\text{ using }X_1' = X_1 / (1 - X_4), \quad X_2' = X_2 / (1 - X_4),\text{ and }X_3' = X_3 / (1 - X_4),$ excluding points where $X_4 = 1$ to avoid division by zero (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-trefoil b"} else { "@fig-trefoil-proj b"})`). 
+For the $3\text{-}D$ stereographic projection [@lickorish1997; @rolfsen2003], `gen_trefoil3d(n, steps)` maps each point $(X_1, X_2, X_3, X_4) \in \mathbb{R}^4$ to $(X_1', X_2', X_3') \in \mathbb{R}^3\text{ using }X_1' = X_1 / (1 - X_4), \quad X_2' = X_2 / (1 - X_4),\text{ and }X_3' = X_3 / (1 - X_4),$ excluding points where $X_4 = 1$ to avoid division by zero (`r knitr::asis_output(if (knitr::is_html_output()) { "@fig-trefoil b"} else { "@fig-trefoil-proj b"})`). 
 
 ```{r data-trefoil3d}
 trefoil3d <- gen_trefoil3d(n = 500, steps = 5)
 ```
 
-The trefoil knot appears in molecular biology (DNA/protein knotting), fluid dynamics (knotted vortices), and physics (topological phases), making it a useful benchmark for testing whether dimension reduction preserves global loops and topology [@witten1985; @arsuaga2002].
+The trefoil knot appears in molecular biology (DNA/protein knotting), fluid dynamics (knotted vortices), and physics (topological phases), making it a useful benchmark for testing whether dimension reduction preserves global loops and topology [@witten1986; @arsuaga2002].
 
 ```{r}
 trefoil3d_lang <- langevitour::langevitour(trefoil3d, levelColors = "black", enableControls = FALSE, width = "400px", height = "300px")
@@ -2365,7 +2369,7 @@ five_clusts_proj1 + five_clusts_proj2 + five_clusts_proj3 +
 
 ### Evaluating dimension reduction (DR) methods
 
-We applied six popular DR techniques to the generated dataset: Principal Component Analysis (PCA) [@jolliffe2011], tSNE, uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. 
+We applied six popular DR techniques to the generated dataset: Principal Component Analysis (PCA) [@jolliffe2011], t-distributed stochastic neighbor embedding (tSNE) [@laurens2008], uniform manifold approximation and projection (UMAP) [@leland2018], potential of heat-diffusion for affinity-based trajectory embedding (PHATE) algorithm [@moon2019], large-scale dimensionality reduction using triplets (TriMAP) [@amid2022], and pairwise controlled manifold approximation (PaCMAP) [@yingfan2021]. 
 
 <!--scripts/five_clusts/02_gen_embeddings.R-->
 ```{r layouts}
@@ -2441,7 +2445,7 @@ error_plot_five_clust <- plot_hbe(error_five_clust) +
   scale_color_manual(values=c("tSNE" = '#636363', "UMAP" = '#d95f02', "PHATE" = '#7570b3', "TriMAP" = '#e7298a', "PaCMAP" = '#66a61e', "PCA" = '#a6761d'))
 ```
 
-```{r fig-nldr-layouts, fig.pos="!ht", fig.cap="Assessing which of the 6 NLDR layouts ((a) tSNE, (b) UMAP, (c) PAHTE, (d) TriMAP, (e) PaCMAP, and (f) PCA) of the five clusters data is the better representation using HBE for varying binwidth ($a_1$). Color is used for the lines and points in the left plot to match the scatterplots of the NLDR layouts (a-f). Layout f is universally poor. Layouts a and b are universally optimal. Layout b shows six well-separated clusters and layout a shows close clusters, thus layout a is the best choice.", fig.alt="A multi-panel figure compares 2-D scatterplots from six nonlinear dimension reduction methods applied to the same dataset with five true clusters. Each panel plots the first embedding dimension on the horizontal axis and the second embedding dimension on the vertical axis. Points represent individual observations and are colored by cluster membership, with six distinct cluster colors reused consistently across panels. In the tSNE panel, clusters form compact, clearly separated groups with small gaps between clusters, indicating strong preservation of both local neighbourhoods and the global cluster layout. UMAP and PaCMAP also show six visibly distinct clusters that are moderately well separated but with slightly more overlap and distortion than tSNE. PHATE produces curved, nonlinear cluster shapes where clusters are stretched or intertwined, obscuring the original simple cluster geometry. TriMAP collapses the data into three main visible groups instead of six, with only small distances between these groups, suggesting loss of finer cluster structure. PCA displays the weakest structure: clusters overlap substantially and align along a roughly linear or planar trend, failing to reflect the underlying nonlinear separation among the six groups."}
+```{r fig-nldr-layouts, fig.pos="!ht", fig.cap="Assessing which of the 6 NLDR layouts ((a) tSNE, (b) UMAP, (c) PHATE, (d) TriMAP, (e) PaCMAP, and (f) PCA) of the five clusters data is the better representation using HBE for varying binwidth ($a_1$). Color is used for the lines and points in the left plot to match the scatterplots of the NLDR layouts (a-f). Layout f is universally poor. Layouts a and b are universally optimal. Layout b shows five well-separated clusters and layout a shows close clusters, thus layout a is the best choice.", fig.alt="A multi-panel figure compares 2-D scatterplots from six dimension reduction methods applied to the same dataset with five true clusters. Each panel plots the first embedding dimension on the horizontal axis and the second embedding dimension on the vertical axis. Points represent individual observations and are colored by cluster membership, with five distinct cluster colors reused consistently across panels. In the tSNE panel, clusters form compact, clearly separated groups with small gaps between clusters, indicating strong preservation of both local neighbourhoods and the global cluster layout. UMAP and PaCMAP also show five visibly distinct clusters that are moderately well separated but with slightly more overlap and distortion than tSNE. PHATE produces curved, nonlinear cluster shapes where clusters are stretched or intertwined, obscuring the original simple cluster geometry. TriMAP collapses the data into three main visible groups instead of five, with only small distances between these groups, suggesting loss of finer cluster structure. PCA displays the weakest structure: clusters overlap substantially and align along a roughly linear or planar trend, failing to reflect the underlying nonlinear separation among the five groups."}
 
 error_plot_five_clust + wrap_plots(nldr1, nldr2, nldr3, 
                                     nldr4, nldr5, nldr6, ncol = 2)
@@ -2449,11 +2453,11 @@ error_plot_five_clust + wrap_plots(nldr1, nldr2, nldr3,
 
 To assess their performance, we computed the hexbin error (HBE) between the observed high-dimensional data and the fitted values, defined as the high-dimensional mappings of the bin centroids [@gamage2025c]. A lower HBE indicates that the method better preserves the high-dimensional structure in its low-dimensional embedding.
 
-As shown in @fig-nldr-layouts, tSNE (@fig-nldr-layouts a) achieved the lowest HBE across bin widths (mostly tiny), indicating high preservation of both local and global structures. Its layout displays well-separated clusters with minimal inter-cluster distances, making it the most faithful representation of the underlying data structure. UMAP and PaCMAP (@fig-nldr-layouts b and e) produced moderately accurate embeddings, although the six clusters appear more well-separated, while PHATE (@fig-nldr-layouts c) shows nonlinear cluster structures irrespective of the original structure. Also, TriMAP (@fig-nldr-layouts d) has high HBE and shows three clusters with small distances. PCA (@fig-nldr-layouts f) failed to capture the nonlinear geometry, leading to the highest HBE.
+As shown in @fig-nldr-layouts, tSNE (@fig-nldr-layouts a) achieved the lowest HBE across bin widths (mostly small values), indicating strong preservation of local neighborhood structure. Its layout displays well-separated clusters with minimal inter-cluster distances, making it the most faithful representation of the underlying data structure. UMAP and PaCMAP (@fig-nldr-layouts b and e) produced moderately accurate embeddings, although the five clusters appear more well-separated, while PHATE (@fig-nldr-layouts c) shows nonlinear cluster structures irrespective of the original structure. Also, TriMAP (@fig-nldr-layouts d) has high HBE and shows three clusters with small distances. PCA (@fig-nldr-layouts f) failed to capture the nonlinear geometry, leading to the highest HBE.
 
 ### Benchmarking clustering algorithms
 
-To further evaluate the structure of the generated data, we benchmarked three clustering algorithms: **$k$-means** [Chapter 20 of @boehmke2019], **agglomerative hierarchical clustering with Ward’s linkage** [@ward1963; @murtagh2012], and **model-based clustering using Gaussian mixture models** [@chris2002; @scrucca2023] using the simulated dataset. 
+To further evaluate the structure of the generated data, we benchmarked three clustering algorithms: **$k$-means** [@hartigan1979], **agglomerative hierarchical clustering with Ward’s linkage** [@ward1963; @murtagh2012], and **model-based clustering using Gaussian mixture models** [@chris2002; @scrucca2023] using the simulated dataset. 
 
 <!-- Model-based clustering performed the `"EII"` covariance structure. Under this parameterization, clusters are spherical with equal volume and equal shape, and no orientation parameter is estimated.  -->
 
@@ -2462,7 +2466,7 @@ For model-based clustering, we use the `"EII"` covariance parameterization, whic
 Cluster validity statistics were computed using the `cluster.stats()` function from the `fpc` package [@christian2024]. These indices capture different aspects of clustering quality, such as compactness and separation, and may not necessarily agree in their assessment of optimal cluster number. As discussed in @akhanli2020, such indices should be interpreted collectively rather than individually, and are most informative when used for comparative rather than absolute evaluation.
 
 <!--script/05_gen_cluster_stat.R-->
-```{r fig-cluster-stats, fig.width=8, fig.height=6, out.width="100%", fig.cap="Cluster validity metrics for solutions with $2-10$ clusters obtained using $k$-means, hierarchical, and model-based clustering. Several indices consistently suggest that $4-5$ clusters provide the best balance of separation and compactness, with $k$-means performing slightly better across metrics.", fig.alt="Multi-panel line chart showing six cluster quality metrics across numbers of clusters (x-axis: 2 to 10 clusters) for three clustering methods (k-means, hierarchical, model-based). Each panel displays one metric with the y-axis scaled to that metric’s values (not explicitly labeled in the text, but each metric is treated as higher-is-better or lower-is-better as described). Within each panel, three lines (one per method) trace the metric value as the number of clusters increases. For Pearson gamma, values for all three methods rise steeply up to about 5 clusters and then level off. For the Calinski–Harabasz index, values increase sharply from 4 to 5 clusters. For Dunn, the k-means line peaks around 4 clusters, while the hierarchical and model-based lines peak around 5. For WB ratio and within-cluster sum of squares, all three methods show a generally monotonic decline as the number of clusters increases, with a visible bend or elbow around 5 clusters. For the S-index, the k-means line reaches its best value around 4 clusters, the hierarchical line around 3, 6, or 8 clusters, and the model-based line around 4 or 8. Across panels, the k-means line is typically at or near the most favorable values for each metric, and several metrics simultaneously favor solutions with about 4–5 clusters."}
+```{r fig-cluster-stats, fig.width=8, fig.height=6, out.width="100%", fig.cap="Cluster validity metrics for solutions with $2-10$ clusters obtained using $k$-means, hierarchical, and model-based clustering. Several indices consistently suggest that $4-5$ clusters provide the best balance of separation and compactness, with $k$-means performing slightly better across metrics.", fig.alt="Multi-panel line chart showing five cluster quality metrics across numbers of clusters (x-axis: 2 to 10 clusters) for three clustering methods (k-means, hierarchical, model-based). Each panel displays one metric with the y-axis scaled to that metric’s values (not explicitly labeled in the text, but each metric is treated as higher-is-better or lower-is-better as described). Within each panel, three lines (one per method) trace the metric value as the number of clusters increases. For Pearson gamma, values for all three methods rise steeply up to about 5 clusters and then level off. For the Calinski–Harabasz index, values increase sharply from 4 to 5 clusters. For Dunn, the k-means line peaks around 4 clusters, while the hierarchical and model-based lines peak around 5. For WB ratio and within-cluster sum of squares, all three methods show a generally monotonic decline as the number of clusters increases, with a visible bend or elbow around 5 clusters. For the S-index, the k-means line reaches its best value around 4 clusters, the hierarchical line around 3, 6, or 8 clusters, and the model-based line around 4 or 8. Across panels, the k-means line is typically at or near the most favorable values for each metric, and several metrics simultaneously favor solutions with about 4–5 clusters."}
 
 # Examine the cluster stats
 all_stats <- read_rds(here::here("data/cardinalR/five_clusts/cluster_stat.rds"))
@@ -2642,7 +2646,7 @@ five_clusts_proj1_2 <- plot_proj(
   proj_obj = proj_obj1, 
   point_param = c(1.5, 0.2), # size, alpha, color
   plot_limits = c(-0.5, 0.5), 
-  title = "a1", 
+  title = "b1", 
   cex = 2, 
   axis_text_size = 4,
   is_color = TRUE) + scale_color_manual(values = c('#1b9e77','#d95f02','#7570b3','#e7298a','#66a61e')) +
@@ -2670,7 +2674,7 @@ five_clusts_proj2_2 <- plot_proj(
   proj_obj = proj_obj2, 
   point_param = c(1.5, 0.2), # size, alpha, color
   plot_limits = c(-0.5, 0.67), 
-  title = "a2", 
+  title = "b2", 
   cex = 2, 
   axis_text_size = 4,
   is_color = TRUE) + scale_color_manual(values = c('#1b9e77','#d95f02','#7570b3','#e7298a','#66a61e')) +
@@ -2697,7 +2701,7 @@ five_clusts_proj3_2 <- plot_proj(
   proj_obj = proj_obj3, 
   point_param = c(1.5, 0.2), # size, alpha, color
   plot_limits = c(-0.45, 0.55), 
-  title = "a3", 
+  title = "b3", 
   cex = 2, 
   axis_text_size = 4,
   is_color = TRUE) + scale_color_manual(values = c('#1b9e77','#d95f02','#7570b3','#e7298a','#66a61e')) +
@@ -2720,7 +2724,7 @@ Benchmarking of clustering methods typically requires multiple datasets, sensiti
 
 The `cardinalR` package introduces a flexible framework for generating high-dimensional data structures with well-defined geometric properties. It addresses an important need in the evaluation of clustering, machine learning, and DR methods by enabling the construction of customized datasets with interpretable structures, noise characteristics, and clustering arrangements. In this way, `cardinalR` complements existing packages such as `geozoo`, `snedata`, and `mlbench`, while extending the scope to higher dimensions and more complex shapes.
 
-The included structures cover a wide range of diagnostic settings. Branching shapes facilitate the study of continuity and topological preservation, the S-curve with a hole allows investigation of incomplete manifolds, and clustered spheres assess separability on curved surfaces. The Möbius strip introduces challenges from non-orientable geometry, while gridded cubes and `pyrholes` test spatial regularity and clustering in sparse, non-convex regions.
+The included structures cover a wide range of diagnostic settings. Branching shapes facilitate the study of continuity and topological preservation, the S-curve with a hole allows investigation of incomplete manifolds, and clustered spheres assess separability on curved surfaces. The Möbius strip introduces challenges from non-orientable geometry, while gridded cubes and `pyrfrac` test spatial regularity and clustering in sparse, non-convex regions.
 
 These structures are designed to support not only algorithm diagnostics, but also teaching high-dimensional concepts, benchmarking reproducibility, and evaluating hyper-parameter sensitivity. By allowing users to adjust dimensionality, sample size, noise, and clustering properties, the package promotes transparent experimentation and comparative model evaluation. Together, these capabilities make `cardinalR` a versatile tool for generating interpretable, high-dimensional datasets that advance research, teaching, and evaluation of data-analytic methods.
 

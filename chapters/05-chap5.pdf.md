@@ -92,7 +92,7 @@ NLDR methods have been developed to improve on MDS with varying degrees of prese
 
 An alternative to NLDR for visualizing $p\text{-}D$ data is to use linear projections. PCA is the classical approach, producing new variables as linear combinations of the original dimensions. While PCA provides a single static projection that maximizes variance, tours introduced by @As85 extend this idea by generating smooth sequences of linear projections, effectively creating a movie of the data viewed from multiple directions. Tours can reveal structures that may be hidden in any single projection by continuously changing the viewing angle through high-dimensional space. Many tour algorithms have since been developed and are implemented in the R package `tourr` [@wickham2011], with interactive variants available in `langevitour` [@harisson2024] and `detourr` [@casper2025]. Tours are valuable because they preserve the geometry of the data, unlike NLDR methods - they do not warp distances or angles. This makes them faithful but sometimes visually cluttered representations: global structure can obscure local detail, and the phenomenon of piling [@laa2022], where high-dimensional points project toward the center, can make clusters harder to distinguish.
 
-Quantifying clusters in shape and separation is not simple. For this experiment, a variety of shapes were generated using the functions in the `cardinalR` package [@jayani2025b]. Measuring distance between clusters is classically done using the between-within (BW) ratio, which captures global separability if the cluster shape is elliptical. A variety of distance-based metrics have been proposed in the clustering and visualization literature [@tadeusz1974; @peter1987; @david1979], including minimum, maximum, and average distances between clusters, centroid distances, and ratios that combine between- and within-cluster variation. Although the data sets were created with a fixed process, the results will be examined with a variety of distance metrics to capture NLDR behavior using different lenses of separation.
+Quantifying clusters in shape and separation is not simple. For this experiment, a variety of shapes were generated using the functions in the `cardinalR` package [@jayani2025b]. Cluster separation can be summarised using measures such as the between–within (BW) ratio, which captures global separability under assumptions of approximately spherical cluster structure. A variety of distance-based metrics have been proposed in the clustering and visualization literature [@tadeusz1974; @peter1987; @david1979], including minimum, maximum, and average distances between clusters, centroid distances, and ratios that combine between- and within-cluster variation. Although the data sets were created with a fixed process, the results will be examined with a variety of distance metrics to capture NLDR behavior using different lenses of separation.
 
 <!-- To assess how well NLDR methods preserve structures such as cluster separation, it is important to quantify inter-cluster distances. A variety of distance-based metrics have been proposed in the clustering and visualization literature [@tadeusz1974; @peter1987; @david1979], including minimum, maximum, and average distances between clusters, centroid distances, and ratios that combine between- and within-cluster variation. In this study, we focus on two distance measures: the between-to-within (BW) ratio, which captures global separability, and the minimum distance between clusters, which reflects the closest approach of any two clusters. Together, these provide interpretable summaries of both overall and local cluster separation while accounting for within-cluster variability.-->
 
@@ -159,6 +159,8 @@ A total of $30$ $4\text{-}D$ data sets are generated. Two are reserved as an att
 
 For the experiment, three cluster data sets are generated. The three clusters contain different numbers of points and shapes. Let $C_1, C_2,$ and $C_3$ denote the centroids of three clusters. The pairwise distances between these centroids are calculated as: $d(C_1, C_2) = c_{12},~d(C_1, C_3) = c_{13}, \text{ and } d(C_2, C_3) = c_{23}$. At the original distance scale (scale factor $1$, referred to as medium-large), clusters $C_1$ and $C_2$ are in close proximity, while cluster $C_3$ is positioned farther away, creating an asymmetric separation pattern. Centroid distances were used because they provide a simple and controllable way to adjust overall cluster separation.
 
+The experiment consists of two types of trials: SAME trials and DIFFERENT trials. In SAME trials, two visualizations (one NLDR layout and the tour) are generated from the same underlying dataset, but with controlled variations in cluster separation. In DIFFERENT trials, the two visualizations are generated from different datasets.
+
 In the SAME trials, the degree of separation between clusters was varied by multiplying the original centroid distances by four scale factors: $0.1$ (small), $0.6$ (small-medium), $0.9$ (medium), and $1.1$ (large). These values were chosen to span a range of perceptual difficulty from cases where clusters are expected to overlap strongly and be hard to distinguish ($0.1$), through intermediate levels where separation is visible but ambiguous ($0.6$ and $0.9$), to cases where clusters are clearly separated ($1.1$). Using proportional scaling ensures that the relative geometry of the data is preserved while systematically controlling how strongly separation cues are expressed.
 
 In contrast, data structures used for the DIFFERENT trials retained the original centroid distances (scale factor $1$) without modification. This allows the DIFFERENT trials to serve as stable reference cases while ensuring that variation in separation is introduced only in trials where participants are asked to judge whether two displays show the same data.
@@ -173,7 +175,14 @@ Shapes for each cluster were selected randomly from a predefined set of curved, 
 
 #### Attention check data
 
-There are two sets of attention check data: one consisting of three Gaussian clusters and the other consisting of four Gaussian clusters. Each cluster is generated using a multivariate normal distribution where the mean vectors and variances were predefined. Specifically, for the three-cluster case, the mean vectors were set as $[1, 0, 0, 0]$, $[0, 1, 0, 0]$, and $[0, 0, 1, 1]$, with a common variance of $0.1$ for all clusters. For the four-cluster case, the mean vectors were defined as $[1, 0, 0, 1]$, $[0, 1, 1, 0]$, $[1, 0, 1, 0]$, and $[0, 1, 0, 1]$, also using a variance of $0.1$. This approach ensures that data points are normally distributed around the specified centroids, with the spread controlled by the variance parameter. Each Gaussian cluster dataset consists of $4\text{-}D$ data with a sample size of $7500$, and each cluster contains an equal number of data points.
+<!-- There are two sets of attention check data: one consisting of three Gaussian clusters and the other consisting of four Gaussian clusters. Each cluster is generated using a multivariate normal distribution where the mean vectors and variances were predefined. Specifically, for the three-cluster case, the mean vectors were set as $[1, 0, 0, 0]$, $[0, 1, 0, 0]$, and $[0, 0, 1, 1]$, with a common variance of $0.1$ for all clusters. For the four-cluster case, the mean vectors were defined as $[1, 0, 0, 1]$, $[0, 1, 1, 0]$, $[1, 0, 1, 0]$, and $[0, 1, 0, 1]$, also using a variance of $0.1$. This approach ensures that data points are normally distributed around the specified centroids, with the spread controlled by the variance parameter. Each Gaussian cluster dataset consists of $4\text{-}D$ data with a sample size of $7500$, and each cluster contains an equal number of data points. -->
+
+
+The attention-check datasets were designed to be simple and easily interpretable, with clearly separated cluster structures that should be consistently recognized across visualizations. These datasets serve as a basic validation to ensure participants are attentive and understand the task.
+
+Each cluster was generated from a multivariate normal distribution with predefined mean vectors and a common isotropic covariance structure. Specifically, the covariance matrix for each cluster was taken as ($\sigma^2 I$), where ($\sigma^2 = 0.1$) and ($I$) is the identity matrix, implying equal variance in all dimensions and no correlation between variables.
+
+For the three-cluster case, the mean vectors were $[1,0,0,0]$, $[0,1,0,0]$, and $[0,0,1,1]$. For the four-cluster case, the means were $[1,0,0,1]$, $[0,1,1,0]$, $[1,0,1,0]$, and $[0,1,0,1]$. Each dataset consists of ($4\text{-}D$) observations with a total sample size of $7500$, equally divided among clusters.
 
 ### Organization of SAME and DIFFERENT trials
 
@@ -215,15 +224,10 @@ The BW ratio, defined as
 $$
   \text{BW ratio}
   =
-  \frac{
-      \sum_{i=1}^{K} n_i~d(\bar{\mathbf{x}}_i, \bar{\mathbf{x}})
-  }{
-      \sum_{i=1}^{K} \sum_{\mathbf{x}_j \in C_i}
-      d(\mathbf{x}_j, \bar{\mathbf{x}}_i)
-  },
+  \frac{\bar{d}_{\text{between}}}{\bar{d}_{\text{within}}},
 $$
 
-where $d(\cdot,\cdot)$ denotes the Euclidean distance, $C_i$ is the $i^{th}$ cluster with $n_i$ observations, $\bar{\mathbf{x}}_i$ is the centroid of cluster $C_i$, and $\bar{\mathbf{x}}$ is the overall centroid of the dataset.
+where $\bar{d}_{\text{between}}$ denotes the average between-cluster distance and $\bar{d}_{\text{within}}$ denotes the average within-cluster distance. The within-cluster distance is computed as the weighted mean of pairwise distances within each cluster, while the between-cluster distance is the mean of all pairwise distances between observations from different clusters. 
 
 In addition, the minimum distance was used as a complementary measure of global separation:
 
@@ -233,7 +237,7 @@ $$
   d(\mathbf{x}_i, \mathbf{x}_j),
 $$
 
-which captures the closest proximity between any two clusters. The scaled minimum distance was exponentiated so that, where it agrees with the BW ratio, the relationship between the two measures is approximately linear. The transformation increases separation among larger distance values while leaving small distances largely unchanged, facilitating more comparable variation across datasets.
+where $d(\cdot,\cdot)$ denotes the Euclidean distance, $C_i$ is the $i^{th}$ cluster with $n_i$ observations, $\bar{\mathbf{x}}_i$ is the centroid of cluster $C_i$. This metric captures the closest proximity between any two clusters. The scaled minimum distance was exponentiated so that, where it agrees with the BW ratio, the relationship between the two measures is approximately linear. The transformation increases separation among larger distance values while leaving small distances largely unchanged, facilitating more comparable variation across datasets.
 
 
 <!-- The BW ratio and minimum inter-cluster distance capture complementary aspects of cluster separation: global dispersion and local boundary proximity, respectively. To make these measures comparable across data structures, all distance-based metrics were first rescaled to the unit interval using min–max normalization. -->
