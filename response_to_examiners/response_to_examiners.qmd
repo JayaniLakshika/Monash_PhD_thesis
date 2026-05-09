@@ -4,7 +4,7 @@ subtitle: "Response to examiners"
 format: pdf
 ---
 
-*I thank the examiners for their careful assessment of my thesis. What follows is a point by point response to the examiners' comments.*
+I thank the examiners for their careful assessment of my thesis. What follows is a point by point response to the examiners' comments. The original comment is in normal font and *our response is in italic text*. 
 
 # Examiner A: Prof Christian Hennig
 
@@ -69,11 +69,13 @@ most other existing metrics. So what is its actual advantage? Before recommendin
 a software to the user that assesses "performance" by means of HBE, this surely
 needs to be addressed.
 
-*I agree that many well-established metrics exist for assessing low-dimensional representations, each reflecting different aspects of structure preservation, and that NLDR methods themselves are typically defined through optimization objectives. Our intention is not to claim that HBE provides a universally better or more principled measure of embedding quality than these existing approaches.*
+*I have revised the text.*
 
-*I have revised the thesis to clarify that HBE serves a different role: it is a model-based, diagnostic measure that evaluates how well a fitted representation (via the hexagonal binning model) approximates the data in the original high-dimensional space. In contrast to metrics such as trustworthiness, stress, or RNX-based measures, which summarize specific aspects of local or global structure preservation, HBE is designed to be used in conjunction with visual tools (e.g., tour overlays) to help localize and interpret distortions.*
+<!-- *I agree that many well-established metrics exist for assessing low-dimensional representations, each reflecting different aspects of structure preservation, and that NLDR methods themselves are typically defined through optimization objectives. Our intention is not to claim that HBE provides a universally better or more principled measure of embedding quality than these existing approaches.* -->
 
-*I also acknowledge that HBE depends on grid parameters, and have revised the text to discuss this explicitly. Rather than viewing this as a drawback alone, I emphasize that examining HBE across a range of parameter values provides insight into the stability of a representation. I have softened language that previously suggested HBE measures "performance" in a general sense, and instead frame it as a complementary diagnostic tool alongside existing metrics.*
+<!-- *I have revised the thesis to clarify that HBE serves a different role: it is a model-based, diagnostic measure that evaluates how well a fitted representation (via the hexagonal binning model) approximates the data in the original high-dimensional space. In contrast to metrics such as trustworthiness, stress, or RNX-based measures, which summarize specific aspects of local or global structure preservation, HBE is designed to be used in conjunction with visual tools (e.g., tour overlays) to help localize and interpret distortions.* -->
+
+<!-- *I also acknowledge that HBE depends on grid parameters, and have revised the text to discuss this explicitly. Rather than viewing this as a drawback alone, I emphasize that examining HBE across a range of parameter values provides insight into the stability of a representation. I have softened language that previously suggested HBE measures "performance" in a general sense, and instead frame it as a complementary diagnostic tool alongside existing metrics.* -->
 
 **General** In many places the aim seems to be to find the "best" representation. But
 data analysts often use many visualisations of the same data because this can bring
@@ -83,7 +85,9 @@ several displays. So it should at least be acknowledged that bringing together a
 number of representations could be more informative for data analysis than looking
 for a single "best" one.
 
-*I agree that, in practice, examining multiple visualizations is often more informative than selecting a single "best" representation, as different layouts can highlight different aspects of the data. I have revised the thesis to avoid the term "best layout" and instead refer to identifying the most reasonable representation in a given context. I also emphasize that our approach is intended to support comparative and diagnostic analysis across multiple layouts, rather than to prescribe a single optimal choice.*
+<!-- *I agree that, in practice, examining multiple visualizations is often more informative than selecting a single "best" representation, as different layouts can highlight different aspects of the data. I have revised the thesis to avoid the term "best layout" and instead refer to identifying the most reasonable representation in a given context. I also emphasize that our approach is intended to support comparative and diagnostic analysis across multiple layouts, rather than to prescribe a single optimal choice.* -->
+
+*I have revised the text.*
 
 **General** Cluster analysis is quite prominent in the thesis, and it is apparently implicitly
 always assumed that every dataset has a uniquely true clustering. There are several
@@ -114,15 +118,17 @@ so it cannot be fully clear what the "true clusters" are that are mentioned.
 The issue is particularly relevant when benchmarking clustering methods (Sec.
 4.4.2). All results are relative to the assumed truth. Note that methods like kmeans can be seen as coming with their own implicit cluster concept, and they will deviate obviously and legitimately from clusters that are defined in a different way, as are the clusters here.
 
-*I agree that clustering does not admit a unique "true" solution in general.*
+*I have revised the text.*
 
-*In this paper, "true clusters" refers to the labels defined by the data-generating process, where each geometric component is generated separately and assigned a cluster identity. This is an operational definition used for simulation and benchmarking, rather than a universally valid notion of clustering.*
+<!-- *I agree that clustering does not admit a unique "true" solution in general.* -->
 
-*I revised the thesis to clarify this point, explicitly acknowledge that multiple valid clusterings may exist for the same data, and note that results are conditional on this construction-based definition.*
+<!-- *In this paper, "true clusters" refers to the labels defined by the data-generating process, where each geometric component is generated separately and assigned a cluster identity. This is an operational definition used for simulation and benchmarking, rather than a universally valid notion of clustering.* -->
+
+<!-- *I revised the thesis to clarify this point, explicitly acknowledge that multiple valid clusterings may exist for the same data, and note that results are conditional on this construction-based definition.* -->
 
 **General** In examples, PCA is usually run on high-dimensional data to reduce the dimension before applying the methods of interest to then only reduce the 10 (or so)-dimensional PCA representation to two dimensions. There should be a comment on this, why this is done and whether this is generally recommended. As far as I know, the literature on UMAP and other techniques treated here doesn’t recommend this and doesn’t suggest that this would be necessary.
 
-*In some examples, PCA is used as a preprocessing step to reduce the dimensionality of the data before applying NLDR methods. This is not required for methods such as UMAP or t-SNE, which can operate directly on the original high-dimensional data. In our case, PCA is used to reduce the data to a moderate dimension (e.g., 10 components) to facilitate visualization using tours. Tour-based visualization becomes increasingly difficult to interpret as dimensionality grows, and reducing the dimension allows clearer inspection of the fitted model and its structure. I emphasize that this step is used solely for visualization purposes and may influence the resulting embedding, particularly with respect to local structure.*
+*PCA preprocessing was used mainly for computational efficiency, denoising, and visualisation in very high-dimensional settings. For the PBMC3k example, we followed the standard preprocessing workflow implemented in the `Seurat` package. In addition, methods such as TriMAP and PaCMAP commonly recommend or use PCA preprocessing, while UMAP and t-SNE are also often applied after PCA in practice. Our intention was not to suggest that PCA preprocessing is universally required for NLDR methods.*
 
 **Sec. 4.4.2** Much about this Section is quite naive and not very insightful. References
 for standard cluster analysis methods that are around for 50 years and more are
@@ -150,7 +156,9 @@ Steinley, D., & Warrens, M. J. (2023). A white paper on good research practices 
 benchmarking: The case of cluster analysis. WIREs Data Mining and Knowledge
 Discovery, 13(6), e1511. https://doi.org/10.1002/widm.1511
 
-*I revised Section 4.4.2 to improve clarity and rigor. Specifically, we will (i) add original references such as Stuart Lloyd (1982) and Joe H. Ward Jr. (1963), (ii) explicitly state that hierarchical clustering uses Ward’s linkage, (iii) clarify that model-based clustering is implemented via a Gaussian mixture model with the "EII" covariance structure and justify this as a baseline comparable to k-means, and (iv) expand the discussion of cluster validity indices, including their limitations and appropriate use, drawing on guidance from Seda E. Akhanli and Christian Hennig (2020) and related benchmarking recommendations. I also clarified that this comparison is illustrative rather than a comprehensive benchmarking study.*
+*I have revised the text.*
+
+<!-- *I revised Section 4.4.2 to improve clarity and rigor. Specifically, we will (i) add original references such as Stuart Lloyd (1982) and Joe H. Ward Jr. (1963), (ii) explicitly state that hierarchical clustering uses Ward’s linkage, (iii) clarify that model-based clustering is implemented via a Gaussian mixture model with the "EII" covariance structure and justify this as a baseline comparable to k-means, and (iv) expand the discussion of cluster validity indices, including their limitations and appropriate use, drawing on guidance from Seda E. Akhanli and Christian Hennig (2020) and related benchmarking recommendations. I also clarified that this comparison is illustrative rather than a comprehensive benchmarking study.* -->
 
 **Chapter 5** There are some problematic issues with this survey. As far as I understand,
 many high-dimensional datasets can lead to the same 2-d representation using the
@@ -178,17 +186,17 @@ clear what "hallucinate" means. Also arguably the methods just do what they are
 defined to do; without a human analyser misinterpreting the display there can be
 no "hallucination".
 
-*I agree that the term "hallucinate" was imprecise and potentially misleading. Our intention was to describe situations where NLDR embeddings distort the original geometry in ways that may suggest structure (e.g., strong separation between groups) that is not supported by the high-dimensional relationships. I have revised the thesis to replace this phrasing with a more precise description of geometric distortion and the potential for misinterpretation by the analyst.*
+*My use of the term "hallucinate" was intended informally to describe situations where an NLDR layout visually suggests stronger separation or structure than is supported by the relationships in the original high-dimensional space. I agree that the interpretation ultimately depends on the analyst, and that the methods themselves are optimizing their respective objective functions. My goal was simply to highlight the potential risk of over-interpreting visually exaggerated structure in low-dimensional embeddings.*
 
 **p. 8** Scale the data - I worry that there may be robustness issues with the min/max
 scaling here. A single large outlier on a variable will imply that all other observations
 have hardly any distance between each other on this variable.
 
-*I agree that min–max scaling can be sensitive to extreme values and may compress the majority of observations when outliers are present. I have revised the thesis to acknowledge this limitation and now explicitly suggest more robust alternatives, such as quantile-based scaling or preprocessing steps to mitigate the influence of outliers. I retain min–max scaling as a simple default in well-behaved settings.*
+*I agree that min/max scaling can be sensitive to extreme outliers, potentially compressing the distances among the majority of observations. In the examples considered here, the datasets were either simulated or preprocessed so that extreme outliers were not present. My intention was mainly to provide a simple default scaling approach that preserves the aspect ratio of the NLDR layout. I agree that, in practice, robust alternatives to min/max scaling may be preferable when substantial outliers are present.*
 
 **p. 9** Write the linear optimisation problem down explicitly. This is not transparent.
 
-*I have revised the thesis to explicitly state the linear optimization problem used to determine $b_2$, including the objective and constraints. I also clarified how Equation is obtained by substituting the smallest feasible value of $a_1$ and solving for $b_2$.*
+*I have revised the text.*
 
 **p.11** What does "RNX curve" mean?
 
