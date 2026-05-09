@@ -520,9 +520,9 @@ Once a subject ID is allocated to a participant, the experiment design data are 
 
 Once the participant records their answers, a new row is added to the "result_df" Google Sheet with their responses. This continues until the participant finishes the study. Finally, after completing the evaluations, subjects are asked to fill out a demographics questionnaire. Their responses are then recorded in a new row of the "demographic_details" Google Sheet.
 
-## Preliminary assessment of PCA Layouts
+## Preliminary Assessment of PCA Layouts
 
-PCA layouts were considered during the study design and tested in a preliminary phase with a small group of participants ($18$ subjects). The results showed a high rate of correct identification (about $91\%$), suggesting that PCA views of the simulated $4\text{-}D$ data were easy to interpret when shown alongside the tour (Figure XX). Since PCA is a linear method, its projections closely match the views seen in the tour, making it easier to recognize the underlying structure. In contrast, NLDR methods such as tSNE, UMAP, PHATE, TriMAP, and PaCMAP can change the shape of the data, making interpretation less straightforward. For this reason, the main experiment focused on NLDR methods, where differences in perception are more informative.
+PCA layouts were considered during the study design and tested in a preliminary phase with a small group of participants ($18$ subjects). The results showed a high rate of correct identification (about $91%$), indicating that PCA layouts of the simulated $4\text{-}D$ data were comparatively easy to identify when shown alongside the tour (Figure XX). This is likely because the simulated data consisted of only three well-separated clusters in $4\text{-}D$, and PCA projections preserved much of the relative positioning of the clusters. Since PCA is itself a linear projection of the data, the layouts also closely resembled views observed in the tour. In contrast, NLDR methods such as tSNE, UMAP, PHATE, TriMAP, and PaCMAP can substantially alter the geometry of the data, making identification more challenging. Therefore, the main experiment focused on NLDR methods, where perceptual differences are more informative.
 
 ## Variability across data sets and subjects
 
