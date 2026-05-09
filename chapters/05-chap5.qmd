@@ -467,20 +467,15 @@ The second factor, the distance scale factor, controlled the degree of cluster s
 
 In our analysis of the results, we decided to quantify the distances between clusters numerically rather than using the distance scale factor levels directly. Cluster separability was quantified using two complementary measures: the *between-to-within (BW) ratio* and the *minimum inter-cluster distance*. A higher value of either metric indicates greater separation among clusters (@fig-dist-metrics). To ensure comparability across datasets with different underlying structures, all distance-based metrics were min–max scaled prior to analysis.  
 
-The BW ratio is defined as
+The BW ratio, defined as
 
 $$
   \text{BW ratio}
   =
-  \frac{
-      \sum_{i=1}^{K} n_i~d(\bar{\mathbf{x}}_i, \bar{\mathbf{x}})
-  }{
-      \sum_{i=1}^{K} \sum_{\mathbf{x}_j \in C_i}
-      d(\mathbf{x}_j, \bar{\mathbf{x}}_i)
-  },
+  \frac{\bar{d}_{\text{between}}}{\bar{d}_{\text{within}}},
 $$
 
-where $d(\cdot,\cdot)$ denotes the Euclidean distance, $C_i$ is the $i^{th}$ cluster with $n_i$ observations, $\bar{\mathbf{x}}_i$ is the centroid of cluster $C_i$, and $\bar{\mathbf{x}}$ is the overall centroid of the dataset.
+where $\bar{d}_{\text{between}}$ denotes the average between-cluster distance and $\bar{d}_{\text{within}}$ denotes the average within-cluster distance. The within-cluster distance is computed as the weighted mean of pairwise distances within each cluster, while the between-cluster distance is the mean of all pairwise distances between observations from different clusters. 
 
 In addition, the minimum distance was used as a complementary measure of global separation:
 
@@ -490,7 +485,7 @@ $$
   d(\mathbf{x}_i, \mathbf{x}_j),
 $$
 
-which captures the closest proximity between any two clusters. The scaled minimum distance was exponentiated so that, where it agrees with the BW ratio, the relationship between the two measures is approximately linear. The transformation increases separation among larger distance values while leaving small distances largely unchanged, facilitating more comparable variation across datasets.
+where $d(\cdot,\cdot)$ denotes the Euclidean distance, $C_i$ is the $i^{th}$ cluster with $n_i$ observations, $\bar{\mathbf{x}}_i$ is the centroid of cluster $C_i$. This metric captures the closest proximity between any two clusters. The scaled minimum distance was exponentiated so that, where it agrees with the BW ratio, the relationship between the two measures is approximately linear. The transformation increases separation among larger distance values while leaving small distances largely unchanged, facilitating more comparable variation across datasets.
 
 
 <!-- The BW ratio and minimum inter-cluster distance capture complementary aspects of cluster separation: global dispersion and local boundary proximity, respectively. To make these measures comparable across data structures, all distance-based metrics were first rescaled to the unit interval using min–max normalization. -->
