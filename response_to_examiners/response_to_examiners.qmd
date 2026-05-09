@@ -246,7 +246,7 @@ such things formally and unambiguously.
 interest, and not doing them because of some speculation what the result may be
 isn’t convincing.
 
-*I agree that PCA can serve as a useful baseline. However, our study focuses specifically on nonlinear dimensionality reduction methods and how their transformations affect perceptual interpretation. Since PCA is a linear method that preserves global structure without introducing nonlinear distortions, it is generally consistent with the linear projections shown in the tour and therefore does not provide additional insight into the types of distortions I aim to study. For this reason, I have not included PCA in the main analysis, but I acknowledge its role as a baseline.*
+*I agree that PCA can serve as a useful baseline. However, this study focuses on nonlinear dimensionality reduction methods and how their transformations influence visual interpretation. PCA is a linear projection method and, for the simulated 4-D data used here, its layouts closely resembled the views shown in the tour, making the structures comparatively easy to identify. As a result, PCA provided limited additional insight into the perceptual distortions examined in this study. A preliminary assessment of PCA layouts has now been included in the appendix.*
 
 **p. 91** BW ratio treats the clusters as spherical, not just elliptical.
 
