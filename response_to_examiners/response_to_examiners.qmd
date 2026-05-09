@@ -192,7 +192,7 @@ have hardly any distance between each other on this variable.
 
 **p.11** What does "RNX curve" mean?
 
-*I have clarified the meaning of the "RNX curve" by explicitly defining it as a co-ranking–based measure that evaluates neighborhood preservation across a range of neighborhood sizes, and explained how the ARNX summary is computed from this curve.*
+*I have revised the text.*
 
 **Fig. 2.5** y-axis label and annotation are missing.
 
@@ -200,11 +200,11 @@ have hardly any distance between each other on this variable.
 
 **p. 16, l. -6** "high correlation value" between what and what?
 
-*I have clarified that the "correlation" refers to the Spearman correlation between pairwise distances in $p\text{-}D$ and $2\text{-}D$ as shown in the Shepard diagram. The text has been revised to make this explicit and to better explain how this value can be inflated in the presence of clustered structures.*
+*I have revised the text.*
 
 **Fig. 2.8 bottom** The difference between the different metrics in assessing the layouts is staggering. This deserves a discussion.
 
-*I agree that the differences between the metrics are substantial and deserve clearer interpretation. I have revised the caption and accompanying text to emphasize that these differences reflect a trade-off between local and global structure preservation. I also clarify that our assessment is based on stability of HBE across a range of binwidths, rather than a single optimal value, and avoid presenting any layout as universally "best."*
+*I have revised the figure caption.*
 
 **Fig. 2.12** Layout f is called "best choice" but it doesn’t have the best HBE values where the HBE values are best (at low average bin count). What is the rationale here?
 

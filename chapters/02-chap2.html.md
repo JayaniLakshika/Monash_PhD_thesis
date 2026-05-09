@@ -148,22 +148,49 @@ The $2\text{-}D$ hexagon grid is defined by its bin centroids. Each hexagon, $H_
 
 To ensure that the grid covers the range of data values, a buffer parameter ($q$) is set as a proportion of the range. By default,  $q=0.1$. The buffer should be extending a full hexagon width ($a_1$) and height ($a_2$) beyond the data, in all directions. The lower left position where the grid starts is defined as $(s_1, s_2)$, and corresponds to the centroid of the lowest left hexagon, $C_{1}^{(2)} = (c_{11}, c_{12})$. This must be smaller than the minimum data value. Because it is one buffer unit, $q$ below the minimum data values, $s_1 = -q$ and $s_2 = -qr_2$. 
 
-The value for $b_2$ is computed by fixing $b_1$. Considering the upper bound of the first NLDR component, $a_1 > (1+2q)/(b_1 -1)$. Similarly, for the second NLDR component, 
+<!-- The value for $b_2$ is computed by fixing $b_1$. Considering the upper bound of the first NLDR component, $a_1 > (1+2q)/(b_1 -1)$. Similarly, for the second NLDR component,  -->
 
-$$
-a_2 \geq \frac{r_2 + q(1 + r_2)}{(b_2 - 1)}.
-$$
+<!-- $$ -->
+<!-- a_2 \geq \frac{r_2 + q(1 + r_2)}{(b_2 - 1)}. -->
+<!-- $$ -->
 
-Since $a_2 = \sqrt{3}a_1/2$ for regular hexagons,
+<!-- Since $a_2 = \sqrt{3}a_1/2$ for regular hexagons, -->
 
+<!-- $$ -->
+<!-- a_1 \geq \frac{2[r_2 + q(1 + r_2)]}{\sqrt{3}(b_2 - 1)}. -->
+<!-- $$ -->
+
+<!-- This is a linear optimization problem. Therefore, the optimal solution must occur on a vertex. Therefore, -->
+
+<!-- $$ -->
+<!-- b_2 = \Big\lceil1 +\frac{2[r_2 + q(1 + r_2)](b_1 - 1)}{\sqrt{3}(1 + 2q)}\Big\rceil. -->
+<!-- $${#eq-bin2} -->
+
+Using the relationship for regular hexagons, $a_2 = \sqrt{3}a_1/2$, the coverage constraints can be written as
 $$
+a_1 \geq \frac{1 + 2q}{b_1 - 1}, \quad
 a_1 \geq \frac{2[r_2 + q(1 + r_2)]}{\sqrt{3}(b_2 - 1)}.
 $$
 
-This is a linear optimization problem. Therefore, the optimal solution must occur on a vertex. Therefore,
-
+For fixed $b_1$, we determine $b_2$ by ensuring both constraints are satisfied while using the smallest grid that covers the data. This can be formulated as the following optimization problem:
 $$
-b_2 = \Big\lceil1 +\frac{2[r_2 + q(1 + r_2)](b_1 - 1)}{\sqrt{3}(1 + 2q)}\Big\rceil.
+\begin{aligned}
+\text{minimize} \quad & b_2 \
+\text{subject to} \quad
+& a_1 \geq \frac{1 + 2q}{b_1 - 1}, \
+& a_1 \geq \frac{2[r_2 + q(1 + r_2)]}{\sqrt{3}(b_2 - 1)}, \
+& b_2 \in \mathbb{Z}^+.
+\end{aligned}
+$$
+
+Substituting the smallest feasible value of $a_1 = \frac{1 + 2q}{b_1 - 1}$ into the second constraint and solving for $b_2$ yields
+$$
+b_2 \geq 1 + \frac{2[r_2 + q(1 + r_2)](b_1 - 1)}{\sqrt{3}(1 + 2q)}.
+$$
+
+Taking the smallest integer satisfying this constraint gives
+$$
+b_2 = \Big\lceil 1 + \frac{2[r_2 + q(1 + r_2)](b_1 - 1)}{\sqrt{3}(1 + 2q)} \Big\rceil.
 $${#eq-bin2}
 
 
@@ -222,9 +249,13 @@ $$C_{hj}^{(p)} = \frac{1}{n_h}\sum_{i =1}^{n_h} x_{hij}, ~~~h = 1, \dots, b;~ j=
 
 <!-- Existing approaches -->
 
-All NLDR methods internally optimize a quantity to produce a layout for any particular hyper-parameter set. These are not always made available in the model output, and may not be universally comparable between hyper-parameter choices and methods. 
+All NLDR methods internally optimize an objective function to produce a layout for a given set of hyper-parameters. These objective functions are not always made available to the user in the model output and or comparable across methods.
 
-Several common metrics are often used to assess the quality of any NLDR layout, based on the preservation of the global and local structure of the data. The $RNX$ curve quantifies the neighborhood agreement between $p\text{-}D$ and $k\text{-}D$ spaces, by computing the area under the curve ($ARNX$) across a range of neighborhood scales [@john2015]. A high value indicates better preservation of a balance of global and local structure. Random Triplet Accuracy (RTA) and Centroid Triplet Accuracy compare the order of $2\text{-}D$ and $p\text{-}D$ distances of random triplets of points [@yingfan2021]. High values indicate preservation of the geometry, suggesting both local and global structure preservation. The Shepard diagram [@shepard1962], together with its associated Spearman correlation (SC) [@spearman1961], assesses the monotonic relationship between pairwise distances in the two spaces and is often interpreted as a measure of global structure preservation. The Global Score (GS) compares the embedding to a PCA baseline and evaluates how well the overall geometry is retained [@amid2022]. Higher values indicate better preservation of global structure. The metric RTA, SC, GS, and ARNX have been reversed (rRTA, rSC, rGS, and rARNX) so that they align with HBE - the lower the value, the better the layout.
+A range of established metrics is commonly used to assess the quality of NLDR embeddings, each emphasizing different aspects of structure preservation. For example, the $RNX$ curve summarizes neighborhood agreement between \pD{} and \kD{} spaces across a range of scales, with its area under the curve (ARNX) reflecting a balance between local and global structure preservation [@john2015]. Random Triplet Accuracy (RTA) evaluates the consistency of distance orderings among triplets of points in \gD{} and \pD{} spaces, providing a measure of geometric preservation [@yingfan2021]. The Shepard diagram [@shepard1962], together with its associated Spearman correlation (SC) [@spearman1961], assesses the monotonic relationship between pairwise distances in the two spaces and is often interpreted as a measure of global structure preservation. The Global Score (GS) compares the embedding to a PCA baseline and evaluates how well the overall geometry is retained [@amid2022].
+
+These metrics provide useful but complementary perspectives, as they capture different and often competing objectives, such as preserving local neighborhoods versus global distances. As a result, it is common for these measures to rank embeddings differently, reflecting the multi-objective nature of NLDR rather than a deficiency of any single metric.
+
+To facilitate comparison with our proposed measure, we use reversed forms of these metrics (rRTA, rSC, rGS, and rARNX), so that lower values consistently indicate better performance.
 
  <!-- Fitted values,  Error calculation-->
 
@@ -341,7 +372,7 @@ Comparing the HBE to obtain the best fit is appropriate if the same NLDR method 
 
 ::: {.cell layout-align="center"}
 ::: {.cell-output-display}
-![Assessing which of the 6 NLDR layouts (a-f) on the 2NC7 data is the better representation using HBE for varying (i) binwidth ($a_1$), and (ii) average bin count ($\bar{n}_h$). Color represents the NLDR layout. Layout d is universally poor. Layouts b, e that show two close clusters are universally suboptimal. Layout f with little separation performs well at tiny binwidth (where most points are in their own bin) and poorly as binwidth increases. Layout e has a small separation with oddly shaped clusters. Layout a is the best choice. Plot (ii), which compares HBE values with respect to average bin count, helps account for differences in cluster density; here, the variation among layouts is reduced, showing that some differences observed in (i) arise from density rather than true structure. Comparison of scaled evaluation metrics (rRTA, rSC, rGS, rARNX, and HBE using $a_1=0.05$) for the six NLDR layouts computed on the 2NC7 data using a parallel coordinate plot (iii). Color of the line indicates NLDR layout.](02-chap2_files/figure-html/fig-toy-rmse-1.png){#fig-toy-rmse fig-align='center' fig-alt='Multi-panel figure comparing six NLDR layouts on the 2NC7 dataset using HBE-based and other evaluation metrics. Panel (i) shows a line plot of HBE values as a function of binwidth a1. The horizontal axis represents binwidth, increasing from left to right, and the vertical axis shows HBE values. Six colored lines are plotted, one for each NLDR layout (a–f), with color consistently identifying the layout across all panels. Points along each line mark HBE values at specific binwidth settings. Panel (ii) shows a similar line plot of HBE values against average bin count n_h. The horizontal axis represents average bin count, and the vertical axis again shows HBE values. The same six colored lines appear, allowing comparison of how HBE changes with bin count for each layout. The overall spread of the lines is visually narrower than in panel (i). Panel (iii) is a parallel coordinates plot comparing five normalized evaluation metrics: rARNX, rRTA, rSC, rGS, and HBE at a1=0.05. Each metric is shown as a vertical axis with a common normalized scale from low to high. Six colored polylines, one per NLDR layout, connect the corresponding values across the metric axes. The lines overlap and cross, indicating differences in relative metric values across layouts. Across all panels, color is used consistently to identify the same NLDR layout.' width=100%}
+![Assessing which of the 6 NLDR layouts (a-f) on the 2NC7 data is the better representation using HBE for varying (i) binwidth ($a_1$), (ii) average bin count ($\bar{n}_h$), and (iii) scaled evaluation metrics (rRTA, rSC, rGS, rARNX, and HBE using $a_1=0.05$). Color represents the NLDR layout. Using HBE (i), layouts a and f are nearly indistinguishable from each other but have universally lower values than the others: either layout could adequately represent the data. Plot (ii), which compares HBE values with respect to average bin count, helps account for differences in cluster density; here, the variation among layouts is reduced, showing that some differences observed in (i) arise from density rather than true structure. HBE mostly agrees with rARNX, except for layout d. The other metrics rank the layouts in reverse order! The problem, though, is that they favor more separation, which is misleading for this data. This can be validated by viewing the data in a tour.](02-chap2_files/figure-html/fig-toy-rmse-1.png){#fig-toy-rmse fig-align='center' fig-alt='Multi-panel figure comparing six NLDR layouts on the 2NC7 dataset using HBE-based and other evaluation metrics. Panel (i) shows a line plot of HBE values as a function of binwidth a1. The horizontal axis represents binwidth, increasing from left to right, and the vertical axis shows HBE values. Six colored lines are plotted, one for each NLDR layout (a–f), with color consistently identifying the layout across all panels. Points along each line mark HBE values at specific binwidth settings. Panel (ii) shows a similar line plot of HBE values against average bin count n_h. The horizontal axis represents average bin count, and the vertical axis again shows HBE values. The same six colored lines appear, allowing comparison of how HBE changes with bin count for each layout. The overall spread of the lines is visually narrower than in panel (i). Panel (iii) is a parallel coordinates plot comparing five normalized evaluation metrics: rARNX, rRTA, rSC, rGS, and HBE at a1=0.05. Each metric is shown as a vertical axis with a common normalized scale from low to high. Six colored polylines, one per NLDR layout, connect the corresponding values across the metric axes. The lines overlap and cross, indicating differences in relative metric values across layouts. Across all panels, color is used consistently to identify the same NLDR layout.' width=100%}
 :::
 :::
 
