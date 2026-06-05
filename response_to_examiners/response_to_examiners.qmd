@@ -69,7 +69,7 @@ most other existing metrics. So what is its actual advantage? Before recommendin
 a software to the user that assesses "performance" by means of HBE, this surely
 needs to be addressed.
 
-*Revised.*
+*Revised in Section 2.4.*
 
 <!-- *I agree that many well-established metrics exist for assessing low-dimensional representations, each reflecting different aspects of structure preservation, and that NLDR methods themselves are typically defined through optimization objectives. Our intention is not to claim that HBE provides a universally better or more principled measure of embedding quality than these existing approaches.* -->
 
@@ -87,7 +87,7 @@ for a single "best" one.
 
 <!-- *I agree that, in practice, examining multiple visualizations is often more informative than selecting a single "best" representation, as different layouts can highlight different aspects of the data. I have revised the thesis to avoid the term "best layout" and instead refer to identifying the most reasonable representation in a given context. I also emphasize that our approach is intended to support comparative and diagnostic analysis across multiple layouts, rather than to prescribe a single optimal choice.* -->
 
-*Revised.*
+*Revised in Chapter 2.*
 
 **General** Cluster analysis is quite prominent in the thesis, and it is apparently implicitly
 always assumed that every dataset has a uniquely true clustering. There are several
@@ -118,7 +118,7 @@ so it cannot be fully clear what the "true clusters" are that are mentioned.
 The issue is particularly relevant when benchmarking clustering methods (Sec.
 4.4.2). All results are relative to the assumed truth. Note that methods like kmeans can be seen as coming with their own implicit cluster concept, and they will deviate obviously and legitimately from clusters that are defined in a different way, as are the clusters here.
 
-*Revised.*
+*Revised in Chapter 4.*
 
 <!-- *I agree that clustering does not admit a unique "true" solution in general.* -->
 
@@ -128,9 +128,7 @@ The issue is particularly relevant when benchmarking clustering methods (Sec.
 
 **General** In examples, PCA is usually run on high-dimensional data to reduce the dimension before applying the methods of interest to then only reduce the 10 (or so)-dimensional PCA representation to two dimensions. There should be a comment on this, why this is done and whether this is generally recommended. As far as I know, the literature on UMAP and other techniques treated here doesn’t recommend this and doesn’t suggest that this would be necessary.
 
-*PCA preprocessing was used mainly for computational efficiency, denoising, and visualisation in very high-dimensional settings. For the PBMC3k example, we followed the standard preprocessing workflow implemented in the `Seurat` package. In addition, methods such as TriMAP and PaCMAP commonly recommend or use PCA preprocessing, while UMAP and t-SNE are also often applied after PCA in practice.*
-
-*Not revised.*
+*Added in Section 2.5.1 and 2.5.2*
 
 **Sec. 4.4.2** Much about this Section is quite naive and not very insightful. References
 for standard cluster analysis methods that are around for 50 years and more are
@@ -158,42 +156,38 @@ Steinley, D., & Warrens, M. J. (2023). A white paper on good research practices 
 benchmarking: The case of cluster analysis. WIREs Data Mining and Knowledge
 Discovery, 13(6), e1511. https://doi.org/10.1002/widm.1511
 
-*Revised.*
+*Revised in Section 4.4.2.*
 
 <!-- *I revised Section 4.4.2 to improve clarity and rigor. Specifically, we will (i) add original references such as Stuart Lloyd (1982) and Joe H. Ward Jr. (1963), (ii) explicitly state that hierarchical clustering uses Ward’s linkage, (iii) clarify that model-based clustering is implemented via a Gaussian mixture model with the "EII" covariance structure and justify this as a baseline comparable to k-means, and (iv) expand the discussion of cluster validity indices, including their limitations and appropriate use, drawing on guidance from Seda E. Akhanli and Christian Hennig (2020) and related benchmarking recommendations. I also clarified that this comparison is illustrative rather than a comprehensive benchmarking study.* -->
 
 **Chapter 5** There are some problematic issues with this survey. As far as I understand, many high-dimensional datasets can lead to the same 2-d representation using the techniques discussed here. This means that participants can at best know that it is possible that datasets are the same (2-d representation and tour), but it is always just as well possible that datasets are different. Even with the best understanding of the methods and the best intuition this can never be excluded. Saying "same" with confidence is therefore always wrong, because one can guess "same", but confidence is never justified. Furthermore, I’d think that for the use of techniques such as UMAP, t-SNE etc. some understanding and training is required. They are not necessarily meant (or at least shouldn’t be meant) to be used in a purely intuitive way without any idea of their inner workings. But as far as I understand, this kind of intuitive use is what the survey investigates. There should be some discussion of to what extent this is appropriate and informative.
 
-*I agree that a given 2-D NLDR representation is not uniquely determined by a single high-dimensional dataset, and therefore participants cannot definitively conclude that two visualisations arise from the same underlying data. Our intention, however, is not to assess whether participants can make a logically certain identification, but rather to study perceptual consistency: whether different visualisations of the same data are interpreted as similar or different by human observers. In this context, a "same" response reflects perceived similarity rather than a claim of uniqueness.*
-
-*I also agree that NLDR methods such as t-SNE and UMAP typically require expertise for careful interpretation. However, these visualisations are often used in exploratory settings where users rely heavily on visual intuition. Our study is designed to evaluate how such intuitive interpretations align with the underlying data structure.*
-
-*Not revised.*
+*Added in Section 5.3 and 5.5.*
 
 **Minor issues:**
 
 **p. 6 and elsewhere** "NLDR can hallucinate wildly" - without a formal definition of what true structures are and how they should or should not be represented, it isn’t clear what "hallucinate" means. Also arguably the methods just do what they are defined to do; without a human analyser misinterpreting the display there can be
 no "hallucination".
 
-*The term "hallucinate" was used informally to describe cases where NLDR layouts visually suggest stronger structure or separation than is supported by the original high-dimensional data. The methods themselves behave as defined by their objectives; the concern is the potential for over-interpretation of visually amplified patterns in the embedding.*
+<!-- *The term "hallucinate" was used informally to describe cases where NLDR layouts visually suggest stronger structure or separation than is supported by the original high-dimensional data. The methods themselves behave as defined by their objectives; the concern is the potential for over-interpretation of visually amplified patterns in the embedding.* -->
 
-*Not revised.*
+*This term has been added to the Glossary [Table D.1, p. 197].*
 
 <!-- *My use of the term "hallucinate" was intended informally to describe situations where an NLDR layout visually suggests stronger separation or structure than is supported by the relationships in the original high-dimensional space. I agree that the interpretation ultimately depends on the analyst, and that the methods themselves are optimizing their respective objective functions. My goal was simply to highlight the potential risk of over-interpreting visually exaggerated structure in low-dimensional embeddings.* -->
 
 **p. 8** Scale the data - I worry that there may be robustness issues with the min/max scaling here. A single large outlier on a variable will imply that all other observations have hardly any distance between each other on this variable.
 
-*I agree that min/max scaling can be sensitive to extreme outliers, potentially compressing the distances among the majority of observations. In the examples considered here, the datasets were either simulated or preprocessed so that extreme outliers were not present. My intention was mainly to provide a simple default scaling approach that preserves the aspect ratio of the NLDR layout. I agree that, in practice, robust alternatives to min/max scaling may be preferable when substantial outliers are present.*
+<!-- *I agree that min/max scaling can be sensitive to extreme outliers, potentially compressing the distances among the majority of observations. In the examples considered here, the datasets were either simulated or preprocessed so that extreme outliers were not present. My intention was mainly to provide a simple default scaling approach that preserves the aspect ratio of the NLDR layout. I agree that, in practice, robust alternatives to min/max scaling may be preferable when substantial outliers are present.* -->
 
-*Not revised.*
+*Revised in p. 8.*
 
 **p. 9** Write the linear optimisation problem down explicitly. This is not transparent.
 
-*Revised.*
+*Revised in p.9.*
 
 **p.11** What does "RNX curve" mean?
 
-*Revised.*
+*Revised in p.11.*
 
 **Fig. 2.5** y-axis label and annotation are missing.
 
@@ -201,17 +195,17 @@ no "hallucination".
 
 **p. 16, l. -6** "high correlation value" between what and what?
 
-*Revised.*
+*Revised in p. 16.*
 
 **Fig. 2.8 bottom** The difference between the different metrics in assessing the layouts is staggering. This deserves a discussion.
 
-*Revised.*
+*Revised in Section 2.4.*
 
 **Fig. 2.12** Layout f is called "best choice" but it doesn’t have the best HBE values where the HBE values are best (at low average bin count). What is the rationale here?
 
-*I agree that layout a performs well at very small binwidths, while layout f performs better at moderate binwidths. Our conclusion is based on performance across a range of binwidths, rather than at extreme values where HBE can be less informative.*
+<!-- *I agree that layout a performs well at very small binwidths, while layout f performs better at moderate binwidths. Our conclusion is based on performance across a range of binwidths, rather than at extreme values where HBE can be less informative.* -->
 
-*Not revised.*
+*Revised the caption of Fig. 2.12.*
 
 **p. 59** More published data generators for clustering are:
 
@@ -222,20 +216,20 @@ Graphical Statistics, 19(2), 354–376. https://doi.org/10.1198/jcgs.2009.08054
 C. Shand, R. Allmendinger, J. Handl, A. Webb and J. Keane, ”HAWKS: Evolving
 Challenging Benchmark Sets for Cluster Analysis,” in IEEE Transactions on Evolutionary Computation, 26 (6), 1206-1220, 2022, doi: 10.1109/TEVC.2021.3137369
 
-*Added.*
+*Added in Section 4.1.*
 
 **p. 62** I haven’t exactly understood how the "background noise" works. Better explain
 such things formally and unambiguously.
 
-*Revised.*
+*Revised in p. 62.*
 
 <!-- *I have revised the description of background noise to provide a clearer and more formal explanation, including how it is generated and incorporated into the dataset.* -->
 
 **p. 64** "they do not produce a formal multicluster dataset" - what is that?
 
-*By "formal multicluster dataset," I mean a dataset made up of multiple distinct, well-separated groups (clusters) with clear boundaries. In contrast, the branching structure here is one connected object with multiple arms, rather than separate, independent clusters.*
+<!-- *By "formal multicluster dataset," I mean a dataset made up of multiple distinct, well-separated groups (clusters) with clear boundaries. In contrast, the branching structure here is one connected object with multiple arms, rather than separate, independent clusters.* -->
 
-*Not revised.*
+*Revised in p. 63.*
 
 <!-- *By "formal multicluster dataset", I mean a dataset composed of multiple distinct and separable groups (clusters), where each cluster represents an independent structure, typically with clear boundaries or low-density separation between them.* -->
 
@@ -243,13 +237,15 @@ such things formally and unambiguously.
 
 **p. 68, l.-9** There’s a bracket too many.
 
-*Fixed.*
+*Fixed in p. 68.*
 
 **p. 70, l.-9** Explain “Sierpinski-like”.
 
-*"Sierpinski-like" refers to a pattern generated by iteratively placing points between existing points and the vertices of a shape, producing a self-similar structure with characteristic gaps, similar to a Sierpinski triangle. The ‘-like’ indicates an approximate, finite-point version rather than an exact fractal.*
+<!-- *"Sierpinski-like" refers to a pattern generated by iteratively placing points between existing points and the vertices of a shape, producing a self-similar structure with characteristic gaps, similar to a Sierpinski triangle. The ‘-like’ indicates an approximate, finite-point version rather than an exact fractal.* -->
 
-*Not revised.*
+<!-- *Not revised.* -->
+
+*This term has been added to the Glossary [Table D.1, p. 205].*
 
 <!-- *By “Sierpinski-like”, I refer to a structure created by repeatedly taking midpoints between points and the corners of a shape. This process produces a pattern with a repeating structure and visible gaps, similar to the well-known Sierpiński triangle and its higher-dimensional versions.* -->
 
@@ -259,24 +255,26 @@ such things formally and unambiguously.
 interest, and not doing them because of some speculation what the result may be
 isn’t convincing.
 
-*PCA is a useful baseline and has now been included in the appendix. However, the main focus of this study is on nonlinear dimensionality reduction methods, as PCA (being linear) produced similar and more easily interpretable structures for the simulated data, offering limited additional insight into the perceptual distortions of interest.*
+*PCA is a useful baseline and has now been included in the appendix B. 7.* 
+
+*However, the main focus of this study is on nonlinear dimensionality reduction methods, as PCA (being linear) produced similar and more easily interpretable structures for the simulated data, offering limited additional insight into the perceptual distortions of interest.*
 
 <!-- *I agree that PCA can serve as a useful baseline. However, this study focuses on nonlinear dimensionality reduction methods and how their transformations influence visual interpretation. PCA is a linear projection method and, for the simulated 4-D data used here, its layouts closely resembled the views shown in the tour, making the structures comparatively easy to identify. As a result, PCA provided limited additional insight into the perceptual distortions examined in this study. A preliminary assessment of PCA layouts has now been included in the appendix.* -->
 
 **p. 91** BW ratio treats the clusters as spherical, not just elliptical.
 
-*Revised.*
+*Revised in p. 91.*
 
 **p. 92** Explicitly introduce the terminology "SAME" and "DIFFERENT" trials. Don’t
 leave guesswork to the reader, not even if names are expressive.
 
-*Fixed.*
+*Fixed in p. 92.*
 
 **p. 92** What qualifies data to be "attention check data"? Gaussian variance is specified
 as a single number, but in order to define the Gaussian’s properly you need to state
 their covariance matrices.
 
-*Fixed.*
+*Fixed in p. 92.*
 
 <!-- *I have clarified the definition of the attention-check datasets in the thesis. Specifically, I now explain that these datasets were designed to have simple and clearly separable cluster structures, making them easy to recognise and thus suitable for verifying participant attention and task understanding.* -->
 
@@ -284,37 +282,43 @@ their covariance matrices.
 
 **p. 95** "The BW-ratio. . . " is not a sentence.
 
-*Fixed.*
+*Fixed in p. 95.*
 
 **Sec. 5.3.7** I think that once the same dataset (or generation rule) has been used more than once, the model needs a dataset effect, probably another random effect. Results of different test persons on the same data are dependent for sure.
 
-*The results are likely dependent on the dataset, although dataset allocation was randomised in the experimental design. A dataset random effect could be included, but there were insufficient degrees of freedom to reliably estimate an additional random effect in the current model.*
+*The results are likely dependent on the dataset, although dataset allocation was randomised in the experimental design. A dataset random effect could be included, but there were insufficient degrees of freedom to reliably estimate an additional random effect in the current model. *
 
-*Not revised.*
+*Added as a future work in Section 5.6*
+
+<!-- *Not revised.* -->
 
 <!-- *I acknowledge that responses corresponding to the same dataset may introduce dependence. In our study, the number of repeated observations per dataset was limited, and our primary focus was on differences across methods rather than dataset-specific effects. While I did not include a dataset-level random effect in the current model, I recognise this as a potential extension and have noted it as a limitation in the revised thesis.* -->
 
 **Fig. 5.4 and elsewhere** Estimated probability results look generally quite weak given that there are only two response options. Comment!
 
-*The relatively low estimated probabilities reflect uncertainty in participants’ perceptual judgments rather than poor model performance. The task includes deliberately challenging stimuli (e.g., subtle cluster differences and nonlinear distortions), making "yes/no" decisions difficult and often close to chance.*
+<!-- *The relatively low estimated probabilities reflect uncertainty in participants’ perceptual judgments rather than poor model performance. The task includes deliberately challenging stimuli (e.g., subtle cluster differences and nonlinear distortions), making "yes/no" decisions difficult and often close to chance.* -->
 
-*Not revised.*
+<!-- *Not revised.* -->
+
+*Added in Section 5.4.*
 
 <!-- *While the task involves binary responses ("yes"/"no"), the estimated probabilities reflect substantial uncertainty in participants’ perceptual judgments rather than weak model performance. The stimuli were intentionally designed to include challenging cases (e.g., similar cluster structures, small separations, or nonlinear distortions), where distinguishing between visualisations is difficult. As a result, responses are often close to chance level, leading to moderate estimated probabilities.* -->
 
 **Fig. B.10b** How is what is shown here connected to normal distribution of the random effects? The assumption is not about the plain "correct proportion".
 
-*The figure does not assess random effect assumptions; it shows variation in observed proportions across subjects. Revised.*
+*The figure does not assess random effect assumptions; it shows variation in observed proportions across subjects.*
+
+*Revised in Fig. B.11b, p. 180.*
 
 **B.8.1** "Subjects who exceeded the average time of 5-10 minutes were excluded, as determined from the pilot study." Why? I don’t see any reason for this.
 
-*This sentence was included in error and does not reflect the final study design. Removed.*
+*This sentence was included in error and does not reflect the final study design.*
 
-"Finally, the collected data set is further refined by filtering out all the responses
-which showed the same data structures in 2-D NLDR plot and tour." I suspect this
-sentence doesn’t say what you want to say here. In any case it is very strange.
+*Removed.*
 
-*Revised.*
+"Finally, the collected data set is further refined by filtering out all the responses which showed the same data structures in 2-D NLDR plot and tour." I suspect this sentence doesn’t say what you want to say here. In any case it is very strange.
+
+*Revised in in Appendix B.9.1, p. 180.*
 
 # Examiner B: Prof Anne M. Ruiz
 

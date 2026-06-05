@@ -557,7 +557,9 @@ nldr_two_curvy + hex_grid_two_curvy +
 
 #### Scale the data
 
-Because we are working with distances between points, starting with data having a standard scale, e.g., [0, 1], is recommended. The default should take the aspect ratio produced by the NLDR $(r_1, r_2, ..., r_k)$ into account. When $k=2$, as in hexagon binning, the default range is $[0, y_{i,\text{max}}], i=1,2$, where $y_{1,\text{max}}=1$ and $y_{2,\text{max}} = r_2/r_1$ (@fig-NLDR-two-curvy). If the NLDR aspect ratio is ignored then set $y_ {2,\text{max}} = 1.$ 
+Because we are working with distances between points, starting with data having a standard scale, e.g., [0, 1], is recommended. The default should take the aspect ratio produced by the NLDR $(r_1, r_2, ..., r_k)$ into account. When $k=2$, as in hexagon binning, the default range is $[0, y_{i,\text{max}}], i=1,2$, where $y_{1,\text{max}}=1$ and $y_{2,\text{max}} = r_2/r_1$ (@fig-NLDR-two-curvy). If the NLDR aspect ratio is ignored then set $y_ {2,\text{max}} = 1.$
+
+Note that min/max scaling can be sensitive to extreme outliers. However, removing outliers before scaling is generally not recommended in NLDR, since unusual observations may represent genuinely interesting structure in the high-dimensional data that is worth exploring. We recommend that analysts inspect their data for extreme values and consider whether they are meaningful before applying this scaling.
 
 #### Hexagon grid configuration
 
@@ -1608,7 +1610,7 @@ free(trimesh_removed_pbmc) + free(trimesh_removed_pbmc_best) +
 
 ### MNIST hand-written digits {#sec-mnist}
 
-The digit "1" of the MNIST dataset [@lecun1998] consists of $7877$ grayscale images of handwritten "1"s. Each image is $28 \times 28$ pixels, which corresponds to $784$ variables. The first $10$ principal components, explaining $83\%$ of the total variation, are used. This data essentially lies on a nonlinear manifold in high dimensions, defined by the shapes that "1"s make when sketched. We expect that the most reasonable layout captures this type of structure and does not exhibit distinct clusters. 
+The digit "1" of the MNIST dataset [@lecun1998] consists of $7877$ grayscale images of handwritten "1"s. Each image is $28 \times 28$ pixels, which corresponds to $784$ variables. Following the preprocessing workflow recommended in @yingfan2021, the first $10$ principal components, explaining $83\%$ of the total variation, are used. This data essentially lies on a nonlinear manifold in high dimensions, defined by the shapes that "1"s make when sketched. We expect that the most reasonable layout captures this type of structure and does not exhibit distinct clusters. 
 
 ```{r}
 #| label: read-mnist-nldr
