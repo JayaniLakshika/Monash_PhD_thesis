@@ -191,7 +191,7 @@ no "hallucination".
 
 **Fig. 2.5** y-axis label and annotation are missing.
 
-*In Fig. 2.5, the y-axis does not represent a meaningful variable; points are jittered vertically only to reduce overplotting and to better display the distribution of residuals.*
+*In Fig. 2.5, plot (a) the y-axis values are random jitter to display the distribution of residuals; plots (b, c) axis values are not meaningful. No change made.*
 
 **p. 16, l. -6** "high correlation value" between what and what?
 
@@ -255,9 +255,7 @@ such things formally and unambiguously.
 interest, and not doing them because of some speculation what the result may be
 isn’t convincing.
 
-*PCA is a useful baseline and has now been included in the appendix B. 7.* 
-
-*However, the main focus of this study is on nonlinear dimensionality reduction methods, as PCA (being linear) produced similar and more easily interpretable structures for the simulated data, offering limited additional insight into the perceptual distortions of interest.*
+*The main focus of this study is perception of structure in NLDR layouts. We originally included PCA (linear method) in the experiment, until we realised that for three clusters perception of the structure in the PCA plots was almost perfectly recognisable as the same structure in the tour plots. This does not add any insight in how people are reading NLDR layouts. We have added the details of the PCA results in Appendix B7, because it may be of interest to some readers.*
 
 <!-- *I agree that PCA can serve as a useful baseline. However, this study focuses on nonlinear dimensionality reduction methods and how their transformations influence visual interpretation. PCA is a linear projection method and, for the simulated 4-D data used here, its layouts closely resembled the views shown in the tour, making the structures comparatively easy to identify. As a result, PCA provided limited additional insight into the perceptual distortions examined in this study. A preliminary assessment of PCA layouts has now been included in the appendix.* -->
 
@@ -286,35 +284,20 @@ their covariance matrices.
 
 **Sec. 5.3.7** I think that once the same dataset (or generation rule) has been used more than once, the model needs a dataset effect, probably another random effect. Results of different test persons on the same data are dependent for sure.
 
-*The results are likely dependent on the dataset, although dataset allocation was randomised in the experimental design. A dataset random effect could be included, but there were insufficient degrees of freedom to reliably estimate an additional random effect in the current model. *
+*Each data set is constructed by combining different cluster shapes. While each data set is unique, due to the combination of shapes, it may be more interesting to use shape as a random effect. Nevertheless, the primary focus of the experiment was on the perception of distance between clusters, and the combination of shapes and datasets was chosen to provide a wide variety of different types of patterns. To be able to incorporate the particular shapes and combinations into the model would require substantially more data to be collected. This has been added in Section 5.6 as a topic for future experiments.*
 
-*Added as a future work in Section 5.6*
-
-<!-- *Not revised.* -->
-
-<!-- *I acknowledge that responses corresponding to the same dataset may introduce dependence. In our study, the number of repeated observations per dataset was limited, and our primary focus was on differences across methods rather than dataset-specific effects. While I did not include a dataset-level random effect in the current model, I recognise this as a potential extension and have noted it as a limitation in the revised thesis.* -->
 
 **Fig. 5.4 and elsewhere** Estimated probability results look generally quite weak given that there are only two response options. Comment!
 
-<!-- *The relatively low estimated probabilities reflect uncertainty in participants’ perceptual judgments rather than poor model performance. The task includes deliberately challenging stimuli (e.g., subtle cluster differences and nonlinear distortions), making "yes/no" decisions difficult and often close to chance.* -->
-
-<!-- *Not revised.* -->
-
 *Added in Section 5.4.*
-
-<!-- *While the task involves binary responses ("yes"/"no"), the estimated probabilities reflect substantial uncertainty in participants’ perceptual judgments rather than weak model performance. The stimuli were intentionally designed to include challenging cases (e.g., similar cluster structures, small separations, or nonlinear distortions), where distinguishing between visualisations is difficult. As a result, responses are often close to chance level, leading to moderate estimated probabilities.* -->
 
 **Fig. B.10b** How is what is shown here connected to normal distribution of the random effects? The assumption is not about the plain "correct proportion".
 
-*The figure does not assess random effect assumptions; it shows variation in observed proportions across subjects.*
-
-*Revised in Fig. B.11b, p. 180.*
+*The figure does not assess random effect assumptions; it shows variation in observed proportions across subjects. Caption in Fig. B.11b, p. 180 revised to reflect this.*
 
 **B.8.1** "Subjects who exceeded the average time of 5-10 minutes were excluded, as determined from the pilot study." Why? I don’t see any reason for this.
 
-*This sentence was included in error and does not reflect the final study design.*
-
-*Removed.*
+*This sentence was removed because it is incorrect. The pre-processing steps have been explained more carefully.*
 
 "Finally, the collected data set is further refined by filtering out all the responses which showed the same data structures in 2-D NLDR plot and tour." I suspect this sentence doesn’t say what you want to say here. In any case it is very strange.
 
