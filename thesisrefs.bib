@@ -264,7 +264,8 @@
   year={2015},
   publisher={{The Guilford Press}},
   address = {New York, NY, US},
-  edition = {2nd}
+  edition = {2nd},
+  url = {https://www.guilford.com/books/Confirmatory-Factor-Analysis-for-Applied-Research/Timothy-Brown/9781462515363}
 }
 
 @article{freedman1981,
@@ -438,11 +439,16 @@
 	year = {2015}
 }
 
-@article{spearman1961,
-  title={{The Proof and Measurement of Association Between Two Things}},
-  author={Spearman, Charles},
-  year={1961},
-  publisher={Appleton-Century-Crofts}
+@inbook{spearman1961,
+  title = {{The Proof and Measurement of Association Between Two Things}},
+  booktitle = {Studies in Individual Differences: The Search for Intelligence},
+  author = {Spearman, Charles},
+  editor = {Jenkins, J. J. and Paterson, D. G.},
+  year = {1961},
+  publisher = {Appleton-Century-Crofts},
+  pages = {45--58},
+  doi = {10.1037/11491-005},
+  url = {https://psycnet.apa.org/record/2006-10257-005}
 }
 
 @article{shepard1962,
@@ -778,7 +784,7 @@
   title = {{snedata: SNE Simulation Dataset Functions}},
   author = {James Melville},
   year = {2025},
-  note = {R package (development version, not on CRAN), GitHub commit beebcf91c365bf5006be08fb614585b4659c05c5},
+  note = {R package version 0.0.0.9001},
   url = {https://github.com/jlmelville/snedata}
 }
 
@@ -847,11 +853,13 @@
 }
 
 @book{niederreiter1992,
-  title = {{Random Number Generation and Quasi-Monte Carlo Methods}},
   author = {Niederreiter, Harald},
+  title = {{Random Number Generation and Quasi-Monte Carlo Methods}},
   year = {1992},
   isbn = {0898712955},
-  publisher = {Society for Industrial and Applied Mathematics}
+  publisher = {Society for Industrial and Applied Mathematics},
+  address = {USA},
+  url = {https://dl.acm.org/doi/book/10.5555/130653}
 }
 
 @inproceedings{geoffrey2000,
@@ -885,10 +893,13 @@
 }
 
 @book{tinkham2003,
-  title={{Group Theory and Quantum Mechanics}},
-  author={Tinkham, Michael},
-  year={2003},
-  publisher={Courier Corporation}
+  title = {{Group Theory and Quantum Mechanics}},
+  author = {Tinkham, Michael},
+  year = {2003},
+  publisher = {Dover Publications},
+  address = {New York, NY},
+  isbn = {978-0486432472},
+  url = {https://www.bibsonomy.org/bibtex/5a74429d5bd944e82f4bd58d91c5d06e}
 }
 
 @book{alberts2014,
@@ -896,7 +907,8 @@
   author={Alberts, Bruce and Johnson, Alexander and Lewis, Julian and Morgan, David and Raff, Martin and Roberts, Keith and Walter, Peter},
   year={2014},
   publisher={Garland Science},
-  edition = {6th}
+  edition = {6th},
+  url = {https://archive.org/details/molecularbiology0006edalbe/page/n5/mode/2up}
 }
 
 @article{dimitris2002,
@@ -957,12 +969,14 @@
   doi = {10.1073/pnas.032095099}
 }
 
-@article{calladine2004,
+@book{calladine2004,
   title={{Understanding DNA: the Molecule and How It Works}},
-  author={Calladine, Chris R and Drew, Horace R and Luisi, Ben F and Travers, Andrew A},
+  author={Calladine, Christopher R and Drew, Horace R and Luisi, Ben F and Travers, Andrew A},
   year={2004},
-  publisher={Elsevier},
-  isbn = {0-12-155089-3}
+  edition={3rd},
+  publisher={Elsevier Academic Press},
+  isbn = {0-12-155089-3},
+  url = {https://users.fmf.uni-lj.si/podgornik/download/Calladine.pdf}
 }
 
 @article{gershenfeld2000,
@@ -970,7 +984,8 @@
   author={Gershenfeld, Neil},
   year={2000},
   publisher={{Cambridge University Press}},
-  isbn = {978-1108143837}
+  isbn = {978-1108143837},
+  url = {https://api.semanticscholar.org/CorpusID:110840217}
 }
 
 @book{boehmke2019,
@@ -991,7 +1006,7 @@
   number = {1},
   pages = {100-108},
   keywords = {K-means clustering algorithm, transfer algorithm},
-  doi = {https://doi.org/10.2307/2346830},
+  doi = {10.2307/2346830},
   year = {1979}
 }
 
@@ -1020,16 +1035,14 @@
 	year = {2002}
 }
 
-
-@book{scrucca2023,
-  author    = {Scrucca, Luca and Fraley, Chris and Murphy, T. Brendan and Raftery, Adrian E.},
-  title     = {{Model-Based Clustering, Classification, and Density Estimation Using mclust in R}},
-  year      = {2023},
-  edition   = {1st},
-  publisher = {CRC Press},
-  series    = {Chapman \& Hall/CRC {R} Series},
-  isbn      = {9781000868371},
-  language  = {English}
+@Book{scrucca2023,
+  title = {Model-Based Clustering, Classification, and Density Estimation Using {mclust} in {R}},
+  author = {Luca Scrucca and Chris Fraley and T. Brendan Murphy and Adrian E. Raftery},
+  publisher = {Chapman and Hall/CRC},
+  isbn = {978-1032234953},
+  doi = {10.1201/9781003277965},
+  year = {2023},
+  url = {https://mclust-org.github.io/book/},
 }
 
 @Manual{christian2024,
@@ -1057,20 +1070,24 @@
 }
 
 @Book{alan2009,
-  title = {{Computation of Multivariate Normal and t Probabilities}},
-  author = {Alan Genz and Frank Bretz},
-  year = {2009},
+  title     = {Computation of Multivariate Normal and t Probabilities},
+  author    = {Alan Genz and Frank Bretz},
+  series    = {Lecture Notes in Statistics},
+  year      = {2009},
   publisher = {Springer-Verlag},
-  isbn = {978-3-642-01688-2}
+  address   = {Heidelberg},
+  isbn      = {978-3-642-01688-2},
+  doi       = {10.1007/978-3-642-01689-9}
 }
 
 @article{van2007,
-  title = {{Dimensionality Reduction: A Comparative Review}},
-	author = {van der Maaten, Laurens and Postma, Eric and Herik, H.},
-	journal = {Journal of Machine Learning Research - JMLR},
-	month = {01},
-	volume = {10},
-	year = {2007}
+    title={{Dimensionality Reduction: A Comparative Review}},
+    author={Van der Maaten, L. J. P. and Postma, E. O. and Van Den Herik, H. J.},
+    journal={Journal of Machine Learning Research},
+    volume={10},
+    pages={1--41},
+    year={2009},
+    url={https://lvdmaaten.github.io/publications/papers/TR_Dimensionality_Reduction_Review_2009.pdf}
 }
 
 @article{jayani2025a,
@@ -1168,9 +1185,10 @@ Recalculating}},
   author={Palan, Stefan and Schitter, Christian},
   journal={Journal of Behavioral and Experimental Finance},
   volume={17},
-  pages={22-27},
+  pages={22--27},
   year={2018},
-  publisher={Elsevier}
+  publisher={Elsevier},
+  url = {https://www.sciencedirect.com/science/article/pii/S2214635017300989}
 }
 
 @book{mcculloch2001,
