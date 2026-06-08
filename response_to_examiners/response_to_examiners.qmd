@@ -183,11 +183,11 @@ no "hallucination".
 
 **p. 9** Write the linear optimisation problem down explicitly. This is not transparent.
 
-*Revised in p.9.*
+*Revised in p. 9.*
 
 **p.11** What does "RNX curve" mean?
 
-*Revised in p.11.*
+*Revised in p. 11.*
 
 **Fig. 2.5** y-axis label and annotation are missing.
 
